@@ -39,7 +39,23 @@
                         <filtering>false</filtering>
                     </resource>
                      <resource>
-                        <directory>jsp</directory>
+                        <directory>bootstrap-4.3.0-dist/css</directory>
+                        <filtering>false</filtering>
+                    </resource>
+                    <resource>
+                        <directory>bootstrap-4.3.0-dist/js</directory>
+                        <filtering>false</filtering>
+                    </resource>
+                    <resource>
+                    	<directory>js</directory>
+                        <filtering>false</filtering>
+                    </resource>
+                 	<resource>
+                    <directory>css</directory>
+                        <filtering>false</filtering>
+                    </resource>
+                    <resource>
+                    <directory>jsp</directory>
                         <filtering>false</filtering>
                     </resource>
                 </webResources>
