@@ -23,14 +23,14 @@
     </dependency>
   </dependencies>
   <build>
-  <finalName>DemoTrans</finalName>
+  <finalName>DemoTrans</finalName>  <!-- tag is used To change war file name  -->
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-war-plugin</artifactId>
             <configuration>
                 <webResources>
-                    <resource>
+                    <resource> <!-- tag is to build this folder -user created folder  -->
                         <directory>image</directory>
                         <filtering>true</filtering>
                     </resource>
@@ -56,6 +56,10 @@
                     </resource>
                     <resource>
                     <directory>jsp</directory>
+                        <filtering>false</filtering>
+                    </resource>
+                     <resource>
+                    <directory>json</directory>
                         <filtering>false</filtering>
                     </resource>
                 </webResources>

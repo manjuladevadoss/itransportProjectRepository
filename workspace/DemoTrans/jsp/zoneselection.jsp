@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>zone</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,46 +11,25 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
 -->
 	 <link rel="stylesheet" href="bootstrap.min.css">
+	  <link rel="stylesheet" href="demo.css">
  	 <script src="bootstrap.min.js"></script>
   	 <script src="jquery.js"></script>   
 <style type="text/css"> 
-
- .bs-example{
-    	margin: 20px;
-    }
-body {
-  background: #555;
-}
 
 .content {
   max-width: 500px;
   margin: auto;
   background: #202B53;
   padding: 10px;
-  margin-top: 20%;
+  margin-top: 10%;
 }
-.btnClass{
-backcolor: #283D76;
-}
-h3 {
-  color: white;
-  font-family: Roboto, Helvetica, sans-serif;
-}
-.chkclass {
-  color: white;
-  font-family: Roboto, Helvetica, sans-serif;
-  font-size: 14px;
-}
-p{
-  color: white;
-  font-family: Roboto, Helvetica, sans-serif;
-  font-size: 14px;
-}
+
 </style>
 </head>
 <body>
+<h3>iTransport 2.0</h3>
 <div class="bs-example">
-    <form action="/examples/actions/confirmation.php" method="post">
+    <form action="panel.jsp" method="post">
     <div class="content">
     <h3>Zone Selection </h3>
     <p>Select your Zone </p>
@@ -103,15 +83,9 @@ p{
       <input type="checkbox" value="EAC 53">EAC 53
     </label></p>
 
-      <div class="btnClass"> <button type="submit" >START</button> </div>       
+      <div class="btnClass"> <button type="submit">START</button> </div>       
         </div>
        
-
-
-
-
-
-
     </form>
 </div>
 </body>
