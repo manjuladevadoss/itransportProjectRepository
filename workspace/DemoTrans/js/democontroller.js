@@ -1,8 +1,7 @@
-
 var app = angular.module('ltaApp', []);
 	  app.controller('ltaController', function($scope, $http) {
     
-	//get the json file using $http get method()	  
+	//get the json fle using $http get method() incident record	  
     $http.get("incidentRecord.json").then(function(response) {
         $scope.incidentRec = response.data.incidentRec;
       });
@@ -14,26 +13,22 @@ var app = angular.module('ltaApp', []);
     }
     $scope.sortReverse  = false;
     
-    
-	//get the json file using $http get method()	  
+	//get the json file using $http get method() work order	  
     $http.get("workorderRecord.json").then(function(response) {
         $scope.workorderRec = response.data.workorderRec;
       });
-    
-    
-    
-    //Display Incident record using JSON Data
-   /* $scope.workOrderJson = [
-    	{date: "2018/10/26 04:25", wonum: "#33454",descri: "SGT_ACM_09",status: "ACTIVE", zone: "KPE"},
-    	{date: "2018/02/10 14:45", wonum: "#87843",descri: "SGT_ACM_19",status: "NOT ACTIVE", zone: "TUN"},
-    	{date: "2018/06/16 12:28", wonum: "#53454",descri: "SGT_ACM_12",status: "ACTIVE", zone: "TPE"},
-    	{date: "2018/11/23 09:46", wonum: "#76348",descri: "SGT_ACM_23",status: "NOT ACTIVE", zone: "TUN"}
-    	
-    ];*/
     $scope.searchWorkOrder ="";
     
-   
-  });
+   //create New IR 
+    $scope.addincident = function(){
+        var s = $scope.incistatus;
+        $scope.incistatus = s +"abc";
+      }
+       
+
+      
+	 });
+
 
 /* To declare angular js
 	   * angular.module('ltaApp', [])
