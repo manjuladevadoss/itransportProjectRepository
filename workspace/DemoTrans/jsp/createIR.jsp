@@ -62,6 +62,8 @@ h5 {
 						<option value="other">Other</option>
 					</select>
 				</div>
+				
+				<p>Search <input type="text" size="35" ng-model="incistatus">  {{addInciData}}</P>
 			</td>
 				
 			</tr>
@@ -71,7 +73,7 @@ h5 {
 
 
 
-    <input type="button" ng-click="addincident()" value="Reset" />
+    <input type="button" ng-click="addincident()" value="Add incident" />
    </form>
        
     </div>
