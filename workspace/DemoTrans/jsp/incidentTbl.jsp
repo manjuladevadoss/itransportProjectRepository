@@ -12,7 +12,9 @@
   	 <script type="text/javascript"  src="jquery.js"></script> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-
+.fontcolor{ 
+color: #43498F;
+}
 </style>
  
   </head>
@@ -47,7 +49,7 @@
 		</td>
 	 </tr>
 		<tr>
-			<th> <a href="#" ng-click="sortType = 'irid'; sortReverse = !sortReverse"> IRID </a></th>
+			<th> <a href="#" ng-click="sortType = 'irid'; sortReverse = !sortReverse"><div class="fontcolor"> IRID </div></a></th>
 			<th> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"> Type </a></th>
 			<th> <a href="#" ng-click="sortType = 'state'; sortReverse = !sortReverse"> State </a></th>
 			<th> <a href="#" ng-click="sortType = 'zone'; sortReverse = !sortReverse"> Zone </a></th>
@@ -69,7 +71,7 @@
 			</tr>
 	</table>     
     </div>
-    <h5> <a href="cc.jsp">Common Control</a></h5>
+    <h4> <a href="cc.jsp"><div class="fontcolor">Common Contro</div></a></h4>
     <!-- 
         <embed type="text/html" src="C:/Users/mdevadoss/workspace/DemoPro/html/incidentDisplay.html">  
     -->

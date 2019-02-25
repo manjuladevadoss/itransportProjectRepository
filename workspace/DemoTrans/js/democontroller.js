@@ -23,8 +23,22 @@ var app = angular.module('ltaApp', []);
     $scope.addincident = function(){
         var s = $scope.incistatus;
         $scope.incistatus = s +"abc";
-      }
-       
+      alert("abcdedg ");
+      $scope.incidentRec.push($scope.addInciData);
+        
+    };
+    
+    $scope.addInciData = {
+    		"irid": "23355", 
+    		"type": "Accident", 
+    		"state": "confirmed", 
+    		"zone": "zone1", 
+    		"roadname": 
+    		"TPE", 
+    		"lanes":"4 4 4"
+        };
+    
+
 
       
 	 });
