@@ -1,0 +1,7 @@
+{
+  "zone":[ 
+  		{"name":"EWAY Zone","category":["Zone 1", "Zone 2", "Zone 3", "Zone 4", "Zone 5", "Zone 6"]},
+    	{"name":"Tunnel Zone", "category":["FCT", "WVT", "SGT", "CTE"]},
+    	{"name":"EAC Corridor","category":["EAC 50", "EAC 51", "EAC 52", "EAC 53"]}
+  	]
+}

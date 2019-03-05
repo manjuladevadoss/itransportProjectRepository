@@ -24,6 +24,7 @@
   </dependencies>
   <build>
   <finalName>DemoTrans</finalName>  <!-- tag is used To change war file name  -->
+    <defaultGoal>install</defaultGoal>
     <plugins>
         <plugin>
             <groupId>org.apache.maven.plugins</groupId>

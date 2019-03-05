@@ -1,0 +1,95 @@
+body {
+  font-family: Roboto, Helvetica, sans-serif;
+ }
+
+h1 {
+  text-align: center;
+  font-family: Roboto, Helvetica, sans-serif;
+  color: #C8CFF4;
+  margin: 80px 0;
+}
+
+.button {
+  font-size: 1em;
+  padding: 7px 14px;
+  color: #202B53;
+  border: 2px solid #C8CFF4;
+  border-radius: 20px/50px;
+  background:#C8CFF4;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 5px auto;
+  padding: 5px;
+  background: #202B53;
+  border-radius: 5px;
+  width: 30%;
+  height: 100%;
+  position: relative;
+}
+
+.popup .content {
+  max-height: 80%;
+  color: #C8CFF4;
+  font-size: 15px;
+}
+.popup h2 {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+.popup h3 {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 14px;
+  font-family:  Roboto, Helvetica, sans-serif;
+}
+
+.popup input {
+  width: 80%;
+  background-color:#C8CFF4;
+  color: #202B53;
+   font-family: Roboto, Helvetica, sans-serif;
+ border-radius: 4px;
+}
+
+.popup select {
+  width: 80%;
+  padding: 5px 5px;
+  border: none;
+  border-radius: 4px;
+  background-color:#C8CFF4;
+  color: #202B53;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #C8CFF4;
+}
+
+
+
+}

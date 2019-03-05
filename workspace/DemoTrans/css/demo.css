@@ -2,18 +2,20 @@
     	margin: 20px;
     }
 body {
-  background-image: url("loginImg1.jpg");
+  background-image: url("Blured.jpg");
+  background-size: cover;
 }
 
 .btnClass{
 backcolor: #283D76;
 }
+
 h3 {
-  color: white;
+  color: #C8CFF4;;
   font-family: Roboto, Helvetica, sans-serif;
 }
 h5 {
-  color: white;
+  color: #C8CFF4;;
   font-family: Roboto, Helvetica, sans-serif;
 }
 
@@ -22,12 +24,12 @@ label input {
 }
 
 .chkclass {
-  color: white;
+  color: #C8CFF4;;
   font-family: Roboto, Helvetica, sans-serif;
   font-size: 14px;
 }
 p{
-  color: white;
+  color: #C8CFF4;
   font-family: Roboto, Helvetica, sans-serif;
   font-size: 14px;
 }
@@ -35,3 +37,25 @@ p{
 th {
 color:#43498F;
 }
+
+.content {
+  max-width: 500px;
+  margin: auto;
+  background: #202B53;
+  padding: 10px;
+  margin-top: 5%;
+}
+
+.button {
+  background-color: #AD484A; /* Green */
+  border: none;
+  color: #C8CFF4;;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 1px;
+  cursor: pointer;
+}
+.button2 {background-color: #AD484A;} 
