@@ -9,6 +9,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  border-radius: 4px;
 }
 
 .dropdown-content {
@@ -27,7 +28,7 @@
   display: block;
 }
 
-.dropdown-content a:hover {background-color: #487FAD;}
+.dropdown-content a:hover {background-color: #C8CFF4;}
 
 .dropdown:hover .dropdown-content {display: block;}
 
