@@ -1,0 +1,119 @@
+ .bs-example{
+    	margin: 20px;
+    }
+body {
+  background-image: url("Blured.jpg");
+  background-size: cover;
+}
+
+.content {
+  max-width: 800px;
+  margin: auto;
+  background: #202B53;
+  padding: 10px;
+  margin-top: 5%;
+}
+
+h4 {
+  font-family: Roboto, Helvetica, sans-serif;
+  color: #C8CFF4;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+h5 {
+  color: #C8CFF4;;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+h3 {
+  color: #C8CFF4;;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+h10 {
+  font-family: Roboto, Helvetica, sans-serif;
+  color: #48AD76;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+h6 {
+  font-family: Roboto, Helvetica, sans-serif;
+  color: #C8CFF4;
+  font-size: 13px;
+}
+
+p{
+  color: #C8CFF4;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 14px;
+}
+
+
+.buttonp{
+  font-size: .7em;
+  padding: 2px 7px;
+  color: #202B53;
+  border: 2px solid #F0E68C;
+  border-radius: 40px/60px;
+  background:#F0E68C;
+}
+
+.buttona{
+  font-size: .7em;
+  padding: 2px 7px;
+  color: #202B53;
+  border: 2px solid #AFEEEE;
+  border-radius: 40px/60px;
+  background:#AFEEEE;
+}
+
+.button1a {
+  font-size: 1em;
+  padding: 7px 14px;
+  color: #202B53;
+  border: 2px solid #C8CFF4;
+  border-radius: 40px/60px;
+  background:#C8CFF4;
+}
+
+.button1 {
+  font-size: .7em;
+  padding: 4px 15px;
+  color: #202B53;
+  border: 2px solid #C8CFF4;
+  border-radius: 40px/60px;
+  background:#C8CFF4;
+}
+.button2 {
+  font-size: 1em;
+  padding: 10px 45px;
+  color: #202B53;
+  border: 2px solid #C8CFF4;
+  border-radius: 40px/60px;
+  background:#C8CFF4;
+}
+
+.buttonRemove {
+  font-size: .7em;
+  padding: 4px 15px;
+  color: #202B53;
+  border: 2px solid yellow;
+  border-radius: 40px/60px;
+  background:yellow;
+}
+
+.buttonClosure {
+  font-size: .7em;
+  padding: 4px 15px;
+  color: #202B53;
+  border: 2px solid red;
+  border-radius: 40px/60px;
+  background:red;
+}
+
+div.scroll {
+      width:790px;
+      overflow-y:scroll;
+	  overflow-x: hidden;
+      height:500px;    
+}

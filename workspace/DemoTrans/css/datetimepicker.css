@@ -26,7 +26,7 @@
 .dtp_modal-grey{ color: #7d7d7d; }
 .dtp_modal-cell-selected{ background-color: #01adff; border-radius: 48%;  transition: background-color 1s ease-out;}
 .dtp_modal-time-block{ height: 150px; width: 260px; }
-.dpt_modal-button{ background-color: #C8CFF4; color: #fff; font-size: 15px; padding: 8px 10px; float: left;
+.dpt_modal-button{ background-color: #C8CFF4; color: #202B53; font-size: 15px; padding: 8px 10px; float: left;
     text-align: center; display: inline-block; margin-left: 10px; cursor: pointer; border: solid 1px #fff;
 border-radius: 3px;  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
 .dtp_modal-time-line{ text-align: center; color: #C8CFF4; font-size: 17px; padding-top: 15px;  }

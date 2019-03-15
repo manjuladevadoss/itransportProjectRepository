@@ -1,0 +1,193 @@
+<table width="80%">
+		<tr>
+	      <td> 
+	      		<div class="select-sim" >
+				  <div class="options">
+				    <div class="option">
+				      <input type="radio" name="color" value="cross" id="lsh1"  />
+				      <label for="lsh1">
+				        <img src="cross.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				    <div class="option">
+				      <input type="radio" name="color" value="arrow" id="lsh2" checked/>
+				      <label for="lsh2">
+				        <img src="uparrow.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				   <div class="option">
+				      <input type="radio" name="color" value="traffic" id="lsh3" />
+				      <label for="lsh3">
+				       <img src="traffic.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+					<div class="option">
+				      <input type="radio" name="color" value="traffic1" id="lsh4" />
+				      <label for="lsh4">
+				      <img src="traffic1.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				  </div>
+				</div>
+	      </td>
+	      <td> 
+	      		<div class="select-sim" >
+				  <div class="options">
+				    <div class="option">
+				      <input type="radio" name="color" value="cross" id="lane1_1"  />
+				      <label for="lane1_1">
+				        <img src="cross.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				    <div class="option">
+				      <input type="radio" name="color" value="arrow" id="lane1_2" checked/>
+				      <label for="lane1_2">
+				        <img src="uparrow.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				   <div class="option">
+				      <input type="radio" name="color" value="traffic" id="lane1_3" />
+				      <label for="lane1_3">
+				       <img src="traffic.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+					<div class="option">
+				      <input type="radio" name="color" value="traffic1" id="lane1_4" />
+				      <label for="lane1_4">
+				      <img src="traffic1.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				  </div>
+				</div>
+	      </td>
+	      <td> 
+	      		<div class="select-sim" >
+				  <div class="options">
+				    <div class="option">
+				      <input type="radio" name="color" value="cross" id="lane2_1"  />
+				      <label for="lane2_1">
+				        <img src="cross.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				    <div class="option">
+				      <input type="radio" name="color" value="arrow" id="lane2_2" checked/>
+				      <label for="lane2_2">
+				        <img src="uparrow.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				   <div class="option">
+				      <input type="radio" name="color" value="traffic" id="lane2_3" />
+				      <label for="lane2_3">
+				       <img src="traffic.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+					<div class="option">
+				      <input type="radio" name="color" value="traffic1" id="lane2_4" />
+				      <label for="lane2_4">
+				      <img src="traffic1.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				  </div>
+				</div>
+	      </td>
+	      <td> 
+	      		<div class="select-sim" >
+				  <div class="options">
+				    <div class="option">
+				      <input type="radio" name="color" value="cross" id="lane3_1"  />
+				      <label for="lane3_1">
+				        <img src="cross.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				    <div class="option">
+				      <input type="radio" name="color" value="arrow" id="lane3_2" checked/>
+				      <label for="lane3_2">
+				        <img src="uparrow.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				   <div class="option">
+				      <input type="radio" name="color" value="traffic" id="lane3_3" />
+				      <label for="lane3_3">
+				       <img src="traffic.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+					<div class="option">
+				      <input type="radio" name="color" value="traffic1" id="lane3_4" />
+				      <label for="lane3_4">
+				      <img src="traffic1.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				  </div>
+				</div>
+	      </td>
+	      <td> 
+	      		<div class="select-sim" >
+				  <div class="options">
+				    <div class="option">
+				      <input type="radio" name="LaneSellane4_1" value="cross" id="lane4_1"  />
+				      <label for="lane4_1">
+				        <img src="cross.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				    <div class="option">
+				      <input type="radio" name="LaneSellane4_2" value="arrow" id="lane4_2" checked/>
+				      <label for="lane4_2">
+				        <img src="uparrow.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				   <div class="option">
+				      <input type="radio" name="LaneSellane4_3" value="traffic" id="lane4_3" />
+				      <label for="lane4_3">
+				       <img src="traffic.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+					<div class="option">
+				      <input type="radio" name="LaneSellane4_4" value="traffic1" id="lane4_4" />
+				      <label for="lane4_4">
+				      <img src="traffic1.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				  </div>
+				</div>
+	      </td>
+	      <td> 
+	      		<div class="select-sim" >
+				  <div class="options">
+				    <div class="option">
+				      <input type="radio" name="LaneSelrsh1" value="cross" id="rsh1"  />
+				      <label for="rsh1">
+				        <img src="cross.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				    <div class="option">
+				      <input type="radio" name="LaneSelrsh2" value="arrow" id="rsh2" checked/>
+				      <label for="rsh2">
+				        <img src="uparrow.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				   <div class="option">
+				      <input type="radio" name="LaneSelrsh3" value="traffic" id="rsh3" />
+				      <label for="rsh3">
+				       <img src="traffic.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+					<div class="option">
+				      <input type="radio" name="LaneSelrsh4" value="traffic1" id="rsh4" />
+				      <label for="rsh4">
+				      <img src="traffic1.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				  </div>
+				</div>
+	      </td>
+		</tr>
+		<tr>
+		 <td><h6>LSH1</h6> </td>
+		  <td><h6>4</h6></td>
+		  <td><h6>3</h6> </td>
+		  <td><h6>2 </h6></td>
+		  <td><h6> 1</h6> </td>
+		  <td><h6> RSH1</h6></td>
+		</tr>
+	
+		</table>

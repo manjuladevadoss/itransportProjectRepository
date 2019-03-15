@@ -1,0 +1,40 @@
+/* only demo styles */
+
+body {
+  color: #C8CFF4;;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 13px;
+}
+
+/* end only demo styles */
+
+.checkbox-custom {
+    opacity: 0;
+    position: absolute;   
+}
+
+.checkbox-custom, .checkbox-custom-label{
+    display: inline-block;
+    vertical-align: middle;
+  border:  green;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.checkbox-custom + .checkbox-custom-label:before {
+    content: '';
+    background: #283D76;
+    border: 1.5px solid green;
+    display: inline-block;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    padding: 3px;
+    margin-right: 10px;
+    text-align: center;
+}
+
+.checkbox-custom:checked + .checkbox-custom-label:before {
+    background: white;
+    box-shadow: inset 0px 0px 0px 4px #fff;
+}

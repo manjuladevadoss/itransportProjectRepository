@@ -1,0 +1,84 @@
+<!doctype html>
+<html >
+<title>incident Record</title>
+  <head>
+    <link rel="stylesheet" href="bootstrap.min.css">
+	 <link rel="stylesheet" href="popup.css">
+	 <link rel="stylesheet" href="dropdownstyle.css">
+	  <link rel="stylesheet" href="selectimagestyle.css">
+ 	 <script src="bootstrap.min.js"></script>
+  	 <script src="angular.min.js"></script>
+  	  <link rel="stylesheet" href="incident.css">
+  	 <script type="text/javascript"  src="democontroller.js"></script> 
+  	 <script type="text/javascript"  src="jquery.js"></script> 
+	 
+	    <!-- Date and time picker css and js --> 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment-with-locales.min.js"></script> 
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+	    <link href="datetimepicker.css" rel="stylesheet" type="text/css"/>
+   <script type="text/javascript" src="datetimejquery.js"></script>
+   <script type="text/javascript" src="datetimepicker.js"></script>
+	 <!-- end Date and time picker css and js --> 
+	 
+	 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+div.scroll {
+      width:800px;
+      overflow-x:scroll;
+      height:500px;
+}
+
+</style>
+              
+
+</head>
+<body>
+
+<select ng-model="irstatus">
+					<option  value="" selected="selected" hidden="hidden">Choose here</option>
+					<option value="Confirmed" data-icon="cross.JPG">fgh<img src="cross.JPG" alt="Girl in" style="width:19px;height:19px;"></option>
+					<option value="Over" data-icon="cross.JPG">fgh<img src="uparrow.JPG" alt="Girl in" style="width:19px;height:19px;"></option>
+					<option value="In Progress" data-icon="cross.JPG"><img src="traffic.JPG" alt="Girl in" style="width:19px;height:19px;"></option>
+					<option value="Notified" data-icon="cross.JPG"><img src="traffic1.JPG" alt="Girl in" style="width:19px;height:19px;"></option>
+					<option value="Other" data-icon="cross.JPG">Other</option>
+				</select>
+
+<div class='scroll'>
+
+<table border="1" width="100%">
+		<tr>
+			<th> <a href="#" ng-click="sortType = 'irid'; sortReverse = !sortReverse"><h4> IRID </h4></a></th>
+			<th> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"> <h4>Type </h4></a></th>
+			<th> <a href="#" ng-click="sortType = 'state'; sortReverse = !sortReverse"> <h4>State </h4></a></th>
+			<th> <a href="#" ng-click="sortType = 'zone'; sortReverse = !sortReverse"> <h4>Zone </h4> </a></th>
+			<th> <a href="#" ng-click="sortType = 'roadname'; sortReverse = !sortReverse"> <h4>Road Name </h4></a></th>
+			<th> <a href="#" ng-click="sortType = 'lanes'; sortReverse = !sortReverse"> <h4>Lanes </h4></a></th>
+		</tr>
+		<tr ng-repeat="incident in incidentRec | orderBy:sortType:sortReverse | filter:searchIncident">
+				<td><font color="#C8CFF4" size="3">{{incident.irid}}<font color="#C8CFF4" size="3"></td>
+				<td>
+					<div ng-if="incident.type==='Accident'"><img src="accident.jpg"><font color="#C8CFF4" size="3">{{incident.type}}</font></div>
+					<div ng-if="incident.type==='Road Works'"><img src="roadwork.jpg"><font color="#C8CFF4" size="3">{{incident.type}}</font></div>
+					<div ng-if="incident.type==='Obstacle'"><img src="obstacle.jpg"><font color="#C8CFF4" size="3">{{incident.type}}</font></div>
+					<div ng-if="incident.type==='Break Down'"><img src="breakdown.jpg"><font color="#C8CFF4" size="3">{{incident.type}}</font></div>
+					<div ng-if="incident.type==='Heavy Traffic'"><img src="heavytraffic.jpg"><font color="#C8CFF4" size="3">{{incident.type}}</font></div>
+					<div ng-if="incident.type==='Mobile Road Works'"><img src="mobileroadwork.jpg"><font color="#C8CFF4" size="3">{{incident.type}}</font></div>
+					<div ng-if="incident.type==='Unattended Vehicle'"><img src="unattvehicle.jpg"><font color="#C8CFF4" size="3">{{incident.type}}</font></div>
+					<div ng-if="incident.type==='Miscellaneous'"><img src="misce.jpg"><font color="#C8CFF4" size="3">{{incident.type}}</font></div>
+				</td>
+				<td><font color="#C8CFF4" size="3">{{incident.state}}</font></td>
+				<td><font color="#C8CFF4" size="3">{{incident.zone}}</font></td>
+				<td><font color="#C8CFF4" size="3">{{incident.roadname}}</font></td>
+				<td><font color="#C8CFF4" size="3">{{incident.lanes}}</font></td>
+			</tr>
+	</table>  
+</div>
+
+
+</body>
+</html>

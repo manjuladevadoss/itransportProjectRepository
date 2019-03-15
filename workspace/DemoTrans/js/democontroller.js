@@ -7,10 +7,13 @@ var app = angular.module('ltaApp', []);
         console.log("$scope.incidentRec.length() :" + $scope.incidentRec.length);
 		$scope.incidentNewList = $scope.incidentRec;
       });
-    
-    $scope.showList=false;
+    $scope.searchIncidentfromgrid = "";
+	$scope.searchIncident = "";
+	
+	
+    $scope.showList=true;
     $scope.createbuttonshow=true;
-    var irid =  3000;
+    var irid =  58451;
 	//$scope.CurrentDate = new Date();
 	$scope.irstarttime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
 	$scope.irroadname = "AYE";
@@ -19,21 +22,25 @@ var app = angular.module('ltaApp', []);
 	$scope.irspoint = "6.31 km";
 	$scope.irepoint = "6.31 km";
 	$scope.irendtime="";
-		
-    // order the record a-z or z-a
+
+	
+    /*// order the record a-z or z-a
     $scope.orderByMe = function(incident) {
         $scope.myOrderBy = incident;
         $scope.searchIncident = "";
-    }
+    }*/
+	
     $scope.sortReverse  = false;
+	$scope.sortReverseincfromgrid   = false;
     
 	//get the json object using $http get method() work order	  
     $http.get("workorderRecord.json").then(function(response) {
         $scope.workorderRec = response.data.workorderRec;
       });
     $scope.searchWorkOrder ="";
-  
-    //get Zone from JSON
+    $scope.searchWorkOrderfromgrid ="";
+    
+	//get Zone from JSON
     $http.get("zone.json").then(function(response) {
         $scope.zone = response.data.zone;
       });
@@ -55,7 +62,7 @@ var app = angular.module('ltaApp', []);
       		"type": $scope.irtype, 
       		"state": $scope.irstatus, 
       		"zone": "zone1", 
-      		"roadname": "TPE", 
+      		"roadname": $scope.irsource, 
       		"lanes":"4 4 4"
           };
       $scope.incidentRec.push($scope.addInciData);
@@ -79,8 +86,9 @@ var app = angular.module('ltaApp', []);
    	 $scope.createbuttonshow=true;
    };
    
-   $scope.visiblecreatebutton = function(){
-	  //console.log("abced + " $scope.irtypeselected);
+   $scope.visiblecreatebutton = function(msg){
+	  $scope.irtype = msg;
+		console.log("$scope.irtype : " + $scope.irtype);
    	 $scope.createbuttonshow=true;
    };
    
@@ -168,11 +176,7 @@ var app = angular.module('ltaApp', []);
       
           
      }
-      
-      
-      
-      
-      
+  
     
 });
 
