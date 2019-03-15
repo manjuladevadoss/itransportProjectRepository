@@ -50,6 +50,7 @@
 		    <a href="workorderTbl.jsp">Work Order</a>
 		    <a href="techalarmTbl.jsp">Technical Alarms</a>
 			<a href="envmonTbl.jsp">Environmental Monitoring List</a>
+			<a href="ccgrid.jsp">CC in GridDisplay</a>
 		  </div>
 	</div>
 </div>

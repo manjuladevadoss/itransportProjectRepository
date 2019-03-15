@@ -7,89 +7,47 @@
 	 	 <link rel="stylesheet" href="dropdownstyle.css">
  	 <script src="bootstrap.min.js"></script>
   	 <script src="angular.min.js"></script>
-  	  <link rel="stylesheet" href="demo.css">
+  	  <link rel="stylesheet" href="event.css">
   	 <script type="text/javascript"  src="democontroller.js"></script> 
   	 <script type="text/javascript"  src="jquery.js"></script> 
+  	 
+ <!-- Date and time picker css and js --> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+   <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.0/moment-with-locales.min.js"></script> 
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
+	    <link href="datetimepicker.css" rel="stylesheet" type="text/css"/>
+   <script type="text/javascript" src="datetimejquery.js"></script>
+   <script type="text/javascript" src="datetimepicker.js"></script>
+	 <!-- end Date and time picker css and js --> 
+   
+   
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-h4 {
-  font-family: Roboto, Helvetica, sans-serif;
-  color: #C8CFF4;
-  font-weight: bold;
-  font-size: 16px;
-}
-.button1 {
-  font-size: .7em;
-  padding: 4px 15px;
-  color: #202B53;
-  border: 2px solid #C8CFF4;
-  border-radius: 40px/60px;
-  background:#C8CFF4;
-}
-.button2 {
-  font-size: 1em;
-  padding: 10px 45px;
-  color: #202B53;
-  border: 2px solid #C8CFF4;
-  border-radius: 40px/60px;
-  background:#C8CFF4;
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-.buttonRemove {
-  font-size: .7em;
-  padding: 4px 15px;
-  color: #202B53;
-  border: 2px solid yellow;
-  border-radius: 40px/60px;
-  background:yellow;
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 100px #43498F; 
+  border-radius: 3px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #202B53; 
+  border-radius: 3px;
+}
+::-webkit-scrollbar-corner {
+  background: #202B53; 
+  border-radius: 3px;
 }
 
-.buttonClosure {
-  font-size: .7em;
-  padding: 4px 15px;
-  color: #202B53;
-  border: 2px solid red;
-  border-radius: 40px/60px;
-  background:red;
+table td{
+	padding:4px;
 }
-.content {
-  max-width: 800px;
-  margin: auto;
-  background: #202B53;
-  padding: 5px;
-
-}
-.buttonp{
-  font-size: 1em;
-  padding: 2px 7px;
-  color: block;
-  border: 2px solid yellow;
-  border-radius: 40px/60px;
-  background:yellow;
-}
-
-.buttona{
-  font-size: 1em;
-  padding: 2px 7px;
-  color: block;
-  border: 2px solid #77ebff;
-  border-radius: 40px/60px;
-  background:#77ebff;
-}
-h6 {
-  font-family: Roboto, Helvetica, sans-serif;
-  color: #C8CFF4;
-  font-size: 13px;
-}
-
-h10 {
-  font-family: Roboto, Helvetica, sans-serif;
-  color: #48AD76;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-
 </style>
 </head>
 <body>
@@ -114,7 +72,7 @@ h10 {
 	   </td> 
 	   <td>
 		   <div class="dropdown">
-			<font color="white" size="2">Menu <img src="cormenu.jpg" width="15" height="15"> </font>
+			<font color="white" size="2">&nbsp; <img src="cormenu.jpg" width="15" height="15"> </font>
 				<div class="dropdown-content">
 					<a href="workorderTbl.jsp">Work Order</a>
 					<a href="incidentTbl.jsp">Incident Record</a>
@@ -137,33 +95,53 @@ h10 {
 		 	<td> <h10> {{noofeventUpcome}} </h6> <h4>Upcoming Event(s) </h10> </td>
 		  </tr>
 	  </table>
-	 
-
    <br>
-     <table border="1" width="100%">
-		<tr>
-			<th> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"><h4> Type </h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse"><h4> Name </h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse"><h4> Location </h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status </h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'start'; sortReverse = !sortReverse"><h4>Start </h4></a></th>
-				<th> <a href="#" ng-click="sortType = 'end'; sortReverse = !sortReverse"><h4>End </h4></a></th>
-		</tr>
-			<tr ng-repeat="e in eventNewList | orderBy:sortType:sortReverse | filter:searchEvent">
-				<td><p>{{e.type}}</p></td>
-				<td><p>{{e.name}}</p></td>
-				<td><p>{{e.location}}</p></td>
-				<td> 
-					<div ng-if="e.status==='APPROVED'" > <p><a class="buttona">{{e.status}}</a></p></div> 
-					<div ng-if="e.status==='PLANNING'" > <p><a class="buttonp">{{e.status}}</a></p></div> 
-				</td>
-				<td><p>{{e.start}}</p></td>
-					<td><p>{{e.end}}</p></td>
+   
+   <table width="100%"> 
+	 <tr><td>
+		<table width="98%">  
+			<tr>
+					<th width="15%"> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"><h4> Type </h4></a></th>
+					<th width="20%"> <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse"><h4> Name </h4></a></th>
+					<th width="20%"> <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse"><h4> Location </h4></a></th>
+					<th width="10%"> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status </h4></a></th>
+					<th width="20%"> <a href="#" ng-click="sortType = 'start'; sortReverse = !sortReverse"><h4>Start </h4></a></th>
+					<th width="30%"> <a href="#" ng-click="sortType = 'end'; sortReverse = !sortReverse"><h4>End </h4></a></th>
 			</tr>
-	</table> 
+	 	 </table> </td></tr>
+	 <tr><td> 
+		   <div class='scroll'>
+		     <table border="1" width="100%">
+			<!--  	<tr>
+					<th> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"><h4> Type </h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse"><h4> Name </h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse"><h4> Location </h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status </h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'start'; sortReverse = !sortReverse"><h4>Start </h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'end'; sortReverse = !sortReverse"><h4>End </h4></a></th>
+				</tr> -->
+				
+				<tr ng-repeat="e in eventNewList | orderBy:sortType:sortReverse | filter:searchEvent">
+						<td width="15%"><p>{{e.type}}</p></td>
+						<td width="20%"><p>{{e.name}}</p></td>
+						<td width="20%"><p>{{e.location}}</p></td>
+						<td width="10%"> 
+							<div ng-if="e.status==='APPROVED'" > <a class="buttona">{{e.status}}</a></div> 
+							<div ng-if="e.status==='PLANNING'" > <a class="buttonp">{{e.status}}</a></div> 
+						</td>
+						<td width="20%"><p>{{e.start}}</p></td>
+						<td width="30%"><p>{{e.end}}</p></td>
+					</tr>
+			</table> 
+		</div>
+	 </td></tr>
+ </table> 
+ 
+ 
+</div>
+</div>
 
-</div>
-</div>
+
 
 
 <!-- </div> End display List of Event -->
@@ -181,7 +159,7 @@ h10 {
 		<td><h4>DETAILS</h4></td>
 		<td> <div align='right'>  <div ng-show="createbuttonshow"> 
      	<a href="#popup" class="button1" id="Button1" ng-click="addevent()"> Create </a>
-		<a href="#popup" class="button1" id="Button1"  ng-click="showincidentlist()"> Close</a> </div>
+		<a href="#popup" class="button1" id="Button1"  ng-click="showincidentlist()"> X </a> </div>
      	</div> </td>
 	</tr></table>   
     <h3>Event Details
@@ -204,10 +182,21 @@ h10 {
 	  </tr>
         <tr>
           <td> <h6>Start Time </h6>
-			<input type="text"  placeholder="Start Time" ng-model="eventstarttime">
+          
+          	<div style="width: 190px;">
+				<div id="picker2"> </div>
+					<input type="hidden"  placeholder="End Time"  ng-model="eventstarttime"/>
+			</div>
+		<!-- 	<input type="text"  placeholder="Start Time" ng-model="eventstarttime">  -->
+          
+          
           </td>
 		  <td> <h6>End Time </h6>
-			<input type="text"  placeholder="end Time" ng-model="eventendtime">
+		    <div style="width: 190px;">
+				<div id="picker3"> </div>
+					<input type="hidden"  placeholder="End Time"  ng-model="eventendtime"/>
+			</div>
+		<!--  	<input type="text"  placeholder="end Time" ng-model="eventendtime"> -->
           </td>
         </tr>
         <tr>
@@ -225,6 +214,7 @@ h10 {
           <td>
             <h6>Event Type </h6>
                 <select ng-model="eventype">
+                	<option  value="" selected="selected" hidden="hidden">Choose here</option>
 					<option value="F1">F1</option>
 					<option value="Concert">Concert</option>
 					<option value="Summit">Summit</option>

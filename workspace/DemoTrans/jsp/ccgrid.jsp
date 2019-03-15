@@ -4,33 +4,333 @@
   <title>ccgrid</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="bootstrap.min.css">
+	   <link rel="stylesheet" href="incident.css">
 	 <link rel="stylesheet" href="demo.css">
 	 <link rel="stylesheet" href="dropdownstyle.css">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  	 <script src="bootstrap.min.js"></script>
   	 <script src="angular.min.js"></script>
   	 <script type="text/javascript"  src="democontroller.js"></script> 
   	 <script type="text/javascript"  src="jquery.js"></script> 
-<!-- <meta charset="utf-8">
- 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script> -->
+	 
+  
+ <style>
+ /* start grid */
+.item1 {
+  grid-area: myArea;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 'myArea myArea';	  
+  background-color: #43498F;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+.grid-container > div {
+ background-color: #202B53;  
+ border: .5px solid rgba(0, 0, 0, 0.8);
+ padding: 10px 5px;
+}
+/* end grid */
+
+.buttonact{
+  font-size: .7em;
+  color: #202B53;
+  border: 2px solid #33FF33;
+  border-radius: 10px/30px;
+  background:#33FF33;
+}
+
+.buttonnotact{
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 2px 1px;
+  cursor: pointer;
+  border-radius: 10px/30px;
+  font-size:.7em;
+  color: #202B53;
+  border: 2px solid #F0E68C;
+  background:#F0E68C;
+}
+
+input[type=text] {
+  box-sizing: border-box;
+  border: 1px solid  #202B53;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #C8CFF4;
+  height: 25px;
+  width: 220px;
+  font-family: Roboto, Helvetica, sans-serif;
+  background-color: #131A32;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 13px 25px 22px 28px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+table td{
+	padding:4px;
+}
+</style>
 </head>
 <body>
 
 <div class="container-fluid">
-   <h3><div align='center'> iTransport 2.0</div> </h3>  
-  <div class="row">
-    <div class="col-sm-6"">
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe class="incidentTbl.jsp"></iframe>
+<div ng-app="ltaApp" ng-controller="ltaController">
+	<div class="grid-container">
+	<div class="item1">
+		<table width="100%"> 
+	<tr> 
+		<td> 
+			<h4> <img src="cormenu.jpg" width="15" height="15"> iTransport 2.0 </h4>
+		</td> 
+		<td >
+			<div align="right"> <input type="text" size="15" placeholder="Search" ng-model="searchIncidentfromgrid">	</div>					
+		</td> 
+	</tr>
+</table>
+	</div>
+	<div class="item2">
+		   <table width="100%">
+			 <tr > 
+			 <td> <h5>INCIDENT RECORD</h5> <td>
+				<td>
+				<div align='right'> 
+					<p>Search <input type="text" size="35" placeholder="Search" ng-model="searchIncidentfromgrid">  </P>
+					
+				</div> 
+			   </td> 
+			   <td>
+				   <div class="dropdown">
+					<p>&nbsp;<img src="cormenu.jpg" width="15" height="15"> </p>
+						<div class="dropdown-content">
+							<a href="workorderTbl.jsp">Work Order</a>
+							<a href="techalarmTbl.jsp">Technical Alarms</a>
+							<a href="envmonTbl.jsp">Environment</a>
+							<a href="eventTbl.jsp">Events</a>
+							<a href="envmonTbl.jsp">Road Works</a>
+							 <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
+							<a href="ccgridmergeinc.jsp">Merge up/down</a>
+							<a href="envmonTbl.jsp">Merge sideways</a>
+						</div>
+					</div>
+				</td>
+			 </tr>
+			 </table>
+			<br>
+				<table width="100%"> 
+				 <tr><td>
+					<table width="98%">  
+						<tr >
+							<th width="10%"> <a href="#" ng-click="sortType = 'irid'; sortReverseincfromgrid = !sortReverseincfromgrid"><h4> IR ID <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+							<th width="28%"> <a href="#" ng-click="sortType = 'type'; sortReverseincfromgrid = !sortReverseincfromgrid"> <h4>Type <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"> </i></h4></a></th>
+							<th width="20%"> <a href="#" ng-click="sortType = 'state'; sortReverseincfromgrid = !sortReverseincfromgrid"> <h4>State <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+							<th width="10%"> <a href="#" ng-click="sortType = 'zone'; sortReverseincfromgrid = !sortReverseincfromgrid"> <h4>Zone <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4> </a></th>
+							<th width="23%"> <a href="#" ng-click="sortType = 'roadname'; sortReverseincfromgrid = !sortReverseincfromgrid"> <h4>Road Name <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+							<th width="27%"> <a href="#" ng-click="sortType = 'lanes'; sortReverseincfromgrid = !sortReverseincfromgrid"> <h4>Lanes <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+						</tr>
+					 </table> </td></tr>
+				 <tr><td>  
+				<div class='scroll'>
+			<table border="1" width="100%">
+					<!--  <tr class= "myHeader navbar-fixed-top">
+						<th> <a href="#" ng-click="sortType = 'irid'; sortReverse = !sortReverse"><h4> IRID </h4></a></th>
+						<th> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"><h4> Type </h4></a></th>
+						<th> <a href="#" ng-click="sortType = 'state'; sortReverse = !sortReverse"><h4> State</h4></a></th>
+						<th> <a href="#" ng-click="sortType = 'zone'; sortReverse = !sortReverse"> <h4>Zone </h4></a></th>
+						<th> <a href="#" ng-click="sortType = 'roadname'; sortReverse = !sortReverse"> <h4>Road Name </h4></a></th>
+						<th> <a href="#" ng-click="sortType = 'lanes'; sortReverse = !sortReverse"><h4>Lanes </h4></a></th>
+					</tr> -->
+						<tr ng-repeat="inc in incidentNewList | orderBy:sortType:sortReverseincfromgrid | filter:searchIncidentfromgrid">
+							<td width="10%"><font color="#C8CFF4" size="3">{{inc.irid}}</font></td>
+							<td width="28%">
+								<div ng-if="inc.type==='Accident'"><img src="accident.jpg"><font color="#C8CFF4" size="3"> {{inc.type}}</font></div>
+								<div ng-if="inc.type==='Road Works'"><img src="roadwork.jpg"><font color="#C8CFF4" size="3"> {{inc.type}}</font></div>
+								<div ng-if="inc.type==='Obstacle'"><img src="obstacle.jpg"><font color="#C8CFF4" size="3"> {{inc.type}}</font></div>
+								<div ng-if="inc.type==='Break Down'"><img src="breakdown.jpg"><font color="#C8CFF4" size="3"> {{inc.type}}</font></div>
+								<div ng-if="inc.type==='Heavy Traffic'"><img src="heavytraffic.jpg"><font color="#C8CFF4" size="3"> {{inc.type}}</font></div>
+								<div ng-if="inc.type==='Mobile Road Works'"><img src="mobileroadwork.jpg"><font color="#C8CFF4" size="3"> {{inc.type}}</font></div>
+								<div ng-if="inc.type==='Unattended Vehicle'"><img src="unattvehicle.jpg"><font color="#C8CFF4" size="3"> {{inc.type}}</font></div>
+								<div ng-if="inc.type==='Miscellaneous'"><img src="misce.jpg"><font color="#C8CFF4" size="3"> {{inc.type}}</font></div>
+							</td>
+							<td width="20%"><font color="#C8CFF4" size="3"> {{inc.state}}</font></td>
+							<td width="10%"><font color="#C8CFF4" size="3"> {{inc.zone}}</font></td>
+							<td width="23%"><font color="#C8CFF4" size="3"> {{inc.roadname}}</font></td>
+							<td width="27%"><font color="#C8CFF4" size="3"> {{inc.lanes}}</font></td>
+						</tr>
+				</table> 
+			</div>
+			</div>
+				 </td></tr>
+			 </table>    <br>
+		<a href="createinc.jsp#popup"> Create Incident </a>
+	</div>
+	
+	
+	<div class="item3">
+			<table width="100%">
+			 <tr > 
+			 <td> <h5>WORK ORDER</h5><td>
+				<td>
+				<div align='right'> 
+					<p>Search <input type="text" size="35" placeholder="Search" ng-model="searchWorkOrderfromgrid">  </P>
+					
+				</div> 
+			   </td> 
+			   <td>
+				   <div class="dropdown">
+					<p>&nbsp; <img src="cormenu.jpg" width="15" height="15"> </p>
+						<div class="dropdown-content">
+							<a href="incidentTbl.jsp">Incident Record</a>
+							<a href="techalarmTbl.jsp">Technical Alarms</a>
+							<a href="envmonTbl.jsp">Environment</a>
+							<a href="eventTbl.jsp">Events</a>
+							<a href="envmonTbl.jsp">Road Works</a>
+							 <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
+							<a href="envmonTbl.jsp">Merge up/down</a>
+							<a href="envmonTbl.jsp">Merge sideways</a>
+						</div>
+					</div>
+				</td>
+			 </tr>
+			 </table>
+		   <br>
+		   <img src="workorderchart.JPG" width="60%" height="30%">
+		   <br><br><br>
+		   
+			 <table border="1" width="100%">
+				<tr>
+					<th> <a href="#" ng-click="sortType = 'date'; sortReverse = !sortReverse"><h4> Date <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'wonum'; sortReverse = !sortReverse"><h4> Wonum <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'descri'; sortReverse = !sortReverse"><h4> Description <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'zone'; sortReverse = !sortReverse"><h4>Zone <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+				</tr>
+					<tr ng-repeat="workOrder in workorderRec | orderBy:sortType:sortReverse | filter:searchWorkOrderfromgrid">
+						<td><p>{{workOrder.date}}</p></td>
+						<td><p>{{workOrder.wonum}}</p></td>
+						<td><p>{{workOrder.descri}}</p></td>
+						<td>
+						<div ng-if="workOrder.status==='ACTIVE'" > <a class="buttonact">{{workOrder.status}}</a></div> 
+						<div ng-if="workOrder.status==='NOT ACTIVE'" > <a class="buttonnotact">{{workOrder.status}}</a></div> 
+						
+						
+						</td>
+						<td><p>{{workOrder.zone}}</p></td>
+					</tr>
+			</table>   
+	</div>
+	<div class="item4">
+			<table width="100%">
+			 <tr > 
+			 <td> <h5>TECHNICAL ALARMS</h5><td>
+				<td>
+				<div align='right'> 
+					<p>Search <input type="text" size="35" placeholder="Search" ng-model="searchWorkOrderfromgrid">  </P>
+					
+				</div> 
+			   </td> 
+			   <td>
+				   <div class="dropdown">
+					<p>&nbsp; <img src="cormenu.jpg" width="15" height="15"> </p>
+						<div class="dropdown-content">
+							<a href="incidentTbl.jsp">Incident Record</a>
+							<a href="workorderTbl.jsp">Work Order</a>
+							<a href="envmonTbl.jsp">Environment</a>
+							<a href="eventTbl.jsp">Events</a>
+							<a href="envmonTbl.jsp">Road Works</a>
+							 <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
+							<a href="envmonTbl.jsp">Merge up/down</a>
+							<a href="envmonTbl.jsp">Merge sideways</a>
+						</div>
+					</div>
+				</td>
+			 </tr>
+			 </table>
+		   <br>
+		   <img src="alarmchart.JPG" width="60%" height="30%">
+		   <br><br><br>
+		   
+			 <table border="1" width="100%">
+				<tr>
+					<th> <a href="#" ng-click="sortType = 'date'; sortReverse = !sortReverse"><h4> Date<i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'wonum'; sortReverse = !sortReverse"><h4> Wonum <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'descri'; sortReverse = !sortReverse"><h4> Description <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'zone'; sortReverse = !sortReverse"><h4>Zone <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+				</tr>
+					<tr ng-repeat="workOrder in workorderRec | orderBy:sortType:sortReverse | filter:searchWorkOrderfromgrid">
+						<td><p>{{workOrder.date}}</p></td>
+						<td><p>{{workOrder.wonum}}</p></td>
+						<td><p>{{workOrder.descri}}</p></td>
+						<td>
+						<div ng-if="workOrder.status==='ACTIVE'" > <a class="buttonact">{{workOrder.status}}</a></div> 
+						<div ng-if="workOrder.status==='NOT ACTIVE'" > <a class="buttonnotact">{{workOrder.status}}</a></div> 
+						</td>
+						<td><p>{{workOrder.zone}}</p></td>
+					</tr>
+			</table>   
+	</div>  
+	<div class="item5">
+			<table width="100%">
+			 <tr > 
+			 <td> <h5>ENVIRONMENTAL MONITORING LIST</h5><td>
+				<td>
+				<div align='right'> 
+					<p>Search <input type="text" size="35" placeholder="Search" ng-model="searchWorkOrderfromgrid">  </P>
+					
+				</div> 
+			   </td> 
+			   <td>
+				   <div class="dropdown">
+					<p>&nbsp; <img src="cormenu.jpg" width="15" height="15"> </p>
+						<div class="dropdown-content">
+							<a href="incidentTbl.jsp">Incident Record</a>
+							<a href="workorderTbl.jsp">Work Order</a>
+							<a href="techalarmTbl.jsp">Technical Alarms</a>
+							<a href="eventTbl.jsp">Events</a>
+							<a href="envmonTbl.jsp">Road Works</a>
+							 <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
+							<a href="envmonTbl.jsp">Merge up/down</a>
+							<a href="envmonTbl.jsp">Merge sideways</a>
+						</div>
+					</div>
+				</td>
+			 </tr>
+			 </table>
+		   <br>
+		  
+		   <br>
+			 <table border="1" width="100%">
+				<tr>
+					<th> <a href="#" ng-click="sortType = 'date'; sortReverse = !sortReverse"><h4> Date <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'wonum'; sortReverse = !sortReverse"><h4> Wonum<i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'descri'; sortReverse = !sortReverse"><h4> Description <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'zone'; sortReverse = !sortReverse"><h4>Zone <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
+				</tr>
+					<tr ng-repeat="workOrder in workorderRec | orderBy:sortType:sortReverse | filter:searchWorkOrderfromgrid">
+						<td><p>{{workOrder.date}}</p></td>
+						<td><p>{{workOrder.wonum}}</p></td>
+						<td><p>{{workOrder.descri}}</p></td>
+						<td>
+						<div ng-if="workOrder.status==='ACTIVE'" > <a class="buttonact">{{workOrder.status}}</a></div> 
+						<div ng-if="workOrder.status==='NOT ACTIVE'" > <a class="buttonnotact">{{workOrder.status}}</a></div> 
+						</td>
+						<td><p>{{workOrder.zone}}</p></td>
+					</tr>
+			</table>   
+	</div>
+	</div>
 </div>
-    </div>
-    <div class="col-sm-6" style="background-color:pink;">
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto.    
-    </div>
-  </div>
-</div>
-    
+
+   </div> 
 </body>
 </html>

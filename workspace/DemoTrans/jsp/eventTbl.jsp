@@ -3,7 +3,7 @@
 <title>Event</title>
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
-	 <link rel="stylesheet" href="demo.css">
+	 <link rel="stylesheet" href="event.css">
 	 <link rel="stylesheet" href="dropdownstyle.css">
  	 <script src="bootstrap.min.js"></script>
   	 <script src="angular.min.js"></script>
@@ -11,57 +11,25 @@
   	 <script type="text/javascript"  src="jquery.js"></script> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-.fontcolor{ 
-color: #AD484A;
-}
-.content {
-  max-width: 800px;
-  margin: auto;
-  background: #202B53;
-  padding: 10px;
-  margin-top: 5%;
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-h4 {
-  font-family: Roboto, Helvetica, sans-serif;
-  color: #C8CFF4;
-  font-weight: bold;
-  font-size: 16px;
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 100px #43498F; 
+  border-radius: 3px;
 }
-
-
-h10 {
-  font-family: Roboto, Helvetica, sans-serif;
-  color: #48AD76;
-  font-weight: bold;
-  font-size: 18px;
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #202B53; 
+  border-radius: 3px;
 }
-
-.buttonp{
-  font-size: 1em;
-  padding: 2px 7px;
-  color: block;
-  border: 2px solid yellow;
-  border-radius: 40px/60px;
-  background:yellow;
-}
-
-.buttona{
-  font-size: 1em;
-  padding: 2px 7px;
-  color: block;
-  border: 2px solid #77ebff;
-  border-radius: 40px/60px;
-  background:#77ebff;
-}
-
-.button1 {
-  font-size: 1em;
-  padding: 7px 14px;
-  color: #202B53;
-  border: 2px solid #C8CFF4;
-  border-radius: 40px/60px;
-  background:#C8CFF4;
+::-webkit-scrollbar-corner {
+  background: #202B53; 
+  border-radius: 3px;
 }
 </style>
  
@@ -84,14 +52,14 @@ h10 {
 	   </td> 
 	   <td>
 		   <div class="dropdown">
-			<p>Menu <img src="cormenu.jpg" width="15" height="15"> </p>
+			<p>&nbsp;<img src="cormenu.jpg" width="15" height="15"> </p>
 				<div class="dropdown-content">
 					<a href="incidentTbl.jsp">Incident Record</a>
 					<a href="workorderTbl.jsp">Work Order</a>
 					<a href="techalarmTbl.jsp">Technical Alarms</a>
 					<a href="envmonTbl.jsp">Environment</a>
 					<a href="envmonTbl.jsp">Road Works</a>
-					 <hr color = "#C8CFF4">
+					 <hr color = "#C8CFF4" style="padding:0px; margin:0px;">
 					<a href="envmonTbl.jsp">Merge up/down</a>
 					<a href="envmonTbl.jsp">Merge sideways</a>
 				</div>
@@ -106,33 +74,52 @@ h10 {
 		 	<td> <h10> {{noofeventUpcome}} </h6> <h4>Upcoming Event(s) </h10> </td>
 		  </tr>
 	  </table>
-	 
-
    <br>
-     <table border="1" width="100%">
-		<tr>
-			<th> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"><h4> Type </h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse"><h4> Name </h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse"><h4> Location </h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status </h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'start'; sortReverse = !sortReverse"><h4>Start </h4></a></th>
-				<th> <a href="#" ng-click="sortType = 'end'; sortReverse = !sortReverse"><h4>End </h4></a></th>
-		</tr>
-			<tr ng-repeat="event in eventRec | orderBy:sortType:sortReverse | filter:searchEvent">
-				<td><p>{{event.type}}</p></td>
-				<td><p>{{event.name}}</p></td>
-				<td><p>{{event.location}}</p></td>
-				<td> 
-					<div ng-if="event.status==='APPROVED'" > <p><a class="buttona">{{event.status}}</a></p></div> 
-					<div ng-if="event.status==='PLANNING'" > <p><a class="buttonp">{{event.status}}</a></p></div> 
-				</td>
-				<td><p>{{event.start}}</p></td>
-					<td><p>{{event.end}}</p></td>
+   
+   <table width="100%"> 
+	 <tr><td>
+		<table width="98%">  
+			<tr>
+					<th width="15%"> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"><h4> Type </h4></a></th>
+					<th width="20%"> <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse"><h4> Name </h4></a></th>
+					<th width="20%"> <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse"><h4> Location </h4></a></th>
+					<th width="10%"> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status </h4></a></th>
+					<th width="20%"> <a href="#" ng-click="sortType = 'start'; sortReverse = !sortReverse"><h4>Start </h4></a></th>
+					<th width="30%"> <a href="#" ng-click="sortType = 'end'; sortReverse = !sortReverse"><h4>End </h4></a></th>
 			</tr>
-	</table>     
+	 	 </table> </td></tr>
+	 <tr><td> 
+	   <div class='scroll'>
+	     <table border="1" width="100%">
+			<!-- <tr>
+				 <th> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"><h4> Type </h4></a></th>
+				<th> <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse"><h4> Name </h4></a></th>
+				<th> <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse"><h4> Location </h4></a></th>
+				<th> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status </h4></a></th>
+				<th> <a href="#" ng-click="sortType = 'start'; sortReverse = !sortReverse"><h4>Start </h4></a></th>
+					<th> <a href="#" ng-click="sortType = 'end'; sortReverse = !sortReverse"><h4>End </h4></a></th>
+					
+			</tr>  -->
+				<tr ng-repeat="event in eventRec | orderBy:sortType:sortReverse | filter:searchEvent">
+					<td width="15%"><p>{{event.type}}</p></td>
+					<td width="20%"><p>{{event.name}}</p></td>
+					<td width="20%"><p>{{event.location}}</p></td>
+					<td width="10%"> 
+						<div ng-if="event.status==='APPROVED'" > <a class="buttona">{{event.status}}</a></div> 
+						<div ng-if="event.status==='PLANNING'" > <a class="buttonp">{{event.status}}</a></div> 
+					</td>
+					<td width="20%"><p>{{event.start}}</p></td>
+					<td width="30%"><p>{{event.end}}</p></td>
+				</tr>
+		</table>   
+		</div>  
+		 </td></tr>
+ </table> 
+	
+	
     </div> <br>
-     <a href="createvent.jsp#popup2" class="button1"> Create New Event </a>
-	 <a href="cc.jsp" class="button1"> Common Control</a>
+     <a href="createvent.jsp#popup2" class="button1a"> Create New Event </a>
+	 <a href="cc.jsp" class="button1a"> Common Control</a>
 	 	
   
 </div>

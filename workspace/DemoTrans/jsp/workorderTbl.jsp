@@ -3,7 +3,7 @@
 <title>work Order</title>
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
-	 <link rel="stylesheet" href="demo.css">
+	 <link rel="stylesheet" href="incident.css">
 	 <link rel="stylesheet" href="dropdownstyle.css">
  	 <script src="bootstrap.min.js"></script>
   	 <script src="angular.min.js"></script>
@@ -11,31 +11,9 @@
   	 <script type="text/javascript"  src="jquery.js"></script> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-.fontcolor{ 
-color: #AD484A;
-}
-.content {
-  max-width: 800px;
-  margin: auto;
-  background: #202B53;
-  padding: 10px;
-  margin-top: 5%;
-}
 
-h4 {
-  font-family: Roboto, Helvetica, sans-serif;
-  color: #C8CFF4;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.button1 {
-  font-size: 1em;
-  padding: 7px 14px;
-  color: #202B53;
-  border: 2px solid #C8CFF4;
-  border-radius: 40px/60px;
-  background:#C8CFF4;
+table td{
+	padding:4px;
 }
 </style>
  
@@ -58,7 +36,7 @@ h4 {
 	   </td> 
 	   <td>
 		   <div class="dropdown">
-			<p>Menu <img src="cormenu.jpg" width="15" height="15"> </p>
+			<p>&nbsp; <img src="cormenu.jpg" width="15" height="15"> </p>
 				<div class="dropdown-content">
 					<a href="incidentTbl.jsp">Incident Record</a>
 					<a href="techalarmTbl.jsp">Technical Alarms</a>
