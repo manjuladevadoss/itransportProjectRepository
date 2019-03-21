@@ -3,11 +3,11 @@
 <title>Event Creation</title>
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
-	 <link rel="stylesheet" href="popup.css">
+	 <link rel="stylesheet" href="popupevent.css">
 	 	 <link rel="stylesheet" href="dropdownstyle.css">
  	 <script src="bootstrap.min.js"></script>
   	 <script src="angular.min.js"></script>
-  	  <link rel="stylesheet" href="event.css">
+  	  <!-- <link rel="stylesheet" href="event.css"> -->
   	 <script type="text/javascript"  src="democontroller.js"></script> 
   	 <script type="text/javascript"  src="jquery.js"></script> 
   	 
@@ -21,6 +21,16 @@
    <script type="text/javascript" src="datetimepicker.js"></script>
 	 <!-- end Date and time picker css and js --> 
    
+   <!-- start plus and minu menu  script -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	 
+	<!-- end plus and minu menu script-->
+	
+	
+	
    
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -45,128 +55,57 @@
   border-radius: 3px;
 }
 
-table td{
-	padding:4px;
-}
+
+
+
 </style>
 </head>
+     <script>
+$(document).ready(function(){
+	$('.collapse').on('shown.bs.collapse', function(){
+		$(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+	}).on('hidden.bs.collapse', function(){
+		$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
+	});       
+});
+</script>
 <body>
+ <div class="container-fluid"> 
    <div ng-app="ltaApp" ng-controller="ltaController">
    <form>
-   
-    <a href="createvent.jsp#popup2" class="button2"> Create New Event </a>
-   
- <div class="container-fluid"> 
-<!-- display List of Incident <div ng-show="showList">  -->
-
- <div class="bs-example">
-<div class="content">
-	<table width="100%">
-     <tr > 
-<td> <h5>EVENTS</h5></td>
-		<td>
-		<div align='right'> 
-			<font color="white" size="2">Search <input type="text" size="35" placeholder="Search" ng-model="searchEvent">  </font>
-			
-		</div> 
-	   </td> 
-	   <td>
-		   <div class="dropdown">
-			<font color="white" size="2">&nbsp; <img src="cormenu.jpg" width="15" height="15"> </font>
-				<div class="dropdown-content">
-					<a href="workorderTbl.jsp">Work Order</a>
-					<a href="incidentTbl.jsp">Incident Record</a>
-					<a href="techalarmTbl.jsp">Technical Alarms</a>
-					<a href="envmonTbl.jsp">Environment</a>
-					<a href="eventTbl.jsp">Events</a>
-					<a href="envmonTbl.jsp">Road Works</a>
-					<hr color = "#C8CFF4" style="padding:0px; margin:0px;">
-					<a href="envmonTbl.jsp">Merge up/down</a>
-					<a href="envmonTbl.jsp">Merge sideways</a>
-				</div>
-			</div>
-		</td>
-	 </tr>
-	 </table>
-	 <br>
-	<table width="30%">
-	     <tr> 
-	     	<td> <h10> {{noofeventToday}} </h6> <h4>Events(s) Today </h10> </td>
-		 	<td> <h10> {{noofeventUpcome}} </h6> <h4>Upcoming Event(s) </h10> </td>
-		  </tr>
-	  </table>
-   <br>
-   
-   <table width="100%"> 
-	 <tr><td>
-		<table width="98%">  
-			<tr>
-					<th width="15%"> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"><h4> Type </h4></a></th>
-					<th width="20%"> <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse"><h4> Name </h4></a></th>
-					<th width="20%"> <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse"><h4> Location </h4></a></th>
-					<th width="10%"> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status </h4></a></th>
-					<th width="20%"> <a href="#" ng-click="sortType = 'start'; sortReverse = !sortReverse"><h4>Start </h4></a></th>
-					<th width="30%"> <a href="#" ng-click="sortType = 'end'; sortReverse = !sortReverse"><h4>End </h4></a></th>
-			</tr>
-	 	 </table> </td></tr>
-	 <tr><td> 
-		   <div class='scroll'>
-		     <table border="1" width="100%">
-			<!--  	<tr>
-					<th> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"><h4> Type </h4></a></th>
-					<th> <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse"><h4> Name </h4></a></th>
-					<th> <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse"><h4> Location </h4></a></th>
-					<th> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status </h4></a></th>
-					<th> <a href="#" ng-click="sortType = 'start'; sortReverse = !sortReverse"><h4>Start </h4></a></th>
-					<th> <a href="#" ng-click="sortType = 'end'; sortReverse = !sortReverse"><h4>End </h4></a></th>
-				</tr> -->
-				
-				<tr ng-repeat="e in eventNewList | orderBy:sortType:sortReverse | filter:searchEvent">
-						<td width="15%"><p>{{e.type}}</p></td>
-						<td width="20%"><p>{{e.name}}</p></td>
-						<td width="20%"><p>{{e.location}}</p></td>
-						<td width="10%"> 
-							<div ng-if="e.status==='APPROVED'" > <a class="buttona">{{e.status}}</a></div> 
-							<div ng-if="e.status==='PLANNING'" > <a class="buttonp">{{e.status}}</a></div> 
-						</td>
-						<td width="20%"><p>{{e.start}}</p></td>
-						<td width="30%"><p>{{e.end}}</p></td>
-					</tr>
-			</table> 
-		</div>
-	 </td></tr>
- </table> 
- 
- 
-</div>
-</div>
-
-
-
-
-<!-- </div> End display List of Event -->
-
-<!-- Create Event -->
+   <!-- Create Event -->
 <br>
 <br>
 
 
-
-<div id="popup2" class="overlay">
+<div id="createventpopup" class="overlay">
   <div class="popup">
-    <div class="content">
+    <div class="contentEventCreate">
 	<table width="100%"><tr>
-		<td><h4>DETAILS</h4></td>
-		<td> <div align='right'>  <div ng-show="createbuttonshow"> 
-     	<a href="#popup" class="button1" id="Button1" ng-click="addevent()"> Create </a>
-		<a href="#popup" class="button1" id="Button1"  ng-click="showincidentlist()"> X </a> </div>
-     	</div> </td>
+		<td> <h3>DETAILS </h3> </td>
+		<td> <div align='right'>  
+
+		<a href="eventTbl.jsp#popup" class="closebtn" ng-click="showincidentlist()" style="text-decoration: none"> <i class="fa fa-close"></i></a> </div>
+     	</td>
 	</tr></table>   
-    <h3>Event Details
-	<hr color = "#C8CFF4" style="padding:0px; margin:5px;">
-	Fill in the detail of the Event </h3>
 	
 	
+	
+	
+	<div class='scrollcreatevent'>
+	
+	<div class="panel-group" id="accordion2">
+       <div class="panel panel-default">
+    	<div class="panel-heading active">
+        	<h4 class="panel-title">               	
+                    Event Details <span data-target="#Collapseiconone" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+            </h4>
+			
+        </div>
+        <div class="panel-collapse collapse" id="Collapseiconone">
+        	<div class="panel-body">
+			<hr color = "#C8CFF4" style="padding:0px; margin:5px;">
+				<h3>Fill in the detail of the Event </h3>	
       <table width="100%">
 
 		<tr>
@@ -257,49 +196,71 @@ table td{
           </td>
         </tr>		
       </table>
-  <br>
-	  <table width="100%">
-		<tr>
-	      <td colspan="3"><h3>Road Closures </h3></td>
-		</tr>
-		<tr >
-	      <td colspan="3"><hr color = "#C8CFF4"  style="padding:0px; margin:0px;"></td>
-		</tr>
-		<tr>
-	      <td><h6>Road Name</h6></td>
-		  <td><h6>Open Time</h6></td>
-		  <td><h6>Close Time</h6></td>
-		</tr>
-		<tr style="height:2px;">
-	      <td> <input type="text"  placeholder="road name" ng-model="eventroadname"></td>
-		  <td>{{eventstarttime}}</td>
-		  <td>{{eventendtime}} </td>
-		</tr>
-		</table>
-	  
-	   <h6>Lanes Closure</h6> 
-		<h6>LSH1  4 3 2 1  RSH1</h6>
-		<h6>(+)add new lines</h6>
-		<h6>(-)remove lines</h6>
-		<h6>Add road closure for this event </h6> 
-	<table width="100%"><tr>
-		<td> 
-     	<a href="#popup" class="button1" ng-click=""> Upload Road Closure </a>
-		<a href="#popup" class="buttonRemove"  ng-click=""> Remove Road Closure</a> 
-		<a href="#popup" class="buttonClosure" ng-click=""> Add Road Closure</a> 
-     	</td>
-	</tr>
-	</table> 
+            </div>
+        </div>
+     </div>
 	 
-      
-      
+	    <div class="panel panel-default">
+    	<div class="panel-heading active">
+					<h4 class="panel-title">               	
+							Road Closure <span data-target="#Collapseicontwo" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+					</h4>
+					
+				</div>
+				<div class="panel-collapse collapse" id="Collapseicontwo">
+					<div class="panel-body">
+					
+						<table width="100%">
+						<tr>
+						  <td colspan="3"><h3>Road Closures </h3></td>
+						</tr>
+						<tr >
+						  <td colspan="3"><hr color = "#C8CFF4"  style="padding:0px; margin:0px;"></td>
+						</tr>
+						<tr>
+						  <td><h6>Road Name</h6></td>
+						  <td><h6>Open Time</h6></td>
+						  <td><h6>Close Time</h6></td>
+						</tr>
+						<tr style="height:2px;">
+						  <td> <input type="text"  placeholder="road name" ng-model="eventroadname"></td>
+						  <td><h6>{{eventstarttime}}</h6></td>
+						  <td><h6>{{eventendtime}} </h6></td>
+						</tr>
+						</table>
+					  
+					   <h6>Lanes Closure</h6> 
+						<h6>LSH1  4 3 2 1  RSH1</h6>
+						<h6>(+)add new lines</h6>
+						<h6>(-)remove lines</h6>
+						<h6>Add road closure for this event </h6> 
+						
+						<table width="100%" class="eventclosuretable"><tr>
+							<td> 
+							<a href="#popup" class="buttonUpload" ng-click=""> Upload Road Closure </a>
+							&nbsp;<a href="#popup" class="buttonRemove"  ng-click=""> Remove Road Closure</a> 
+							<a href="#popup" class="buttonClosure" ng-click=""> Add Road Closure</a> 
+							</td>
+						</tr>
+						<tr>
+							<td colspan="3"> <div align="right">
+							<a href="eventTbl.jsp#popup" class="buttonCreateEventInc"  ng-click="addevent()"> Create </a> </div>
+							</td>
+						</tr>
+						</table> 
+						
+				</div>
+			</div>
+     </div>
+	 </div>
+	 </div>
 
     </div>
   </div>
 </div>
   </div>
 </div>
-<!-- end of Create Incident -->
+
 </form>
   </body>
  

@@ -1,9 +1,8 @@
 /* only demo styles */
 
 body {
-  color: #C8CFF4;;
-  font-family: Roboto, Helvetica, sans-serif;
-  font-size: 13px;
+  color: #C8CFF4;
+
 }
 
 /* end only demo styles */
@@ -16,15 +15,17 @@ body {
 .checkbox-custom, .checkbox-custom-label{
     display: inline-block;
     vertical-align: middle;
-  border:  green;
+  border:  #59EE05;
     margin: 1px;
     cursor: pointer;
+	font-family: Roboto, Helvetica, sans-serif;
+  font-size: 11px;
 }
 
 .checkbox-custom + .checkbox-custom-label:before {
     content: '';
     background: #283D76;
-    border: 1.5px solid green;
+    border: 1.5px solid #59EE05;
     display: inline-block;
     vertical-align: middle;
     width: 15px;
@@ -38,3 +39,6 @@ body {
     background: white;
     box-shadow: inset 0px 0px 0px 4px #fff;
 }
+
+
+

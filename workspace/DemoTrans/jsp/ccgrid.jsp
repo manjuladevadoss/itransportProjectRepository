@@ -6,7 +6,7 @@
       <link rel="stylesheet" href="bootstrap.min.css">
 	   <link rel="stylesheet" href="incident.css">
 	 <link rel="stylesheet" href="demo.css">
-	 <link rel="stylesheet" href="dropdownstyle.css">
+	 <link rel="stylesheet" href="dropdownlistStyle.css">
 	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
  	 <script src="bootstrap.min.js"></script>
   	 <script src="angular.min.js"></script>
@@ -36,25 +36,33 @@
 /* end grid */
 
 .buttonact{
-  font-size: .7em;
-  color: #202B53;
-  border: 2px solid #33FF33;
-  border-radius: 10px/30px;
-  background:#33FF33;
-}
-
-.buttonnotact{
-  border: none;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   margin: 2px 1px;
   cursor: pointer;
-  border-radius: 10px/30px;
+  font-size: .7em;
+  color: black;
+  font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+  border: 2px solid #33FF33;
+  border-radius: 2px/2px;
+  background:#33FF33;
+}
+
+.buttonnotact{
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 2px 1px;
+  cursor: pointer;
+  border-radius: 2px/2px;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: bold;
   font-size:.7em;
-  color: #202B53;
-  border: 2px solid #F0E68C;
-  background:#F0E68C;
+  color: black;
+  border: 2px solid red;
+  background:red;
 }
 
 input[type=text] {
@@ -63,14 +71,14 @@ input[type=text] {
   border-radius: 4px;
   font-size: 12px;
   color: #C8CFF4;
-  height: 25px;
-  width: 220px;
+   height: 30px;
+  width: 200px;
   font-family: Roboto, Helvetica, sans-serif;
   background-color: #131A32;
   background-image: url('searchicon.png');
   background-position: 10px 10px; 
   background-repeat: no-repeat;
-  padding: 13px 25px 22px 28px;
+  padding: 15px 25px 22px 28px;
   -webkit-transition: width 0.4s ease-in-out;
   transition: width 0.4s ease-in-out;
 }
@@ -92,7 +100,7 @@ table td{
 			<h4> <img src="cormenu.jpg" width="15" height="15"> iTransport 2.0 </h4>
 		</td> 
 		<td >
-			<div align="right"> <input type="text" size="15" placeholder="Search" ng-model="searchIncidentfromgrid">	</div>					
+			<div align="right"> <input type="text" size="15" placeholder="Search" ng-model="searchIncidentfromgrid">	<img src="alarm.JPG" width="40" height="28"> </div>					
 		</td> 
 	</tr>
 </table>
@@ -100,28 +108,23 @@ table td{
 	<div class="item2">
 		   <table width="100%">
 			 <tr > 
-			 <td> <h5>INCIDENT RECORD</h5> <td>
-				<td>
-				<div align='right'> 
-					<p>Search <input type="text" size="35" placeholder="Search" ng-model="searchIncidentfromgrid">  </P>
-					
-				</div> 
+			 <td> <h5>INCIDENT RECORD</h5> </td>
+				<td align='right'>
+					 <input type="text" size="35" placeholder="Search" ng-model="searchIncidentfromgrid"> 
+				<ul>
+					  <li><p><img src="cormenu.jpg" width="15" height="15"></p> 
+					  <ul>
+						<li> <a href="workorderTbl.jsp"  style="text-decoration: none"><font color="white">Work Order</font></a></li>
+						<li><a href="techalarmTbl.jsp" style="text-decoration: none"><font color="white">Technical Alarms</font></a></li>
+								<li><a href="envmonTbl.jsp"  style="text-decoration: none"><font color="white">Environment</font></a></li>
+								<li><a href="eventTbl.jsp"  style="text-decoration: none"><font color="white">Events</font></a></li>
+								<li><a href="envmonTbl.jsp"  style="text-decoration: none"><font color="white">Road Works</font></a></li>
+								<hr color = "#C8CFF4"  style="padding:1px; margin:1px;">
+								<li><a href="ccgridmergeinc.jsp"  style="text-decoration: none"><font color="white">Merge up/down</font></a></li>
+								<li><a href="envmonTbl.jsp"  style="text-decoration: none"><font color="white">Merge sideways</font></a></li>
+						</ul></li>
+					</ul>					 
 			   </td> 
-			   <td>
-				   <div class="dropdown">
-					<p>&nbsp;<img src="cormenu.jpg" width="15" height="15"> </p>
-						<div class="dropdown-content">
-							<a href="workorderTbl.jsp">Work Order</a>
-							<a href="techalarmTbl.jsp">Technical Alarms</a>
-							<a href="envmonTbl.jsp">Environment</a>
-							<a href="eventTbl.jsp">Events</a>
-							<a href="envmonTbl.jsp">Road Works</a>
-							 <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
-							<a href="ccgridmergeinc.jsp">Merge up/down</a>
-							<a href="envmonTbl.jsp">Merge sideways</a>
-						</div>
-					</div>
-				</td>
 			 </tr>
 			 </table>
 			<br>
@@ -140,14 +143,6 @@ table td{
 				 <tr><td>  
 				<div class='scroll'>
 			<table border="1" width="100%">
-					<!--  <tr class= "myHeader navbar-fixed-top">
-						<th> <a href="#" ng-click="sortType = 'irid'; sortReverse = !sortReverse"><h4> IRID </h4></a></th>
-						<th> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"><h4> Type </h4></a></th>
-						<th> <a href="#" ng-click="sortType = 'state'; sortReverse = !sortReverse"><h4> State</h4></a></th>
-						<th> <a href="#" ng-click="sortType = 'zone'; sortReverse = !sortReverse"> <h4>Zone </h4></a></th>
-						<th> <a href="#" ng-click="sortType = 'roadname'; sortReverse = !sortReverse"> <h4>Road Name </h4></a></th>
-						<th> <a href="#" ng-click="sortType = 'lanes'; sortReverse = !sortReverse"><h4>Lanes </h4></a></th>
-					</tr> -->
 						<tr ng-repeat="inc in incidentNewList | orderBy:sortType:sortReverseincfromgrid | filter:searchIncidentfromgrid">
 							<td width="10%"><font color="#C8CFF4" size="3">{{inc.irid}}</font></td>
 							<td width="28%">
@@ -178,27 +173,22 @@ table td{
 			<table width="100%">
 			 <tr > 
 			 <td> <h5>WORK ORDER</h5><td>
-				<td>
-				<div align='right'> 
-					<p>Search <input type="text" size="35" placeholder="Search" ng-model="searchWorkOrderfromgrid">  </P>
-					
-				</div> 
+			<td align='right'>
+				<input type="text" size="35" placeholder="Search" ng-model="searchworkorderfromgrid"> 
+				<ul>
+					  <li><p><img src="cormenu.jpg" width="15" height="15"></p> 
+					  <ul>
+						<li> <a href="createinc.jsp"  style="text-decoration: none"><font color="white">Incident Record</font></a></li>
+						<li><a href="techalarmTbl.jsp" style="text-decoration: none"><font color="white">Technical Alarms</font></a></li>
+								<li><a href="envmonTbl.jsp"  style="text-decoration: none"><font color="white">Environment</font></a></li>
+								<li><a href="eventTbl.jsp"  style="text-decoration: none"><font color="white">Events</font></a></li>
+								<li><a href="envmonTbl.jsp"  style="text-decoration: none"><font color="white">Road Works</font></a></li>
+								<hr color = "#C8CFF4"  style="padding:1px; margin:1px;">
+								<li><a href="ccgridmergeinc.jsp"  style="text-decoration: none"><font color="white">Merge up/down</font></a></li>
+								<li><a href="envmonTbl.jsp"  style="text-decoration: none"><font color="white">Merge sideways</font></a></li>
+						</ul></li>
+					</ul>					 
 			   </td> 
-			   <td>
-				   <div class="dropdown">
-					<p>&nbsp; <img src="cormenu.jpg" width="15" height="15"> </p>
-						<div class="dropdown-content">
-							<a href="incidentTbl.jsp">Incident Record</a>
-							<a href="techalarmTbl.jsp">Technical Alarms</a>
-							<a href="envmonTbl.jsp">Environment</a>
-							<a href="eventTbl.jsp">Events</a>
-							<a href="envmonTbl.jsp">Road Works</a>
-							 <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
-							<a href="envmonTbl.jsp">Merge up/down</a>
-							<a href="envmonTbl.jsp">Merge sideways</a>
-						</div>
-					</div>
-				</td>
 			 </tr>
 			 </table>
 		   <br>
@@ -213,7 +203,7 @@ table td{
 					<th> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
 					<th> <a href="#" ng-click="sortType = 'zone'; sortReverse = !sortReverse"><h4>Zone <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
 				</tr>
-					<tr ng-repeat="workOrder in workorderRec | orderBy:sortType:sortReverse | filter:searchWorkOrderfromgrid">
+					<tr ng-repeat="workOrder in workorderRec | orderBy:sortType:sortReverse | filter:searchworkorderfromgrid">
 						<td><p>{{workOrder.date}}</p></td>
 						<td><p>{{workOrder.wonum}}</p></td>
 						<td><p>{{workOrder.descri}}</p></td>
@@ -231,27 +221,22 @@ table td{
 			<table width="100%">
 			 <tr > 
 			 <td> <h5>TECHNICAL ALARMS</h5><td>
-				<td>
-				<div align='right'> 
-					<p>Search <input type="text" size="35" placeholder="Search" ng-model="searchWorkOrderfromgrid">  </P>
-					
-				</div> 
-			   </td> 
-			   <td>
-				   <div class="dropdown">
-					<p>&nbsp; <img src="cormenu.jpg" width="15" height="15"> </p>
-						<div class="dropdown-content">
-							<a href="incidentTbl.jsp">Incident Record</a>
-							<a href="workorderTbl.jsp">Work Order</a>
-							<a href="envmonTbl.jsp">Environment</a>
-							<a href="eventTbl.jsp">Events</a>
-							<a href="envmonTbl.jsp">Road Works</a>
-							 <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
-							<a href="envmonTbl.jsp">Merge up/down</a>
-							<a href="envmonTbl.jsp">Merge sideways</a>
-						</div>
-					</div>
-				</td>
+			<td align='right'>
+				<input type="text" size="35" placeholder="Search" ng-model="searchtechnicalAlarmfromgrid"> 
+				<ul>
+					  <li><p><img src="cormenu.jpg" width="15" height="15"></p> 
+					  <ul>
+						<li> <a href="createinc.jsp"  style="text-decoration: none"><font color="white">Incident Record</font></a></li>
+						<li><a href="workorderTbl.jsp" style="text-decoration: none"><font color="white">Work Order</font></a></li>
+						<li><a href="envmonTbl.jsp"  style="text-decoration: none"><font color="white">Environment</font></a></li>
+						<li><a href="eventTbl.jsp"  style="text-decoration: none"><font color="white">Events</font></a></li>
+						<li><a href="envmonTbl.jsp"  style="text-decoration: none"><font color="white">Road Works</font></a></li>
+						<hr color = "#C8CFF4"  style="padding:1px; margin:1px;">
+						<li><a href="ccgridmergeinc.jsp"  style="text-decoration: none"><font color="white">Merge up/down</font></a></li>
+						<li><a href="envmonTbl.jsp"  style="text-decoration: none"><font color="white">Merge sideways</font></a></li>
+						</ul></li>
+					</ul>					 
+			 </td> 
 			 </tr>
 			 </table>
 		   <br>
@@ -266,7 +251,7 @@ table td{
 					<th> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
 					<th> <a href="#" ng-click="sortType = 'zone'; sortReverse = !sortReverse"><h4>Zone <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
 				</tr>
-					<tr ng-repeat="workOrder in workorderRec | orderBy:sortType:sortReverse | filter:searchWorkOrderfromgrid">
+					<tr ng-repeat="workOrder in workorderRec | orderBy:sortType:sortReverse | filter:searchtechnicalAlarmfromgrid">
 						<td><p>{{workOrder.date}}</p></td>
 						<td><p>{{workOrder.wonum}}</p></td>
 						<td><p>{{workOrder.descri}}</p></td>
@@ -282,27 +267,22 @@ table td{
 			<table width="100%">
 			 <tr > 
 			 <td> <h5>ENVIRONMENTAL MONITORING LIST</h5><td>
-				<td>
-				<div align='right'> 
-					<p>Search <input type="text" size="35" placeholder="Search" ng-model="searchWorkOrderfromgrid">  </P>
-					
-				</div> 
-			   </td> 
-			   <td>
-				   <div class="dropdown">
-					<p>&nbsp; <img src="cormenu.jpg" width="15" height="15"> </p>
-						<div class="dropdown-content">
-							<a href="incidentTbl.jsp">Incident Record</a>
-							<a href="workorderTbl.jsp">Work Order</a>
-							<a href="techalarmTbl.jsp">Technical Alarms</a>
-							<a href="eventTbl.jsp">Events</a>
-							<a href="envmonTbl.jsp">Road Works</a>
-							 <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
-							<a href="envmonTbl.jsp">Merge up/down</a>
-							<a href="envmonTbl.jsp">Merge sideways</a>
-						</div>
-					</div>
-				</td>
+			 <td align='right'>
+				<input type="text" size="35" placeholder="Search" ng-model="searchEnvifromgrid"> 
+				<ul>
+					  <li><p><img src="cormenu.jpg" width="15" height="15"></p> 
+					  <ul>
+						<li> <a href="createinc.jsp"  style="text-decoration: none"><font color="white">Incident Record</font></a></li>
+						<li><a href="workorderTbl.jsp" style="text-decoration: none"><font color="white">Work Order</font></a></li>
+						<li><a href="techalarmTbl.jsp"  style="text-decoration: none"><font color="white">Technical Alarms</font></a></li>
+						<li><a href="eventTbl.jsp"  style="text-decoration: none"><font color="white">Events</font></a></li>
+						<li><a href="envmonTbl.jsp"  style="text-decoration: none"><font color="white">Road Works</font></a></li>
+						<hr color = "#C8CFF4"  style="padding:1px; margin:1px;">
+						<li><a href="ccgridmergeinc.jsp"  style="text-decoration: none"><font color="white">Merge up/down</font></a></li>
+						<li><a href="envmonTbl.jsp"  style="text-decoration: none"><font color="white">Merge sideways</font></a></li>
+						</ul></li>
+					</ul>					 
+			 </td> 
 			 </tr>
 			 </table>
 		   <br>
@@ -316,7 +296,7 @@ table td{
 					<th> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse"><h4>Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
 					<th> <a href="#" ng-click="sortType = 'zone'; sortReverse = !sortReverse"><h4>Zone <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h4></a></th>
 				</tr>
-					<tr ng-repeat="workOrder in workorderRec | orderBy:sortType:sortReverse | filter:searchWorkOrderfromgrid">
+					<tr ng-repeat="workOrder in workorderRec | orderBy:sortType:sortReverse | filter:searchEnvifromgrid">
 						<td><p>{{workOrder.date}}</p></td>
 						<td><p>{{workOrder.wonum}}</p></td>
 						<td><p>{{workOrder.descri}}</p></td>

@@ -7,13 +7,12 @@ var app = angular.module('ltaApp', []);
         console.log("$scope.incidentRec.length() :" + $scope.incidentRec.length);
 		$scope.incidentNewList = $scope.incidentRec;
       });
-    $scope.searchIncidentfromgrid = "";
 	$scope.searchIncident = "";
 	
 	
     $scope.showList=true;
     $scope.createbuttonshow=true;
-    var irid =  58451;
+    var irid =  90051;
 	//$scope.CurrentDate = new Date();
 	$scope.irstarttime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
 	$scope.irroadname = "AYE";
@@ -21,8 +20,8 @@ var app = angular.module('ltaApp', []);
 	$scope.irdirection = "Towards Tuas";
 	$scope.irspoint = "6.31 km";
 	$scope.irepoint = "6.31 km";
-	$scope.irendtime="";
-
+	$scope.irendtime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
+	
 	
     /*// order the record a-z or z-a
     $scope.orderByMe = function(incident) {
@@ -39,6 +38,9 @@ var app = angular.module('ltaApp', []);
       });
     $scope.searchWorkOrder ="";
     $scope.searchWorkOrderfromgrid ="";
+	$scope.searchtechnicalAlarmfromgrid="";
+	$scope.searchIncidentfromgrid = "";
+	$scope.searchEnvifromgrid  = "";
     
 	//get Zone from JSON
     $http.get("zone.json").then(function(response) {
@@ -75,11 +77,21 @@ var app = angular.module('ltaApp', []);
       console.log("$scope.irlinked: " + $scope.irlinked );
       console.log("$scope.irimgcap: " + $scope.irimgcap );
      console.log("$scope.ircomments: " + $scope.ircomments);
+	 
+	 
+	  $scope.irstatus = ' ';
+      $scope.irsource  = ' ';
+      $scope.irstarttime = ' ';
+      $scope.irendtime = ' ';
+      $scope.irlinked = ' ';
+      $scope.irimgcap = ' ';
+      $scope.ircomments = ' ';
+
         
     };
     
     $scope.hideincidentlist = function(){
-    	 $scope.showList=false;
+    	 $scope.showList=true;
     };
     
     $scope.showcreatebutton = function(){
@@ -97,8 +109,45 @@ var app = angular.module('ltaApp', []);
     	 $scope.showList=true;
     };
     
+	$scope.isexpression = true;
+	$scope.enableText = function() {
+		 console.log("before text" + expression);
+    	 $scope.isexpression = false;
+		 console.log("after text" + expression);
+    };
+	
+	//VMS Removed Message 
+	$scope.obuMsg = "Message to be displayed on OBU";
+	$scope.vmsMsgStatus = "Not Active";
+	$scope.vmsMsgRemoved = function(){
+		 console.log("Before vmsMsgRemoved : " + $scope.vmsMsgStatus);
+		$scope.vmsMsgStatus = "Failed";
+		 console.log("vmsMsgRemoved : " + $scope.vmsMsgStatus);
+	};
     
+	//VMS Implementation Message 
+	$scope.vmsMsgImpl = function(){
+		console.log("Before vmsMsgStatus : " + $scope.vmsMsgStatus);
+		$scope.vmsMsgStatus = "Implemented";	
+		console.log("vmsMsgStatus : " + $scope.vmsMsgStatus);
+	};
     
+	
+	//OBU Deactivate Message 
+	$scope.obuMsgStatus = "Not Active";
+	$scope.obuMsgdeact = function(){
+		 console.log("Before obuMsgdeact : " + $scope.obuMsgStatus);
+		$scope.obuMsgStatus = "Failed";
+		 console.log("obuMsgdeact : " + $scope.obuMsgStatus);
+	};
+	//OBU Deactivate Message 
+	$scope.obuMsgImpl = function(){
+		 console.log("Before obuMsgImpl : " + $scope.obuMsgStatus);
+		$scope.obuMsgStatus = "Implemented";
+		 console.log("obuMsgdeact : " + $scope.obuMsgStatus);
+	};
+	
+	
 	//get the json object using $http get method() Event 	  
     $http.get("eventRecord.json").then(function(response) {
         $scope.eventRec = response.data.eventRec;  
@@ -130,9 +179,7 @@ var app = angular.module('ltaApp', []);
       //Create New Event
       $scope.eventstarttime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
       $scope.eventendtime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
-      $scope.addevent = function(){
-   
-        	  
+      $scope.addevent = function(){       	  
           console.log("eventype : " + $scope.eventype);
           console.log("eventname: " + $scope.eventname);
           console.log("eventstarttime: " + $scope.eventstarttime);
@@ -152,6 +199,7 @@ var app = angular.module('ltaApp', []);
               };
           $scope.eventRec.push($scope.addEventData);
           $scope.eventNewList = $scope.eventRec;
+          
           
           var copyevent = $scope.eventRec;
           var todayDate = $filter('date')(new Date(), 'yyyy/MM/dd');

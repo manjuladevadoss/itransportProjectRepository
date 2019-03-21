@@ -15,19 +15,7 @@
     	{"irid": "89570", "type": "Accident", "state": "over", "zone": "zone1", "roadname": "kpe", "lanes":"4 2"},
     	{"irid": "38834", "type": "Break Down", "state": "over", "zone": "zone4", "roadname": "tun", "lanes":"2 2"},
     	{"irid": "85946", "type": "Obstacle", "state": "Notified", "zone": "zone3", "roadname": "tun", "lanes":"1 4 2"},
-    	{"irid": "42444", "type": "Road Works", "state": "over", "zone": "zone5", "roadname": "TPE", "lanes":"3 2"},
-    	{"irid": "89644", "type": "Unattended Vehicle", "state": "Notified", "zone": "zone1", "roadname": "TPE", "lanes":"2"},
-    	{"irid": "12834", "type": "Obstacle", "state": "Notified", "zone": "zone3", "roadname": "tun", "lanes":"1 4 2"},
-    	{"irid": "95895", "type": "Accident", "state": "confirmed", "zone": "zone1", "roadname": "TPE", "lanes":"1 2 3"},
-    	{"irid": "65470", "type": "Accident", "state": "over", "zone": "zone1", "roadname": "kpe", "lanes":"4 2"},
-    	{"irid": "82334", "type": "Break Down", "state": "over", "zone": "zone4", "roadname": "tun", "lanes":"2 2"},
-    	{"irid": "86346", "type": "Obstacle", "state": "Notified", "zone": "zone3", "roadname": "tun", "lanes":"1 4 2"},
-    	{"irid": "56344", "type": "Road Works", "state": "over", "zone": "zone5", "roadname": "TPE", "lanes":"3 2"},
-    	{"irid": "95895", "type": "Accident", "state": "confirmed", "zone": "zone1", "roadname": "TPE", "lanes":"1 2 3"},
-    	{"irid": "55470", "type": "Accident", "state": "over", "zone": "zone1", "roadname": "kpe", "lanes":"4 2"},
-    	{"irid": "62334", "type": "Break Down", "state": "over", "zone": "zone4", "roadname": "tun", "lanes":"2 2"},
-    	{"irid": "76346", "type": "Obstacle", "state": "Notified", "zone": "zone3", "roadname": "tun", "lanes":"1 4 2"},
-    	{"irid": "86344", "type": "Road Works", "state": "over", "zone": "zone5", "roadname": "TPE", "lanes":"3 2"}, 	
+    	{"irid": "42444", "type": "Road Works", "state": "over", "zone": "zone5", "roadname": "TPE", "lanes":"3 2"},	
     	{"irid": "35200", "type": "Miscellaneous", "state": "over", "zone": "zone4", "roadname": "KPE", "lanes":"1 2"}
   	]
 }

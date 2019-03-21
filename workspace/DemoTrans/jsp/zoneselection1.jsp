@@ -3,8 +3,7 @@
 <title>zone</title>
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
-	 <link rel="stylesheet" href="demo.css">
-	 <link rel="stylesheet" href="dropdownstyle.css">
+	 <link rel="stylesheet" href="login.css">
 	  <link rel="stylesheet" href="checkboxstyle.css">
  	 <script src="bootstrap.min.js"></script>
   	 <script src="angular.min.js"></script>
@@ -14,49 +13,49 @@
 	
 <style>
 .content {
-  max-width: 500px;
+  max-width: 550px;
   margin: auto;
   background: #283D76;
   padding: 10px;
+  border-radius: 10px/20px;
 }
 
 .fontcolor{ 
 color: #C8CFF4;
 }
 
-.button {
-  font-size: 1em;
-  padding: 7px 14px;
-  color: white;
-  border: 2px solid #C8CFF4;
-  border-radius: 20px/50px;
-  background:#C8CFF4;
-  font-family: Roboto, Helvetica, sans-serif;
-  font-size: 16px;
-}
 
 
 </style>
   </head>
   <body>
-  <div class="container">
-  <h3><div> iTransport 2.0</div> </h3>
+<div class="container-fuide">
+<img src="itransimg.JPG" width="20%" height="10%"> 
+  
      <div ng-app="ltaApp" ng-controller="ltaController">  
     <div class="bs-example">
-	    <form action="panel.jsp" method="post">
+	    <form action="ccgrid.jsp" method="post">
 	    <div class="content">
-	    <h3>Zone Selection </h3>
-	    <p>Select your Zone </p>
-
-<p>EWAY Zone:</p>
-<div align="center">
+      <table  width="100%" class="logintable"> 
+	<tr> 
+         <td colspan="4">  <h3>Zone Selection </h3> </td>
+	  </tr>
+	   <tr> 
+         <td colspan="4">  Select your Zone </td>
+	  </tr>
+	  
+	     <tr> 
+         <td colspan="4">   EWAY Zone: </td>
+	  </tr>
+	    <tr> 
+         <td colspan="4">   <div align="center">
 <img src="zonemap.JPG" width="90%" height="60%">
-</div>
-	<br><br>
-	
- <p>Tunnel Zone:</p>
-      <table  width="100%"> 
-        <tr> 
+</div> </td>
+	  </tr>
+	   <tr> 
+         <td colspan="4">   Tunnel Zone: </td>
+	  </tr>
+	   <tr> 
          <td> 
 		  <div>
 			<input id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox" >
@@ -83,10 +82,9 @@ color: #C8CFF4;
           </td> 
        
        </tr>
-      </table>
-	  <br>
-<p>EAC Corridor</p>
-      <table  width="100%"> 
+	  <tr> 
+         <td colspan="4">  EAC Corridor </td>
+	  </tr>
         <tr> 
          <td> 
 		  <div>
@@ -141,7 +139,7 @@ color: #C8CFF4;
           </td> 
        </tr>
 	   
-	   	           <tr> 
+	   <tr> 
          <td> 
 		  <div>
 			<input id="checkbox-13" class="checkbox-custom" name="checkbox-13" type="checkbox" >
@@ -161,20 +159,16 @@ color: #C8CFF4;
           </td> 
        
        </tr>
+	   	  <tr> 
+         <td colspan="4">   <div  align="right">
+	        	<button type="submit" class="button button3"> START </button> </div>
+		 </td>
+	  </tr>
       </table>
-
-
-	        <!--	<div ng-repeat="z in zone">
-	  				<p>{{z.name}}</p>
-	         		<div class="fontcolor"><div ng-repeat="cat in z.category">  &nbsp;&nbsp;  &nbsp;&nbsp; <input type="checkbox" value="Zone 1">  &nbsp;&nbsp; {{cat}}</div></div> 
-	         		<br>
-	        	</div>
 				
-				-->
+		
 				<br>
-				<div align="right">
-	        	<button type="submit" class="button">START</button>
-				</div>
+				
 	      </div>
 			     
 	      </div>

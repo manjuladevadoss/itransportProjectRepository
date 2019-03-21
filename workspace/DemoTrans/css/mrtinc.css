@@ -1,0 +1,64 @@
+body {
+  background-image: url("roadmap.jpg");
+  background-size: cover;
+}
+
+.content {
+  max-width: 520px;
+  margin: auto;
+  background: #202B53;
+  padding: 20px;
+  margin-top: 10%;
+  border-radius: 20px/40px;
+}
+
+.button {
+  background-color: #6D5BFF; /* Green */
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 1px;
+  cursor: pointer;
+  border-radius: 5px/5px;
+}
+
+h3 {
+  color: #C8CFF4;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 16px;
+}
+h4 {
+  color: #C8CFF4;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 20px;
+}
+h5 {
+  color: #C8CFF4;
+  font-family: Roboto, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+
+mrtinctable, td, th {  
+  border: 0px solid #ddd;
+  text-align: left;
+}
+
+.mrtinctable {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 6px;
+}
+.selectcls {
+  padding: 5px 5px;
+  font-family: Roboto, Helvetica, sans-serif;
+  border : none;
+  width: 230px; height: 30px; padding: 4px; background-color:#283D76; color:#C8CFF4;
+}
