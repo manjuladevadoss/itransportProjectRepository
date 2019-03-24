@@ -1,0 +1,94 @@
+{
+  "technicalalarmrec": [
+    {
+      "startdate": "2/11/2018 12:26:43",
+      "alarmid": "EBTS01",
+      "description": "No Matching Alarm Code",
+      "source": "ERS",
+      "zone": "CBD",
+      "status": "open"
+    },
+    {
+      "startdate": "8/10/2018 10:17:05",
+      "alarmid": "v8306",
+      "description": "LENTOR",
+      "source": "JEYE",
+      "zone": "CT1",
+      "status": "ack"
+    },
+    {
+      "startdate": "14/02/2017 15:40:35",
+      "alarmid": "S00001",
+      "description": "No Info",
+      "source": "JEYE",
+      "zone": "CT4",
+      "status": "open"
+    },
+    {
+      "startdate": "8/10/2018 15:44:21",
+      "alarmid": "ALARM_5",
+      "description": "Receive Past Technical Alarm Fail",
+      "source": "JEYE",
+      "zone": "DZ1",
+      "status": "ack"
+    },
+     {
+      "startdate": "18/10/2018 12:34:23",
+      "alarmid": "PGS_LDC_009",
+      "description": "No Matching Alarm Code",
+      "source": "ERS",
+      "zone": "EC1",
+      "status": "inprogress"
+    },
+     {
+      "startdate": "21/07/2017 16:15:04",
+      "alarmid": "CI_IWD_1504",
+      "description": "Failure To Complete Control Command",
+      "source": "ERS",
+      "zone": "UBT",
+      "status": "close"
+    },
+     {
+      "startdate": "24/07/2017 15:05:34",
+      "alarmid": "0087993",
+      "description": "Pixel failure exceed threshold",
+      "source": "ERS",
+      "zone": "NIC",
+      "status": "close"
+    },
+     {
+      "startdate": "28/02/2017 16:14:24",
+      "alarmid": "0101_PWR",
+      "description": "TCMS Niche Switch power failure",
+      "source": "ERS",
+      "zone": "NIC",
+      "status": "open"
+    },
+     {
+      "startdate": "18/10/2018 12:34:23",
+      "alarmid": "PGS_LDC_009",
+      "description": "No Matching Alarm Code",
+      "source": "ERS",
+      "zone": "EC1",
+      "status": "inprogress"
+    },
+     {
+      "startdate": "21/07/2017 16:15:04",
+      "alarmid": "CI_IWD_1504",
+      "description": "Failure To Complete Control Command",
+      "source": "ERS",
+      "zone": "UBT",
+      "status": "close"
+    },
+     {
+      "startdate": "24/07/2017 15:05:34",
+      "alarmid": "0087993",
+      "description": "Pixel failure exceed threshold",
+      "source": "ERS",
+      "zone": "NIC",
+      "status": "close"
+    }
+  ]
+}
+
+

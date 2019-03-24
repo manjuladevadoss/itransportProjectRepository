@@ -140,10 +140,10 @@
 						
 
 					</td>
-					<td colspan="3">
-								  <div>
-									<input id="checkbox-5" class="checkbox-custom" name="checkbox-5" type="checkbox">		<label for="checkbox-5" class="checkbox-custom-label"></label>
-								</div>
+					<td colspan="3" align="left">
+								  
+									<input id="checkbox-1" class="checkbox-custom" name="checkbox-10" type="checkbox">		<label for="checkbox-1" class="checkbox-custom-label"></label>
+															
 					</td>
 				</tr>
 				<tr>

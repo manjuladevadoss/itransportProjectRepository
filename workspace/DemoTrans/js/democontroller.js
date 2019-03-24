@@ -7,10 +7,25 @@ var app = angular.module('ltaApp', []);
         console.log("$scope.incidentRec.length() :" + $scope.incidentRec.length);
 		$scope.incidentNewList = $scope.incidentRec;
       });
-	$scope.searchIncident = "";
 	
-	
-    $scope.showList=true;
+    
+	//get the json object using $http get method() Technical Alarm record	  
+    $http.get("techicalAlarmRecord.json").then(function(response) {
+        $scope.technicalalarmrec = response.data.technicalalarmrec;  
+        console.log("$scope.technicalalarmrec.length() :" + $scope.technicalalarmrec.length);
+		$scope.technicalalarmrecNewList = $scope.technicalalarmrec;
+      });
+    
+	//get the json object using $http get method() Environment Monitor Record	  
+    $http.get("environmonitorRecord.json").then(function(response) {
+        $scope.environmonitorec = response.data.environmonitorec;  
+        console.log("$scope.environmonitorec.length() :" + $scope.environmonitorec.length);
+		$scope.environmonitorecNewList = $scope.environmonitorec;
+      });
+    
+    
+    $scope.searchIncident = "";
+	$scope.showList=true;
     $scope.createbuttonshow=true;
     var irid =  90051;
 	//$scope.CurrentDate = new Date();
@@ -30,6 +45,9 @@ var app = angular.module('ltaApp', []);
     }*/
 	
     $scope.sortReverse  = false;
+    $scope.sortReverseta = false;
+    $scope.sortReversewc = false;
+	$scope.sortReversenv = false;
 	$scope.sortReverseincfromgrid   = false;
     
 	//get the json object using $http get method() work order	  

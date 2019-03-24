@@ -82,7 +82,7 @@ $(document).ready(function(){
   <div class="popup">
     <div class="content">
 	<table width="100%"><tr>
-		<td><h4>Create</h4></td>
+		<td><h5>Create</h5></td>
 		<td>   <div align='right'> 
 		<a href="#popup" class="closebtn" ng-click="showincidentlist()"><i class="fa fa-close"></i></a> 
      	</div> </td>
@@ -394,33 +394,51 @@ $(document).ready(function(){
 		   <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
           </td>
         </tr>
-		<tr>
-          <td colspan="3">
-            <input id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox" >
-			<label for="checkbox-1" class="checkbox-custom-label">Simulated</label> 
-           </td>
-          <td colspan="3"> 
-			<input id="checkbox-2" class="checkbox-custom" name="checkbox-2" type="checkbox" >
-			<label for="checkbox-2" class="checkbox-custom-label">VRS</label> 
-          </td>
-        </tr>
-		<tr>
-          <td colspan="3">
-          	<input id="checkbox-3" class="checkbox-custom" name="checkbox-3" type="checkbox" >
-			<label for="checkbox-3" class="checkbox-custom-label">Escalate via SMS</label> 
-          </td>
-          <td colspan="3"> 
-		    <input id="checkbox-4" class="checkbox-custom" name="checkbox-4" type="checkbox" >
-			<label for="checkbox-4" class="checkbox-custom-label">Important LTM</label> 
-          </td>
-        </tr>
-		<tr rowspan="6">
-	      <td>
-		  	<input id="checkbox-5" class="checkbox-custom" name="checkbox-5" type="checkbox" >
-			<label for="checkbox-5" class="checkbox-custom-label">LTM</label> 
-		  </td>
+	</table>
+	  <table width="50%">
+	  
+	  	   <tr> 
+         <td> 
+		
+			<input id="checkbox-20" class="checkbox-custom" name="checkbox-20" type="checkbox" >
+			<label for="checkbox-20" class="checkbox-custom-label">Simulated</label>
+		 </td> 
+        <td> 
+		  
+			<input id="checkbox-21" class="checkbox-custom" name="checkbox-21" type="checkbox">
+			<label for="checkbox-21" class="checkbox-custom-label">Escalate via SMS</label>
+        </td>
+		
 		</tr>
-      </table>
+		<tr> 
+         <td> 
+		 
+			<input id="checkbox-22" class="checkbox-custom" name="checkbox-22" type="checkbox" >
+			<label for="checkbox-22" class="checkbox-custom-label">Important LTM</label>
+		  
+    	 </td> 
+        <td> 
+		  
+			<input id="checkbox-23" class="checkbox-custom" name="checkbox-23" type="checkbox">
+			<label for="checkbox-23" class="checkbox-custom-label">LTM</label>
+		
+        </td>
+		
+		</tr>		
+		<tr>
+        <td> 
+         
+			<input id="checkbox-24" class="checkbox-custom" name="checkbox-24" type="checkbox">
+			<label for="checkbox-24"class="checkbox-custom-label">VRS</label>    
+			
+        </td> 
+     <td> 
+	 </td>
+       </tr>
+	  
+	  </table>
+	  
+	  
 	  
 	  			<table width="100%"><tr>
 		<td> <div align='right'>  
