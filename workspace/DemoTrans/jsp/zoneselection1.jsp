@@ -3,8 +3,7 @@
 <title>zone</title>
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
-	 <link rel="stylesheet" href="demo.css">
-	 <link rel="stylesheet" href="dropdownstyle.css">
+	 <link rel="stylesheet" href="zone.css">
 	  <link rel="stylesheet" href="checkboxstyle.css">
  	 <script src="bootstrap.min.js"></script>
   	 <script src="angular.min.js"></script>
@@ -13,50 +12,73 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 <style>
-.content {
-  max-width: 500px;
-  margin: auto;
-  background: #283D76;
-  padding: 10px;
-}
-
-.fontcolor{ 
-color: #C8CFF4;
-}
-
-.button {
-  font-size: 1em;
-  padding: 7px 14px;
-  color: white;
-  border: 2px solid #C8CFF4;
-  border-radius: 20px/50px;
-  background:#C8CFF4;
-  font-family: Roboto, Helvetica, sans-serif;
-  font-size: 16px;
-}
 
 
 </style>
   </head>
   <body>
-  <div class="container">
-  <h3><div> iTransport 2.0</div> </h3>
+<div class="container-fuide">
+<img src="itranslogo.JPG" width="3%" height="3%"> <h7>i-Transport 2.0</h7>
+  
      <div ng-app="ltaApp" ng-controller="ltaController">  
-    <div class="bs-example">
-	    <form action="panel.jsp" method="post">
+	    <form action="ccgrid.jsp" method="post">
 	    <div class="content">
-	    <h3>Zone Selection </h3>
-	    <p>Select your Zone </p>
-
-<p>EWAY Zone:</p>
-<div align="center">
-<img src="zonemap.JPG" width="90%" height="60%">
-</div>
-	<br><br>
-	
- <p>Tunnel Zone:</p>
-      <table  width="100%"> 
-        <tr> 
+		<h3>Zone Selection</h3> <br>
+		<h6>Select your Zone </h6>
+      <table  width="100%" > 
+  
+	     <tr> 
+         <td colspan="4">  <br> <h8> EWAY ZONE </h8> </td>
+	  </tr>
+	   <tr> 
+         <td> 
+		  <div>
+			<input id="checkbox-15" class="checkbox-custom" name="checkbox-15" type="checkbox" >
+			<label for="checkbox-15" class="checkbox-custom-label">ZONE 1</label>
+		  </div>
+          </td> 
+		<td> 
+		  <div>
+			<input id="checkbox-16" class="checkbox-custom" name="checkbox-16" type="checkbox">
+			<label for="checkbox-16" class="checkbox-custom-label">ZONE 2</label>
+		  </div> 
+        </td> 
+        <td colspan="2"> 
+          <div>
+			<input id="checkbox-17" class="checkbox-custom" name="checkbox-17" type="checkbox">
+			<label for="checkbox-17"class="checkbox-custom-label">ZONE 3</label>    
+			</div>
+        </td> 
+     
+       </tr>
+	   	  </tr>
+	   <tr> 
+         <td> 
+		  <div>
+			<input id="checkbox-18" class="checkbox-custom" name="checkbox-18" type="checkbox" >
+			<label for="checkbox-18" class="checkbox-custom-label">ZONE 4</label>
+		  </div>
+          </td> 
+		<td> 
+		  <div>
+			<input id="checkbox-19" class="checkbox-custom" name="checkbox-19" type="checkbox">
+			<label for="checkbox-19" class="checkbox-custom-label">ZONE 5</label>
+		  </div> 
+        </td> 
+        <td colspan="2"> 
+          <div>
+			<input id="checkbox-20" class="checkbox-custom" name="checkbox-20" type="checkbox">
+			<label for="checkbox-20"class="checkbox-custom-label">ZONE 6</label>    
+			</div>
+        </td> 
+     
+       </tr>
+	   
+	   
+	   <tr> 
+         <td colspan="4">   <br><h8> TUNNEL ZONE </h8> </td>
+	  </tr>
+	   <tr> 
          <td> 
 		  <div>
 			<input id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox" >
@@ -67,7 +89,7 @@ color: #C8CFF4;
 		  <div>
 			<input id="checkbox-2" class="checkbox-custom" name="checkbox-2" type="checkbox">
 			<label for="checkbox-2" class="checkbox-custom-label">FCT</label>
-		  </div>
+		  </div> 
         </td> 
         <td> 
           <div>
@@ -80,13 +102,11 @@ color: #C8CFF4;
 			<input id="checkbox-4" class="checkbox-custom" name="checkbox-4" type="checkbox">
 			<label for="checkbox-4"class="checkbox-custom-label">SGT</label>    
         </div>
-          </td> 
-       
+          </td>      
        </tr>
-      </table>
-	  <br>
-<p>EAC Corridor</p>
-      <table  width="100%"> 
+	  <tr> 
+         <td colspan="4">  <br><h8> EAC CORRIDOR  </h8> </td>
+	  </tr>
         <tr> 
          <td> 
 		  <div>
@@ -141,7 +161,7 @@ color: #C8CFF4;
           </td> 
        </tr>
 	   
-	   	           <tr> 
+	   <tr> 
          <td> 
 		  <div>
 			<input id="checkbox-13" class="checkbox-custom" name="checkbox-13" type="checkbox" >
@@ -161,23 +181,18 @@ color: #C8CFF4;
           </td> 
        
        </tr>
+	   	  <tr> 
+         <td colspan="4">   <div  align="right">
+	        	<button type="submit" class="button button3"> START </button> </div>
+		 </td>
+	  </tr>
       </table>
-
-
-	        <!--	<div ng-repeat="z in zone">
-	  				<p>{{z.name}}</p>
-	         		<div class="fontcolor"><div ng-repeat="cat in z.category">  &nbsp;&nbsp;  &nbsp;&nbsp; <input type="checkbox" value="Zone 1">  &nbsp;&nbsp; {{cat}}</div></div> 
-	         		<br>
-	        	</div>
 				
-				-->
+		
 				<br>
-				<div align="right">
-	        	<button type="submit" class="button">START</button>
-				</div>
+				
 	      </div>
 			     
-	      </div>
         </div>
 </div>
   </body>

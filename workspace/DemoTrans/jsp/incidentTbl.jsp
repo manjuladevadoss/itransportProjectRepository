@@ -17,6 +17,23 @@
 table td{
 	padding:4px;
 }
+input[type=text] {
+  box-sizing: border-box;
+  border: 1px solid  #202B53;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #C8CFF4;
+   height: 30px;
+  width: 200px;
+  font-family: Roboto, Helvetica, sans-serif;
+  background-color: #131A32;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 15px 25px 22px 28px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
 </style>
  
   </head>
@@ -32,7 +49,7 @@ table td{
      <td> <h5>Incident Record </h5> <td>
 		<td>
 		<div align='right'> 
-			<p>Search <input type="text" size="35" placeholder="Search" ng-model="searchIncident">  </P>
+			<p> <input type="text" size="35" placeholder="Search" ng-model="searchIncident">  </P>
 			
 		</div> 
 	   </td> 

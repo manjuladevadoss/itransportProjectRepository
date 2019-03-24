@@ -2,7 +2,7 @@
     	margin: 20px;
     }
 body {
-  background-image: url("Blured.jpg");
+  background-image: url("roadmap.jpg");
   background-size: cover;
 }
 
@@ -11,7 +11,7 @@ body {
   margin: auto;
   background: #202B53;
   padding: 10px;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 h3 {
   color: #C8CFF4;;
@@ -53,10 +53,10 @@ p{
 
 .button1a {
   font-size: 1em;
-  padding: 4px 15px;
+  padding: 4px 10px;
   color: #202B53;
   border: 2px solid #C8CFF4;
-  border-radius: 40px/60px;
+  border-radius: 20px/30px;
   background:#C8CFF4;
 }
 
@@ -74,6 +74,13 @@ div.scroll {
       overflow-y:scroll;
 	  overflow-x: hidden;
       height:320px;
+}
+
+div.scrollwc {
+     /* width:790px; */
+      overflow-y:scroll;
+	  overflow-x: hidden;
+      height:290px;
 }
 
 /* start Scroll bar  */
@@ -98,3 +105,18 @@ div.scroll {
 	  border-radius: 3px;
 	}
 /* end of Scroll bar */
+
+/* toggle plus and Minus */
+.panel-heading.active {
+    background-color: #202B53;
+    color: #C8CFF4;
+}
+
+.panel-body {
+    background-color: #202B53;
+    color: #C8CFF4;
+}
+.glyphicon {
+    font-size: 10px;
+}
+/* toggle plus and Minus */

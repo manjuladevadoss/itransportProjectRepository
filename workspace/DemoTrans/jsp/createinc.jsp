@@ -3,14 +3,17 @@
 <title>incident Record</title>
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
-	 <link rel="stylesheet" href="popup.css">
+	 <link rel="stylesheet" href="popupinccreate.css">
 	 <link rel="stylesheet" href="dropdownstyle.css">
 	  <link rel="stylesheet" href="selectimagestyle.css">
+	  <link rel="stylesheet" href="checkboxstyle.css">
+	  <link rel="stylesheet" href="dropdownlistStylePopup.css">
+	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  	 <script src="bootstrap.min.js"></script>
   	 <script src="angular.min.js"></script>
-  	  <link rel="stylesheet" href="incident.css">
   	 <script type="text/javascript"  src="democontroller.js"></script> 
   	 <script type="text/javascript"  src="jquery.js"></script> 
+	 
 	 
 	   <!-- Date and time picker css and js --> 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
@@ -22,38 +25,28 @@
    <script type="text/javascript" src="datetimepicker.js"></script>
 	 <!-- end Date and time picker css and js --> 
 	 
+	  <!-- start plus and minu menu  script -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	   <!-- end plus and minu menu  script -->
 	 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-/* width */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 100px #43498F; 
-  border-radius: 3px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #202B53; 
-  border-radius: 3px;
-}
-::-webkit-scrollbar-corner {
-  background: #202B53; 
-  border-radius: 3px;
-}
-
-table td{
-	padding:4px;
-}
 
 </style>
 	
 </head>
+     <script>
+$(document).ready(function(){
+	$('.collapse').on('shown.bs.collapse', function(){
+		$(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+	}).on('hidden.bs.collapse', function(){
+		$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
+	});       
+});
+</script>
 <body>
    <div ng-app="ltaApp" ng-controller="ltaController">
    <form>
@@ -61,156 +54,50 @@ table td{
 	<tr>	
 		<td> 
 			<div class="dropdown">
-				<a class="button2" href="">Create Incident </a>
+				<a class="button2" href="">&nbsp;Create Incident&nbsp; </a>
 	 			<div class="dropdown-content" ng-model="irtypeselected">			 
-				<a href="createinc.jsp#popup1" ng-click="visiblecreatebutton('Accident')"><img src="accident.jpg">Accident</a>
-				<a href="createinc.jsp#popup1" ng-click="visiblecreatebutton('Obstacle')"><img src="obstacle.jpg">Obstacle</a>
-				<a href="createinc.jsp#popup1" ng-click="visiblecreatebutton('Heavy Traffic')"><img src="heavytraffic.jpg">Heavy Traffic</a>
-				<a href="createinc.jsp#popup1" ng-click="visiblecreatebutton('Road Works')"><img src="roadwork.jpg">Road Works</a>
-                <a href="createinc.jsp#popup1" ng-click="visiblecreatebutton('Mobile Road Works')"><img src="mobileroadwork.jpg">Mobile Road Works</a>
-                <a href="createinc.jsp#popup1" ng-click="visiblecreatebutton('Break Down')"><img src="breakdown.jpg">Break Down</a>
-				<a href="createinc.jsp#popup1" ng-click="visiblecreatebutton('Unattended Vehicle')"><img src="unattvehicle.jpg">Unattended Vehicle</a>
-				<a href="createinc.jsp#popup1" ng-click="visiblecreatebutton('Miscellaneous')"><img src="misce.jpg">Miscellaneous</a>  
+				<a href="createinc.jsp#popupcreateinc" ng-click="visiblecreatebutton('Accident')"><img src="accident.jpg"> Accident</a>
+				<a href="createinc.jsp#popupcreateinc" ng-click="visiblecreatebutton('Obstacle')"><img src="obstacle.jpg"> Obstacle</a>
+				<a href="createinc.jsp#popupcreateinc" ng-click="visiblecreatebutton('Heavy Traffic')"><img src="heavytraffic.jpg"> Heavy Traffic</a>
+				<a href="createinc.jsp#popupcreateinc" ng-click="visiblecreatebutton('Road Works')"><img src="roadwork.jpg"> Road Works</a>
+                <a href="createinc.jsp#popupcreateinc" ng-click="visiblecreatebutton('Mobile Road Works')"><img src="mobileroadwork.jpg"> Mobile Road Works</a>
+                <a href="createinc.jsp#popupcreateinc" ng-click="visiblecreatebutton('Break Down')"><img src="breakdown.jpg"> Break Down</a>
+				<a href="createinc.jsp#popupcreateinc" ng-click="visiblecreatebutton('Unattended Vehicle')"><img src="unattvehicle.jpg"> Unattended Vehicle</a>
+				<a href="createinc.jsp#popupcreateinc" ng-click="visiblecreatebutton('Miscellaneous')"><img src="misce.jpg"> Miscellaneous</a>  
 	  			</div>
 			</div>
 		</td>
 		
 	</tr> 
-	
-	
-</table>
+	</table>
 <br>
 <br>
 
  <div class="container-fluid">
 
-<!-- display List of Incident -->
-<div ng-show="showList"> 
- <div class="bs-example">
-<div class="content">
-	<table width="100%">
-     <tr > 
-
-		<td>
-		<div align='right'> 
-			<font color="white" size="2">Search <input type="text" size="35" placeholder="Search" ng-model="searchIncident">  </font>			
-		</div> 
-	   </td> 
-	   <td>
-		   <div class="dropdown">
-			<font color="white" size="2">&nbsp;<img src="cormenu.jpg" width="15" height="15"> </font>
-				<div class="dropdown-content">
-					<a href="workorderTbl.jsp">Work Order</a>
-					<a href="techalarmTbl.jsp">Technical Alarms</a>
-					<a href="envmonTbl.jsp">Environment</a>
-					<a href="eventTbl.jsp">Events</a>
-					<a href="envmonTbl.jsp">Road Works</a>
-						 <hr color = "#C8CFF4" style="padding:0px; margin:0px;">
-					<a href="envmonTbl.jsp">Merge up/down</a>
-					<a href="envmonTbl.jsp">Merge sideways</a>
-				</div>
-			</div>
-		</td>
-	 </tr>
-	 </table>
-	 <br>
-	
-	
-	<table width="100%"> 
-	 <tr><td>
-		<table width="98%">  
-			<tr >
-				<th width="10%"> <a href="#" ng-click="sortType = 'irid'; sortReverse = !sortReverse"><h4> IRID </h4></a></th>
-				<th width="28%"> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"> <h4>Type </h4></a></th>
-				<th width="20%"> <a href="#" ng-click="sortType = 'state'; sortReverse = !sortReverse"> <h4>State </h4></a></th>
-				<th width="10%"> <a href="#" ng-click="sortType = 'zone'; sortReverse = !sortReverse"> <h4>Zone </h4> </a></th>
-				<th width="23%"> <a href="#" ng-click="sortType = 'roadname'; sortReverse = !sortReverse"> <h4>Road Name </h4></a></th>
-				<th width="27%"> <a href="#" ng-click="sortType = 'lanes'; sortReverse = !sortReverse"> <h4>Lanes </h4></a></th>
-			</tr>
-	 	 </table> </td></tr>
-	 <tr><td>  
-	<div class='scroll'>
-<table border="1" width="100%">
-		<!--  <tr class= "myHeader navbar-fixed-top">
-			<th> <a href="#" ng-click="sortType = 'irid'; sortReverse = !sortReverse"><h4> IRID </h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse"><h4> Type </h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'state'; sortReverse = !sortReverse"><h4> State</h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'zone'; sortReverse = !sortReverse"> <h4>Zone </h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'roadname'; sortReverse = !sortReverse"> <h4>Road Name </h4></a></th>
-			<th> <a href="#" ng-click="sortType = 'lanes'; sortReverse = !sortReverse"><h4>Lanes </h4></a></th>
-		</tr> -->
-			<tr ng-repeat="inc in incidentNewList | orderBy:sortType:sortReverse | filter:searchIncident">
-				<td width="10%"><font color="#C8CFF4" size="3">{{inc.irid}}</font></td>
-				<td width="28%">
-					<div ng-if="inc.type==='Accident'"><img src="accident.jpg"><font color="#C8CFF4" size="3">{{inc.type}}</font></div>
-					<div ng-if="inc.type==='Road Works'"><img src="roadwork.jpg"><font color="#C8CFF4" size="3">{{inc.type}}</font></div>
-					<div ng-if="inc.type==='Obstacle'"><img src="obstacle.jpg"><font color="#C8CFF4" size="3">{{inc.type}}</font></div>
-					<div ng-if="inc.type==='Break Down'"><img src="breakdown.jpg"><font color="#C8CFF4" size="3">{{inc.type}}</font></div>
-					<div ng-if="inc.type==='Heavy Traffic'"><img src="heavytraffic.jpg"><font color="#C8CFF4" size="3">{{inc.type}}</font></div>
-					<div ng-if="inc.type==='Mobile Road Works'"><img src="mobileroadwork.jpg"><font color="#C8CFF4" size="3">{{inc.type}}</font></div>
-					<div ng-if="inc.type==='Unattended Vehicle'"><img src="unattvehicle.jpg"><font color="#C8CFF4" size="3">{{inc.type}}</font></div>
-					<div ng-if="inc.type==='Miscellaneous'"><img src="misce.jpg"><font color="#C8CFF4" size="3">{{inc.type}}</font></div>
-				</td>
-				<td width="20%"><font color="#C8CFF4" size="3">{{inc.state}}</font></td>
-				<td width="10%"><font color="#C8CFF4" size="3">{{inc.zone}}</font></td>
-				<td width="23%"><font color="#C8CFF4" size="3">{{inc.roadname}}</font></td>
-				<td width="27%"><font color="#C8CFF4" size="3">{{inc.lanes}}</font></td>
-			</tr>
-	</table> 
-</div>
-</div>
-	 </td></tr>
- </table> 
-	<!--
-	<button type="submit" ng-click="hideincidentlist()" class="button button3">Hide Incident List</button> <br>
-	<a href="incidentTbl.jsp" ng-click="hideincidentlist()">Hide Incident List href <a>
-	-->
-</div>
-</div>
-
-<!-- End display List of Incident -->
-
 <!-- Create Incident -->
 <br>
 <br>
-<div id="popup1" class="overlay">
+<div id="popupcreateinc" class="overlay">
   <div class="popup">
     <div class="content">
 	<table width="100%"><tr>
-		<td><h4>Create</h4></td>
-		<td>   <div align='right'> <!--  <div ng-show="createbuttonshow"> 
-     	<a href="#popup" class="button1a" id="button1a" ng-click="addincident()"> Create </a>  </div>-->
-		<a href="#popup" class="button1a" id="button1a"  ng-click="showincidentlist()"> X </a> 
+		<td><h5>Create</h5></td>
+		<td>   <div align='right'> 
+		<a href="#popup" class="closebtn" ng-click="showincidentlist()"><i class="fa fa-close"></i></a> 
      	</div> </td>
-	</tr></table>   
-    <h3>Incident</h3>
+	</tr>
+	<tr>
+		<td><h3> Incident</h3></td>
+		<td> </td>
+	</tr>
+	</table>   
 		 <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
-		 <div ng-show="showList"> </div>
+	<div class='incscroll'>
       <table width="100%">
-
-	<!--	<tr>
-	      <td>
-          	<h3>Fill in the detail of your IR.</h3>
-			<select ng-model="irtype">
-			<option  value="" selected="selected" hidden="hidden">Choose here</option>
-			<div ng-if="irtypeselected==='Accident'">	
-				<option value="Accident">{{accident}}</option>
-				<div>
-				<option value="Obstacle">Obstacle</option>
-				<option value="Heavy Traffic">Heavy Traffic</option>
-				<option value="Road Works">Road Works</option>
-                <option value="Mobile Road Works">Mobile Road Works</option>
-                <option value="Break Down">Break Down</option>
-				<option value="Unattended Vehicle">Unattended Vehicle</option>
-				<option value="Miscellaneous">Miscellaneous</option>           
-           </select>
-          </td>
-		  <td></td>
-	  
-	  </tr>  -->
         <tr>
-          <td>
-            <h6>Status</h6> 
+          <td colspan="3">
+            <h3>Status</h3> 
               <select ng-model="irstatus">
 					<option  value="" selected="selected" hidden="hidden">Choose here</option>
 					<option value="Confirmed">Confirmed</option>
@@ -220,7 +107,7 @@ table td{
 					<option value="Other">Other</option>
 				</select>
           </td>
-          <td> <h6>Source </h6>
+          <td colspan="3"> <h3>Source </h3>
               <select ng-model="irsource">
 			  <option  value="" selected="selected" hidden="hidden">Choose here</option>
 					<option value="ERS">ERS</option>
@@ -230,94 +117,95 @@ table td{
           </td>
         </tr>
         <tr>
-          <td>
-            <h6>Start Time </h6>
+          <td colspan="3">
+            <h3>Start Time </h3>
 		
-			<div style="width: 190px;">
+			<div style="width: 150px;">
 				<div id="picker"> </div>
-					<input type="hidden" placeholder="Start Time"  ng-model="irstarttime"/>
+					<input type="text" placeholder="Start Time"  ng-model="irstarttime"/>
 			</div>
 	
           </td>
-          <td>
-            <h6>End Time 1</h6>
+          <td colspan="3">
+            <h3>End Time </h3>
          
-			<div style="width: 190px;">
+			<div style="width: 150px;">
 				<div id="picker1"> </div>
-					<input type="hidden"  placeholder="End Time"  ng-model="irendtime"/>
+					<input type="text"  placeholder="End Time"  ng-model="irendtime"/>
 			</div>
           </td>
         </tr>
 
         <tr>
-          <td>
-            <h6>Linked IR </h6>
+          <td colspan="3">
+            <h3>Linked IR </h3>
             <input type="text" placeholder="linked IR" ng-model="irlinked">
           </td>
-          <td>
-            <h6>Image Captured </h6>
+          <td colspan="3">
+            <h3>Image Captured </h3>
             <input type="text"  placeholder="End Time" ng-model="irimgcap">
           </td>
         </tr>
         <tr>
-          <td colspan="2">
-           <h6> Comments </h6>
+          <td colspan="6">
+           <h3> Comments </h3>
             <input type="text" size="100" placeholder="linked IR" ng-model="ircomments">
           </td>
         </tr>
         <tr>
-          <td>
-           <br><h6>Location Information</h6> 
-		   <h6>Road Name:&nbsp;{{irroadname}} </h6>
-		   <h6>Location Type:&nbsp;{{irloctype}} </h6>
-		   <h6>Direction:&nbsp;{{irdirection}}</h6> 
+          <td colspan="3">
+           <br><h3>Location Information</h3> 
+		   <h3>Road Name:&nbsp;{{irroadname}} </h3>
+		   <h3>Location Type:&nbsp;{{irloctype}} </h3>
+		   <h3>Direction:&nbsp;{{irdirection}}</h3> 
 		   
           </td>
-          <td>
-            <h6>Start Point:&nbsp;{{irspoint}}</h6>
-			<h6>End Point:&nbsp;{{irepoint}} </h6>
+          <td colspan="3">
+            <h3>Start Point:&nbsp;{{irspoint}}</h3>
+			<h3>End Point:&nbsp;{{irepoint}} </h3>
           </td>
         </tr>
-      </table>
-	  <br>
-	  <h6>Lane Blockage </h6>
-	  <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
-	  
-	   <h6>Block or Unbklock Lanes</h6> 
-		<table width="80%">
 		<tr>
-	      <td> 
-	      		<div class="select-sim" >
+          <td colspan="6">
+           <h3>Lane Blockage </h3>
+		   <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
+			<h3>Block or Unbklock Lanes</h3> 
+          </td>
+        </tr>
+		
+		<tr>
+          <td align="center">
+           	    <div class="select-sim" >
 				  <div class="options">
 				    <div class="option">
-				      <input type="radio" name="color" value="cross" id="lsh1"  />
+				      <input type="checkbox" name="color" value="cross" id="lsh1"  />
 				      <label for="lsh1">
 				        <img src="cross.JPG" alt="Girl in" style="width:19px;height:19px;">
 				      </label>
 				    </div>
 				    <div class="option">
-				      <input type="radio" name="color" value="arrow" id="lsh2" checked/>
+				      <input type="checkbox" name="color" value="arrow" id="lsh2" checked/>
 				      <label for="lsh2">
-				        <img src="uparrow.JPG" alt="Girl in" style="width:19px;height:19px;">
+				        <img src="arrow1.JPG" alt="Girl in" style="width:19px;height:19px;">
 				      </label>
 				    </div>
 				   <div class="option">
-				      <input type="radio" name="color" value="traffic" id="lsh3" />
+				      <input type="checkbox" name="color" value="traffic" id="lsh3" />
 				      <label for="lsh3">
-				       <img src="traffic.JPG" alt="Girl in" style="width:19px;height:19px;">
+				       <img src="arrow1.jpg" alt="Girl in" style="width:20px;height:20px;">
 				      </label>
 				    </div>
 					<div class="option">
-				      <input type="radio" name="color" value="traffic1" id="lsh4" />
+				      <input type="checkbox" name="color" value="traffic1" id="lsh4" />
 				      <label for="lsh4">
-				      <img src="traffic1.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      <img src="arrow1.jpg" alt="Girl in" style="width:19px;height:19px;">
 				      </label>
 				    </div>
 				  </div>
 				</div>
-	      </td>
-	      <td> 
-	      		<div class="select-sim" >
+				</td>
+				<td align="center">
+				<div class="select-sim" >
 				  <div class="options">
 				    <div class="option">
 				      <input type="radio" name="color" value="cross" id="lane1_1"  />
@@ -345,9 +233,9 @@ table td{
 				    </div>
 				  </div>
 				</div>
-	      </td>
-	      <td> 
-	      		<div class="select-sim" >
+				</td>
+				<td align="center">
+				<div class="select-sim" >
 				  <div class="options">
 				    <div class="option">
 				      <input type="radio" name="color" value="cross" id="lane2_1"  />
@@ -375,62 +263,202 @@ table td{
 				    </div>
 				  </div>
 				</div>
-	      </td>
-	      <td> 
-				lane 2
-	      </td>
-	      <td> 
-	      		lane1
-	      </td>
-	      <td> 
-				rhs
-	      </td>
-		</tr>
-		<tr>
-		 <td><h6>LSH1</h6> </td>
-		  <td><h6>4</h6></td>
-		  <td><h6>3</h6> </td>
-		  <td><h6>2 </h6></td>
-		  <td><h6> 1</h6> </td>
-		  <td><h6> RSH1</h6></td>
-		</tr>
-	
-		</table>
+          </td>
+		    <td align="center">
+           	    <div class="select-sim" >
+				  <div class="options">
+				    <div class="option">
+				      <input type="radio" name="color" value="cross" id="lsh1"  />
+				      <label for="lsh1">
+				        <img src="cross.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				    <div class="option">
+				      <input type="radio" name="color" value="arrow" id="lsh2" checked/>
+				      <label for="lsh2">
+				        <img src="uparrow.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				   <div class="option">
+				      <input type="radio" name="color" value="traffic" id="lsh3" />
+				      <label for="lsh3">
+				       <img src="traffic.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+					<div class="option">
+				      <input type="radio" name="color" value="traffic1" id="lsh4" />
+				      <label for="lsh4">
+				      <img src="traffic1.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				  </div>
+				</div>
+				</td>
+				<td align="center">
+				<div class="select-sim" >
+				  <div class="options">
+				    <div class="option">
+				      <input type="radio" name="color" value="cross" id="lane1_1"  />
+				      <label for="lane1_1">
+				        <img src="cross.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				    <div class="option">
+				      <input type="radio" name="color" value="arrow" id="lane1_2" checked/>
+				      <label for="lane1_2">
+				        <img src="uparrow.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				   <div class="option">
+				      <input type="radio" name="color" value="traffic" id="lane1_3" />
+				      <label for="lane1_3">
+				       <img src="traffic.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+					<div class="option">
+				      <input type="radio" name="color" value="traffic1" id="lane1_4" />
+				      <label for="lane1_4">
+				      <img src="traffic1.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				  </div>
+				</div>
+				</td>
+				<td align="center">
+				<div class="select-sim" >
+				  <div class="options">
+				    <div class="option">
+				      <input type="radio" name="color" value="cross" id="lane2_1"  />
+				      <label for="lane2_1">
+				        <img src="cross.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				    <div class="option">
+				      <input type="radio" name="color" value="arrow" id="lane2_2" checked/>
+				      <label for="lane2_2">
+				        <img src="uparrow.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				   <div class="option">
+				      <input type="radio" name="color" value="traffic" id="lane2_3" />
+				      <label for="lane2_3">
+				       <img src="traffic.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+					<div class="option">
+				      <input type="radio" name="color" value="traffic1" id="lane2_4" />
+				      <label for="lane2_4">
+				      <img src="traffic1.JPG" alt="Girl in" style="width:19px;height:19px;">
+				      </label>
+				    </div>
+				  </div>
+				</div>
+          </td>
+        </tr>
 		
-		
-
-		
-		<h6>(+)add new lines</h6>
-		<br>
-		 <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
-	 <table width="100%">
 		<tr>
-	      <td><h6>Simulated</h6></td>
-		  <td><h6>VRS </h6></td>
-		</tr>
+          <td align="center">
+			<h3>LSH1</h3>
+			</td>
+			<td align="center">
+				<h3>4</h3>
+			</td>
+			<td align="center">
+				<h3>3</h3>
+			</td>
+		    <td align="center">
+				<h3>2</h3>
+			</td>
+			<td align="center">
+				<h3> 1</h3> 
+			</td>
+			<td align="center">
+				<h3> RSH1</h3>
+          </td>
+        </tr>
 		<tr>
-	      <td> <h6>Escalate via SMS</h6></td>
-		  <td><h6>Important LTM </h6></td>
+          <td colspan="6" align="center">			
+					<ul>
+					  <li><h3> (+) Add New lines</h3> 
+					  <ul>
+						<li> Add Lane</li>
+						<li> Add Center Divider</li>
+						<li> Add Left Shoulder</li>
+						<li> Add Right Shoulder</li>
+						</ul></li>
+					</ul>					 
+          </td>
+        </tr>
+		<tr>
+          <td colspan="6">
+		   <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
+          </td>
+        </tr>
+	</table>
+	  <table width="50%">
+	  
+	  	   <tr> 
+         <td> 
+		
+			<input id="checkbox-20" class="checkbox-custom" name="checkbox-20" type="checkbox" >
+			<label for="checkbox-20" class="checkbox-custom-label">Simulated</label>
+		 </td> 
+        <td> 
+		  
+			<input id="checkbox-21" class="checkbox-custom" name="checkbox-21" type="checkbox">
+			<label for="checkbox-21" class="checkbox-custom-label">Escalate via SMS</label>
+        </td>
+		
 		</tr>
-		<tr rowspan="2">
-	      <td><h6>LTM </h6></td>
-		</tr>
-		</table>
-			<table width="100%"><tr>
-		<td> <div align='right'>  <div ng-show="createbuttonshow"> 
-     	<a href="#popup" class="button1a" id="button1a" ng-click="addincident()"> Create </a>
-		<!-- <a href="#popup" class="button1a" id="button1a"  ng-click="showincidentlist()"> Close</a>  --></div>
+		<tr> 
+         <td> 
+		 
+			<input id="checkbox-22" class="checkbox-custom" name="checkbox-22" type="checkbox" >
+			<label for="checkbox-22" class="checkbox-custom-label">Important LTM</label>
+		  
+    	 </td> 
+        <td> 
+		  
+			<input id="checkbox-23" class="checkbox-custom" name="checkbox-23" type="checkbox">
+			<label for="checkbox-23" class="checkbox-custom-label">LTM</label>
+		
+        </td>
+		
+		</tr>		
+		<tr>
+        <td> 
+         
+			<input id="checkbox-24" class="checkbox-custom" name="checkbox-24" type="checkbox">
+			<label for="checkbox-24"class="checkbox-custom-label">VRS</label>    
+			
+        </td> 
+     <td> 
+	 </td>
+       </tr>
+	  
+	  </table>
+	  
+	  
+	  
+	  			<table width="100%"><tr>
+		<td> <div align='right'>  
+     	<a href="createincresponse.jsp#popupresponseinc" class="buttonCreateMrtInc"  ng-click="addincident()"> Create </a>
+		<!-- <a href="#popup" class="button1a" id="button1a"  ng-click="showincidentlist()"> Close</a>  -->
      	</div> </td>
 	</tr></table> 
+	  </div>
+	  
+
+
     </div>
   </div>
 </div>
+<!--  create popup 1st screen -->
+
   </div>
 </div>
  
 <!-- end of Create Incident -->
 </form>
   </body>
- 
-  
 </html>

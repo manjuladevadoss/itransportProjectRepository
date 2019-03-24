@@ -1,0 +1,171 @@
+body {
+  font-family: Roboto, Helvetica, sans-serif;
+ }
+body {
+  background-image: url("Blured.jpg");
+  background-size: cover;
+}
+h1 {
+  text-align: center;
+  font-family: Roboto, Helvetica, sans-serif;
+  color: #C8CFF4;
+  margin: 80px 0;
+}
+
+
+.buttonCreateEventInc {
+  background-color: #6D5BFF; 
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 1px;
+  cursor: pointer;
+  border-radius: 5px/5px;
+}
+
+.buttonRemove {
+  font-size: .7em;
+  padding: 4px 15px;
+  color: black;
+  border: 2px solid yellow;
+  border-radius: 3px/3px;
+  background:yellow;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.buttonClosure {
+  font-size: .7em;
+  padding: 4px 15px;
+  color: white;
+  border: 2px solid red;
+  border-radius: 3px/3px;
+  background:red;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+}
+
+.buttonUpload {
+  font-size: .7em;
+  padding: 4px 15px;
+  color: white;
+  border: 2px solid #6D5BFF;
+  border-radius: 3px/3px;
+  background:#6D5BFF;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.closebtn {
+  background-color: #202B53 ;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+table.eventclosuretable {
+	 border: 0px solid #ddd;
+	text-align: left;
+border-spacing: 5px 10px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 5px auto;
+  padding: 2px;
+  background: #202B53;
+  border-radius: 5px;
+  position: fixed;
+  width: 40%;
+  height: 95%;
+  right: 15px;
+  z-index: 9;
+}
+
+.popup .contentEventCreate {
+  max-height: 95%;
+  color: #C8CFF4;
+  font-size: 15px;
+}
+.popup h2 {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+.popup h3 {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 14px;
+  font-family:  Roboto, Helvetica, sans-serif;
+}
+
+.popup input {
+  width: 80%;
+  font-family: Roboto, Helvetica, sans-serif;
+  border : none;
+  width: 250px; height: 30px; padding: 4px; background-color:#283D76; color:#C8CFF4;
+}
+
+
+.popup select {
+  width: 80%;
+  padding: 5px 5px;
+  font-family: Roboto, Helvetica, sans-serif;
+  border : none;
+  width: 250px; height: 30px; padding: 4px; background-color:#283D76; color:#C8CFF4;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #C8CFF4;
+}
+
+div.scrollcreatevent {
+     /* width:790px; */
+      overflow-y:scroll;
+	  overflow-x: hidden;
+      height:580px;
+}
+
+/* toggle plus and Minus background color*/
+.panel-heading.active {
+    background-color: #202B53;
+    color: #C8CFF4;
+}
+
+.panel-body {
+    background-color: #202B53;
+    color: #C8CFF4;
+}
+.glyphicon {
+    font-size: 10px;
+}
+/* toggle plus and Minus */
