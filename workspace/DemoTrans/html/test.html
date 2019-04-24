@@ -1,0 +1,229 @@
+<div class="panel-group" id="accordion2">
+       <div class="panel panel-default">
+    	<div class="panel-heading active">
+        	<h4 class="panel-title">               	
+                    EVENT DETAILS <span data-target="#Collapseiconone" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+            </h4>
+			
+        </div>
+        <div class="panel-collapse collapse" id="Collapseiconone">
+        	<div class="panel-body">
+				<h3>Fill in the detail of the Event </h3>	
+     				dfsdfgdfgfdg
+            </div>
+        </div>
+     </div>
+	 
+	    <div class="panel panel-default">
+    	<div class="panel-heading active">
+					<h4 class="panel-title">               	
+							Road Closure <span data-target="#Collapseicontwo" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+					</h4>
+					
+				</div>
+				<div class="panel-collapse collapse" id="Collapseicontwo">
+					<div class="panel-body">
+						panel end
+				</div>
+			</div>
+     </div>
+	 </div> 
+	 
+	 
+	 
+	 <div id="popupcreateinc" class="overlay">
+  <div class="popup">
+    <div class="content">
+	<table width="100%"><tr>
+		<td><h3a>CREATE </h3a></td>
+		<td>   <div align='right'> 
+		<a href="#popup" class="closebtn" ng-click="showincidentlist()"><i class="fa fa-close"></i></a> 
+     	</div> </td>
+	</tr>
+	<tr>
+		<td><h3b> Incident </h3b></td>
+		<td> </td>
+	</tr>
+	</table>   
+		 <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
+	<div class='incscroll'>
+      <table width="100%">
+        <tr>
+          <td colspan="3">
+            Status 
+              <select ng-model="irstatus">
+					<option  value="" selected="selected" hidden="hidden">Choose here</option>
+					<option value="Confirmed">Confirmed</option>
+					<option value="Over">Over</option>
+					<option value="In Progress">In Progress</option>
+					<option value="Notified">Notified</option>
+					<option value="Other">Other</option>
+				</select>
+          </td>
+          <td colspan="3"> Source 
+              <select ng-model="irsource">
+			  <option  value="" selected="selected" hidden="hidden">Choose here</option>
+					<option value="ERS">ERS</option>
+					<option value="JEYE">JEYE</option>
+					<option value="other">Other</option>
+				</select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+           Start Time 
+		
+			<div style="width: 150px;">
+				<div id="picker"> </div>
+					<input type="text" placeholder="Start Time"  ng-model="irstarttime"/>
+			</div>
+	
+          </td>
+          <td colspan="3">
+           End Time 
+         
+			<div style="width: 150px;">
+				<div id="picker1"> </div>
+					<input type="text"  placeholder="End Time"  ng-model="irendtime"/>
+			</div>
+          </td>
+        </tr>
+
+        <tr>
+          <td colspan="3">
+            Linked IR 
+            <input type="text" placeholder="linked IR" ng-model="irlinked">
+          </td>
+          <td colspan="3">
+            Image Captured 
+            <input type="text"  placeholder="End Time" ng-model="irimgcap">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="6">
+            Comments 
+            <input type="text" size="100" placeholder="linked IR" ng-model="ircomments">
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+           <br>Location Information 
+		   Road Name:&nbsp;{{streetName}} 
+		   Location Type:&nbsp;{{streetLocation}} 
+		   Direction:&nbsp;{{streetDirection}} 
+		   
+          </td>
+          <td colspan="3">
+            Start Point:&nbsp;{{irspoint}}
+			End Point:&nbsp;{{irepoint}} 
+          </td>
+        </tr>
+		<tr>
+          <td colspan="6">
+           Lane Blockage 
+		   <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
+			Block or Unbklock Lanes 
+          </td>
+        </tr>
+		
+		<tr><td colspan="6">
+			Check box images
+			</td>
+         </tr>
+		
+		<tr>
+          <td align="center">
+			LSH1
+			</td>
+			<td align="center">
+				4
+			</td>
+			<td align="center">
+				3
+			</td>
+		    <td align="center">
+				2
+			</td>
+			<td align="center">
+				 1 
+			</td>
+			<td align="center">
+				 RSH1
+          </td>
+        </tr>
+		<tr>
+          <td colspan="6" align="center">			
+					<ul>
+					  <li> (+) Add New lines 
+					  <ul>
+						<li> Add Lane</li>
+						<li> Add Center Divider</li>
+						<li> Add Left Shoulder</li>
+						<li> Add Right Shoulder</li>
+						</ul></li>
+					</ul>					 
+          </td>
+        </tr>
+		<tr>
+          <td colspan="6">
+		   <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
+          </td>
+        </tr>
+	</table>
+        <table width="100%" id="mrtdetailtbl" >
+        	<tr>
+          <td colspan="2">
+		   <br><hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
+          </td>
+        </tr>
+		<tr>
+          <td>          
+          	<label class="contentlabel" style="font-size:17px;"> Simulated 
+			  <input type="checkbox">
+			  <span class="checkmark"></span>
+			</label>
+			</td>
+			<td>
+			<label class="contentlabel" style="font-size:17px;"> Escalate via SMS 
+			  <input type="checkbox">
+			  <span class="checkmark"></span>
+			</label>
+           </td>
+           </tr>
+           <tr>
+          <td>
+             <label class="contentlabel" style="font-size:17px;"> Important 
+			  <input type="checkbox">
+			  <span class="checkmark"></span>
+			</label>
+			</td>
+			<td>
+			<label class="contentlabel" style="font-size:17px;"> VRS
+			  <input type="checkbox">
+			  <span class="checkmark"></span>
+			</label>
+          </td>
+        </tr>
+         <tr>
+          <td>
+             <label class="contentlabel" style="font-size:17px;"> LTM  
+			  <input type="checkbox">
+			  <span class="checkmark"></span>
+			</label>
+			</td>
+			<td>
+          </td>
+        </tr>
+        </table>
+	  </div>
+	   <table width="100%"><tr>
+		<td> <div align='right'>  
+     	<a href="createincresponse.jsp#popupresponseinc" class="buttonCreateMrtInc"  ng-click="addincident()"> Create </a>
+		<!-- <a href="#popup" class="button1a" id="button1a"  ng-click="showincidentlist()"> Close</a>  -->
+     	</div> </td>
+	</tr></table> 
+
+
+    </div>
+  </div>
+</div>

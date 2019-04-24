@@ -6,10 +6,13 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 	 <link rel="stylesheet" href="bootstrap.min.css">
+	  <link rel="stylesheet" href="checkboxstyle1.css">
 	 <link rel="stylesheet" href="mrtinc.css">
 	  <link rel="stylesheet" href="checkboxstyle.css">
  	 <script src="bootstrap.min.js"></script>
-  	 <script src="jquery.js"></script> 
+  	 <script src="jquery.js"></script>
+  	  <script src="angular.min.js"></script>
+  	 <script src="democontroller.js"></script>  
 <style type="text/css">
 </style>
 <script>
@@ -24,7 +27,8 @@ function myFunction() {
 
 
 <div class="bs-example">
-    <form action="createmrtincident.jsp#popupmrtinccreate" method="post">
+ <div ng-app="ltaApp" ng-controller="ltaController">
+    <form action="createmrtincident.jsp#popupmrtinccreate" method="post" ng-submit=createmrtinc()>
     <div class="content">
 	    <h4>MRT Service Disruption  </h4>
 	    
@@ -36,27 +40,23 @@ function myFunction() {
 						<h3>MRT / LRT Line</h3> 
 					</td>
 					<td align="right">
-						<h3>Borth Dicrection: </h3>
+						<h3>Both Direction: </h3>
 					</td>						
 				</tr>
 				
 				<tr>
 					<td>
-						<select ng-model="direction" class="selectcls">
+					
+						 <select ng-model="direction" class="selectcls" ng-change="mrtlinesel()" ng-options="o as o for o in stations">
 							<option  value="" selected="selected" hidden="hidden">Choose here</option>
-							<option value="ewline">East West Line</option>
-							<option value="nsline">North South Line</option>
-							<option value="neline">North East LIne</option>
-							<option value="cline">Circle Line</option>
-							<option value="dline">Downtown Line</option>
-						</select>
-						
+    					 </select>
 
 					</td>
 					<td>
-								  <div>
-									<input id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox">		<label for="checkbox-1" class="checkbox-custom-label"></label>
-								</div>
+					   <label class="contentlabel" style="font-size:17px;">
+						  <input type="checkbox" ng-model="bothdir">
+						  <span class="checkmark"></span>
+						</label>
 					</td>
 				</tr>
 				<tr>
@@ -69,44 +69,29 @@ function myFunction() {
 				</tr>
 				<tr>
 					<td>
-						<select ng-model="startstation" class="selectcls">
-							<option  value="" selected="selected" hidden="hidden">Choose here</option>
-							<option value="ns1">NS1-Jurong East</option>
-							<option value="ns28">NS28-Marina South Pier</option>
-							<option value="ne1">NE1-HarbourFront</option>
-							<option value="ne17">NE17-Punggol</option>
-							<option value="cc1">CC1-Dhoby Ghaut</option>
-							<option value="cc29">CC29-HarbourFront</option>
-							<option value="dt1">DT1-Bukit Panjang</option>
-							<option value="dt32">DT32-Expo</option>
-						</select>
+					
+					 <select ng-model="startstation" class="selectcls" ng-change="mrtssel()"  ng-options="o as o for o in mrtline">
+							<option value=""  selected="selected" hidden="hidden">Choose here</option>
+    				 </select>
 					</td>
 					<td>
-						<select ng-model="endstation" class="selectcls">
+					 <select ng-model="endstation" class="selectcls" ng-change="mrtesel()"  ng-options="o as o for o in mrtlinend">
 							<option  value="" selected="selected" hidden="hidden">Choose here</option>
-							<option value="ns1">NS1-Jurong East</option>
-							<option value="ns28">NS28-Marina South Pier</option>
-							<option value="ne1">NE1-HarbourFront</option>
-							<option value="ne17">NE17-Punggol</option>
-							<option value="cc1">CC1-Dhoby Ghaut</option>
-							<option value="cc29">CC29-HarbourFront</option>
-							<option value="dt1">DT1-Bukit Panjang</option>
-							<option value="dt32">DT32-Expo</option>
-						</select>
+    				 </select>
 
 					</td>
 					
 				</tr>
 				<tr>
 					<td colspan="2"> <div  align="right">
-					<button type="submit" class="button">Create</button> <button type="button" class="button" onclick="myFunction()">Cancel</button> </div>
+					<button type="submit" class="button">CREATE</button> 
+					<button type="button" class="buttonCan"  id="buttonCan" onclick="myFunction()">CANCEL</button> </div>
 					</td>
 				</tr>
 	 	 </table>
-
-	</div>
-       
+	</div>     
     </form>
+    </div>
 </div>
 </div>
 </body>

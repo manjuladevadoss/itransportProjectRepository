@@ -1,74 +1,92 @@
 body {
   background-image: url("Blured.jpg");
-  background-size: cover;
+  /*background-size: cover;*/
+    /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+ background-size: 100% 300%;
 }
 
 .content {
-  max-width: 550px;
+  max-width: 462px;
   margin: auto;
-  background-color: #202B53; /* For browsers that do not support gradients */
-  background-image: linear-gradient(#202B53, #2B5DB9); /* Standard syntax (must be last) */
-  padding: 30px  ;
+  /*background-image: linear-gradient( 90deg,rgba(39,59,115,1) , rgba(25,34,63,1));*/ 
+  background: radial-gradient(circle, #354F8C 0%, #040737 100%);
+  padding: 18px ;
   margin-top: 10%;
-  border-radius: 10px/20px;
-}
-
-.button {
-  background-color: #C7D4ED; /* Green */
-  border: none;
-  color: #202B53;
-  padding: 8px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 25px;
-  margin: 4px 1px;
-  cursor: pointer;
-  border-radius: 5px/5px;
-}
-
-
-h3 {
-  color: #C8CFF4;
-  font-family: Roboto, Helvetica, sans-serif;
-  font-size: 35px;
-}
-h5 {
-  color: #C8CFF4;
-  font-family: Roboto, Helvetica, sans-serif;
-    font-size: 20px;
-}
-h6 {
-  color: #C8CFF4;
-  font-family: Roboto, Helvetica, sans-serif;
-   font-size: 17px;
+  /*box-shadow: 3px 6px 6px #888888;*/
+  box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.48);
+  height: 355px;  
 }
 
 h7 {
-  color: #202B53;
+  color: white;
   font-family: Roboto, Helvetica, sans-serif;
-  font-size: 45px;
+  font-size: 40px;
+}
+
+.button {
+  background: linear-gradient(112.52deg, #565EB9 0%, #9A81FD 100%); 
+  border: none;
+  padding: 8px 20px;
+  text-decoration: none;
+  display: inline-block;
+  height: 30px;
+  width: 121px;
+  
+  color: #FFF;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 6px;
+  height: 55px;
+  width: 121px;
 }
 
 .resizedTextbox {
 	font-family: Roboto, Helvetica, sans-serif;
-    font-size: 25px;
-	width: 420px; height: 40px; padding: 4px; background-color:#C7D4ED; color:black;
+    font-size: 24px;
+	width: 405px; height: 55px;   padding: 4px 50px;  background-color: #2C3A77; color: #FFF;
 	border : none;
-	border-radius: 5px/5px;
+	border-radius: 8px;
 }
 	
-
-logintable, td, th {  
-  border: 0px solid #ddd;
-  text-align: left;
-}
-
-.logintable {
+#logintable {
+  font-family: Roboto, Helvetica, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  align: "center";
 }
 
-th, td {
-  padding: 15px;
+#logintable td, #logintable th {
+  border: 0px solid #ddd;
+  padding: 8px;
 }
+
+/* enable absolute positioning */
+.inner-addon {
+  position: relative;
+}
+
+/* glyphicon image */
+/* style glyph */
+.inner-addon .glyphicon {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align glyph */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+.glyphicon {
+    font-size: 20px;
+}
+/* end of glyphicon image */

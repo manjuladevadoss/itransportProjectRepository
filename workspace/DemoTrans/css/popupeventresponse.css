@@ -1,0 +1,396 @@
+body {
+  background-image: url("roadmap.jpg");
+  background-size: cover;
+   font-family: Roboto, Helvetica, sans-serif;
+}
+h1 {
+  text-align: center;
+  font-family: Roboto, Helvetica, sans-serif;
+  color: #C8CFF4;
+  margin: 80px 0;
+}
+
+.buttonCreateventInc {
+  background-image: linear-gradient( 90deg,	rgba(86,94,185,1) , rgba(143,123,242,1)); 
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 1px;
+  cursor: pointer;
+  border-radius: 5px/5px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+/*
+.popup {
+  margin: 5px auto;
+  padding: 2px;
+  background: #202B53;
+  border-radius: 5px;
+  width: 30%;
+  height: 90%;
+  right: 15px;
+  position: relative;
+}*/
+
+.popup {
+  margin: auto;
+  padding: 8px;
+  background: #202B53;
+  position: fixed;
+  width: 35%;
+  height: 90% !important;
+  right: 2px;
+  z-index: 9;
+  
+}
+
+.popup .content {
+  height: auto;
+  color: #C8CFF4;
+ height: 90% !important;
+  color: #C8CFF4;
+  font-size: 12px;
+}
+.popup h4 {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 18px;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+.popup h7 {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 18px;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+.popup h2 {
+  margin-top: 0;
+  color: #C8CFF4;
+    font-size: 16px;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+h2t {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 26px;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+.popup h3 {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 14px;
+  font-family:  Roboto, Helvetica, sans-serif;
+}
+
+.popup h3a {
+  margin-top: 0;
+  color: #4dd2ff;
+  font-size: 20px;
+  font-family:  Roboto, Helvetica, sans-serif;
+}
+
+.popup h3b {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 20px;
+  font-family:  Roboto, Helvetica, sans-serif;
+}
+.popup input {
+  font-family: Roboto, Helvetica, sans-serif;
+  border : none;
+  width: 80px; height: 25px; padding: 4px; background-color:#283D76; color:#C8CFF4;
+  border-radius: 10px;
+}
+.popup select {
+  /* width: 80%; */
+  padding: 5px 5px;
+  font-family: Roboto, Helvetica, sans-serif;
+  border : none;
+  width: 80px; height: 25px; padding: 4px; background-color:#283D76; color:#C8CFF4;
+  border-radius: 10px;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #C8CFF4;
+}
+
+.closebtn {
+  background-color: #202B53 ;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+
+/*Start of Scroll Bar*/
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 100px #43498F; 
+  border-radius: 3px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #202B53; 
+  border-radius: 3px;
+}
+::-webkit-scrollbar-corner {
+  background: #202B53; 
+  border-radius: 3px;
+}
+
+div.mrtincscroll {
+     /* width:790px; */
+      overflow-y:auto;
+	  overflow-x: auto;
+     height: 90% !important;
+}
+/*End of Scroll Bar*/
+
+table td{
+	padding:6px;
+}
+.tablevms {
+  border-collapse: collapse;
+  padding: 2px;
+}
+
+.tablevms td {
+  color: white;
+  padding: 3px;
+}
+
+.tablevmsl tr:nth-child(odd){
+background-image: linear-gradient( 90deg,	rgba(55,63,97,1) , rgba(25,31,57,1));
+color: white;
+ padding:5px;
+}
+
+.tablevms tr:nth-child(even){
+background-image: linear-gradient( 90deg,	rgba(55,63,97,1) , rgba(25,31,57,1));
+color: white;
+ padding:5px;
+}
+
+.tablevms tr:hover {
+/*background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));*/ 
+}
+
+.tablevms td,th{
+ padding:7px;
+}
+
+.tableventOBU {
+  border-collapse: collapse;
+   border-color: #C8CFF4;
+}
+.tableventOBU th {
+    padding: 5px ;
+	font-family: Roboto, Helvetica, sans-serif;
+	font-weight: bold;
+	color:black;
+}
+.tableventOBU td {	
+	font-family: Roboto, Helvetica, sans-serif;
+    padding: 3px;
+}
+
+.buttonadd {
+  font-size: .8em;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 2px 5px;
+  color: #C8CFF4;
+  border: 2px solid green;
+  border-radius: 10px/20px;
+  background:green;
+}
+
+.buttondelete {
+	font-size: .8em;
+	font-family: Roboto, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: 2px 5px;
+	color: #C8CFF4;
+	border: 2px solid red;
+	border-radius: 10px/20px;
+	background:red;
+}
+
+
+.buttoneveImp {
+  font-size: .8em;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 2px 5px;
+  color: #C8CFF4;
+  border: 2px solid #48AD76;
+  border-radius: 10px/20px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  width:80px;
+  text-align: center;
+  background-color: #48AD76;
+}
+
+.buttoneveRem {
+	font-size: .8em;
+	font-family: Roboto, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: 2px 5px;
+	color: #C8CFF4;
+	border: 2px solid #AD484A;
+	border-radius: 10px/20px;
+	background:red;
+	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	cursor: pointer;
+  	width:80px;
+  	background-color: #AD484A;
+}
+
+.buttonaddhevytraffic {
+	font-size: .8em;
+	font-family: Roboto, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: 2px 5px;
+	color: #C8CFF4;
+	border: 2px solid #487FAD;
+	border-radius: 10px/20px;
+	background-color: #489BAD;
+	width:170px;
+	text-align: center;
+	text-decoration: none;
+  	display: inline-block;
+  	cursor: pointer;
+}
+
+.dotfail {
+  height: 10px;
+  width: 10px;
+  background-color:red;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dotimp {
+  height: 10px;
+  width: 10px;
+  background-color:green;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dotnotact {
+  height: 10px;
+  width: 10px;
+  background-color:#bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+
+div.scrollResponse {
+      overflow-y:scroll;
+	  overflow-x: none;
+      height:580px;
+}
+
+
+.textareaeventVmsMsg { 
+ font-size: 1em;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: black;
+}
+
+.textareaeventObuMsg { 
+ font-size: 1em;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: #2C3A77;
+ border-radius: 8px; 
+}
+
+.textareaeventcanMsg { 
+ font-size: 1em;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: #2C3A77;
+ border-radius: 8px; 
+}
+
+
+.textareanote { 
+ font-size: 1em;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: #2C3A77;
+ border : none; 
+ border-radius: 8px; 
+}
+
+#inctitletbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#inctitletbl td, #inctitletbl tr {
+  padding: 6px;
+  color: #C8CFF4; 
+  width:2100px ;
+  height:60px ;
+  background-color: #161F37; 
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+  padding:15px 15px;
+}
+#incdetailtbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#incdetailtbl td, #incdetailtbl th {
+  padding: 10px;
+  color: #C8CFF4; 
+  font-size: 13px;
+  width: 25% ;
+}

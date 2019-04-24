@@ -1,10 +1,9 @@
 body {
   font-family: Roboto, Helvetica, sans-serif;
- }
-body {
   background-image: url("roadmap.jpg");
   background-size: cover;
 }
+
 h1 {
   text-align: center;
   font-family: Roboto, Helvetica, sans-serif;
@@ -13,7 +12,7 @@ h1 {
 }
 
 .buttonCreateMrtInc {
-  background-color: #6D5BFF; 
+  background-image: linear-gradient( 90deg,	rgba(86,94,185,1) , rgba(143,123,242,1)); 
   border: none;
   color: white;
   padding: 8px 20px;
@@ -54,27 +53,25 @@ h1 {
 }*/
 
 .popup {
-  margin: 5px auto;
+  margin:  auto;
   padding: 8px;
   background: #202B53;
-  border-radius: 5px;
   position: fixed;
-  width: 40%;
-  height: 90%;
-  right: 15px;
-  z-index: 9;
-  
+  width: 35%;
+  height: 90% !important;
+  right: 2px;
+  z-index: 9;  
 }
 
 .popup .content {
-  max-height: 90%;
+  height: 90% !important;
   color: #C8CFF4;
-  font-size: 15px;
+  font-size: 12px;
 }
 .popup h4 {
   margin-top: 0;
   color: #C8CFF4;
-    font-size: 18px;
+  font-size: 18px;
   font-family: Roboto, Helvetica, sans-serif;
 }
 
@@ -84,7 +81,12 @@ h1 {
     font-size: 16px;
   font-family: Roboto, Helvetica, sans-serif;
 }
-
+h2t {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 26px;
+  font-family: Roboto, Helvetica, sans-serif;
+}
 .popup h3 {
   margin-top: 0;
   color: #C8CFF4;
@@ -92,18 +94,33 @@ h1 {
   font-family:  Roboto, Helvetica, sans-serif;
 }
 
-.popup input {
+.popup h3a {
+  margin-top: 0;
+  color: #4dd2ff;
+  font-size: 20px;
+  font-family:  Roboto, Helvetica, sans-serif;
+}
 
+.popup h3b {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 20px;
+  font-family:  Roboto, Helvetica, sans-serif;
+}
+
+.popup input {
   font-family: Roboto, Helvetica, sans-serif;
   border : none;
-  width: 300px; height: 30px; padding: 4px; background-color:#283D76; color:#C8CFF4;
+  width: 187.81px; height: 23px; padding: 4px; background-color: #37478A; color:#C8CFF4;
+  border-radius: 10px;
 }
 .popup select {
   /* width: 80%; */
   padding: 5px 5px;
   font-family: Roboto, Helvetica, sans-serif;
   border : none;
-  width: 250px; height: 30px; padding: 4px; background-color:#283D76; color:#C8CFF4;
+  width:187.81px; height: 23px; padding: 4px; background-color:#37478A; color:#FFF;
+  border-radius: 10px;
 }
 
 .popup .close {
@@ -125,7 +142,7 @@ h1 {
   font-size: 13px;
   cursor: pointer;
 }
-
+/* start Scroll bar  */
 /* width */
 ::-webkit-scrollbar {
   width: 8px;
@@ -142,6 +159,7 @@ h1 {
   background: #202B53; 
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-corner {
   background: #202B53; 
   border-radius: 3px;
@@ -149,12 +167,52 @@ h1 {
 
 div.mrtincscroll {
      /* width:790px; */
-      overflow-y:scroll;
-	  overflow-x: hidden;
-      height:550px;
+      overflow-y:auto;
+	  overflow-x: auto;
+      height: 90% !important;
 }
 
+#mrtdetailtbl {
+  border-collapse: collapse;
+  width: 100%;
+}
 
-table td{
-	padding:6px;
+#mrtdetailtbl td, #mrtdetailtbl th {
+  padding: 8px;
+  color: #C8CFF4; 
+  font-size: 12px;
+}
+
+#mrtdetailtbl th {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: left;
+}
+
+/*horizontal title table*/
+#inctitletbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#inctitletbl td, #inctitletbl tr {
+  padding: 6px;
+  color: #C8CFF4; 
+  width:2100px ;
+  height:60px ;
+  background-color: #161F37; 
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+  padding:15px 15px;
+}
+
+#incdetailtbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#incdetailtbl td, #incdetailtbl th {
+  padding: 10px;
+  color: #C8CFF4; 
+  font-size: 13px;
+  width: 25% ;
 }
