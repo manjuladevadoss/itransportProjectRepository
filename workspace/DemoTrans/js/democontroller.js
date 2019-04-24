@@ -1,5 +1,5 @@
 var app = angular.module('ltaApp', []);
-	  app.controller('ltaController', function($scope, $http, $filter) {
+	  app.controller('ltaController', function($scope, $http, $filter, $interval) {
     
 	//get the json object using $http get method() incident record	  
     $http.get("incidentRecord.json").then(function(response) {
@@ -8,9 +8,13 @@ var app = angular.module('ltaApp', []);
 		$scope.incidentNewList = $scope.incidentRec;
       });
 	
-    
+	//get the json object using $http get method() work order	  
+ 	$http.get("workorderRecord.json").then(function(response) {
+         $scope.workorderRec = response.data.workorderRec;
+       });
+ 	
 	//get the json object using $http get method() Technical Alarm record	  
-    $http.get("techicalAlarmRecord.json").then(function(response) {
+    $http.get("technicalAlarmRecord.json").then(function(response) {
         $scope.technicalalarmrec = response.data.technicalalarmrec;  
         console.log("$scope.technicalalarmrec.length() :" + $scope.technicalalarmrec.length);
 		$scope.technicalalarmrecNewList = $scope.technicalalarmrec;
@@ -23,7 +27,107 @@ var app = angular.module('ltaApp', []);
 		$scope.environmonitorecNewList = $scope.environmonitorec;
       });
     
+	//get the json object using $http get method() Road Work Record	  
+    $http.get("roadwork.json").then(function(response) {
+        $scope.roadworkRec = response.data.roadworkRec;  
+        console.log("$scope.roadworkRec.length() :" + $scope.roadworkRec.length);
+		//$scope.roadworkRec1 = $scope.roadworkRec;
+      });        
     
+    // call incident records in certain interval
+    $interval( function(){ $scope.callIR1(); }, 3000);
+    $scope.callIR1 = function(){
+    	$http.get("incidentRecord21.json").then(function(response) {
+            $scope.incidentRec = response.data.incidentRec;  
+    		$scope.incidentNewList = $scope.incidentRec;
+          });
+    };
+    
+    $interval( function(){ $scope.callIR2(); }, 6000);
+    $scope.callIR2 = function(){
+    	$http.get("incidentRecord22.json").then(function(response) {
+            $scope.incidentRec = response.data.incidentRec;  
+    		$scope.incidentNewList = $scope.incidentRec;
+          });
+    };
+    
+    $interval( function(){ $scope.callIR(); }, 9000);
+    $scope.callIR = function(){
+        $http.get("incidentRecord.json").then(function(response) {
+            $scope.incidentRec = response.data.incidentRec;  
+    		$scope.incidentNewList = $scope.incidentRec;
+          });
+    };
+       
+    // call workorder in certain interval
+    $interval( function(){ $scope.callWO1(); }, 3000);
+    $scope.callWO1 = function(){
+    	$http.get("workorderRecord21.json").then(function(response) {
+            $scope.workorderRec = response.data.workorderRec;
+          });
+    };
+    
+    $interval( function(){ $scope.callWO2(); }, 7000);
+    $scope.callWO2 = function(){
+    	$http.get("workorderRecord22.json").then(function(response) {
+            $scope.workorderRec = response.data.workorderRec;
+          });
+    };
+    
+    $interval( function(){ $scope.callWO(); }, 10000);
+    $scope.callWO = function(){
+    	$http.get("workorderRecord.json").then(function(response) {
+            $scope.workorderRec = response.data.workorderRec;
+          });   	
+    };
+    
+    // call technical alarm records in certain interval
+    $interval( function(){ $scope.callTA1(); }, 3000);
+    $scope.callTA1 = function(){
+        $http.get("technicalAlarmRecord21.json").then(function(response) {
+            $scope.technicalalarmrec = response.data.technicalalarmrec;  
+          }); 
+    };
+    
+    $interval( function(){ $scope.callTA2(); }, 5500);
+    $scope.callTA2 = function(){
+        $http.get("technicalAlarmRecord22.json").then(function(response) {
+            $scope.technicalalarmrec = response.data.technicalalarmrec;  
+          }); 
+    };
+    
+    $interval( function(){ $scope.callTA(); }, 9000);
+    $scope.callTA = function(){
+        $http.get("technicalAlarmRecord.json").then(function(response) {
+            $scope.technicalalarmrec = response.data.technicalalarmrec;  
+          });   	
+    };
+    
+    // call environmental records in certain interval
+    $interval( function(){ $scope.callER1(); }, 3000);
+    $scope.callER1 = function(){
+        $http.get("environmonitorRecord21.json").then(function(response) {
+            $scope.environmonitorec = response.data.environmonitorec;  
+          });
+    };
+    
+    $interval( function(){ $scope.callER2(); }, 5500);
+    $scope.callER2 = function(){
+        $http.get("environmonitorRecord22.json").then(function(response) {
+            $scope.environmonitorec = response.data.environmonitorec;  
+          });
+    };
+    
+    $interval( function(){ $scope.callER(); }, 9000);
+    $scope.callER = function(){
+        $http.get("environmonitorRecord.json").then(function(response) {
+            $scope.environmonitorec = response.data.environmonitorec;  
+          });	
+    };
+    
+    
+    
+    ///
     $scope.searchIncident = "";
 	$scope.showList=true;
     $scope.createbuttonshow=true;
@@ -50,15 +154,14 @@ var app = angular.module('ltaApp', []);
 	$scope.sortReversenv = false;
 	$scope.sortReverseincfromgrid   = false;
     
-	//get the json object using $http get method() work order	  
-    $http.get("workorderRecord.json").then(function(response) {
-        $scope.workorderRec = response.data.workorderRec;
-      });
     $scope.searchWorkOrder ="";
+    $scope.searchEnvironment ="";
+    $scope.searchTechnical ="";
     $scope.searchWorkOrderfromgrid ="";
 	$scope.searchtechnicalAlarmfromgrid="";
 	$scope.searchIncidentfromgrid = "";
 	$scope.searchEnvifromgrid  = "";
+	$scope.searchroadwkfromgrid  = "";
     
 	//get Zone from JSON
     $http.get("zone.json").then(function(response) {
@@ -66,11 +169,16 @@ var app = angular.module('ltaApp', []);
       });
    
    //create New IR 
+   $scope.createFlag = true;
+   $scope.responseFlag = false;
     $scope.addincident = function(){
-      
-      $scope.showList = true;
-      $scope.createbuttonshow=false;
-      $scope.irid =  irid + 1;
+   //   $scope.showList = true;
+     // $scope.createbuttonshow=false;
+      $scope.responseFlag = true;
+	  $scope.createFlag = false;
+	  alert(" $scope.responseFlag : " + $scope.responseFlag);
+	  alert(" $scope.createFlag : " + $scope.createFlag);
+	  $scope.irid =  irid + 1;
 	  irid = $scope.irid
     	  
       console.log("irid : " + $scope.irid);
@@ -94,19 +202,21 @@ var app = angular.module('ltaApp', []);
       console.log("$scope.irendtime: " + $scope.irendtime);
       console.log("$scope.irlinked: " + $scope.irlinked );
       console.log("$scope.irimgcap: " + $scope.irimgcap );
-     console.log("$scope.ircomments: " + $scope.ircomments);
-	 
-	 
+     console.log("$scope.ircomments: " + $scope.ircomments);	 
 	  $scope.irstatus = ' ';
       $scope.irsource  = ' ';
       $scope.irstarttime = ' ';
       $scope.irendtime = ' ';
       $scope.irlinked = ' ';
       $scope.irimgcap = ' ';
-      $scope.ircomments = ' ';
-
-        
+      $scope.ircomments = ' ';   
+      
     };
+	
+	$scope.callmrtircreate= function(){
+	  $scope.responseFlag = false;
+	  $scope.createFlag = true;
+    }
     
     $scope.hideincidentlist = function(){
     	 $scope.showList=true;
@@ -207,6 +317,11 @@ var app = angular.module('ltaApp', []);
           $scope.eventlocation = "Expo";
           $scope.eventstatus = "PLANNING";
           
+          $scope.eventypeselected = $scope.eventype ;
+          $scope.eventname1 = $scope.eventname ;
+          
+          console.log("eventypeselected: " + $scope.eventypeselected);
+          console.log("eventname1: " + $scope.eventname1);
           $scope.addEventData = {
           		"type": $scope.eventype, 
           		"name": $scope.eventname, 
@@ -237,13 +352,309 @@ var app = angular.module('ltaApp', []);
 			if(edate1>todayDate){
 				$scope.noofeventUpcome = $scope.noofeventUpcome + 1;
 			} 
-		}
-          
-      
-          
+		}  
      }
-  
+     
+      //Event name ngchange on text box
+      $scope.changeventname = function() {
+    	  $scope.eventname1 = $scope.eventname ; 
+    	  console.log("event name change " + $scope.eventname1);
+      }
+      // Event type change 
+      $scope.changeoptions = function(){
+   	   $scope.eventypeselected = $scope.eventype ;
+   	   console.log("event type selected : " + $scope.eventypeselected);
+     }
+      
+      //different windows display - in 3 panels
+      $scope.threepanel = function(){
+    	  var windowObjectReference;
+    	  var windowObjectReference2;
+    	  var windowObjectReference3;
+    	  var protocol = window.location.protocol;
+          var domain = window.location.hostname;
+          var port = window.location.port
+          var c =":";
+          var s = "//"
+        
+			//open gis 
+		  if(windowObjectReference3 == null || windowObjectReference3.closed) {
+			  //  var strpage2 = "/DemoTrans/gis.jsp";
+			  var strpage2 = "/DemoTrans/createinc.jsp";
+				var value2 = protocol.concat(s,domain,c,port,strpage2);
+				//alert("gis url " + value2);
+				windowObjectReference3 = window.open(
+						value2,
+					  	"gis",
+					  	"top=200,left=200,width=520,height=430,resizable,scrollbars,status");
+				} else {
+					  windowObjectReference3.focus();
+		  };
+    	  
+    	  //open bis 
+		  if(windowObjectReference2 == null || windowObjectReference2.closed) {
+		    	var strpage3 = "/DemoTrans/bis.jsp";
+			    var value3 = protocol.concat(s,domain,c,port,strpage3);
+			    //alert("bis url " + value3);
+			    windowObjectReference2 = window.open(
+			    	  value3,
+			  	      "bis",
+			  	      "top=100,left=100,width=520,height=430,resizable,scrollbars,status");
+			  }else {
+					windowObjectReference2.focus();
+			};
+		  
+
+	      
+		/*   if(windowObjectReference == null || windowObjectReference.closed) {
+				  windowObjectReference = window.open(
+			      "http://localhost:8080/DemoTrans/ccgrid.jsp",
+			      "c2panel",
+			      "top=300,left=300,width=520,height=430,resizable,scrollbars,status"); 
+		   } else {
+					windowObjectReference.focus();
+	      };  */
+		  
+		//open ccgrid 
+		// var ccdomain = domain;
+		 var strpage1 = "/DemoTrans/ccgridview.jsp";
+		 var value1 = protocol.concat(s,domain,c,port,strpage1);
+		// alert("ccgrid url " + value1);
+		 window.location.assign(value1);
+		 window.location.href = value1; 
+      }
+      
+  	//get the json object using $http get method() mapdata - road names	  
+      $http.get("mapdata.json").then(function(response) {
+          $scope.mapdata = response.data.mapdata;  
+          console.log("$scope.mapdata.length() :" + $scope.mapdata.length);
+        });
+      
+     //get streetid form the map look for corresponding streetname, location,  from jsob object
+      $scope.getstreetname = function(){
+      	 console.log("selection street" + $scope.strid);
+      	 var len =  $scope.mapdata.length;
+      	console.log("111");
+      	 for(i=0;i<len;i++){
+      		console.log(" for 222");
+      		var streetObj =  $scope.mapdata[i];
+      		if(streetObj.strid==$scope.strid) {
+      			console.log("selected id same");
+      			$scope.streetLocation = streetObj.directiondesc;
+      			$scope.streetName = streetObj.ewayname;
+      			$scope.streetDirection = streetObj.location;
+      			console.log("selected id same" + " / " + $scope.streetName + " / " + $scope.streetLocation + " / " + $scope.streetDirection);
+      		}
+      		console.log("streetObj.strid : " + streetObj.strid);
+      		console.log("streetObj.latitute : " + streetObj.latitute);
+      		console.log("streetObj.longitude : " + streetObj.longitude);
+      		console.log("streetObj.ewayname : " + streetObj.ewayname);
+      		console.log("streetObj.directiondesc : " +streetObj.directiondesc); 
+      		console.log("streetObj.location : " + streetObj.location); 
+      	 }
+      	 
+      };
+      
+      //mrt station selection based on the MRT Line
+      $scope.stations = ['East West Line', 
+                         'North South Line', 
+                         'North East Line',
+                         'Circle Line',
+                         'Downtown Line'                  
+                      ];
+
+      $scope.ewstations = ['EW1-Pasir Ris',
+                          'EW2-Tampines',
+                          'EW3-Simei',
+                          'EW28-Boon Lay',
+                          'EW29-Joo koon'
+                      ];
+      $scope.nsstations = [ 'NS1-Jurong East',
+					    	'NS2-Bukit Batok',
+					    	'NS3-Bukit Gombak',
+					    	'NS10-Admiralty',
+					    	'NS28-Marina South Pier'
+					    ];
+      
+      $scope.nestations = ['NE1-HarbourFront',
+				    	   'NE3-Outram Park',
+				    	   'NE4-ChinaTown',
+				    	   'NE15-Buangkok',
+				    	   'NE17-Punggol'
+				    	   ];
+      
+      $scope.ccstations = ['CC1-Dhoby Ghaut',
+					    	  'CC2-Bras Basah',
+					    	  'CC4-Promenade',
+					    	  'CC9-Paya Lebar',
+					    	  'CC27-Labrador Park'
+							];
+
+      $scope.dtstations = ['DT1-Bukit Panjang',
+				    	  'DT2-Cashew',
+				    	  'DT3-Hillview',
+				    	  'DT11-Newton',
+				    	  'DT13-Bugis',
+				    	  'DT19-Bayfront'
+			];
+      $scope.mrtline = "";
+      $scope.mrtlinesel = function() {
+	     if($scope.direction == "East West Line"){
+	        $scope.mrtline = $scope.ewstations;
+	        $scope.mrtlinend = $scope.ewstations;
+	     }
+	     if($scope.direction == "North South Line"){
+		        $scope.mrtline = $scope.nsstations;
+		        $scope.mrtlinend = $scope.nsstations;
+		 }
+	     if($scope.direction == "North East Line"){
+		        $scope.mrtline = $scope.nestations;
+		        $scope.mrtlinend = $scope.nestations;
+		 }
+	     if($scope.direction == "Circle Line"){
+		        $scope.mrtline = $scope.ccstations;
+		        $scope.mrtlinend = $scope.ccstations;
+		 }
+	     if($scope.direction == "Downtown Line"){
+		        $scope.mrtline = $scope.dtstations;
+		        $scope.mrtlinend = $scope.dtstations;
+		 }
+	     $scope.mrtlsselected = $scope.direction;
+    };
     
+    $scope.mrtssel = function() {
+    	$scope.mrtsselected = $scope.startstation;
+    };
+      
+    $scope.mrtesel = function() {
+    	$scope.mrteselected = $scope.endstation;
+    };
+    
+    $scope.createmrtinc = function($scope) { 
+    	$scope.mrteselected = $scope.endstation;
+    	$scope.mrtsselected = $scope.startstation;
+    	$scope.mrtlsselected = $scope.direction;
+    }
+    
+    
+    $scope.showircreate = true;
+    $scope.showirresponse = false;
+    // seperate window for IR Creation
+    $scope.callirresponse = function(){
+	    $scope.showircreate = false;
+	    $scope.showirresponse = true;
+    }
+    $scope.callircreate= function(){
+	    $scope.showircreate = true;
+	    $scope.showirresponse = false;
+    }
+    
+    
+	
+    //cc grid view display changing places
+    $scope.showinc = true;
+    $scope.viewworkorderitem2 = function(){
+    	$scope.showworkorder = true;
+	    $scope.showinc = false;
+	    $scope.showenv  = false;
+	    $scope.showtech  = false;
+	    $scope.showevent  = false;
+	    $scope.showrdwork = false;
+
+    };
+    $scope.viewincitem2 = function(){
+    	$scope.showinc = true;
+    	$scope.showworkorder = false;
+	    $scope.showenv  = false;
+	    $scope.showtech  = false;
+	    $scope.showevent  = false;
+	    $scope.showrdwork = false;
+
+    };
+    $scope.viewtecitem2 = function(){
+    	$scope.showtech  = true;
+    	$scope.showinc = false;
+    	$scope.showworkorder = false;
+	    $scope.showenv  = false;
+	    $scope.showevent  = false;
+	    $scope.showrdwork = false;
+
+    };
+    $scope.viewenvirontem2 = function(){
+    	$scope.showenv  = true;
+    	$scope.showinc = false;
+    	$scope.showworkorder = false;
+	    $scope.showtech  = false;
+	    $scope.showevent  = false;
+	    $scope.showrdwork = false;
+
+    };   
+    $scope.vieweventitem2 = function(){
+    	$scope.showevent  = true;
+    	$scope.showinc = false;
+    	$scope.showworkorder = false;
+	    $scope.showenv  = false;
+	    $scope.showtech  = false;
+	    $scope.showrdwork = false;
+    };
+    $scope.viewrdworkitem2 = function(){
+    	$scope.showrdwork = true;
+    	$scope.showevent  = false;
+    	$scope.showinc = false;
+    	$scope.showworkorder = false;
+	    $scope.showenv  = false;
+	    $scope.showtech  = false;
+    };  
+    
+    //vertical merge the view
+    $scope.viewmergeflag = true;
+    $scope.splitflag = false;
+    $scope.viewmerge = function(){
+    	$scope.divItem4 = {
+    		"border" : "0px solid #2D50AE"
+    	}
+    	$scope.divItem2 = {
+    		"border" : "0px solid #2D50AE"
+    	}
+    	$scope.viewmergeflag = false;
+    	$scope.splitflag  = true;
+    } 
+   
+    $scope.splitmerge = function(){
+    	$scope.divItem4 = {
+        	"border" : "1px solid #2D50AE"
+       }
+       $scope.divItem2 = {
+    		"border" : "1px solid #2D50AE"
+        }
+        $scope.viewmergeflag = true;
+        $scope.splitflag  = false;
+     }
+    
+    //horizontal merge view
+    $scope.viewhrmerge = true;
+    $scope.splithrview = false;
+    $scope.mergeside = function(){
+    	$scope.divItem3 = {
+    		"border" : "0px solid #2D50AE"
+        }
+        $scope.divItem2 = {
+        	"border" : "0px solid #2D50AE"
+        }
+        $scope.viewhrmerge = false;
+        $scope.splithrview = true;
+    }
+    
+    $scope.splitside = function(){   	
+    	$scope.divItem3 = {
+        		"border" : "1px solid #2D50AE"
+            }
+            $scope.divItem2 = {
+            	"border" : "1px solid #2D50AE"
+            }
+        $scope.viewhrmerge = true;
+        $scope.splithrview = false;
+    }
 });
 
 

@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+//>>built
+define("esri/dijit/geoenrichment/ReportPlayer/core/sections/sectionUtils/SectionJsonUtil",["esri/dijit/geoenrichment/ReportPlayer/core/sections/SectionTypes","../../supportClasses/tableJson/TableJsonUtil"],function(d,g){return{wrapInDetailsSectionJson:function(a,b){a=Array.isArray(a)?a:[a];var c=a.some(function(a){return"table"===a.id&&a.attributes&&(0<a.attributes.dynamicColumns||0<a.attributes.dynamicRows)});return{type:b||(c?d.GROUP:d.DETAILS),stack:a}},getSectionJsonInfographic:function(a){return(a=
+a.stack&&a.stack[0])&&"table"===a.id&&g.getTableJsonInfographic(a)},calcSectionJsonBox:function(a){var b,c,e,f;function d(a){b=Math.min(b,a.l);c=Math.min(c,a.t);e=Math.max(e,a.l+a.w);f=Math.max(f,a.t+a.h)}c=b=Infinity;f=e=0;a.stack&&a.stack.forEach(function(a){switch(a.id){case "table":var b=0;a.data.data.forEach(function(a){b+=a.style.height});d({l:a.style.left,t:a.style.spaceBefore,w:a.style.width,h:b});break;case "img":d({l:a.style.left,t:a.style.top,w:a.style.width,h:a.style.height})}});return{w:b+
+e,h:c+f,contentLeft:b,contentTop:c,contentW:e-b,contentH:f-c}}}});

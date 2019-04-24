@@ -1,0 +1,110 @@
+{
+  "technicalalarmrec": [
+    {
+      "startdate": "2018/11/02 12:26:43",
+      "alarmid": "EBTS01",
+      "description": "No Matching Alarm Code",
+      "source": "ERS",
+      "zone": "CBD",
+      "status": "open"
+    },
+    {
+      "startdate": "2019/10/12 10:17:05",
+      "alarmid": "v8106",
+      "description": "Receive Past Technical Alarm Fail",
+      "source": "EC1",
+      "zone": "DZ1",
+      "status": "open"
+    },
+    {
+      "startdate": "2017/02/12 15:40:35",
+      "alarmid": "G24101",
+      "description": "No Information",
+      "source": "JEYE",
+      "zone": "CT4",
+      "status": "open"
+    },
+    {
+      "startdate": "2018/08/10 10:17:05",
+      "alarmid": "v8306",
+      "description": "LENTOR",
+      "source": "JEYE",
+      "zone": "CT1",
+      "status": "close"
+    },
+    {
+      "startdate": "2017/02/12 15:40:35",
+      "alarmid": "S00001",
+      "description": "No Info",
+      "source": "JEYE",
+      "zone": "CT4",
+      "status": "open"
+    },
+    {
+      "startdate": "2018/10/8 15:44:21",
+      "alarmid": "ALARM_5",
+      "description": "Receive Past Technical Alarm Fail",
+      "source": "JEYE",
+      "zone": "DZ1",
+      "status": "in progress"
+    },
+     {
+      "startdate": "2018/10/18 12:34:23",
+      "alarmid": "PGS_LDC_009",
+      "description": "No Matching Alarm Code",
+      "source": "ERS",
+      "zone": "EC1",
+      "status": "in progress"
+    },
+     {
+      "startdate": "2017/07/21 16:15:04",
+      "alarmid": "CI_IWD_1504",
+      "description": "Failure To Complete Control Command",
+      "source": "ERS",
+      "zone": "UBT",
+      "status": "close"
+    },
+     {
+      "startdate": "2017/08/24 15:05:34",
+      "alarmid": "0087993",
+      "description": "Pixel failure exceed threshold",
+      "source": "ERS",
+      "zone": "NIC",
+      "status": "close"
+    },
+     {
+      "startdate": "2017/02/08 16:14:24",
+      "alarmid": "0101_PWR",
+      "description": "TCMS Niche Switch power failure",
+      "source": "ERS",
+      "zone": "NIC",
+      "status": "open"
+    },
+     {
+      "startdate": "2018/10/18 12:34:23",
+      "alarmid": "PGS_LDC_009",
+      "description": "No Matching Alarm Code",
+      "source": "ERS",
+      "zone": "EC1",
+      "status": "in progress"
+    },
+     {
+      "startdate": "2017/07/10 16:15:04",
+      "alarmid": "CI_IWD_1504",
+      "description": "Failure To Complete Control Command",
+      "source": "ERS",
+      "zone": "UBT",
+      "status": "close"
+    },
+     {
+      "startdate": "2017/10/07 15:05:34",
+      "alarmid": "0087993",
+      "description": "Pixel failure exceed threshold",
+      "source": "ERS",
+      "zone": "NIC",
+      "status": "close"
+    }
+  ]
+}
+
+

@@ -1,14 +1,15 @@
 <!doctype html>
 <html >
-<title>incident Record</title>
+<title>Create Incident</title>
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
 	 <link rel="stylesheet" href="popupincresponse.css">
-	 <link rel="stylesheet" href="dropdownstyle.css">
 	  <link rel="stylesheet" href="selectimagestyle.css">
-	  <link rel="stylesheet" href="checkboxstyle.css">
-	  <link rel="stylesheet" href="dropdownlistStylePopup.css">
+	  <link rel="stylesheet" href="checkboxstyle1.css">
+	   <link rel="stylesheet" href="dropdownlistStylePopup.css">
 	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	  
+	  
  	 <script src="bootstrap.min.js"></script>
   	 <script src="angular.min.js"></script>
   	 <script type="text/javascript"  src="democontroller.js"></script> 
@@ -23,44 +24,89 @@
 	    <link href="datetimepicker.css" rel="stylesheet" type="text/css"/>
    <script type="text/javascript" src="datetimejquery.js"></script>
    <script type="text/javascript" src="datetimepicker.js"></script>
-       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	 <!-- end Date and time picker css and js --> 
 	 
+	  <!-- start plus and minu menu  script -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+	   <!-- end plus and minu menu  script -->
 	 
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <style>
+/* toggle plus and Minus background color*/
+.panel-heading.active {
+    background-color: #202B53;
+  /* color: #C8CFF4;  */  
+   /* border : none;*/
+/*    border: 2px solid #37478A;*/
+}
+.panel-title { 
+ font-size: 16px;
+ padding-bottom:6px;
+}
+.panel-body {
+    background-color: #202B53;
+    color: #C8CFF4; 
+    font-size: 12px;
+}
+.panel, .panel-group .panel-heading+.panel-collapse>.panel-body{
+    border: none;
+}
 
+.glyphicon {
+    font-size: 10px;
+}
+.panel-title{
+  border: solid #37478A;
+  /*border-style: solid; */
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 3px;
+}
+/* toggle plus and Minus */
 </style>
-	
-</head>
+</head>        
      <script>
-$(document).ready(function(){
-	$('.collapse').on('shown.bs.collapse', function(){
-		$(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
-	}).on('hidden.bs.collapse', function(){
-		$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
-	});       
-});
-</script>
+		$(document).ready(function(){
+			$('.collapse').on('shown.bs.collapse', function(){
+				$(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+			}).on('hidden.bs.collapse', function(){
+				$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
+			});       
+		});
+	</script>	
+
+
 <body>
-<div ng-app="ltaApp" ng-controller="ltaController">
+    <div class="container-fluid">
+   <div ng-app="ltaApp" ng-controller="ltaController">
    <form>
+<br>
+<br>
 
- <div class="container-fluid">
 
+
+<!-- Create Incident -->
+<br>
+<br>
 <!--  Response popup 2nd Screen -->
 
 <div id="popupresponseinc" class="overlay">
+  <table id="inctitletbl">
+  	<tr>
+		<td> <h2t>{{irtype}}</h2t></td>
+	</tr>
+	</table>
   <div class="popup">
     <div class="content">
-	<table width="100%"><tr>
-		<td><h7><a href="createinc.jsp#popupcreateinc" style="text-decoration: none"> <font color="#C8CFF4">Create </font></a>  > Response</h7></td>
+	<table width="100%" id="incdetailtbl"><tr>
+
+		<td><a href="createinc.jsp#popupcreateinc" style="text-decoration: none"> <h3b>CREATE  </h3b> </a> &nbsp; <h3b> > </h3b>   &nbsp;   <h3a>RESPONSE</h3a></td>
 		<td>   <div align='right'> <!--  <div ng-show="createbuttonshow"> 
      	<a href="#popup" class="button1a" id="button1a" ng-click="addincident()"> Create </a>  </div>-->
-		<a href="createinc.jsp" class="closebtn" ng-click="showincidentlist()"><i class="fa fa-close"></i></a> 
+		<a href="createinc.jsp" class="closebtn" ng-click="showincidentlist()" style="text-decoration:none;"><i class="fa fa-close"></i></a> 
      	</div> </td>
 	</tr>
 	</table> 
@@ -71,32 +117,35 @@ $(document).ready(function(){
           <td>
 		  
 		  <div class="panel-group" id="accordion2">
-       <div class="panel panel-default">
+     
+     <div class="panel panel-default">
     	<div class="panel-heading active">
-        	<h4 class="panel-title">               	
-                    VMS Messages <span data-target="#Collapseiconone" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+        	<h4 class="panel-title">           	             	
+                    VMS Messages <span data-target="#Collapseicontwo" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
             </h4>
+			<!-- <img src="horibar.JPG" height="auto" > -->
         </div>
-        <div class="panel-collapse collapse" id="Collapseiconone">
+        
+        <div class="panel-collapse collapse in" id="Collapseicontwo">
         	<div class="panel-body">
             	<p>Recommended VMS Messages </p>
 			<table width="100%" class="tablevms">  
 			<tr>
-				<th align="left"><h6> Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </h6></th>
-				<th align="left"><h6>EQT ID <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></h6></th>
-				<th align="left"><h6>Recommended Display <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </h6></th>
-				<th align="left"><h6></h6></th>		
+				<th align="left" style="padding:5px;">Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </th>
+				<th align="left">EQT ID <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></th>
+				<th align="left">Recommended Display <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </th>
+				<th align="left"></th>		
 			</tr>
 			<tr>
 				<td> 
-				<div ng-if="vmsMsgStatus==='Failed'"><h6> <span class="dotfail"></span> {{vmsMsgStatus}} </h6></div>
-				<div ng-if="vmsMsgStatus==='Implemented'"><h6> <span class="dotimp"></span> {{vmsMsgStatus}} </h6></div>
-				<div ng-if="vmsMsgStatus==='Not Active'"><h6>  <span class="dotnotact"></span> {{vmsMsgStatus}} </h6></div>
+				<div ng-if="vmsMsgStatus==='Failed'"> <span class="dotfail"></span> {{vmsMsgStatus}} </div>
+				<div ng-if="vmsMsgStatus==='Implemented'"> <span class="dotimp"></span> {{vmsMsgStatus}} </div>
+				<div ng-if="vmsMsgStatus==='Not Active'">  <span class="dotnotact"></span> {{vmsMsgStatus}} </div>
 				
 				
 				</td>
-				<td><h6> TIP_758092 </h6></td>
-				<td><h6> <textarea class = "textareaVmsMsg" rows="3" cols="55"  placeholder="Heavy Traffic at Dunearn Road" ng-model="recommMsg" ng-click="enableText()" > </textarea></h6></td>
+				<td>TIP_758092</td>
+				<td><textarea class = "textareaVmsMsg" rows="3" cols="28"  placeholder="Heavy Traffic at Dunearn Road" ng-model="recommMsg" ng-click="enableText()" > </textarea></td>
 				<td> <i class="material-icons" style="font-size:8px;color:#C8CFF4;">border_color</i> </td>
 				
 			</tr>	
@@ -104,62 +153,66 @@ $(document).ready(function(){
 			<table width="100%"> 
 				<tr>
 					<td align="right">
-						<a href="createincresponse.jsp#popupresponseinc" class="buttonRem" id="buttonRem" ng-click="vmsMsgRemoved()"> Remove </a> 
-						<a href="createincresponse.jsp#popupresponseinc" class="buttonImp" id="buttonImp" ng-click="vmsMsgImpl()"> Implement </a>	
+						<a href="createincresponse.jsp#popupresponseinc" class="buttonRem" id="buttonRem" ng-click="vmsMsgRemoved()" style="text-decoration:none;"> Remove </a> 
+						<a href="createincresponse.jsp#popupresponseinc" class="buttonImp" id="buttonImp" ng-click="vmsMsgImpl()" style="text-decoration:none;"> Implement </a>	
 					</td>
 				</tr>
 	 	 </table>
             </div>
         </div>
      </div>
-     
      <div class="panel panel-default">
     	<div class="panel-heading active">
-        	<h4 class="panel-title">           	             	
-                    Canning Message <span data-target="#Collapseicontwo" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
-					<hr color = "#C8CFF4" style="padding:0px; margin:0px;">
+        	<h4 class="panel-title">
+                   Canning Message<span data-target="#Collapseiconthree" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
             </h4>
-			
+           <!-- <img src="horibar.JPG" height="auto" > -->
         </div>
-        <div class="panel-collapse collapse" id="Collapseicontwo">
+        
+        <div class="panel-collapse collapse" id="Collapseiconthree">
         	<div class="panel-body">
-			   <table width="100%"> 
+            	<!-- <p>Canning Messages</p>  -->
+            	<p>Enter Canning Messages</p>
+			   <table width="100%" class="tablevms"> 
 					<tr>
 						<td>
-						<p>Enter a Canning Message</p>
-						
 							<textarea class = "textareaVmsMsg" rows="3" cols="55" placeholder="This road has heavy traffic, please Note." ng-model="canningMsg"> </textarea>
-							<a href="createincresponse.jsp#popupresponseinc" class="buttonImp" id="buttonImp" ng-click="canMsgSend()"> Send </a>	
+							<a href="createincresponse.jsp#popupresponseinc" class="buttonImp" id="buttonImp" ng-click="canMsgSend()"> Send </a>						
 						</td>
 					</tr>
 			 </table>
             </div>
         </div>
      </div>
-     <div class="panel panel-default">
+       <div class="panel panel-default">
     	<div class="panel-heading active">
         	<h4 class="panel-title">
-                   OBU Messages<span data-target="#Collapseiconthree" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
+                   OBU Messages <span data-target="#Collapseiconfour" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
             </h4>
+            <!-- <img src="horibar.JPG" height="auto" > -->
         </div>
-        <div class="panel-collapse collapse" id="Collapseiconthree">
+        
+        <div class="panel-collapse collapse" id="Collapseiconfour">
         	<div class="panel-body">
-            	<p>OBU Messages</p>
-				<table width="100%" class="tableOBU">  
+           	
+          	<p>OBU Message </p>
+				<table width="100%" class="tablevms" >  
 					<tr>
-						<th colspan="3" bgcolor="Red"> Alert </th>
+						<th colspan="3" bgcolor="#EE5656" style="padding:5px;"> Alert </th>
 					</tr>
 					<tr>					
 						<td> 
-							<div ng-if="obuMsgStatus==='Failed'"><h6> <span class="dotfail"></span> {{obuMsgStatus}} </h6></div>
-							<div ng-if="obuMsgStatus==='Implemented'"><h6> <span class="dotimp"></span> {{obuMsgStatus}} </h6></div>
-							<div ng-if="obuMsgStatus==='Not Active'"><h6>  <span class="dotnotact"></span> {{obuMsgStatus}} </h6></div>					
+							<div ng-if="obuMsgStatus==='Failed'"> <span class="dotfail"></span> {{obuMsgStatus}} </div>
+							<div ng-if="obuMsgStatus==='Implemented'"> <span class="dotimp"></span> {{obuMsgStatus}} </div>
+							<div ng-if="obuMsgStatus==='Not Active'">  <span class="dotnotact"></span> {{obuMsgStatus}} </div>					
 						</td>
-						<td><h6> <textarea class = "textareaVmsMsg" rows="3" cols="55" ng-model="recommMsg" ng-click="enableText()"  placeholder="Message to be displayed on OBU"> {{obuMsg}} </textarea></h6></td>						
-						<td><h6>KM Marking<input type="text" ng-click="" ng-model="kmmarking" placeholder="1.2" style="width: 32px; height: 24px; padding: 1px;background-color: #202B53;color: #C8CFF4;"> </h6></td>	
+						<td> <textarea class = "textareaVmsMsg" rows="3" cols="42" ng-model="recommMsg" ng-click="enableText()"  placeholder="Message to be displayed on OBU"> {{obuMsg}} </textarea></td>						
+						<td>KM Marking 
+						<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="markalert" ng-click="enableText()" placeholder="1.2" > {{obuMsg}}</textarea></td>
+						
 					</tr>
 					<tr>
-						<th colspan="3" bgcolor="yellow"> Jam</th>
+						<th colspan="3" bgcolor="#ECD641" style="padding:5px;"> Jam</th>
 					</tr>
 					<tr>
 						<td> 
@@ -167,61 +220,67 @@ $(document).ready(function(){
 							<div ng-if="obuMsgStatus==='Implemented'"><h6> <span class="dotimp"></span> {{obuMsgStatus}} </h6></div>
 							<div ng-if="obuMsgStatus==='Not Active'"><h6>  <span class="dotnotact"></span> {{obuMsgStatus}} </h6></div>						
 						</td>
-						<td><h6> <textarea class = "textareaVmsMsg" rows="3" cols="55" ng-model="recommMsg" ng-click="enableText()" placeholder="Message to be displayed on OBU" > {{obuMsg}}</textarea></h6></td>						
-						<td><h6>KM Marking<input type="text" ng-click="" ng-model="kmmarking" placeholder="1.2" style="width: 32px; height: 24px; padding: 1px;background-color: #202B53;color: #C8CFF4;"> </h6></td>	
+						<td> <textarea class = "textareaVmsMsg" rows="3" cols="42" ng-model="jamMsg" ng-click="enableText()" placeholder="Message to be displayed on OBU" > {{obuMsg}}</textarea></td>						
+						<td>KM Marking<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="markjam" ng-click="enableText()" placeholder="1.2" > {{obuMsg}}</textarea></td>	
 					</tr>
 					<tr>
-						<th colspan="3" bgcolor="Green"> Guide</th>
+						<th colspan="3" bgcolor="#41EC42" style="padding:5px;"> Guide</th>
 					</tr>	
-					<tr>
+					<tr >
 						<td> 
 							<div ng-if="obuMsgStatus==='Failed'"><h6> <span class="dotfail"></span> {{obuMsgStatus}} </h6></div>
 							<div ng-if="obuMsgStatus==='Implemented'"><h6> <span class="dotimp"></span> {{obuMsgStatus}} </h6></div>
 							<div ng-if="obuMsgStatus==='Not Active'"><h6>  <span class="dotnotact"></span> {{obuMsgStatus}} </h6></div>						
 						</td>
-						<td><h6> <textarea class = "textareaVmsMsg" rows="3" cols="55" ng-model="recommMsg" ng-click="enableText()"  placeholder="Message to be displayed on OBU" > {{obuMsg}}</textarea></h6></td>						
-						<td><h6>KM Marking<input type="text" ng-click="" ng-model="kmmarking" placeholder="1.2" style="width: 32px; height: 24px; background-color: #202B53;color: #C8CFF4;"> </h6></td>	
+						<td> <textarea class = "textareaVmsMsg" rows="3" cols="42" ng-model="guideMsg" ng-click="enableText()"  placeholder="Message to be displayed on OBU" > {{obuMsg}}</textarea></td>						
+						<td>KM Marking<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="markguide" ng-click="enableText()" placeholder="1.2" > {{obuMsg}}</textarea></td>	
 					</tr>					
 				</table>
 				<table width="100%"> 
 				<tr>
 					<td align="right">
-						<a href="createincresponse.jsp#popupresponseinc" class="buttonRem" id="buttonRem" ng-click="obuMsgdeact()"> Deactivate All </a> 
-						<a href="createincresponse.jsp#popupresponseinc" class="buttonImp" id="buttonImp" ng-click="obuMsgImpl()"> Implement All </a>	
+						<a href="createincresponse.jsp#popupresponseinc" class="buttonRem" id="buttonRem" ng-click="obuMsgdeact()" style="text-decoration:none;"> Deactivate All </a> 
+						<a href="createincresponse.jsp#popupresponseinc" class="buttonImp" id="buttonImp" ng-click="obuMsgImpl()" style="text-decoration:none;"> Implement All </a>	
 					</td>
 				</tr>
-				</table>
+				</table> 
+          	
             </div>
         </div>
      </div>
-       <div class="panel panel-default">
+     
+     <div class="panel panel-default">
     	<div class="panel-heading active">
-        	<h4 class="panel-title">
-                   Conjestion Routes Monitoring <span data-target="#Collapseiconfour" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
+        	<h4 class="panel-title">               	
+                    Conjestion Routes Monitoring <span data-target="#Collapseiconone" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
             </h4>
+           <!-- <img src="horibar.JPG" height="auto" > -->
         </div>
-        <div class="panel-collapse collapse" id="Collapseiconfour">
+         
+        <div class="panel-collapse collapse" id="Collapseiconone">
         	<div class="panel-body">
-            	<p>Conjestion Routes Monitoring</p>
+            	<p>Conjestion Routes Monitoring </p>
             </div>
         </div>
      </div>
-            <div class="panel panel-default">
+   
+     <div class="panel panel-default">
     	<div class="panel-heading active">
         	<h4 class="panel-title">              	
                    Partners & Vehicle Response<span data-target="#Collapseiconfive" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
             </h4>
         </div>
+        
         <div class="panel-collapse collapse" id="Collapseiconfive">
         	<div class="panel-body">
-            	<p>Partners Intervention</p>
+            	<p>Partners Vehicle Handling</p>
 					<table width="100%" class="tablevms">  
 						<tr>
-							<th align="left"><h6> Type <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </h6></th>
-							<th align="left"><h6> Vehicle No. </h6></th>
-							<th align="left"><h6> Notify Time </h6></th>
-							<th align="left"><h6> Arrival Time </h6></th>	
-							<th align="left"><h6> Depature Time </h6></th>								
+							<th align="left" style="padding:5px;"> Type <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></th>
+							<th align="left"> Vehicle No. </th>
+							<th align="left"> Notify Time </th>
+							<th align="left"> Arrival Time </th>	
+							<th align="left"> Depature Time </th>								
 						</tr>					
 						<tr>
 							<td>
@@ -239,39 +298,40 @@ $(document).ready(function(){
 						</tr>
 						<tr>
 							<td>
-							<select name="item2" ng-model="partnerType" >
+							<select name="item3" ng-model="partnerType2" >
 								<option value="Ambulance" >Ambulance</option>
 								<option value="Ambulance">Ambulance2</option>
 								<option value="Ambulance">Ambulance3</option>
 							</select>
+							
 							</td>
 							<td><input type="text" ng-click="" ng-model="partnerVehNo" placeholder="RX23293"></td>
 							<td><input type="text" ng-click="" ng-model="partnerNotiTime" placeholder="1/24/2018 12:00"></td>
 							<td><input type="text" ng-click="" ng-model="partnerArrTime" placeholder="1/24/2018 12:00"></td>
 							<td><input type="text" ng-click="" ng-model="partnerDepatTime" placeholder="1/24/2018 16:00"></td>
-						</tr>							
+						</tr>						
 					</table>
 					<table width="100%"> 
 						<tr>
 							<td align="right">
-								<a href="createincresponse.jsp#popupresponseinc" class="buttonRem" id="buttonRem" ng-click="parterMsgRemove()"> Remove </a> 
-								<a href="createincresponse.jsp#popupresponseinc" class="buttonImp" id="buttonImp" ng-click="parterMsgAdd()"> Add </a>	
+								<a href="createincresponse.jsp#popupresponseinc" class="buttonRem" id="buttonRem" ng-click="parterMsgRemove()" style="text-decoration:none;"> Remove </a> 
+								<a href="createincresponse.jsp#popupresponseinc" class="buttonImp" id="buttonImp" ng-click="parterMsgAdd()" style="text-decoration:none;"> Add </a>	
 							</td>
 						</tr>
 				 </table>			
 				<p>LTA Vechicles</p>
 				<table width="100%" class="tablevms">  
 						<tr>
-							<th align="left"><h6> Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </h6></th>
-							<th align="left"><h6> Vehicle No. </h6></th>
-							<th align="left"><h6> Parking Address</h6></th>
-							<th align="left"><h6> Parking Lot No.</h6></th>	
-							<th align="left"><h6> Notify Time </h6></th>								
+							<th align="left" style="padding:5px;"> Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4;"></i></th>
+							<th align="left"> Vehicle No. </th>
+							<th align="left"> Parking Address</th>
+							<th align="left"> Parking Lot No.</th>	
+							<th align="left"> Notify Time </th>								
 						</tr>	
 				
 						<tr>
 							<td>
-							<select name="item2" ng-model="partnerType" >
+							<select name="item4" ng-model="partnerType3" >
 								<option value="Tower1" >Tower1</option>
 								<option value="Tower1">Tower2</option>
 								<option value="Tower3">Tower3</option>
@@ -285,23 +345,25 @@ $(document).ready(function(){
 						</tr>
 						<tr>
 							<td>
-							<select name="item2" ng-model="partnerType" >
+							<select name="item5" ng-model="partnerType4">
 								<option value="Tower1" >Tower1</option>
 								<option value="Tower1">Tower2</option>
 								<option value="Tower3">Tower3</option>
 							</select>
+							
 							</td>
 							<td><input type="text" ng-click="" ng-model="partnerVehNo" placeholder="RX23293"></td>
-							<td><input type="text" ng-click="" ng-model="partnerNotiTime" placeholder="Ang mo kio Street 3"></td>
-							<td><input type="text" ng-click="" ng-model="partnerArrTime" placeholder="45"></td>
+							<td><input type="text" ng-click="" ng-model="partnerNotiTime" placeholder="Bedok AVe 3"></td>
+							<td><input type="text" ng-click="" ng-model="partnerArrTime" placeholder="46"></td>
 							<td><input type="text" ng-click="" ng-model="partnerDepatTime" placeholder="1/24/2018 16:00"></td>
-						</tr>							
+						</tr>
+					
 					</table>
 					<table width="100%"> 
 						<tr>
 							<td align="right">
-								<a href="createincresponse.jsp#popupresponseinc" class="buttonRem" id="buttonRem" ng-click="parterMsgRemove()"> Remove </a> 
-								<a href="createincresponse.jsp#popupresponseinc" class="buttonImp" id="buttonImp" ng-click="parterMsgAdd()"> Add </a>	
+								<a href="createincresponse.jsp#popupresponseinc" class="buttonRem" id="buttonRem" ng-click="parterMsgRemove()" style="text-decoration:none;"> Remove </a> 
+								<a href="createincresponse.jsp#popupresponseinc" class="buttonImp" id="buttonImp" ng-click="parterMsgAdd()" style="text-decoration:none;"> Add </a>	
 							</td>
 						</tr>
 				 </table>
@@ -310,18 +372,19 @@ $(document).ready(function(){
         </div>
      </div>
 </div>
-		  
-		  
+		  	  
 		  </td>
         </tr>
       </table>
 	 </div>
-	<div align="right"><a href="createinc.jsp" class="buttonCreateMrtInc"  ng-click="addincident()"> Save </a></div>
+
+
+	
+	<div align="right"><a href="createinc.jsp" class="buttonCreateMrtInc" ng-click="addmrtincident()" style="text-decoration:none;"> SAVE </a></div>
     </div>
   </div>
   
 </div>
-
 
 
   </div>

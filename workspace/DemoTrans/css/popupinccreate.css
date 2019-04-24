@@ -1,7 +1,5 @@
 body {
   font-family: Roboto, Helvetica, sans-serif;
- }
-body {
   background-image: url("roadmap.jpg");
   background-size: cover;
 }
@@ -13,17 +11,17 @@ h1 {
 }
 
 .buttonCreateMrtInc {
-  background-color: #6D5BFF; 
+  background: linear-gradient(112.52deg, #565EB9 0%, #9A81FD 100%);
+  border-radius: 6px;
   border: none;
   color: white;
   padding: 8px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 18px;
+  font-size: 19px;
   margin: 4px 1px;
   cursor: pointer;
-  border-radius: 5px/5px;
 }
 
 .overlay {
@@ -53,28 +51,36 @@ h1 {
   position: relative;
 }*/
 
+h2t {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 26px;
+  font-family: Roboto, Helvetica, sans-serif;
+}
 .popup {
-  margin: 5px auto;
+  margin: auto;
   padding: 8px;
   background: #202B53;
-  border-radius: 5px;
   position: fixed;
-  width: 40%;
-  height: 90%;
-  right: 15px;
+  width: 35%;
+  height: 90% !important;
+  right: 2px;
   z-index: 9;
   
 }
 
 .popup .content {
-  max-height: 90%;
+  /*height: auto;*/
+  /*max-height: 95%;*/
+  height: 90% !important;
   color: #C8CFF4;
-  font-size: 15px;
+  font-size: 12px;
+  font-family: Roboto, Helvetica, sans-serif;
 }
 .popup h4 {
   margin-top: 0;
   color: #C8CFF4;
-    font-size: 18px;
+  font-size: 18px;
   font-family: Roboto, Helvetica, sans-serif;
 }
 
@@ -92,18 +98,34 @@ h1 {
   font-family:  Roboto, Helvetica, sans-serif;
 }
 
-.popup input {
+.popup h3a {
+  margin-top: 0;
+  color: #4dd2ff;
+  font-size: 20px;
+  font-family:  Roboto, Helvetica, sans-serif;
+}
 
+.popup h3b {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 20px;
+  font-family:  Roboto, Helvetica, sans-serif;
+}
+
+.popup input {
   font-family: Roboto, Helvetica, sans-serif;
   border : none;
-  width: 250px; height: 30px; padding: 4px; background-color:#283D76; color:#C8CFF4;
+  width: 187.81px; height: 23px; padding: 4px; background-color: #37478A; color:#C8CFF4;
+  border-radius: 10px;
+  
 }
 .popup select {
   /* width: 80%; */
   padding: 5px 5px;
   font-family: Roboto, Helvetica, sans-serif;
   border : none;
-  width: 250px; height: 30px; padding: 4px; background-color:#283D76; color:#C8CFF4;
+  width: 187.81px; height: 23px; padding: 4px; background-color:#283D76; color:#C8CFF4;
+  border-radius: 10px;
 }
 
 .popup .close {
@@ -150,12 +172,56 @@ h1 {
 
 div.incscroll {
      /* width:790px; */
-      overflow-y:scroll;
-	  overflow-x: hidden;
-      height:550px;
+      overflow-y:auto;
+	  overflow-x: auto;
+	  height: 90% !important;
+	  
+}
+
+#incdetailtbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#incdetailtbl td, #incdetailtbl th {
+  padding: 10px;
+  color: #C8CFF4; 
+  font-size: 13px;
+  width: 25% ;
+}
+
+.textareaincomments { 
+ font-size: 1em;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: #37478A;
+ border-radius: 10px;
+ border: none;
+}
+
+#inctitletbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#inctitletbl td, #inctitletbl tr {
+  padding: 6px;
+  color: #C8CFF4; 
+  width:2100px ;
+  height:60px ;
+  background-color: #161F37; 
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);
+  padding:15px 15px;
+}
+
+#incblocktbl {
+  border-collapse: collapse;
+}
+
+#incblocktbl td, #incblocktbl th {
+  padding: 3px;
+  color: #C8CFF4; 
 }
 
 
-table td{
-	padding:6px;
-}

@@ -1,0 +1,29 @@
+{
+  "mapdata": [
+    {
+      "strid" : "21",
+      "latitute": "1.290970",
+      "longitude": "103.844490",
+      "ewayname": "SWISS CLUB ROAD",
+      "directiondesc": "Away from W'lands/Bt Timah",
+      "location": "Arterial Road"
+    },
+    {
+      "strid" : "22",
+      "latitute": "1.389860",
+      "longitude": "103.863240",
+      "ewayname": "YIO CHU KANG ROAD",
+      "directiondesc": "towards Upp Thomson/Thomson",
+      "location": "Emas Arterial"
+    },
+    {
+      "strid" : "23",
+      "latitute": "1.412380",
+      "longitude": "103.788391",
+      "ewayname": "MANDAI ROAD",
+      "directiondesc": "Towards W'lands/Bt Timah",
+      "location": "Expressway"
+    }
+  ]
+}
+

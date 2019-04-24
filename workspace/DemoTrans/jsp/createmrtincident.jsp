@@ -4,8 +4,8 @@
   <head>
     <link rel="stylesheet" href="bootstrap.min.css">
 	 <link rel="stylesheet" href="popupmrtinccreate.css">
+	 <link rel="stylesheet" href="checkboxstyle1.css">
 	  <link rel="stylesheet" href="selectimagestyle.css">
-	  <link rel="stylesheet" href="checkboxstyle.css">
 	   <link rel="stylesheet" href="dropdownlistStylePopup.css">
 	  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	  
@@ -35,11 +35,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
-
-
-
-
-
+/* toggle plus and Minus background color*/
+.panel-heading.active {
+    background-color: #202B53;
+  /* color: #C8CFF4;   
+    border : none;*/ 
+}
+.panel-title { 
+ font-size: 16px;
+  padding-bottom:6px;
+}
+.panel-body {
+    background-color: #202B53;
+    color: #C8CFF4; 
+    font-size: 12px;
+}
+.panel, .panel-group .panel-heading+.panel-collapse>.panel-body{
+    border: none;
+}
+.glyphicon {
+    font-size: 10px;
+}
+.panel-title{
+  border: solid #37478A;
+  /*border-style: solid; */
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 3px;
+}
+/* toggle plus and Minus */
 </style>
 	
 </head>
@@ -56,26 +81,44 @@
 <br>
 <br>
 <div id="popupmrtinccreate" class="overlay">
+  <table id="inctitletbl">
+  	<tr>
+		<td> <h2t>MRT IR </h2t></td>
+	</tr>
+	</table>
   <div class="popup">
     <div class="content">
-	<table width="100%"><tr>
-		<td><h4>Create </h4></td>
+	<table width="100%" id="incdetailtbl">
+		<tr>
+		<td><h3a>CREATE </h3a></td>
 		<td>   <div align='right'> 
-		<a href="createmrtinc.jsp" class="closebtn" ng-click="showincidentlist()"><i class="fa fa-close"></i></a> 
+		<a href="createmrtinc.jsp" class="closebtn" ng-click="showincidentlist()" style="text-decoration:none;"><i class="fa fa-close"></i></a> 
      	</div> </td>
-	</tr>
-	<tr>
-		<td><h2> Incident</h2></td>
-		<td> </td>
-	</tr>
+		</tr>
 	</table>   
-		 <hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
+		 
 	<div class='mrtincscroll'>
-      <table width="100%">
+	
+	<table width="100%">
         <tr>
-          <td colspan="3">
-            <h3>Status</h3> 
-              <select ng-model="irstatus">
+          <td>
+	<div class="panel-group" id="accordion2">
+		 <div class="panel panel-default">
+	    	<div class="panel-heading active">
+	        	<h4 class="panel-title">
+	                 Incident <span data-target="#Collapseicon1" data-toggle="collapse" data-parent="#accordion2"> </span>
+	            </h4>
+	           <!-- <img src="horibar.JPG" height="auto" > -->
+	        </div>
+	        
+	        <div class="panel-collapse collapse in" id="Collapseicon1">
+	        	<div class="panel-body">
+<table width="100%" id="mrtdetailtbl">
+        <tr>
+          <td>
+          
+            Status: <br>
+              <select ng-model="irstatus" style="font-size: 15px; height: 25px; ">
 					<option  value="" selected="selected" hidden="hidden">Choose here</option>
 					<option value="Confirmed">Confirmed</option>
 					<option value="Over">Over</option>
@@ -84,7 +127,7 @@
 					<option value="Other">Other</option>
 				</select>
           </td>
-          <td colspan="3"> <h3>Source </h3>
+          <td> Source <br>
               <select ng-model="irsource">
 			  <option  value="" selected="selected" hidden="hidden">Choose here</option>
 					<option value="ERS">ERS</option>
@@ -94,16 +137,16 @@
           </td>
         </tr>
         <tr>
-          <td colspan="3">
-           <h3>Start Time</h3>
+          <td>
+           Start Time:
 		
 			<div style="width: 150px;">
 				<div id="picker"> </div>
 					<input type="text" placeholder="Start Time"  ng-model="irstarttime"/>
 			</div>			
           </td>
-          <td colspan="3">
-            <h3>End Time </h3>
+          <td>
+            End Time: 
          
 			<div style="width: 150px;">
 				<div id="picker1"> </div>
@@ -111,133 +154,141 @@
 			</div>			
           </td>
         </tr>
-
-		<tr>
-          <td colspan="6">
-		   <br><hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
-          </td>
-        </tr>
-		
-		<tr>
-					<td colspan="3">
-						<h3>MRT / LRT Line</h3> 
-					</td>
-					<td colspan="3">
-						<h3>Both Direction </h3>
-					</td>						
-				</tr>
 				
-				<tr>
-					<td colspan="3">
-						<select ng-model="direction" class="selectcls">
-							<option  value="" selected="selected" hidden="hidden">Choose here</option>
-							<option value="ewline">East West Line</option>
-							<option value="nsline">North South Line</option>
-							<option value="neline">North East LIne</option>
-							<option value="cline">Circle Line</option>
-							<option value="dline">Downtown Line</option>
-						</select>
-						
+         </table>
 
-					</td>
-					<td colspan="3" align="left">
-								  
-									<input id="checkbox-1" class="checkbox-custom" name="checkbox-10" type="checkbox">		<label for="checkbox-1" class="checkbox-custom-label"></label>
-															
-					</td>
-				</tr>
+	            </div>
+	        </div>
+	     </div>
+	     
+	     <div class="panel panel-default">
+	    	<div class="panel-heading active">
+	        	<h4 class="panel-title">
+	                  <span data-target="#Collapseicon2" data-toggle="collapse" data-parent="#accordion2"> </span>
+	            </h4>
+	           <!-- <img src="horibar.JPG" height="auto" > -->
+	        </div>
+	        
+	        <div class="panel-collapse collapse in" id="Collapseicon2">
+	        	<div class="panel-body">
+		         <table width="100%" id="mrtdetailtbl"> 
 				<tr>
-					<td colspan="3">
-						<h3>Start Station</h3>
+					<td>
+						MRT / LRT Line <br>
+						 <select ng-model="direction" class="selectcls" ng-options="o as o for o in stations" ng-change="mrtlinesel()">
+							 <option value=""  selected="selected">{{mrtlsselected}}</option>
+    					 </select>
 					</td>
-					<td colspan="3">
-						<h3>End Station</h3>
+					<td >
+						Both Direction:	 <br>										
+						<label class="contentlabel">
+						  <input type="checkbox">
+						  <span class="checkmark"></span>
+						</label>
+					</td>
+				</tr>				
+				<tr>
+						<td>
+						Start Station: <br>
+					 <select ng-model="startstation" class="selectcls" ng-options="o as o for o in mrtline">
+						 <option value=""  selected="selected">{{mrtsselected}}</option>
+    				 </select>
+					</td>
+					<td >
+						End Station: <br>
+					 <select ng-model="endstation" class="selectcls" ng-options="o as o for o in mrtlinend">
+					 	<option value=""  selected="selected">{{mrteselected}}</option>
+    				 </select>
 					</td>					
 				</tr>
-				<tr>
-					<td colspan="3">
-						<select ng-model="startstation" class="selectcls">
-							<option  value="" selected="selected" hidden="hidden">Choose here</option>
-							<option value="ns1">NS1-Jurong East</option>
-							<option value="ns28">NS28-Marina South Pier</option>
-							<option value="ne1">NE1-HarbourFront</option>
-							<option value="ne17">NE17-Punggol</option>
-							<option value="cc1">CC1-Dhoby Ghaut</option>
-							<option value="cc29">CC29-HarbourFront</option>
-							<option value="dt1">DT1-Bukit Panjang</option>
-							<option value="dt32">DT32-Expo</option>
-						</select>
-					</td colspan="3"> 
-					<td>
-						<select ng-model="endstation" class="selectcls">
-							<option  value="" selected="selected" hidden="hidden">Choose here</option>
-							<option value="ns1">NS1-Jurong East</option>
-							<option value="ns28">NS28-Marina South Pier</option>
-							<option value="ne1">NE1-HarbourFront</option>
-							<option value="ne17">NE17-Punggol</option>
-							<option value="cc1">CC1-Dhoby Ghaut</option>
-							<option value="cc29">CC29-HarbourFront</option>
-							<option value="dt1">DT1-Bukit Panjang</option>
-							<option value="dt32">DT32-Expo</option>
-						</select>
-
-					</td>
-					
-				</tr>
-		
-		
-		<tr>
-          <td colspan="6">
-		   <br><hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
-          </td>
-        </tr>
-		<tr>
-          <td colspan="3">
-            <input id="checkbox-1" class="checkbox-custom" name="checkbox-1" type="checkbox">
-			<label for="checkbox-1" class="checkbox-custom-label">Simulated 34 </label> 
-           </td>
-          <td colspan="3"> 
-			<input id="checkbox-2" class="checkbox-custom" name="checkbox-2" type="checkbox">
-			<label for="checkbox-2" class="checkbox-custom-label">Important</label> 
-          </td>
-        </tr>
-		<tr>
-          <td colspan="3">
-          	<input id="checkbox-3" class="checkbox-custom" name="checkbox-3" type="checkbox">
-			<label for="checkbox-3" class="checkbox-custom-label">VRS</label> 
-          </td>
-          <td colspan="3"> 
-		    <input id="checkbox-4" class="checkbox-custom" name="checkbox-4" type="checkbox">
-			<label for="checkbox-4" class="checkbox-custom-label">LTM</label> 
-          </td>
-        </tr>
-		<tr>
-          <td colspan="6">
-		   <br><hr color = "#C8CFF4"  style="padding:0px; margin:0px;">
-          </td>
-        </tr>
-		<tr>
-          <td colspan="6">
-		   <h3>Alarms / Alerts</h3>
-          </td>
-        </tr>
-		<tr>
-          <td colspan="6">
-		     <input type="text"  placeholder="Alert" ng-model="irimgcap">
-          </td>
-        </tr>
-      </table>
-	  
-	  			<table width="100%"><tr>
-		<td> <div align='right'>  
-     	<a href="createmrtincidentresponse.jsp#popupmrtresponse" class="buttonCreateMrtInc"  ng-click="addincident()"> Create </a>
-		<!-- <a href="#popup" class="button1a" id="button1a"  ng-click="showincidentlist()"> Close</a>  -->
-     	</div> </td>
-	</tr></table> 
+         	</table>
+	            </div>
+	        </div>
+	     </div>
+	     
+	     	<div class="panel panel-default">
+	    	<div class="panel-heading active">
+	        	<h4 class="panel-title">
+	                  <span data-target="#Collapseicon3" data-toggle="collapse" data-parent="#accordion2"> </span>
+	            </h4>
+	           <!-- <img src="horibar.JPG" height="auto" > -->
+	        </div>
+	        
+	        <div class="panel-collapse collapse in" id="Collapseicon3">
+	        	<div class="panel-body">
+					           <table width="50%" id="incblocktbl">
+						<tr>
+				          <td>          
+				          	<label class="contentlabel"> Simulated 
+							  <input type="checkbox">
+							  <span class="checkmark" size=""></span>
+							</label>
+							</td>
+							<td>
+							<label class="contentlabel"> Important 
+							  <input type="checkbox">
+							  <span class="checkmark"></span>
+							</label>
+				           </td>
+				           </tr>
+				           <tr>
+				          <td>
+				             <label class="contentlabel"> VRS 
+							  <input type="checkbox">
+							  <span class="checkmark"></span>
+							</label>
+							</td>
+							<td>
+							<label class="contentlabel"> LTM
+							  <input type="checkbox" >
+							  <span class="checkmark"></span>
+							</label>
+				          </td>
+				        </tr>      
+				        </table>
+	            </div>
+	        </div>
+	     </div>
+	     
+	     <div class="panel panel-default">
+	    	<div class="panel-heading active">
+	        	<h4 class="panel-title">
+	                  <span data-target="#Collapseicon4" data-toggle="collapse" data-parent="#accordion2"> </span>
+	            </h4>
+	           <!-- <img src="horibar.JPG" height="auto" > -->
+	        </div>
+	        
+	        <div class="panel-collapse collapse in" id="Collapseicon4">
+	        	<div class="panel-body">
+			        <table width="100%"  id="mrtdetailtbl">
+					<tr>
+			          <td>
+					   <h3b> Alarms / Alerts</h3b> 
+			          </td>
+			        </tr>
+					<tr>
+			          <td>
+					     <font style="color:green"><input type="text" style="width:350.81px;" placeholder="Alert" ng-model="irimgcap"></font>
+			          </td>
+			        </tr>
+			      </table>
+	            </div>
+	        </div>
+	     </div>
+	 </div>
+	 </td></tr>
+	 </table>
+	 
 	  </div>
 	  
-
-
+	  <table width="100%">
+		  	<tr>
+			<td> <div align='right'>  
+	     	<a href="createmrtincidentresponse.jsp#popupmrtresponse" class="buttonCreateMrtInc"  ng-click="addincident()" style="text-decoration:none;"> CREATE </a>
+			<!-- <a href="#popup" class="button1a" id="button1a"  ng-click="showincidentlist()"> Close</a>  -->
+	     	</div> </td>
+	     	</tr>
+		</table> 
     </div>
   </div>
 </div>

@@ -48,6 +48,10 @@
                         <filtering>false</filtering>
                     </resource>
                     <resource>
+                        <directory>arcgis_js_v328_api/3.28</directory>
+                        <filtering>false</filtering>
+                    </resource> 
+                    <resource>
                     	<directory>js</directory>
                         <filtering>false</filtering>
                     </resource>
