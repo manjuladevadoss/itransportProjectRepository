@@ -1,5 +1,5 @@
 var app = angular.module('ltaApp', []);
-	  app.controller('ltaController', function($scope, $http, $filter, $interval) {
+	  app.controller('ltaController', function($scope, $http, $filter, $interval, $window) {
     
 	//get the json object using $http get method() incident record	  
     $http.get("incidentRecord.json").then(function(response) {
@@ -127,7 +127,50 @@ var app = angular.module('ltaApp', []);
     
     
     
-    ///
+    ///MRT Incident Creation form Detail
+	$scope.mrtincflag = true;
+	$scope.mrtinccreateflag = false;	
+	$scope.mrtincalrmalert = "Complete Control Command 2564";
+	$scope.mrtStatusList = [{
+		"mrtstaid": 1,
+		"name": "Confirmed"
+		}, {
+		"mrtstaid": 2,
+		"name": "Over"
+		}, {
+		"mrtstaid": 3,
+		"name": "In Progress"
+		}, {
+		"mrtstaid": 4,
+		"name": "Notified"
+		}, {
+		"mrtstaid": 5,
+		"name": "Other"
+		}];
+	$scope.mrtStatus = "4";
+	
+		$scope.mrtSourceList = [{
+		"mrtsouid": 1,
+		"name": "ERS"
+		}, {
+		"mrtsouid": 2,
+		"name": "JEYE"
+		}, {
+		"mrtsouid": 3,
+		"name": "Other"
+		}, {
+		"mrtsouid": 4,
+		"name": "Source 1"
+		}, {
+		"mrtsouid": 5,
+		"name": "Source 2"
+		}];
+	$scope.mrtSource = "3";
+
+	 ///eND OF MRT Incident Creation form Detail
+
+
+	
     $scope.searchIncident = "";
 	$scope.showList=true;
     $scope.createbuttonshow=true;
@@ -169,16 +212,8 @@ var app = angular.module('ltaApp', []);
       });
    
    //create New IR 
-   $scope.createFlag = true;
-   $scope.responseFlag = false;
     $scope.addincident = function(){
-   //   $scope.showList = true;
-     // $scope.createbuttonshow=false;
-      $scope.responseFlag = true;
-	  $scope.createFlag = false;
-	  alert(" $scope.responseFlag : " + $scope.responseFlag);
-	  alert(" $scope.createFlag : " + $scope.createFlag);
-	  $scope.irid =  irid + 1;
+     $scope.irid =  irid + 1;
 	  irid = $scope.irid
     	  
       console.log("irid : " + $scope.irid);
@@ -213,10 +248,6 @@ var app = angular.module('ltaApp', []);
       
     };
 	
-	$scope.callmrtircreate= function(){
-	  $scope.responseFlag = false;
-	  $scope.createFlag = true;
-    }
     
     $scope.hideincidentlist = function(){
     	 $scope.showList=true;
@@ -244,36 +275,7 @@ var app = angular.module('ltaApp', []);
 		 console.log("after text" + expression);
     };
 	
-	//VMS Removed Message 
-	$scope.obuMsg = "Message to be displayed on OBU";
-	$scope.vmsMsgStatus = "Not Active";
-	$scope.vmsMsgRemoved = function(){
-		 console.log("Before vmsMsgRemoved : " + $scope.vmsMsgStatus);
-		$scope.vmsMsgStatus = "Failed";
-		 console.log("vmsMsgRemoved : " + $scope.vmsMsgStatus);
-	};
-    
-	//VMS Implementation Message 
-	$scope.vmsMsgImpl = function(){
-		console.log("Before vmsMsgStatus : " + $scope.vmsMsgStatus);
-		$scope.vmsMsgStatus = "Implemented";	
-		console.log("vmsMsgStatus : " + $scope.vmsMsgStatus);
-	};
-    
 	
-	//OBU Deactivate Message 
-	$scope.obuMsgStatus = "Not Active";
-	$scope.obuMsgdeact = function(){
-		 console.log("Before obuMsgdeact : " + $scope.obuMsgStatus);
-		$scope.obuMsgStatus = "Failed";
-		 console.log("obuMsgdeact : " + $scope.obuMsgStatus);
-	};
-	//OBU Deactivate Message 
-	$scope.obuMsgImpl = function(){
-		 console.log("Before obuMsgImpl : " + $scope.obuMsgStatus);
-		$scope.obuMsgStatus = "Implemented";
-		 console.log("obuMsgdeact : " + $scope.obuMsgStatus);
-	};
 	
 	
 	//get the json object using $http get method() Event 	  
@@ -304,16 +306,105 @@ var app = angular.module('ltaApp', []);
       }); 
       $scope.searchEvent ="";
     
-      //Create New Event
+      
+      // ******** New Event Creation and response part
+      
+  	$scope.eventypeList = [{
+		"eventypeid": 1,
+		"name": "F1"
+		}, {
+		"eventypeid": 2,
+		"name": "Concert"
+		}, {
+		"mrtstaid": 3,
+		"name": "In Summit"
+		}, {
+		"eventypeid": 4,
+		"name": "Other"
+		}];
+  		$scope.eventype = "4";
+	
+     
+      $scope.eventname = "Asia Communication Awards"
+      $scope.eventorganizer = "Terrapinn Pte Ltd, Singapore"
+      $scope.eventsupp =  "OnnoRokom Group"
+      $scope.eventowner = "Global Telecommunications Industry"
       $scope.eventstarttime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
       $scope.eventendtime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
-      $scope.addevent = function(){       	  
-          console.log("eventype : " + $scope.eventype);
-          console.log("eventname: " + $scope.eventname);
-          console.log("eventstarttime: " + $scope.eventstarttime);
-          console.log("eventendtime: " + $scope.eventendtime);
-          console.log("eventlocation: " + $scope.eventlocation);
-          console.log("eventstatus: " + $scope.eventstatus);
+
+      $scope.eventspec = "Asian carriers, service providers, operators, and vendors";
+      $scope.eventhotlineope= "0264653";
+      $scope.eventhotlineclo= "2646512";
+      $scope.eventincharge= "Hein ";
+      $scope.eventpostno= "604521";
+      $scope.eventbubbleposi= "12,10";
+      $scope.eventbubblesize= "500";
+      $scope.eventroadname= "Serangoon Ave 2";
+      $scope.eventstarttimecl= $scope.eventstarttime;
+      $scope.eventendtimecl= $scope.eventendtime;
+      
+      $scope.eventVmsMsg = "Massive Jam Around Marian Center";
+      $scope.eventVmsdisplaytime = "10.00am:1.00pm"
+      $scope.eventvmseqipid = "TIP 568231";
+      
+      $scope.eventVmsMsg1 = "Road Closed at Marina Ctr To Shenton Way - Use Nth Bridge Rd or Victoria St";
+      $scope.eventVmsdisplaytime1 = "09.00am:2.00pm"
+      $scope.eventvmseqipid1 = "TIP 568231";
+      $scope.eventcanningMsg = "This road has heavy traffic, please Note."
+      
+    	//VMS Removed Message 
+    		$scope.eventObuMsgAlert = "Road closure at Marian Centre";
+    		$scope.eventObuMsgAlertkm = "1.2"
+    			
+    		$scope.eventObuMsgJam = "Heavy Traffic Jam in Marian Centre";
+    		$scope.eventObuMsgJamkm = "1.2"
+    		
+    		$scope.eventObuMsgGuide = "Pls use Public tpt";
+    		$scope.eventObuMsgGuidekm = "1.2"
+    				
+    		
+    		$scope.vmsMsgStatus = "Not Active";
+    		$scope.vmsMsgRemoved = function(){
+    			 console.log("Before vmsMsgRemoved : " + $scope.vmsMsgStatus);
+    			$scope.vmsMsgStatus = "Failed";
+    			 console.log("vmsMsgRemoved : " + $scope.vmsMsgStatus);
+    		};
+    	    
+    		//VMS Implementation Message 
+    		$scope.vmsMsgImpl = function(){
+    			console.log("Before vmsMsgStatus : " + $scope.vmsMsgStatus);
+    			$scope.vmsMsgStatus = "Implemented";	
+    			console.log("vmsMsgStatus : " + $scope.vmsMsgStatus);
+    		};
+    	    
+    		
+    		//OBU Deactivate Message 
+    		$scope.obuMsgStatus = "Not Active";
+    		$scope.obuMsgdeact = function(){
+    			 console.log("Before obuMsgdeact : " + $scope.obuMsgStatus);
+    			$scope.obuMsgStatus = "Failed";
+    			 console.log("obuMsgdeact : " + $scope.obuMsgStatus);
+    		};
+    		//OBU Deactivate Message 
+    		$scope.obuMsgImpl = function(){
+    			 console.log("Before obuMsgImpl : " + $scope.obuMsgStatus);
+    			$scope.obuMsgStatus = "Implemented";
+    			 console.log("obuMsgdeact : " + $scope.obuMsgStatus);
+    		};    	  
+	
+    		$scope.eventNotes = "Awards Function";
+    		$scope.eventNotesAuthor = "Aathor"; 
+    		
+    		$scope.eventDeleteNotes = function(){
+    			$scope.eventNotes = "";
+    			$scope.eventNotesAuthor = "";
+    		}
+    		
+    		$scope.eventAddNewNotes = function() {
+    			
+    		}
+    	  // Adding new event    	    
+          $scope.addevent = function() {       	  
           $scope.eventlocation = "Expo";
           $scope.eventstatus = "PLANNING";
           
@@ -365,6 +456,21 @@ var app = angular.module('ltaApp', []);
    	   $scope.eventypeselected = $scope.eventype ;
    	   console.log("event type selected : " + $scope.eventypeselected);
      }
+      
+      $scope.showeventcreateFlag = true;
+      $scope.showeventresFlag = false;
+      $scope.calleventresponse = function() {
+    	$scope.showeventcreateFlag = false;
+    	$scope.showeventresFlag = true ;
+      }
+
+      $scope.calleventcreate = function() {
+    	$scope.showeventcreateFlag = true;
+    	$scope.showeventresFlag = false ;
+      } 
+      
+   // ********End of New Event Creation and response part  
+      
       
       //different windows display - in 3 panels
       $scope.threepanel = function(){
@@ -530,12 +636,39 @@ var app = angular.module('ltaApp', []);
     	$scope.mrteselected = $scope.endstation;
     };
     
-    $scope.createmrtinc = function($scope) { 
-    	$scope.mrteselected = $scope.endstation;
+    $scope.createmrtinc = function() { 
+		$scope.mrtincflag = false;
+		$scope.mrtinccreateflag = true;
+		$scope.mrteselected = $scope.endstation;
     	$scope.mrtsselected = $scope.startstation;
-    	$scope.mrtlsselected = $scope.direction;
+    	$scope.mrtdirselected = $scope.direction;
+    	console.log(" $scope.mrteselected " + $scope.mrteselected );
+    	console.log(" $scope.mrteselected " + $scope.mrtsselected );
+    	console.log(" $scope.mrteselected " + $scope.mrtdirselected );
+		
+		//var host1 = $window.location.host;
+		//alert("host : " + host);
+        //var landingUrl = "createmrtincwin.jsp";
+        //alert("landingUrl : " + landingUrl);
+        //$window.location.href = landingUrl;
     }
     
+	$scope.addmrtincident = function() { 
+	 alert("MrtStatus  " + $scope.mrtStatus +
+	"MrtSource " + $scope.mrtSource +
+" $scope.irstarttime : " + $scope.irstarttime +
+" $scope.irendtime : "  + $scope.irendtime + 
+" $scope.direction : "  + $scope.direction  +
+" $scope.bothdir : "  + $scope.bothdir + 
+" $scope.startstation : "  + $scope.startstation +
+" $scope.endstation : "  + $scope.endstation +
+" $scope.mrtsimu : "  + $scope.mrtsimu +
+" $scope.mrtimpo : "  + $scope.mrtimpo +
+" $scope.mrtvrs : "  + $scope.mrtvrs +
+" $scope.mrtltm : "  + $scope.mrtltm +
+" $scope.mrtincalrmalert : "  + $scope.mrtincalrmalert);
+	 
+	}
     
     $scope.showircreate = true;
     $scope.showirresponse = false;

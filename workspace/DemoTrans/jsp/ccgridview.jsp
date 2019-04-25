@@ -117,14 +117,11 @@ h11 {
 							<h5>EVENTS </h5> 
 						</td>
 						<td width="50%" align="center">
-							<a href="createvent.jsp#createventpopup"  style="text-decoration:none;"> <h11>Click Here to New Event </h11></a>
+							<a href="createventwin.jsp"  style="text-decoration:none;"> <h11>Click Here to New Event </h11></a>
 						</td>
 					</tr>
 				</table> 	
 				</div>
-					
-				
-				
 			 </td>
 			<!--  <td> <a href="createinc.jsp#popup" style="text-decoration:none;"> <font Color="#4dd2ff"> Click here to Incident </font> </a> </td>  -->
 				<td align='right'>

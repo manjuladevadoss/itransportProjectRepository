@@ -10,7 +10,7 @@
                          SimpleFillSymbol, CartographicLineSymbol, 
                         Graphic, Color, dom, on) {
         map = new Map("mapDiv", {
-          basemap: "streets-night-vector",  //For full list of pre-defined basemaps, navigate to http://arcg.is/1JVo6Wd
+          basemap: "dark-gray-vector",  //For full list of pre-defined basemaps, navigate to http://arcg.is/1JVo6Wd
           center: [103.856, 1.334], // longitude, latitude
           zoom: 14
         });
@@ -78,3 +78,86 @@
           map.graphics.add(new Graphic(evt.geometry, symbol));
         }
       });
+        
+        
+//Div message display on the map
+//Make the DIV element draggagle:
+        
+window.onload = hideVmsMsgDiv;
+        
+function hideVmsMsgDiv() {
+	var x = document.getElementById("vmsmsgdiv");
+	var x1 = document.getElementById("vmsmsgdiv1");
+	x.style.display = "none";  
+	x1.style.display = "none";
+}
+
+
+ 
+function showmsg(x) {
+	// First vms message
+	if(x==1) {
+		  var x = document.getElementById("vmsmsgdiv");
+		  // To make visible the div
+		  if (x.style.display === "none") {
+			 dragElement(document.getElementById("vmsmsgdiv"));  
+			 x.style.display = "block";
+		  } else {
+		     x.style.display = "none";    
+		  } 
+	}
+	// Second vms message
+	if(x==2) {
+		  var x = document.getElementById("vmsmsgdiv1");
+		  // To make visible the div
+		  if (x.style.display === "none") {
+			 dragElement(document.getElementById("vmsmsgdiv1"));  
+			 x.style.display = "block";
+		  } else {
+		     x.style.display = "none";    
+		  } 		
+	}
+}
+   
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}     
+//end of div message display on the map     
+  

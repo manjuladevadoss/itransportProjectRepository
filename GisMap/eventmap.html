@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
     <title>Event Map</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/3.28/dijit/themes/claro/claro.css">
     <link rel="stylesheet" href="https://js.arcgis.com/3.28/esri/css/esri.css">
     <link rel="stylesheet" href="C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/eventmap.css">
  
@@ -15,7 +16,7 @@
   </head>
 
     
-  <body>
+  <body  class="claro">
         <div id="info1">
             
           <button id="Circle" class="buttoneventbub"> + Add Event Bubble</button>  
@@ -23,7 +24,16 @@
       <div id="info2">
         <button id="Line"  class="buttoneventclo"> + Add Road Closure</button>
       </div>
-        <div id="mapDiv"></div>
+        <div id="mapDiv">
+          <div id="bottomPanel">
+            <div id="timeInfo">
+              <!--<div>Hugoton Gas Field Wells from <span id="daterange">1921 to 2009</span> (Completion date)</div>-->
+              <div id="timeSliderDiv"></div>
+            </div>
+          </div>
+
+
+        </div>
     
       </body>
 </html>
