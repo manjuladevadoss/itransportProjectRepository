@@ -1,0 +1,27 @@
+{
+  "iraccvms": [
+    {
+      "irvmsstatus": "Failed",
+      "irvmsequipid": "54862",
+      "irvmsaccmsg": "Massive Jam to Mandai"
+    },
+    {
+      "irvmsstatus": "Not Active",
+      "irvmsequipid": "98545",
+      "irvmsaccmsg": "Heavy Traffic Upp Thomson"
+    },
+    {
+      "irvmsstatus": "Implemented",
+      "irvmsequipid": "62512",
+      "irvmsaccmsg": "Massive Yio Chu Kang"
+    },
+    {
+      "irvmsstatus": "Failed",
+      "irvmsequipid": "68457",
+      "irvmsaccmsg": "Massive Yio Chu Kang"
+    }
+  ]
+}
+
+
+

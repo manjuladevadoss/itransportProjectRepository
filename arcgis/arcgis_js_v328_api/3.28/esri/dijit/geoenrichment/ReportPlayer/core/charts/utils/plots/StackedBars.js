@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+//>>built
+define("esri/dijit/geoenrichment/ReportPlayer/core/charts/utils/plots/StackedBars",["dojo/_base/declare","dojo/_base/lang","dojox/charting/plot2d/commonStacked","./ClusteredBars"],function(h,k,d,l){return h(l,{getSeriesStats:function(){var a=d.collectStats(this.series,k.hitch(this,"isNullValue")),c;a.hmin-=.5;a.hmax+=.5;c=a.hmin;a.hmin=a.vmin;a.vmin=c;c=a.hmax;a.hmax=a.vmax;a.vmax=c;return a},rearrangeValues:function(a,c,b){return d.rearrangeValues.call(this,a,c,b)},_drawBarBackground:function(a,
+c,b,d,g,e,f,h){this.series.indexOf(f)===this.series.length-1&&this.inherited(arguments)},_getYShift:function(a,c){return 0},_getClusterSize:function(){return 1},_renderInside:function(a,c,b,d,g,e){var f=c[c.valueProp];a.box.h-3>b.height||(a.box.w+2*this.opt.labelOffset>b.width?a.box.w<=(0<f?g.width-e.r-(b.x+b.width+this.opt.labelOffset):b.x-e.l-2*this.opt.labelOffset)&&this._renderOutside(a,c,b,d,g,e,void 0,!0):(a={x:0<f?b.x+b.width-a.box.w-this.opt.labelOffset:b.x+this.opt.labelOffset,y:b.y+(b.height-
+a.box.h)/2,w:a.box.w,h:a.box.h,text:a.getText()},this._labelBoxes.push(a)))},_getFixLabelsParams:function(){return{allowXShift:!0,xGap:5,yTolerance:.5}}})});

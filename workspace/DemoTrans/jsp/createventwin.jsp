@@ -101,12 +101,13 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
   background: none; 
 }
 
+input[type=text] {
+  font-family: Roboto, Helvetica, sans-serif;
+  color: white;
+}
 </style>
 
 </head>
-    <script>
-
-	  </script>
 	  <script>
 // accordions div tag
 	  $(document).ready(function(){
@@ -116,18 +117,106 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 		$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
 	});       
 });
+//Lane image change    
 
+var newsrc = "laneup.JPG";
+var newsrc1 = "laneup.JPG";
+var newsrc2 = "laneup.JPG";
+var newsrc3 = "laneup.JPG";
+var newsrc4 = "laneup.JPG";
+var newsrc5 = "laneup.JPG";
 
-    </script>
-<body>
+//document.getElementById("lsh1Div").style.color = "#A0E67F";
+
+function changeImage(imgid) {
+	if(imgid=="laneupimg1") {
+	 if (newsrc == "laneup.JPG") {
+		document.getElementById('laneupimg1').src='lanecross.JPG';
+		newsrc  = "lanecross.JPG";
+		document.getElementById("lsh1Div").style.color = "#E58080";
+	  }
+	  else {
+	   document.getElementById('laneupimg1').src='laneup.JPG';
+	   newsrc  = "laneup.JPG";
+	   document.getElementById("lsh1Div").style.color = "#A0E67F";
+	  }		
+	}
+	
+	if(imgid=="laneupimg2") {
+	 if (newsrc1 == "laneup.JPG") {
+		document.getElementById('laneupimg2').src='lanecross.JPG';
+		newsrc1  = "lanecross.JPG";
+		document.getElementById("lane4Div").style.color = "#E58080";
+	  }
+	  else {
+	   document.getElementById('laneupimg2').src='laneup.JPG';
+	   newsrc1  = "laneup.JPG";
+	   document.getElementById("lane4Div").style.color = "#A0E67F";
+	  }		
+	}
+	
+  	if(imgid=="laneupimg3") {
+	 if (newsrc2 == "laneup.JPG") {
+		document.getElementById('laneupimg3').src='lanecross.JPG';
+		newsrc2  = "lanecross.JPG";
+		document.getElementById("lane3Div").style.color = "#E58080";
+	  }
+	  else {
+	   document.getElementById('laneupimg3').src='laneup.JPG';
+	   newsrc2  = "laneup.JPG";
+	   document.getElementById("lane3Div").style.color = "#A0E67F";
+	  }		
+	}
+  
+    if(imgid=="laneupimg4") {
+	 if (newsrc3 == "laneup.JPG") {
+		document.getElementById('laneupimg4').src='lanecross.JPG';
+		newsrc3  = "lanecross.JPG";
+		document.getElementById("lane2Div").style.color = "#E58080";
+	  }
+	  else {
+	   document.getElementById('laneupimg4').src='laneup.JPG';
+	   newsrc3  = "laneup.JPG";
+	   document.getElementById("lane2Div").style.color = "#A0E67F";
+	  }		
+	}
+	
+	if(imgid=="laneupimg5") {
+	 if (newsrc4 == "laneup.JPG") {
+		document.getElementById('laneupimg5').src='lanecross.JPG';
+		newsrc4  = "lanecross.JPG";
+		document.getElementById("lane1Div").style.color = "#E58080";
+	  }
+	  else {
+	   document.getElementById('laneupimg5').src='laneup.JPG';
+	   newsrc4  = "laneup.JPG";
+	   document.getElementById("lane1Div").style.color = "#A0E67F";
+	  }		
+	}
+	if(imgid=="laneupimg6") {
+	 if (newsrc5 == "laneup.JPG") {
+		document.getElementById('laneupimg6').src='lanecross.JPG';
+		newsrc5  = "lanecross.JPG";
+		document.getElementById("rsh1Div").style.color = "#E58080";
+	  }
+	  else {
+	   document.getElementById('laneupimg6').src='laneup.JPG';
+	   newsrc5  = "laneup.JPG";
+	   document.getElementById("rsh1Div").style.color = "#A0E67F";
+	  }		
+	}
+}
+
+</script>
+<body class="claro">
 <div class="container-fluid">
 <div ng-app="ltaApp" ng-controller="ltaController">
 	
 	
 	<table width="100%;" style="background-color: #202B53;">
 		<tr>
-			<td colspan="2"  height="80;">
-				 <h2t> Event {{eventname}} </h2t>
+			<td colspan="2"  height="30;" vertical-align ="middle;">
+				 <h2t> Event - {{eventname}} </h2t>
 			</td>
 		</tr>
 		<tr>
@@ -135,9 +224,9 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 			  <div id="info1">          
 		          	<button id="Circle" class="buttoneventbub"> + Add Event Bubble</button>  
 		      	</div>  
-		      	<div id="info2">
+		      	<!-- <div id="info2">
 		        	<button id="Line"  class="buttoneventclo"> + Add Road Closure</button>
-		      	</div> 
+		      	</div>  -->
 		      	<div id="vmsmsgdiv">
 				  	<div id="vmsmsgdivheader"><h1> {{eventvmseqipid}} <h1> 
 				    	 <h2> {{eventVmsMsg}} </h2>
@@ -149,7 +238,25 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 				    	 <h2> {{eventVmsMsg1}} </h2>
 					</div>
 				</div>
-		     	<div id="mapDiv"></div>  
+				<div id="vmsmsgdiv2">
+				  	<div id="vmsmsgdivheader2"><h1> {{eventvmseqipid2}} <h1> 
+				    	 <h2> {{eventVmsMsg2}} </h2>
+					</div>
+				</div>
+				<div id="vmsmsgdiv3">
+				  	<div id="vmsmsgdivheader3"><h1> {{eventvmseqipid3}} <h1> 
+				    	 <h2> {{eventVmsMsg3}} </h2>
+					</div>
+				</div>
+				
+				<!-- MAP dispaly on this div mapDiv  -->
+		     	<div id="mapDiv">
+		     	     <div id="bottomPanel">
+            			<div id="timeInfo">
+              				<div id="timeSliderDiv"></div>
+            			</div>
+          			</div>
+		     	</div>  
 			</td>
 			<td width="40%;"  height="95% !important;" valign="top">
 	<!-- Start IR Creation -->
@@ -198,7 +305,7 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 				<input type="text"  placeholder="Start Time" ng-model="eventstarttime">                  
           </td>
 		  <td> End Time <br>
-				<input type="text"  placeholder="end Time" ng-model="eventendtime"> 
+				<input type="text"  placeholder="end Time" ng-model="eventendtime1"> 
           </td>
         </tr>
         <tr>
@@ -218,10 +325,6 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
                 <select ng-model="eventype" ng-change="changeoptions()">
 					<option ng-repeat="option in eventypeList" value="{{option.eventypeid}}">{{option.name}}</option>
 				</select>
-	
-				
-				
-				
           </td>
           <td>
             Spectators <br>
@@ -273,7 +376,7 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 				</div>
 				<div class="panel-collapse collapse" id="Collapseicontwo">
 					<div class="panel-body">
-					
+					<div ng-show="roadcloseflag">
 						<table width="100%" id="eventdetailtbl"> 
 						<tr>
 						  <td>Road Name</td>
@@ -286,69 +389,44 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 						  <td><input type="text"  style="width:130px;" placeholder="{{eventendtime}}" ng-model="eventendtimecl"> </td>
 						</tr>
 						</table>
-		Lanes Closure
+						
+						</div>
+		Lanes Closure <br><br>
 		<table  width="100%">
 		<tr>
           <td align="Left">
 	          <table>
 	         <tr>
 	    		<td>
-				<img src="laneup.JPG" width="30px" height="30px">
+				<img src="laneup.JPG" width="30px" height="30px" id="laneupimg1" onclick="changeImage('laneupimg1')">
 				<img src="vertibar.JPG" width="10px" height="30px">
+				<div id="lsh1Div">LSH1</div>
 				</td>
 				<td align="center">								
-					<img src="lanecross.JPG" width="30px" height="30px">
+					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg2" onclick="changeImage('laneupimg2')"> <br>
+					<div id="lane4Div">&nbsp;&nbsp;&nbsp;4</div>
 				</td>
 				<td align="center">
-					<img src="laneup.JPG" width="30px" height="30px">
+					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg3" onclick="changeImage('laneupimg3')"> <br>
+					<div id="lane3Div">&nbsp;&nbsp;&nbsp;3</div>
 				</td>
 			    <td align="center">
-					<img src="laneup.JPG" width="30px" height="30px">
+					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg4" onclick="changeImage('laneupimg4')"> <br>
+					<div id="lane2Div">&nbsp;&nbsp;&nbsp;2</div>
 				</td>
 				<td align="center">
-					 <img src="lanecross.JPG" width="30px" height="30px">
+					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg5" onclick="changeImage('laneupimg5')"> <br>
+					<div id="lane1Div">&nbsp;&nbsp;&nbsp;1</div>
 					 
 				</td>
 				<td align="center">
 				    <img src="vertibar.JPG" width="10px" height="30px"> 
-					 <img src="laneup.JPG" width="30px" height="30px">
+					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg6" onclick="changeImage('laneupimg6')"> <br>
+					<div id="rsh1Div">&nbsp;&nbsp;&nbsp;RSH1</div>
 	          </td>
-	          	<!-- 		<td align="center">
-					<ul>
-					  <li> (+) Add New lines 
-					  <ul>
-						<li> Add Lane</li>
-						<li> Add Center Divider</li>
-						<li> Add Left Shoulder</li>
-						<li> Add Right Shoulder</li>
-						</ul></li>
-					</ul>  -->
-	          </td>
-	        </tr>
-				
-			<tr>
-	          <td align="center">
-				<font color="#A0E67F">LSH1</font>
-				</td>
-				<td align="center">
-					<font color="#E58080">4</font>
-				</td>
-				<td align="center">
-					<font color="#A0E67F">3</font>
-				</td>
-			    <td align="center">
-					<font color="#A0E67F">2</font>
-				</td>
-				<td align="center">
-					 <font color="#E58080">1</font>
-				</td>
-				<td align="center">
-					<font color="#A0E67F">RSH1</font>
-	          </td>
-	           
-	          	<td align="center">
+			  <td align="center">
 				<ul>
-					  <li> (+) Add New lines 
+					  <li> (+) Add New lanes 
 					  <ul>
 						<li> Add Lane</li>
 						<li> Add Center Divider</li>
@@ -358,7 +436,7 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 					</ul>
 				
 				<ul>
-					  <li> (-) Remove lines 
+					  <li> (-) Remove lanes 
 					  <ul style="width:150px;">
 						<li> Remove Lane</li>
 						<li> Remove Center Divider</li>
@@ -367,17 +445,17 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 						</ul></li>
 					</ul>
 	          </td>
-	        </tr>
-	          
+	          </td>
+	        </tr>         
 	          </table>
                  </table>
 						<br>
 						<table width="100%" class="eventclosuretable">
 						<tr>
 							<td> 
-								<a href="createventwin.jsp"  class="buttonUpload" ng-click=""> Upload Road Closure </a>
-								&nbsp;<a href="createventwin.jsp" class="buttonRemove"  ng-click=""> Remove Road Closure</a> 
-								<a href="createventwin.jsp"  class="buttonClosure" ng-click=""> Add Road Closure</a> 
+								<a href="#"  class="buttonUpload" ng-click="showroadclosedata()"> Upload Road Closure </a>
+								&nbsp;<a href="#" class="buttonRemove"  ng-click="removeroadclosedata()"> Remove Road Closure</a> 
+								<!-- <a href="createventwin.jsp"  class="buttonClosure" ng-click=""> Add Road Closure</a> -->
 							</td>
 							</tr>
 						</table> 
@@ -391,17 +469,12 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 	 	 		<table width="100%">
 				<tr>
 					<td> 
-						<a href="#" class="buttonCreateEventInc"  ng-click="calleventresponse()"> Create </a>
+						<div align="right">
+							<a href="#" class="buttonCreateEventInc"  ng-click="calleventresponse()" style="text-decoration:none;"> Create </a> &nbsp;&nbsp;
+						</div>
 					</td>
 					</tr>
 			</table> 
-<!-- end of event creation -->
-			<!-- </div> -->
-			
-		
-		<!-- </div>	 -->
-	<!-- </div> -->
-
 	  </div>
 	<!-- end of Create IR -->
 	
@@ -410,7 +483,7 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 
 	<table width="100%" id="incresponsetbl">
 		<tr>
-			<td> <a href="#"  style="text-decoration:none;" ng-click="calleventcreate()"><h3b> DETAILS   </h3b> </a> &nbsp; <h3b> > </h3b>  <h3a> RESPONSE  </h3a> </td>
+			<td> <a href="#"  style="text-decoration:none;" ng-click="calleventcreate()"><h3b>DETAILS</h3b></a> <h3b>></h3b> <h3a>RESPONSE</h3a> </td>
 		</tr>
 	</table>   
 	
@@ -436,7 +509,7 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 				<tr>
 					<td><textarea class="textareaeventVmsMsg" rows="3" cols="40"  ng-model="eventVmsMsg" ng-click="enableText()" > </textarea></td>
 					<td>
-					<input type="text" ng-model="eventVmsdisplaytime" style =" width: 100px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
+					<input type="text" ng-model="eventVmsdisplaytime" style =" width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
 					</td>
 					<td> {{eventvmseqipid}}</td>
 					<td> <a href="#" onclick="showmsg(1)" style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"> </a></td>
@@ -445,18 +518,34 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 				<tr>
 					<td><textarea class="textareaeventVmsMsg" rows="3" cols="40" ng-model="eventVmsMsg1" ng-click="enableText()" > </textarea></td>
 					<td>
-					<input type="text" ng-model="eventVmsdisplaytime1"  style =" width: 100px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
+					<input type="text" ng-model="eventVmsdisplaytime1"  style =" width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
 					</td>
 					<td>{{eventvmseqipid1}}</td>
-					<td> <a href="#" onclick="showmsg(2)" style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"></a> </td>
-					
+					<td> <a href="#" onclick="showmsg(2)" style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"></a> </td>				
 				</tr>	
+				<tr>
+					<td><textarea class="textareaeventVmsMsg" rows="3" cols="40" ng-model="eventVmsMsg2" ng-click="enableText()" > </textarea></td>
+					<td>
+					<input type="text" ng-model="eventVmsdisplaytime2"  style =" width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
+					</td>
+					<td>{{eventvmseqipid2}}</td>
+					<td> <a href="#" onclick="showmsg(3)" style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"></a> </td>				
+				</tr>
+				<tr>
+					<td><textarea class="textareaeventVmsMsg" rows="3" cols="40" ng-model="eventVmsMsg3" ng-click="enableText()" > </textarea></td>
+					<td>
+					<input type="text" ng-model="eventVmsdisplaytime3"  style =" width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
+					</td>
+					<td>{{eventvmseqipid3}}</td>
+					<td> <a href="#" onclick="showmsg(4)" style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"></a> </td>				
+				</tr>
 				</table>
 				<table width="100%"> 
 						<tr>
-							<td align="right">
-								<a href="#" class="buttonadd" id="buttonadd" ng-click="parterMsgAdd()" style="text-decoration:none;"> New VMS Plan</a>
+							<td>
+							<div align="right">	<a href="#" class="buttonadd" id="buttonadd" ng-click="parterMsgAdd()" style="text-decoration:none;"> New VMS Plan</a>
 								<a href="#" class="buttondelete" id="buttondelete" ng-click="parterMsgRemove()" style="text-decoration:none;"> Remove </a> 									
+							</div>
 							</td>
 						</tr>
 				 </table>
@@ -470,13 +559,13 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 				</tr>
 				<tr>
 					<td> 1</td>
-					<td> 12/5/2019 10:30:32-16:00:00</td>
-					<td> TIP 8231</td>
+					<td> 12/5/2019 10:30:32 - 16:00:00</td>
+					<td> <a href="#" ng-click="showvmsequipmsg('568231')" style="text-decoration:none;"> TIP 568231 </a></td>
 				</tr>
 				<tr>
 					<td> 2</td>
-					<td> 16/4/2019 11:00:30-17:00:00</td>
-					<td> TIP 568231</td>					
+					<td> 16/4/2019 11:00:30 - 17:00:00</td>
+					<td> <a href="#" ng-click="showvmsequipmsg('825231')" style="text-decoration:none;"> TIP 825231 </a> </td>					
 				</tr>	
 				</table>
 				 
@@ -560,14 +649,15 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 							<td>KM Marking<textarea class = "textareaeventObuMsg" rows="1" cols="3" ng-model="eventObuMsgGuidekm" ng-click="enableText()"> {{eventObuMsgGuidekm}}</textarea></td>	
 						</tr>					
 					</table>
-					<table width="100%" align="right"> 
+					<!--  <table width="100%"> 
 					<tr>
-						<td align="right">
+						<td> <div align="right">
 							<a href="#" class="buttoneveRem" id="buttoneveRem" ng-click="obuMsgdeact()" style="text-decoration:none;"> Deactivate All </a> 
 							<a href="#" class="buttoneveImp" id="buttoneveImp" ng-click="obuMsgImpl()" style="text-decoration:none;"> Implement All </a>	
+							</div>
 						</td>
 					</tr>
-					</table>		
+					</table>  -->		
 				</div>
 			</div>
 	     </div>
@@ -644,14 +734,15 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 					</table>
 					<table width="100%"> 
 						<tr>
-							<td align="right">
-								<a href="#" class="buttondelete" id="buttondelete" ng-click="eventDeleteNotes()" style="text-decoration:none;"> Delete Note </a> 
-								<a href="#" class="buttonadd" id="buttonadd" ng-click="eventAddNewNotes()" style="text-decoration:none;"> Add a New Note</a>	
+							<td> 
+								<div > <div align="right">
+									<a href="#" class="buttondelete" id="buttondelete" ng-click="eventDeleteNotes()" style="text-decoration:none;"> Delete Note </a> 
+									<a href="#" class="buttonadd" id="buttonadd" ng-click="eventAddNewNotes()" style="text-decoration:none;"> Add a New Note</a>	
+									</div>
+								</div>
 							</td>
 						</tr>
 				 </table>
-						
-							
 				</div>
 			</div>
 	     </div>	     
@@ -661,7 +752,9 @@ table.incdetailtblscroll  td, table.incdetailtblscroll th {
 	 	<table width="100%" class="eventclosuretable">
 			<tr>
 				<td colspan="3"> 
-					 <a href="#" class="buttonCreateventInc" ng-click="addevent()" style="text-decoration:none;"> SAVE </a> 
+					<div align="right">
+						<a href="#" class="buttonCreateventInc" ng-click="addevent()" style="text-decoration:none;"> SAVE </a> &nbsp;&nbsp;
+					</div>
 				</td>
 			</tr>
 		</table>

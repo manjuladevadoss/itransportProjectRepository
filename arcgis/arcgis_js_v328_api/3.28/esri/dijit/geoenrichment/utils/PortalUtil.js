@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+//>>built
+define("esri/dijit/geoenrichment/utils/PortalUtil",["dojo/_base/lang","esri/kernel","esri/request","./requests/EveryRequest"],function(k,m,n,p){var h={query:function(e,a,c,b){a=a||{};c=c||"results";b=b||100;var f="number"===typeof a.num?a.num:-1,g=a.num=0>f||a.num>b?b:a.num;a.start=a.start||1;return e(a).then(function(b){var h=b[c],d=b.total-a.start+1;0<=f&&d>f&&(d=f);d-=g;if(0>=d)return b;a.num=g;for(var l=[];0<d;)a.start+=g,l.push(e.bind(null,k.mixin({},a))),d-=g;return p(l,!0).then(function(a){a.forEach(function(a){Array.prototype.push.apply(h,
+a[c])});return b})})},queryCommon:function(e,a){return h.query(function(c){return n({url:e,content:k.mixin({f:"json",token:m.id.credentials[0].token},a,c),handleAs:"json"},{usePost:!0})}).then(function(a){return a.results})}};return h});

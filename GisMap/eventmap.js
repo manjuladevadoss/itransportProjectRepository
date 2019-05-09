@@ -5,18 +5,19 @@
       "dojo/_base/array","esri/toolbars/draw",
                "esri/symbols/SimpleLineSymbol",
                "esri/symbols/SimpleFillSymbol", "esri/symbols/CartographicLineSymbol", 
-               "esri/graphic", 
+               "esri/graphic", "esri/symbols/TextSymbol", 
+               "esri/symbols/PictureMarkerSymbol",
                "esri/Color", "dojo/dom", "dojo/on", "dojo/domReady!"
             ],  function(Map, ArcGISDynamicMapServiceLayer, 
               TimeExtent, TimeSlider,Point,SpatialReference,
               arrayUtils, Draw,
                           SimpleLineSymbol,
                          SimpleFillSymbol, CartographicLineSymbol, 
-                        Graphic, Color, dom, on) {
+                        Graphic, TextSymbol, PictureMarkerSymbol, Color, dom, on) {
         map = new Map("mapDiv", {
-          basemap: "dark-gray-vector",  //For full list of pre-defined basemaps, navigate to http://arcg.is/1JVo6Wd
-          center: [103.856, 1.334], // longitude, latitude
-          zoom: 14
+          basemap: "streets",  //For full list of pre-defined basemaps, navigate to http://arcg.is/1JVo6Wd
+          center: [103.839, 1.281], // longitude, latitude
+          zoom: 11
         });
 
  /****** Start of Time Slider circle line */
@@ -50,7 +51,7 @@ function initSlider() {
 //   timeExtent.endTime = new Date("12/31/2020 UTC");
   //var today = new Date();
   timeExtent.startTime = new Date();
-  timeExtent.endTime = new Date("04/25/2019 16:00:00 UTC"); ;
+  timeExtent.endTime = new Date("05/08/2019 16:00:00 UTC"); ;
   timeSlider.setThumbCount(1);
   //timeSlider.createTimeStopsByTimeInterval(timeExtent, 2, "esriTimeUnitsYears");
   timeSlider.createTimeStopsByTimeInterval(timeExtent, 1, "esriTimeUnitsHours");
@@ -65,12 +66,14 @@ function initSlider() {
       var am_pm = timeStop.getHours() >= 12 ? "PM" : "AM";
       hours = hours < 10 ? "0" + hours : hours;
       return hours + " " + am_pm;
+	  //return timeStop.getUTCFullYear();
     } else {
       //return timeStop.getHours(); 
       var hours = timeStop.getHours() > 12 ? timeStop.getHours() - 12 : timeStop.getHours();
       var am_pm = timeStop.getHours() >= 12 ? "PM" : "AM";
       hours = hours < 10 ? "0" + hours : hours;
       return hours + " " + am_pm;
+	  //return "";
     }
   });          
   timeSlider.setLabels(labels);
@@ -199,4 +202,44 @@ function infowindowmsg(evt) {
         }
       /****** End of draw circle line */
 
+
+      //** cctv camera and roadword display */
+      var cctvlocation = [  
+        { lat: 1.281, long: 103.839, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/cctv.PNG', width: 18, height: 18},  
+        { lat: 1.289, long: 103.817, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/cctv.PNG', width: 18, height: 18}, 
+        { lat: 1.294, long: 103.806, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/cctv.PNG', width: 18, height: 18},  
+        { lat: 1.337, long: 103.79, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/cctv.PNG', width: 18, height: 18}, 
+        { lat: 1.358, long: 103.884, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/cctv.PNG', width: 18, height: 18}, 
+        { lat: 1.373, long: 103.851, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/cctv.PNG', width: 18, height: 18}, 
+        { lat: 1.372, long: 103.898, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/cctv.PNG', width: 18, height: 18}, 
+        { lat: 1.329, long: 103.84, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/cctv.PNG', width: 18, height: 18}, 
+        { lat: 1.322, long: 103.846, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/cctv.PNG', width: 18, height: 18}, 
+         ];
+         
+         var roadworklocation = [  
+          { lat: 1.372, long: 103.898, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/roadwork1.jpg', width: 18, height: 18},  
+          { lat: 1.336, long: 103.925, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/roadwork1.jpg', width: 18, height: 18}, 
+          { lat: 1.345, long: 103.957, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/roadwork1.jpg', width: 18, height: 18},
+          { lat: 1.307, long: 103.79, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/roadwork1.jpg', width: 18, height: 18},   
+          { lat: 1.323, long: 103.902, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/roadwork1.jpg', width: 18, height: 18}, 
+          { lat: 1.312, long: 103.778, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/roadwork1.jpg', width: 18, height: 18}, 
+          { lat: 1.327, long: 103.85, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/roadwork1.jpg', width: 18, height: 18}, 
+          { lat: 1.317, long: 103.86, icon: 'C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/roadwork1.jpg', width: 18, height: 18},
+           ];
+
+           on(dom.byId("infocctvcamera"), "click", function(evt) {
+
+          for (var k=0; k < cctvlocation.length; k++){  
+            var point = new Point(cctvlocation[k].long, cctvlocation[k].lat);  
+            var pictureMarkerSymbol = new PictureMarkerSymbol(cctvlocation[k].icon, cctvlocation[k].width, cctvlocation[k].height);
+            map.graphics.add(new Graphic(point, pictureMarkerSymbol)); 
+          }
+          for (var k=0; k < roadworklocation.length; k++){  
+            var point = new Point(roadworklocation[k].long, roadworklocation[k].lat);  
+            var pictureMarkerSymbol = new PictureMarkerSymbol(roadworklocation[k].icon, roadworklocation[k].width, roadworklocation[k].height);
+            map.graphics.add(new Graphic(point, pictureMarkerSymbol)); 
+          }
+        });
+    
+      //**  end of cctv camera and roadwork display*/
       });

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+  <title>Map with WMTS resourceinfo</title>
+
+  <link rel="stylesheet" href="http://localhost:8080/gis/3.28/dijit/themes/claro/claro.css">
+  <link rel="stylesheet" href="http://localhost:8080/gis/3.28/esri/css/esri.css">
+  <style>
+    html,
+    body,
+    #map {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <script src="http://localhost:8080/gis/3.28/init.js"></script>
+
+  <script>
+    require([
+      "esri/map", 
+      "esri/layers/WMTSLayer", 
+      "esri/layers/WMTSLayerInfo",
+      "esri/layers/WMSLayer", 
+      "esri/layers/WMSLayerInfo", 
+      "esri/geometry/Extent", 
+      "esri/layers/TileInfo", 
+      "esri/SpatialReference",
+      "dojo/_base/array",
+      "dojo/parser",
+      "dojo/dom",
+      "dojo/dom-construct",
+      "dijit/layout/BorderContainer", 
+      "dijit/layout/ContentPane", 
+      "dojo/domReady!"
+    ], function(
+        Map, WMTSLayer, WMTSLayerInfo,WMSLayer, WMSLayerInfo,
+        Extent, TileInfo, SpatialReference,array,parser,dom, domConst
+      ) {
+      parser.parse();
+
+      var map = new Map("map", {
+        center: [47.075,-52.93],
+        zoom: 10
+      });
+
+      
+   // ******* Start basemap using openmaptiles server
+      var tileInfo = new TileInfo({
+        "dpi": 96,
+        "format": "format/png",
+        "compressionQuality": 0,
+        "spatialReference": new SpatialReference({
+          "wkid": 4326
+        }),
+        "rows": 512,
+        "cols": 512,
+        "origin": {
+          "x": -180,
+          "y": 90
+        },
+        "lods": [{
+          "level": "0",
+          "scale": 236663484.36365247,
+          "resolution": 0.5624999999999999
+          }, {
+          "level": "1",
+          "scale": 118331742.18182631,
+          "resolution": 0.28125000000000017
+          }, {
+          "level": "2",
+          "scale": 59165871.090913124,
+          "resolution": 0.140625
+          }, {
+          "level": "3",
+          "scale": 29582935.545456562,
+          "resolution": 0.0703125
+          }, {
+          "level": "4",
+          "scale": 14791467.772728289,
+          "resolution": 0.03515625000000002
+          }, {
+          "level": "5",
+          "scale": 395733.8863641415,
+          "resolution": 0.017578125000000003
+          }, {
+          "level": "6",
+          "scale": 3697866.94318207,
+          "resolution": 0.008789062499999998
+          }, {
+          "level": "7",
+          "scale": 1848933.471591035,
+          "resolution": 0.004394531249999999
+          }, {
+          "level": "8",
+          "scale": 924466.7357955176,
+          "resolution": 0.002197265625
+          }, {
+          "level": "9",
+          "scale": 462233.3678977588,
+          "resolution": 0.0010986328125
+          }, {
+          "level": "10",
+          "scale": 231116.6839488794,
+          "resolution": 0.00054931640625
+          }, {
+          "level": "11",
+          "scale": 115558.3419744397,
+          "resolution": 0.000274658203125
+          }]
+      });
+      var tileExtent = new Extent(-180, -90, 180, 90, new SpatialReference({
+        wkid: 4326
+      }));
+      
+      var layerInfo = new WMTSLayerInfo({
+        tileInfo: tileInfo,
+        fullExtent: tileExtent,
+        initialExtent: tileExtent,
+        identifier: "osm-bright",
+        //identifier: "klokantech-basic",
+        tileMatrixSet: "1x",
+        format: "png",
+        style: "default"
+      });
+
+      var resourceInfo = {
+        version: "1.0.0",
+        layerInfos: [layerInfo],
+        copyright: "earthdata"
+      };
+
+      var options = {
+        serviceMode: "KVP",
+        resourceInfo: resourceInfo,
+        layerInfo: layerInfo
+      };
+
+      wmtsLayer = new WMTSLayer("http://192.168.99.100:32770/services/wmts/1.0.0/", options);
+      map.addLayer(wmtsLayer);
+      // ******* End of basemap using openmaptiles server
+      
+      // ***** Add new VMS Layer detail using geoserver ******//
+      var layer1 = new WMSLayerInfo({
+          name: 'gisdbo_gis_ea_vms',
+          title: 'gisdbo_gis_ea_vms'
+        });
+
+      var resourceInfo = {
+    	        extent: new Extent(-126.40869140625, 31.025390625, -109.66552734375, 41.5283203125, {
+    	          wkid: 4326
+    	        }),
+    	        layerInfos: [layer1]
+   		};
+      
+      var wmsLayer = new WMSLayer('http://localhost:8088/geoserver/singaporedb/wms', {
+          resourceInfo: resourceInfo,
+          visibleLayers: ['gisdbo_gis_ea_vms']
+        });
+        map.addLayers([wmsLayer]);
+        
+        var details = dom.byId('details');
+        domConst.place('<b>Layers</b>:', details);
+        var ul = domConst.create('ul', null, details);
+        array.forEach(wmsLayer.layerInfos, function(layerInfo) {
+          domConst.create('li', { innerHTML: layerInfo.title }, ul);
+        });
+        domConst.place('<b>WMS Version</b>:' + wmsLayer.version + '<br />', details);
+     // ***** End of new VMS Layer detail using geoserver ******//
+      
+    });
+  </script>
+</head>
+
+<body>
+  <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline', gutters:false" style="width: 100%; height: 100%; margin: 0;">
+
+    <div id="map" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+      <div id="citationInfo">
+        <a href="https://earthdata.nasa.gov">Earthdata</a>
+        served by
+        <a href="https://www.nasa.gov">NASA</a>
+      </div>
+    </div>
+     <!--  VMS Layer display  -->
+     <div id="details"
+         data-dojo-type="dijit.layout.ContentPane"
+         data-dojo-props="region:'left', splitter:true"
+         style="overflow:auto; width:200px;">
+    </div>
+     <!--  VMS Layer display  -->
+  </div>
+</body>
+
+</html>

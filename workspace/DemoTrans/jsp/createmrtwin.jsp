@@ -3,7 +3,7 @@
 <head>  
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">  
-    <title>MRT Stations eastwest line</title>  
+    <title>MRT Stations</title>  
     
     <!-- Map Css -->
     <link rel="stylesheet" href="https://js.arcgis.com/3.28/dijit/themes/claro/claro.css">
@@ -14,10 +14,15 @@
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="mrtinc.css"> 
 	<link rel="stylesheet" href="checkboxstyle.css">
+	  
+	 <!-- Start Date and Time -->
+	 	<link rel="stylesheet" href="bootstrap-datetimepicker.min.css">
+	 <!-- End of  Date and Time -->
 	 
 	<!-- start plus and minu menu  script -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 	<!-- End plus and minu menu  script -->
+ 
  
     <style>  
 	/* toggle plus and Minus background color*/
@@ -71,7 +76,7 @@
 		  z-index: 9;
 		  border: solid 0px;
 		  background-color:none;
-		  width: 500px;
+		  width: 530px;
 		  height: 550px;
 		  border-radius: 13px;
 		  text-align: center;
@@ -101,7 +106,7 @@ h5 {
 
     </style> 
 
-	 
+ 
  	<script src="bootstrap.min.js"></script>
   	<script src="jquery.js"></script>
 	<script src="angular.min.js"></script>
@@ -116,8 +121,7 @@ h5 {
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	 <!-- end plus and minu menu  script -->	
-       
-    </script>  
+
 </head>  
 <body>  
 <div ng-app="ltaApp" ng-controller="ltaController">
@@ -126,7 +130,8 @@ h5 {
 	<img src="roadmap.jpg" width="100%;" height="1000px;"/>
 	<!-- <div class="container-fuide">
 	<div class="bs-example">   -->
-		<div id="mrtlinediv">      
+		<div id="mrtlinediv">    
+		 
 			<table   width="100%;" class="mrtinctable"> 
 				<tr>
 					<td colspan="2"> <h4>MRT Service Disruption  </h4> </td>
@@ -151,7 +156,9 @@ h5 {
 						 <select ng-model="direction" class="selectcls" ng-change="mrtlinesel()" ng-options="o as o for o in stations">
 							<option  value="" selected="selected" hidden="hidden">Choose here</option>
     					 </select>
-
+    					 <div ng-show="hidetextbox">
+    					 	<input type="text" name="directionid" id="directionid" ng-model="directionid" >
+    					 </div> 
 					</td>
 					<td>
 					   <label class="contentlabel" style="font-size:17px;">
@@ -185,16 +192,18 @@ h5 {
 				</tr>
 				<tr>
 				<td> 
-				</td> 
-					<td> 
 					<br>
-					<a href="#" class="buttonCreateMrtInc"  ng-click="createmrtinc()" style="text-decoration:none;"> CREATE </a>
-					<button type="button" class="buttonCan"  id="buttonCan" onclick="myFunction()">CANCEL</button> 
-					</td>
+					<div id="createdir" align="right">
+						<a href="#" class="buttonCreateMrtInc"  ng-click="createmrtinc()" style="text-decoration:none;"> CREATE </a>
+					</div>
+				</td> 
+				<td> 
+					<br>
+					<button type="button" class="buttonCan"  id="buttonCan" onclick="myFunction()">CANCEL</button>	&nbsp;&nbsp;&nbsp;				 
+				</td>
 				</tr>
 				<tr>
-					<td colspan="2">&nbsp;&nbsp;
-					</td>
+					<td colspan="2">&nbsp;&nbsp;</td>
 				</tr>
 	 	 </table>  
 	<!--	</div>
@@ -209,22 +218,28 @@ h5 {
 <div class="container-fuide">
 			<table  width="100%;" style="background-color: #202B53;" align="left">
 			<tr>
-				<td colspan="2"  height="80;">
+				<td colspan="2" height="20%" >
 					<h2t> MRT Service Disruption &nbsp;&nbsp; {{mrtsselected}} to {{mrteselected}}</h2t>
 				</td>
 			</tr>
 			<tr>
-				<td width="70%;" height="95% !important;" >
-					 <div id="mapDiv"></div> 
+				<td  width="60%;"  height="95% !important;" >
+				   
+				   <div id="infocctvcamera"> 
+				   			<button id="Circle" class="buttoncctvcamera"> View cctv & Roadworks </button>
+				   			<div id="infocctvcamerashow">
+				   			</div>          
+         			  </div> 
+					  <div id="mapDiv"></div>   
 				</td>
-				<td width="30%;" height="95% !important;" valign="top">
+				<td  width="40%;"  height="95% !important;" valign="top">
 				<!-- Start Creation option-->
 				<table width="100%" id="incdetailtbl">
 						<tr>
-							<td><h3a>CREATE </h3a></td>
+							<td><h3a>&nbsp;CREATE </h3a></td>
 						</tr>
 					</table> 				
-					<!-- <div class='mrtincscroll'>  -->
+<div class='mrtincscroll'> 
 	
 	<table width="100%">
         <tr>
@@ -260,8 +275,8 @@ h5 {
 								&nbsp;&nbsp;<input type="text" placeholder="Start Time"  ng-model="irstarttime"/>
 					  </td>
 					  <td>
-						End Time: <br>
-								&nbsp;&nbsp;<input type="text"  placeholder="End Time"  ng-model="irendtime"/>		
+					<!-- 	End Time: <br>
+								&nbsp;&nbsp;<input type="text"  placeholder="End Time"  ng-model="irendtime"/>  -->		
 					  </td>
 					</tr>
 							
@@ -285,9 +300,9 @@ h5 {
 							<tr>
 								<td>
 									MRT / LRT Line <br>
-									 <select ng-model="direction" class="selectcls" ng-options="o as o for o in stations" ng-change="mrtlinesel()">
-										 <option value=""  selected="selected">{{mrtlsselected}}</option>
-									 </select>
+									<select ng-model="direction" class="selectcls" ng-options="o as o for o in stations" ng-change="mrtlinesel()">
+										 <option value=""  selected="selected"></option>
+									 </select>  
 								</td>
 								<td >
 									Both Direction:	 <br>										
@@ -300,14 +315,14 @@ h5 {
 							<tr>
 									<td>
 									Start Station: <br>
-								 <select ng-model="startstation" class="selectcls" ng-options="o as o for o in mrtline">
-									 <option value=""  selected="selected">{{mrtsselected}}</option>
+								 <select ng-model="startstation" class="selectcls" ng-options="o as o for o in mrtline" ng-change="setStartStation()">
+									 <option value=""  selected="selected"></option>
 								 </select>
 								</td>
 								<td >
 									End Station: <br>
-								 <select ng-model="endstation" class="selectcls" ng-options="o as o for o in mrtlinend">
-									<option value=""  selected="selected">{{mrteselected}}</option>
+								 <select ng-model="endstation" class="selectcls" ng-options="o as o for o in mrtlinend"  ng-change="setendStation()">
+									<option value=""  selected="selected"></option>
 								 </select>
 								</td>					
 							</tr>
@@ -316,17 +331,16 @@ h5 {
 						</div>
 					 </div>
 					 
-						<div class="panel panel-default">
+				<!--  		<div class="panel panel-default">
 						<div class="panel-heading active">
 							<h4 class="panel-title">
 								  <span data-target="#Collapseicon3" data-toggle="collapse" data-parent="#accordion2"> </span>
 							</h4>
-						   <!-- <img src="horibar.JPG" height="auto" > -->
 						</div>
 						
 						<div class="panel-collapse collapse in" id="Collapseicon3">
 							<div class="panel-body">
-										   <table width="50%">
+								<table width="50%">
 									<tr>
 									  <td>          
 										<label class="contentlabel"> Simulated 
@@ -355,10 +369,10 @@ h5 {
 										</label>
 									  </td>
 									</tr>      
-									</table>
+									</table>  
 							</div>
 						</div>
-					 </div>
+					 </div> -->
 					 
 					 <div class="panel panel-default">
 						<div class="panel-heading active">
@@ -387,13 +401,14 @@ h5 {
 					 </div>
 				 </div>
 				 </td></tr>
-				 </table>
-	 
-	  <!-- </div>  -->
+				 </table>	 
+</div>  
 			  <table width="100%">
 				<tr>
-				<td> <div align='right'>  
-				<a href="#" class="buttonCreateMrtInc"  ng-click="addmrtincident()" style="text-decoration:none;"> CREATE </a>
+				<td> <div align='right'>   
+					<div id="createdir1">
+				<a href="#" class="buttonCreateMrtInc"  ng-click="addmrtincident()" style="text-decoration:none;"> CREATE </a> &nbsp;&nbsp;
+				</div>
 				<!-- <a href="#popup" class="button1a" id="button1a"  ng-click="showincidentlist()"> Close</a>  -->
 				</div> </td>
 				</tr>

@@ -1,0 +1,235 @@
+
+<html lang="en">
+    <head>
+     <title>Bar Graph</title>
+        <!--  Chart  -->
+        <script src="C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/Graph/Chart.js"></script>
+        <script src="C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/Graph/jquery-3.3.1.min.js"></script>
+    </head>
+    
+    
+    
+
+<script>
+  window.onload = function () { 
+  var ctx = document.getElementById("myBarChart");
+  var  data = [15, 10, 24, 15, 21, 10, 20];
+  var labels =  ["08.00", "09.00", "10.00", "11.00", "12.00", "13.00", "14.00"];
+  var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {                        
+			labels: labels,
+            datasets: [{
+				label: 'Alarms',
+                data: data,
+				borderColor: 'rgba(193,172,228, 1)',
+                //backgroundColor: 'rgba(116,71,120, 0.8)'
+				backgroundColor: 'rgba(216,90,172, 1)'
+            }]
+        },
+		options: {
+			// responsive: true, tooltips: true,
+		   legend: {
+			display: true,
+				//top label name
+			labels: {
+					fontColor: 'rgb(216,90,172)',
+			}
+		},
+			
+		animation:	{
+				duration: 1000,
+				easing: 'linear'
+			},	
+		scales: {			
+			yAxes: [{
+				ticks: {
+					beginAtZero: false
+				},
+				gridLines: {
+					display:false
+				}					
+			}],
+			xAxes: [{
+				gridLines: {
+					display:false
+				}
+			}]
+				
+        }
+    }
+		
+    });   
+}
+var myVar = setInterval(showGraph1, 3000);
+var myVar = setInterval(showGraph2, 6000);
+var myVar = setInterval(showGraph3, 9000);
+function showGraph1() {
+  var ctx = document.getElementById("myBarChart");
+  var data = [10, 15, 13, 18, 12, 9, 5];
+  var labels =  ["08.00", "09.00", "10.00", "11.00", "12.00", "13.00", "14.00"];
+  var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {                        
+			labels: labels,
+            datasets: [{
+				label: 'Alarms',
+                data: data,
+				borderColor: 'rgba(193,172,228, 1)',
+                //backgroundColor: 'rgba(116,71,120, 0.8)'
+				backgroundColor: 'rgba(216,90,172, 1)'
+            }]
+        },
+		options: {
+			// responsive: true, tooltips: true,
+		   legend: {
+			display: true,
+				//top label name
+			labels: {
+					fontColor: 'rgb(216,90,172)',
+			}
+		},
+		animation:	{
+				duration: 1000,
+				easing: 'linear'
+			},	
+			
+		scales: {			
+			yAxes: [{
+				ticks: {
+					beginAtZero: false
+				},
+				gridLines: {
+					display:false
+				}					
+			}],
+			xAxes: [{
+				gridLines: {
+					display:false
+				}
+			}]
+				
+        }
+    }
+		
+    });
+}
+function showGraph2() { 
+  var ctx = document.getElementById("myBarChart");
+  var data = [20, 40, 20, 50, 30, 30, 70];
+  var labels =  ["08.00", "09.00", "10.00", "11.00", "12.00", "13.00", "14.00"];
+  var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {                        
+			labels: labels,
+            datasets: [{
+				label: 'Alarms',
+                data: data,
+				borderColor: 'rgba(193,172,228, 1)',
+                //backgroundColor: 'rgba(116,71,120, 0.8)'
+				backgroundColor: 'rgba(216,90,172, 1)'
+            }]
+        },
+		options: {
+			// responsive: true, tooltips: true,
+		   legend: {
+			display: true,
+				//top label name
+			labels: {
+					fontColor: 'rgb(216,90,172)',
+			}
+		},
+		animation:	{
+				duration: 1000,
+				easing: 'linear'
+			},
+			
+		scales: {			
+			yAxes: [{
+				ticks: {
+					beginAtZero: false
+				},
+				gridLines: {
+					display:false
+				}					
+			}],
+			xAxes: [{
+				gridLines: {
+					display:false
+				}
+			}]
+				
+        }
+    }
+		
+    });   
+}
+function showGraph3() { 
+  var ctx = document.getElementById("myBarChart");
+  var  data = [15, 10, 24, 15, 21, 10, 20];
+  var labels =  ["08.00", "09.00", "10.00", "11.00", "12.00", "13.00", "14.00"];
+  var myBarChart = new Chart(ctx, {
+        type: 'bar',
+        data: {                        
+			labels: labels,
+            datasets: [{
+				label: 'Alarms',
+                data: data,
+				borderColor: 'rgba(193,172,228, 1)',
+                //backgroundColor: 'rgba(116,71,120, 0.8)'
+				backgroundColor: 'rgba(216,90,172, 1)'
+            }]
+        },
+		options: {
+			// responsive: true, tooltips: true,
+		   legend: {
+			display: true,
+				//top label name
+			labels: {
+					fontColor: 'rgb(216,90,172)',
+			}
+		},
+			animation:	{
+				duration: 1000,
+				easing: 'linear'
+			},
+				
+			
+		scales: {			
+			yAxes: [{
+				ticks: {
+					beginAtZero: true
+				},
+			//remove gridlines
+				gridLines: {
+					display:false
+				}					
+			}],
+			xAxes: [{
+				// Change bar char width size
+				barPercentage: 0.3,
+				gridLines: {
+					display:false
+				}
+			}]
+				
+        }
+    }
+		
+    });   
+}
+
+</script>
+
+<body>
+    <table style="width:50%; height:60%;">
+        <tr>
+            <td>
+                    <canvas id="myBarChart" style="width:90%; height:70%;"></canvas>
+            </td>
+        </tr>
+    </table>
+    
+</body>
+
+</html>

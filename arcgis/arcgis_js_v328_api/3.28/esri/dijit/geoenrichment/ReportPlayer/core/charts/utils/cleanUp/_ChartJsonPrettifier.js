@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+//>>built
+define("esri/dijit/geoenrichment/ReportPlayer/core/charts/utils/cleanUp/_ChartJsonPrettifier",["../ChartTypes","../ChartDataLabelsTypes","../../legends/ChartLegendTypes","../../legends/ChartLegendPlacements"],function(b,e,h,d){return{prettifyJson:function(a,f){var g=a.seriesItems.length,c=a.visualProperties;c.legend&&(c.legend.series.hasBorder=!f,c.legend.type===h.SERIES&&b.isSeriesLegendEnabled(a.type,g,a.isMultiFeatureChart,!!a.comparisonInfo&&c.legend.series.showComparison)&&(c.legend.series.placement=
+!f||1<g||a.type===b.PIE||a.type===b.DONUT||a.type===b.WAFFLE||a.isMultiFeatureChart?a.isMultiFeatureChart||a.type===b.WAFFLE?d.BOTTOM:d.RIGHT:d.NONE));c.dataLabels=a.type===b.RING?e.LABEL_VALUE:e.NONE}}});

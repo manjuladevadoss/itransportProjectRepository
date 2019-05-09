@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+//>>built
+define("esri/dijit/geoenrichment/ReportPlayer/dataProvider/supportClasses/AnalysisAreaUtil",["esri/geometry/webMercatorUtils","esri/dijit/geoenrichment/utils/CoordinateUtil"],function(e,c){return{geometryToLatLong:function(a){var b=a.spatialReference.wkid;return b===c.WGS_84_WKID?{STORE_LONG:a.x,STORE_LAT:a.y}:c.isWebMercator(b)?(a=e.xyToLngLat(a.x,a.y),{STORE_LONG:a[0],STORE_LAT:a[1]}):null},populateCombinedAreasInfo:function(a,b){var c={},d={};b.forEach(function(a){a.latitude&&(c[a.latitude]=1);
+a.longitude&&(d[a.longitude]=1)});a.name=a.name||b.map(function(a){return a.name}).join(", ");a.shortName=a.shortName||b.map(function(a){return a.shortName||a.name}).join(", ");a.description=a.description||b.map(function(a){return a.description||a.name}).join(", ");a.address=a.address||b.map(function(a){return a.address||a.name}).join(", ");a.latitude=a.latitude||Object.keys(c).join(", ");a.longitude=a.longitude||Object.keys(d).join(", ");return a}}});

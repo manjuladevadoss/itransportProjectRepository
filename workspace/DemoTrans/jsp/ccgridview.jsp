@@ -1,7 +1,6 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>ccgrid view each layer</title>
+  <title>ccgrid view</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="grid.css">
@@ -75,15 +74,15 @@ h11 {
 		<table width="100%" style="background-color: rgba(49,53,81,0.5);"> 
 			<tr> 
 				<td> 
-					<h4> <img src="titlelogobar.png" width="20px" height="18px">&nbsp; iTransport 2.0 </h4>
+					<h4> <img src="titlelogobar.png" width="20px" height="18px">&nbsp; itransport 2.0 </h4>
 				</td> 
 				<td align="right">
 				
-					 <input type="text" size="15" placeholder="Search" ng-model="searchIncidentfromgrid"> 
-					     <!--   <div class="inner-addon left-addon" style="color:#C8CFF4;">
+					 <!--  <input type="text" size="15" placeholder="Search" ng-model="searchIncidentfromgrid"> 
+					      <div class="inner-addon left-addon" style="color:#C8CFF4;">
 					                <input type="text" class="form-control" placeholder="Search" />
-								</div> -->
-					<img src="alarm.JPG" width="40" height="28"> 
+								</div>
+					<img src="alarm.JPG" width="40" height="28">  -->
 								
 				</td> 
 			</tr>
@@ -117,7 +116,7 @@ h11 {
 							<h5>EVENTS </h5> 
 						</td>
 						<td width="50%" align="center">
-							<a href="createventwin.jsp"  style="text-decoration:none;"> <h11>Click Here to New Event </h11></a>
+							<a href="createventwin.jsp"  style="text-decoration:none;"> <h11>&nbsp; &nbsp; &nbsp; New Event </h11></a>
 						</td>
 					</tr>
 				</table> 	
@@ -126,10 +125,14 @@ h11 {
 			<!--  <td> <a href="createinc.jsp#popup" style="text-decoration:none;"> <font Color="#4dd2ff"> Click here to Incident </font> </a> </td>  -->
 				<td align='right'>
 				
-							<div class="inner-addon left-addon" style="color:#C8CFF4;">
-					          <!--  <i class="glyphicon glyphicon-search"></i> -->
-					          <input type="text" class="form-control" placeholder="Search" ng-model="searchIncidentfromgrid" />
-       						</div>
+							
+					          <!--  
+					          <div class="inner-addon left-addon" style="color:#C8CFF4;">
+					          	<i class="glyphicon glyphicon-search"></i> 
+					          </div> 
+					          -->
+					          <input type="text"  style="padding-left: 10px;" placeholder="Search" ng-model="searchIncidentfromgrid" />
+       						
 			   </td> 
 			   <td> 	
 			   		<div class="dropdown" style="float:right;">
@@ -180,8 +183,8 @@ h11 {
 								<th width="28%"> <a href="#" ng-click="sortType = 'type'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Type <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"> </i></font></a></th>
 								<th width="20%"> <a href="#" ng-click="sortType = 'state'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
 								<th width="10%"> <a href="#" ng-click="sortType = 'zone'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Zone <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font> </a></th>
-								<th width="23%"> <a href="#" ng-click="sortType = 'roadname'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Road Name <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-								<th width="27%"> <a href="#" ng-click="sortType = 'lanes'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Lanes <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+								<th width="22%"> <a href="#" ng-click="sortType = 'roadname'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Road Name <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+								<th width="29%"> <a href="#" ng-click="sortType = 'lanes'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Lanes <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
 							</tr>
 						 </table> 
 					</td></tr>
@@ -226,7 +229,7 @@ h11 {
 								<th width="20%"> <a href="#" ng-click="sortType = 'state'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
 								<th width="10%"> <a href="#" ng-click="sortType = 'zone'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Zone <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font> </a></th>
 								<th width="23%"> <a href="#" ng-click="sortType = 'roadname'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Road Name <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-								<th width="27%"> <a href="#" ng-click="sortType = 'lanes'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Lanes <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+								<th width="29%"> <a href="#" ng-click="sortType = 'lanes'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Lanes <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
 							</tr>
 						 </table> 
 					</td></tr>
@@ -268,7 +271,7 @@ h11 {
 						</table>
 				</td></tr>
 				<tr><td> 				
-						<div class='scrollwc'>
+						<div class='scrollinc'>
 							<table width="100%"  id="inctbl">
 								<tr ng-repeat="workOrder in workorderRec | orderBy:sortTypewo:sortReversewc | filter:searchIncidentfromgrid">
 									<td width="20%"><font color="#C8CFF4" size="2px">{{workOrder.date}}</font></td>
@@ -295,20 +298,20 @@ h11 {
 						<tr>
 							<th width="16%"> <a href="#" ng-click="sortTypenv = 'startime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> Start Time <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
 							<th width="17%"> <a href="#" ng-click="sortTypenv = 'endtime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> End Time<i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i> </font></a></th>
-							<th width="12%"> <a href="#" ng-click="sortTypenv = 'alarmid'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> Alarm ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-							<th width="40%"> <a href="#" ng-click="sortTypenv = 'desc'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Description <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+							<th width="14%"> <a href="#" ng-click="sortTypenv = 'alarmid'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> Alarm ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+							<th width="30%"> <a href="#" ng-click="sortTypenv = 'desc'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Description <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
 							<th width="10%"> <a href="#" ng-click="sortTypenv = 'status'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
 						</tr>
 					</table> 
 				</td></tr>
 				<tr><td>
-					<div class='scroll'>
+					<div class='scrollinc'>
 						<table  id="inctbl" width="100%">
 							<tr ng-repeat="envmoni in environmonitorec | orderBy:sortTypenv:sortReversenv | filter:searchIncidentfromgrid">
 								<td width="16%"><font color="#C8CFF4" size="2px">{{envmoni.startime}}</font></td>
 								<td width="16%"><font color="#C8CFF4" size="2px">{{envmoni.endtime}}</font></td>
 								<td width="10%"><font color="#C8CFF4" size="2px">{{envmoni.alarmid}}</font></td>
-								<td width="40%"><font color="#C8CFF4" size="2px">{{envmoni.desc}}</font></td>
+								<td width="30%"><font color="#C8CFF4" size="2px">{{envmoni.desc}}</font></td>
 								<td width="10%">
 									<div ng-if="envmoni.status==='open'" > <a class="buttonact" style="color:black">{{envmoni.status | uppercase}}</a></div> 
 									<div ng-if="envmoni.status=='close'" > <a class="buttonclose" style="color:black">{{envmoni.status | uppercase}}</a></div> 
@@ -322,34 +325,38 @@ h11 {
 			</div>
 			
 			<div ng-show="showtech">
-					<table width="100%">  <tr><td>
-					 <table width="98%" id="datatbl">
-						<tr>
-							<th width="16%"> <a href="#" ng-click="sortTypenv = 'startime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> Start Time <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-							<th width="17%"> <a href="#" ng-click="sortTypenv = 'endtime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> End Time<i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i> </font></a></th>
-							<th width="12%"> <a href="#" ng-click="sortTypenv = 'alarmid'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> Alarm ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-							<th width="40%"> <a href="#" ng-click="sortTypenv = 'desc'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Description <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-							<th width="10%"> <a href="#" ng-click="sortTypenv = 'status'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+		<table width="100%">  <tr><td>
+				 <table width="98%" id="datatbl">
+					<tr>
+						<th width="20%"> <a href="#" ng-click="sortTypeta = 'startdate'; sortReverseta = !sortReverseta"  style="text-decoration:none;"><font style="font-size:16px;color:#C8CFF4"> Start Time <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i> </font></a></th>
+						<th width="15%"> <a href="#" ng-click="sortTypeta = 'alarmid'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4"> Alarm ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+						<th width="30%"> <a href="#" ng-click="sortTypeta = 'description'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4"> Description <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i> </font></a></th>
+						<th width="12%"> <a href="#" ng-click="sortTypeta = 'source'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Source <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+						<th width="12%"> <a href="#" ng-click="sortTypeta = 'zone'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Zone <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+						<th width="12%"> <a href="#" ng-click="sortTypeta = 'status'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+					</tr>
+				</table> 
+			</td></tr>
+			<tr><td>
+				<div class='scrollinc'>
+					<table  id="inctbl" width="100%">
+						<tr ng-repeat="techalarm in technicalalarmrec | orderBy:sortTypeta:sortReverseta | filter:searchtechnicalAlarmfromgrid">
+							<td width="20%"><font color="#C8CFF4" size="2px">{{techalarm.startdate}}</font></td>
+							<td width="15%"><font color="#C8CFF4" size="2px">{{techalarm.alarmid}}</font></td>
+							<td idth="30%"><font color="#C8CFF4" size="2px">{{techalarm.description}}</font></td>
+							<td width="10%">
+								<font color="#C8CFF4" size="2px">{{techalarm.source}}</font>
+							</td>
+							<td width="12%"><font color="#C8CFF4" size="2px">{{techalarm.zone}}</font></td>
+							<td width="12%">
+								<div ng-if="techalarm.status==='open'" > <a class="buttonact" style="color:black">{{techalarm.status | uppercase}}</a></div> 
+								<div ng-if="techalarm.status=='close'" > <a class="buttonclose" style="color:black">{{techalarm.status | uppercase}}</a></div> 
+								<div ng-if="techalarm.status==='in progress'" > <a class="buttonpending" style="color:black"> {{techalarm.status | uppercase}}</a></div> 							
+							</td>
 						</tr>
 					</table> 
-				</td></tr>
-				<tr><td>
-					<div class='scroll'>
-						<table  id="inctbl" width="100%">
-							<tr ng-repeat="envmoni in environmonitorec | orderBy:sortTypenv:sortReversenv | filter:searchIncidentfromgrid">
-								<td width="16%"><font color="#C8CFF4" size="2px">{{envmoni.startime}}</font></td>
-								<td width="16%"><font color="#C8CFF4" size="2px">{{envmoni.endtime}}</font></td>
-								<td width="10%"><font color="#C8CFF4" size="2px">{{envmoni.alarmid}}</font></td>
-								<td width="40%"><font color="#C8CFF4" size="2px">{{envmoni.desc}}</font></td>
-								<td width="10%">
-									<div ng-if="envmoni.status==='open'" > <a class="buttonact" style="color:black">{{envmoni.status | uppercase}}</a></div> 
-									<div ng-if="envmoni.status=='close'" > <a class="buttonclose" style="color:black">{{envmoni.status | uppercase}}</a></div> 
-									<div ng-if="envmoni.status==='inprocess'" > <a class="buttonpending" style="color:black">{{envmoni.status | uppercase}}</a></div> 
-								</td>
-							</tr>
-						</table> 
-					</div>
-				</td></tr></table> 	
+				</div>
+			</td></tr></table> 	
 			</div>
 			<div ng-show="showevent">
 
@@ -373,7 +380,7 @@ h11 {
 						</table> 
 					</td></tr>
 					<tr><td>
-						<div class='scroll'>
+						<div class='scrollinc'>
 							<table   id="inctbl"  width="100%">
 								<tr ng-repeat="event in eventRec | orderBy:sortType:sortReverse | filter:searchIncidentfromgrid">
 									<td width="15%"><font color="#C8CFF4" size="2px">{{event.type}}</font></td>
@@ -400,20 +407,20 @@ h11 {
 			<tr> 
 			 <td> <h5>WORK ORDER </h5><td>
 			 <td align='right'>
-				<input type="text" size="35" placeholder="Search" ng-model="searchworkorderfromgrid"> 
+				<input type="text" size="35" style="padding-left: 10px;" placeholder="Search"  ng-model="searchworkorderfromgrid"> 
 			 </td>
 			 <td> 	
 			   		<div class="dropdown" style="float:right;">
 							<i class="fa fa-align-justify fa_custom"></i>
 							<div class="dropdown-content" style="float:left;">
-								<a href="incidentTbl.jsp"  style="text-decoration: none">Incident Record</a>
-								<a href="techalarmTbl.jsp" style="text-decoration: none">Technical Alarms</a>
-								<a href="envmonTbl.jsp"  style="text-decoration: none">Environment</a>
-								<a href="eventTbl.jsp"  style="text-decoration: none">Events</a>
-								<a href="envmonTbl.jsp"  style="text-decoration: none">Road Works</a>
+								<a href="#" style="text-decoration: none">Incident Record</a>
+								<a href="#" style="text-decoration: none">Technical Alarms</a>
+								<a href="#" style="text-decoration: none">Environment</a>
+								<a href="#" style="text-decoration: none">Events</a>
+								<a href="#" style="text-decoration: none">Road Works</a>
 								 	 <img src="horibar1.JPG" style="padding:5px; height:18px;" >
-								<a href="ccgridmergeinc.jsp"  style="text-decoration: none">Merge up/down</a>
-								<a href="ccgridmergeinc.jsp"  style="text-decoration: none">Merge sideways</a>
+								<a href="#" style="text-decoration: none">Merge up/down</a>
+								<a href="#" style="text-decoration: none">Merge sideways</a>
 							 </div>
 				  </div> 
 			</td>
@@ -423,10 +430,10 @@ h11 {
 		<table>
 			<tr>
 				<td>
-				progress bar
+				<!--  progress bar  -->
 				</td>
 				<td>
-				  <canvas id="myBarChart" style="width:120%; height:90%;"></canvas>
+				  <canvas id="myChart" style="width:120%; height:60%;"></canvas>
 				</td>
 			</tr>
 		</table>
@@ -468,20 +475,20 @@ h11 {
 				 <tr> 
 					<td> <h5>TECHNICAL ALARMS </h5></td>
 					<td align='right'>
-						<input type="text" size="35" placeholder="Search" ng-model="searchtechnicalAlarmfromgrid"> 			 
+						<input type="text" size="35" style="padding-left: 10px;" placeholder="Search"  ng-model="searchtechnicalAlarmfromgrid"> 			 
 					 </td> 
 					 <td> 	
 				   		<div class="dropdown" style="float:right;">
 								  <i class="fa fa-align-justify fa_custom"></i>
 								  <div class="dropdown-content" style="float:left;">
-								<a href="incidentTbl.jsp" style="text-decoration: none">Incident Record</a>
-								<a href="workorderTbl.jsp"  style="text-decoration: none">Work Order</a>
-								<a href="envmonTbl.jsp"  style="text-decoration: none">Environment</a>
-								<a href="eventTbl.jsp"  style="text-decoration: none">Events</a>
-								<a href="envmonTbl.jsp"  style="text-decoration: none">Road Works</a>
+								<a href="#" style="text-decoration: none">Incident Record</a>
+								<a href="#" style="text-decoration: none">Work Order</a>
+								<a href="#" style="text-decoration: none">Environment</a>
+								<a href="#" style="text-decoration: none">Events</a>
+								<a href="#" style="text-decoration: none">Road Works</a>
 								 	<img src="horibar1.JPG" style="padding:5px; height:18px;" >
-								<a href="ccgridmergeinc.jsp"  style="text-decoration: none">Merge up/down</a>
-								<a href="ccgridmergeinc.jsp"  style="text-decoration: none">Merge sideways</a>
+								<a href="#" style="text-decoration: none">Merge up/down</a>
+								<a href="#" style="text-decoration: none">Merge sideways</a>
 								  </div>
 							</div> 
 					</td>
@@ -490,8 +497,8 @@ h11 {
 		<table>
 			<tr>
 				<td>
-				progress bar
-					<!--  <div class="progress">
+				<!-- progress bar
+					  <div class="progress">
 	    				<svg class="progress-circle" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
 		    				<circle class="progress-circle-back" cx="40" cy="40" r="34"></circle>
 	        				<circle class="progress-circle-prog" cx="40" cy="40" r="34"></circle>
@@ -501,7 +508,7 @@ h11 {
 	  			-->
 				</td>
 				<td>
-				 <canvas id="myChart" style="width:120%; height:90%;"></canvas>
+				 <canvas id="myBarChart" style="width:120%; height:60%;"></canvas>
 				</td>
 			</tr>
 		</table>
@@ -549,20 +556,20 @@ h11 {
 				 <tr> 
 				 <td> <h5>ENVIRONMENTAL MONITORING LIST</h5><td>
 				 <td align='right'>
-					<input type="text" size="35" placeholder="Search" ng-model="searchEnvifromgrid"> 			 
+					<input type="text" size="35" style="padding-left: 10px;" placeholder="Search"  ng-model="searchEnvifromgrid"> 			 
 				 </td>
 				 <td> 	
 				   		<div class="dropdown" style="float:right;">
 							<i class="fa fa-align-justify fa_custom"></i>
 							<div class="dropdown-content" style="float:left;">
-								<a href="incidentTbl.jsp" style="text-decoration: none">Incident Record</a>
-								<a href="workorderTbl.jsp"  style="text-decoration: none">Work Order</a>
-								<a href="techalarmTbl.jsp"  style="text-decoration: none">Technical Alarms</a>
-								<a href="eventTbl.jsp"  style="text-decoration: none">Events</a>
-								<a href="envmonTbl.jsp"  style="text-decoration: none">Road Works</a>
+								<a href="#" style="text-decoration: none">Incident Record</a>
+								<a href="#" style="text-decoration: none">Work Order</a>
+								<a href="#"  style="text-decoration: none">Technical Alarms</a>
+								<a href="#"  style="text-decoration: none">Events</a>
+								<a href="#"  style="text-decoration: none">Road Works</a>
 								 	 <img src="horibar1.JPG" style="padding:5px; height:18px;" >
-								<a href="ccgridmergeinc.jsp"  style="text-decoration: none">Merge up/down</a>
-								<a href="ccgridmergeinc.jsp"  style="text-decoration: none">Merge sideways</a>
+								<a href="#"  style="text-decoration: none">Merge up/down</a>
+								<a href="#" style="text-decoration: none">Merge sideways</a>
 							</div>
 						</div> 
 					</td>			 
@@ -574,21 +581,21 @@ h11 {
 				 <table width="98%" id="datatbl">
 					<tr>
 						<th width="16%"> <a href="#" ng-click="sortTypenv = 'startime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> Start Time <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-						<th width="17%"> <a href="#" ng-click="sortTypenv = 'endtime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> End Time<i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i> </font></a></th>
+						<th width="16%"> <a href="#" ng-click="sortTypenv = 'endtime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> End Time<i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i> </font></a></th>
 						<th width="12%"> <a href="#" ng-click="sortTypenv = 'alarmid'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> Alarm ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-						<th width="40%"> <a href="#" ng-click="sortTypenv = 'desc'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Description <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+						<th width="30%"> <a href="#" ng-click="sortTypenv = 'desc'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Description <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
 						<th width="10%"> <a href="#" ng-click="sortTypenv = 'status'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
 					</tr>
 				</table> 
 			</td></tr>
 			<tr><td>
-				<div class='scroll'>
+				<div class='scrollev'>
 					<table  id="inctbl" width="100%">
 						<tr ng-repeat="envmoni in environmonitorec | orderBy:sortTypenv:sortReversenv | filter:searchEnvifromgrid">
 							<td width="16%"><font color="#C8CFF4" size="2px">{{envmoni.startime}}</font></td>
 							<td width="16%"><font color="#C8CFF4" size="2px">{{envmoni.endtime}}</font></td>
 							<td width="10%"><font color="#C8CFF4" size="2px">{{envmoni.alarmid}}</font></td>
-							<td width="40%"><font color="#C8CFF4" size="2px">{{envmoni.desc}}</font></td>
+							<td width="30%"><font color="#C8CFF4" size="2px">{{envmoni.desc}}</font></td>
 							<td width="10%">
 								<div ng-if="envmoni.status==='open'" > <a class="buttonact" style="color:black">{{envmoni.status | uppercase}}</a></div> 
 								<div ng-if="envmoni.status=='close'" > <a class="buttonclose" style="color:black">{{envmoni.status | uppercase}}</a></div> 
