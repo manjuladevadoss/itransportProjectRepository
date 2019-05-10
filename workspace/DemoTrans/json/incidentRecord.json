@@ -87,6 +87,22 @@
       "zone": "zone4",
       "roadname": "KPE",
       "lanes": "1 2"
+    },
+    {
+      "irid": "21334",
+      "type": "Break Down",
+      "state": "notified",
+      "zone": "zone4",
+      "roadname": "tun",
+      "lanes": "2 2"
+    },
+    {
+      "irid": "89346",
+      "type": "Obstacle",
+      "state": "notified",
+      "zone": "zone3",
+      "roadname": "tun",
+      "lanes": "1 4 2"
     }
   ]
 }

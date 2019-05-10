@@ -1,0 +1,5 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+//>>built
+define("esri/dijit/geoenrichment/ReportPlayer/core/charts/utils/builder/utils/ChartDataLabelBuilder",["./ChartDataUtil","../../ChartDataLabelsTypes","esri/dijit/geoenrichment/ReportPlayer/countryConfig","../../../../supportClasses/templateJsonUtils/fieldInfo/FieldInfoBuilder"],function(e,d,n,p){return{formatDataLabel:function(a,b){function q(){var a=e.formatNumber(f,b);b.dataLabelsShowValuePercentSymbol||g&&p.isFieldInfoInPercentState(g)?a+="%":b.dataLabelsShowValueCurrencySymbol&&(a=n.getCurrencySymbol()+
+a);return a}var f=a.originalValue,h=a.name,k=a.valuesSumsInSeries,g=a.fieldInfo;a=d.hasLabel(b.dataLabels);var l=d.hasValue(b.dataLabels),m=d.hasPercent(b.dataLabels),c=[];if(a||l||m)a&&!b.dataLabelsShowLabelUnder&&c.push({isLabel:!0,text:h}),l?c.push({isValue:!0,text:q()}):m&&c.push({isPercent:!0,text:k?e.formatNumber(f/k*100,b,!0):""}),a&&b.dataLabelsShowLabelUnder&&c.push({isLabel:!0,text:h});return c}}});

@@ -1,0 +1,6 @@
+1. Carriageway (Road Layer)
+2. Traffic Light (TrafficSignalAspect)
+3. CCTV (GIS_PTZ_ATTR, GIS_WEBCAM)
+4. VMS (GIS_VMS_ATTR, GIS_EA_VMS)
+
+

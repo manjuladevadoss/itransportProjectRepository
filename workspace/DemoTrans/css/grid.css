@@ -42,20 +42,27 @@ div.scroll {
      /* width:790px; */
       overflow-y:auto;
 	  overflow-x: auto;
-      height:280px;
+      height:180px;
+}
+
+div.scrollev {
+     /* width:790px; */
+      overflow-y:auto;
+	  overflow-x: auto;
+      height:220px;
 }
 
 div.scrollinc {
      /* width:790px; */
       overflow-y:auto;
 	  overflow-x: auto;
-      height:280px;
+      height:180px;
 }
 div.scrollwc {
      /* width:790px; */
       overflow-y:auto;
 	  overflow-x: auto;
-      height:180px;
+      height:110px;
 }
 
 div.scrollwcindiv {

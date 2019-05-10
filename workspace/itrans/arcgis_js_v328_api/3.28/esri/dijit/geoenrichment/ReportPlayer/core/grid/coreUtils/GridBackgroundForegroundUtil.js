@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+//>>built
+define("esri/dijit/geoenrichment/ReportPlayer/core/grid/coreUtils/GridBackgroundForegroundUtil",["dojo/_base/lang","dojo/dom-construct"],function(h,f){var e={renderBackground:function(a,c,d){return e._renderSection(a,c,d,!0)},renderForeground:function(a,c,d){return e._renderSection(a,c,d,!1)},_renderSection:function(a,c,d,g){var b=g?a.backgroundNode:a.foregroundNode;b&&f.empty(b);if(!c)return null;b={};b["class"]="esriGEAbsoluteStretched "+(g?"adjustableGrid_backgroundSection":"adjustableGrid_foregroundSection");
+b.initialWidth=a.getAllowedWidth();b.json=c;b.viewModel=a.viewModel;b.theme=a.theme;b.parentWidget=a;b.currentFeatureIndex=a.currentFeatureIndex;b.initialViewMode=a.getViewMode();b.initialSpecificViewMode=a.getSpecificViewMode();h.mixin(b,d);c=a.viewModel.layoutBuilder.createElement("section",b,e._provideNode(a,g));c.setHeight(a.getHeight());return c},_provideNode:function(a,c){return c?a.backgroundNode=a.backgroundNode||f.create("div",{"class":"adjustableGridBackgroundNode"},a.domNode,"first"):a.foregroundNode=
+a.foregroundNode||f.create("div",{"class":"adjustableGridForegroundNode"},a.domNode)}};return e});

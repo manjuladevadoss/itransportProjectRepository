@@ -19,10 +19,8 @@
   	<script type="text/javascript"  src="jquery.js"></script> 
   	
   	<!--  Map View -->
-    <link rel="stylesheet" href="https://js.arcgis.com/3.28/esri/css/esri.css">
+	<link rel="stylesheet" href="https://js.arcgis.com/3.28/esri/css/esri.css">
 	<script src="https://js.arcgis.com/3.28/"></script>
-	<link rel="stylesheet" href="eventmap.css"> 
-    <script type="text/javascript"  src="eventmap.js"></script>
 	<!-- End of Map View -->
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -35,59 +33,38 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	   <!-- end plus and minu menu  script -->
 	
+	
+	
  <style>
-/* toggle plus and Minus background color*/
-.panel-heading.active {
-    
-	background-color: #202B53;
- /* color: #C8CFF4;   
-    border : none;*/ 
-}
-.panel-title { 
- font-size: 18px;
-  padding-bottom:6px;
-  color: #C8CFF4; 
-}
-.panel-body {
-    background-color: #202B53 ;
-    color: #C8CFF4; 
-    font-size: 12px;
-}
-.panel, .panel-group .panel-heading+.panel-collapse>.panel-body{
-    border: none;
-}
-.glyphicon {
-    font-size: 10px;
-}
-.panel-title{
-	border: solid #37478A;
-  /*border-style: solid; */
-    border-left-width: 0px;
-    border-right-width: 0px;
-    border-top-width: 0px;
-    border-bottom-width: 3px;
-}
-/* toggle plus and Minus */	  
+     #map {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+		width:100%;
+      }
+	  
 .dropdown-content {
  min-width: 180px;
  }
  .dropdown-content a {
   min-width: 180px;
  }
-
-  /*   #map {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-		width:100%;
-      } */
  
 
 </style>
 
 </head>
     <script>
-
+	//Map tag
+      var map;
+      require(["esri/map", "dojo/domReady!"], function(Map) {
+        map = new Map("map", {
+          basemap: "dark-gray",  //For full list of pre-defined basemaps, navigate to http://arcg.is/1JVo6Wd
+          center: [103.706, 1.318], // longitude, latitude
+          zoom: 12
+        });
+      });
+	 // Map Tag
 	  </script>
 	  <script>
 // accordions div tag
@@ -110,28 +87,13 @@
 			<h2t> MRT IR </h2t>
 	  </div>
 	  
-	    <div class="item2"  style="background-color:  #161F37; box-shadow: 0 2px 4px 0 rgba(0,0,0,0.5);">
-		  	<table>
-		  	<tr>
-		  		<td> 
-				  <div id="info1">          
-		          	<button id="Circle" class="buttoneventbub"> + Add Event Bubble</button>  
-		      	  </div>
-		      	  <div id="info2">
-		        	<button id="Line"  class="buttoneventclo"> + Add Road Closure</button>
-		      	  </div>
-		      		<div id="mapDiv"></div>
-		  		</td>
-		  	</tr>
-		  	</table>
-	  
-	  </div>
-	  
-	  		  
+	  <div class="item2" >
+			<div id="map" ></div>
+	  </div>		  
 	 
 	  <!-- Start IR Creation -->
 	  <div ng-show="showircreate">
-	  <div class="item3" style="background-color: #202B53;">
+	  <div class="item3">
 	  
 	  	<table width="100%" id="incdetailtbl">
 		<tr>
@@ -139,10 +101,10 @@
 		</tr>
 	</table>
 	  
-			
-		<table>
-			<tr><td>
-	<div class='incscroll'>  
+			<!-- <div class='incscroll'>  -->
+				<table width="100%">
+					<tr><td>
+					  
 
 			<div class="panel-group" id="accordion2">	 
 				 <div class="panel panel-default">
@@ -156,12 +118,10 @@
 						<div class="panel-body">
 									<!-- <p>Canning Messages</p>  -->
 							
-			<table id="incdetailtbl">
+			<table width="100%" id="incdetailtbl">
 					<tr>
-					 <td colspan="6"> Fill in the details of your IR  </td>
-					 </tr>
-					 <tr>
 					  <td colspan="3">
+					  Fill in the details of your IR  <br><br>
 						Status: <br>
 						  <select ng-model="irstatus">
 								<option  value="" selected="selected" hidden="hidden">Choose here</option>
@@ -282,7 +242,7 @@
 					<div class="panel-collapse collapse in" id="Collapseicontwo">
 						<div class="panel-body">
 						Block or Unblock Lanes 
-				<table>
+				<table  width="100%">
 					<tr>
 					  <td align="center">
 						  <table>
@@ -332,7 +292,7 @@
 						</tr>
 						  
 						  </table>
-					  </td>
+					  <td>
 					</tr>
 					<tr>
 					  <td align="center">			
@@ -402,19 +362,18 @@
 					  </td>
 					</tr>        
 					</table>
-				
+						 		       <table width="100%">
+				<tr>
+					<td> <div align='right'>  
+						<a href="#" class="buttonCreateMrtInc"  ng-click="callirresponse()" style="text-decoration:none;"> CREATE </a>
+							<!-- <a href="#popup" class="button1a" id="button1a"  ng-click="showincidentlist()"> Close</a>  -->
+					</div> </td>
+				</tr>
+				</table> 
 
 						</div>
 					</div>
 				  </div> 
-				  <table>
-				<tr>
-					<td align='right'>   
-						<a href="#" class="buttonCreateMrtInc"  ng-click="callirresponse()" style="text-decoration:none;"> CREATE </a>
-					</td>
-				</tr>
-				</table> 
-			</div>
 			</div>
 				 </td></tr>
 							 
@@ -427,257 +386,15 @@
 	  <!-- end of Create IR -->
 	<div ng-show="showirresponse">
 	  <div class="item3">
+	response window
 	
 	<table width="100%" id="incdetailtbl">
 		<tr>
 			<td>
-				<a href="createirwin.jsp" style="text-decoration: none" ng-click="callircreate()"> <h3b> CREATE  </h3b> </a> &nbsp; <h3b> > </h3b>   &nbsp;   <h3a>RESPONSE</h3a>
+				<a href="createirwin.jsp" style="text-decoration: none" ng-click="callircreate()"> <h3b>CREATE  </h3b> </a> &nbsp; <h3b> > </h3b>   &nbsp;   <h3a>RESPONSE</h3a>
 			</td>
 		</tr>
 	</table> 
-	
-		<div class='scrollResponse'>
-      <table width="100%">
-        <tr>
-          <td>
-		  
-		  <div class="panel-group" id="accordion2">
-     
-     <div class="panel panel-default">
-    	<div class="panel-heading active">
-        	<h4 class="panel-title">           	             	
-                    VMS Messages <span data-target="#Collapseiconfour" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
-            </h4>
-			<!-- <img src="horibar.JPG" height="auto" > -->
-        </div>
-        
-        <div class="panel-collapse collapse in" id="Collapseiconfour">
-        	<div class="panel-body">
-            	<p>Recommended VMS Messages </p>
-			<table width="100%" class="tablevms">  
-			<tr>
-				<th align="left" style="padding:5px;">Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </th>
-				<th align="left">EQT ID <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></th>
-				<th align="left">Recommended Display <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </th>
-				<th align="left"></th>		
-			</tr>
-			<tr>
-				<td> 
-				<div ng-if="vmsMsgStatus==='Failed'"> <span class="dotfail"></span> {{vmsMsgStatus}} </div>
-				<div ng-if="vmsMsgStatus==='Implemented'"> <span class="dotimp"></span> {{vmsMsgStatus}} </div>
-				<div ng-if="vmsMsgStatus==='Not Active'">  <span class="dotnotact"></span> {{vmsMsgStatus}} </div>
-				
-				
-				</td>
-				<td>TIP_758092</td>
-				<td><textarea class = "textareaVmsMsg" rows="3" cols="28"  placeholder="Heavy Traffic at Dunearn Road" ng-model="recommMsg" ng-click="enableText()" > </textarea></td>
-				<td> <i class="material-icons" style="font-size:8px;color:#C8CFF4;">border_color</i> </td>
-				
-			</tr>	
-			</table>
-			<table width="100%"> 
-				<tr>
-					<td align="right">
-						<a href="#" class="buttonRem" id="buttonRem" ng-click="vmsMsgRemoved()" style="text-decoration:none;"> Remove </a> 
-						<a href="#" class="buttonImp" id="buttonImp" ng-click="vmsMsgImpl()" style="text-decoration:none;"> Implement </a>	
-					</td>
-				</tr>
-	 	 </table>
-            </div>
-        </div>
-     </div>
-     <div class="panel panel-default">
-    	<div class="panel-heading active">
-        	<h4 class="panel-title">
-                   Canning Message<span data-target="#Collapseiconfive" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
-            </h4>
-           <!-- <img src="horibar.JPG" height="auto" > -->
-        </div>
-        
-        <div class="panel-collapse collapse" id="Collapseiconfive">
-        	<div class="panel-body">
-            	<!-- <p>Canning Messages</p>  -->
-            	<p>Enter Canning Messages</p>
-			   <table width="100%" class="tablevms"> 
-					<tr>
-						<td>
-							<textarea class = "textareaVmsMsg" rows="3" cols="55" placeholder="This road has heavy traffic, please Note." ng-model="canningMsg"> </textarea>
-							<a href="#" class="buttonImp" id="buttonImp" ng-click="canMsgSend()"> Send </a>						
-						</td>
-					</tr>
-			 </table>
-            </div>
-        </div>
-     </div>
-       <div class="panel panel-default">
-    	<div class="panel-heading active">
-        	<h4 class="panel-title">
-                   OBU Messages <span data-target="#Collapseiconsix" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
-            </h4>
-            <!-- <img src="horibar.JPG" height="auto" > -->
-        </div>
-        
-        <div class="panel-collapse collapse" id="Collapseiconsix">
-        	<div class="panel-body">
-           	
-          	<p>OBU Message </p>
-				<table width="100%" class="tablevms" >  
-					<tr>
-						<th colspan="3" bgcolor="#EE5656" style="padding:5px;"> Alert </th>
-					</tr>
-					<tr>					
-						<td> 
-							<div ng-if="obuMsgStatus==='Failed'"> <span class="dotfail"></span> {{obuMsgStatus}} </div>
-							<div ng-if="obuMsgStatus==='Implemented'"> <span class="dotimp"></span> {{obuMsgStatus}} </div>
-							<div ng-if="obuMsgStatus==='Not Active'">  <span class="dotnotact"></span> {{obuMsgStatus}} </div>					
-						</td>
-						<td> <textarea class = "textareaVmsMsg" rows="3" cols="42" ng-model="recommMsg" ng-click="enableText()"  placeholder="Message to be displayed on OBU"> {{obuMsg}} </textarea></td>						
-						<td>KM Marking 
-						<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="markalert" ng-click="enableText()" placeholder="1.2" > {{obuMsg}}</textarea></td>
-						
-					</tr>
-					<tr>
-						<th colspan="3" bgcolor="#ECD641" style="padding:5px;"> Jam</th>
-					</tr>
-					<tr>
-						<td> 
-							<div ng-if="obuMsgStatus==='Failed'"><h6> <span class="dotfail"></span> {{obuMsgStatus}} </h6></div>
-							<div ng-if="obuMsgStatus==='Implemented'"><h6> <span class="dotimp"></span> {{obuMsgStatus}} </h6></div>
-							<div ng-if="obuMsgStatus==='Not Active'"><h6>  <span class="dotnotact"></span> {{obuMsgStatus}} </h6></div>						
-						</td>
-						<td> <textarea class = "textareaVmsMsg" rows="3" cols="42" ng-model="jamMsg" ng-click="enableText()" placeholder="Message to be displayed on OBU" > {{obuMsg}}</textarea></td>						
-						<td>KM Marking<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="markjam" ng-click="enableText()" placeholder="1.2" > {{obuMsg}}</textarea></td>	
-					</tr>
-					<tr>
-						<th colspan="3" bgcolor="#41EC42" style="padding:5px;"> Guide</th>
-					</tr>	
-					<tr >
-						<td> 
-							<div ng-if="obuMsgStatus==='Failed'"><h6> <span class="dotfail"></span> {{obuMsgStatus}} </h6></div>
-							<div ng-if="obuMsgStatus==='Implemented'"><h6> <span class="dotimp"></span> {{obuMsgStatus}} </h6></div>
-							<div ng-if="obuMsgStatus==='Not Active'"><h6>  <span class="dotnotact"></span> {{obuMsgStatus}} </h6></div>						
-						</td>
-						<td> <textarea class = "textareaVmsMsg" rows="3" cols="42" ng-model="guideMsg" ng-click="enableText()"  placeholder="Message to be displayed on OBU" > {{obuMsg}}</textarea></td>						
-						<td>KM Marking<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="markguide" ng-click="enableText()" placeholder="1.2" > {{obuMsg}}</textarea></td>	
-					</tr>					
-				</table>
-				<table width="100%"> 
-				<tr>
-					<td align="right">
-						<a href="#" class="buttonRem" id="buttonRem" ng-click="obuMsgdeact()" style="text-decoration:none;"> Deactivate All </a> 
-						<a href="#" class="buttonImp" id="buttonImp" ng-click="obuMsgImpl()" style="text-decoration:none;"> Implement All </a>	
-					</td>
-				</tr>
-				</table> 
-          	
-            </div>
-        </div>
-     </div>
-     
-     <div class="panel panel-default">
-    	<div class="panel-heading active">
-        	<h4 class="panel-title">               	
-                    Conjestion Routes Monitoring <span data-target="#Collapseiconseven" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
-            </h4>
-           <!-- <img src="horibar.JPG" height="auto" > -->
-        </div>
-         
-        <div class="panel-collapse collapse" id="Collapseiconseven">
-        	<div class="panel-body">
-            	<p>Conjestion Routes Monitoring </p>
-            </div>
-        </div>
-     </div>
-   
-     <div class="panel panel-default">
-    	<div class="panel-heading active">
-        	<h4 class="panel-title">              	
-                   Partners & Vehicle Response<span data-target="#Collapseiconeight" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
-            </h4>
-        </div>
-        
-        <div class="panel-collapse collapse" id="Collapseiconeight">
-        	<div class="panel-body">
-            	<p>Partners Vehicle Handling</p>
-					<table width="100%" class="tablevms">  
-						<tr>
-							<th align="left" style="padding:5px;"> Type <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4;"></i></th>
-							<th align="left"> Vehicle No. </th>
-							<th align="left"> Notify Time </th>
-							<th align="left"> Arrival Time </th>	
-							<th align="left"> Depature Time </th>								
-						</tr>					
-						<tr>
-							<td>
-							<select name="item2" ng-model="partnerTypepart" style="height: 20px; width: 90px;font-size: 10px;">
-								<option value="Ambulance" >Ambulance</option>
-								<option value="Ambulance">Ambulance2</option>
-								<option value="Ambulance">Ambulance3</option>
-							</select>
-							
-							</td>
-							<td><input type="text" ng-click="" ng-model="partnerVehNopart" placeholder="RX23293" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerNotiTimepart" placeholder="1/24/2018 12:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerArrTimepart" placeholder="1/24/2018 12:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerDepatTimepart" placeholder="1/24/2018 16:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
-						</tr>
-					</table>
-					<table width="100%"> 
-						<tr>
-							<td align="right">
-								<a href="#" class="buttonRem" id="buttonRem" ng-click="parterMsgRemove()" style="text-decoration:none;"> Remove </a> 
-								<a href="#" class="buttonImp" id="buttonImp" ng-click="parterMsgAdd()" style="text-decoration:none;"> Add </a>	
-							</td>
-						</tr>
-				 </table>			
-				<p>LTA Vechicles</p>
-				<table width="100%" class="tablevms">  
-						<tr>
-							<th align="left" style="padding:5px;"> Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4;font-size: 12px;"></i></th>
-							<th align="left"> Vehicle No. </th>
-							<th align="left"> Parking Address</th>
-							<th align="left"> Parking Lot No.</th>	
-							<th align="left"> Notify Time </th>								
-						</tr>	
-				
-						<tr>
-							<td>
-							<select name="item4" ng-model="partnerType3vec" style="height: 20px; width: 90px;font-size: 10px;">
-								<option value="Tower1" >Tower1</option>
-								<option value="Tower1">Tower2</option>
-								<option value="Tower3">Tower3</option>
-							</select>
-							
-							</td>
-							<td><input type="text" ng-click="" ng-model="partnerVehNovec" placeholder="RX23293" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerNotiTimevec" placeholder="Bedok AVe 3" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerArrTimevec" placeholder="46" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerDepatTimevec" placeholder="1/24/2018 16:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
-						</tr>
-					
-					</table>
-					<table width="100%"> 
-						<tr>
-							<td align="right">
-								<a href="#" class="buttonRem" id="buttonRem" ng-click="parterMsgRemove()" style="text-decoration:none;"> Remove </a> 
-								<a href="#" class="buttonImp" id="buttonImp" ng-click="parterMsgAdd()" style="text-decoration:none;"> Add </a>	
-							</td>
-						</tr>
-				 </table>
-				
-            </div>
-        </div>
-     </div>
-</div>
-		  	  
-		  </td>
-        </tr>
-      </table>
-	  
-	 </div>
-	
-	<div align="right"><a href="createinc.jsp" class="buttonCreateMrtInc" ng-click="addmrtincident()" style="text-decoration:none;"> SAVE </a></div>
-	
 	
 	</div>
 	 </div>

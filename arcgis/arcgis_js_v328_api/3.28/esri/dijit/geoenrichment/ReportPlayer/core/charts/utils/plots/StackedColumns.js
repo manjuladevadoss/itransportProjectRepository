@@ -1,0 +1,6 @@
+// All material copyright ESRI, All Rights Reserved, unless otherwise specified.
+// See http://js.arcgis.com/3.28/esri/copyright.txt for details.
+//>>built
+define("esri/dijit/geoenrichment/ReportPlayer/core/charts/utils/plots/StackedColumns",["dojo/_base/declare","dojo/_base/lang","dojox/charting/plot2d/commonStacked","./ClusteredColumns"],function(h,k,d,l){return h(l,{getSeriesStats:function(){var a=d.collectStats(this.series,k.hitch(this,"isNullValue"));a.hmin-=.5;a.hmax+=.5;return a},rearrangeValues:function(a,c,b){return d.rearrangeValues.call(this,a,c,b)},_drawColumnBackground:function(a,c,b,d,g,e,f,h){this.series.indexOf(f)===this.series.length-
+1&&this.inherited(arguments)},_getXShift:function(a,c){return 0},_getClusterSize:function(){return 1},_renderInside:function(a,c,b,d,g,e){var f=c[c.valueProp];a.box.h+2*this.opt.labelOffset>b.height?a.box.h<=(0<f?b.y-e.t-this.opt.labelOffset:g.height-e.b-(b.y+b.height+2*this.opt.labelOffset))&&this._renderOutside(a,c,b,d,g,e,!0):(a={x:b.x+b.width/2-a.box.w/2,y:0<f?b.y+this.opt.labelOffset:b.y+b.height-a.box.h-this.opt.labelOffset,w:a.box.w,h:a.box.h,text:a.getText(),angle:a.angle},this._labelBoxes.push(a))},
+_getFixLabelsParams:function(){return{allowXShift:!0,allowYShift:!0,xGap:1,yGap:3,xTolerance:.1}}})});
