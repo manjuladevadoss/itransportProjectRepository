@@ -69,9 +69,7 @@ h11 {
 <div class="container-fluid">
 <div ng-app="ltaApp" ng-controller="ltaController">
 	
-	<div class="grid-container">  
-	  <div class="item1">
-		<table width="100%" style="background-color: rgba(49,53,81,0.5);"> 
+	<table width="100%" style="background-color: rgba(49,53,81,0.5);"> 
 			<tr> 
 				<td> 
 					<h4> <img src="titlelogobar.png" width="20px" height="18px">&nbsp; itransport 2.0 </h4>
@@ -87,7 +85,9 @@ h11 {
 				</td> 
 			</tr>
 		</table>
-	  </div>
+	<div class="grid-container">  
+	  <!--  <div class="item1">
+	  </div>  -->
 	  
 	  <div class="item2" ng-style="divItem2">
 	  

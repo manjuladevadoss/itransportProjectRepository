@@ -3,7 +3,7 @@
     {
       "startdate": "2018/11/02 12:26:43",
       "alarmid": "EBTS01",
-      "description": "No Matching Alarm Code",
+      "description": "No Match AlarmCode",
       "source": "ERS",
       "zone": "CBD",
       "status": "open"
@@ -50,31 +50,31 @@
     },
      {
       "startdate": "2018/10/18 12:34:23",
-      "alarmid": "PGS_LDC_009",
-      "description": "No Matching Alarm Code",
+      "alarmid": "PGS_009",
+      "description": "No Match Alarm Code",
       "source": "ERS",
       "zone": "EC1",
       "status": "in progress"
     },
      {
       "startdate": "2017/07/21 16:15:04",
-      "alarmid": "CI_IWD_1504",
-      "description": "Failure To Complete CC",
+      "alarmid": "CI_1504",
+      "description": "Fail To Complete CC",
       "source": "ERS",
       "zone": "UBT",
       "status": "close"
     },
      {
       "startdate": "2017/08/24 15:05:34",
-      "alarmid": "0087993",
-      "description": "Pixel failure threshold",
+      "alarmid": "087993",
+      "description": "Pixel fail threshold",
       "source": "ERS",
       "zone": "NIC",
       "status": "close"
     },
      {
       "startdate": "2017/02/08 16:14:24",
-      "alarmid": "0101_PWR",
+      "alarmid": "01_PWR",
       "description": "TCMS Switch power failure",
       "source": "ERS",
       "zone": "NIC",
@@ -82,24 +82,24 @@
     },
      {
       "startdate": "2018/10/18 12:34:23",
-      "alarmid": "PGS_LDC_009",
-      "description": "No Matching Alarm Code",
+      "alarmid": "PGS_009",
+      "description": "No Match AlarmCode",
       "source": "ERS",
       "zone": "EC1",
       "status": "in progress"
     },
      {
       "startdate": "2017/07/10 16:15:04",
-      "alarmid": "CI_IWD_1504",
-      "description": "Failure To Complete CC",
+      "alarmid": "IWD_154",
+      "description": "Failure To CC",
       "source": "ERS",
       "zone": "UBT",
       "status": "close"
     },
      {
       "startdate": "2017/10/07 15:05:34",
-      "alarmid": "0087993",
-      "description": "Pixel exceed threshold",
+      "alarmid": "008793",
+      "description": "Pixelexceed threshold",
       "source": "ERS",
       "zone": "NIC",
       "status": "close"

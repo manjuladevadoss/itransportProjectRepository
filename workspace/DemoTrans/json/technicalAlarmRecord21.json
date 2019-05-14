@@ -3,7 +3,7 @@
     {
       "startdate": "2018/11/02 12:26:43",
       "alarmid": "EBTS01",
-      "description": "No Matching Alarm Code",
+      "description": "No Match AlarmCode",
       "source": "ERS",
       "zone": "CBD",
       "status": "open"
@@ -11,30 +11,30 @@
     {
       "startdate": "2018/10/8 15:44:21",
       "alarmid": "ALARM_5",
-      "description": "Receive Past Alarm Fail",
+      "description": "Past Alarm Fail",
       "source": "JEYE",
       "zone": "DZ1",
       "status": "in progress"
     },
      {
       "startdate": "2018/10/18 12:34:23",
-      "alarmid": "PGS_LDC_009",
-      "description": "No Matching Alarm Code",
+      "alarmid": "LDC_009",
+      "description": "No Match AlarmCode",
       "source": "ERS",
       "zone": "EC1",
       "status": "in progress"
     },
      {
       "startdate": "2017/07/21 16:15:04",
-      "alarmid": "CI_IWD_1504",
-      "description": "Failure To Complete CC",
+      "alarmid": "IWD_1504",
+      "description": "Fail To Complete CC",
       "source": "ERS",
       "zone": "UBT",
       "status": "close"
     },
      {
       "startdate": "2017/08/24 15:05:34",
-      "alarmid": "0087993",
+      "alarmid": "00873",
       "description": "Pixel failure exceed",
       "source": "ERS",
       "zone": "NIC",
@@ -42,32 +42,32 @@
     },
      {
       "startdate": "2017/02/08 16:14:24",
-      "alarmid": "0101_PWR",
-      "description": "TCMS Niche Switch power failure",
+      "alarmid": "01_PWR",
+      "description": "TCMS Switch failure",
       "source": "ERS",
       "zone": "NIC",
       "status": "open"
     },
      {
       "startdate": "2018/10/18 12:34:23",
-      "alarmid": "PGS_LDC_009",
-      "description": "No Matching Alarm Code",
+      "alarmid": "PGS_009",
+      "description": "No Match AlarmCode",
       "source": "ERS",
       "zone": "EC1",
       "status": "in progress"
     },
      {
       "startdate": "2017/07/10 16:15:04",
-      "alarmid": "CI_IWD_1504",
-      "description": "Failure To Complete CC",
+      "alarmid": "CI_1504",
+      "description": "Fail To Complete CC",
       "source": "ERS",
       "zone": "UBT",
       "status": "close"
     },
      {
       "startdate": "2017/10/07 15:05:34",
-      "alarmid": "0087993",
-      "description": "Pixel failure exceed threshold",
+      "alarmid": "007993",
+      "description": "Pixel failure threshold",
       "source": "ERS",
       "zone": "NIC",
       "status": "close"

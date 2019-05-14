@@ -105,10 +105,21 @@ input[type=text] {
   font-family: Roboto, Helvetica, sans-serif;
   color: white;
 }
+/* Start Traffic Video */ 
+#videodiv {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  text-align: center;
+  width:150px; 
+  border: 1px solid #4be01d;
+  /* opacity: 0.5; */  /* To change transparent color*/ 
+}
+/* end of traffic video */
 </style>
 
 </head>
-	  <script>
+<script>
 // accordions div tag
 	  $(document).ready(function(){
 	$('.collapse').on('shown.bs.collapse', function(){
@@ -117,8 +128,8 @@ input[type=text] {
 		$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
 	});       
 });
-//Lane image change    
 
+//Lane image change    
 var newsrc = "laneup.JPG";
 var newsrc1 = "laneup.JPG";
 var newsrc2 = "laneup.JPG";
@@ -224,9 +235,10 @@ function changeImage(imgid) {
 			  <div id="info1">          
 		          	<button id="Circle" class="buttoneventbub"> + Add Event Bubble</button>  
 		      	</div>  
-		      	<!-- <div id="info2">
+		      	<div id="info2">
 		        	<button id="Line"  class="buttoneventclo"> + Add Road Closure</button>
-		      	</div>  -->
+		      	</div>  
+		      	
 		      	<div id="vmsmsgdiv">
 				  	<div id="vmsmsgdivheader"><h1> {{eventvmseqipid}} <h1> 
 				    	 <h2> {{eventVmsMsg}} </h2>
@@ -248,6 +260,14 @@ function changeImage(imgid) {
 				    	 <h2> {{eventVmsMsg3}} </h2>
 					</div>
 				</div>
+				
+				<!-- Start Traffic Video  -->
+				   	<div id="videodiv">
+						<video id="myVideo" width="320" height="176">
+  							<source src="CTEvideo.mp4" type="video/mp4">
+						</video>
+					</div>
+				<!--  End of Traffic Video  -->
 				
 				<!-- MAP dispaly on this div mapDiv  -->
 		     	<div id="mapDiv">
@@ -453,9 +473,15 @@ function changeImage(imgid) {
 						<table width="100%" class="eventclosuretable">
 						<tr>
 							<td> 
-								<a href="#"  class="buttonUpload" ng-click="showroadclosedata()"> Upload Road Closure </a>
-								&nbsp;<a href="#" class="buttonRemove"  ng-click="removeroadclosedata()"> Remove Road Closure</a> 
+								<a href="#"  class="buttonUpload" ng-click="showroadclosedata()" style="text-decoration:none;"> Upload Road Closure </a>
+								&nbsp;<a href="#" class="buttonRemove"  ng-click="removeroadclosedata()" style="text-decoration:none;"> Remove Road Closure</a> 
 								<!-- <a href="createventwin.jsp"  class="buttonClosure" ng-click=""> Add Road Closure</a> -->
+								<!-- Traffic Video  -->
+								<br><br><br>Traffic Video <br>
+								<a href="#" class="buttonUpload" onclick="playVid()" type="button" style="text-decoration:none;">Play Traffic Video</a>
+								<a href="#" class="buttonUpload" onclick="pauseVid()" type="button" style="text-decoration:none;">Pause Traffic Video</a> 
+								<a href="#"  class="buttonUpload" onclick="closeVid()" type="button" style="text-decoration:none;">Close Traffic Video</a>
+								<!-- End of Traffic Video  --> 
 							</td>
 							</tr>
 						</table> 

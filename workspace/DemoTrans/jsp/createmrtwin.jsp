@@ -199,7 +199,7 @@ h5 {
 				</td> 
 				<td> 
 					<br>
-					<button type="button" class="buttonCan"  id="buttonCan" onclick="myFunction()">CANCEL</button>	&nbsp;&nbsp;&nbsp;				 
+					<button type="button" class="buttonCan"  id="buttonCan" ng-click="cancelmrtinc()">CANCEL</button>	&nbsp;&nbsp;&nbsp;				 
 				</td>
 				</tr>
 				<tr>
