@@ -1,0 +1,69 @@
+<html> 
+  <head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+   
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>WMS layer local setup</title> 
+
+    <link rel="stylesheet" href="http://localhost:8080/gis/3.28/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="http://localhost:8080/gis/3.28/esri/css/esri.css">  
+    <link rel="stylesheet" href="http://localhost:8080/gis/3.28/esri/dijit/geoenrichment/themes/light/main.css" />
+
+    <style>
+      html, body, #map {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #FFF;
+        overflow: hidden;
+        font-family: "Trebuchet MS";
+      }
+    </style>
+    
+
+    <script src="http://localhost:8080/gis/3.28/init.js"></script> 
+
+<script>
+      var map;
+
+      require(["esri/map", "esri/layers/WMSLayer",'esri/layers/WMSLayerInfo', 'esri/geometry/Extent', "esri/config", "dojo/domReady!"],
+        function(Map, WMSLayer,WMSLayerInfo,Extent, esriConfig) {
+
+         // esriConfig.defaults.io.proxyUrl = "/proxy/";
+          
+          map = new Map("map", {
+            basemap: "streets",
+            center: [103.823547,1.358881],
+            zoom: 5
+          });
+          var layer1 = new WMSLayerInfo({
+            name: 'gisdbo_gis_ea_vms',
+             title: 'gisdbo_gis_ea_vms'
+         });
+
+          var resourceInfo = {
+            extent: new Extent(-126.40869140625, 31.025390625, -109.66552734375, 41.5283203125, {
+              wkid: 4326
+            }),
+            layerInfos: [layer1]
+        };
+
+          var wmsLayer = new WMSLayer("http://localhost:8088/geoserver/singaporedb/wms", {
+            format: "png",
+            resourceInfo: resourceInfo,
+            visibleLayers: ['gisdbo_gis_ea_vms']
+          });
+          
+          map.addLayer(wmsLayer);
+      });
+    </script> 
+  </head> 
+  
+  <body> 
+      <div id="map">
+      </div>
+  </body> 
+</html>

@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>WMTSLayer 4.11 basemap zoom </title>
+
+  <link rel="stylesheet" href="http://localhost:8080/gis/3.28/esri/dijit/geoenrichment/themes/light/main.css" />
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      .esri-layer-list {
+        width: 310px;
+      }
+    </style>
+
+<script src="http://localhost:8080/gis/4.11/init.js"></script>  
+
+    <script>
+      var map, view;
+
+      require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/layers/WMTSLayer","esri/geometry/Extent", 
+        "esri/widgets/LayerList"
+      ], function(Map, MapView, WMTSLayer,Extent, LayerList) {
+        layer = 
+          new WMTSLayer({
+          url: "http://192.168.99.100:32768/services/wmts?service",
+          //copyright:
+            //"<a target='_top' href='https://earthdata.nasa.gov'>Earthdata</a> by <a target='_top' href='https://www.nasa.gov'>NASA</a>",
+          activeLayer: {
+            id: "osm-bright"
+          },
+          version: "1.0.0",
+          tileMatrixSet: "2x",
+          format: "png",
+          style: "default",
+          serviceMode: "KVP"
+        });
+
+        map = new Map({
+          //center: [103.84347,1.32858],
+          center: [47.075,-52.93],
+          zoom: 13,
+          layers: [layer]
+        });
+        
+        
+        view = new MapView({
+          container: "viewDiv",
+          map: map,          
+        });
+       
+        view.when(function() {
+        view.extent = layer.fullExtent;
+            var layerList = new LayerList({
+            view: view
+          });
+          //view.ui.add(layerList, "bottom-left");
+        }); 
+      });
+    </script>
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>
