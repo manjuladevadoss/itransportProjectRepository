@@ -42,31 +42,41 @@
 
       var map = new Map("map", {
         center: [47.075,-52.93],
-        zoom: 10
+        zoom: 3
       });
 
-      var tileInfo = new TileInfo({
+     var tileInfo = new TileInfo({
         "dpi": 96,
         "format": "format/png",
         "compressionQuality": 0,
         "spatialReference": new SpatialReference({
           "wkid": 4326
         }),
+     
+        
+       
         "rows": 512,
         "cols": 512,
         "origin": {
           "x": -180,
           "y": 90
         },
+        
         "lods": [{
           "level": "0",
           "scale": 236663484.36365247,
           "resolution": 0.5624999999999999
-          }, {
+          }
+        
+          , {
           "level": "1",
           "scale": 118331742.18182631,
           "resolution": 0.28125000000000017
           }, {
+          "level": "11",
+          "scale": 115558.3419744397,
+          "resolution": 0.000274658203125
+          },  {
           "level": "2",
           "scale": 59165871.090913124,
           "resolution": 0.140625
@@ -107,11 +117,13 @@
           "scale": 115558.3419744397,
           "resolution": 0.000274658203125
           }]
-      });
+      }); 
       var tileExtent = new Extent(-180, -90, 180, 90, new SpatialReference({
+        //var tileExtent = new Extent(-95.271, 38.933, -95.228, 38.976, new SpatialReference({
+        
         wkid: 4326
       }));
-
+      //5456.673920001926,27676.998370644546,44607.732918584545,46905.68682507822
       var layerInfo = new WMTSLayerInfo({
         tileInfo: tileInfo,
         fullExtent: tileExtent,
@@ -135,7 +147,7 @@
         layerInfo: layerInfo
       };
 
-      wmtsLayer = new WMTSLayer("http://192.168.99.100:32770/services/wmts/1.0.0/", options);
+      wmtsLayer = new WMTSLayer("http://192.168.99.100:32768/services/wmts/1.0.0/", options);
       map.addLayer(wmtsLayer);
     });
   </script>

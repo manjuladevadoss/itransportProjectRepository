@@ -277,7 +277,7 @@ var app = angular.module('ltaApp', []);
     $scope.callirresponse = function(){
 	    $scope.showircreate = false;
 	    $scope.showirresponse = true;
-	    alert("simulation : " + $scope.irsimul + "\ "  + "irimpor : " + $scope.irimpor  + "\ "  + "irvrs : " + $scope.irvrs  + "\ "  + "irltm : " + $scope.irltm);
+	    //alert("simulation : " + $scope.irsimul + "\ "  + "irimpor : " + $scope.irimpor  + "\ "  + "irvrs : " + $scope.irvrs  + "\ "  + "irltm : " + $scope.irltm);
     }
     $scope.callircreate= function(){
 	    $scope.showircreate = true;
@@ -365,9 +365,9 @@ var app = angular.module('ltaApp', []);
     
 	$scope.isexpression = true;
 	$scope.enableText = function() {
-		 console.log("before text" + expression);
+		 console.log("before text" + $scope.isexpression);
     	 $scope.isexpression = false;
-		 console.log("after text" + expression);
+		 console.log("after text" + $scope.isexpression);
     };
 
  // ******** End To Create New IR     
@@ -434,22 +434,30 @@ var app = angular.module('ltaApp', []);
       $scope.eventstarttimecl= $scope.eventstarttime;
       $scope.eventendtimecl= $scope.eventendtime;
       
+      var currdate2 = new Date();
       //div message display on the map
       $scope.eventVmsMsg = "Massive Jam Around Marina Center";
       $scope.eventVmsdisplaytime = $scope.eventstarttime;
       $scope.eventvmseqipid = "TIP 568231";
       
+      currdate2.setHours(currdate2.getHours() + 3);
       $scope.eventVmsMsg1 = "Road Closed at Marina Ctr To Shenton Way - Use Nth Bridge Rd or Victoria St";
-      $scope.eventVmsdisplaytime1 =$scope.eventstarttime;
+      $scope.eventVmsdisplaytime1 =  $filter('date')(currdate2, 'yyyy/MM/dd HH:mm');
       $scope.eventvmseqipid1 = "TIP 568231";
       
+      currdate2.setHours(currdate2.getHours() + 6);
       $scope.eventVmsMsg2 = "Expect Delays near Marina Ctr To Shenton Way";
-      $scope.eventVmsdisplaytime2 = $scope.eventstarttime;
+      $scope.eventVmsdisplaytime2 =  $filter('date')(currdate2, 'yyyy/MM/dd HH:mm');
       $scope.eventvmseqipid2 = "TIP 568231";
       
+      currdate2.setHours(currdate2.getHours() + 9);
       $scope.eventVmsMsg3 = "Expect Delays on Shenton Way";
-      $scope.eventVmsdisplaytime3 = $scope.eventstarttime;
+      $scope.eventVmsdisplaytime3 =  $filter('date')(currdate2, 'yyyy/MM/dd HH:mm');
       $scope.eventvmseqipid3 = "TIP 568231";
+      
+      
+      var currdate = new Date();
+      var currdate1 = new Date();
       
       $scope.showvmsequipmsg= function(vmseqipid) {
     	  if(vmseqipid=='825231') {
@@ -457,16 +465,19 @@ var app = angular.module('ltaApp', []);
               $scope.eventVmsdisplaytime = $scope.eventstarttime;
               $scope.eventvmseqipid = "TIP 825231";
               
+              currdate.setHours(currdate.getHours() + 3);
               $scope.eventVmsMsg1 = "Massive Jam Around Marina Center";
-              $scope.eventVmsdisplaytime1 =$scope.eventstarttime;
+              $scope.eventVmsdisplaytime1 =  $filter('date')(currdate, 'yyyy/MM/dd HH:mm');
               $scope.eventvmseqipid1 = "TIP 825231";
               
+              currdate.setHours(currdate.getHours() + 6);
               $scope.eventVmsMsg2 = "Expect Delays on Shenton Way";
-              $scope.eventVmsdisplaytime2 = $scope.eventstarttime;
+              $scope.eventVmsdisplaytime2 =  $filter('date')(currdate, 'yyyy/MM/dd HH:mm');
               $scope.eventvmseqipid2 = "TIP 825231";
               
+              currdate.setHours(currdate.getHours() + 9);
               $scope.eventVmsMsg3 = "Expect Delays near Marina Ctr To Shenton Way";
-              $scope.eventVmsdisplaytime3 = $scope.eventstarttime;
+              $scope.eventVmsdisplaytime3 =  $filter('date')(currdate, 'yyyy/MM/dd HH:mm');
               $scope.eventvmseqipid3 = "TIP 825231";
     	  }
        	  if(vmseqipid=='568231') {
@@ -474,16 +485,19 @@ var app = angular.module('ltaApp', []);
        	      $scope.eventVmsdisplaytime = $scope.eventstarttime;
        	      $scope.eventvmseqipid = "TIP 568231";
        	      
+       	      currdate1.setHours(currdate1.getHours() + 3);
        	      $scope.eventVmsMsg1 = "Road Closed at Marina Ctr To Shenton Way - Use Nth Bridge Rd or Victoria St";
-       	      $scope.eventVmsdisplaytime1 =$scope.eventstarttime;
+       	      $scope.eventVmsdisplaytime1 =  $filter('date')(currdate1, 'yyyy/MM/dd HH:mm');
        	      $scope.eventvmseqipid1 = "TIP 568231";
        	      
+       	      currdate1.setHours(currdate1.getHours() + 6);
        	      $scope.eventVmsMsg2 = "Expect Delays near Marina Ctr To Shenton Way";
-       	      $scope.eventVmsdisplaytime2 = $scope.eventstarttime;
+       	      $scope.eventVmsdisplaytime2 = $filter('date')(currdate1, 'yyyy/MM/dd HH:mm');
        	      $scope.eventvmseqipid2 = "TIP 568231";
        	      
+       	      currdate1.setHours(currdate1.getHours() + 9);
        	      $scope.eventVmsMsg3 = "Expect Delays on Shenton Way";
-       	      $scope.eventVmsdisplaytime3 = $scope.eventstarttime;
+       	      $scope.eventVmsdisplaytime3 = $filter('date')(currdate1, 'yyyy/MM/dd HH:mm');
        	      $scope.eventvmseqipid3 = "TIP 568231";
     	  }
           
@@ -962,6 +976,15 @@ var app = angular.module('ltaApp', []);
         //var landingUrl = "createmrtincwin.jsp";
         //alert("landingUrl : " + landingUrl);
         //$window.location.href = landingUrl;
+    }
+    
+    $scope.cancelmrtinc = function() {
+		$scope.mrtincflag = true;
+		$scope.mrtinccreateflag = false;
+		$scope.endstation = '';
+    	$scope.startstation = '';
+    	$scope.direction = '';
+		$scope.bothdir = false;
     }
     
     // MRT side UI panel selection for mrt 

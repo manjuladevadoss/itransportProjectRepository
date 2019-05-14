@@ -23,7 +23,7 @@
 
   <script>
     require([
-      "esri/map", 
+      "esri/map",
       "esri/layers/WMTSLayer", 
       "esri/layers/WMTSLayerInfo",
       "esri/layers/WMSLayer", 
@@ -141,8 +141,8 @@
         layerInfo: layerInfo
       };
 
-      wmtsLayer = new WMTSLayer("http://192.168.99.100:32770/services/wmts/1.0.0/", options);
-      map.addLayer(wmtsLayer);
+      wmtsLayer = new WMTSLayer("http://192.168.99.100:32768/services/wmts/1.0.0/", options);
+     //map.addLayer(wmtsLayer);
       // ******* End of basemap using openmaptiles server
       
       // ***** Add new VMS Layer detail using geoserver ******//
@@ -151,26 +151,29 @@
           title: 'gisdbo_gis_ea_vms'
         });
 
-      var resourceInfo = {
-    	        extent: new Extent(-126.40869140625, 31.025390625, -109.66552734375, 41.5283203125, {
-    	          wkid: 4326
-    	        }),
+      var resourceInfo1 = {
+            extent: new Extent(-180, -90, 180, 90, new SpatialReference({
+                wkid: 4326
+               // wkid: 3414
+              })), 
+            
     	        layerInfos: [layer1]
-   		};
+       };
+       
+
       
       var wmsLayer = new WMSLayer('http://localhost:8088/geoserver/singaporedb/wms', {
-          resourceInfo: resourceInfo,
-          visibleLayers: ['gisdbo_gis_ea_vms']
+        tileInfo: tileInfo, 
+       // fullExtent: tileExtent, 
+        resourceInfo: resourceInfo1,
+        visibleLayers: ['gisdbo_gis_ea_vms']
         });
-        map.addLayers([wmsLayer]);
+        //map.addLayers([wmsLayer]); 
+       var details = dom.byId('details');
+     // domConst.place('<b>Layers</b>:', details);
+        map.addLayers([wmtsLayer, wmsLayer]);
+      
         
-        var details = dom.byId('details');
-        domConst.place('<b>Layers</b>:', details);
-        var ul = domConst.create('ul', null, details);
-        array.forEach(wmsLayer.layerInfos, function(layerInfo) {
-          domConst.create('li', { innerHTML: layerInfo.title }, ul);
-        });
-        domConst.place('<b>WMS Version</b>:' + wmsLayer.version + '<br />', details);
      // ***** End of new VMS Layer detail using geoserver ******//
       
     });
@@ -181,17 +184,12 @@
   <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline', gutters:false" style="width: 100%; height: 100%; margin: 0;">
 
     <div id="map" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
-      <div id="citationInfo">
-        <a href="https://earthdata.nasa.gov">Earthdata</a>
-        served by
-        <a href="https://www.nasa.gov">NASA</a>
-      </div>
     </div>
      <!--  VMS Layer display  -->
      <div id="details"
          data-dojo-type="dijit.layout.ContentPane"
          data-dojo-props="region:'left', splitter:true"
-         style="overflow:auto; width:200px;">
+         style="overflow:hidden; width:200px;">
     </div>
      <!--  VMS Layer display  -->
   </div>

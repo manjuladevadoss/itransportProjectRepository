@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>basemapvms </title>
+    
+    <!--  Basemap WMTS loader CSS  
+      <link rel="stylesheet"  href="http://localhost:8080/gis/4.11/esri/themes/light/main.css" />
+    -->
+    <!--  WMS layer loader Css  -->
+    <link rel="stylesheet" href="http://localhost:8080/gis/3.28/dijit/themes/claro/claro.css">
+    <link rel="stylesheet" href="http://localhost:8080/gis/3.28/esri/css/esri.css">
+    <link rel="stylesheet" href="http://localhost:8080/gis/3.28/esri/dijit/geoenrichment/themes/light/main.css"
+  />
+    
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+      .esri-layer-list {
+        width: 310px;
+      }
+    </style>
+
+  <!--  WMS layer loader js  -->
+    <script src="http://localhost:8080/gis/3.28/"></script> 
+
+  <!--  Basemap WMTS loader js  -->
+   <script src="http://localhost:8080/gis/4.11/init.js"></script>
+   
+    <script>
+      var map, view;
+
+      require([
+        "esri/Map",
+        "esri/views/MapView",
+        "esri/layers/WMTSLayer","esri/geometry/Extent", "esri/layers/WMSLayer",'esri/layers/WMSLayerInfo',
+        "esri/widgets/LayerList"
+      ], function(Map, MapView, WMTSLayer, Extent, WMSLayer, WMSLayerInfo,  LayerList) {
+        layer = 
+          new WMTSLayer({
+          url: "http://192.168.99.100:32768/services/wmts?service",
+          //copyright:
+            //"<a target='_top' href='https://earthdata.nasa.gov'>Earthdata</a> by <a target='_top' href='https://www.nasa.gov'>NASA</a>",
+          activeLayer: {
+            id: "osm-bright"
+          },
+          version: "1.0.0",
+          tileMatrixSet: "2x",
+          format: "png",
+          style: "default",
+          serviceMode: "KVP"
+        });
+
+        var layer1 = new WMSLayerInfo({
+            name: 'gisdbo_gis_ea_vms',
+             title: 'gisdbo_gis_ea_vms'
+         });
+
+          var resourceInfo = {
+            extent: new Extent(-126.40869140625, 31.025390625, -109.66552734375, 41.5283203125, {
+              wkid: 4326
+            }),
+            layerInfos: [layer1]
+        };
+
+          var wmsLayer = new WMSLayer("http://localhost:8088/geoserver/singaporedb/wms", {
+            format: "png",
+            resourceInfo: resourceInfo,
+            visibleLayers: ['gisdbo_gis_ea_vms']
+          });
+
+        map = new Map({
+          center: [103.84347,1.32858],
+          //center: [47.075,-52.93],
+          zoom: 13,
+         layers: [layer,wmsLayer]
+        });
+       
+
+        
+        view = new MapView({
+          container: "viewDiv",
+          map: map,          
+        });
+       
+        view.when(function() {
+        view.extent = layer.fullExtent;
+            var layerList = new LayerList({
+            view: view
+          });
+          //view.ui.add(layerList, "bottom-left");
+        }); 
+      });
+    </script>
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>

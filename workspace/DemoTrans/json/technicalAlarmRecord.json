@@ -34,7 +34,7 @@
     },
      {
       "startdate": "2018/10/18 12:34:23",
-      "alarmid": "PGS_LDC_009",
+      "alarmid": "LDC_009",
       "description": "No Matching Alarm Code",
       "source": "ERS",
       "zone": "EC1",
@@ -42,7 +42,7 @@
     },
      {
       "startdate": "2017/07/21 16:15:04",
-      "alarmid": "CI_IWD_1504",
+      "alarmid": "IWD_504",
       "description": "Failure To Complete CC",
       "source": "ERS",
       "zone": "UBT",
@@ -58,7 +58,7 @@
     },
      {
       "startdate": "2017/02/08 16:14:24",
-      "alarmid": "0101_PWR",
+      "alarmid": "01_PWR",
       "description": "TCMS Switch power failure",
       "source": "ERS",
       "zone": "NIC",
@@ -66,7 +66,7 @@
     },
      {
       "startdate": "2018/10/18 12:34:23",
-      "alarmid": "PGS_LDC_009",
+      "alarmid": "DC_009",
       "description": "No Matching Alarm Code",
       "source": "ERS",
       "zone": "EC1",
@@ -74,7 +74,7 @@
     },
      {
       "startdate": "2017/07/10 16:15:04",
-      "alarmid": "CI_IWD_1504",
+      "alarmid": "CI_1504",
       "description": "Failure To Complete CC",
       "source": "ERS",
       "zone": "UBT",
@@ -82,7 +82,7 @@
     },
      {
       "startdate": "2017/10/07 15:05:34",
-      "alarmid": "0087993",
+      "alarmid": "007993",
       "description": "Pixel failure ",
       "source": "ERS",
       "zone": "NIC",

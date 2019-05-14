@@ -118,7 +118,6 @@
 });
 
 	//Lane image change    
-
 	  var newsrc = "laneup.JPG";
 	  var newsrc1 = "laneup.JPG";
 	  var newsrc2 = "laneup.JPG";
@@ -206,6 +205,109 @@
 	  	  }		
 	  	}
 	  }
+	  
+	  // Add rows in LTA vehicle 
+	  var index = 1;
+	      function insertRowLtavehitbl(){
+			    var table=document.getElementById("ltavehitbl");
+                var row=table.insertRow(table.rows.length);
+                
+                var cell1=row.insertCell(0);
+                var t1=document.createElement("select");
+                    t1.id = "partnerVehNovec"+index;
+                    cell1.appendChild(t1); 
+                    var select1 = document.getElementById(t1.id);
+					select1.setAttribute("style","height: 20px; width: 90px;font-size: 10px;"); 
+					select1.options[select1.options.length] = new Option('', '0');
+                    select1.options[select1.options.length] = new Option('Tower1', '1');
+                    select1.options[select1.options.length] = new Option('Tower2', '2');
+                    select1.options[select1.options.length] = new Option('Tower3', '3');
+
+                var cell2=row.insertCell(1);
+                var t2=document.createElement("input");
+                    t2.id = "partnerNotiTimevec"+index;
+					t2.setAttribute("style", "height: 20px; width: 90px;font-size: 10px;");
+                    cell2.appendChild(t2);
+					//style=""
+                
+                var cell3=row.insertCell(2);
+                var t3=document.createElement("input");
+                    t3.id = "partnerArrTimevec"+index;
+					t3.setAttribute("style", "height: 20px; width: 90px;font-size: 10px;");
+                    cell3.appendChild(t3);
+                
+                var cell4=row.insertCell(3);
+                var t4=document.createElement("input");
+                    t4.id = "partnerDepatTimevec"+index;
+					t4.setAttribute("style", "height: 20px; width: 90px;font-size: 10px;");
+                    cell4.appendChild(t4);
+                
+                var cell5=row.insertCell(4);
+                var t5=document.createElement("input");
+                    t5.id = "partnerDepatTimevec"+index;
+					t5.setAttribute("style", "height: 20px; width: 90px;font-size: 10px;");
+                    cell5.appendChild(t5);
+          index++;
+    }
+		//Remove Row in LTA vehicle 
+	function removeRowLtavehitbl(oButton) {
+        var ltaVhiTbl = document.getElementById('ltavehitbl');
+        var lastRow = ltaVhiTbl.rows.length;
+        if (lastRow > 2) 
+        ltaVhiTbl.deleteRow(lastRow - 1);
+    }
+	
+	// Add rows in Partner LTA vehicle 
+	  var index1 = 1;
+	      function insertRowPartvehitbl(){
+                var table=document.getElementById("partvehitbl");
+                var row=table.insertRow(table.rows.length);
+                
+                var cell1=row.insertCell(0);
+                var t1=document.createElement("select");
+                    t1.id = "partnerTypepart"+index1;
+                    cell1.appendChild(t1); 
+                    var select1 = document.getElementById(t1.id);
+					select1.setAttribute("style","height: 20px; width: 90px;font-size: 10px;"); 
+					select1.options[select1.options.length] = new Option('', '0');
+                    select1.options[select1.options.length] = new Option('Tower1', '1');
+                    select1.options[select1.options.length] = new Option('Tower2', '2');
+                    select1.options[select1.options.length] = new Option('Tower3', '3');
+
+                var cell2=row.insertCell(1);
+                var t2=document.createElement("input");
+                    t2.id = "partnerVehNopart"+index1;
+					t2.setAttribute("style", "height: 20px; width: 90px;font-size: 10px;");
+                    cell2.appendChild(t2);
+					//style=""
+                
+                var cell3=row.insertCell(2);
+                var t3=document.createElement("input");
+                    t3.id = "partnerNotiTimepart"+index1;
+					t3.setAttribute("style", "height: 20px; width: 90px;font-size: 10px;");
+                    cell3.appendChild(t3);
+                
+                var cell4=row.insertCell(3);
+                var t4=document.createElement("input");
+                    t4.id = "partnerArrTimepart"+index1;
+					t4.setAttribute("style", "height: 20px; width: 90px;font-size: 10px;");
+                    cell4.appendChild(t4);
+                
+                var cell5=row.insertCell(4);
+                var t5=document.createElement("input");
+                    t5.id = "partnerDepatTimepart"+index1;
+					t5.setAttribute("style", "height: 20px; width: 90px;font-size: 10px;");
+                    cell5.appendChild(t5);
+          index1++;
+	}
+		//Remove Row  in Partner LTA vehicle 
+	function removeRowPartvehitbl(oButton) {
+        var partVhiTbl = document.getElementById('partvehitbl');
+        var lastRow = partVhiTbl.rows.length;
+        if (lastRow > 2) 
+        partVhiTbl.deleteRow(lastRow - 1);
+    }
+	
     </script>
 <body>
 <div class="container-fluid">
@@ -222,13 +324,17 @@
 						<i class="fa fa-align"><h2t> Create Incident</h2t> </i>
 						<div class="dropdown-content" >
 							<a href="#" ng-click="createirdetail('Accident')" style="text-decoration:none;"><img src="accident.jpg"> Accident</a>
-							<a href="#" ng-click="createirdetail('Obstacle IR')" style="text-decoration:none;"><img src="obstacle.jpg"> Obstacle</a>
+							<!-- <a href="#" ng-click="createirdetail('Obstacle IR')" style="text-decoration:none;"><img src="obstacle.jpg"> Obstacle</a> -->
+							<a href="#" style="text-decoration:none;"><img src="obstacle.jpg"> Obstacle</a>
 							<a href="#" ng-click="createirdetail('Heavy Traffic IR')" style="text-decoration:none;"><img src="heavytraffic.jpg"> Heavy Traffic</a>
 							<a href="#" ng-click="createirdetail('Road Works IR')" style="text-decoration:none;"><img src="roadwork.jpg"> Road Works</a>
 			                <a href="#" ng-click="createirdetail('Mobile Road Works IR')" style="text-decoration:none;"><img src="mobileroadwork.jpg"> Mobile Road Works</a>
-			                <a href="#" ng-click="createirdetail('Break Down IR')" style="text-decoration:none;"><img src="breakdown.jpg"> Break Down</a>
-							<a href="#" ng-click="createirdetail('Unattended Vehicle IR')" style="text-decoration:none;"><img src="unattvehicle.jpg"> Unattended Vehicle</a>
-							<a href="#" ng-click="createirdetail('Miscellaneous IR')" style="text-decoration:none;"><img src="misce.jpg"> Miscellaneous</a> 
+							<!-- <a href="createmrtwin.jsp" ng-click="createirdetail('MRT Break Down IR')" style="text-decoration:none;"><img src="breakdown.jpg"> Break Down</a> -->
+			                <a href="createmrtwin.jsp" style="text-decoration:none;"><img src="breakdown.jpg"> MRT Break Down</a>
+							<!-- <a href="#" ng-click="createirdetail('Unattended Vehicle IR')" style="text-decoration:none;"><img src="unattvehicle.jpg"> Unattended Vehicle</a> -->
+							<a href="#" style="text-decoration:none;"><img src="unattvehicle.jpg"> Unattended Vehicle</a>
+							<!-- <a href="#" ng-click="createirdetail('Miscellaneous IR')" style="text-decoration:none;"><img src="misce.jpg"> Miscellaneous</a>  -->
+							<a href="#" style="text-decoration:none;"><img src="misce.jpg"> Miscellaneous</a> 
 						</div>
 					</div> 
 				</td>
@@ -248,11 +354,11 @@
 		</tr>
 		<tr>
 			<td width="60%;"  height="95% !important;">
-		     	<div id="mapDiv">
+		     	<!-- <div id="mapDiv">
 			     	<div id="infocctvcamera">          
 	         			<button id="Circle" class="buttoncctvcamera"> View cctv & Roadworks </button>   
 	      			 </div>
-		     	</div>  
+		     	</div>   -->
 			</td>
 			<td width="40%;"  height="95% !important;" valign="top">
 	<!-- Start IR Creation -->
@@ -419,7 +525,7 @@
 					<div id="rsh1Div">&nbsp;&nbsp;&nbsp;RSH1</div>
 	          </td>
 			  <td align="center">
-				<ul>
+				<!--  <ul>
 								  <li> (+) Add New lines 
 								  <ul>
 									<li> Add Lane</li>
@@ -427,7 +533,7 @@
 									<li> Add Left Shoulder</li>
 									<li> Add Right Shoulder</li>
 									</ul></li>
-								</ul>
+								</ul> -->
 		          </td>
 	        </tr>         
 	          </table>
@@ -662,14 +768,14 @@
      <div class="panel panel-default">
     	<div class="panel-heading active">
         	<h4 class="panel-title">               	
-                    Conjestion Routes Monitoring <span data-target="#Collapseicon7" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+                    Congestion Routes Monitoring <span data-target="#Collapseicon7" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
             </h4>
            <!-- <img src="horibar.JPG" height="auto" > -->
         </div>
          
         <div class="panel-collapse collapse" id="Collapseicon7">
         	<div class="panel-body">
-            	<p>Conjestion Routes Monitoring </p>
+            	<p>Congestion Routes Monitoring </p>
             </div>
         </div>
      </div>
@@ -684,7 +790,7 @@
         <div class="panel-collapse collapse" id="Collapseicon8">
         	<div class="panel-body">
             	<p>Partners Vehicle Handling</p>
-					<table width="100%" class="tablevms">  
+					<table width="100%" class="tablevms" id="partvehitbl">  
 						<tr>
 							<th align="left" style="padding:5px;"> Type <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4;"></i></th>
 							<th align="left"> Vehicle No. </th>
@@ -694,31 +800,31 @@
 						</tr>					
 						<tr>
 							<td>
-							<select name="item2" ng-model="partnerTypepart" style="height: 20px; width: 90px;font-size: 10px;">
-								<option value="Ambulance" >Ambulance</option>
+							<select name="item2" ng-model="partnerTypepart"  id="partnerTypepart" style="height: 20px; width: 90px;font-size: 10px;">
+								<option value="Ambulance">Ambulance</option>
 								<option value="Ambulance">Ambulance2</option>
 								<option value="Ambulance">Ambulance3</option>
 							</select>
 							
 							</td>
-							<td><input type="text" ng-click="" ng-model="partnerVehNopart" placeholder="RX23293" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerNotiTimepart" placeholder="1/24/2018 12:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerArrTimepart" placeholder="1/24/2018 12:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerDepatTimepart" placeholder="1/24/2018 16:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerVehNopart" id="partnerVehNopart"  placeholder="RX23293" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerNotiTimepart" id="partnerNotiTimepart" placeholder="1/24/2018 12:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerArrTimepart" id="partnerArrTimepart" placeholder="1/24/2018 12:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerDepatTimepart" id="partnerDepatTimepart" placeholder="1/24/2018 16:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
 						</tr>
 					</table>
 					<table width="100%"> 
 						<tr>
 							<td>
 								<div align="right">
-									<a href="#" class="buttonRem" id="buttonRem" ng-click="parterMsgRemove()" style="text-decoration:none;"> Remove </a> 
-									<a href="#" class="buttonImp" id="buttonImp" ng-click="parterMsgAdd()" style="text-decoration:none;"> Add </a>
+									<a href="#" class="buttonRem" id="buttonRem" onclick="removeRowPartvehitbl(this)" style="text-decoration:none;"> Remove </a> 
+									<a href="#" class="buttonImp" id="buttonImp" onclick="insertRowPartvehitbl()" style="text-decoration:none;"> Add </a>
 								</div>	
 							</td>
 						</tr>
 				 </table>			
 				<p>LTA Vechicles</p>
-				<table width="100%" class="tablevms">  
+				<table width="100%" class="tablevms" id="ltavehitbl">  
 						<tr>
 							<th align="left" style="padding:5px;"> Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4;font-size: 12px;"></i></th>
 							<th align="left"> Vehicle No. </th>
@@ -728,25 +834,25 @@
 						</tr>					
 						<tr>
 							<td>
-							<select name="item4" ng-model="partnerType3vec" style="height: 20px; width: 90px;font-size: 10px;">
+							<select name="item4" ng-model="partnerType3vec" id="partnerType3vec" style="height: 20px; width: 90px;font-size: 10px;">
 								<option value="Tower1" >Tower1</option>
 								<option value="Tower1">Tower2</option>
 								<option value="Tower3">Tower3</option>
 							</select>
 							
 							</td>
-							<td><input type="text" ng-click="" ng-model="partnerVehNovec" placeholder="RX23293" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerNotiTimevec" placeholder="Bedok AVe 3" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerArrTimevec" placeholder="46" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerDepatTimevec" placeholder="1/24/2018 16:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerVehNovec" id="partnerVehNovec" placeholder="RX23293" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerNotiTimevec" id="partnerNotiTimevec" placeholder="Bedok AVe 3" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerArrTimevec" id="partnerArrTimevec" placeholder="46" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerDepatTimevec" id="partnerDepatTimevec" placeholder="1/24/2018 16:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
 						</tr>					
 					</table>
 					<table width="100%"> 
 						<tr>
 							<td> 
 								<div align="right">
-									<a href="#" class="buttonRem" id="buttonRem" ng-click="parterMsgRemove()" style="text-decoration:none;"> Remove </a> 
-									<a href="#" class="buttonImp" id="buttonImp" ng-click="parterMsgAdd()" style="text-decoration:none;"> Add </a>
+									<a href="#" class="buttonRem" id="buttonRem" onclick="removeRowLtavehitbl(this)" style="text-decoration:none;"> Remove </a> 
+									<a href="#" class="buttonImp" id="buttonImp" onclick="insertRowLtavehitbl()" style="text-decoration:none;"> Add </a>
 								</div>	
 							</td>
 						</tr>

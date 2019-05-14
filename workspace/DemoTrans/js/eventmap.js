@@ -48,14 +48,14 @@
             map.disableMapNavigation();
             tb.activate(tool);
           });
-          /*on(dom.byId("info2"), "click", function(evt) {
+          on(dom.byId("info2"), "click", function(evt) {
             if ( evt.target.id === "info2" ) {
               return;
             }
             var tool = evt.target.id.toLowerCase();
             map.disableMapNavigation();
             tb.activate(tool);
-          }); */
+          }); 
         }
 
         function addGraphic(evt) {
@@ -191,7 +191,7 @@
 //Make the DIV element draggagle:
         
 window.onload = hideVmsMsgDiv;
-        
+    var pause = 0;    
 function hideVmsMsgDiv() {
 	var x = document.getElementById("vmsmsgdiv");
 	var x1 = document.getElementById("vmsmsgdiv1");
@@ -201,6 +201,12 @@ function hideVmsMsgDiv() {
 	x1.style.display = "none";
 	x2.style.display = "none";
 	x3.style.display = "none";
+	
+	//Traffic Video
+	var x = document.getElementById("videodiv");
+	var vid = document.getElementById("myVideo"); 
+	x.style.display = "none";
+	pause = 0;
 }
 
 function showmsg(x) {
@@ -291,4 +297,45 @@ function dragElement(elmnt) {
   }
 }     
 //end of div message display on the map     
-  
+
+
+//Start Traffic Video
+
+	function playVid() {
+	  var vid = document.getElementById("myVideo"); 
+	  var x = document.getElementById("videodiv");
+	  if (x.style.display === "none") {
+		  vid.play(); 
+		 if(pause==1) 
+			 x.style.display = "none";
+		else 
+			x.style.display = "block";
+	} 
+	else {
+		  if(pause==1) { 
+			x.style.display = "block";
+			vid.play(); 
+		  }
+		  else {
+			x.style.display = "none";
+		  }
+	   }
+	}
+	  
+	function pauseVid() { 
+		var vid = document.getElementById("myVideo"); 
+		pause = 1; 
+		vid.pause();
+	} 
+
+	function closeVid() { 
+	  var vid = document.getElementById("myVideo"); 
+	  pause = 0;
+	  var x = document.getElementById("videodiv");
+	  if (x.style.display === "none") {
+		x.style.display = "block";
+	  } 
+	  else {
+		x.style.display = "none";
+	  }
+	}

@@ -63,6 +63,10 @@
                     <directory>json</directory>
                         <filtering>false</filtering>
                     </resource>
+                    <resource>
+                     <directory>video</directory>
+                        <filtering>false</filtering>
+                    </resource>
                     <resource>  
                        <directory>datetimepicker/css</directory>
                         <filtering>true</filtering>
