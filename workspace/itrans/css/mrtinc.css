@@ -1,0 +1,573 @@
+body {
+/*  background-image: url("roadmap.jpg");
+  background-size: cover;*/
+}
+
+.button {
+  background: linear-gradient(112.52deg, #565EB9 0%, #9A81FD 100%); 
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 1px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.buttonCan {
+  background: linear-gradient(112.52deg, #656679 0%, #6A6191 100%);
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 1px;
+  cursor: pointer;
+  border-radius:6px;
+}
+
+h3a {
+  margin-top: 0;
+  color: #4dd2ff;
+  font-size: 20px;
+  font-family:  Roboto, Helvetica, sans-serif;
+}
+
+.mrtinctable, td, th {  
+  border: 0px solid #ddd;
+  text-align: left;
+ /* padding: 10px;*/
+  margin-left: 15px;
+} 
+
+.mrtinctable {
+  border-collapse: collapse;
+  width: 100%;
+  background: radial-gradient(circle, #354F8C 0%, #040737 100%);
+  box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.48);
+}
+
+th, td {
+  padding: 6px;
+}
+.selectcls {
+  padding: 5px 5px;
+  font-family: Roboto, Helvetica, sans-serif;
+  border : none;
+  width: 213px; height: 25px; padding: 4px;  background-color: #37478A; color:#FFF;
+  border-radius: 8px;
+  margin-left: 15px;
+}
+h2t {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 26px;
+  font-family: Roboto, Helvetica, sans-serif;
+  padding: 10px;
+}
+#incdetailtbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#incdetailtbl td, #incdetailtbl th {
+  padding: 10px;
+  color: #C8CFF4; 
+  font-size: 13px;
+  background: none; 
+}
+
+#mrtdetailtbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#mrtdetailtbl td, #mrtdetailtbl th {
+  padding: 8px;
+  color: #C8CFF4; 
+  font-size: 14px;
+}
+
+#mrtdetailtbl th {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: left;
+}
+
+div.mrtincscroll {
+      overflow-y:scroll;
+	  overflow-x: none;
+      height:580px;
+}
+
+/* start Scroll bar  */
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 100px #43498F; 
+  border-radius: 3px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #202B53; 
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-corner {
+  background: #202B53; 
+  border-radius: 3px;
+}
+.buttonCreateMrtInc {
+  background-image: linear-gradient( 90deg,	rgba(86,94,185,1) , rgba(143,123,242,1)); 
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 1px;
+  cursor: pointer;
+  border-radius: 5px/5px;
+}
+
+select {
+  /* width: 80%; */
+  padding: 5px 5px;
+  font-family: Roboto, Helvetica, sans-serif;
+  border : none;
+  width:187.81px; height: 23px; padding: 4px; background-color:#37478A; color:#FFF;
+  border-radius: 10px;
+  
+}
+h3b {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 20px;
+  font-family:  Roboto, Helvetica, sans-serif;
+  padding:15px;
+}
+
+/******* Event Response Page  ********/
+.buttonCreateventInc {
+  background-image: linear-gradient( 90deg,	rgba(86,94,185,1) , rgba(143,123,242,1)); 
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 1px;
+  cursor: pointer;
+  border-radius: 5px/5px;
+}
+
+h7 {
+  margin-top: 0;
+  color: #C8CFF4;
+  font-size: 18px;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+
+/* select {*/
+  /* width: 80%; */
+/*  padding: 5px 5px;
+  font-family: Roboto, Helvetica, sans-serif;
+  border : none;
+  width: 80px; height: 25px; padding: 4px; background-color:#283D76; color:#C8CFF4;
+  border-radius: 10px;
+} */
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #C8CFF4;
+}
+
+.closebtn {
+  background-color: #202B53 ;
+  border: none;
+  color: white;
+  padding: 5px 5px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.tablevms {
+  border-collapse: collapse;
+  padding: 2px;
+}
+
+.tablevms td {
+  /*color: white; */
+  padding: 3px;
+}
+
+.tablevmsl tr:nth-child(odd){
+background-image: linear-gradient( 90deg,	rgba(55,63,97,1) , rgba(25,31,57,1));
+color: white;
+ padding:5px;
+}
+
+.tablevms tr:nth-child(even){
+background-image: linear-gradient( 90deg,	rgba(55,63,97,1) , rgba(25,31,57,1));
+color: white;
+ padding:5px;
+}
+
+.tablevms tr:hover {
+/*background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));*/ 
+}
+
+.tablevms td{
+ padding:7px;
+ font-size: 13px;
+}
+
+.tablevms th {
+  color: white; 
+  padding: 3px;
+   font-size: 13px;
+}
+
+
+.tableventOBU {
+  border-collapse: collapse;
+   border-color: #C8CFF4;
+}
+.tableventOBU th {
+    padding: 5px ;
+	font-family: Roboto, Helvetica, sans-serif;
+	font-weight: bold;
+	color:black;
+	font-size: 13px;
+}
+.tableventOBU td {	
+	font-family: Roboto, Helvetica, sans-serif;
+    padding: 3px;
+    font-size: 11px;
+}
+
+.buttonadd {
+  font-size: .8em;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 2px 5px;
+  color: #C8CFF4;
+  border: 2px solid green;
+  border-radius: 10px/20px;
+  background:green;
+}
+
+.buttondelete {
+	font-size: .8em;
+	font-family: Roboto, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: 2px 5px;
+	color: #C8CFF4;
+	border: 2px solid red;
+	border-radius: 10px/20px;
+	background:red;
+}
+
+.buttoneveImp {
+  font-size: .8em;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 2px 5px;
+  color: #C8CFF4;
+  border: 2px solid #48AD76;
+  border-radius: 10px/20px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  width:90px;
+  text-align: center;
+  background-color: #48AD76;
+}
+
+.buttoneveRem {
+	font-size: .8em;
+	font-family: Roboto, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: 2px 5px;
+	color: #C8CFF4;
+	border: 2px solid #AD484A;
+	border-radius: 10px/20px;
+	background:red;
+	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	cursor: pointer;
+  	width:90px;
+  	background-color: #AD484A;
+}
+
+.buttonaddhevytraffic {
+	font-size: .8em;
+	font-family: Roboto, Helvetica, sans-serif;
+	font-weight: bold;
+	padding: 2px 5px;
+	color: #C8CFF4;
+	border: 2px solid #487FAD;
+	border-radius: 10px/20px;
+	background-color: #489BAD;
+	width:170px;
+	text-align: center;
+	text-decoration: none;
+  	display: inline-block;
+  	cursor: pointer;
+}
+
+.dotfail {
+  height: 10px;
+  width: 10px;
+  background-color:red;
+  border-radius: 50%;
+  display: inline-block;
+}
+.dotimp {
+  height: 10px;
+  width: 10px;
+  background-color:green;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dotnotact {
+  height: 10px;
+  width: 10px;
+  background-color:#bbb;
+  border-radius: 50%;
+  display: inline-block;
+}
+.textareaeventVmsMsg { 
+ font-size: 12;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: black;
+}
+
+.textareaeventObuMsg { 
+ font-size: 10;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: #2C3A77;
+ border-radius: 8px; 
+}
+
+.textareaeventcanMsg { 
+ font-size: 10;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: #2C3A77;
+ border-radius: 8px; 
+}
+.textareanote { 
+ font-size: 1em;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: #2C3A77;
+ border : none; 
+ border-radius: 8px; 
+}
+
+/******* Event Create Page  ********/
+.buttonCreateEventInc {
+  background-color: #6D5BFF; 
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 1px;
+  cursor: pointer;
+  border-radius: 5px/5px;
+}
+
+.buttonRemove {
+  font-size: .7em;
+  padding: 4px 15px;
+  color: black;
+  border: 2px solid yellow;
+  border-radius: 3px/3px;
+  background:yellow;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: bold;
+}
+
+.buttonClosure {
+  font-size: .7em;
+  padding: 4px 15px;
+  color: white;
+  border: 2px solid red;
+  border-radius: 3px/3px;
+  background:red;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+}
+
+.buttonUpload {
+  font-size: .7em;
+  padding: 4px 15px;
+  color: white;
+  border: 2px solid #6D5BFF;
+  border-radius: 3px/3px;
+  background:#6D5BFF;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: bold;
+}
+#eventclosuretable {
+	 border: 0px solid #ddd;
+	text-align: left;
+border-spacing: 5px 10px;
+}
+
+input {  
+	padding: 5px 5px;
+  	font-family: Roboto, Helvetica, sans-serif;
+    font-size: 15px;
+ width: 187.81px; height: 23px; padding: 4px; background-color: #37478A; color:#C8CFF4;
+	border : none;
+	border-radius: 10px;
+}
+#eventdetailtbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#eventdetailtbl td, #eventdetailtbl th {
+  padding: 9px;
+  color: #C8CFF4;
+  font-family: Roboto, Helvetica, sans-serif;
+   font-size: 12;
+}
+
+#eventdetailtbl th {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: left;
+}
+div.scrollResponse {
+      overflow-y:scroll;
+	  overflow-x: none;
+      height:580px;
+}
+
+.vmsMsgDisbutton {
+  padding: 2px 5px;
+  color: #C8CFF4;
+  border: 2px solid #37478A;
+  border-radius: 10px/20px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  width:30px;
+  text-align: center;
+  background-color: #37478A;
+}
+
+
+***** Create  IR ********
+.textareaVmsMsg { 
+ font-size: 1em;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: #2C3A77;
+ border-radius: 8px;
+ border: none;
+}
+.buttonImp {
+  font-size: .8em;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 2px 5px;
+  color: #C8CFF4;
+  border: 2px solid #48AD76;
+  border-radius: 10px/20px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  width:80px;
+  text-align: center;
+  background-color: #48AD76;
+}
+
+.buttonRem {
+	font-size: .8em;;
+	font-family: Roboto, Helvetica, sans-serif;
+	/*font-weight: bold; */
+	padding: 2px 5px;
+	color: #C8CFF4;
+	border: 2px solid #AD484A;
+	border-radius: 10px/20px;
+	background:red;
+	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	cursor: pointer;
+  	width:80px;
+  	background-color: #AD484A;
+}
+.textareaincomments { 
+ font-size: 1em;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: #37478A;
+ border-radius: 10px;
+ border: none;
+}
+
+div.scrollIr {
+      overflow-y:scroll;
+	  overflow-x: none;
+      height:580px;
+}
+
+
+/* Mobile road work css */
+.textareamrwcomment { 
+ font-size: 1em;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: #37478A;
+ border : none;
+ border-radius: 10px;
+}
+ .textimagediv {
+ width: 250px;
+ height: 50px;
+ font-size: .9em;;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color:black;
+ border-radius: 8px;
+ border: none;
+ padding:10px;
+    }

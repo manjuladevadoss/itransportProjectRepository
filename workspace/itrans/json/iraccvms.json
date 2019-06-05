@@ -1,0 +1,30 @@
+{
+  "iraccvms": [
+    {
+      "irvmsstatus": "Implemented",
+      "irvmsequipid": "545862",
+      "irvmsaccmsg": "Massive Jam to Republic Avenue"
+    },
+    {
+      "irvmsstatus": "Implemented",
+      "irvmsequipid": "985645",
+      "irvmsaccmsg": "Heavy Traffic Republic Blvd"
+    },
+    {
+      "irvmsstatus": "Implemented",
+      "irvmsequipid": "662512",
+      "irvmsaccmsg": "Massive Jam Ophir Road"
+    },
+    {
+      "irvmsstatus": "Implemented",
+      "irvmsequipid": "686457",
+      "irvmsaccmsg": "Massive Nicoll Highway"
+    }
+  ]
+}
+
+
+
+
+
+

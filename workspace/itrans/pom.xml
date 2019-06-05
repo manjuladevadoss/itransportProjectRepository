@@ -31,12 +31,12 @@
             <configuration>
                 <webResources>
                 <!-- resource tag is to add html folder into your war file - user created folder is html  -->
-                    <resource>  
-                       <directory>html</directory>
-                        <filtering>true</filtering>
-                    </resource>
                     <resource>
                         <directory>image</directory>
+                        <filtering>true</filtering>
+                    </resource>
+					<resource>  
+                       <directory>html</directory>
                         <filtering>false</filtering>
                     </resource>
                     <resource>  
@@ -68,21 +68,34 @@
                         <filtering>true</filtering>
                     </resource>
                      <resource>
-                     <directory>js</directory>
+                     	<directory>js</directory>
                         <filtering>false</filtering>
                     </resource>
                  	<resource>
-                    <directory>css</directory>
+                    	<directory>css</directory>
                         <filtering>false</filtering>
                     </resource>
                     <resource>
-                    <directory>jsp</directory>
+                    	<directory>jsp</directory>
                         <filtering>false</filtering>
                     </resource>
-                     <resource>
-                    <directory>json</directory>
+                    <resource>
+                    	<directory>json</directory>
                         <filtering>false</filtering>
-                    </resource>                 
+                    </resource>
+                    <resource>
+                    	<directory>video</directory>
+                        <filtering>false</filtering>
+                    </resource>
+                    <resource>  
+                       <directory>arcgis_4.11</directory>
+                       <filtering>false</filtering>
+                    </resource>     
+                    <resource>  
+                       <directory>arcgis_3.28</directory>
+                       <filtering>false</filtering>
+                    </resource>     
+                                
                 </webResources>
             </configuration>
         </plugin>

@@ -1,0 +1,138 @@
+<html>
+   <style> 
+     /* Start Traffic Video */ 
+    #videodiv {
+        position: absolute;
+                z-index: 9;
+                background-color: #f1f1f1;
+                text-align: center;
+                width:100px; 
+                top:250px; 
+                /* opacity: 0.5; */  /* To change transparent color*/ 
+                }
+/* end of traffic video */
+
+/* Popup  window */
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 300px;
+  height: 60px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 0px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 105%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/*popup window  with video display */
+#boxclose {
+  float: right;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #AEAEAE;
+  border-radius: 3px;
+  background: #222222;
+  font-size: 15px;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 0px;
+  padding: 7px 3px;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  z-index: 1002;
+  opacity: 0.9;
+}
+
+.boxclose:before {
+  content: "×";
+}
+
+#fade:hover ~ #boxclose {
+  display:none;
+}
+
+.test:hover ~ .test2 {
+  display: none;
+}
+/* end of popup window with video display */
+
+</style>
+
+<script>
+   
+    // Popup  window  When the user clicks on div, open the popup
+    function popupvideo() {
+        //popup window
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+        
+        //video in popup window
+        var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+        lightBoxVideo.play();
+    }
+    // End of Popup  window 
+
+// popup window with Video display
+window.document.onkeydown = function(e) {
+  if (!e) {
+    e = event;
+  }
+  if (e.keyCode == 27) {
+    lightbox_close();
+  }
+}
+
+function lightbox_close() {
+  var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+  lightBoxVideo.pause();
+}
+
+
+// End of popup window with video display
+   
+</script>
+            
+            
+
+<body>
+                      
+        <br><br><br>       
+    
+            <div class="popup" onclick="popupvideo()">Traffic Video
+                    <div id="videodiv">
+                     <span class="popuptext" id="myPopup">
+                            <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
+                            <video id="VisaChipCardVideo" width="300" controls>
+                                  <source src="C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/Examples/CTEvideo.mp4" type="video/mp4">
+                          </video>
+                        </div>       
+                     </span>
+            </div>        
+          
+
+</body>
+</html>

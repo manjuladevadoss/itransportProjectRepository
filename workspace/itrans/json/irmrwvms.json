@@ -1,0 +1,30 @@
+{
+  "irmrwvms": [
+    {
+      "irmrwvmsstatus": "Implement",
+      "irvmsequipid": "545862",
+      "irmrwvmsmsg": "Litter picking along Ln1"
+    },
+    {
+      "irmrwvmsstatus": "Not Implement",
+      "irvmsequipid": "985645",
+      "irmrwvmsmsg": "Plant watering along Ln1"
+    },
+    {
+      "irmrwvmsstatus": "Implement",
+      "irvmsequipid": "662512",
+      "irmrwvmsmsg": "Road sweeping along Ln1"
+    },
+    {
+      "irmrwvmsstatus": "Not Implement",
+      "irvmsequipid": "686457",
+      "irmrwvmsmsg": "Tunnel Washing"
+    }
+  ]
+}
+
+
+
+
+
+

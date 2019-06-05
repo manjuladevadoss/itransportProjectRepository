@@ -448,7 +448,6 @@ input {
     font-size: 15px;
  width: 187.81px; height: 23px; padding: 4px; background-color: #37478A; color:#C8CFF4;
 	border : none;
-	font-size: 15px;
 	border-radius: 10px;
 }
 #eventdetailtbl {
@@ -531,3 +530,26 @@ div.scrollIr {
       height:580px;
 }
 
+
+/* Mobile road work css */
+.textareamrwcomment { 
+ font-size: 1em;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: #37478A;
+ border : none;
+ border-radius: 10px;
+}
+ .textimagediv {
+ width: 250px;
+ height: 50px;
+ font-size: .9em;;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color:black;
+ border-radius: 8px;
+ border: none;
+ padding:10px;
+    }

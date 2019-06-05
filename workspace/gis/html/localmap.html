@@ -5,11 +5,26 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   
   <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-  <title>Map with WMTS resourceinfo</title>
+  <title> BaseMap WMTS-Toolbars 3.28 line circle picture </title>
 
   <link rel="stylesheet" href="http://localhost:8080/gis/3.28/dijit/themes/claro/claro.css">
   <link rel="stylesheet" href="http://localhost:8080/gis/3.28/esri/css/esri.css">
+    
   <style>
+    #info {
+        top: 20px;
+        color: #444;
+        height: auto;
+        right: 20px;
+        margin: 5px;
+        padding: 10px;
+        position: absolute;
+        width: 115px;
+        z-index: 40;
+        border: solid 0px #666;
+        border-radius: 4px;
+      }
+
     html,
     body,
     #map {
@@ -18,33 +33,44 @@
       margin: 0;
       padding: 0;
     }
+    button {
+      display: block;
+    }
+
+    .mapbutton {
+      font-family: Roboto, Helvetica, sans-serif;
+        font-size: 13px;
+        text-align:left;
+        width:auto;
+      
+    }
   </style>
   <script src="http://localhost:8080/gis/3.28/init.js"></script>
 
   <script>
+     var map,tb;
     require([
-      "esri/map", 
-      "esri/layers/WMTSLayer", 
-      "esri/layers/WMTSLayerInfo",
-      "esri/geometry/Extent", 
-      "esri/layers/TileInfo", 
-      "esri/SpatialReference",
-      "dojo/parser",
-      "dijit/layout/BorderContainer", 
-      "dijit/layout/ContentPane", 
+      "esri/map",  "esri/toolbars/draw",  "esri/symbols/PictureMarkerSymbol", 
+      "esri/symbols/SimpleLineSymbol","esri/symbols/SimpleFillSymbol", "esri/geometry/Point",
+      "esri/symbols/CartographicLineSymbol", "esri/Color","esri/graphic",
+      "esri/layers/WMTSLayer", "esri/layers/WMTSLayerInfo",
+      "esri/geometry/Extent", "esri/layers/TileInfo", "esri/SpatialReference", 
+      "dojo/parser", "dojo/dom", "dojo/on", 
       "dojo/domReady!"
     ], function(
-        Map, WMTSLayer, WMTSLayerInfo,
-        Extent, TileInfo, SpatialReference,
-        parser
+        Map, Draw, PictureMarkerSymbol,  SimpleLineSymbol, SimpleFillSymbol, Point, CartographicLineSymbol, Color, Graphic, WMTSLayer, WMTSLayerInfo,
+        Extent, TileInfo, SpatialReference, 
+        parser, dom, on
       ) {
       parser.parse();
-
-      var map = new Map("map", {
+   
+      map = new Map("map", {
         center: [47.075,-52.93],
         zoom: 3
       });
-
+      map.on("load", initToolbar);
+     
+      /* Start basemap layer */
      var tileInfo = new TileInfo({
         "dpi": 96,
         "format": "format/png",
@@ -52,78 +78,21 @@
         "spatialReference": new SpatialReference({
           "wkid": 4326
         }),
-     
-        
-       
         "rows": 512,
         "cols": 512,
         "origin": {
           "x": -180,
           "y": 90
-        },
-        
-        "lods": [{
-          "level": "0",
-          "scale": 236663484.36365247,
-          "resolution": 0.5624999999999999
-          }
-        
-          , {
-          "level": "1",
-          "scale": 118331742.18182631,
-          "resolution": 0.28125000000000017
-          }, {
-          "level": "11",
-          "scale": 115558.3419744397,
-          "resolution": 0.000274658203125
-          },  {
-          "level": "2",
-          "scale": 59165871.090913124,
-          "resolution": 0.140625
-          }, {
-          "level": "3",
-          "scale": 29582935.545456562,
-          "resolution": 0.0703125
-          }, {
-          "level": "4",
-          "scale": 14791467.772728289,
-          "resolution": 0.03515625000000002
-          }, {
-          "level": "5",
-          "scale": 395733.8863641415,
-          "resolution": 0.017578125000000003
-          }, {
-          "level": "6",
-          "scale": 3697866.94318207,
-          "resolution": 0.008789062499999998
-          }, {
-          "level": "7",
-          "scale": 1848933.471591035,
-          "resolution": 0.004394531249999999
-          }, {
-          "level": "8",
-          "scale": 924466.7357955176,
-          "resolution": 0.002197265625
-          }, {
-          "level": "9",
-          "scale": 462233.3678977588,
-          "resolution": 0.0010986328125
-          }, {
-          "level": "10",
-          "scale": 231116.6839488794,
-          "resolution": 0.00054931640625
-          }, {
+        },"lods": [{
           "level": "11",
           "scale": 115558.3419744397,
           "resolution": 0.000274658203125
           }]
-      }); 
+        });
+     
       var tileExtent = new Extent(-180, -90, 180, 90, new SpatialReference({
-        //var tileExtent = new Extent(-95.271, 38.933, -95.228, 38.976, new SpatialReference({
-        
         wkid: 4326
       }));
-      //5456.673920001926,27676.998370644546,44607.732918584545,46905.68682507822
       var layerInfo = new WMTSLayerInfo({
         tileInfo: tileInfo,
         fullExtent: tileExtent,
@@ -149,22 +118,112 @@
 
       wmtsLayer = new WMTSLayer("http://192.168.99.100:32768/services/wmts/1.0.0/", options);
       map.addLayer(wmtsLayer);
+/* end of basemap layer */
+
+
+/* To start Drawing toolbox */
+      //circle
+      var circleSymbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID,
+          new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
+          new Color([237,28,36]), 3),new Color([81,91,117,0.25])
+      );
+
+      //polygon line
+      var lineSymbol = new CartographicLineSymbol(
+          CartographicLineSymbol.STYLE_SOLID,
+          new Color([255,6,4]), 2, 
+          CartographicLineSymbol.CAP_ROUND,
+          CartographicLineSymbol.JOIN_MITER, 5
+      );
+    
+      //insert picture
+      var pictureSymbol = new PictureMarkerSymbol({
+        url: "heavytraffic.jpg",
+        width: "20",
+        height: "20"
+      });
+
+      /* Create a point graphic
+         *************************/
+        var vmsPoints = [  
+                { lat: 1.304, long: 103.877, icon: 'vmsimage.JPG', width: 20, height: 20 },  
+                { lat: 1.304, long: 103.879, icon: 'vmsimage.JPG', width: 18, height: 18 }, 
+                { pt:1, lat: 1.306, long: 103.872, icon: 'vmsimage.JPG', width: 18, height: 18 },  
+                { pt:2, lat: 1.305, long: 103.877, icon: 'vmsimage.JPG', width: 18, height: 18}, 
+                { pt:3, lat: 1.300, long: 103.876, icon: 'vmsimage.JPG', width: 18, height: 18 }, 
+                 ];                       
+        /*End of VMS icon show */
+
+
+      function initToolbar() {
+          tb = new Draw(map);
+          tb.on("draw-end", addGraphic);
+
+          // event delegation so a click handler is not
+          // needed for each individual button
+          on(dom.byId("info"), "click", function(evt) {
+            if (evt.target.id === "info") {
+              return;
+            }
+            var tool = evt.target.id.toLowerCase();
+            map.disableMapNavigation();
+            tb.activate(tool);
+          });
+
+          on(dom.byId("vms"), "click", function(evt) {
+                  //alert("inside vms")    
+                       for (var k=0; k < vmsPoints.length; k++){
+                           var point = new Point(vmsPoints[k].long, vmsPoints[k].lat);  
+                           var pictureMarkerSymbol = new PictureMarkerSymbol(vmsPoints[k].icon, vmsPoints[k].width, vmsPoints[k].height);
+                           map.graphics.add(new Graphic(point, pictureMarkerSymbol)); 
+                           //alert("inside vms loop")  
+                         }
+            var tool = evt.target.id.toLowerCase();
+            map.disableMapNavigation();
+            tb.activate(tool);  	     
+          }); 
+        }
+
+        function addGraphic(evt) {
+          //deactivate the toolbar and clear existing graphics 
+          tb.deactivate(); 
+          map.enableMapNavigation();
+
+          var symbol ;
+          // figure out which symbol to use
+          if (evt.geometry.type === "polyline") {
+            symbol = lineSymbol;  
+          } 
+          else if (evt.geometry.type === "multipoint") {
+            symbol = pictureSymbol;
+          }
+          else {
+            symbol = circleSymbol;
+          }
+          
+          map.graphics.add(new Graphic(evt.geometry, symbol));
+          
+        } 
+  /* end of Drawing toolbox */
+
+
+
+
     });
   </script>
 </head>
 
 <body>
-  <div data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline', gutters:false" style="width: 100%; height: 100%; margin: 0;">
-
-    <div id="map" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
-      <div id="citationInfo">
-        <a href="https://earthdata.nasa.gov">Earthdata</a>
-        served by
-        <a href="https://www.nasa.gov">NASA</a>
-      </div>
+    <div id="info">
+      <button class="mapbutton" id="FreehandPolyline">Draw Line</button>
+      <button class="mapbutton" id="Circle">Event Bubble</button>
+      <button id="Multipoint">Symbol</button>
     </div>
+    <button id="vms">VMS</button>
+    <div id="map"></div>
+    
 
-  </div>
+  
 </body>
 
 </html>

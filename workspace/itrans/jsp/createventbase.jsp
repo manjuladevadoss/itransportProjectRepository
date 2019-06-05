@@ -1,0 +1,870 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <title> Create Event  </title>
+  	<link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
+  	<link rel="stylesheet" href="bootstrap.min.css">
+	<link rel="stylesheet" href="mrtinc.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" >
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">  
+		
+	<link rel="stylesheet" href="checkboxstyle1.css">
+	<link rel="stylesheet" href="dropdownlistStylePopup.css">  <!-- dropdown inside the popup add lane view-->
+	<link rel="stylesheet" href="dropdownlistStyle.css"> <!-- dropdown inside status,source add lane view-->
+	<link rel="stylesheet" href="radiobuttonstyle.css"> 
+
+  	<!-- Start Date and Time -->
+	  	<link rel="stylesheet" href="bootstrap-datetimepicker.min.css">
+	 <!-- End of  Date and Time -->   
+ 	
+ 	<script type="text/javascript"  src="jquery.js"></script> 
+	<script type="text/javascript"  src="jquery.min.js"></script> 
+	<script type="text/javascript" src="bootstrap.min.js"></script>
+ 	<!--<script type="text/javascript" src="popper.min.js"></script>  -->
+  	 <script  type="text/javascript" src="angular.min.js"></script> 
+  	<script type="text/javascript"  src="democontroller.js"></script> 
+  	
+  	 <!-- Start Date and Time -->
+	 	<script src="bootstrap-datetimepicker.min.js"></script>
+ 	 <!-- End of Date and Time --> 
+    
+	<!-- start plus and minu menu  script -->
+     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  -->
+	<!-- end plus and minu menu  script -->
+	
+	<script src="http://localhost:8080/itrans/arcgis_4.11/init.js"></script>  
+	<script src="basemap411eve.js"></script>  
+  
+ <style>  
+ /*Start map */
+	html,
+      body,
+      #viewDiv {
+        position: absolute;
+        left: 0;
+       right: 0.1px;
+        top: 0;
+        bottom: 0;
+        height: 100%; /* allow space for sublayer switcher */
+	
+      }
+      #instruction {
+        z-index: 99;
+        position: absolute;
+        top: 50px;
+        left: 15%;
+        padding: 5px;
+        margin-left: -175px;
+        height: 20px;
+        width: 350px;
+      }
+	  #instruction1 {
+		z-index: 99;
+        position: absolute;
+        top: 50px;
+        right: 25%;
+        padding: 5px;
+        margin-left: -175px;
+        height: 20px;
+        width: 350px;		  
+	  }
+      .esri-layer-list {
+        width: 310px;
+      }
+	  
+	#panelTopDiv {
+	   position: absolute;
+        /*top: 12px;*/
+        left: 62px;
+        width: 80%;
+        padding: 0 12px 0 12px;
+        background-color: #202B53;
+        border: 1px solid #202B53;
+        color: black;
+      }
+	#panelRightDiv {      
+        background-color: #f5f5f5;
+        position: absolute;
+        right: 0;
+        height: 100%;
+        width: 550px;
+        font-size: 12px;
+		background-color: #202B53;
+      }
+/* popup window font and background color*/
+.esri-view-width-xlarge .esri-popup__main-container,
+.esri-view-width-large .esri-popup__main-container,
+.esri-view-width-medium .esri-popup__main-container
+{
+  max-height: 100px !important;
+  max-width: 300px !important;
+  background-color: black;
+  color: white;
+    font-size: 14px;
+    font-family: Roboto, Helvetica, sans-serif;
+    line-height: 1.3em;
+}
+
+/*Remove the zoom button popup window*/
+.esri-popup__main-container .esri-popup__footer
+ {
+  display: none;
+} 
+
+/*Remove dock and close button popupwindow*/
+.esri-popup__main-container .esri-popup__header-buttons {
+    display: none;
+}
+
+/*change color in middle triangular button popupwindow*/
+.esri-popup--aligned-top-center .esri-popup__pointer-direction {
+background-color: black;
+}
+/*End map */
+
+
+/* toggle plus and Minus background color*/
+.panel-heading.active {    
+	background-color: #202B53;
+ /* color: #C8CFF4;   
+    border : none;*/ 
+}
+.panel-title { 
+ font-size: 18px;
+  padding-bottom:6px;
+  color: #C8CFF4; 
+}
+.panel-body {
+    background-color: #202B53 ;
+    color: #C8CFF4; 
+    font-size: 13px;
+}
+.panel, .panel-group .panel-heading+.panel-collapse>.panel-body{
+    border: none;
+}
+.glyphicon {
+    font-size: 10px;
+}
+.panel-title{
+	border: solid #37478A;
+  /*border-style: solid; */
+    border-left-width: 0px;
+    border-right-width: 0px;
+    border-top-width: 0px;
+    border-bottom-width: 3px;
+}
+/* toggle plus and Minus */	  
+.dropdown-content {
+ min-width: 180px;
+ }
+ .dropdown-content a {
+  min-width: 180px;
+ }
+ .textareaVmsMsg { 
+ font-size: 1em;
+ color: #C8CFF4;
+ font-family: Roboto, Helvetica, sans-serif;
+ font-weight: bold;
+ background-color: #2C3A77;
+ border-radius: 8px;
+ border: none;
+}
+.irresetbutton {
+  color: #C8CFF4;
+  font-family:  Roboto, Helvetica, sans-serif;
+  box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
+  border-radius: 13px;
+  background-color:#356D85;
+  border: solid 0px #356D85;
+  width:80px;
+  height:30px
+}
+.iractionbutton {
+  color: #C8CFF4;
+  font-family:  Roboto, Helvetica, sans-serif;
+  box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
+  border-radius: 13px;
+  background-color:#356D85;
+  border: solid 0px #356D85;
+  width:90px;
+  height:30px
+}
+
+.tablevms tr:hover {
+background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
+}
+
+input[type=text] {
+  font-family: Roboto, Helvetica, sans-serif;
+  color: white;
+}
+
+
+    </style>
+
+ 
+ <script>
+ 
+ $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
+  </script>
+    <script>
+ // accordions div tag
+	  $(document).ready(function(){
+	$('.collapse').on('shown.bs.collapse', function(){
+		$(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+	}).on('hidden.bs.collapse', function(){
+		$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
+	});       
+});
+	  
+ 
+
+ 
+ //Lane image change    
+	  var newsrc = "laneup.JPG";
+	  var newsrc1 = "laneup.JPG";
+	  var newsrc2 = "laneup.JPG";
+	  var newsrc3 = "laneup.JPG";
+	  var newsrc4 = "laneup.JPG";
+	  var newsrc5 = "laneup.JPG";
+
+	  //document.getElementById("lsh1Div").style.color = "#A0E67F";
+
+	  function changeImage(imgid) {
+	  	if(imgid=="laneupimg1") {
+	  	 if (newsrc == "laneup.JPG") {
+	  		document.getElementById('laneupimg1').src='lanecross.JPG';
+	  		newsrc  = "lanecross.JPG";
+	  		document.getElementById("lsh1Div").style.color = "#E58080";
+	  	  }
+	  	  else {
+	  	   document.getElementById('laneupimg1').src='laneup.JPG';
+	  	   newsrc  = "laneup.JPG";
+	  	   document.getElementById("lsh1Div").style.color = "#A0E67F";
+	  	  }		
+	  	}
+	  	
+	  	if(imgid=="laneupimg2") {
+	  	 if (newsrc1 == "laneup.JPG") {
+	  		document.getElementById('laneupimg2').src='lanecross.JPG';
+	  		newsrc1  = "lanecross.JPG";
+	  		document.getElementById("lane4Div").style.color = "#E58080";
+	  	  }
+	  	  else {
+	  	   document.getElementById('laneupimg2').src='laneup.JPG';
+	  	   newsrc1  = "laneup.JPG";
+	  	   document.getElementById("lane4Div").style.color = "#A0E67F";
+	  	  }		
+	  	}
+	  	
+	    	if(imgid=="laneupimg3") {
+	  	 if (newsrc2 == "laneup.JPG") {
+	  		document.getElementById('laneupimg3').src='lanecross.JPG';
+	  		newsrc2  = "lanecross.JPG";
+	  		document.getElementById("lane3Div").style.color = "#E58080";
+	  	  }
+	  	  else {
+	  	   document.getElementById('laneupimg3').src='laneup.JPG';
+	  	   newsrc2  = "laneup.JPG";
+	  	   document.getElementById("lane3Div").style.color = "#A0E67F";
+	  	  }		
+	  	}
+	    
+	      if(imgid=="laneupimg4") {
+	  	 if (newsrc3 == "laneup.JPG") {
+	  		document.getElementById('laneupimg4').src='lanecross.JPG';
+	  		newsrc3  = "lanecross.JPG";
+	  		document.getElementById("lane2Div").style.color = "#E58080";
+	  	  }
+	  	  else {
+	  	   document.getElementById('laneupimg4').src='laneup.JPG';
+	  	   newsrc3  = "laneup.JPG";
+	  	   document.getElementById("lane2Div").style.color = "#A0E67F";
+	  	  }		
+	  	}
+	  	
+	  	if(imgid=="laneupimg5") {
+	  	 if (newsrc4 == "laneup.JPG") {
+	  		document.getElementById('laneupimg5').src='lanecross.JPG';
+	  		newsrc4  = "lanecross.JPG";
+	  		document.getElementById("lane1Div").style.color = "#E58080";
+	  	  }
+	  	  else {
+	  	   document.getElementById('laneupimg5').src='laneup.JPG';
+	  	   newsrc4  = "laneup.JPG";
+	  	   document.getElementById("lane1Div").style.color = "#A0E67F";
+	  	  }		
+	  	}
+	  	if(imgid=="laneupimg6") {
+	  	 if (newsrc5 == "laneup.JPG") {
+	  		document.getElementById('laneupimg6').src='lanecross.JPG';
+	  		newsrc5  = "lanecross.JPG";
+	  		document.getElementById("rsh1Div").style.color = "#E58080";
+	  	  }
+	  	  else {
+	  	   document.getElementById('laneupimg6').src='laneup.JPG';
+	  	   newsrc5  = "laneup.JPG";
+	  	   document.getElementById("rsh1Div").style.color = "#A0E67F";
+	  	  }		
+	  	}
+	  }
+   </script>
+  </head>
+<body class="calcite-maps calcite-nav-top">
+	<div class="container-fluid">
+		<div ng-app="ltaApp" ng-controller="ltaController">
+		<!--
+		<table width="100%" border="1"> 
+		<tr>
+		<td> </td>
+		</tr>
+		</table>  -->
+  
+	  <div id="main" class claro>
+	 <div id="viewDiv"> </div>    
+	  <div id="instruction">    	        
+		<button class="irresetbutton" id="rdclose">  Line </button>
+		<button class="irresetbutton" id="rdclosepoint">  Symbol  </button>
+		<button class="irresetbutton" id="line">  Draw Line  </button>
+		
+			<div class="popup" onclick="popupvideo()">
+		        <div id="videodiv">
+		           <span class="popuptext" id="myPopup">
+		              <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
+		              <video id="VisaChipCardVideo" width="300" controls>
+		                  <source src="CTEvideo.mp4" type="video/mp4">
+		               </video>
+		           </span>
+		           </div>       
+				</div>					       
+		 </div>  
+	 <div id="instruction1">
+	 <button class="irresetbutton" id="video" >Video </button>
+	 <button class="irresetbutton" id="undo" >Reset  </button>
+	</div> 
+      
+      <div id="panelTopDiv"  style="background-color: #202B53;">
+    		<h2t> Event - {{eventname}} </h2t>
+      </div>  
+	  
+	   <div id="panelRightDiv" class="esri-widget">  
+         <br> 
+		 <br> 
+		 <br> 
+<!-- Start IR Creation -->
+	  <div ng-show="showeventcreateFlag">
+	  <!-- <div class="item3" style="background-color: #202B53;"> -->
+	  
+	  	<table width="100%" id="incdetailtbl"> 
+		<tr>
+			<td><h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp;<h3b>RESPONSE</h3b></td>
+		</tr>
+	</table>
+	  
+			
+	 <!-- <div class='incscroll'>   -->
+<!-- event creation -->
+<div class='scrollResponse'>
+	<div class="panel-group" id="accordion2">
+       <div class="panel panel-default">
+    	<div class="panel-heading active">
+        	<h4 class="panel-title">               	
+                    Event Details <span data-target="#Collapseiconone" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+            </h4>			
+        </div>
+        <div class="panel-collapse collapse in" id="Collapseiconone">
+        	<div class="panel-body">
+      <table width="100%" id="eventdetailtbl">
+		<tr>
+	      <td colspan="2">
+          	Fill in the detail of the Event 			
+          </td>
+	  </tr>
+	 
+		<tr>
+	      <td>
+          	Event Name <br>
+			<input type="text"  placeholder="Event Name" ng-model="eventname" ng-change="changeventname()" >
+          </td>
+	      <td>
+            Organizer <br>
+			<input type="text"  placeholder="Oganizer" ng-model="eventorganizer">
+          </td>
+	  
+	  </tr>
+        <tr>
+          <td> Start Time <br>
+				<input type="text"  placeholder="Start Time" ng-model="eventstarttime" readonly class="form_datetime"> 			 	                
+          </td>
+		  <td> End Time <br>
+				<input type="text"  placeholder="end Time" ng-model="eventendtime1"> 
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Event Supporter <br>
+            <input type="text"  placeholder="supporter" ng-model="eventsupp">
+          </td>
+          <td>
+            Event Owner <br>
+            <input type="text" placeholder="owner"  ng-model="eventowner">
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            Event Type <br>
+                <select ng-model="eventype" ng-change="changeoptions()">
+					<option ng-repeat="option in eventypeList" value="{{option.eventypeid}}">{{option.name}}</option>
+				</select>
+          </td>
+          <td>
+            Spectators <br>
+            <input type="text"  placeholder="spectator" ng-model="eventspec">
+          </td>
+        </tr>
+		
+		<tr>
+          <td>
+            Hotline Opening <br>
+			<input type="text"  placeholder="opening" ng-model="eventhotlineope">
+          </td>
+          <td>
+            Hotline Closing <br>
+            <input type="text"  placeholder="closing" ng-model="eventhotlineclo">
+          </td>
+        </tr>
+		<tr>
+          <td>
+            Person(s) in Charge<br>
+			<input type="text"  placeholder="in charge" ng-model="eventincharge">
+          </td>
+          <td>
+            Command Post Number <br>
+            <input type="text"  placeholder="post no" ng-model="eventpostno">
+          </td>
+        </tr>
+		<tr>
+          <td>
+            Event Bubble Position<br>
+			<input type="text"  placeholder="in charge" ng-model="eventbubbleposi">
+          </td>
+          <td>
+            Event Bubble Size <br>
+            <input type="text"  placeholder="post no" ng-model="eventbubblesize">
+          </td>
+        </tr>		
+      </table>
+            </div>
+        </div>
+     </div>
+	 
+	    <div class="panel panel-default">
+    	<div class="panel-heading active">
+					<h4 class="panel-title">               	
+							Road Closure <span data-target="#Collapseicontwo" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+					</h4>
+					
+				</div>
+				<div class="panel-collapse collapse" id="Collapseicontwo">
+					<div class="panel-body">
+					<div ng-show="roadcloseflag">
+						<table width="100%" id="eventdetailtbl"> 
+						<tr>
+						  <td>Road Name</td>
+						  <td>Open Time</td>
+						  <td>Close Time</td>
+						</tr>
+						<tr style="height:2px;">
+						  <td> <input type="text" style="width:130px;" placeholder="road name" ng-model="eventroadname"></td>
+						  <td><input type="text"  style="width:130px;" placeholder="{{eventstarttime}}" ng-model="eventstarttimecl"></td>
+						  <td><input type="text"  style="width:130px;" placeholder="{{eventendtime}}" ng-model="eventendtimecl"> </td>
+						</tr>
+						</table>
+						
+						</div>
+		Lanes Closure <br><br>
+		<!--  <table  width="100%"> 
+		<tr>
+          <td align="Left">   -->
+	          <table>
+	         <tr>
+	    		<td>
+					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg1" onclick="changeImage('laneupimg1')">
+					<!--  <img src="vertibar.JPG" width="10px" height="30px"> -->
+				<div id="lsh1Div">LSH1</div>
+				</td>
+				<td align="center">								
+					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg2" onclick="changeImage('laneupimg2')"> <br>
+					<div id="lane4Div">&nbsp;&nbsp;&nbsp;4</div>
+				</td>
+				<td align="center">
+					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg3" onclick="changeImage('laneupimg3')"> <br>
+					<div id="lane3Div">&nbsp;&nbsp;&nbsp;3</div>
+				</td>
+			    <td align="center">
+					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg4" onclick="changeImage('laneupimg4')"> <br>
+					<div id="lane2Div">&nbsp;&nbsp;&nbsp;2</div>
+				</td>
+				<td align="center">
+					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg5" onclick="changeImage('laneupimg5')"> <br>
+					<div id="lane1Div">&nbsp;&nbsp;&nbsp;1</div>
+					 
+				</td>
+				<td align="center">
+				    <img src="vertibar.JPG" width="10px" height="30px"> 
+					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg6" onclick="changeImage('laneupimg6')"> <br>
+					<div id="rsh1Div">&nbsp;&nbsp;&nbsp;RSH1</div>
+	          </td>
+			  <td align="center">
+				<ul>
+					  <li> <font color="white">(+) Add New lanes </font> 
+					  <ul>
+						<li> Add Lane</li>
+						<li> Add Center Divider</li>
+						<li> Add Left Shoulder</li>
+						<li> Add Right Shoulder</li>
+						</ul></li>
+					</ul>
+				
+				<ul>
+					  <li><font color="white"> (-) Remove lanes  </font>
+					  <ul style="width:150px;">
+						<li> Remove Lane</li>
+						<li> Remove Center Divider</li>
+						<li> Remove Left Shoulder</li>
+						<li> Remove Right Shoulder</li>
+						</ul></li>
+					</ul>
+	          </td>
+	         
+	        </tr>         
+	          </table>
+              <!--    </table>   -->
+						<br>
+						<table width="100%" class="eventclosuretable">
+						<tr>
+							<td> 
+								<a href="#"  class="buttonUpload" ng-click="showroadclosedata()" style="text-decoration:none;"> Upload Road Closure </a>
+								&nbsp;<a href="#" class="buttonRemove"  ng-click="removeroadclosedata()" style="text-decoration:none;"> Remove Road Closure</a> 
+								<!-- <a href="createventwin.jsp"  class="buttonClosure" ng-click=""> Add Road Closure</a> -->			 								 		    
+							</td>
+							</tr>
+						</table> 
+						
+				</div>
+			</div>
+     </div>
+     
+	 </div>	
+	 </div>
+	 	 		<table width="100%">
+				<tr>
+					<td> 
+						<div align="right">
+							<a href="#" class="buttonCreateEventInc"  ng-click="calleventresponse()" style="text-decoration:none;"> Create </a> &nbsp;&nbsp;
+						</div>
+					</td>
+					</tr>
+			</table> 
+	  </div>
+	<!-- end of Create IR -->
+	
+	<!-- Start of IR  Response -->
+	<div ng-show="showeventresFlag">
+
+	<table width="100%">
+		<tr>
+			<td> <a href="#"  style="text-decoration:none;" ng-click="calleventcreate()"><h3b>DETAILS</h3b></a> <h3b>></h3b> <h3a>RESPONSE</h3a> </td>
+		</tr>
+	</table>   
+	
+	 <div class='scrollResponse'> 
+ 	<div class="panel-group" id="accordion2">
+	       <div class="panel panel-default">
+	    	<div class="panel-heading active">
+	        	<h4 class="panel-title">               	
+	                    VMS Plans <span data-target="#Collapseiconthree" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+	            </h4>
+				
+	        </div>
+	        <div class="panel-collapse collapse" id="Collapseiconthree">
+	        	<div class="panel-body">
+            	<p>Recommended VMS Messages </p>
+				<table width="100%" class="tablevms">  
+				<tr>
+					<th align="left">Recommended Display <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
+					<th align="left"> Time <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
+					<th align="left">EQT ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
+					<th align="left"> </th>		
+				</tr>
+				<tr>
+					<td><textarea class="textareaeventVmsMsg" rows="3" cols="30" id="eventVmsMsg" ng-model="eventVmsMsg" ng-click="enableText()" > </textarea></td>
+					<td>
+					<input type="text" ng-model="eventVmsdisplaytime" style =" width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
+					</td>
+					<td><div id="evevmsequipid"><font color="#C8CFF4">{{eventvmseqipid}}</font></div></td>
+					<td> <button class="vmsMsgDisbutton" id="eveVmsSelect"  style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"> </button>	 </td>
+					
+				</tr>
+				<tr>
+					<td><textarea class="textareaeventVmsMsg" rows="3" cols="30" id="eventVmsMsg1" ng-model="eventVmsMsg1" ng-click="enableText()" > </textarea></td>
+					<td>
+					<input type="text" ng-model="eventVmsdisplaytime1"  style =" width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
+					</td>
+					<td><div id="evevmsequipid1"><font color="#C8CFF4">{{eventvmseqipid1}}</font></div></td>
+					<td> <button class="vmsMsgDisbutton" id="eveVmsSelect1"  style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"> </button>	 </td>				
+				</tr>	
+				<tr>
+					<td><textarea class="textareaeventVmsMsg" rows="3" cols="30" id="eventVmsMsg2" ng-model="eventVmsMsg2" ng-click="enableText()" > </textarea></td>
+					<td>
+					<input type="text" ng-model="eventVmsdisplaytime2"  style =" width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
+					</td>
+					<td><div id="evevmsequipid2"><font color="#C8CFF4">{{eventvmseqipid2}}</font></div></td>
+					<td> <button class="vmsMsgDisbutton" id="eveVmsSelect2"  style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"> </button>	</td>				
+				</tr>
+				<tr>
+					<td><textarea class="textareaeventVmsMsg" rows="3" cols="30" id="eventVmsMsg3" ng-model="eventVmsMsg3" ng-click="enableText()" > </textarea></td>
+					<td>
+					<input type="text" ng-model="eventVmsdisplaytime3"  style =" width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
+					</td>
+					<td><div id="evevmsequipid3"><font color="#C8CFF4">{{eventvmseqipid3}}</font> </div></td>
+					<td> 
+						<button class="vmsMsgDisbutton" id="eveVmsSelect3"  style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"> </button>				
+					</td>				
+				</tr>
+				</table>
+				<table width="100%"> 
+						<tr>
+							<td>
+							<div align="right">	<a href="#" class="buttonadd" id="buttonadd" ng-click="parterMsgAdd()" style="text-decoration:none;"> New VMS Plan</a>
+								<a href="#" class="buttondelete" id="buttondelete" ng-click="parterMsgRemove()" style="text-decoration:none;"> Remove </a> 									
+							</div>
+							</td>
+						</tr>
+				 </table>
+				 
+				VMS Set
+				<table width="100%" class="tablevms">  
+				<tr>
+					<th align="left">Set <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
+					<th align="left"> Time <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
+					<th align="left">EQT ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
+				</tr>
+
+				<tr>
+					<td> <font color="#C8CFF4">1 </font></td>
+					<td> <font color="#C8CFF4"> {{eventVmsdisplaytime}}  </font>
+					</td>
+					<td> 
+					
+					<a href="#" ng-click="showvmsequipmsg('1')" style="text-decoration:none;"><font color="#C8CFF4">TIP 231482 </font> </a></td>
+				</tr>
+				<tr>
+					<td> <font color="#C8CFF4"> 2</font></td>
+					<td> 
+					<font color="#C8CFF4"> {{eventVmsdisplaytime}} </font></td>
+					<td> <a href="#" ng-click="showvmsequipmsg('2')" style="text-decoration:none;"> <font color="#C8CFF4">TIP 545862 </font></a> </td>					
+				</tr>				
+				</table>
+				 
+	            </div>
+	        </div>
+	     </div>
+		 
+		  <div class="panel panel-default">
+		    	<div class="panel-heading active">
+							<h4 class="panel-title">               	
+								Canning Messages <span data-target="#Collapseiconfour" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+							</h4>
+							
+				</div>	
+			<div class="panel-collapse collapse" id="Collapseiconfour">
+	        	<div class="panel-body">
+	            	Canning Messages
+			   <table width="100%"> 
+					<tr>
+						<td>
+						<p>Enter a Canning Message</p>
+						
+							<textarea class="textareaeventcanMsg" rows="3" cols="55" ng-model="eventcanningMsg"> </textarea>
+							<a href="#" class="buttoneveImp" id="buttoneveImp" ng-click="canMsgSend()"> Send </a>	
+						</td>
+					</tr>
+			 </table>
+	            </div>
+        	</div>						
+	     </div>
+	     
+	     <div class="panel panel-default">
+		    	<div class="panel-heading active">
+							<h4 class="panel-title">               	
+								OBU Messages <span data-target="#Collapseiconfive" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+							</h4>
+							
+				</div>
+			<div class="panel-collapse collapse" id="Collapseiconfive">
+				<div class="panel-body">
+				<p>OBU Messages</p>
+					<table width="100%" class="tableventOBU">  
+						<tr>
+							<th colspan="3" bgcolor="Red"> Alert </th>
+						</tr>
+						<tr>					
+							<td> 
+								<div ng-if="obuMsgStatus==='Failed'"> <span class="dotfail"></span> <font color="#C8CFF4">{{obuMsgStatus}} </font>></div>
+								<div ng-if="obuMsgStatus==='Implemented'"> <span class="dotimp"></span> <font color="#C8CFF4">{{obuMsgStatus}}</font> </div>
+								<div ng-if="obuMsgStatus==='Not Active'">  <span class="dotnotact"></span> <font color="#C8CFF4">{{obuMsgStatus}}</font> </div>					
+							</td>
+							<td> <textarea class = "textareaeventObuMsg" rows="3" cols="45" ng-model="eventObuMsgAlert" ng-click="enableText()"> {{eventObuMsgAlert}} </textarea></td>						
+							<td>KM Marking 
+							<textarea class = "textareaeventObuMsg" rows="1" cols="3" ng-model="eventObuMsgAlertkm" ng-click="enableText()"> {{eventObuMsgAlertkm}}</textarea></td>
+							
+						</tr>
+						<tr>
+							<th colspan="3" bgcolor="yellow"> Jam</th>
+						</tr>
+						<tr>
+							<td> 
+								<div ng-if="obuMsgStatus==='Failed'"> <span class="dotfail"></span> <font color="#C8CFF4">{{obuMsgStatus}} </font></div>
+								<div ng-if="obuMsgStatus==='Implemented'"> <span class="dotimp"></span> <font color="#C8CFF4">{{obuMsgStatus}} </font></div>
+								<div ng-if="obuMsgStatus==='Not Active'">  <span class="dotnotact"></span> <font color="#C8CFF4">{{obuMsgStatus}}</font> </div>						
+							</td>
+							<td> <textarea class ="textareaeventObuMsg" rows="3" cols="45" ng-model="eventObuMsgJam" ng-click="enableText()" > {{eventObuMsgJam}}</textarea></td>						
+							<td>KM Marking<textarea class = "textareaeventObuMsg" rows="1" cols="3" ng-model="eventObuMsgJamkm" ng-click="enableText()" > {{eventObuMsgJamkm}}</textarea></td>	
+						</tr>
+						<tr>
+							<th colspan="3" bgcolor="Green"> Guide</th>
+						</tr>	
+						<tr>
+							<td> 
+								<div ng-if="obuMsgStatus==='Failed'"> <span class="dotfail"></span> <font color="#C8CFF4">{{obuMsgStatus}} </font></div>
+								<div ng-if="obuMsgStatus==='Implemented'"> <span class="dotimp"></span><font color="#C8CFF4"> {{obuMsgStatus}} </font></div>
+								<div ng-if="obuMsgStatus==='Not Active'"> <span class="dotnotact"></span><font color="#C8CFF4"> {{obuMsgStatus}} </font></div>						
+							</td>
+							<td> <textarea class = "textareaeventObuMsg" rows="3" cols="45" ng-model="eventObuMsgGuide" ng-click="enableText()"> {{eventObuMsgGuide}}</textarea></td>						
+							<td>KM Marking<textarea class = "textareaeventObuMsg" rows="1" cols="3" ng-model="eventObuMsgGuidekm" ng-click="enableText()"> {{eventObuMsgGuidekm}}</textarea></td>	
+						</tr>					
+					</table>
+					<!--  <table width="100%"> 
+					<tr>
+						<td> <div align="right">
+							<a href="#" class="buttoneveRem" id="buttoneveRem" ng-click="obuMsgdeact()" style="text-decoration:none;"> Deactivate All </a> 
+							<a href="#" class="buttoneveImp" id="buttoneveImp" ng-click="obuMsgImpl()" style="text-decoration:none;"> Implement All </a>	
+							</div>
+						</td>
+					</tr>
+					</table>  -->		
+				</div>
+			</div>
+	     </div>
+	     
+	     <div class="panel panel-default">
+		    	<div class="panel-heading active">
+							<h4 class="panel-title">               	
+								Sub IR <span data-target="#Collapseiconsix" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+							</h4>
+							
+				</div>
+			<div class="panel-collapse collapse" id="Collapseiconsix">
+				<div class="panel-body">
+								Sub Incident Record information
+				</div>
+			</div>
+	     </div>
+	     
+	     <div class="panel panel-default">
+		    	<div class="panel-heading active">
+							<h4 class="panel-title">               	
+								Contacts <span data-target="#Collapseiconseven" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+							</h4>
+							
+				</div>
+			<div class="panel-collapse collapse" id="Collapseiconseven">
+				<div class="panel-body">
+						Contact Details		
+				</div>
+			</div>
+	     </div>
+		  <div class="panel panel-default">
+		    	<div class="panel-heading active">
+							<h4 class="panel-title">               	
+								Road Closure Monitoring <span data-target="#Collapseiconeight" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+							</h4>
+							
+				</div>
+			<div class="panel-collapse collapse" id="Collapseiconeight">
+				<div class="panel-body">
+						Road closure monitoring information		
+				</div>
+			</div>
+	     </div>	
+	     
+	     <div class="panel panel-default">
+		    	<div class="panel-heading active">
+							<h4 class="panel-title">               	
+								Notes <span data-target="#Collapseiconnine" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+							</h4>
+							
+				</div>
+			<div class="panel-collapse collapse" id="Collapseiconnine">
+				<div class="panel-body">
+						<p> Add Notes to this event </p>
+						
+					<table width="100%" class="tablevms">  
+						<tr>
+							<th align="left"> Notes </th>
+							<th align="left"> Author </th>
+						</tr>					
+						<tr>
+							<td>
+								<textarea class = "textareanote" rows="2" cols="50" ng-model="eventNotes" ng-click="enableText()" > note1
+								</textarea>
+							</td>
+							<td>
+								<input type="text" ng-click="" ng-model="eventNotesAuthor" 
+								style =" width: 100px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
+							
+							</td>
+						</tr>
+						
+					</table>
+					<table width="100%"> 
+						<tr>
+							<td> 
+								<div > <div align="right">
+									<a href="#" class="buttondelete" id="buttondelete" ng-click="eventDeleteNotes()" style="text-decoration:none;"> Delete Note </a> 
+									<a href="#" class="buttonadd" id="buttonadd" ng-click="eventAddNewNotes()" style="text-decoration:none;"> Add a New Note</a>	
+									</div>
+								</div>
+							</td>
+						</tr>
+				 </table>
+				</div>
+			</div>
+	     </div>	     
+	     
+		 </div>
+	 </div> 
+	 	<table width="100%" class="eventclosuretable">
+			<tr>
+				<td colspan="3"> 
+					<div align="right">
+						<a href="#" class="buttonCreateventInc" ng-click="addevent()" style="text-decoration:none;"> SAVE </a> &nbsp;&nbsp;
+					</div>
+				</td>
+			</tr>
+		</table>
+	 </div>
+	  <!-- end of IR Respnse -->					
+      </div>  
+	  
+		</div>
+		
+		</div>
+	</div>  
+</body>
+</html>

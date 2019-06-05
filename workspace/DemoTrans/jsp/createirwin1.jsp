@@ -15,25 +15,26 @@
 	  
  	<script src="bootstrap.min.js"></script>
   	<script src="angular.min.js"></script>
-  	<script type="text/javascript"  src="democontroller.js"></script> 
-  	<script type="text/javascript"  src="jquery.js"></script> 
+  	<script type="text/javascript" src="democontroller.js"></script> 
+  	<script type="text/javascript" src="jquery.js"></script> 
   	
   	<!--  Map View -->
     <link rel="stylesheet" href="https://js.arcgis.com/3.28/esri/css/esri.css">
 	<link rel="stylesheet" href="mrtmap.css">
 	<script src="https://js.arcgis.com/3.28/"></script>
-    <script type="text/javascript"  src="irmap.js"></script>
+    <!--  <script type="text/javascript"  src="irmap.js"></script> -->
+    <script type="text/javascript"  src="mrtmap.js"></script>
 	<!-- End of Map View -->
 	
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
     
     
-		  <!-- start plus and minu menu  script -->
+	<!-- start plus and minu menu  script -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-	   <!-- end plus and minu menu  script -->
+	<!-- end plus and minu menu  script -->
 	
  <style>
 /* toggle plus and Minus background color*/
@@ -104,9 +105,6 @@
 </style>
 
 </head>
-    <script>
-
-	  </script>
 	  <script>
 // accordions div tag
 	  $(document).ready(function(){
@@ -270,9 +268,9 @@
                     var select1 = document.getElementById(t1.id);
 					select1.setAttribute("style","height: 20px; width: 90px;font-size: 10px;"); 
 					select1.options[select1.options.length] = new Option('', '0');
-                    select1.options[select1.options.length] = new Option('Tower1', '1');
-                    select1.options[select1.options.length] = new Option('Tower2', '2');
-                    select1.options[select1.options.length] = new Option('Tower3', '3');
+                    select1.options[select1.options.length] = new Option('Ambulance', '1');
+                    select1.options[select1.options.length] = new Option('Ambulance1', '2');
+                    select1.options[select1.options.length] = new Option('Ambulance2', '3');
 
                 var cell2=row.insertCell(1);
                 var t2=document.createElement("input");
@@ -328,7 +326,7 @@
 							<a href="#" style="text-decoration:none;"><img src="obstacle.jpg"> Obstacle</a>
 							<a href="#" ng-click="createirdetail('Heavy Traffic IR')" style="text-decoration:none;"><img src="heavytraffic.jpg"> Heavy Traffic</a>
 							<a href="#" ng-click="createirdetail('Road Works IR')" style="text-decoration:none;"><img src="roadwork.jpg"> Road Works</a>
-			                <a href="#" ng-click="createirdetail('Mobile Road Works IR')" style="text-decoration:none;"><img src="mobileroadwork.jpg"> Mobile Road Works</a>
+			                <a href="createmrwwin.jsp" style="text-decoration:none;"><img src="mobileroadwork.jpg"> Mobile Road Works</a>
 							<!-- <a href="createmrtwin.jsp" ng-click="createirdetail('MRT Break Down IR')" style="text-decoration:none;"><img src="breakdown.jpg"> Break Down</a> -->
 			                <a href="createmrtwin.jsp" style="text-decoration:none;"><img src="breakdown.jpg"> MRT Break Down</a>
 							<!-- <a href="#" ng-click="createirdetail('Unattended Vehicle IR')" style="text-decoration:none;"><img src="unattvehicle.jpg"> Unattended Vehicle</a> -->
@@ -354,11 +352,12 @@
 		</tr>
 		<tr>
 			<td width="60%;"  height="95% !important;">
-		     	<!-- <div id="mapDiv">
+		     	 
 			     	<div id="infocctvcamera">          
-	         			<button id="Circle" class="buttoncctvcamera"> View cctv & Roadworks </button>   
+	         			<button id="Circle" class="buttoncctvcamera"> View cctv & Roadworks </button> 
+	         				<div id="infocctvcamerashow"></div>  
 	      			 </div>
-		     	</div>   -->
+		     	<div id="mapDiv"></div>   
 			</td>
 			<td width="40%;"  height="95% !important;" valign="top">
 	<!-- Start IR Creation -->
@@ -366,7 +365,7 @@
 	  
 	  	<table width="100%" id="incdetailtbl"> 
 		<tr>
-			<td><h3a>CREATE </h3a></td>
+			<td><h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp;<h3b>RESPONSE</h3b></td>
 		</tr>
 	</table>
 	  
@@ -861,7 +860,7 @@
             </div>
         </div>
      </div>
-    <div align="right"><a href="createinc.jsp" class="buttonCreateMrtInc" ng-click="addmrtincident()" style="text-decoration:none;"> SAVE </a></div> 
+    <div align="right"><a href="createirwin1.jsp" class="buttonCreateMrtInc" ng-click="addmrtincident()" style="text-decoration:none;"> SAVE </a></div> 
 </div>		  	  
  </div> 
 	 </div>
