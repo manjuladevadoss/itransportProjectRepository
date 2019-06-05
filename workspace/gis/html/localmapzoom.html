@@ -5,10 +5,8 @@
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
-    <title>WMTSLayer 4.11 basemap zoom </title>
-
-  <link rel="stylesheet" href="http://localhost:8080/gis/3.28/esri/dijit/geoenrichment/themes/light/main.css" />
-
+    <title>BaseMap 4.11 Zoom Drawline VMS </title>
+  <link rel="stylesheet" href="http://localhost:8080/gis/4.11/esri/themes/light/main.css" />
     <style>
       html,
       body,
@@ -18,62 +16,40 @@
         height: 100%;
         width: 100%;
       }
-
+      #instruction {
+        z-index: 99;
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        padding: 5px;
+        margin-left: -175px;
+        height: 20px;
+        width: 350px;
+      }
       .esri-layer-list {
         width: 310px;
       }
     </style>
 
 <script src="http://localhost:8080/gis/4.11/init.js"></script>  
-
+<script src="http://localhost:8080/gis/localbasemap.js"></script>   
     <script>
-      var map, view;
-
-      require([
-        "esri/Map",
-        "esri/views/MapView",
-        "esri/layers/WMTSLayer","esri/geometry/Extent", 
-        "esri/widgets/LayerList"
-      ], function(Map, MapView, WMTSLayer,Extent, LayerList) {
-        layer = 
-          new WMTSLayer({
-          url: "http://192.168.99.100:32768/services/wmts?service",
-          //copyright:
-            //"<a target='_top' href='https://earthdata.nasa.gov'>Earthdata</a> by <a target='_top' href='https://www.nasa.gov'>NASA</a>",
-          activeLayer: {
-            id: "osm-bright"
-          },
-          version: "1.0.0",
-          tileMatrixSet: "2x",
-          format: "png",
-          style: "default",
-          serviceMode: "KVP"
-        });
-
-        map = new Map({
-          //center: [103.84347,1.32858],
-          center: [47.075,-52.93],
-          zoom: 13,
-          layers: [layer]
-        });
-        
-        
-        view = new MapView({
-          container: "viewDiv",
-          map: map,          
-        });
-       
-        view.when(function() {
-        view.extent = layer.fullExtent;
-            var layerList = new LayerList({
-            view: view
-          });
-          //view.ui.add(layerList, "bottom-left");
-        }); 
-      });
+     
     </script>
   </head>
   <body>
-    <div id="viewDiv"></div>
+    <div id="viewDiv"> </div>
+      <div id="instruction">   js seperate
+        using arcgis 4.11 draw line, road closure pointer, road closure draw line automatic, vms image display  
+        <button id="vms" >VMS Picture Symbol</button>
+        <button id="line" >Draw a Line </button>
+        <!-- <input type="text" name="xyvalue" id="xyvalue">   -->
+       <button id="rdclose" > Road closure Automatic Line </button>
+       <button id="rdclosepoint" >Road Closure Entry Exit Picture Symbol  </button>
+       <button id="undo" >Undo  </button>
+      </div>
   </body>
 </html>
+
+
+

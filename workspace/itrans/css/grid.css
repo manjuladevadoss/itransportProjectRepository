@@ -1,0 +1,326 @@
+body {
+ /*background-color: #202B53;*/
+ background: radial-gradient(circle, #293E78 0%, #14192D 100%); 
+ font-family: Roboto, Helvetica, sans-serif;
+}
+
+/* start grid */
+ /* .item1 { grid-area: header; } */
+.item2 { grid-area:	menu1; }
+.item3 { grid-area: menu2; }
+.item4 { grid-area: menu3; }
+.item5 { grid-area: menu4; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 350px 350px 350px 350px;
+  grid-template-areas:
+   /*  'header header'  */
+    'menu1  menu2'
+    'menu3  menu4';
+/* background-image: linear-gradient( 90deg,rgba(39,59,115,1) , rgba(25,34,63,1));*/ 
+  grid-gap: 10px;
+  /*padding: 10px;*/
+}
+
+.grid-container > div {
+  /*background-color: #202B53;*/
+ /*background-image: linear-gradient( 90deg,rgba(39,59,115,1) , rgba(25,34,63,1)); */
+ border: 1px solid #2D50AE;
+ background: radial-gradient(circle, #293E78 0%, #14192D 100%);
+ padding: 8px 3px;
+}
+/* end grid */
+
+
+/* Menu bar */
+.fa_custom {
+color: white;
+}
+
+/* start Scroll bar  */
+div.scroll {
+     /* width:790px; */
+      overflow-y:auto;
+	  overflow-x: auto;
+      height:180px;
+}
+
+div.scrollev {
+     /* width:790px; */
+      overflow-y:auto;
+	  overflow-x: auto;
+      height:220px;
+}
+
+div.scrollinc {
+     /* width:790px; */
+      overflow-y:auto;
+	  overflow-x: auto;
+      height:180px;
+}
+div.scrollwc {
+     /* width:790px; */
+      overflow-y:auto;
+	  overflow-x: auto;
+      height:110px;
+}
+
+div.scrollwcindiv {
+     /* width:790px; */
+      overflow-y:auto;
+	  overflow-x: auto;
+      height:400px;
+}
+
+	/* width */
+	::-webkit-scrollbar {
+	  width: 8px;
+	}
+
+	/* Track */
+	::-webkit-scrollbar-track {
+	  box-shadow: inset 0 0 100px #43498F; 
+	  border-radius: 3px;
+	}
+	 
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+	  background: #202B53; 
+	  border-radius: 3px;
+	}
+	::-webkit-scrollbar-corner {
+	  background: #202B53; 
+	  border-radius: 3px;
+	}
+/* End start Scroll bar  */
+
+.buttonact{
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: .6em;
+  font-weight: bold;
+  border: 2px solid #33FF33;
+  border-radius: 2px/2px;
+  background:#33FF33;
+  width:80px;
+}
+
+.buttoninprogress{
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: .6em;
+  border: 2px solid yellow;
+  border-radius: 2px/2px;
+  background:yellow;
+  width:80px;
+}
+
+.buttonclose{
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: .6em;
+  border: 2px solid #49FFFF;
+  border-radius: 2px/2px;
+  background:#49FFFF;
+  width:80px;
+}
+
+.buttonpending {
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: .6em;
+  font-weight: bold;
+  border: 2px solid #00BFFF;
+  border-radius: 2px/2px;
+  background: #00BFFF;
+  width:80px;
+}
+.buttonnotact{
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 2px/2px;
+  font-weight: bold;
+  font-size:.6em;
+  border: 2px solid #FF6347;
+  background: #FF6347;
+  width:80px;
+}
+
+
+input[type=text] {
+  box-sizing: border-box;
+  border: 0px solid  #191F39;
+  border-radius: 6px;
+  height: 30px;
+  width: 200px;
+  font-size: 14px;
+  background-color: #191F39;
+  color:white;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+h3 {
+  color: #C8CFF4;
+}
+h4 {
+height: 30px;
+  width: 462px;
+  color: #C8CFF4;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 30px;
+}
+h5 {
+  color: #C8CFF4;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 100;
+  line-height: 30px;
+}
+
+h6 {
+  color: #202B53;
+}
+
+h7 {
+  color: white;
+  font-size: 45px;
+}
+
+h10 {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+p{
+  color: #C8CFF4;
+  font-size: 12px;
+}
+
+
+
+#inctbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#inctbl td, #inctbl th {
+  border: 0px solid #ddd;
+  padding: 3px;
+  color: white;
+}
+
+#inctbl tr:nth-child(odd){
+  background-image: linear-gradient( 90deg,	rgba(55,63,97,1) , rgba(25,31,57,1));
+  border: 1px solid #293E78;
+ /* color: radial-gradient(circle, #293E78 0%, #14192D 100%);*/
+}
+
+#inctbl tr:nth-child(even){
+  background-image: linear-gradient( 90deg,	rgba(55,63,97,1) , rgba(25,31,57,1));
+  border: 1px solid #293E78;
+  /*color: radial-gradient(circle, #293E78 0%, #14192D 100%);*/
+}
+
+#inctbl tr:hover {
+	background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1)); 
+}
+
+#inctbl th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+#datatbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#datatbl td, #datatbl th {
+  border: 0px solid green;
+  padding: 3px;
+  color: white;
+ /* background-color: #202B53;*/
+}
+
+#basetbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#basetbl td, #basetbl th {
+  border: 0px solid green;
+  padding: 3px;
+  color: white;
+  background-color: #202B53;
+}
+
+/* enable absolute positioning */
+.inner-addon {
+  position: relative; ;
+}
+
+/* style glyph */
+.inner-addon .glyphicon {
+  position: absolute; 
+  padding: 4px;
+  pointer-events: none;
+}
+
+/* align glyph */
+.left-addon .glyphicon  { left:  0px;}
+.right-addon .glyphicon { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  28px; }
+.right-addon input { padding-right: 28px; }
+
+body {
+  margin: 2px;
+}
+/* end of glyphicon image */
+
+.buttonappro{
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: .7em;
+  font-weight: bold;
+  border: 2px solid #ffcc66;
+  border-radius: 2px/2px;
+  background:#ffcc66;
+  width:80px;
+}
+
+.buttonplan{
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: .7em;
+  color: black;
+  font-weight: bold;
+  border: 2px solid #4dd2ff;
+  border-radius: 2px/2px;
+  background:#4dd2ff;
+  width:80px;
+}

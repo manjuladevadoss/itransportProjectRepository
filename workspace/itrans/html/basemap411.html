@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>BaseMap 4.11 Zoom Drawline VMS </title>
+  <link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+      #instruction {
+        z-index: 99;
+        position: absolute;
+        top: 15px;
+        left: 50%;
+        padding: 5px;
+        margin-left: -175px;
+        height: 20px;
+        width: 350px;
+      }
+      .esri-layer-list {
+        width: 310px;
+      }
+    </style>
+
+<script src="http://localhost:8080/itrans/arcgis_4.11/init.js"></script>  
+<script src="basemap411.js"></script>   
+    <script>
+     
+    </script>
+  </head>
+  <body>
+
+    <div id="viewDiv"> </div>
+      <div id="instruction">   
+        Using arcgis 4.11 draw line, road closure pointer, road closure draw line automatic, vms image display  
+
+        <button id="line" >Draw a Line </button>
+
+       <button id="undo" >Undo  </button>
+      </div>
+
+  </body>
+</html>
+
+
+

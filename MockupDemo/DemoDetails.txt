@@ -1,0 +1,14 @@
+i-transport explanation
+
+1.Event Creation
+	Layers like VMS, CCTV present in the left side corner
+	Event is in Stadium place 
+2. Road Work Creation
+	In Stadium walk (next to stadium Right)
+3. Accident in 
+	Republic Avenue (next to stadium Left)
+
+
+
+Create fixed circle
+https://developers.arcgis.com/javascript/latest/sample-code/sandbox/index.html?sample=intro-graphics

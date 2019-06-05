@@ -6,6 +6,8 @@
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
      
+     <script type="text/javascript" src="jquery.js"></script>
+     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" >
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -13,8 +15,8 @@
 	<link rel="stylesheet" href="checkboxstyle1.css">
 	<link rel="stylesheet" href="dropdownlistStylePopup.css">  <!-- dropdown inside the popup add lane view-->
 	<link rel="stylesheet" href="dropdownlistStyle.css"> <!-- dropdown inside status, source add lane view-->
-	<link rel="stylesheet" href="bootstrap.min.css">
-	<link rel="stylesheet" href="mrtinc.css"> <!--  -->
+	<!--    <link rel="stylesheet" href="bootstrap.min.css"> -->
+	<link rel="stylesheet" href="mrtinc.css">
 	
 	<!-- start plus and minu menu  script -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -25,10 +27,17 @@
     <link rel="stylesheet" href="https://js.arcgis.com/3.28/esri/css/esri.css">
     <link rel="stylesheet" href="mrtmap.css">
     <!-- Map Css --> 
+    
+	 <!-- Start Date and Time -->
+	  	<link rel="stylesheet" href="bootstrap-datetimepicker.min.css">
+	 <!-- End of  Date and Time --> 
+	 	 
+	 <!-- Start Date and Time -->
+	 	<script src="bootstrap-datetimepicker.min.js"></script>
+ 	 <!-- End of Date and Time --> 
 	  
- 	<script type="text/javascript" src="bootstrap.min.js"></script>
+ 	<!-- <script type="text/javascript" src="bootstrap.min.js"></script>  -->
   	<script  type="text/javascript" src="angular.min.js"></script>
-  	<script type="text/javascript" src="jquery.js"></script>
   	<script type="text/javascript" src="democontroller.js"></script>  
     
 	<!-- start plus and minu menu  script -->
@@ -105,23 +114,17 @@ input[type=text] {
   font-family: Roboto, Helvetica, sans-serif;
   color: white;
 }
-/* Start Traffic Video */ 
-#videodiv {
-  position: absolute;
-  z-index: 9;
-  background-color: #f1f1f1;
-  text-align: center;
-  width:150px; 
-  border: 1px solid #4be01d;
-  /* opacity: 0.5; */  /* To change transparent color*/ 
-}
-/* end of traffic video */
 </style>
 
 </head>
+
 <script>
+<!-- Date and Time Picker  -->
+
+
 // accordions div tag
 	  $(document).ready(function(){
+		  $('.form_datetime').datepicker({format: 'yyyy-mm-dd hh:ii'});
 	$('.collapse').on('shown.bs.collapse', function(){
 		$(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
 	}).on('hidden.bs.collapse', function(){
@@ -223,7 +226,6 @@ function changeImage(imgid) {
 <div class="container-fluid">
 <div ng-app="ltaApp" ng-controller="ltaController">
 	
-	
 	<table width="100%;" style="background-color: #202B53;">
 		<tr>
 			<td colspan="2"  height="30;" vertical-align ="middle;">
@@ -232,13 +234,28 @@ function changeImage(imgid) {
 		</tr>
 		<tr>
 			<td width="60%;"  height="95% !important;">
-			  <div id="info1">          
+			    <div id="info1">          
 		          	<button id="Circle" class="buttoneventbub"> + Add Event Bubble</button>  
-		      	</div>  
+		      	</div>		      	
 		      	<div id="info2">
 		        	<button id="Line"  class="buttoneventclo"> + Add Road Closure</button>
-		      	</div>  
-		      	
+		      	</div> 
+				<!-- Start Traffic Video  -->				
+		      	<div id="infovideodiv">          
+		          	<button id="Circle" class="buttonvideo"> 
+			          	<div class="popup" onclick="popupvideo()">Traffic Video
+		                    <div id="videodiv">
+		                     <span class="popuptext" id="myPopup">
+		                            <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
+		                            <video id="VisaChipCardVideo" width="300" controls>
+		                                  <source src="CTEvideo.mp4" type="video/mp4">
+		                          </video>
+		                        </div>       
+		                     </span>
+		            	</div> 
+		          	</button>  
+		      	</div>
+				<!--  End of Traffic Video  -->
 		      	<div id="vmsmsgdiv">
 				  	<div id="vmsmsgdivheader"><h1> {{eventvmseqipid}} <h1> 
 				    	 <h2> {{eventVmsMsg}} </h2>
@@ -260,16 +277,8 @@ function changeImage(imgid) {
 				    	 <h2> {{eventVmsMsg3}} </h2>
 					</div>
 				</div>
-				
-				<!-- Start Traffic Video  -->
-				   	<div id="videodiv">
-						<video id="myVideo" width="320" height="176">
-  							<source src="CTEvideo.mp4" type="video/mp4">
-						</video>
-					</div>
-				<!--  End of Traffic Video  -->
-				
-				<!-- MAP dispaly on this div mapDiv  -->
+							
+				 <!-- MAP dispaly on this div mapDiv --> 
 		     	<div id="mapDiv">
 		     	     <div id="bottomPanel">
             			<div id="timeInfo">
@@ -285,7 +294,7 @@ function changeImage(imgid) {
 	  
 	  	<table width="100%" id="incdetailtbl"> 
 		<tr>
-			<td><h3a>CREATE </h3a></td>
+			<td><h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp;<h3b>RESPONSE</h3b></td>
 		</tr>
 	</table>
 	  
@@ -322,7 +331,8 @@ function changeImage(imgid) {
 	  </tr>
         <tr>
           <td> Start Time <br>
-				<input type="text"  placeholder="Start Time" ng-model="eventstarttime">                  
+				<input type="text"  placeholder="Start Time" ng-model="eventstarttime"> 
+			 	<input size="16" type="text" value="2012-06-15 14:45" readonly class="form_datetime">                    
           </td>
 		  <td> End Time <br>
 				<input type="text"  placeholder="end Time" ng-model="eventendtime1"> 
@@ -475,13 +485,7 @@ function changeImage(imgid) {
 							<td> 
 								<a href="#"  class="buttonUpload" ng-click="showroadclosedata()" style="text-decoration:none;"> Upload Road Closure </a>
 								&nbsp;<a href="#" class="buttonRemove"  ng-click="removeroadclosedata()" style="text-decoration:none;"> Remove Road Closure</a> 
-								<!-- <a href="createventwin.jsp"  class="buttonClosure" ng-click=""> Add Road Closure</a> -->
-								<!-- Traffic Video  -->
-								<br><br><br>Traffic Video <br>
-								<a href="#" class="buttonUpload" onclick="playVid()" type="button" style="text-decoration:none;">Play Traffic Video</a>
-								<a href="#" class="buttonUpload" onclick="pauseVid()" type="button" style="text-decoration:none;">Pause Traffic Video</a> 
-								<a href="#"  class="buttonUpload" onclick="closeVid()" type="button" style="text-decoration:none;">Close Traffic Video</a>
-								<!-- End of Traffic Video  --> 
+								<!-- <a href="createventwin.jsp"  class="buttonClosure" ng-click=""> Add Road Closure</a> -->			 								 		    
 							</td>
 							</tr>
 						</table> 
@@ -788,8 +792,7 @@ function changeImage(imgid) {
 	
 	 </div>
 	  <!-- end of IR Respnse -->
-	  
-	  
+ 
 			</td>
 		</tr>
 	</table>

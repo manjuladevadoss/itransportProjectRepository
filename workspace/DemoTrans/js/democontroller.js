@@ -284,7 +284,7 @@ var app = angular.module('ltaApp', []);
 	    $scope.showirresponse = false;
     }
     
-    //ir vms messages
+    // iraccvms incident recorad accident vms message  
     $http.get("iraccvms.json").then(function(response) {
         $scope.iraccvmsList = response.data.iraccvms;  
     });
@@ -371,7 +371,43 @@ var app = angular.module('ltaApp', []);
     };
 
  // ******** End To Create New IR     
+ 
+    // Begin Mobile Road Work
+    //ir vms messages
+    $http.get("irmrwvms.json").then(function(response) {
+        $scope.irmrwvmsList = response.data.irmrwvms;  
+    });
     
+    $scope.mrwincident= 'Mobile Road Work';
+    $scope.mrwstate = '';
+    $scope.mrwsource= '';
+    $scope.mrwstarttime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
+    $scope.mrwendtime= '';
+    $scope.mrwcontname= '';
+    $scope.mrwperno= '';
+    $scope.mrwsupvisorname= '';
+    $scope.mrwsupvisorhp= '';
+    $scope.mrwcomment= '';
+    $scope.mrwvehicleno= '';
+    $scope.mrwsimul = false;
+    $scope.mrwimpor = false;
+    $scope.mrwvrs = false;
+    $scope.mrwltm = false;
+ 
+    $scope.showmrwcreate = true;
+    $scope.showmrwresponse = false;
+    $scope.callmrwresponse = function(){
+	    $scope.showmrwcreate = false;
+	    $scope.showmrwresponse = true;
+	    //alert("simulation : " + $scope.irsimul + "\ "  + "irimpor : " + $scope.irimpor  + "\ "  + "irvrs : " + $scope.irvrs  + "\ "  + "irltm : " + $scope.irltm);
+    }
+    $scope.callmrwcreate= function(){
+	    $scope.showmrwcreate = true;
+	    $scope.showmrwresponse = false;
+    }
+    
+    //End of Mobile Road Work
+        
  // ******** New Event Creation and response part
 	//get the json object using $http get method() Event 	  
     $http.get("eventRecord.json").then(function(response) {
@@ -499,12 +535,9 @@ var app = angular.module('ltaApp', []);
        	      $scope.eventVmsMsg3 = "Expect Delays on Shenton Way";
        	      $scope.eventVmsdisplaytime3 = $filter('date')(currdate1, 'yyyy/MM/dd HH:mm');
        	      $scope.eventvmseqipid3 = "TIP 568231";
-    	  }
-          
-    
+    	  }            
 	}
-      
-      
+          
       $scope.eventcanningMsg = "This road has heavy traffic, please Note."
       
     	//VMS Removed Message 

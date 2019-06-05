@@ -35,7 +35,7 @@
                 <!-- resource tag is to add html folder into your war file - user created folder is html  -->
                     <resource>  
                        <directory>html</directory>
-                        <filtering>true</filtering>
+                        <filtering>false</filtering>
                     </resource>
                     <resource>  
                        <directory>arcgis_js_v328_api</directory>

@@ -5,7 +5,7 @@
 
     
     <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
-    <title>popup window</title>
+    <title>popup window 1</title>
 
     <link rel="stylesheet" href="https://js.arcgis.com/3.28/esri/css/esri.css">
 
@@ -35,8 +35,8 @@
     <link
     rel="stylesheet"
     href="https://js.arcgis.com/4.11/esri/themes/light/main.css" />
-  <script src="https://js.arcgis.com/4.11/"></script>  
- <!-- <script src="https://js.arcgis.com/3.28/"></script> -->
+  <script src="https://js.arcgis.com/4.11/"></script>   
+ <!--  <script src="https://js.arcgis.com/3.28/"></script> -->   <!-- Mapview() function  not availble in the 3.28-->
 <script>
      require([
         "esri/tasks/Locator",
@@ -86,6 +86,9 @@
             .then(function(response) {
               // If an address is successfully found, show it in the popup's content
               view.popup.content = response.address;
+              view.popup.content = "<br> <button onClick='fun1()'>" + response.address +"</button>"
+             + "<br> <select> <option> option 1</option> " +
+               " <option> option 2</option> </select>";
               addData = response.address;
                          
               document.getElementById("add1").value = addData;
