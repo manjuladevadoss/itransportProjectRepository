@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<style>
+/* The containerradio */
+.containerradio {
+  display: block;
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  font-size:13px;
+  font-family: Roboto, Helvetica, sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.containerradio input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmarkradio {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 12px;
+  width: 12px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.containerradio:hover input ~ .checkmarkradio {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.containerradio input:checked ~ .checkmarkradio {
+  background-color: green;
+}
+
+
+
+</style>
+<body>
+
+<h1>Custom Radio Buttons</h1>
+<label class="containerradio">One
+  <input type="radio" checked="checked" name="radio">
+  <span class="checkmarkradio"></span>
+</label>
+<label class="containerradio">Two
+  <input type="radio" name="radio">
+  <span class="checkmarkradio"></span>
+</label>
+<label class="containerradio">Three
+  <input type="radio" name="radio">
+  <span class="checkmarkradio"></span>
+</label>
+<label class="containerradio">Four
+  <input type="radio" name="radio">
+  <span class="checkmarkradio"></span>
+</label>
+
+</body>
+</html>

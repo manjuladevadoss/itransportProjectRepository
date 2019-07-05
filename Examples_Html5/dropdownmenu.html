@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+/*.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+} */
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color:#2E396C;
+  border: 2px solid #5077E3;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #D7D7D7;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+	/*background-color: #f1f1f1;*/
+ 	color: #00E1FF;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/*
+.dropdown:hover .dropbtn {
+}
+*/
+</style>
+</head>
+<body>
+
+<h2>Aligned Dropdown Content</h2>
+<p>Determine whether the dropdown content should go from left to right or right to left with the left and right properties.</p>
+
+<div class="dropdown" style="float:left;">
+   <i class="fa fa-align-justify fa_custom"></i>
+  <div class="dropdown-content" style="left:0;">
+  <a href="#">Link 1</a>
+  <a href="#">Link 2</a>
+  <a href="#">Link 3</a>
+  </div>
+</div>
+
+<div class="dropdown" style="float:right;">
+  <i class="fa fa-align-justify fa_custom"></i>
+  <div class="dropdown-content">
+  
+<a href="workorderTbl.jsp"  style="text-decoration: none">Work Order</a>
+<a href="techalarmTbl.jsp" style="text-decoration: none">Technical Alarms</a>
+<a href="envmonTbl.jsp"  style="text-decoration: none">Environment</a>
+<a href="eventTbl.jsp"  style="text-decoration: none">Events</a>
+<a href="envmonTbl.jsp"  style="text-decoration: none">Road Works</a>
+<hr color = "#C8CFF4"  style="padding:1px; margin:1px;">
+<a href="ccgrid.jsp"  style="text-decoration: none">Split Panel</a>
+  
+  </div>
+</div>
+
+</body>
+</html>

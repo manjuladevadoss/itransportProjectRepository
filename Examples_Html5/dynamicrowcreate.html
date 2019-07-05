@@ -1,0 +1,130 @@
+<html>
+<title> Dynamic Table Createion </title>
+<script>
+var index1 = 1;
+    function insertRow1(){
+                var table=document.getElementById("myTable");
+                var row=table.insertRow(table.rows.length);
+                var cell1=row.insertCell(0);
+                var t1=document.createElement("input");
+                    t1.id = "txtName"+index1;                  
+                    cell1.appendChild(t1);
+                var cell2=row.insertCell(1);
+                var t2=document.createElement("input");
+                    t2.id = "txtAge"+index1;
+                    cell2.appendChild(t2);
+                var cell3=row.insertCell(2);
+                var t3=document.createElement("input");
+                    t3.id = "txtGender"+index1;
+                    cell3.appendChild(t3);
+                var cell4=row.insertCell(3);
+                var t4=document.createElement("input");
+                    t4.id = "txtOccupation"+index1;
+                    cell4.appendChild(t4);
+          index++;
+    }
+    function removeRow1(oButton) {
+        var empTab = document.getElementById('myTable');
+        var lastRow = empTab.rows.length;
+        if (lastRow > 2) 
+            empTab.deleteRow(lastRow - 1);
+    }
+    var index = 1;
+    function insertRow(){
+                var table=document.getElementById("partvehitbl");
+                var row=table.insertRow(table.rows.length);
+                
+                var cell1=row.insertCell(0);
+                var t1=document.createElement("select");
+                    t1.id = "partnerVehNovec"+index;
+                    cell1.appendChild(t1); 
+                    var select1 = document.getElementById(t1.id);
+                    select1.setAttribute("style","height: 20px; width: 90px;font-size: 10px;"); 
+                    select1.options[select1.options.length] = new Option('Tower1', '0');
+                    select1.options[select1.options.length] = new Option('Tower2', '1');
+                    select1.options[select1.options.length] = new Option('Tower3', '2');
+
+                var cell2=row.insertCell(1);
+                var t2=document.createElement("input");
+                    t2.id = "partnerNotiTimevec"+index;
+                    t2.setAttribute("style", "height: 20px; width: 90px;font-size: 10px;");
+                    cell2.appendChild(t2);
+                    
+                var cell3=row.insertCell(2);
+                var t3=document.createElement("input");
+                    t3.id = "partnerArrTimevec"+index;
+                    t3.setAttribute("style", "height: 20px; width: 90px;font-size: 10px;");
+                    cell3.appendChild(t3);
+                
+                var cell4=row.insertCell(3);
+                var t4=document.createElement("input");
+                    t4.id = "partnerDepatTimevec"+index;
+                    t4.setAttribute("style", "height: 20px; width: 90px;font-size: 10px;");
+                    cell4.appendChild(t4);
+                
+                var cell5=row.insertCell(4);
+                var t5=document.createElement("input");
+                    t5.id = "partnerDepatTimevec"+index;
+                    t5.setAttribute("style", "height: 20px; width: 90px;font-size: 10px;");
+                    cell5.appendChild(t5);
+          index++;
+
+    }
+    function removeRow(oButton) {
+        var lrtVhiTbl = document.getElementById('partvehitbl');
+        var lastRow = lrtVhiTbl.rows.length;
+        if (lastRow > 2) 
+        lrtVhiTbl.deleteRow(lastRow - 1);
+    }
+</script>
+
+<body>
+        <table id="myTable">
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Occupation and Employer</th>
+                <th>Add</th>
+                <tr>
+                    <td><input type="text" id="txtName" /></td>
+                    <td><input type="text" id="txtAge" /></td>
+                    <td><input type="text" id="txtGender" /></td>
+                    <td><input type="text" id="txtOccupation" /></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+        </table>
+        <input type="button" id="btnAdd" class="button-add" onClick="insertRow1()" value="add"></input>
+        <input type="button" id="btnAdd" class="button-add" onClick="removeRow1(this)" value="Remove"></input>
+        
+
+        <table width="100%" class="tablevms" id="partvehitbl">  
+            <tr>
+                <th align="left" style="padding:5px;"> Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4;font-size: 12px;"></i></th>
+                <th align="left"> Vehicle No. </th>
+                <th align="left"> Parking Address</th>
+                <th align="left"> Parking Lot No.</th>	
+                <th align="left"> Notify Time </th>								
+            </tr>					
+            <tr>
+                <td>
+                <select name="item4" ng-model="partnerType3vec" id= "partnerType3vec" style="height: 20px; width: 90px;font-size: 10px;">
+                    <option value="Tower1" >Tower1</option>
+                    <option value="Tower1">Tower2</option>
+                    <option value="Tower3">Tower3</option>
+                </select>
+                
+                </td>
+                <td><input type="text" ng-click="" ng-model="partnerVehNovec" id="partnerVehNovec" placeholder="RX23293" style="height: 20px; width: 90px;font-size: 10px;"></td>
+                <td><input type="text" ng-click="" ng-model="partnerNotiTimevec" id="partnerNotiTimevec" placeholder="Bedok AVe 3" style="height: 20px; width: 90px;font-size: 10px;"></td>
+                <td><input type="text" ng-click="" ng-model="partnerArrTimevec" id="partnerArrTimevec" placeholder="46" style="height: 20px; width: 90px;font-size: 10px;"></td>
+                <td><input type="text" ng-click="" ng-model="partnerDepatTimevec" id="partnerDepatTimevec" placeholder="1/24/2018 16:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
+            </tr>					
+        </table>
+        <input type="button" id="btnAdd" class="button-add" onClick="insertRow()" value="add"></input>
+        <input type="button" id="btnAdd" class="button-add" onClick="removeRow(this)" value="Remove">
+
+
+</body>
+
+</html>
