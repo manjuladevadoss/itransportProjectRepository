@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- Add a title -->
+
+<html>
+  <head>    
+      <title>D3 CSV format with filter</title>
+    <head> 
+<style>
+</style>
+
+<body>   
+    <h1>D3 Samples </h1>
+    <div id="rdchart"></div>
+
+<script src="crossfilter.js"></script>     
+<script src="d3.js"></script>     
+<script src="dc.js"></script>     
+
+<script> 
+
+var rdChart = dc.rowChart("#rdchart");
+
+d3.csv("roaddata.csv", function(err, data){
+  // if(err) throw err;
+   // console.log(data);
+   /* RoadCloseEarly,RoadsCloseOnTime,RoadsCloseLate
+20,2,1
+14,5,2
+15,5,5 */
+    var ndx = crossfilter(data);
+    var all = ndx.groupAll();
+   // console.log(all.value());
+
+   var rdClDim = ndx.dimension(function(d) { return d["RoadsCloseLate"]; });
+   var rdclDimGroup = rdClDim.group();
+    
+});
+
+</script>     
+</body>
+</html>
