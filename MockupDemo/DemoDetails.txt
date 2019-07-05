@@ -1,14 +1,43 @@
 i-transport explanation
 
-1.Event Creation
-	Layers like VMS, CCTV present in the left side corner
-	Event is in Stadium place 
-2. Road Work Creation
-	In Stadium walk (next to stadium Right)
-3. Accident in 
-	Republic Avenue (next to stadium Left)
+1. Login in itransport UI
+2. successful login selection teh zone
+3. successful selection - OWA web interface consists 3 panel main screens
+4. 1. C2 (Command Control) 2.GIS Map 3. BIS Real Time
+5. C2 module consists all live read-time events - split into four panel by default.
+	(A) This Menu icon used to select the desired window
+	(B) Smart Search option is used to filter the data with any category
+	(C) Sort the data by press the column label 
+	1.Incident Record
+	2.Work Order
+	3.Technical Alarms
+	4.Environmental Monitoring
+	5.Road Works
+	6.Events
+ 
+GIS Module - Accident
+ 	1. A new window is launched over the GIS map. 
+	2. User Can create and edit the IR
+	3. System proposes a VMS,OBU,Canning messages to implement on the message, 	 	4. OBU there are 3 regions (Alert, Jam, Guide)
+	5. User can tract all assets on the ground.
 
+GIS Module - MRT Breakdown IR
+	1. A new window is launched over the GIS map. 
+	2. User Can Specify the MRT Breakdown location
+	3. Affected like hightlighted in red color
+	4. User add necessary detail onthe right side
 
+GIS Module - Events Planned
+2.C2 Module displays all ongoing and upcoming events
+create a new event by click new event option
+relevant VMS messages will be display on the road
 
-Create fixed circle
-https://developers.arcgis.com/javascript/latest/sample-code/sandbox/index.html?sample=intro-graphics
+Mobile Road Work - Planned event
+	1. A new window is launched over the GIS map. 
+stimulation
+ptv optima
+aimsun online
+
+font-awesome.min.css 
+bootstrap-glyphicons.css 
+
