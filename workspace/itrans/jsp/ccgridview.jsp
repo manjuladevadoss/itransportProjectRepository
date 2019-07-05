@@ -7,15 +7,12 @@
 	<link rel="stylesheet" href="dropdownlistStyle.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" >  
-	
-
- 	
+		
  	<!-- <link rel="stylesheet" href="css/bootstrap.min.css">  -->
  	<script type="text/javascript"  src="jquery.js"></script> 
  	<script src="bootstrap.min.js"></script>
   	<script src="angular.min.js"></script>
   	<script type="text/javascript"  src="democontroller.js"></script> 
-  	
   	
 	<!--  Chart 
 	<script src="chart/Chart.js"></script>
@@ -72,7 +69,7 @@ h11 {
 	<table width="100%" style="background-color: rgba(49,53,81,0.5);"> 
 			<tr> 
 				<td> 
-					<h4> <img src="titlelogobar.png" width="20px" height="18px">&nbsp; i-transport 2.0 </h4>
+					<h4> <img src="titlelogobar.png" width="20px" height="18px">&nbsp; i-Transport 2.0 </h4>
 				</td> 
 				<td align="right">
 				
@@ -181,12 +178,12 @@ h11 {
 					 <tr><td>
 						 <table width="98%" id="datatbl">
 							<tr>
-								<th width="10%"> <a href="#" ng-click="sortType = 'irid'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"><font style="font-size:16px;color:#C8CFF4"> IR ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-								<th width="28%"> <a href="#" ng-click="sortType = 'type'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Type <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"> </i></font></a></th>
-								<th width="20%"> <a href="#" ng-click="sortType = 'state'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-								<th width="10%"> <a href="#" ng-click="sortType = 'zone'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Zone <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font> </a></th>
-								<th width="22%"> <a href="#" ng-click="sortType = 'roadname'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Road Name <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-								<th width="29%"> <a href="#" ng-click="sortType = 'lanes'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Lanes <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+								<th width="10%"> <a href="#" ng-click="sortType = 'irid'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"><font style="font-size:16px;color:#C8CFF4">IR ID<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+								<th width="28%"> <a href="#" ng-click="sortType = 'type'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Type<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"> </i></font></a></th>
+								<th width="20%"> <a href="#" ng-click="sortType = 'state'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+								<th width="10%"> <a href="#" ng-click="sortType = 'zone'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Zone<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font> </a></th>
+								<th width="22%"> <a href="#" ng-click="sortType = 'roadname'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Road Name<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+								<th width="29%"> <a href="#" ng-click="sortType = 'lanes'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Lanes<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
 							</tr>
 						 </table> 
 					</td></tr>
@@ -226,12 +223,12 @@ h11 {
 					 <tr><td>
 						 <table width="98%" id="datatbl">
 							<tr>
-								<th width="10%"> <a href="#" ng-click="sortType = 'irid'; sortReverseroadwkfromgrid = !sortReverseroadwkfromgrid" style="text-decoration:none;"><font style="font-size:16px;color:#C8CFF4"> IR ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-								<th width="28%"> <a href="#" ng-click="sortType = 'type'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Type <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"> </i></font></a></th>
-								<th width="20%"> <a href="#" ng-click="sortType = 'state'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-								<th width="10%"> <a href="#" ng-click="sortType = 'zone'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Zone <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font> </a></th>
-								<th width="23%"> <a href="#" ng-click="sortType = 'roadname'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Road Name <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-								<th width="29%"> <a href="#" ng-click="sortType = 'lanes'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Lanes <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+								<th width="10%"> <a href="#" ng-click="sortType = 'irid'; sortReverseroadwkfromgrid = !sortReverseroadwkfromgrid" style="text-decoration:none;"><font style="font-size:16px;color:#C8CFF4">IR ID<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+								<th width="28%"> <a href="#" ng-click="sortType = 'type'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Type<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"> </i></font></a></th>
+								<th width="20%"> <a href="#" ng-click="sortType = 'state'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+								<th width="10%"> <a href="#" ng-click="sortType = 'zone'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Zone<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font> </a></th>
+								<th width="23%"> <a href="#" ng-click="sortType = 'roadname'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Road Name<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+								<th width="29%"> <a href="#" ng-click="sortType = 'lanes'; sortReverseroadwkfromgrid = sortReverseroadwkfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Lanes<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
 							</tr>
 						 </table> 
 					</td></tr>
@@ -264,11 +261,11 @@ h11 {
 						<tr><td>
 					 <table width="98%" id="datatbl">
 						<tr>
-							<th width="20%"> <a href="#" ng-click="sortTypewo = 'date'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;"> Date <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-							<th width="12%"> <a href="#" ng-click="sortTypewo = 'wonum'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;"> Wonum <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-							<th width="30%"> <a href="#" ng-click="sortTypewo = 'descri'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;"> Description <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-							<th width="20%"> <a href="#" ng-click="sortTypewo = 'status'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-							<th width="10%"> <a href="#" ng-click="sortTypewo = 'zone'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Zone <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+							<th width="20%"> <a href="#" ng-click="sortTypewo = 'date'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Date<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+							<th width="12%"> <a href="#" ng-click="sortTypewo = 'wonum'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Wonum<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+							<th width="30%"> <a href="#" ng-click="sortTypewo = 'descri'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Description<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+							<th width="20%"> <a href="#" ng-click="sortTypewo = 'status'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Status<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+							<th width="10%"> <a href="#" ng-click="sortTypewo = 'zone'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Zone<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
 						</tr>
 						</table>
 				</td></tr>
@@ -298,11 +295,11 @@ h11 {
 					<tr><td>
 					 <table width="98%" id="datatbl">
 						<tr>
-							<th width="16%"> <a href="#" ng-click="sortTypenv = 'startime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> Start Time <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-							<th width="17%"> <a href="#" ng-click="sortTypenv = 'endtime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> End Time<i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i> </font></a></th>
-							<th width="14%"> <a href="#" ng-click="sortTypenv = 'alarmid'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> Alarm ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-							<th width="30%"> <a href="#" ng-click="sortTypenv = 'desc'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Description <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-							<th width="10%"> <a href="#" ng-click="sortTypenv = 'status'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+							<th width="16%"> <a href="#" ng-click="sortTypenv = 'startime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Start Time<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+							<th width="17%"> <a href="#" ng-click="sortTypenv = 'endtime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">End Time<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i> </font></a></th>
+							<th width="14%"> <a href="#" ng-click="sortTypenv = 'alarmid'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Alarm ID<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+							<th width="30%"> <a href="#" ng-click="sortTypenv = 'desc'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Description<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+							<th width="10%"> <a href="#" ng-click="sortTypenv = 'status'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Status<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
 						</tr>
 					</table> 
 				</td></tr>
@@ -330,12 +327,12 @@ h11 {
 		<table width="100%">  <tr><td>
 				 <table width="98%" id="datatbl">
 					<tr>
-						<th width="20%"> <a href="#" ng-click="sortTypeta = 'startdate'; sortReverseta = !sortReverseta"  style="text-decoration:none;"><font style="font-size:16px;color:#C8CFF4"> Start Time <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i> </font></a></th>
-						<th width="15%"> <a href="#" ng-click="sortTypeta = 'alarmid'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4"> Alarm ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-						<th width="30%"> <a href="#" ng-click="sortTypeta = 'description'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4"> Description <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i> </font></a></th>
-						<th width="12%"> <a href="#" ng-click="sortTypeta = 'source'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Source <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-						<th width="12%"> <a href="#" ng-click="sortTypeta = 'zone'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Zone <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-						<th width="12%"> <a href="#" ng-click="sortTypeta = 'status'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+						<th width="20%"> <a href="#" ng-click="sortTypeta = 'startdate'; sortReverseta = !sortReverseta"  style="text-decoration:none;"><font style="font-size:16px;color:#C8CFF4">Start Time<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i> </font></a></th>
+						<th width="15%"> <a href="#" ng-click="sortTypeta = 'alarmid'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Alarm ID<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+						<th width="30%"> <a href="#" ng-click="sortTypeta = 'description'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Description<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i> </font></a></th>
+						<th width="12%"> <a href="#" ng-click="sortTypeta = 'source'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Source<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+						<th width="12%"> <a href="#" ng-click="sortTypeta = 'zone'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Zone<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+						<th width="12%"> <a href="#" ng-click="sortTypeta = 'status'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
 					</tr>
 				</table> 
 			</td></tr>
@@ -372,12 +369,13 @@ h11 {
 			<table width="100%"> <tr><td>
 						 <table width="100%" id="datatbl">
 							<tr>
-								<th width="15%"> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Type</font>   <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></a></th>
-								<th width="20%"> <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Name </font><i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></a></th>
-								<th width="20%"> <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Location</font> <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></a></th>
-								<th width="10%"> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status</font> <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></a></th>
-								<th width="20%"> <a href="#" ng-click="sortType = 'start'; sortReverse = !sortReverse" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Start</font> <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></a></th>
-								<th width="30%"> <a href="#" ng-click="sortType = 'end'; sortReverse = !sortReverse" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">End </font><i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></a></th>
+								<th width="13%" align="center"> <a href="#" ng-click="sortType = 'type'; sortReverse = !sortReverse" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Type</font><i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></a></th>
+								<th width="20%" align="center"> <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Name</font><i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></a></th>
+								<th width="18%" align="center"> <a href="#" ng-click="sortType = 'location'; sortReverse = !sortReverse" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Location</font><i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></a></th>
+								<th width="12%" align="center"> <a href="#" ng-click="sortType = 'status'; sortReverse = !sortReverse" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status</font><i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></a></th>
+								<th width="21%" align="center"> <a href="#" ng-click="sortType = 'start'; sortReverse = !sortReverse" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Start</font><i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></a></th>
+								<th width="34%" align="center"> <a href="#" ng-click="sortType = 'end'; sortReverse = !sortReverse" style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">End</font><i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></a></th>
+								<th> </th>
 							</tr>
 						</table> 
 					</td></tr>
@@ -385,17 +383,17 @@ h11 {
 						<div class='scrollinc'>
 							<table   id="inctbl"  width="100%">
 								<tr ng-repeat="event in eventRec | orderBy:sortType:sortReverse | filter:searchIncidentfromgrid">
-									<td width="15%"><font color="#C8CFF4" size="2px">{{event.type}}</font></td>
-									<td width="20%"><font color="#C8CFF4" size="2px">{{event.name}}</font></td>
-									<td width="20%"><font color="#C8CFF4" size="2px">{{event.location}}</font></td>
-									<td width="10%"> 
+									<td width="13%" align="left"><font color="#C8CFF4" size="2px">{{event.type}}</font></td>
+									<td width="20%" align="left"><font color="#C8CFF4" size="2px">{{event.name}}</font></td>
+									<td width="20%" align="left"><font color="#C8CFF4" size="2px">{{event.location}}</font></td>
+									<td width="10%" align="left"> 
 										<div ng-if="event.status==='APPROVED'" > <a class="buttonappro"  style="color:black">{{event.status | uppercase}}</a></div> 
 										<div ng-if="event.status==='PLANNING'" > <a class="buttonplan" style="color:black">{{event.status | uppercase}}</a></div> 
 										<div ng-if="event.status==='LIVE'" > <a class="buttonact" style="color:black">{{event.status | uppercase}}</a></div> 
 										<div ng-if="event.status==='OVER'" > <a class="buttonclose" style="color:black">{{event.status | uppercase}}</a></div> 
 									</td>
-									<td width="20%"><font color="#C8CFF4" size="2px">{{event.start}}</font></td>
-									<td width="30%"><font color="#C8CFF4" size="2px">{{event.end}}</font></td>
+									<td width="20%" align="left"><font color="#C8CFF4" size="2px">{{event.start}}</font></td>
+									<td width="32%" align="left"><font color="#C8CFF4" size="2px">{{event.end}}</font></td>
 								</tr>
 							</table> 
 						</div>
@@ -444,11 +442,11 @@ h11 {
 		<table width="100%">  <tr><td>
 			 <table width="98%" id="datatbl">
 				<tr>
-					<th width="20%"> <a href="#" ng-click="sortTypewo = 'date'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;"> Date <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-					<th width="12%"> <a href="#" ng-click="sortTypewo = 'wonum'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;"> Wonum <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-					<th width="30%"> <a href="#" ng-click="sortTypewo = 'descri'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;"> Description <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-					<th width="20%"> <a href="#" ng-click="sortTypewo = 'status'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-					<th width="10%"> <a href="#" ng-click="sortTypewo = 'zone'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Zone <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+					<th width="20%"> <a href="#" ng-click="sortTypewo = 'date'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Date<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+					<th width="12%"> <a href="#" ng-click="sortTypewo = 'wonum'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Wonum<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+					<th width="30%"> <a href="#" ng-click="sortTypewo = 'descri'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Description<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+					<th width="20%"> <a href="#" ng-click="sortTypewo = 'status'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Status<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+					<th width="10%"> <a href="#" ng-click="sortTypewo = 'zone'; sortReversewc = !sortReversewc"><font style="font-size:16px;color:#C8CFF4" style="text-decoration:none;">Zone<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
 				</tr>
 				</table>
 		</td></tr>
@@ -508,12 +506,12 @@ h11 {
 		<table width="100%">  <tr><td>
 				 <table width="98%" id="datatbl">
 					<tr>
-						<th width="20%"> <a href="#" ng-click="sortTypeta = 'startdate'; sortReverseta = !sortReverseta"  style="text-decoration:none;"><font style="font-size:16px;color:#C8CFF4"> Start Time <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i> </font></a></th>
-						<th width="15%"> <a href="#" ng-click="sortTypeta = 'alarmid'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4"> Alarm ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-						<th width="30%"> <a href="#" ng-click="sortTypeta = 'description'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4"> Description <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i> </font></a></th>
-						<th width="10%"> <a href="#" ng-click="sortTypeta = 'source'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Source <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-						<th width="12%"> <a href="#" ng-click="sortTypeta = 'zone'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Zone <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-						<th width="12%"> <a href="#" ng-click="sortTypeta = 'status'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+						<th width="20%"> <a href="#" ng-click="sortTypeta = 'startdate'; sortReverseta = !sortReverseta"  style="text-decoration:none;"><font style="font-size:16px;color:#C8CFF4">Start Time<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i> </font></a></th>
+						<th width="15%"> <a href="#" ng-click="sortTypeta = 'alarmid'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Alarm ID<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+						<th width="30%"> <a href="#" ng-click="sortTypeta = 'description'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Description<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i> </font></a></th>
+						<th width="10%"> <a href="#" ng-click="sortTypeta = 'source'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Source<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+						<th width="12%"> <a href="#" ng-click="sortTypeta = 'zone'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Zone<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+						<th width="12%"> <a href="#" ng-click="sortTypeta = 'status'; sortReverseta = !sortReverseta"  style="text-decoration:none;"> <font style="font-size:16px;color:#C8CFF4">Status<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
 					</tr>
 				</table> 
 			</td></tr>
@@ -570,11 +568,11 @@ h11 {
 				<tr><td>
 				 <table width="98%" id="datatbl">
 					<tr>
-						<th width="16%"> <a href="#" ng-click="sortTypenv = 'startime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> Start Time <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-						<th width="16%"> <a href="#" ng-click="sortTypenv = 'endtime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> End Time<i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i> </font></a></th>
-						<th width="12%"> <a href="#" ng-click="sortTypenv = 'alarmid'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4"> Alarm ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-						<th width="30%"> <a href="#" ng-click="sortTypenv = 'desc'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Description <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
-						<th width="10%"> <a href="#" ng-click="sortTypenv = 'status'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Status <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></font></a></th>
+						<th width="16%"> <a href="#" ng-click="sortTypenv = 'startime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Start Time<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+						<th width="16%"> <a href="#" ng-click="sortTypenv = 'endtime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">End Time<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i> </font></a></th>
+						<th width="12%"> <a href="#" ng-click="sortTypenv = 'alarmid'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Alarm ID<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+						<th width="30%"> <a href="#" ng-click="sortTypenv = 'desc'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Description<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
+						<th width="10%"> <a href="#" ng-click="sortTypenv = 'status'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#C8CFF4">Status<i class="fa fa-caret-down" style="font-size:16px;color:#C8CFF4"></i></font></a></th>
 					</tr>
 				</table> 
 			</td></tr>

@@ -63,18 +63,6 @@
         height: 20px;
         width: 350px;
       }
-	  #instruction1 {
-		z-index: 99;
-        position: absolute;
-        top: 50px;
-        right: 20%;
-        padding: 5px;
-        margin-left: -175px;
-        height: 20px;
-        width: 350px;
-		  
-	  }
-
       .esri-layer-list {
         width: 310px;
       }
@@ -202,11 +190,8 @@ background-color: black;
 background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 }
 
-
-
     </style>
 
- 
     <script>
  // accordions div tag
 	  $(document).ready(function(){
@@ -232,12 +217,9 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 	  <div id="main" class claro>
 	  <div id="viewDiv"> </div>    
 	  <div id="instruction">    
-					       <button class="irresetbutton" id="line"> Add Route </button>
-					        <button class="irresetbutton" id="mrwlocation"> RoadWork </button>
+					       <button class="irresetbutton" id="line"> Draw Line </button>
+					        
 				      </div>  
- <div id="instruction1">
- <button class="irresetbutton" id="undo" >Reset  </button>
-</div> 
      <div id="panelTopDiv"  style="background-color: #202B53;">
     <h2t> Incident Record - Mobile Road Work </h2t> <br>
     </div>  
@@ -278,10 +260,10 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					 <tr>
 					  <td colspan="3">
 						State: <br>
-								<input type="text" placeholder="Start Time"  ng-model="mrwstate"/>
+								<input type="text" ng-model="mrwstate"/>
 					  </td>
 					  <td colspan="3"> Source: <br>
-								<input type="text" placeholder="Start Time"  ng-model="mrwsource"/>
+								<input type="text"  ng-model="mrwsource"/>
 					  </td>
 					</tr>
 					<tr>
@@ -289,7 +271,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					   Start Time:
 						<div style="width: 150px;">
 							<div id="picker"> </div>
-								<input type="text" placeholder="Start Time"  ng-model="mrwstarttime"/>
+								<input type="text" ng-model="mrwstarttime"/>
 						</div>			
 					  </td>
 					  <td colspan="3">
@@ -297,7 +279,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					 
 						<div style="width: 150px;">
 							<div id="picker1"> </div>
-								<input type="text"  placeholder="End Time"  ng-model="mrwendtime"/>
+								<input type="text" ng-model="mrwendtime"/>
 						</div>			
 					  </td>
 					</tr>
@@ -305,22 +287,22 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					  <td colspan="3">
 						Contractor Name
 						<br>
-						<input type="text"  placeholder="End Time"  ng-model="mrwcontname"/>
+						<input type="text" ng-model="mrwcontname"/>
 					  </td>
 					  <td colspan="3">
 						Work Permit No<br>
-						<input type="text"  placeholder="End Time"  ng-model="mrwperno"/>
+						<input type="text" ng-model="mrwperno"/>
 					  </td>
 					</tr>
 					
 					<tr>
 					  <td colspan="3">
 						Supervisor Name <br>
-							<input type="text"  placeholder="End Time"  ng-model="mrwsupvisorname"/>
+							<input type="text" ng-model="mrwsupvisorname"/>
 					  </td>
 					  <td colspan="3">
 						Supervisor HP<br>
-						<input type="text"  placeholder="End Time"  ng-model="mrwsupvisorhp"/>
+						<input type="text" ng-model="mrwsupvisorhp"/>
 					  </td>
 					</tr>
 					<tr>
@@ -332,7 +314,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 				   <tr>
 					  <td colspan="6">
 						Vehicle Number <br>
-						<input type="text"  placeholder="End Time"  ng-model="mrwvehicleno"/>
+						<input type="text" ng-model="mrwvehicleno"/>
 					  </td>
 					</tr>
 					
@@ -416,7 +398,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 				<td> 
 					<div ng-if="irmrwvms.irmrwvmsstatus==='Implement'"> 
 						<label class="containeradio">
-							{{irmrwvms.irmrwvmsstatus}}
+							<font color="#C8CFF4">  {{irmrwvms.irmrwvmsstatus}} </font>
   							<input type="radio" name="irmrwvmssatus" id="irmrwvmssatus" ng-model="irmrwvmssatus">
   								<span class="radiocheckmark"></span>
 							</label>  
@@ -432,12 +414,11 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 			<td>
 				<div id="vmsequipid">
 				<font color="white">
-						{{irmrwvms.irvmsequipid}}
-				
+						{{irmrwvms.irvmsequipid}}				
 				</font></div>
 			</td>
 			<td>
-				
+				<input type="hidden" id="mrwvmsmsgt" name="mrwvmsmsgt" value='{{irmrwvms.irmrwvmsmsg}}{{sep}}{{irmrwvms.irvmsequipid}}' readonly>
 				<div class="textimagediv" contentEditable="true" id="vmsMessageDetail1"> {{irmrwvms.irmrwvmsmsg}} 
   					<img src="waterplant.JPG"  width="30px" height="30px"/>
 				</div>
@@ -454,7 +435,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 						<div align="right">
 							
 							<button class="buttonImp" id="mrwVmsMessage" onclick="mrwvmsMsgImpl()" style="text-decoration:none;"> Implement </button>
-							<a href="#" class="buttonRem" id="buttonRem" onclick="mrwvmsMsgRemoved()" style="text-decoration:none;"> Remove </a> 
+							<a href="#" class="buttonRem" id="mrwvmsMsgRemoved" onclick="mrwvmsMsgRemoved()" style="text-decoration:none;"> Remove </a> 
 						</div>	
 					</td>
 				</tr>

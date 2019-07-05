@@ -3,22 +3,22 @@
     {
       "irvmsstatus": "Implemented",
       "irvmsequipid": "545862",
-      "irvmsaccmsg": "Massive Jam to Republic Avenue"
+      "irvmsaccmsg": "Heavy Traffic AMK AV 5 CTE"
     },
     {
       "irvmsstatus": "Implemented",
       "irvmsequipid": "985645",
-      "irvmsaccmsg": "Heavy Traffic Republic Blvd"
+      "irvmsaccmsg": "Massive Jam aft Amk Ave 3"
     },
     {
       "irvmsstatus": "Implemented",
       "irvmsequipid": "662512",
-      "irvmsaccmsg": "Massive Jam Ophir Road"
+      "irvmsaccmsg": "Accident on CTE (SLE) aft Amk Ave 5"
     },
     {
       "irvmsstatus": "Implemented",
       "irvmsequipid": "686457",
-      "irvmsaccmsg": "Massive Nicoll Highway"
+      "irvmsaccmsg": "Massive Jam in CTE (SLE) aft Amk Ave 5"
     }
   ]
 }

@@ -1,0 +1,23 @@
+{
+  "tmdmessages": [
+    {
+      "equipid" : "985624",
+      "timemsg" : "Est Time to:", 
+      "minmsg" : "Mins",
+      "streetnames" : [
+        {"name":"AMK AV 3","min":"12"},
+        {"name":"AMK AV 5","min":"20"},
+        {"name":"Wlds AV 2","min":"30"}
+        ]
+  },
+   {
+      "equipid" : "425571",
+      "timemsg" : "Est Time to:", 
+      "minmsg" : "Mins",
+      "streetnames" : [
+        {"name":"Upp Thomson","min":"12"},
+        {"name":"Yio Chu Kang","min":"20"}
+        ]
+  }
+  ]
+}

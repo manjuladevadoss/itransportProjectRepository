@@ -25,7 +25,7 @@
   background: linear-gradient(177.75deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%);">
 		<tr> 
 			<td><img src="itranslogo.png" width="88px" height="90px"></td>
-	 		<td><h7>i-transport 2.0</h7> </td>
+	 		<td><h7>i-Transport 2.0</h7> </td>
 	 </tr>
 	</table>
 	 
@@ -41,7 +41,7 @@
 			</tr>
 			<tr> 
 				<td>
-					<font style="font-size:15px;color:#C8CFF4;"> Please fill in your credentials. </font>
+					<font style="font-size:15px;color:#C8CFF4;"> Welcome come to user </font>
 				</td>
 			</tr>
 			<tr> 
@@ -65,7 +65,7 @@
 			</tr>
 			<tr> 
 				<td colspan="2" align="left">
-					 <button type="submit" class="button">LOGIN </button> 
+					 <button type="submit" class="button">Login </button> 
 				</td>
 			</tr>		
 		</table>
