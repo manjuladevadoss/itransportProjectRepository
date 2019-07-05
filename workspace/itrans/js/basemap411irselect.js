@@ -147,12 +147,34 @@
           },
           title: "Carriageway"
         });
+		
+		// Speed Link Layer way layer
+		var speedLinkLayer = new CustomWMSLayer({
+          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapParameters: {
+            SERVICE: "WMS",
+            REQUEST: "GetMap",
+            FORMAT: "image/png",
+            TRANSPARENT: "TRUE",
+            STYLES: "gis_speedlink_style",
+            VERSION: "1.3.0",
+            LAYERS: "gis_speedlink",
+            WIDTH: "{width}",
+            HEIGHT: "{height}",
+            CRS: "EPSG:{wkid}",
+            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+          },
+          title: "TrafficSpeed"
+        });
+		
 		cctvLayer.visible = false;
 		vmsLayer.visible = false;
 		carriagewayLayer.visible = false;
+		speedLinkLayer.visible = false;
+		
 		map = new Map({
           //center: [103.84347,1.32858],
-          layers: [layer,cctvLayer,vmsLayer,carriagewayLayer]
+          layers: [layer,cctvLayer,vmsLayer,carriagewayLayer,speedLinkLayer]
         });
 		
 		

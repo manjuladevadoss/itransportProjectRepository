@@ -1,0 +1,10 @@
+.datatable tr,th, td {
+  border: 1px solid black; 
+}
+.datatable {
+  border-collapse: collapse;
+}
+
+  .chartable {
+    border-collapse: collapse;
+  }

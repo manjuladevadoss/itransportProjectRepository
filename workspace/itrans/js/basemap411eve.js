@@ -381,35 +381,49 @@
         	}
         	
       }
-        /*
-         
+        /*       
           //VMS Test Message display on the map
-
          */
         
 /*end of VMS Mesage display on map*/        
         
-        
-        
-        
-        
-
-
-        /* undo */
+/*** undo Reset ***/
         document.getElementById("undo").onclick = function() {
           view.graphics.removeAll();
         }
-        /*undo*/
+/*** end of undo Reset ***/
+        
+/*** Load Cirlce symbol on load ***/
+        var circlePoint = {
+          type: "point", // autocasts as new Point()
+          longitude: 103.876759,
+          latitude: 1.305444
+        };
+        
+        var circleMarkerSymbol = {
+          type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+          style: "circle", //style: "square",
+          size: "300px",
+         // color: [226, 119, 40],  // color: "blue",
+          outline: {
+            color: [0, 162, 232],
+            width: 2
+          }
+        };
+        var circlePointGraphic = new Graphic({
+          geometry: circlePoint,
+          symbol: circleMarkerSymbol
+        });
+        view.graphics.addMany([circlePointGraphic]);
+/*** End Load Cirlce symbol on load  ***/
 
-        /*video display*/
-
+/*** video display ***/
         window.onload = hideirMsgDiv;
         function hideirMsgDiv() {
         	//Traffic Video
         	var x = document.getElementById("videodiv");
         	x.style.display = "none";
         }
-
 
         document.getElementById("video").onclick = function() {
         	  var x = document.getElementById("videodiv");
@@ -420,10 +434,8 @@
         		 x.style.display = "block";
         	  } else {
         	     x.style.display = "none";    
-        	  } 
-        	 
+        	  }       	 
         }
-
         //Popup  window  to Start Traffic Video
         function popupvideo() {
             //popup window
@@ -450,14 +462,9 @@
         	var lightBoxVideo = document.getElementById("VisaChipCardVideo");
         	lightBoxVideo.pause();
         }
-        //End of popup window with video display        
+/*** End of popup window with video display       ***/  
         
-        
-        
-        
-        
-        
-        
+      
 		//map.add(wmsLayer);  
         view.when(function() {
         //view.extent = layer.fullExtent;

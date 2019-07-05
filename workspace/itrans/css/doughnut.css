@@ -1,0 +1,14 @@
+.chartTbl tr, td {
+  border: 0px solid black; 
+}
+.chartTbl {
+  border-collapse: collapse;
+  border: 1px solid black; 
+}
+
+.mainTbl tr, td {
+    border: 0px solid black; 
+  }
+  .mainTbl {
+    border-collapse: collapse;
+  }
