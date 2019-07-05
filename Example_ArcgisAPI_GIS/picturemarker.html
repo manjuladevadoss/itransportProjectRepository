@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+    <title>Shapes and Symbols</title>
+
+    <link rel="stylesheet" href="https://js.arcgis.com/3.28/esri/css/esri.css">
+
+    <style>
+      #info {
+        top: 20px;
+        color: #444;
+        height: auto;
+        font-family: arial;
+        right: 20px;
+        margin: 5px;
+        padding: 10px;
+        position: absolute;
+        width: 115px;
+        z-index: 40;
+        border: solid 2px #666;
+        border-radius: 4px;
+        background-color: #fff;
+      }
+      html, body, #mapDiv {
+        padding:0;
+        margin:0;
+        height:100%;
+      }
+      button {
+        display: block;
+      }
+    </style>
+
+    <script src="https://js.arcgis.com/3.28/"></script>
+    <script>
+      var map, tb;
+
+      require([
+        "esri/map", "esri/toolbars/draw",
+        "esri/symbols/PictureMarkerSymbol", 
+        "esri/graphic", 
+        "esri/Color", "dojo/dom", "dojo/on", "dojo/domReady!"
+      ], function(
+        Map, Draw,
+        PictureMarkerSymbol, 
+        Graphic, 
+        Color, dom, on
+      ) {
+        map = new Map("mapDiv", {
+            basemap: "streets-night-vector",
+          center: [103.877, 1.304],
+          zoom: 12
+        });
+        map.on("load", initToolbar);
+
+  var symbol1 = new PictureMarkerSymbol({
+  url: "C:/Users/mdevadoss/Documents/GitHub/TT231-DemoProjectRepository/GisMap/image/train.PNG",
+  width: "20",
+  height: "20"
+});
+   
+        function initToolbar() {
+          tb = new Draw(map);
+          tb. on("draw-end", addGraphic);
+
+          // event delegation so a click handler is not
+          // needed for each individual button
+          on(dom.byId("info"), "click", function(evt) {
+            if ( evt.target.id === "info" ) {
+              return;
+            }
+            var tool = evt.target.id.toLowerCase();
+            map.disableMapNavigation();
+            tb.activate(tool);
+          });
+        }
+
+        function addGraphic(evt) {
+          //deactivate the toolbar and clear existing graphics 
+          tb.deactivate(); 
+          map.enableMapNavigation();
+
+          // figure out which symbol to use
+          var symbol  = symbol1;
+          if ( evt.geometry.type === "point" || evt.geometry.type === "multipoint") {
+            symbol = symbol1;
+          }/* else if ( evt.geometry.type === "line" || evt.geometry.type === "polyline") {
+           // symbol = lineSymbol;
+          }
+          else {
+            symbol = fillSymbol;
+          } */
+
+          map.graphics.add(new Graphic(evt.geometry, symbol1));
+        }
+      });
+    </script>
+  </head>
+  
+  <body>
+    
+    <button id="Circle">Circle</button>
+
+    <div id="info">
+      <div>Select a shape then draw on map to add graphic</div>
+      <button id="Point">Point</button>
+      <button id="Multipoint">Multipoint</button>
+      <button id="Line">Line</button>
+      <button id="Polyline">Polyline</button>
+      <button id="FreehandPolyline">Freehand Polyline</button>
+      <button id="Triangle">Triangle</button>
+      <button id="Extent">Rectangle</button>
+      <button id="Circle">Circle</button>
+      <button id="Ellipse">Ellipse</button>
+      <button id="Polygon">Polygon</button>
+      <button id="FreehandPolygon">Freehand Polygon</button>
+    </div>
+
+    <div id="mapDiv"></div>
+
+  </body>
+</html>

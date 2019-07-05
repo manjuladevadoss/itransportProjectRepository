@@ -1,0 +1,114 @@
+body {
+ /*background-color: #202B53;*/
+ background: radial-gradient(circle, #293E78 0%, #14192D 100%); 
+ font-family: Roboto, Helvetica, sans-serif;
+}
+
+/* start grid */
+ /* .item1 { grid-area: header; } */
+.item2 { grid-area:	menu1; }
+.item3 { grid-area: menu2; }
+.item4 { grid-area: menu3; }
+.item5 { grid-area: menu4; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas: 300px 300px 300px 300px;
+  grid-template-areas:
+   /*  'header header'  */
+    'menu1  menu2'
+    'menu3  menu4';
+/* background-image: linear-gradient( 90deg,rgba(39,59,115,1) , rgba(25,34,63,1));*/ 
+  grid-gap: 10px;
+  /*padding: 10px;*/
+}
+
+.grid-container > div {
+  /*background-color: #202B53;*/
+ /*background-image: linear-gradient( 90deg,rgba(39,59,115,1) , rgba(25,34,63,1)); */
+ border: 1px solid #2D50AE;
+ background: radial-gradient(circle, #293E78 0%, #14192D 100%);
+ padding: 8px 3px;
+}
+/* end grid */
+
+ h4 {
+  height: 30px;
+  width: 462px;
+  color: #ffffff;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 30px;
+}
+ h3 {
+  height: 30px;
+  width: 462px;
+  color: #ffffff;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 100;
+  line-height: 30px;
+}
+
+.bisheadertable {
+	background-color: rgba(49,53,81,0.5);
+	border: 1px solid #293E78;
+}
+
+.bisdatatable {
+	background-color: rgba(49,53,81,0.5);
+	 border: 1px solid #293E78;
+}
+
+.bisdatatable td, .bisdatatable th {
+ /* background-color: rgba(49,53,81,0.5);*/
+  padding: 10px 5px;
+  color: #ffffff;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 15px;
+}
+
+#chartable {
+  font-family: "Roboto",Helvetica, sans-serif;
+  border-collapse: collapse;  
+  color: #ffffff;
+  /*width: 100%;*/
+}
+#datatable {
+  font-family: "Roboto",Helvetica, sans-serif;
+  border-collapse: collapse;
+  color: #ffffff;
+}
+#datatable td, #datatable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  font-size: 10px;
+}
+
+#datatable th {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+ // background-color: #37478A;
+ border-left:2px solid #37478A;
+  color: #bde1f7;
+}
+#datatable td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  color: #bde1f7;
+}
+
+table td {
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}
+
+table td:first-child {
+    border-left: none;
+}
+
+table td:last-child {
+    border-right: none;
+}
