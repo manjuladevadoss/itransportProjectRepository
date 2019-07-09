@@ -20,10 +20,10 @@
 <table class="mainTbl" cellpadding="10">
         <tr>
             <td> 
-              <table id="chartTbl" <tr>
+              <table border="1" cellpadding="8"> <tr>
                           <td aligh="center">
 							  <h3 id="titleLabel">  </h3>
-                              <canvas id="myDoughnutChart1" width="200"  height="200" ></canvas>                      
+                              <canvas id="myDoughnutChart1" width="80"  height="80" ></canvas>                      
                           </td>
                         </tr>
               </table>                    
@@ -33,7 +33,7 @@
                     <tr aligh="center">
                         <td>
 							<h3 id="titleLabel2">  </h3>
-							<canvas id="myDoughnutChart2" width="200" height="200" ></canvas>                      
+							<canvas id="myDoughnutChart2" width="80" height="80" ></canvas>                      
                         </td>
                       </tr>
             </table>                    
@@ -43,7 +43,7 @@
                     <tr aligh="center">
                         <td>
                              <h3 id="titleLabel3">  </h3>
-							 <canvas id="myDoughnutChart3" width="200" height="200" ></canvas>                      
+							 <canvas id="myDoughnutChart3" width="80" height="80" ></canvas>                      
                         </td>
                       </tr>
             </table>                    
@@ -55,7 +55,7 @@
                     <tr aligh="center">
                         <td>
                              <h3 id="titleLabel4">  </h3>
-							<canvas id="myDoughnutChart4" width="200" height="200" ></canvas>                      
+							<canvas id="myDoughnutChart4" width="80" height="80" ></canvas>                      
                         </td>
                       </tr>
             </table> 
@@ -65,7 +65,7 @@
                     <tr>
                         <td aligh="center">
 						 <h3 id="titleLabel5">  </h3>
-                            <canvas id="myDoughnutChart5" width="200" height="200" ></canvas>                    
+                            <canvas id="myDoughnutChart5" width="80" height="80" ></canvas>                    
                         </td>
                       </tr>
             </table> 
@@ -73,9 +73,7 @@
              <td>
              </td>
          </tr>     
-
-        </table>  
-    
+        </table>     
 <body>   
 
 <script src="Chart.min.js"></script>

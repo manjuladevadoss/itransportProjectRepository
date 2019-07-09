@@ -137,7 +137,7 @@
             REQUEST: "GetMap",
             FORMAT: "image/png",
             TRANSPARENT: "TRUE",
-            STYLES: "",
+            STYLES: "gis_carriageway_majorroad_style",
             VERSION: "1.3.0",
             LAYERS: "gisdbo_gis_carriageway",
             WIDTH: "{width}",

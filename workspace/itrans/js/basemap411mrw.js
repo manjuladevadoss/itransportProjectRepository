@@ -454,17 +454,18 @@
       //VMS Test Message display on the map
       	var textSymbol = {
        type: "text",  // autocasts as new TextSymbol()
-       color: "white",
+      color: "#202B53",
        //haloColor: "black",
        //haloSize: "0px",
-       text: "RVM",
+       text: mrwvmsEqipId,
+	   xoffset: 4,
+       yoffset: 10,
        font: {  // autocast as new Font()
-         size: 5,
-         //family: "Roboto, Helvetica, sans-serif"
-         
-       }
+        	  size: 8,
+        	  weight: "bold"
+        	}
      };	
-		
+	
 	if(seleMsgNo==0) {
 	 	 var vmspoint1 = {
                type: "point", // autocasts as new Point()
@@ -556,5 +557,3 @@
         }); 
 
       });
-	  	 
-  

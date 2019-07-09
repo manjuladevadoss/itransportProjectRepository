@@ -106,7 +106,7 @@ div.scrollwcindiv {
   border: 2px solid #33FF33;
   border-radius: 2px/2px;
   background:#33FF33;
-  width:80px;
+  width:75px;
 }
 
 .buttoninprogress{
@@ -134,7 +134,7 @@ div.scrollwcindiv {
   border: 2px solid #49FFFF;
   border-radius: 2px/2px;
   background:#49FFFF;
-  width:80px;
+  width:75px;
 }
 
 .buttonpending {
@@ -148,7 +148,7 @@ div.scrollwcindiv {
   border: 2px solid #00BFFF;
   border-radius: 2px/2px;
   background: #00BFFF;
-  width:80px;
+  width:75px;
 }
 .buttonnotact{
   text-align: center;
@@ -161,7 +161,7 @@ div.scrollwcindiv {
   color: black;
   border: 2px solid #FF6347;
   background: #FF6347;
-  width:80px;
+  width:75px;
 }
 
 
@@ -314,7 +314,7 @@ body {
   border: 2px solid #ffcc66;
   border-radius: 2px/2px;
   background:#ffcc66;
-  width:80px;
+  width:75px;
 }
 
 .buttonplan{
@@ -328,5 +328,5 @@ body {
   border: 2px solid #4dd2ff;
   border-radius: 2px/2px;
   background:#4dd2ff;
-  width:80px;
+  width:75px;
 }

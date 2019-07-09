@@ -62,7 +62,7 @@
       var c =":";
       var s = "//"
       if(windowObjectReference2 == null || windowObjectReference2.closed) {
-	    	var strpage3 = "/itrans/bis.jsp";
+	    	var strpage3 = "/itrans/bisheader.jsp";
 		    var value3 = protocol.concat(s,domain,c,port,strpage3);
 		    //alert("bis url " + value3);
 		    windowObjectReference2 = window.open(

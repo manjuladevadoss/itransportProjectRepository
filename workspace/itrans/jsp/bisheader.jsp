@@ -31,6 +31,9 @@
 						<tr align="left" valign="top"> 
 							<td width="10%"> 
 								<table>
+									<tr>
+										<td><a href="#" style="color: #FFFFFF" ng-click="bisincieventshow()">Incident</a></td>
+									</tr>
 									<tr>	
 										<td><a href="#" style="color: #FFFFFF" ng-click="bisroadshow()">Road Closure</a></td>
 									</tr>
@@ -43,16 +46,14 @@
 									<tr>
 										<td><a href="#" style="color: #FFFFFF" ng-click="bisspeedshow()">Speed</a></td>
 									</tr>
-									<tr>
-										<td><a href="#" style="color: #FFFFFF" ng-click="bisincieventshow()">Incident</a></td>
-									</tr>
+
 								</table>
 							</td>  
 							<td align="left" width="70%">
 							
 								<div ng-show="showbisincevent"> 			 
 									<iframe src="bisincievent.jsp" onload="this.style.height=(this.contentDocument.body.scrollHeight+45) +'px !important';" 
-									scrolling="no" style="width:100%;min-height:1000px;border:none;overflow-y:hidden;overflow-x:hidden;"> </iframe>  								
+									scrolling="no" style="width:100%;min-height:900px;border:none;overflow-y:hidden;overflow-x:hidden;"> </iframe>  								
 								</div>	 								
 								<div ng-show="showbisroad"> 
 									<iframe src="bisroad.jsp" onload="this.style.height=(this.contentDocument.body.scrollHeight+45) +'px !important';" 

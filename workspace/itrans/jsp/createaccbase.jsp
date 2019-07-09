@@ -716,7 +716,7 @@ function showaccimage() {
 <!-- The Modal -->
 	<div id="myModal" class="modalInner">
 	  <!-- Modal content -->
-	  <div class="modal-content">
+	  <div class="modal-content1">
 		  <!-- <span class="close">&times;</span> -->
 		<div class="modal-body">      
 	<table id="confitbltop"  cellpadding= "10px">
@@ -726,7 +726,7 @@ function showaccimage() {
 				  <th>Do Nothing</th>
 				</tr>
 				<tr>
-				  <td><br><br></td>
+				  <td><br></td>
 				</tr>
 				<tr>
 				  <td><b>Delay Time 2.00hr</b></td>

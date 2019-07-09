@@ -151,22 +151,22 @@
 		
 		// Carraige way layer
 		var carriagewayLayer = new CustomWMSLayer({
-          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
-          mapParameters: {
-            SERVICE: "WMS",
-            REQUEST: "GetMap",
-            FORMAT: "image/png",
-            TRANSPARENT: "TRUE",
-            STYLES: "",
-            VERSION: "1.3.0",
-            LAYERS: "gisdbo_gis_carriageway",
-            WIDTH: "{width}",
-            HEIGHT: "{height}",
-            CRS: "EPSG:{wkid}",
-            BBOX: "{xmin},{ymin},{xmax},{ymax}"
-          },
-          title: "Carriageway"
-        });
+	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapParameters: {
+	            SERVICE: "WMS",
+	            REQUEST: "GetMap",
+	            FORMAT: "image/png",
+	            TRANSPARENT: "TRUE",
+	            STYLES: "gis_carriageway_majorroad_style",
+	            VERSION: "1.3.0",
+	            LAYERS: "gisdbo_gis_carriageway",
+	            WIDTH: "{width}",
+	            HEIGHT: "{height}",
+	            CRS: "EPSG:{wkid}",
+	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+	          },
+	          title: "Carriageway"
+	        });
 		
 
 		//Glide Site

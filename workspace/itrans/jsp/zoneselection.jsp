@@ -190,8 +190,8 @@
        </tr>
 	   	  <tr> 
          <td colspan="4">   
-         	<div  align="right">
-	        	 <button type="submit" class="button button3" ng-click="threepanel()" > START </button> 
+         	<br><div  align="left">
+	        	 <button type="submit" class="button" ng-click="threepanel()" > Start </button> 
 	        </div>   
 	        <!--  <button class="button button3"  onclick="threepanel()"> START </button> </div>  -->
 		 </td>

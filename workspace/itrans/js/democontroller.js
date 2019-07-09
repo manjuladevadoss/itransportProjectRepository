@@ -1223,8 +1223,8 @@ var app = angular.module('ltaApp', []);
  
 
 /*** BIS Part */
-    $scope.showbisincevent = true;
-    $scope.showbisroad = false;
+    $scope.showbisincevent = false;
+    $scope.showbisroad = true;
     $scope.showconroad = false;
     $scope.showspeed = false;
     $scope.bisincieventshow = function() {
