@@ -1,7 +1,17 @@
 var app = angular.module('ltaApp', []);
 	  app.controller('ltaController', function($scope, $http, $filter, $interval, $window) {
     
-	//get the json object using $http get method() incident record	  
+	
+		  
+ /*** sample data display from json array */
+     // iraccvms incident recorad accident vms message  
+     $http.get("tmdmessages.json").then(function(response) {
+	  	console.log("tmd message display");
+	    $scope.tmdmessages = response.data.tmdmessages;  
+	});
+/*** sample data display from json array */   	  
+		  
+   //get the json object using $http get method() incident record	  
     $http.get("incidentRecord.json").then(function(response) {
         $scope.incidentRec = response.data.incidentRec;  
         console.log("$scope.incidentRec.length() :" + $scope.incidentRec.length);
@@ -93,7 +103,25 @@ var app = angular.module('ltaApp', []);
 		//$scope.roadworkRec1 = $scope.roadworkRec;
       });        
     
-   
+// get json Incident Record Accident scenario 1
+    $http.get("iraccscenario1vms.json").then(function(response) {
+        $scope.iraccscenario1vms = response.data.iraccscenario1vms;  
+        console.log("Scenario 1 length :" + $scope.iraccscenario1vms.length);
+      });
+
+// get json Incident Record Accident scenario 2
+    $http.get("iraccscenario2vms.json").then(function(response) {
+        $scope.iraccscenario2vms = response.data.iraccscenario2vms;  
+        console.log("Scenario 2 length :" + $scope.iraccscenario2vms.length);
+      });    
+    
+ // get json Incident Record Traffic Light Msg    
+    $http.get("trafficlight.json").then(function(response) {
+        $scope.trafficlight = response.data.trafficlight;  
+        console.log("trafficlight length :" + $scope.trafficlight.length);
+      });
+    
+
     $scope.searchIncident = "";
 	$scope.showList=true;
     $scope.createbuttonshow=true;
@@ -128,7 +156,10 @@ var app = angular.module('ltaApp', []);
 	$scope.searchIncidentfromgrid = "";
 	$scope.searchEnvifromgrid  = "";
 	$scope.searchroadwkfromgrid  = "";
-   
+	$scope.irstartpoint = "7.25km";
+	$scope.irendpoint = "7.27km";
+	$scope.ircogendpoint = "8.01km";
+	$scope.accCanningMsg = "  Accident on CTE (towards SLE) after Ang Mo Kio Rd Exit";
   	$scope.irstatusList = [{
 		"irstatusid": 1,
 		"irstatusname": "Confirmed"
@@ -145,20 +176,26 @@ var app = angular.module('ltaApp', []);
 		"irstatusid": 5,
 		"irstatusname": "Other"
 	}];
-  	$scope.irstatus = "3";
+  	$scope.irstatus = "1";
   	
   	$scope.irsourceList = [{
 		"irsourceid": 1,
-		"irsourcename": "ERS"
+		"irsourcename": "EMAS"
 		}, {
 		"irsourceid": 2,
 		"irsourcename": "JEYE"
 		}, {
 		"irsourceid": 3,
+		"irsourcename": "ST_ITPMS"
+		}, {
+		"irsourceid": 4,
+		"irsourcename": "KPE_MCE_ITPMS"
+		}, {
+		"irsourceid": 5,
 		"irsourcename": "Other"
 		}];
-  	$scope.irsource = "2";
-  	
+  	$scope.irsource = "1";
+  	$scope.irlinkedtxt = "";
   	$scope.irlinkedList = [{
 		"irlinkedid": 1,
 		"irlinkedname": "IR 372"
@@ -184,16 +221,25 @@ var app = angular.module('ltaApp', []);
 		"acctypeid": 3,
 		"acctypename": "Other"
 	}];
-  	//$scope.acctype = "2";
+  	$scope.acctype = "3";
   	
   	$scope.rdwayList = [{
 		"rdwayid": 1,
-		"rdwayname": "Damp / Wet"
+		"rdwayname": "Damp"
 		}, {
 		"rdwayid": 2,
+		"rdwayname": "Wet"
+		}, {
+		"rdwayid": 3,
+		"rdwayname": "Flood"
+		}, {
+		"rdwayid": 4,
+		"rdwayname": "Dry"
+		}, {
+		"rdwayid": 5,
 		"rdwayname": "Other"
 	}];
-  	$scope.rdway = "1";
+  	$scope.rdway = "2";
     
   	$scope.dangerList = [{
 		"dangerid": 1,
@@ -221,11 +267,56 @@ var app = angular.module('ltaApp', []);
 		"imgcapid": 4,
 		"imgcapname": "Other"
 	}];
-  	$scope.imgcap = "2";  
+  	$scope.imgcap = 2;
   	
+  	$scope.irtypelist = [{
+		"irtypeselid": 1,
+		"irtypeselname": "Accident"
+		}, {
+		"irtypeselid": 2,
+		"irtypeselname": "Mobile Road Work"
+		}, {
+		"irtypeselid": 3,
+		"irtypeselname": "Heavy Traffic"
+		}, {
+		"irtypeselid": 4,
+		"irtypeselname": "Road Work"
+		}, {
+		"irtypeselid": 5,
+		"irtypeselname": "Unattended Vehicle"
+		}, {
+			"irtypeselid": 6,
+			"irtypeselname": "Miscellaneous"
+		},{
+			"irtypeselid": 7,
+			"irtypeselname": "Obstacle"
+		}
+	];
+  	$scope.irtypesel = "1";	
+  	
+  	
+  	$scope.irdirlist = [{
+		"irdirid": 1,
+		"irdirname": "Towards CTE"
+		}, {
+		"irdirid": 2,
+		"irdirname": "Towards City"
+		}	
+	];
+  	$scope.irdirsel = "1";	
+  	
+  	$scope.accAlertMsg = "CTE (SLE) Accident after Exit B";
+  	$scope.accJamMsg = "CTE (SLE) Accident after Exit B";
+  	$scope.accGuideMsg = "CTE(SLE) Massive Jam after Exit D";
+  	$scope.accAlertMsgKM = " 4.0";
+  	$scope.accJamMsgKM = " 4.0";
+  	$scope.accGuideMsgKM = " 4.0";
+  	
+  	
+  	$scope.irperincharge = "";
+  	$scope.irconendpoint = "";
   	$scope.damagedetail = "";
-  	
-    $scope.showircreate = true;
+  	$scope.showircreate = true;
     $scope.showirresponse = false;
     // seperate window for IR Creation
     $scope.callirresponse = function(){
@@ -243,8 +334,6 @@ var app = angular.module('ltaApp', []);
         $scope.iraccvmsList = response.data.iraccvms;  
     });
  
-    
-    
    // $scope.irrecommMsg = "Massive Jam to Mandai";
    // $scope.irequipid = "15425";
 	// $scope.irvmsMsgStatus = "Not Active";
@@ -255,9 +344,9 @@ var app = angular.module('ltaApp', []);
 	};
     
 	//VMS Implementation Message 
-	$scope.irvmsMsgImpl = function(){
+	$scope.irvmsMsgImpl = function() {
 		console.log("Before irvmsMsgStatus : " + $scope.irvmsMsgStatus);
-		$scope.irvmsMsgStatus = "Implemented";	
+		$scope.irvmsMsgStatus = "Implemented";
 		console.log("irvmsMsgStatus : " + $scope.irvmsMsgStatus);
 	};
     
@@ -320,6 +409,9 @@ var app = angular.module('ltaApp', []);
 	$scope.isexpression = true;
 	$scope.enableText = function() {
 		 console.log("before text" + $scope.isexpression);
+		 console.log("Accident Alert Zone Msg : " + $scope.accAlertMsg);
+		 console.log("Accident Jam Zone Msg : " + $scope.accJamMsg);
+		 console.log("Accident Guide Zone Msg : " + $scope.accGuideMsg);
     	 $scope.isexpression = false;
 		 console.log("after text" + $scope.isexpression);
     };
@@ -328,6 +420,9 @@ var app = angular.module('ltaApp', []);
  
  // ******* Begin Mobile Road Work ******* //
     //mobile road work vms messages
+    
+    $scope.sep ="$";
+    
     $http.get("irmrwvms.json").then(function(response) {
         $scope.irmrwvmsList = response.data.irmrwvms;  
     });
@@ -540,17 +635,20 @@ var app = angular.module('ltaApp', []);
     	    
     		
     		//OBU Deactivate Message 
+    		$scope.guideMsg = "Guide Zone";
+    		$scope.jamMsg = "Jam Zone";
+    		$scope.alertMsg = "Alert Zone";
+    		
     		$scope.obuMsgStatus = "Not Active";
     		$scope.obuMsgdeact = function(){
-    			 console.log("Before obuMsgdeact : " + $scope.obuMsgStatus);
-    			$scope.obuMsgStatus = "Failed";
-    			 console.log("obuMsgdeact : " + $scope.obuMsgStatus);
+    		
+       			$scope.obuMsgStatus = "Implemented";
+    			console.log("OBU Message : " + $scope.obuMsgStatus);
     		};
-    		//OBU Deactivate Message 
+    		//OBU Implement Message 
     		$scope.obuMsgImpl = function(){
-    			 console.log("Before obuMsgImpl : " + $scope.obuMsgStatus);
-    			$scope.obuMsgStatus = "Implemented";
-    			 console.log("obuMsgdeact : " + $scope.obuMsgStatus);
+    			$scope.obuMsgStatus = "Failed";
+    			console.log("OBU Message : " + $scope.obuMsgStatus);
     		};    	  
 	
     		$scope.eventNotes = "Awards Function";
@@ -651,6 +749,7 @@ var app = angular.module('ltaApp', []);
   /* windows display */ 
      
   // ******** Start 3 different windows display - in 3 panels - CC2 - GIS - BIS
+	
       $scope.threepanel = function(){
     	  var windowObjectReference;
     	  var windowObjectReference2;
@@ -661,43 +760,43 @@ var app = angular.module('ltaApp', []);
           var port = window.location.port
           var c =":";
           var s = "//"
-			//open gis 
+		//open gis 
 		  if(windowObjectReference3 == null || windowObjectReference3.closed) {
 			  //  var strpage2 = "/itrans/gis.jsp";
 			  var strpage2 = "/itrans/createincidentbase.jsp";
-				var value2 = protocol.concat(s,domain,c,port,strpage2);
+			  var value2 = protocol.concat(s,domain,c,port,strpage2);
 				//alert("gis url " + value2);
 				windowObjectReference3 = window.open(
 						value2,
 					  	"gis",
-					  	"top=200,left=200,width=520,height=430,resizable,scrollbars,status");
+					  	"top=200,left=200,width=520,height=430,resizable,scrollbars,status,toolbar=true,menubar=true");
 				} else {
 					  windowObjectReference3.focus();
 		  };
-    	  
-    	  //open bis 
-		  if(windowObjectReference2 == null || windowObjectReference2.closed) {
-			  alert("New window");
-		    	var strpage3 = "/itrans/bis.jsp";
-			    var value3 = protocol.concat(s,domain,c,port,strpage3);
-			    //alert("bis url " + value3);
-			    windowObjectReference2 = window.open(
-			    	  value3,
-			  	      "bis",
-			  	      "top=100,left=100,width=520,height=430,resizable,scrollbars,status");
-			  }else {
-				  alert("window exists");
-					windowObjectReference2.focus();
-			};
-   
 		//open ccgrid 
 		// var ccdomain = domain;
 		 var strpage1 = "/itrans/ccgridview.jsp";
 		 var value1 = protocol.concat(s,domain,c,port,strpage1);
 		// alert("ccgrid url " + value1);
 		 window.location.assign(value1);
-		 window.location.href = value1; 
+		 window.location.href = value1;
+		 //bis window open
+		 //open bis 
+		/*  if(windowObjectReference2 == null || windowObjectReference2.closed) {
+		    	var strpage3 = "/itrans/bis.jsp";
+			    var value3 = protocol.concat(s,domain,c,port,strpage3);
+			    //alert("bis url " + value3);
+			    windowObjectReference2 = window.open(
+			    	  value3,			
+			  	      "bis",
+			  	      "top=100,left=100,width=520,height=430,resizable,scrollbars,status,toolbar=true,menubar=true");
+			  }else {
+					windowObjectReference2.focus();
+			};*/
+		 
       }
+      
+      
       // End of 3 different windows display - in 3 panels - CC2 - GIS - BIS      
  /* windows display */
       
@@ -1013,9 +1112,7 @@ var app = angular.module('ltaApp', []);
 		" $scope.mrtincalrmalert : "  + $scope.mrtincalrmalert);	*/ 
 	}
 // ******** END OF MRT Incident Creation form Detail	
-    
-
-    
+ 
  // ******** Start OF CC2 grid view display changing places in different grids  	
     $scope.showinc = true;
     $scope.viewworkorderitem2 = function(){
@@ -1121,7 +1218,245 @@ var app = angular.module('ltaApp', []);
         $scope.splithrview = false;
     }
  // ******** End OF CC2 grid view display changing places in different grids     
+ 
+
+/*** BIS Part */
     
+    //Get json object Congestion Reason Roadworks ask to leave 
+	
+    $http.get("bisroadcon.json").then(function(response) {
+        $scope.bisroadcon = response.data.bisroadcon;  
+        console.log("$scope.bisroadcon.length() :" + $scope.bisroadcon.length);     
+      }); 
+
+    $scope.showbisincevent = true ;
+    $scope.showbisroad = false;
+    $scope.showconroad = false;
+    $scope.showspeed =  true;
+	$scope.showzone =  true;
+    $scope.bisincieventshow = function() {
+    	$scope.showbisincevent = true;
+    	$scope.showbisroad = false;
+    	$scope.showconroad = false;
+    	$scope.showspeed = false;
+		$scope.showzone =  false;
+    };
+    
+    $scope.bisroadshow = function() {
+    	$scope.showbisroad = true;
+    	$scope.showbisincevent = false;
+    	$scope.showconroad = false;
+    	$scope.showspeed = false;
+		$scope.showzone =  false;
+    };
+    
+    $scope.bisconshow = function() {
+    	$scope.showconroad = true;
+    	$scope.showbisincevent = false;
+    	$scope.showbisroad = false;
+    	$scope.showspeed = false;
+		$scope.showzone =  false;
+    };
+    $scope.bisspeedshow = function() {
+    	$scope.showspeed = true;
+    	$scope.showconroad = false;
+    	$scope.showbisincevent = false;
+    	$scope.showbisroad = false; 
+		$scope.showzone =  false;		
+    };
+    $scope.biszoneshow = function() {  	
+		$scope.showspeed = false;
+    	$scope.showconroad = false;
+    	$scope.showbisincevent = false;
+    	$scope.showbisroad = false;    	
+		$scope.showzone =  true;
+    };	
+    flag = true;
+    $interval( function(){ $scope.selectSpeedChart(flag); }, 15000);
+    $scope.selectSpeedChart = function(flagVal) {
+		///alert("Speed");
+      	$scope.showspeed = flagVal;
+        $scope.showconroad = false;
+        $scope.showbisincevent = false;
+        $scope.showbisroad = false;	
+		$scope.showzone =  false;
+    };
+	
+    $interval( function(){ $scope.selectConRoadChart(flag); }, 5000);
+	$scope.selectConRoadChart = function(flagVal) {
+		//alert("Road");
+		$scope.showspeed = false;
+		$scope.showconroad = flagVal;
+    	$scope.showbisincevent = false;
+    	$scope.showbisroad = false;	
+		$scope.showzone =  false;
+	};
+	
+	$interval( function(){ $scope.selectInciChart(flag); }, 15000);
+	$scope.selectInciChart = function(flagVal) {
+		//alert("Road");
+		$scope.showspeed = false;
+		$scope.showconroad = false;
+    	$scope.showbisincevent = flagVal;
+    	$scope.showbisroad = false;	
+		$scope.showzone =  false;
+	};
+	
+	$interval( function(){ $scope.selectRoadChart(flag); }, 3000);
+	$scope.selectRoadChart = function(flagVal) {
+		//alert("Road");
+		$scope.showspeed = false;
+		$scope.showconroad = false;
+    	$scope.showbisincevent = false;
+    	$scope.showbisroad = flagVal;
+		$scope.showzone =  false;		
+	};
+	
+	$interval( function(){ $scope.selectZoneChart(flag); }, 7000);
+	$scope.selectZoneChart = function(flagVal) {
+		//alert("Road");
+		$scope.showspeed = false;
+		$scope.showconroad = false;
+    	$scope.showbisincevent = false;
+    	$scope.showbisroad = false;
+		$scope.showzone =  flagVal;		
+	};
+	
+//BIS Speed Data Dashboard	
+	$scope.eacSpeed = true;
+	$scope.eacTravel = false;
+	$scope.expreSpeed = false;
+	$scope.expreTravel = false;
+	$scope.bisspeedshowdash = function(speeddata) {
+		console.log("bis module");
+		if(speeddata=='espeed') {
+			$scope.eacSpeed = true;
+			$scope.eacTravel = false;
+			$scope.expreSpeed = false;
+			$scope.expreTravel = false;
+		}
+		if(speeddata=='etravel') {
+			$scope.eacSpeed = false;
+			$scope.eacTravel = true;
+			$scope.expreSpeed = false;
+			$scope.expreTravel = false;
+		}
+		if(speeddata=='exspeed') {
+			$scope.eacSpeed = false;
+			$scope.eacTravel = false;
+			$scope.expreSpeed = true;
+			$scope.expreTravel = false;
+		}
+		if(speeddata=='extravel') {
+			$scope.eacSpeed = false;
+			$scope.eacTravel = false;
+			$scope.expreSpeed = false;
+			$scope.expreTravel = true;
+		}
+	}
+
+//BIS Road close and Open Data Dashboard	
+	$scope.rdopen = true;
+	$scope.rdclose = false;
+	$scope.bisroadshowdash = function(roaddata) {
+		console.log("bis module");
+		if(roaddata=='rclose') {
+			$scope.rdclose = true;
+			$scope.rdopen = false;
+		}
+		if(roaddata=='ropen') {
+			$scope.rdclose = false;
+			$scope.rdopen = true;
+		}
+	}
+
+//BIS Zone Data Dashboard	
+	$scope.zone1to4 = true;
+	$scope.zone5toB = false;
+	$scope.biszoneshowdash = function(zonedata) {
+		console.log("Zone module");
+		if(zonedata=='zone1234') {
+			$scope.zone1to4 = true;
+			$scope.zone5toB = false;
+		}
+		if(zonedata=='zone67ab') {
+			$scope.zone1to4 = false;
+			$scope.zone5toB = true;
+		}
+	}
+
+//BIS Incident Event Data Dashboard	
+$scope.incidentocc = true;
+$scope.incidentkmocc = false;
+$scope.incidentltoc = false;
+$scope.incidentir = false;
+$scope.incidenter = false;
+$scope.bisincieventdash = function(incidata) {
+		console.log("bis module");
+		if(incidata=='occ') {
+			$scope.incidentocc = true;
+			$scope.incidentkmocc = false;
+			$scope.incidentltoc = false;
+			$scope.incidentir = false;
+			$scope.incidenter = false;
+		}
+		if(incidata=='kmocc') {
+			$scope.incidentocc = false;
+			$scope.incidentkmocc = true;
+			$scope.incidentltoc = false;
+			$scope.incidentir = false;
+			$scope.incidenter = false;
+		}
+		if(incidata=='ltoc') {
+			$scope.incidentocc = false;
+			$scope.incidentkmocc = false;
+			$scope.incidentltoc = true;
+			$scope.incidentir = false;
+			$scope.incidenter = false;
+		}
+		if(incidata=='ir') {
+			$scope.incidentocc = false;
+			$scope.incidentkmocc = false;
+			$scope.incidentltoc = false;
+			$scope.incidentir = true;
+			$scope.incidenter = false;
+		}
+		if(incidata=='er') {
+			$scope.incidentocc = false;
+			$scope.incidentkmocc = false;
+			$scope.incidentltoc = false;
+			$scope.incidentir = false;
+			$scope.incidenter = true;
+		}
+	}
+	
+//Bis Intervals Zone Data Dashboard	
+	$interval( function(){ $scope.selectZoneChartDash(flag); }, 2000);
+	$scope.selectZoneChartDash = function(flagVal) {
+		$scope.zone1to4 = false;
+		$scope.zone5toB = flagVal;
+	};
+
+	$interval( function(){ $scope.selectZoneChartDash1(flag); }, 6000);
+	$scope.selectZoneChartDash1 = function(flagVal) {
+		$scope.zone1to4 = flagVal;
+		$scope.zone5toB = false;
+	};
+
+//Bis Road close and Open Data Dashboard	
+	$interval( function(){ $scope.selectRoadChartDash(flag); }, 3000);
+	$scope.selectRoadChartDash = function(flagVal) {
+			$scope.rdclose = flagVal;
+			$scope.rdopen = false;		
+	};
+	
+	$interval( function(){ $scope.selectRoadChartDash1(flag); }, 6000);
+	$scope.selectRoadChartDash1 = function(flagVal) {
+			$scope.rdclose = false;
+			$scope.rdopen = flagVal;		
+	};
+/*** End of BIS Part */    
+   
     
 });
 

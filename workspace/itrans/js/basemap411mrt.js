@@ -164,16 +164,37 @@
               BBOX: "{xmin},{ymin},{xmax},{ymax}"
             },
             title: "Heavy Traffic"
-          });	
+          });
+  		
+		var vmsLayer = new CustomWMSLayer({
+	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapParameters: {
+	            SERVICE: "WMS",
+	            REQUEST: "GetMap",
+	            FORMAT: "image/png",
+	            TRANSPARENT: "TRUE",
+	            STYLES: "",
+	            VERSION: "1.3.0",
+	            LAYERS: "vms",
+	            WIDTH: "{width}",
+	            HEIGHT: "{height}",
+	            CRS: "EPSG:{wkid}",
+	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+	          },
 
+	          title: "VMS"
+	        });	
+  		
+  		
   		circlelineLayer.visible  = false;
   		mrtstationLayer.visible  = false;
-  		mrtbreakdownLayer.visible = false;
+  		mrtbreakdownLayer.visible = true;
   		mrtbreakdowntrafficLayer.visible = false;
+  		vmsLayer.visible = false;
 		map = new Map({
           //center: [103.84347,1.32858],
           //layers: [layer,circlelineLayer,mrtstationLayer,mrtbreakdownLayer,mrtbreakdowntrafficLayer]
-		layers: [layer,circlelineLayer,mrtstationLayer]
+		layers: [layer,circlelineLayer,mrtstationLayer,vmsLayer,mrtbreakdowntrafficLayer]
         });
 		
 		
@@ -193,10 +214,9 @@
       //Start Point
       var mrtcloseStpoint = {
         type: "point", // autocasts as new Point()
-        longitude: 103.892086,
-        latitude: 1.317926                         
-        }; 
-
+        longitude: 103.882860,
+        latitude: 1.306264                         
+        };  
       var mrtcloseStPictureSymbol = {
         type: "picture-marker",
         url: "mrtimage1.png",
@@ -212,14 +232,13 @@
       var mrtStation1 = {
       	type: "text",  // autocasts as new TextSymbol()
       	 color: "#000000",
-      	 text: "Paya Lebar",
+      	 text: "Mountbatten",
       	//haloColor: "black",
       	 //haloSize: "1px",
       	 xoffset: 20,
       	 yoffset: 20,
       	 font: {  // autocast as new Font()
       	    size: 8,
-      		family: "Roboto, Helvetica, sans-serif",
       		weight: "bold"
       	 }
        };
@@ -229,11 +248,11 @@
       	  symbol: mrtStation1
       	 });
 
-      //end point
+      //end point 1
       var mrtcloseEndpoint = {
         type: "point", // autocasts as new Point()
-        longitude: 103.890246,
-        latitude: 1.326583                    
+        longitude: 103.875405,
+        latitude: 1.302867                    
         };
       var mrtcloseEndPictureSymbol = {
         type: "picture-marker",
@@ -251,14 +270,13 @@
       var mrtStation2 = {
       		type: "text",  // autocasts as new TextSymbol()
       		 color: "#000000",
-      		 text: "MacPherson",
+      		 text: "Stadium",
       		 //haloColor: "black",
       		 //haloSize: "1px",
       		 xoffset: 20,
       		 yoffset: 20,
       		 font: {  // autocast as new Font()
       		    size: 8,
-      			family: "Roboto, Helvetica, sans-serif",
       			weight: "bold"
       		 }
       	 };
@@ -267,99 +285,180 @@
       		  geometry: mrtcloseEndpoint,
       		  symbol: mrtStation2
       		 });
-
-
-      document.getElementById("mrtclosepoint").onclick = function() {
-      //view.graphics.addMany([mrtcloseStPictureGraphic,mrtcloseEndPictureGraphic,mrtpolylineGraphic]);
-      	view.graphics.addMany([mrtcloseStPictureGraphic,mrtStationPictureGraphic1,mrtcloseEndPictureGraphic,mrtStationPictureGraphic2]);
-      	drawmrtline();
-      }
-
-      // draw mrt line
-       function drawmrtline(){
-      	 //Draw mrt line start and end point
-      	 var mrtpolyline = {
-              type: "polyline", // autocasts as new Polyline()
-              //paths: [[103.871639, 1.305326],[103.871714, 1.305192],[103.872138, 1.304967],[103.872159, 1.304624]]
-              paths: [[103.892086,1.317926],[103.890246,1.326583]]
-            };
-            // Create a symbol for drawing the line
-            var mrtlineSymbol = {
-              type: "simple-line", // autocasts as SimpleLineSymbol()
-              color: [241, 24, 24],
-              width: 2
-            };
-            var mrtpolylineGraphic = new Graphic({
-              geometry: mrtpolyline,
-              symbol: mrtlineSymbol,
-             // attributes: lineAtt,
-              popupTemplate: {
-                // autocasts as new PopupTemplate()
-                title: "MRT Road closed"
-              }
-            });
-      	  view.graphics.addMany([mrtpolylineGraphic]);
-      	drawheavyTrafficline();
-      // end mrt line start and end point
-       }
-       
-       //1.306193, 103.882292 (Mountbatten)
-       //1.308424, 103.888579 (Dakota)
-       
-       // draw heavy traffic line because of MRT BreakDown
-       function drawheavyTrafficline(){
-      	 //Draw mrt line start and end point
-      	 var htlpolyline = {
-              type: "polyline", // autocasts as new Polyline()
-              //paths: [[103.871639, 1.305326],[103.871714, 1.305192],[103.872138, 1.304967],[103.872159, 1.304624]]
-              paths: [[103.890123,1.326417],[103.888655,1.325848]]
-            };
-            // Create a symbol for drawing the line
-            var htllineSymbol = {
-              type: "simple-line", // autocasts as SimpleLineSymbol()
-              color: [129, 31, 30],
-              width: 2
-            };
-            var htlpolylineGraphic = new Graphic({
-              geometry: htlpolyline,
-              symbol: htllineSymbol,
-             // attributes: lineAtt,
-              popupTemplate: {
-                // autocasts as new PopupTemplate()
-                title: "Heavy Traffic",
-                content: "Circuit Link"
-                	  /* content: [
-                		    {
-                		      type: "fields",
-                		      fieldInfos: [
-                		        {
-                		          fieldName: "roadname",
-                		          label: "Circuit Link "
-                		        } ]
-                		    }
-                		  ] */
-              }
-            });
-      	  view.graphics.addMany([htlpolylineGraphic]);
-       }
-       
-       
-       
-      /*MRT closed  on road closed start and end points icons*/
-       
-       
-        /* undo */
-        document.getElementById("undo").onclick = function() {
-          view.graphics.removeAll();
+      	
+      //end point 2
+        var mrtcloseEndpoint1 = {
+          type: "point", // autocasts as new Point()
+          longitude: 103.863514,
+          latitude: 1.300266                    
+          };
+        var mrtcloseEndPictureSymbol1 = {
+          type: "picture-marker",
+          url: "mrtimage1.png",
+          width: "20",
+          height: "20",
+          xoffset: "10",
+          yoffset: "10"
         }
-        /*undo*/
+        var mrtcloseEndPictureGraphic1 = new Graphic({
+          geometry: mrtcloseEndpoint1,
+          symbol: mrtcloseEndPictureSymbol1
+         });
+
+        var mrtStation3 = {
+        		type: "text",  // autocasts as new TextSymbol()
+        		 color: "#000000",
+        		 text: "Nicoll Highway",
+        		 //haloColor: "black",
+        		 //haloSize: "1px",
+        		 xoffset: 20,
+        		 yoffset: 20,
+        		 font: {  // autocast as new Font()
+        		    size: 8,
+        			weight: "bold"
+        		 }
+        	 };
+
+        	var mrtStationPictureGraphic3 = new Graphic({
+        		  geometry: mrtcloseEndpoint1,
+        		  symbol: mrtStation3
+        		 });
+        	
+        	//selection station traffic jam layer shown
+        document.getElementById("createmrtincid").onclick = function() {
+        	// traffic jam layer
+        	map.add(mrtbreakdownLayer);
+        	
+        	//VMS message display
+        	mrtHTvmsMessage();
+        	
+        	//3 train icon and 3 station names displayed
+        	view.graphics.addMany([mrtcloseStPictureGraphic,mrtStationPictureGraphic1,mrtcloseEndPictureGraphic,mrtcloseEndPictureGraphic1,mrtStationPictureGraphic2,mrtStationPictureGraphic3]);
+      }
        
-		//map.add(wmsLayer);  
+      /*** vms Message location  popup template  ***/
+        function mrtHTvmsMessage(){
+        	
+        //VMS point 1 Mountbatten Road
+        	 var vmspoint1 = {
+        	          type: "point", // autocasts as new Point()
+        	          longitude: 103.881536,
+        	          latitude: 1.306302                    
+        	          };
+        	 
+        	        var vmsPictureSymbol1 = {
+        	          type: "picture-marker",
+        	          url: "rvm_img.png",
+        	          width: "20",
+        	          height: "20"
+        	        }
+        	        var vmsPictureGraphic1 = new Graphic({
+        	          geometry: vmspoint1,
+        	          symbol: vmsPictureSymbol1,
+        	          popupTemplate: {
+                          // autocasts as new PopupTemplate()
+                          title: "Jam in Mountbatten Road"
+                        }
+        	         });
+        	    
+        	  // VMS Point 2   Statidum Blvd
+               	 var vmspoint2 = {
+           	          type: "point", // autocasts as new Point()
+           	          longitude: 103.879158,
+           	          latitude: 1.304655                    
+           	          };
+           	 
+           	        var vmsPictureSymbol2 = {
+           	          type: "picture-marker",
+           	          url: "rvm_img.png",
+           	          width: "20",
+           	          height: "20"
+           	        }
+           	        var vmsPictureGraphic2 = new Graphic({
+           	          geometry: vmspoint2,
+           	          symbol: vmsPictureSymbol2,
+           	          popupTemplate: {
+                             // autocasts as new PopupTemplate()
+                             title: "Traffic Slow Stadium Blvd"
+                           }
+           	         });
+           	                 	        
+              	  // VMS Point 3  Dunmanroad          	     
+                  	 var vmspoint3 = {
+              	          type: "point", // autocasts as new Point()
+              	          longitude: 103.892627,
+              	          latitude: 1.309146                    
+              	          };
+              	 
+              	        var vmsPictureSymbol3 = {
+              	          type: "picture-marker",
+              	          url: "rvm_img.png",
+              	          width: "20",
+              	          height: "20"
+              	        }
+              	        var vmsPictureGraphic3 = new Graphic({
+              	          geometry: vmspoint3,
+              	          symbol: vmsPictureSymbol3,
+              	          popupTemplate: {
+                                // autocasts as new PopupTemplate()
+                                title: "Jam in Mountbatten Road"
+                              }
+              	         });
+
+              	   // VMS Point 4 Geylang Road
+                     	 var vmspoint4 = {
+                 	          type: "point", // autocasts as new Point()
+                 	          longitude: 103.8756162,
+                 	          latitude: 1.3107072                    
+                 	          };
+                 	 
+                 	        var vmsPictureSymbol4 = {
+                 	          type: "picture-marker",
+                 	          url: "rvm_img.png",
+                 	          width: "20",
+                 	          height: "20"
+                 	        }
+                 	        var vmsPictureGraphic4 = new Graphic({
+                 	          geometry: vmspoint4,
+                 	          symbol: vmsPictureSymbol4,
+                 	          popupTemplate: {
+                                   // autocasts as new PopupTemplate()
+                                   title: "Jam in Mountbatten Road"
+                                 }
+                 	         });               	        
+                       	 
+                 	        // VMS Point 5  Guillemard Road
+                        	 var vmspoint5 = {
+                    	          type: "point", // autocasts as new Point()
+                    	          longitude: 103.8803654,
+                    	          latitude: 1.3099666                    
+                    	          };
+                    	 
+                    	        var vmsPictureSymbol5 = {
+                    	          type: "picture-marker",
+                    	          url: "rvm_img.png",
+                    	          width: "20",
+                    	          height: "20"
+                    	        }
+                    	        var vmsPictureGraphic5 = new Graphic({
+                    	          geometry: vmspoint5,
+                    	          symbol: vmsPictureSymbol5,
+                    	          popupTemplate: {
+                                      // autocasts as new PopupTemplate()
+                                      title: "Jam in Mountbatten Road"
+                                    }
+                    	         });            	        
+        	        view.graphics.addMany([vmsPictureGraphic1,vmsPictureGraphic2,vmsPictureGraphic3,vmsPictureGraphic4,vmsPictureGraphic5]);
+        	
+        }
+     /*** MRT closed  on road closed start and end points icons*/
+       
+ 
         view.when(function() {
         //view.extent = layer.fullExtent;
 		view.extent = new Extent({
-		  xmin: 103.630760,
-		  ymin:  1.266575,
+		  xmin: 103.879526,
+		  ymin:  1.302259,
 		  xmax: 103.963800,
 		  ymax:  1.418752,
 		  spatialReference: {

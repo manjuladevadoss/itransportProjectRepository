@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<style>
+#cameraimagediv {
+  position: absolute;
+  z-index: 20;
+  background-color: #f1f1f1;
+  text-align: center;
+  border: 1px solid #4be01d;
+  width:150px;
+  visibility: hidden;
+  /* opacity: 0.5; */  /* To change transparent color*/ 
+}
+#cameraimagedivheader {
+  padding: 5px;
+  cursor: move;
+  z-index: 5;
+  background-color: rgb(0, 0, 0);
+  color: #fff;
+}
+h1 {
+  text-align: center;
+  font-family: Roboto, Helvetica, sans-serif;
+  color: rgb(235, 236, 241);
+  margin: 10px 0;
+  font-size: .6em;
+}
+
+h2 {
+  text-align: center;
+  font-family: Roboto, Helvetica, sans-serif;
+  color: rgb(235, 236, 241);
+  margin: 10px 0;
+  font-size: .7em;
+  /*font-weight: bold;*/
+  background-color: black; 
+  color: white;
+}
+</style>
+<body>
+
+
+<button onclick="showmsg()">show msg</button>
+<!-- <button onclick="removemsg()">close msg</button> -->
+<div id="cameraimagediv">
+  <div id="cameraimagedivheader"><h1>TIP 568231 <h1> 
+     <h2>Massive Jam Around Marian Centegdfg sdf dfgsdfgsdfgsd dfgdfgsdfgr  hdfhsdgsd sdfgsdf sdf 
+  </h2>
+</div>
+</div>
+
+<script>
+//Make the DIV element draggagle:
+var x = document.getElementById("cameraimagediv");
+ x.style.display = "none";
+ 
+ function showmsg() {
+  document.getElementById("cameraimagediv").style.visibility = "visible";
+  var x = document.getElementById("cameraimagediv");
+  // To make visible the div
+  if (x.style.display === "none") {
+    dragElement(document.getElementById("cameraimagediv"));  
+    x.style.display = "block";}
+    else {
+        x.style.display = "none";    
+  } 
+}
+   
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+</script>
+
+</body>
+</html>

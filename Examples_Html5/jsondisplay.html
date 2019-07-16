@@ -1,0 +1,80 @@
+<html>
+<title>Json data display </title>
+ 	 <script type="text/javascript"  src="jquery.js"></script>
+ 	 <script src="bootstrap.min.js"></script>
+  	 <script src="angular.min.js"></script>
+  	 
+  	 <script type="text/javascript"  src="democontroller.js"></script> 
+<body>
+		<div ng-app="ltaApp" ng-controller="ltaController">  
+
+				<div ng-repeat="tmdval in tmdmessages"> 		
+						<input type="text" id="tmdeqipid" name="tmdeqipid" value='{{tmdval.equipid}}' size="10" readonly>
+						<input type="text" id="tmdtimemsg" name="tmdtimemsg" value='{{tmdval.timemsg}}' size="10" readonly>
+						<input type="text" id="tmdminmsg" name="tmdminmsg" value='{{tmdval.minmsg}}' size="10" readonly>
+						<div  ng-repeat = "str in tmdval.streetnames"> 
+							<input type="text" id="tmdstrnames" name="tmdstrnames" value='{{str.name}}{{sep}}{{str.min}}' size="35" readonly>
+						</div>
+					</div>
+					<button onclick="fun()">ON</button>
+
+Event
+<h2>Events Run for Singapore 2019</h2>
+<h2>Decathlon Running Event</h2>
+<h2>Catch Worldclass Shuttlers Battle</h2>
+<h2>Pedal Hard Cycling</h2>
+<h2>outdoor yoga Retreat</h2>
+<h2>Formula one grand prix</h2>
+<br>
+Road Work
+<h2>Litter Picking </h2>
+<h2>Plant Watering</h2>
+<h2>Road Sweeping </h2>
+<h2>Tunnel Washing</h2>
+
+</div>
+
+</body>
+
+<script  type="text/javascript">
+function fun() {
+var tmdequipids = document.getElementsByName("tmdeqipid");
+var tmdtimemsgs = document.getElementsByName("tmdtimemsg");
+var tmdminmsgs = document.getElementsByName("tmdminmsg");
+var tmdstrnames = document.getElementsByName("tmdstrnames"); 
+var tmdSelEqId, tmdSelTiMsg, tmdSelMiMsg, tmdSelStrName1, tmdSelStrName2, tmdSelMiMsg;
+for(k=0; k<tmdequipids.length;k++) {
+	tmdSelEqId = tmdequipids[k].value;
+	tmdSelTiMsg = tmdtimemsgs[k].value;
+	tmdSelMiMsg = tmdminmsgs[k].value;	
+	for(i=0;i<3;i++) {
+			tmdSelStrName1 = tmdstrnames[i].value;	
+			tmdSelStrName2 = tmdstrnames[1].value;
+			tmdSelStrName3 = tmdstrnames[2].value;			
+	}
+	break;	
+}
+
+alert("tmdSelEqId : " + tmdSelEqId + " \ " + "tmdSelTiMsg : " + tmdSelTiMsg + " \ " + "tmdSelMiMsg : " + tmdSelMiMsg);  	
+alert(tmdSelStrName1 + " \ "  + tmdSelStrName2 + " \ "  + tmdSelStrName3); 
+
+var sepIndex = tmdSelStrName1.indexOf("$");
+var streetName1 = tmdSelStrName1.substring(0, sepIndex);
+var min1 = tmdSelStrName1.substring(sepIndex+1, tmdSelStrName1.length);
+alert( streetName1 + " \ " +   min1  );
+
+sepIndex = tmdSelStrName2.indexOf("$");
+var streetName2 = tmdSelStrName2.substring(0, sepIndex);
+var min2 = tmdSelStrName2.substring(sepIndex+1, tmdSelStrName2.length);
+alert( streetName2 + " \ " +   min2  );
+
+sepIndex = tmdSelStrName3.indexOf("$");
+var streetName3 = tmdSelStrName3.substring(0, sepIndex);
+var min3 = tmdSelStrName3.substring(sepIndex+1, tmdSelStrName3.length);
+alert( streetName3 + " \ " +   min3  );
+}
+</script>
+
+
+</html> 
+

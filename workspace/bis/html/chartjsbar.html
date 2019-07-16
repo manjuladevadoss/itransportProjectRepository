@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!-- Add a title -->
+
+<html>
+  <head>    
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+      <link rel="stylesheet" href="dc.css">
+      <title>Chart js bar chart</title>
+    <head> 
+<style>
+
+.datatable {
+  font-family:  "Roboto",Helvetica, sans-serif;
+  font-size:10px;
+  border-collapse: collapse;
+  width: 100%;
+}
+.datatable td, th {
+  border: 1px solid black; 
+  text-align: left;
+  padding: 3px;
+}
+.datatable, th, td {
+  border: 1px solid black; 
+}
+.datatable th {
+  height: 20px;
+  background: rgba(79,129,189);
+  border: 1px solid black; 
+}
+.chartable, td, th {
+  border: 0px solid black; 
+  padding: 10px;
+} 
+</style>
+<table class="chartable" >
+        <tr>
+                <td style="border:1px solid black">
+                        <canvas id="myChart" width="400" height="400"></canvas>
+                </td>
+                <td>
+                    <canvas id="myChartRdOpen" width="400" height="400"></canvas>
+                </td>
+         </tr>     
+         <tr>
+                <td>
+                        <table class="datatable">
+                                <tr>
+                                    <th>ER ID</th>
+                                    <th>Roads Close Early</th>
+                                    <th>Roads Close On Time</th>
+                                    <th>Roads Close Late</th>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" id="rowId1" style="text-decoration:none;"><font style="color:rgb(4, 8, 26)">1</font></a></td>
+                                    <td>12</td>
+                                    <td>19</td>
+                                    <td>10</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" id="rowId2" style="text-decoration:none;"><font style="color:rgb(4, 8, 26)">2</font></a></td>
+                                    <td>2</td>
+                                    <td>12</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" id="rowId3" style="text-decoration:none;"><font style="color:rgb(4, 8, 26)">3</font></a></td>
+                                    <td>2</td>
+                                    <td>4</td>
+                                    <td>5</td>
+                             </tr>     
+                            </table>
+                </td>
+                <td>
+                    <table class="datatable">
+                            <tr>
+                                <th>ER ID</th>
+                                <th>Roads Close Early</th>
+                                <th>Roads Close On Time</th>
+                                <th>Roads Close Late</th>
+                            </tr>
+                            <tr>
+                                <td><a href="#" id="rowId1" style="text-decoration:none;"><font style="color:rgb(4, 8, 26)">1</font></a></td>
+                                <td>12</td>
+                                <td>19</td>
+                                <td>10</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" id="rowId2" style="text-decoration:none;"><font style="color:rgb(4, 8, 26)">2</font></a></td>
+                                <td>2</td>
+                                <td>12</td>
+                                <td>3</td>
+                            </tr>
+                            <tr>
+                                <td><a href="#" id="rowId3" style="text-decoration:none;"><font style="color:rgb(4, 8, 26)">3</font></a></td>
+                                <td>2</td>
+                                <td>4</td>
+                                <td>5</td>
+                         </tr>     
+                        </table>
+            </td>
+         </tr>     
+
+        </table>  
+<body>   
+<script src="Chart.min.js"></script>
+<script> 
+
+Chart.defaults.global.legend.display = true; //lable name replace with title tag
+// Chart.defaults.global.tooltips.enabled = false;  Tool Tip
+var myChart;
+var a=1, b =20, c=30;
+chartFunction(a,b,c);
+var rowid1 = document.getElementById("rowId1"); 
+rowid1.onclick = function() {
+  a=12, b =19, c=10;
+  chartFunction(a,b,c);
+}
+var rowid2 = document.getElementById("rowId2"); 
+rowid2.onclick = function() {
+  a=2, b =23, c=3;
+  chartFunction(a,b,c);
+}
+var rowid3 = document.getElementById("rowId3"); 
+rowid3.onclick = function() {
+  a=2, b =4, c=5;
+  chartFunction(a,b,c);
+}
+ 
+      
+function chartFunction(a,b,c) {
+  if (myChart) {
+      myChart.destroy();
+    }
+var ctx = document.getElementById("myChart");
+myChart = new Chart(ctx, {
+    
+  type: 'horizontalBar',
+  /* data: {
+   labels: ["Roads Close Early", "Roads Close On Time", "Roads Close Late"],
+    datasets: [{
+        //label: 'Road Closure',
+      data: [12, 19, 3],
+      backgroundColor: [
+        'rgba(79,129,189)',
+        'rgba(155,187,89)',
+        'rgba(192,80,77)'
+      ],
+      borderColor: [
+        'rgba(79,129,189,1)',
+        'rgba(155,187,89, 1)',
+        'rgba(192,80,77, 1)'
+      ],
+      borderWidth: 0
+    }]
+}*/
+data: {
+    datasets: [{
+      label: 'Roads Close Early',
+      backgroundColor: "rgba(79,129,189)",
+      data: [a]
+    }, {
+      label: 'Roads Close On Time',
+      backgroundColor: "rgba(155,187,89)",
+      data: [b]
+    }, {
+      label: 'Roads Close Late',
+      backgroundColor: "rgba(192,80,77)",
+      data: [c]
+    }]
+  },
+  options: {
+    responsive: false,
+    title: {
+            display: true,
+            text: 'Road Closure',
+            fontSize : '15',
+            fontColor : 'black'
+        },
+    scales: {
+      xAxes: [{
+        ticks: {
+            padding:0,
+            display:true, // xAxes label name next to the scale
+            min:0
+              //maxRotation: 90,
+         // minRotation: 80
+        },
+        gridLines: {
+            display:true
+            //lineWidth: 0
+        }
+      }],
+      yAxes: [{
+        categoryPercentage: 1.0, // used to remove the space between bars
+        barPercentage: 1.0, // used to remove the space between bars
+        ticks: {
+          display:false,  // yAxes label name to the scale
+          beginAtZero: true,
+          min:0
+        }, 
+        gridLines: {
+            display:false,
+            //lineWidth: 0
+        }
+      }]
+    },
+    legend: {   // side lable name with bar
+      display: true,
+      position: 'right',
+      labels: {
+        fontColor: "black",
+        boxWidth: 10  // legent leftside box width
+      }
+    }
+  }
+});
+}
+</script>    
+      
+</body>
+</html>

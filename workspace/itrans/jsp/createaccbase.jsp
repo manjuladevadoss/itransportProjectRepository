@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <title> Create IR Accident  </title>
+    <title> Create IR Accident Sceense </title>
   	<link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
   	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="mrtinc.css">
@@ -20,6 +20,7 @@
  	<script type="text/javascript" src="popper.min.js"></script>
   	<script src="angular.min.js"></script>
   	<script type="text/javascript"  src="democontroller.js"></script> 
+	<script type="text/javascript"  src="utility.js"></script> 
   	
   	<!-- Start Date and Time -->
 	  	<link rel="stylesheet" href="bootstrap-datetimepicker.min.css">
@@ -53,28 +54,6 @@
         height: 100%; /* allow space for sublayer switcher */
 	
       }
-      #instruction {
-        z-index: 99;
-        position: absolute;
-        top: 50px;
-        left: 10%;
-        padding: 5px;
-        margin-left: -175px;
-        height: 20px;
-        width: 350px;
-      }
-	  #instruction1 {
-		z-index: 99;
-        position: absolute;
-        top: 50px;
-        right: 20%;
-        padding: 5px;
-        margin-left: -175px;
-        height: 20px;
-        width: 350px;
-		  
-	  }
-
       .esri-layer-list {
         width: 310px;
       }
@@ -103,9 +82,9 @@
 .esri-view-width-large .esri-popup__main-container,
 .esri-view-width-medium .esri-popup__main-container
 {
-  max-height: 100px !important;
+  max-height: 300px !important;
   max-width: 300px !important;
-  background-color: black;
+  background-color: #202B53;
   color: white;
     font-size: 14px;
     font-family: Roboto, Helvetica, sans-serif;
@@ -178,14 +157,14 @@ background-color: black;
  border-radius: 8px;
  border: none;
 }
-.irresetbutton {
+.ircamebutton {
   color: #C8CFF4;
   font-family:  Roboto, Helvetica, sans-serif;
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
   border-radius: 13px;
-  background-color:#356D85;
-  border: solid 0px #356D85;
-  width:80px;
+  background-color:#2C3A77;
+  border: solid 0px #2C3A77;
+  width:40px;
   height:30px
 }
 .iractionbutton {
@@ -198,7 +177,24 @@ background-color: black;
   width:90px;
   height:30px
 }
-    </style>
+.lane1Div {
+	color : ;
+	fontSize : 11px;
+}
+
+/* Camera display div 
+#instruction {
+        z-index: 99;
+        position: absolute;
+        top: 50px;
+        left: -30%;
+        padding: 5px;
+        margin-left: -175px;
+        height: 20px;
+        width: 350px;
+		visibility: hidden;  
+  } */
+</style>
 
  
     <script>
@@ -217,87 +213,6 @@ background-color: black;
 	  var newsrc3 = "laneup.JPG";
 	  var newsrc4 = "laneup.JPG";
 	  var newsrc5 = "laneup.JPG";
-
-	  //document.getElementById("lsh1Div").style.color = "#A0E67F";
-
-	  function changeImage(imgid) {
-	  	if(imgid=="laneupimg1") {
-	  	 if (newsrc == "laneup.JPG") {
-	  		document.getElementById('laneupimg1').src='lanecross.JPG';
-	  		newsrc  = "lanecross.JPG";
-	  		document.getElementById("lsh1Div").style.color = "#E58080";
-	  	  }
-	  	  else {
-	  	   document.getElementById('laneupimg1').src='laneup.JPG';
-	  	   newsrc  = "laneup.JPG";
-	  	   document.getElementById("lsh1Div").style.color = "#A0E67F";
-	  	  }		
-	  	}
-	  	
-	  	if(imgid=="laneupimg2") {
-	  	 if (newsrc1 == "laneup.JPG") {
-	  		document.getElementById('laneupimg2').src='lanecross.JPG';
-	  		newsrc1  = "lanecross.JPG";
-	  		document.getElementById("lane4Div").style.color = "#E58080";
-	  	  }
-	  	  else {
-	  	   document.getElementById('laneupimg2').src='laneup.JPG';
-	  	   newsrc1  = "laneup.JPG";
-	  	   document.getElementById("lane4Div").style.color = "#A0E67F";
-	  	  }		
-	  	}
-	  	
-	    	if(imgid=="laneupimg3") {
-	  	 if (newsrc2 == "laneup.JPG") {
-	  		document.getElementById('laneupimg3').src='lanecross.JPG';
-	  		newsrc2  = "lanecross.JPG";
-	  		document.getElementById("lane3Div").style.color = "#E58080";
-	  	  }
-	  	  else {
-	  	   document.getElementById('laneupimg3').src='laneup.JPG';
-	  	   newsrc2  = "laneup.JPG";
-	  	   document.getElementById("lane3Div").style.color = "#A0E67F";
-	  	  }		
-	  	}
-	    
-	      if(imgid=="laneupimg4") {
-	  	 if (newsrc3 == "laneup.JPG") {
-	  		document.getElementById('laneupimg4').src='lanecross.JPG';
-	  		newsrc3  = "lanecross.JPG";
-	  		document.getElementById("lane2Div").style.color = "#E58080";
-	  	  }
-	  	  else {
-	  	   document.getElementById('laneupimg4').src='laneup.JPG';
-	  	   newsrc3  = "laneup.JPG";
-	  	   document.getElementById("lane2Div").style.color = "#A0E67F";
-	  	  }		
-	  	}
-	  	
-	  	if(imgid=="laneupimg5") {
-	  	 if (newsrc4 == "laneup.JPG") {
-	  		document.getElementById('laneupimg5').src='lanecross.JPG';
-	  		newsrc4  = "lanecross.JPG";
-	  		document.getElementById("lane1Div").style.color = "#E58080";
-	  	  }
-	  	  else {
-	  	   document.getElementById('laneupimg5').src='laneup.JPG';
-	  	   newsrc4  = "laneup.JPG";
-	  	   document.getElementById("lane1Div").style.color = "#A0E67F";
-	  	  }		
-	  	}
-	  	if(imgid=="laneupimg6") {
-	  	 if (newsrc5 == "laneup.JPG") {
-	  		document.getElementById('laneupimg6').src='lanecross.JPG';
-	  		newsrc5  = "lanecross.JPG";
-	  		document.getElementById("rsh1Div").style.color = "#E58080";
-	  	  }
-	  	  else {
-	  	   document.getElementById('laneupimg6').src='laneup.JPG';
-	  	   newsrc5  = "laneup.JPG";
-	  	   document.getElementById("rsh1Div").style.color = "#A0E67F";
-	  	  }		
-	  	}
-	  }
 	  
 	  // Add rows in LTA vehicle 
 	  var index = 1;
@@ -401,11 +316,122 @@ background-color: black;
         partVhiTbl.deleteRow(lastRow - 1);
     }
  
- 
- 
-    </script>
+/*** Lane closed information */	  
+function changeImage(imgid) {   
+	if(imgid=="laneupimg1") {
+		 if (newsrc == "laneup.JPG") {
+			document.getElementById('laneupimg1').src='lanecross.JPG';
+			newsrc  = "lanecross.JPG";
+			document.getElementById("lsh1Div").style.color = "#E58080";
+		document.getElementById("lsh1Div").style.fontSize = "11px";
+		  }
+		  else {
+		   document.getElementById('laneupimg1').src='laneup.JPG';
+		   newsrc  = "laneup.JPG";
+		   document.getElementById("lsh1Div").style.color = "#A0E67F";
+	  document.getElementById("lsh1Div").style.fontSize = "11px";
+		  }		
+		}
+		
+		if(imgid=="laneupimg2") {
+		 if (newsrc1 == "laneup.JPG") {
+			document.getElementById('laneupimg2').src='lanecross.JPG';
+			newsrc1  = "lanecross.JPG";
+			document.getElementById("lane4Div").style.color = "#E58080";
+		document.getElementById("lane4Div").style.fontSize = "11px";
+		  }
+		  else {
+		   document.getElementById('laneupimg2').src='laneup.JPG';
+		   newsrc1  = "laneup.JPG";
+		   document.getElementById("lane4Div").style.color = "#A0E67F";
+	  document.getElementById("lane4Div").style.fontSize = "11px";
+		  }		
+		}
+		
+		if(imgid=="laneupimg3") {
+		 if (newsrc2 == "laneup.JPG") {
+			document.getElementById('laneupimg3').src='lanecross.JPG';
+			newsrc2  = "lanecross.JPG";
+			document.getElementById("lane3Div").style.color = "#E58080";
+		document.getElementById("lane3Div").style.fontSize = "11px";
+		  }
+		  else {
+		   document.getElementById('laneupimg3').src='laneup.JPG';
+		   newsrc2  = "laneup.JPG";
+		   document.getElementById("lane3Div").style.color = "#A0E67F";
+	  document.getElementById("lane3Div").style.fontSize = "11px";
+		  }		
+		}
+	
+	 if(imgid=="laneupimg4") {
+		 if (newsrc3 == "laneup.JPG") {
+			document.getElementById('laneupimg4').src='lanecross.JPG';
+			newsrc3  = "lanecross.JPG";
+			document.getElementById("lane2Div").style.color = "#E58080";
+		document.getElementById("lane2Div").style.fontSize = "11px";
+		  }
+		  else {
+		   document.getElementById('laneupimg4').src='laneup.JPG';
+		   newsrc3  = "laneup.JPG";
+		   document.getElementById("lane2Div").style.color = "#A0E67F";
+	  document.getElementById("lane2Div").style.fontSize = "11px";
+		  }		
+		}
+		
+		if(imgid=="laneupimg5") {
+		 if (newsrc4 == "laneup.JPG") {
+			document.getElementById('laneupimg5').src='lanecross.JPG';
+			newsrc4  = "lanecross.JPG";
+			document.getElementById("lane1Div").style.color = "#E58080";
+		document.getElementById("lane1Div").style.fontSize = "11px";
+		  }
+		  else {
+		   document.getElementById('laneupimg5').src='laneup.JPG';
+		   newsrc4  = "laneup.JPG";
+		   document.getElementById("lane1Div").style.color = "#A0E67F";
+	  document.getElementById("lane1Div").style.fontSize = "11px";
+		  }		
+		}
+
+		/* if(imgid=="laneupimg6") {
+		 if (newsrc5 == "laneup.JPG") {
+			document.getElementById('laneupimg6').src='lanecross.JPG';
+			newsrc5  = "lanecross.JPG";
+			document.getElementById("rsh1Div").style.color = "#E58080";
+		document.getElementById("rsh1Div").style.fontSize = "11px";
+		  }
+		  else {
+		   document.getElementById('laneupimg6').src='laneup.JPG';
+		   newsrc5  = "laneup.JPG";
+		   document.getElementById("rsh1Div").style.color = "#A0E67F";
+		  }		
+		}	*/
+	}
+/*** End of  Lane closed information */
+
+/***  Accident Image display not move*/ 
+//var x = document.getElementById('accimgid');
+//x.style.display = "none";
+//document.getElementById('accimgid').style.visibility = "hidden";;
+  //document.getElementById("instruction").style.visibility = none;
+/*
+function showaccimage() {
+	if (document.getElementById("instruction").style.display == "none") {
+		console.log("div id is none");
+		document.getElementById("instruction").style.visibility = "visible";
+		document.getElementById("instruction").style.display = "block";
+	} else {
+		console.log("div id is block");
+		document.getElementById("instruction").style.visibility = "hidden";
+		document.getElementById("instruction").style.display = "none";
+	} 
+}*/
+/***  End of Accident Image display */
+		
+
+</script>
   </head>
-<body class="calcite-maps calcite-nav-top">
+<body class="calcite-maps calcite-nav-top" onload="predictionwindow()">
 	<div class="container-fluid">
 		<div ng-app="ltaApp" ng-controller="ltaController">
 		<!--
@@ -416,26 +442,8 @@ background-color: black;
 		</table>  -->
   
 	  <div id="main" class claro>
-	  <div id="viewDiv"> </div>  
-	  <div id="instruction">    
-					       <button class="irresetbutton" id="rdclose">  Line </button>
-					       <button class="irresetbutton" id="rdclosepoint">  Symbol  </button>
-					       <button class="irresetbutton" id="video" >Video </button>
-						   
-					       	<div class="popup" onclick="popupvideo()">
-		                    <div id="videodiv">
-		                     <span class="popuptext" id="myPopup">
-		                            <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
-		                            <video id="VisaChipCardVideo" width="300" controls>
-		                                  <source src="CTEvideo.mp4" type="video/mp4">
-		                          </video>
-		                        </div>       
-		                     </span>
-		            	</div>					       
-				      </div>  
- <div id="instruction1">
- <button class="irresetbutton" id="undo" >Reset  </button>
-</div> 
+	  <div id="viewDiv"> </div>   
+  
      <div id="panelTopDiv"  style="background-color: #202B53;">
     <h2t> Incident Record - Accident </h2t>
     </div>  
@@ -461,17 +469,31 @@ background-color: black;
 				 <div class="panel panel-default">
 					<div class="panel-heading active">
 						<h4 class="panel-title">
-							   Incident<span data-target="#Collapseicon1" data-toggle="collapse" data-parent="#accordion2"><span class="glyphicon glyphicon-plus" style="float:right;"></span> </span>
+							   Incident<span data-target="#Collapseiconacc1" data-toggle="collapse" data-parent="#accordion2"><span class="glyphicon glyphicon-plus" style="float:right;"></span> </span>
 						</h4>
 					</div>
 					
-					<div class="panel-collapse collapse in" id="Collapseicon1">
+					<div class="panel-collapse collapse in" id="Collapseiconacc1">
 						<div class="panel-body">
 																
 			<table id="incdetailtbl">
 					<tr>
 					 <th colspan="6"> Fill in the details of your IR  </th>
 					 </tr>
+					 <tr>
+					  <td colspan="3">
+						IR Type: <br>
+						<select ng-model="irtypesel">
+							<option ng-repeat="option in irtypelist" value="{{option.irtypeselid}}">{{option.irtypeselname}}</option>
+						</select>
+					  </td>
+					  <td colspan="3"> Direction: <br>
+						<select ng-model="irdirsel">
+							<option ng-repeat="option in irdirlist" value="{{option.irdirid}}">{{option.irdirname}}</option>
+						</select>
+					  </td>
+					</tr>
+					 
 					 <tr>
 					  <td colspan="3">
 						Status: <br>
@@ -506,13 +528,15 @@ background-color: black;
 					<tr>
 					  <td colspan="3">
 						Linked IR <br>
-						<select ng-model="irlinked">
+						<input type="text"  style="width:190px; height: 20px;"  ng-model="irlinkedtxt"/>
+						<!-- <select ng-model="irlinked">
 							<option  value="" selected="selected" hidden="hidden">Choose here</option>
 							<option ng-repeat="option in irlinkedList" value="{{option.irlinkedid}}">{{option.irlinkedname}}</option>
 						</select>
+						 -->
 					  </td>
 					  <td colspan="3">
-						Accident Type<br>
+						Incident Sub Type<br>
 						 <select ng-model="acctype">
 						 	<option  value="" selected="selected" hidden="hidden">Choose here</option>
 							<option ng-repeat="option in acctypeList" value="{{option.acctypeid}}">{{option.acctypename}}</option>
@@ -537,7 +561,27 @@ background-color: black;
 					  </td>
 					</tr>
 					<tr>
+					  <td colspan="3">
+						Start Point: <br>
+							<input type="text"  style="width:190px; height: 20px;"  ng-model="irstartpoint"/>
+					  </td>
+					  <td colspan="3">
+						End Point: <br>
+							<input type="text"  style="width:190px; height: 20px;"  ng-model="irendpoint"/>
+					  </td>
+					</tr>
+					<tr>
+					  <td colspan="3">
+							Congestion End Point: <br><input type="text"  style="width:190px; height: 20px;" ng-model="ircogendpoint"/>
+					  </td>
+					  <td colspan="3">
+						Person Incharge: <br>
+							<input type="text"  style="width:190px; height: 20px;"  ng-model="irperincharge"/>
+					  </td>
+					</tr>
+					<tr>
 					  <td colspan="6">
+					  Injuries <br>
 						Slight: <input style="width:50.81px; height: 20px;" type="text"  ng-model="slight"/> 
 						Serious: <input type="text"  style="width:50.81px; height: 20px;" ng-model="serious"/> 
 						Fatal <input type="text"  style="width:50.81px; height: 20px;"  ng-model="fatal"/>
@@ -549,8 +593,35 @@ background-color: black;
 						<select ng-model="imgcap">
 						  <option  value="" selected="selected" hidden="hidden">Choose here</option>
 						  <option ng-repeat="option in imgcapList" value="{{option.imgcapid}}">{{option.imgcapname}}</option>
-						</select>							
-						<img src="camera.JPG" width="25px" height="25px">
+						</select>						  
+					       
+					   <!--   the image locaiton not move
+					   <button class="ircamebutton"  onclick="showaccimage()" id="accIncidentimage" ><img  id="cameraimg" class="cameraimgcl" src="camera.JPG" width="25px" height="25px"></button>					        
+								<div id="instruction">
+									<img id= "accimgid" src="accimage.jpg" width="100px" height="100px">
+								</div> -->
+								
+						<!-- move the image -->		
+						<button class="ircamebutton" onclick="showmsg()"><img src="camera.JPG" width="25px" height="25px"></button>
+						<div id="cameraimagediv">
+							<div id="cameraimagedivheader">
+								<img id= "accimgid" src="accimage.jpg" width="150px" height="150px">
+							</div>
+						</div>								
+						   <!-- Show video
+						    <button class="ircamebutton" id="video" ><img src="camera.JPG" width="25px" height="25px"></button>
+						      <div id="instruction">    
+					       	<div class="popup" onclick="popupvideo()">
+		                    <div id="videodiv">
+		                     <span class="popuptext" id="myPopup">		                        
+									<a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
+		                            <video id="VisaChipCardVideo" width="300" controls>
+		                                  <source src="CTEAccVideo.mp4" type="video/mp4">
+		                          </video>
+		                        </div>       
+		                     </span>
+		                    </div>   
+		            	</div>	 -->				       
 					  </td>
 					</tr>
 					
@@ -568,14 +639,13 @@ background-color: black;
 				  <div class="panel panel-default">
 					<div class="panel-heading active">
 						<h4 class="panel-title">
-							   Lane Blockage<span data-target="#Collapseicon2" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
+							   Lane Blockage<span data-target="#Collapseiconacc2" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
 						</h4>
 					</div>
 					
-					<div class="panel-collapse collapse in" id="Collapseicon2">
+					<div class="panel-collapse collapse in" id="Collapseiconacc2">
 						<div class="panel-body">
-						Block or Unblock Lanes 
-						
+						&nbsp;  &nbsp; Block or Unblock Lanes 					
 						<table  width="100%">
 		<tr>
           <td align="Left">
@@ -583,30 +653,36 @@ background-color: black;
 	         <tr>
 	    		<td>
 				<img src="laneup.JPG" width="30px" height="30px" id="laneupimg1" onclick="changeImage('laneupimg1')">
+				<input type="hidden"  id="laneupimg1ht" name="laneupimg1htxt" value="laneupimg1" size="5" readonly>
 				<img src="vertibar.JPG" width="10px" height="30px">
-				<div id="lsh1Div">LSH1</div>
+				<font style="color:#8BD27A;font-size: 11px;"><div id="lsh1Div">LSH1</div></font>
 				</td>
 				<td align="center">								
 					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg2" onclick="changeImage('laneupimg2')"> <br>
-					<div id="lane4Div">&nbsp;&nbsp;&nbsp;4</div>
+					<input type="hidden"  id="laneupimg2ht" name="laneupimg2htxt" value="laneupimg2" size="5" readonly>
+					<font style="color:#8BD27A;font-size: 11px;"><div id="lane4Div">&nbsp;&nbsp;&nbsp;4</div></font>
 				</td>
 				<td align="center">
 					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg3" onclick="changeImage('laneupimg3')"> <br>
-					<div id="lane3Div">&nbsp;&nbsp;&nbsp;3</div>
+					<input type="hidden"  id="laneupimg3ht" name="laneupimg3htxt" value="laneupimg3" size="5" readonly>
+					<font style="color:#8BD27A;font-size: 11px;"><div id="lane3Div">&nbsp;&nbsp;&nbsp;3</div></font>
 				</td>
 			    <td align="center">
 					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg4" onclick="changeImage('laneupimg4')"> <br>
-					<div id="lane2Div">&nbsp;&nbsp;&nbsp;2</div>
+					<input type="hidden"  id="laneupimg4ht" name="laneupimg4htxt" value="laneupimg4" size="5" readonly>
+					<font style="color:#8BD27A;font-size: 11px;"><div id="lane2Div">&nbsp;&nbsp;&nbsp;2</div></font>
 				</td>
 				<td align="center">
 					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg5" onclick="changeImage('laneupimg5')"> <br>
-					<div id="lane1Div">&nbsp;&nbsp;&nbsp;1</div>
+					<input type="hidden"  id="laneupimg5ht" name="laneupim5htxt" value="laneupimg5" size="5" readonly>
+					<font style="color:#8BD27A;font-size: 11px;"><div id="lane1Div">&nbsp;&nbsp;&nbsp;1</div></font>
 					 
 				</td>
 				<td align="center">
-				    <img src="vertibar.JPG" width="10px" height="30px"> 
+				 <!--    <img src="vertibar.JPG" width="10px" height="30px"> 
 					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg6" onclick="changeImage('laneupimg6')"> <br>
-					<div id="rsh1Div">&nbsp;&nbsp;&nbsp;RSH1</div>
+					<input type="hidden"  id="laneupimg6ht" name="laneupimg6htxt" value="laneupimg6" size="5" readonly>
+					<font style="color:#8BD27A;font-size: 11px;"><div id="rsh1Div">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RSH1</div></font>  -->
 	          </td>
 			  <td align="center">
 				<!--  <ul>
@@ -623,6 +699,267 @@ background-color: black;
 	          </table>
                  </table>
 			
+				<!-- The Modal for Action Plan -->
+				&nbsp;&nbsp;  
+				&nbsp; 
+				<a href="#" class="buttonPredi" id="preTimeId" ng-model="preTime"  style="text-decoration:none;" > Prediction </a>
+			
+							
+				<!--<select id="preTimeId" ng-model="preTime"  style="width: 125px;">
+				<option  value="" selected="selected" hidden="hidden">Prediction</option>
+					<option value="1"> 15 Minutes </option>
+					<option value="2"> 30 Minutes </option>
+					<option value="3"> 45 Minutes </option>
+					<option value="4"> 60 Minutes </option>
+				</select>  -->
+				
+<!-- The Modal -->
+	<div id="myModal" class="modalInner">
+	  <!-- Modal content -->
+	  <div class="modal-content1">
+		  <!-- <span class="close">&times;</span> -->
+		<div class="modal-body">      
+	<table id="confitbltop"  cellpadding= "10px">
+		  <tr><td>
+			  <table id="confitbl">
+				<tr>
+				  <th>Do Nothing</th>
+				</tr>
+				<tr>
+				  <td><br></td>
+				</tr>
+				<tr>
+				  <td><b>Delay Time 00.40hr</b></td>
+				</tr>
+			  </table>
+		  </td>
+		  <td>
+			  <table id="confitbl">
+				<tr>
+				  <th>Plan 1</th>
+				</tr>
+				<tr>
+					<td>
+						<a href="#" id="myModalInnerLnk1"  ng-click="irpreditImpl2()" style="text-decoration:none;">VMS Messages  &nbsp; {{iraccscenario1vms.length}} </a> <br>
+						<a href="#" id="myModalInnerLnk1"  ng-click="irpreditImpl2()" style="text-decoration:none;">Traffic Light  &nbsp; {{trafficlight.length}} </a>
+					</td>
+				</tr>
+				<tr>
+				  <td>  
+						<b>Delay Time 00.20hr</b>
+						<!-- <p id="hrSelectSce1"></p> -->			  
+				  </td>
+				</tr>
+		
+			  </table>
+		  </td>
+		  <td>
+			  <table id="confitbl">
+				<tr>
+				  <th>Plan  2</th>
+				</tr>
+				<tr>
+					<td><a href="#" id="myModalInnerLnk2"  ng-click="irpreditImpl2()" style="text-decoration:none;">VMS Messages  &nbsp; {{iraccscenario2vms.length}}  </a><br>  <br> </td>
+				</tr>
+				<tr>
+				  <td> 
+						<b>Delay Time 00.30hr</b>  <!-- <b><p id="hrSelectSce2"></p></b>  -->
+						</td>
+				</tr>
+
+			  </table>
+		</td> </tr> 
+	  </table>
+		</div>
+	</div>
+	</div>		
+	
+	<!--  Inner modal scenario 1  -->
+	<div id="myModalInner1" class="modalInner">
+		  <div class="modal-content">
+			<div class="modal-body">   
+		<table id="scenriotbl1"  cellpadding= "2px">
+			  <tr><td>
+				  <table id="confitbl">
+					<tr>
+					  <th>Plan 1</th>
+					</tr>
+					<tr> 
+						<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
+					</tr>
+					<tr ng-repeat="irsce1 in iraccscenario1vms"> 
+					  <td>
+					  <input type="hidden" id="scenario1List" name="scenario1List" value='{{irsce1.irvmsequipid}}{{sep}}{{irsce1.irvmsaccmsg}}{{sep}}{{irsce1.longitude}}{{sep}}{{irsce1.latitude}}' size="5" readonly>
+					  {{irsce1.irvmsequipid}} &nbsp;&nbsp;{{irsce1.irvmsaccmsg}}
+					  </td>
+					</tr>
+					<tr>
+					  <th>Traffic Light Time Change </th>
+					</tr>
+					<tr>
+						 <td><b>EQP ID &nbsp;&nbsp; Time</b></td>
+					</tr>
+					<tr ng-repeat="irtrlight in trafficlight"> 
+					  <td>
+					   <input type="hidden" id="scenario1TrafficList" name="scenario1TrafficList" value='{{irtrlight.longitude}}{{sep}}{{irtrlight.latitude}}' size="5" readonly>
+					  {{irtrlight.irtrlightid}} &nbsp;&nbsp;{{irtrlight.irtrlightmsg}}
+					  </td>
+					</tr>
+					<tr>
+						<td><center>
+						<a href="#" class="buttonPreImp" id="sce1VmsView"  style="text-decoration:none;"> View VMS </a>
+						<a href="#" class="buttonPredi" id="sce1ImpliId"  style="text-decoration:none;"> Implement </a>
+						<a href="#" class="buttonPreRem" id="sce1ImpliIdRemove"  style="text-decoration:none;"> Remove </a>
+						</center>
+						</td>
+					</tr>
+				  </table>
+			  </td>
+			</tr>
+		  </table>
+		  
+		  </div>
+		</div>
+  </div>
+  
+		<!--  Inner modal scenario 2 -->
+	<div id="myModalInner2" class="modalInner">
+		  <div class="modal-content">
+			<div class="modal-body">   
+				  <table id="scenriotbl1">
+					<tr>
+					  <th><center>Plan 2</center></th>
+					</tr>
+					<tr> 
+						<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
+					</tr>
+					<tr ng-repeat="irsce2 in iraccscenario2vms"> 
+					  <td>
+					   <input type="hidden" id="scenario2List" name="scenario2List" value='{{irsce2.irvmsequipid}}{{sep}}{{irsce2.irvmsaccmsg}}{{sep}}{{irsce2.longitude}}{{sep}}{{irsce2.latitude}}' size="5" readonly>
+					  {{irsce2.irvmsequipid}} &nbsp;&nbsp;{{irsce2.irvmsaccmsg}} 
+					  </td>
+					</tr>
+					<tr>
+						<td><center>
+						<a href="#" class="buttonPreImp" id="sce2VmsView"  style="text-decoration:none;"> View VMS </a>
+						<a href="#" class="buttonPredi"  id="sce2ImpliId"  style="text-decoration:none;"> Implement </a> 
+						<a href="#" class="buttonPreRem" id="sce2ImpliIdRemove"  style="text-decoration:none;"> Remove </a></center>
+						</td>
+					</tr>
+				  </table>	  
+		  </div>
+		</div>
+  </div>
+<!-- End of Modal  -->	
+
+<!-- Modal onload event Start -->
+	<div id="myModalLoad" class="modalInner">
+	  <!-- Modal content -->
+	  <div class="modal-content1">
+		  <!-- <span class="close">&times;</span> -->
+		<div class="modal-body">      
+	<table id="confitbltop"  cellpadding= "10px">
+		  <tr><td>
+			  <table id="confitbl">
+				<tr>
+				  <th>Do Nothing</th>
+				</tr>
+				<tr>
+				  <td><br></td>
+				</tr>
+				<tr>
+				  <td><b>Delay Time 00.40hr</b></td>
+				</tr>
+			  </table>
+		  </td>
+		  <td>
+		  
+			  <table id="confitbl">
+				<tr>
+				  <td>  
+						<table id="confitbl">
+							<tr>
+							  <th>Plan 1</th>
+							</tr>
+							<tr> 
+								<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
+							</tr>
+							<tr ng-repeat="irsce1 in iraccscenario1vms"> 
+							  <td>
+							  <input type="hidden" id="scenario1List" name="scenario1List" value='{{irsce1.irvmsequipid}}{{sep}}{{irsce1.irvmsaccmsg}}{{sep}}{{irsce1.longitude}}{{sep}}{{irsce1.latitude}}' size="5" readonly>
+							  {{irsce1.irvmsequipid}} &nbsp;&nbsp;{{irsce1.irvmsaccmsg}}
+							  </td>
+							</tr>
+							<tr>
+							  <th>Traffic Light Time Change </th>
+							</tr>
+							<tr>
+								 <td><b>EQP ID &nbsp;&nbsp; Time</b></td>
+							</tr>
+							<tr ng-repeat="irtrlight in trafficlight"> 
+							  <td>
+							   <input type="hidden" id="scenario1TrafficList" name="scenario1TrafficList" value='{{irtrlight.longitude}}{{sep}}{{irtrlight.latitude}}' size="5" readonly>
+							  {{irtrlight.irtrlightid}} &nbsp;&nbsp;{{irtrlight.irtrlightmsg}}
+							  </td>
+							</tr>
+							<tr>
+								<td><center>
+								<a href="#" class="buttonPreImp" id="sce1VmsView"  style="text-decoration:none;"> View VMS </a>
+								<a href="#" class="buttonPredi" id="sce1ImpliId"  style="text-decoration:none;"> Implement </a>
+								<a href="#" class="buttonPreRem" id="sce1ImpliIdRemove"  style="text-decoration:none;"> Remove </a>
+								</center>
+								</td>
+							</tr>
+					  </table>
+				  </td>
+				</tr>
+				<tr>
+				  <td><b>Delay Time 00.30hr</b></td>
+				</tr>
+		
+			  </table>
+		  </td>
+		  <td>
+			  <table id="confitbl">				
+				<tr>
+				  <td> 
+						<table id="scenriotbl1">
+						<tr>
+						  <th><center>Plan 2</center></th>
+						</tr>
+						<tr> 
+							<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
+						</tr>
+						<tr ng-repeat="irsce2 in iraccscenario2vms"> 
+						  <td>
+						   <input type="hidden" id="scenario2List" name="scenario2List" value='{{irsce2.irvmsequipid}}{{sep}}{{irsce2.irvmsaccmsg}}{{sep}}{{irsce2.longitude}}{{sep}}{{irsce2.latitude}}' size="5" readonly>
+						  {{irsce2.irvmsequipid}} &nbsp;&nbsp;{{irsce2.irvmsaccmsg}} 
+						  </td>
+						</tr>
+						<tr>
+							<td><center>
+							<a href="#" class="buttonPreImp" id="sce2VmsView"  style="text-decoration:none;"> View VMS </a>
+							<a href="#" class="buttonPredi"  id="sce2ImpliId"  style="text-decoration:none;"> Implement </a> 
+							<a href="#" class="buttonPreRem" id="sce2ImpliIdRemove"  style="text-decoration:none;"> Remove </a></center>
+							</td>
+						</tr>
+					  </table>	
+				  </td>
+				</tr>
+				<tr>
+				  <td><b>Delay Time 00.20hr</b></td>
+				</tr>
+			  </table>
+		</td> </tr> 
+	  </table>
+		</div>
+	</div>
+	</div>	
+<!-- Modal onload event End -->	
+									
+			
+			
+			
 						</div>
 					</div>
 				  </div>
@@ -630,11 +967,11 @@ background-color: black;
 				 <div class="panel panel-default">
 					<div class="panel-heading active">
 						<h4 class="panel-title">
-							 &nbsp;  <span data-target="#Collapseicon3" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
+							 &nbsp;  <span data-target="#Collapseiconacc3" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
 						</h4>
 					</div>
 					
-					<div class="panel-collapse collapse" id="Collapseicon3">
+					<div class="panel-collapse collapse" id="Collapseiconacc3">
 						<div class="panel-body">
 					  <table width="50%" id="incblocktbl">
 					<tr>
@@ -675,9 +1012,7 @@ background-color: black;
 						<td>
 					  </td>
 					</tr>        
-					</table> 
-				
-
+					</table> 				
 						</div>
 					</div>
 				  </div> 
@@ -708,45 +1043,52 @@ background-color: black;
      <div class="panel panel-default">
     	<div class="panel-heading active">
         	<h4 class="panel-title">           	             	
-                    VMS Messages <span data-target="#Collapseicon4" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
+                    VMS Messages <span data-target="#Collapseiconacc4" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
             </h4>
         </div>
         
-        <div class="panel-collapse collapse in" id="Collapseicon4">
+        <div class="panel-collapse collapse in" id="Collapseiconacc4">
         	<div class="panel-body">
             	<p>Recommended VMS Messages </p>
 			<table width="100%" class="tablevms">  
 			<tr>
 				<th align="left" style="padding:5px;">Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </th>
 				<th align="left">EQT ID <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></th>
-				<th align="left">Recommended Display <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </th>
-				<th align="left"></th>		
+				<th align="left">Recommended Display <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </th>					
 			</tr>
 
 			<tr ng-repeat="irvms in iraccvmsList"> 
 				<td> 
 					<!--  <div ng-if="irvms.irvmsstatus==='Failed'"> <span class="dotfail"></span><font color="#C8CFF4">  {{irvms.irvmsstatus}} </font></div>
 					<div ng-if="irvms.irvmsstatus==='Implemented'"> <span class="dotimp"></span> <font color="#C8CFF4"> {{irvms.irvmsstatus}} </font></div>
-					<div ng-if="irvms.irvmsstatus==='Not Active'">  <span class="dotnotact"></span><font color="#C8CFF4">  {{irvms.irvmsstatus}} </font> </div>  -->
-					
+					<div ng-if="irvms.irvmsstatus==='Not Active'">  <span class="dotnotact"></span><font color="#C8CFF4">  {{irvms.irvmsstatus}} </font> </div>  -->					
 				<label class="containeradio">
 					<font color="white">{{irvms.irvmsstatus}}</font>
   						<input type="radio" name="accvmssatus" id="accvmssatus" ng-model="accvmssatus">
   						<span class="radiocheckmark"></span>
 				</label>
 				</td>
-			<td><div id="accvmsequipid" > <font color="#C8CFF4">  {{irvms.irvmsequipid}}  </font></div></td>
-			<td><textarea class = "textareaVmsMsg" id="accMessageDetail" rows="3" cols="28" ng-model='irvms.irvmsaccmsg'></textarea></td>
-			<td> <i class="material-icons" style="font-size:8px;color:#C8CFF4;">border_color</i> </td>	
-	</tr>
+			<td><div id="accvmsequipid" > <font color="#C8CFF4">  {{irvms.irvmsequipid}}  </font></div>
+			<input type="hidden" id="accvmsequipidt" name="accvmsequipidt" value='{{irvms.irvmsequipid}}' size="5" readonly>
+			</td>
+			<td>
+			<input type="hidden" name="accMessageDetail" id="accMessageDetail" value='{{irvms.irvmsaccmsg}}' size="5" readonly> 
+			<!-- <textarea class="textareaVmsMsg" name="accMessageDetail" id="accMessageDetail" rows="3" cols="28" ng-model='irvms.irvmsaccmsg'>{{irvms.irvmsaccmsg}}</textarea>  -->
+			<div class="textimageAccidentdiv" contentEditable="true" id="vmsMessageDetailAcc"> {{irvms.irvmsaccmsg}}
+  				 <div ng-if="irvms.irvmsaccmsg.indexOf('Accident') === 0"> <img src="accimg1.JPG"  width="30px" height="30px"/> <img src="vms5.png"  width="30px" height="30px"/> </div>
+				 <div ng-if="irvms.irvmsaccmsg.indexOf('Accident') === -1"> <img src="vms4.png"  width="30px" height="30px"/> </div> 
+			</div>
+			</td> 
 				
+	    </tr>		
 			</table>
 			<table width="100%"> 
 				<tr>
 					<td>
-						<div align="right">
+						<div aligh="right">
 							<a href="#" class="buttonImp" id="accVmsMessage"  ng-click="irvmsMsgImpl()" style="text-decoration:none;"> Implement </a>
-							<a href="#" class="buttonRem" id="buttonRem" ng-click="irvmsMsgRemoved()" style="text-decoration:none;"> Remove </a> 						
+							<a href="#" class="buttonImpAll" id="accAllVmsMessage"  ng-click="irvmsMsgImplAll()" style="text-decoration:none;"> Implement All </a>
+							<a href="#" class="buttonRem" id="remAccVmsMessage" ng-click="irvmsMsgRemoved()" style="text-decoration:none;"> Remove </a> 						
 						</div>	
 					</td>
 				</tr>
@@ -757,19 +1099,19 @@ background-color: black;
      <div class="panel panel-default">
     	<div class="panel-heading active">
         	<h4 class="panel-title">
-                   Canning Message<span data-target="#Collapseicon5" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
+                   Canning Message<span data-target="#Collapseiconacc5" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
             </h4>
            <!-- <img src="horibar.JPG" height="auto" > -->
         </div>
         
-        <div class="panel-collapse collapse" id="Collapseicon5">
+        <div class="panel-collapse collapse" id="Collapseiconacc5">
         	<div class="panel-body">
             	<!-- <p>Canning Messages</p>  -->
             	<p>Enter Canning Messages</p>
 			   <table width="100%" class="tablevms"> 
 					<tr>
 						<td>
-							<textarea class = "textareaVmsMsg" rows="3" cols="55" placeholder="This road has heavy traffic, please Note." ng-model="canningMsg"> </textarea>
+							<textarea class = "textareaVmsMsg" rows="3" cols="55" ng-model="accCanningMsg"> </textarea>
 							<a href="#" class="buttonImp" id="buttonImp" ng-click="canMsgSend()"> Send </a>						
 						</td>
 					</tr>
@@ -780,11 +1122,11 @@ background-color: black;
        <div class="panel panel-default">
     	<div class="panel-heading active">
         	<h4 class="panel-title">
-                   OBU Messages <span data-target="#Collapseicon6" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
+                   OBU Messages <span data-target="#Collapseiconacc6" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
             </h4>
         </div>
         
-        <div class="panel-collapse collapse" id="Collapseicon6">
+        <div class="panel-collapse collapse" id="Collapseiconacc6">
         	<div class="panel-body">
            	
           	<p>OBU Message </p>
@@ -798,9 +1140,14 @@ background-color: black;
 							<div ng-if="obuMsgStatus==='Implemented'"> <span class="dotimp"></span> {{obuMsgStatus}} </div>
 							<div ng-if="obuMsgStatus==='Not Active'">  <span class="dotnotact"></span> {{obuMsgStatus}} </div>					
 						</td>
-						<td> <textarea class = "textareaVmsMsg" rows="3" cols="42" ng-model="recommMsg" ng-click="enableText()"  placeholder="Message to be displayed on OBU"> {{obuMsg}} </textarea></td>						
-						<td>KM Marking 
-						<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="markalert" ng-click="enableText()" placeholder="1.2" > {{obuMsg}}</textarea></td>
+						<td> 
+						<div class="textimageAccidentdiv" contentEditable="true" ng-model="accAlertMsg" ng-click="enableText()" id="obuAlertTxtId"> {{accAlertMsg}} 
+									<img src="alertzoneimg.PNG"  width="30px" height="30px"/> 
+						</div>
+						
+						</td>						
+						<td>KM
+						<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="accAlertMsgKM" ng-click="enableText()" > {{accAlertMsgKM}}</textarea></td>
 						
 					</tr>
 					<tr>
@@ -812,8 +1159,12 @@ background-color: black;
 							<div ng-if="obuMsgStatus==='Implemented'"><h6> <span class="dotimp"></span> {{obuMsgStatus}} </h6></div>
 							<div ng-if="obuMsgStatus==='Not Active'"><h6>  <span class="dotnotact"></span> {{obuMsgStatus}} </h6></div>						
 						</td>
-						<td> <textarea class = "textareaVmsMsg" rows="3" cols="42" ng-model="jamMsg" ng-click="enableText()" placeholder="Message to be displayed on OBU" > {{obuMsg}}</textarea></td>						
-						<td>KM Marking<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="markjam" ng-click="enableText()" placeholder="1.2" > {{obuMsg}}</textarea></td>	
+						<td>
+							  <div class="textimageAccidentdiv" contentEditable="true"  ng-model="accJamMsg"  id="obuJamTxtId" ng-click="enableText()" > {{accJamMsg}} 
+							  	<img src="alertzoneimg.PNG"  width="30px" height="30px"/>
+							  </div>
+						</td>						
+						<td>KM<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="accJamMsgKM" ng-click="enableText()" > {{accJamMsgKM}}</textarea></td>	
 					</tr>
 					<tr>
 						<th colspan="3" bgcolor="#41EC42" style="padding:5px;"> Guide</th>
@@ -824,16 +1175,22 @@ background-color: black;
 							<div ng-if="obuMsgStatus==='Implemented'"><h6> <span class="dotimp"></span> {{obuMsgStatus}} </h6></div>
 							<div ng-if="obuMsgStatus==='Not Active'"><h6>  <span class="dotnotact"></span> {{obuMsgStatus}} </h6></div>						
 						</td>
-						<td> <textarea class = "textareaVmsMsg" rows="3" cols="42" ng-model="guideMsg" ng-click="enableText()"  placeholder="Message to be displayed on OBU" > {{obuMsg}}</textarea></td>						
-						<td>KM Marking<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="markguide" ng-click="enableText()" placeholder="1.2" > {{obuMsg}}</textarea></td>	
+						<td> 
+						<div class="textimageAccidentdiv" contentEditable="true"  id="obuGuideTxtId" ng-model="accGuideMsg"  id="obuJamTxtId" ng-click="enableText()" > {{accGuideMsg}} 
+							<img src="alertzoneimg.PNG"  width="30px" height="30px"/>
+						</div>
+						
+						</td>						
+						<td>KM<textarea class ="textareaVmsMsg" rows="1" cols="3" ng-model="accGuideMsgKM" ng-click="enableText()" > {{accGuideMsgKM}}</textarea></td>	
 					</tr>					
 				</table>
 				<table width="100%"> 
 				<tr>
 					<td>
 						<div align="right">
-							<a href="#" class="buttonRem" id="buttonRem" ng-click="obuMsgdeact()" style="text-decoration:none;"> Deactivate All </a> 
-							<a href="#" class="buttonImp" id="buttonImp" ng-click="obuMsgImpl()" style="text-decoration:none;"> Implement All </a>
+							
+							<a href="#" class="buttonImp" id="buttonRem" ng-click="obuMsgdeact()" style="text-decoration:none;"> Implement All </a>
+							<a href="#"  class="buttonRem" id="buttonImpFail" ng-click="obuMsgImpl()" style="text-decoration:none;"> Deactivate All </a> 
 						</div>	
 					</td>
 				</tr>
@@ -841,16 +1198,15 @@ background-color: black;
           	
             </div>
         </div>
-     </div>
-     
+     </div>     
      <div class="panel panel-default">
     	<div class="panel-heading active">
         	<h4 class="panel-title">               	
-                    Congestion Routes Monitoring <span data-target="#Collapseicon7" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+                    Congestion Routes Monitoring <span data-target="#Collapseiconacc7" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
             </h4>
         </div>
          
-        <div class="panel-collapse collapse" id="Collapseicon7">
+        <div class="panel-collapse collapse" id="Collapseiconacc7">
         	<div class="panel-body">
             	<p>Congestion Routes Monitoring </p>
             </div>
@@ -860,11 +1216,11 @@ background-color: black;
      <div class="panel panel-default">
     	<div class="panel-heading active">
         	<h4 class="panel-title">              	
-                   Partners & Vehicle Response<span data-target="#Collapseicon8" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
+                   Partners & Vehicle Response<span data-target="#Collapseiconacc8" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
             </h4>
         </div>
         
-        <div class="panel-collapse collapse" id="Collapseicon8">
+        <div class="panel-collapse collapse" id="Collapseiconacc8">
         	<div class="panel-body">
             	<p>Partners Vehicle Handling</p>
 					<table width="100%" class="tablevms" id="partvehitbl">  
@@ -884,10 +1240,10 @@ background-color: black;
 							</select>
 							
 							</td>
-							<td><input type="text" ng-click="" ng-model="partnerVehNopart" id="partnerVehNopart"  placeholder="RX23293" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerNotiTimepart" id="partnerNotiTimepart" placeholder="1/24/2018 12:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerArrTimepart" id="partnerArrTimepart" placeholder="1/24/2018 12:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerDepatTimepart" id="partnerDepatTimepart" placeholder="1/24/2018 16:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerVehNopart" id="partnerVehNopart" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerNotiTimepart" id="partnerNotiTimepart" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerArrTimepart" id="partnerArrTimepart" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerDepatTimepart" id="partnerDepatTimepart" style="height: 20px; width: 90px;font-size: 10px;"></td>
 						</tr>
 					</table>
 					<table width="100%"> 
@@ -917,10 +1273,10 @@ background-color: black;
 								<option value="Tower3">Tower3</option>
 							</select>							
 							</td>
-							<td><input type="text" ng-click="" ng-model="partnerVehNovec" id="partnerVehNovec" placeholder="RX23293" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerNotiTimevec" id="partnerNotiTimevec" placeholder="Bedok AVe 3" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerArrTimevec" id="partnerArrTimevec" placeholder="46" style="height: 20px; width: 90px;font-size: 10px;"></td>
-							<td><input type="text" ng-click="" ng-model="partnerDepatTimevec" id="partnerDepatTimevec" placeholder="1/24/2018 16:00" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerVehNovec" id="partnerVehNovec"  style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerNotiTimevec" id="partnerNotiTimevec" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerArrTimevec" id="partnerArrTimevec" style="height: 20px; width: 90px;font-size: 10px;"></td>
+							<td><input type="text" ng-click="" ng-model="partnerDepatTimevec" id="partnerDepatTimevec"  style="height: 20px; width: 90px;font-size: 10px;"></td>
 						</tr>					
 					</table>
 					<table width="100%"> 
@@ -937,6 +1293,16 @@ background-color: black;
             </div>
         </div>
      </div>
+     <!-- value for TMD Messages -->
+     				<div ng-repeat="tmdval in tmdmessages"> 		
+						<input type="hidden" id="tmdeqipid" name="tmdeqipid" value='{{tmdval.equipid}}' size="10" readonly>
+						<input type="hidden" id="tmdtimemsg" name="tmdtimemsg" value='{{tmdval.timemsg}}' size="10" readonly>
+						<input type="hidden" id="tmdminmsg" name="tmdminmsg" value='{{tmdval.minmsg}}' size="10" readonly>
+						<div ng-repeat = "str in tmdval.streetnames"> 
+							<input type="hidden" id="tmdstrnames" name="tmdstrnames" value='{{str.name}}{{sep}}{{str.min}}' size="35" readonly>
+						</div>
+					</div>
+	<!-- End of TMD Messages -->
     <div align="right"><a href="createincident.jsp" class="buttonCreateMrtInc" ng-click="addmrtincident()" style="text-decoration:none;"> SAVE </a></div> 
 </div>		  	  
  </div> 	
@@ -949,4 +1315,90 @@ background-color: black;
 		</div>
 	</div>  
 </body>
+<script>
+/*** Modal Content for Action Plan Accident IR*/
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("preTimeId");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+scenarioselectionid = 0;
+btn.onclick = function() {
+  modal.style.display = "block";
+  //Time Change 	
+ /* scenarioselectionid = document.getElementById("preTimeId").selectedIndex;
+  if(scenarioselectionid==1){
+	   document.getElementById("hrSelectSce1").innerHTML = "Delay Time 1.10 hrs";
+	   document.getElementById("hrSelectSce2").innerHTML = "Delay Time 1.30 hrs"
+  }
+  if(scenarioselectionid==2){
+	   document.getElementById("hrSelectSce1").innerHTML = "Delay Time 1.25 hrs";
+	   document.getElementById("hrSelectSce2").innerHTML = "Delay Time 1.45 hrs"
+  }
+  if(scenarioselectionid==3){
+	   document.getElementById("hrSelectSce1").innerHTML = "Delay Time 1.40 hrs";
+	   document.getElementById("hrSelectSce2").innerHTML = "Delay Time 2.00 hrs"
+  }
+  if(scenarioselectionid==4){
+	   document.getElementById("hrSelectSce1").innerHTML = "Delay Time 1.55 hrs";
+	   document.getElementById("hrSelectSce2").innerHTML = "Delay Time 2.15 hrs"
+  }*/
+  
+}
+function predictionwindow() {
+	 modal.style.display = "block";
+	 //all plan in one display
+	  //myModalLoad.style.display = "block";	  
+}
+
+//inner modal  Scenario 1 onclick
+var modalInner1 = document.getElementById("myModalInner1");
+
+// Get the button that opens the modal
+//var btn = document.getElementById("mySelect");
+lnkInner1 = document.getElementById("myModalInnerLnk1");
+
+// Get the <span> element that closes the modal
+var spanInner1 = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+lnkInner1.onclick = function() {
+  modalInner1.style.display = "block";
+}
+
+//inner modal Scenario 2 onclick
+var modalInner2 = document.getElementById("myModalInner2");
+
+// Get the button that opens the modal
+//var btn = document.getElementById("mySelect");
+lnkInner2 = document.getElementById("myModalInnerLnk2");
+
+// Get the <span> element that closes the modal
+var spanInner2 = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+lnkInner2.onclick = function() {
+  modalInner2.style.display = "block";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none"; 
+  }
+   if (event.target == modalInner1) { 
+   	modalInner1.style.display = "none";
+  }
+  if (event.target == modalInner2) { 
+   	modalInner2.style.display = "none";
+  }
+}
+/*** End Modal Content for Action Plan */ 
+ 
+
+</script>
 </html>

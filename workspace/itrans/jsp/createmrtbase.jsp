@@ -33,8 +33,8 @@
   	<script type="text/javascript" src="democontroller.js"></script>  
     
 	<!-- start plus and minu menu  script -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  -->
 	<!-- end plus and minu menu  script -->
 	
 	<script src="http://localhost:8080/itrans/arcgis_4.11/init.js"></script>  
@@ -97,7 +97,38 @@
 		  height: 550px;
 		  border-radius: 13px;
 		  text-align: center;
-		}      
+		}
+
+/* popup window font and background color*/
+.esri-view-width-xlarge .esri-popup__main-container,
+.esri-view-width-large .esri-popup__main-container,
+.esri-view-width-medium .esri-popup__main-container
+{
+  max-height: 100px !important;
+  max-width: 300px !important;
+  background-color: black;
+  color: white;
+    font-size: 14px;
+    font-family: Roboto, Helvetica, sans-serif;
+    line-height: 1.3em;
+}
+
+/*Remove the zoom button popup window*/
+.esri-popup__main-container .esri-popup__footer
+ {
+  display: none;
+} 
+
+/*Remove dock and close button popupwindow*/
+.esri-popup__main-container .esri-popup__header-buttons {
+    display: none;
+}
+
+/*change color in middle triangular button popupwindow*/
+.esri-popup--aligned-top-center .esri-popup__pointer-direction {
+background-color: black;
+}
+      
 h3 {
   color: #C8CFF4;
   font-size: 15px; padding: 10px;
@@ -265,7 +296,7 @@ h5 {
 				<td> 
 					<br>
 					<div id="createdir" align="right">
-						<a href="#" class="buttonCreateMrtInc"  ng-click="createmrtinc()" style="text-decoration:none;">  CREATE </a>
+						<a href="#" class="buttonCreateMrtInc" id="createmrtincid" ng-click="createmrtinc()" style="text-decoration:none;">  CREATE </a>
 							<!-- <button  class="buttonCreateMrtInc"  ng-click="createmrtinc()" style="text-decoration:none;"> CREATE </button> -->
 					</div>
 				</td> 
@@ -287,13 +318,13 @@ h5 {
 	  <!--  Mrt creation top and right side panel div -->
 <div ng-show="mrtinccreateflag"> 
 	  <div id="instruction">    
-					        <button class="mrtclosedbutton" id="mrtclosepoint" >MRT Closed Points  </button>
-					     <!--    <button id="vms" >VMS Picture Symbol</button>
+					       <!--  <button class="mrtclosedbutton" id="mrtclosepoint" >MRT Closed Points  </button>
+					        <button id="vms" >VMS Picture Symbol</button>
 					        <button id="line" >Draw a Line </button>
 					        
 					       <button id="rdclose" > Road closure Automatic Line </button>
-					       <button id="rdclosepoint" >Road Closure Entry Exit Picture Symbol  </button>  -->
-					       <button id="undo" class="mrtresetbutton" >Reset  </button>
+					       <button id="rdclosepoint" >Road Closure Entry Exit Picture Symbol  </button> 
+					       <button id="undo" class="mrtresetbutton" >Reset  </button>  -->
 				      </div>   
      <div id="panelTopDiv"  style="background-color: #202B53;">
     	<h4>MRT Service Disruption  </h4> 
@@ -319,11 +350,11 @@ h5 {
 		 <div class="panel panel-default">
 	    	<div class="panel-heading active">
 	        	<h4 class="panel-title">
-	                 Incident <span data-target="#Collapseicon1" data-toggle="collapse" data-parent="#accordion2"> </span>
+	                 Incident <span data-target="#Collapseiconmrt1" data-toggle="collapse" data-parent="#accordion2"> </span>
 	            </h4>
 	        </div>
 	        
-	        <div class="panel-collapse collapse in" id="Collapseicon1">
+	        <div class="panel-collapse collapse in" id="Collapseiconmrt1">
 	        <div class="panel-body">
 			<table width="100%" id="mrtdetailtbl">
 					<tr>
@@ -359,11 +390,11 @@ h5 {
 					 <div class="panel panel-default">
 						<div class="panel-heading active">
 							<h4 class="panel-title">
-								  <span data-target="#Collapseicon2" data-toggle="collapse" data-parent="#accordion2"> </span>
+								  <span data-target="#Collapseiconmrt2" data-toggle="collapse" data-parent="#accordion2"> </span>
 							</h4>
 						</div>
 						
-						<div class="panel-collapse collapse in" id="Collapseicon2">
+						<div class="panel-collapse collapse in" id="Collapseiconmrt2">
 							<div class="panel-body">
 							 <table width="100%" id="mrtdetailtbl"> 
 							<tr>
@@ -403,11 +434,11 @@ h5 {
 				<!--  		<div class="panel panel-default">
 						<div class="panel-heading active">
 							<h4 class="panel-title">
-								  <span data-target="#Collapseicon3" data-toggle="collapse" data-parent="#accordion2"> </span>
+								  <span data-target="#Collapseiconmrt3" data-toggle="collapse" data-parent="#accordion2"> </span>
 							</h4>
 						</div>
 						
-						<div class="panel-collapse collapse in" id="Collapseicon3">
+						<div class="panel-collapse collapse in" id="Collapseiconmrt3">
 							<div class="panel-body">
 								<table width="50%">
 									<tr>
@@ -446,11 +477,11 @@ h5 {
 					 <div class="panel panel-default">
 						<div class="panel-heading active">
 							<h4 class="panel-title">
-								  <span data-target="#Collapseicon4" data-toggle="collapse" data-parent="#accordion2"> </span>
+								  <span data-target="#Collapseiconmrt4" data-toggle="collapse" data-parent="#accordion2"> </span>
 							</h4>
 						</div>
 						
-						<div class="panel-collapse collapse in" id="Collapseicon4">
+						<div class="panel-collapse collapse in" id="Collapseiconmrt4">
 							<div class="panel-body">
 								<table width="100%"  id="mrtdetailtbl">
 								<tr>

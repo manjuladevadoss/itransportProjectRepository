@@ -1,0 +1,22 @@
+{
+  "trafficlight": [
+    {
+      "irtrlightid": "903462",
+      "irtrlightmsg": "Phase C +5% for 15 mins",
+      "longitude" : "103.8610747",
+      "latitude" : "1.3772975" 
+    },
+    {
+      "irtrlightid": "903433",
+      "irtrlightmsg": "Phase A +5% for 10 mins",
+      "longitude" : "103.8580815",
+      "latitude" : "1.3764106" 
+    },
+    {
+      "irtrlightid": "903897",
+      "irtrlightmsg": "Phase B +5% for 20 mins",
+      "longitude" : "103.8547399",
+      "latitude" : "1.3758293" 
+    }
+  ]
+}

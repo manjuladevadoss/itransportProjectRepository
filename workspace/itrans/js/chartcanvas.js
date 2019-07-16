@@ -3,10 +3,10 @@
 //bar chart work order
 var ctx2 = document.getElementById("barchartContainer");
 var barChart = new CanvasJS.Chart(ctx2, {
-	backgroundColor: 'rgba(34,49,94, 1.0)',
+	backgroundColor: 'rgba(34,49,94, 1.0)',	
 	title: {
 		text: "Work Order",
-		fontColor: "#C8CFF4",
+		fontColor: "#ffffff",
 		fontFamily: "Roboto, Helvetica, sans-serif"
 	},  
 	axisX: {
@@ -14,14 +14,14 @@ var barChart = new CanvasJS.Chart(ctx2, {
 		//valueFormatString: "hh:mm",
 		gridThickness: 0,
 		labelFontSize: 10,
-		labelFontColor: "#C8CFF4"
+		labelFontColor: "#ffffff"
     },
 	axisY: {
 		//title: "Temperature (°C)",
 		//suffix: " °C"
 		gridThickness: 0,
 		labelFontSize: 10,
-		labelFontColor: "#C8CFF4"
+		labelFontColor: "#ffffff"
 	},
 	data: [{
 		type: "column",	
@@ -51,8 +51,8 @@ function updateBarChart() {
 	for (var i = 0; i < dps.length; i++) {
 		deltaY = Math.round(2 + Math.random() *(-2-2));
 		yVal = deltaY + dps[i].y > 0 ? dps[i].y + deltaY : 0;
-		boilerColor = yVal > 15 ? "#7DD6F7" : yVal <= 5 ? "#6B8E23" : yVal < 15 ? "#6B8E23" : null;
-		//boilerColor = "#7DD6F7"; 
+		//boilerColor = yVal > 15 ? "#7DD6F7" : yVal <= 5 ? "#6B8E23" : yVal < 15 ? "#6B8E23" : null;
+		boilerColor = "#D0A2FD"; 
 		dps[i] = {label: (j+1)+".00" , y: yVal, color: boilerColor};
 		j++;
 	}
@@ -69,7 +69,7 @@ var lineChart = new CanvasJS.Chart(ctx1, {
 	backgroundColor: 'rgba(34,49,94, 1.0)',
 	title: {
 		text: "Alarms",
-		fontColor: "#C8CFF4",
+		fontColor: "#ffffff",
 		fontFamily: "Roboto, Helvetica, sans-serif"
 	},  
 	axisX: {
@@ -77,14 +77,14 @@ var lineChart = new CanvasJS.Chart(ctx1, {
 		//valueFormatString: "hh:mm",
 		gridThickness: 0,
 		labelFontSize: 10,
-		labelFontColor: "#C8CFF4"
+		labelFontColor: "#ffffff"
     },
 	axisY: {
 		//title: "Temperature (°C)",
 		//suffix: " °C"
 		gridThickness: 0,
 		labelFontSize: 10,
-		labelFontColor: "#C8CFF4"
+		labelFontColor: "#ffffff"
 	},
 	data: [{
 		type: "line",	
@@ -115,7 +115,7 @@ function updateLineChart() {
 		deltaY = Math.round(2 + Math.random() *(-2-2));
 		yVal = deltaY + dps[i].y > 0 ? dps[i].y + deltaY : 0;
 		//boilerColor = yVal > 200 ? "#FF2500" : yVal >= 170 ? "#FF6000" : yVal < 170 ? "#6B8E23 " : null;
-		boilerColor = "#7DD6F7";  
+		boilerColor = "#D0A2FD";  
 		dps[i] = {label: (j+1)+".00" , y: yVal, color: boilerColor};
 		j++;
 	}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!-- Add a title -->
+
+<html>
+  <head>    
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>D3 Bar Chart 23</title>
+    <link rel="stylesheet" href="dc.css">
+    <head> 
+<style>
+</style>
+
+<body>   
+
+<h1>D3 bar chart Samples using csv working local</h1>
+<script src="d3.v2.js"></script>     
+<script> 
+
+d3.csv("mydata.csv",function(mydata){
+//if(err) throw err;
+//console.log(data);
+var canvas = d3.select("body").append("svg")
+.attr("width", 500)
+.attr("height", 500)
+
+canvas.selectAll("rect")
+.data(mydata)
+.enter()
+    .append("rect")
+    .attr("width", function(d, j){return d.age*10;})
+    .attr("height",45)
+    .attr("y",function(d, i){ return i*50;})
+    .attr('stroke', 'black')
+    .attr("fill", "red");
+
+/*canvas.selectAll("text")
+.data(mydata)
+.enter()
+    .append("text")
+    .attr("fill","white")
+    .attr("y", function(d,i) {return i*50 + 24;})
+    .text(function(d) {return d.name})
+*/
+canvas.selectAll("text")
+.data(mydata)
+.enter()
+    .append("text")
+    .attr("fill","white")
+    .attr("y", function(d,i) {return i*50 + 24;})
+    .attr('stroke', 'green')
+    .style("font-size", 19)
+    .text(function(d) {return (d.name + " " + d.age)})
+    
+
+});
+</script>    
+     
+     
+
+   
+      
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to check if "fruits" is an array.</p>
+
+Array text box<br>
+<input type="text" name="pname[]" value="" /><br>
+<input type="text" name="pname[]" value="" /> <br>
+<input type="text" name="pname[]" value="" /><br>
+<input type="button" value="get it!" onclick="getvalues();" />
+
+<br>Array text box another way
+<br><input type="text" name="test" value="test1">
+<br><input type="text" name="test" value="test2">
+<br><input type="text" name="test" value="test3">
+<br><input type="text" name="test" value="test4">
+<br><button onclick="textArrayElement()">Text Array Display</button>
+
+
+<br>Array div 
+<div id="first"> 1000 </div>
+<div id="first"> 2000 </div>
+<div id="first"> 3000 </div>
+<div id="first"> 4000 </div>
+<button onclick="divArrayElement()">Div Array Display</button>
+<div id="divvalue"></div>
+
+
+<p>Click the button to change the text of this paragraph.</p>
+<p>This is also a paragraph.</p>
+<div id="d1">1. Click the button to change the text of this paragraph.</div>
+<div id="d1">2. Click the button to change the text of this paragraph.</div>
+<div id="d1">3. Click the button to change the text of this paragraph.</div>
+<button onclick="fun1()">Try it</button>
+
+<script>
+
+function getvalues() {
+	var inps = document.getElementsByName("pname[]");
+	for (var i = 0; i <inps.length; i++) {
+	var inp=inps[i];
+		alert("pname["+i+"].value="+inp.value);
+	}
+}
+
+function divArrayElement() {
+//retrive DIV Array
+  var details = document.getElementsByTagName("div");
+  var l = details.length;
+  alert("Retrive Div Array element and display " + "\n" + "Div Array Length " + l);
+  for(i =0;i<l;i++){
+  	alert("Textbox value["+ i+"] is " + details[i].innerHTML);
+  }
+}
+
+function textArrayElement() {
+  //retrive Text Array
+  var msg = document.getElementsByName("test");
+  var le = msg.length;
+  alert("Retrive Texdt Array element and display " + "\n" + "Text Array lenght is " + le);
+  for(i =0;i<le;i++) {
+      alert("Div value["+ i+"] is " + msg[i].value);
+  }
+
+ }
+ 
+ function fun1() {
+  var a = document.getElementsByTagName("div")["first", 2].innerHTML;
+  alert("change div ele : " + a);
+  document.getElementsByTagName("div")["d1", 0].innerHTML = "Hello World!";
+  
+}
+</script>
+
+</body>
+</html>

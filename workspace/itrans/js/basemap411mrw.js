@@ -8,8 +8,8 @@
         "esri/widgets/LayerList", "esri/views/draw/Draw",
 		'esri/layers/WMSLayer',
 		"esri/views/MapView",
-        "esri/layers/BaseDynamicLayer"
-      ], function(Map, MapView,Graphic, WMTSLayer,Extent, LayerList, Draw, WMSLayer, MapView, BaseDynamicLayer) {
+        "esri/layers/BaseDynamicLayer","esri/views/layers/support/FeatureFilter","esri/views/layers/FeatureLayerView"
+      ], function(Map, MapView,Graphic, WMTSLayer,Extent, LayerList, Draw, WMSLayer, MapView, BaseDynamicLayer,FeatureFilter,FeatureLayerView) {
         layer = 
           new WMTSLayer({
           url: "http://192.168.99.100:32768/services/wmts?service",
@@ -159,7 +159,8 @@
         view = new MapView({
           container: "viewDiv",
           map: map,
-          center: [103.836862, 1.329735],
+         // center: [103.836862, 1.329735],
+		 center: [103.866673, 1.310829],
           zoom: 12        
         });
        
@@ -203,9 +204,9 @@
   /* end of draw line function */     
         
         /* undo */
-        document.getElementById("undo").onclick = function() {
+        /* document.getElementById("undo").onclick = function() {
           view.graphics.removeAll();
-          }
+          }  */
         /*undo*/
         /* Start draw line function */
         document.getElementById("line").onclick = function() {
@@ -251,7 +252,7 @@
       };
     var mrwPictureSymbol = {
        type: "picture-marker",
-      url: "rdwork.jpg",
+      url: "rdwork.png",
       width: "20",
       height: "20"
      }
@@ -267,7 +268,7 @@
           };
       var mrwPictureSymbol1 = {
           type: "picture-marker",
-          url: "rdwork.jpg",
+          url: "rdwork.png",
           width: "20",
           height: "20"
         }
@@ -283,7 +284,7 @@
           };
       var mrwPictureSymbol2 = {
           type: "picture-marker",
-          url: "rdwork.jpg",
+          url: "rdwork.png",
           width: "20",
           height: "20"
         }
@@ -298,7 +299,7 @@
               };
      var mrwPictureSymbol3 = {
               type: "picture-marker",
-              url: "rdwork.jpg",
+              url: "rdwork.png",
               width: "20",
               height: "20"
             }
@@ -313,7 +314,7 @@
                   };
      var mrwPictureSymbol4 = {
           type: "picture-marker",
-          url: "rdwork.jpg",
+          url: "rdwork.png",
           width: "20",
           height: "20"
        }
@@ -329,7 +330,7 @@
                   };
      var mrwPictureSymbol5 = {
           type: "picture-marker",
-          url: "rdwork.jpg",
+          url: "rdwork.png",
           width: "20",
           height: "20"
        }
@@ -345,7 +346,7 @@
          };
      var mrwPictureSymbol5 = {
           type: "picture-marker",
-          url: "rdwork.jpg",
+          url: "rdwork.png",
           width: "20",
           height: "20"
        }
@@ -361,7 +362,7 @@
          };
      var mrwPictureSymbol6 = {
           type: "picture-marker",
-          url: "rdwork.jpg",
+          url: "rdwork.png",
           width: "20",
           height: "20"
        }
@@ -377,7 +378,7 @@
          };
      var mrwPictureSymbol7 = {
           type: "picture-marker",
-          url: "rdwork.jpg",
+          url: "rdwork.png",
           width: "20",
           height: "20"
        }
@@ -393,7 +394,7 @@
          };
      var mrwPictureSymbol8 = {
           type: "picture-marker",
-          url: "rdwork.jpg",
+          url: "rdwork.png",
           width: "20",
           height: "20"
        }
@@ -402,83 +403,84 @@
          symbol: mrwPictureSymbol8
        });
 
-     
-     view.graphics.addMany([mrwPictureGraphic,mrwPictureGraphic1,mrwPictureGraphic2,mrwPictureGraphic3,mrwPictureGraphic4,mrwPictureGraphic5,mrwPictureGraphic6,mrwPictureGraphic7,mrwPictureGraphic8]);
-     document.getElementById("mrwlocation").onclick = function() {
-        view.graphics.addMany([mrwPictureGraphic1,mrwPictureGraphic1,mrwPictureGraphic2,mrwPictureGraphic3,mrwPictureGraphic4,mrwPictureGraphic5,mrwPictureGraphic6,mrwPictureGraphic7,mrwPictureGraphic8]);
-        
-        //Vehicle moving interval
-        setInterval(first(), 5000);
-        setInterval(second(), 8000);
-        function first() {
-     	   	view.graphics.addMany([mrwvehPictureGraphic1]);
-        }
-        function second() {
-        	view.graphics.remove([mrwvehPictureGraphic1]);
-          }
-     }
-      /*end of on road closed start and end points icons*/
-   /****Mobile road work moving vehicle data ***/  
-     
+     /****Mobile road work moving vehicle data ***/    
      var mrwvehpoint1 = {
              type: "point", // autocasts as new Point()
-             longitude: 1.304744,
-             latitude: 103.879593                    
+             longitude: 103.879593,
+             latitude:   1.304744                  
          };
      var mrwvehPictureSymbol1 = {
           type: "picture-marker",
           url: "wateringplant.png",
-          width: "25",
+          width: "20",
           height: "20"
        }
      var mrwvehPictureGraphic1 = new Graphic({
          geometry: mrwvehpoint1,
          symbol: mrwvehPictureSymbol1
        });
-
+     view.graphics.addMany([mrwvehPictureGraphic1]);
      /****end of road work moving vehicle data ***/        
+     
+    featureLayerView = new FeatureLayerView();
+	  featureLayerView.filter = new FeatureFilter({
+    	  where: "percentile >= 30",
+    	  geometry: mrwvehpoint1,
+    	  spatialRelationship: "contains",
+    	  distance: 10,
+    	  units: "miles"
+    	});
+     view.graphics.addMany([mrwPictureGraphic,mrwPictureGraphic1,mrwPictureGraphic2,mrwPictureGraphic3,mrwPictureGraphic4,mrwPictureGraphic5,mrwPictureGraphic6,mrwPictureGraphic7,mrwPictureGraphic8]);
+  /*end of on road closed start and end points icons*/
         
      /*** VMS Message Display **************/
+     var pictureGraphicText;
+     var seleMsgNo ;
      document.getElementById("mrwVmsMessage").onclick = function() {
-     	var details = document.getElementById("vmsMessageDetail1").innerHTML;
-     	var imgindex = details.indexOf("<img");
-        var vmsMessage = details.substring(0, imgindex-5);
-       // alert("vmsMessage : " +  vmsMessage);
-       	var vmseqipid = document.getElementById("vmsequipid").innerHTML;
-       	var eqipidbefindex = vmseqipid.indexOf('">');
-       //	alert("eqipidbefindex : " + eqipidbefindex);
-       	var eqipidindex = vmseqipid.indexOf("</font>");
-        var eqipid = vmseqipid.substring(eqipidbefindex+2, eqipidindex-5);
-       // alert("eqipid :  " + eqipid);
-       // var word = eqipid + " " + vmsMessage;
-             	
-       	//VMS Test Message display on the map
+      //selected check box
+      var b =  document.getElementsByName("irmrwvmssatus").length;
+       
+	    for(i=0;i<b;i++) {   
+         if (document.getElementsByName("irmrwvmssatus")[i].checked) {
+          seleMsgNo = i ;
+        }
+      }
+      //selected vms message 
+      var details = document.getElementsByName("mrwvmsmsgt");
+      var selemsg = details[seleMsgNo].value;
+      var sepIndex = selemsg.indexOf("$");
+      var mrwvmsMsg = selemsg.substring(0, sepIndex);
+      var mrwvmsEqipId = selemsg.substring(sepIndex+1, selemsg.length);
+      //VMS Test Message display on the map
       	var textSymbol = {
        type: "text",  // autocasts as new TextSymbol()
-       color: "#202B53",
+      color: "#202B53",
        //haloColor: "black",
        //haloSize: "0px",
-       text: eqipid,
-       xoffset: 20,
+       text: mrwvmsEqipId,
+	   xoffset: 4,
        yoffset: 10,
        font: {  // autocast as new Font()
-         size: 12,
-         family: "Roboto, Helvetica, sans-serif"
-         
-       }
+        	  size: 8,
+        	  weight: "bold"
+        	}
      };	
-   	 var point3 = {
-                 type: "point", // autocasts as new Point()
-                 longitude: 103.879311,
-                 latitude: 1.304618                     
-               };
-       var pictureGraphicText = new Graphic({
-               geometry: point3,
+	
+	if(seleMsgNo==0) {
+	 	 var vmspoint1 = {
+               type: "point", // autocasts as new Point()
+             //  longitude: 103.879066,
+             //  latitude: 1.304597                     			 
+			 longitude: 103.879158,
+			 latitude: 1.3046553
+               }; 			     
+       vmspictureGraphicText1 = new Graphic({
+               geometry: vmspoint1,
                symbol: textSymbol,
                popupTemplate: {
                    // autocasts as new PopupTemplate()
-                   title: eqipid,
-                   content: vmsMessage
+                   title: mrwvmsEqipId,
+                   content: mrwvmsMsg
                    	  /* content: [
                    		    {
                    		      type: "fields",
@@ -491,17 +493,57 @@
                    		  ] */
                  }
              });
-     		view.graphics.addMany([pictureGraphicText]);
+     		view.graphics.addMany([vmspictureGraphicText1]);							
+	}
+			
+			if(seleMsgNo==1) {
+	var vmspoint2 = {
+               type: "point", // autocasts as new Point()
+               longitude: 103.8815355,
+                 latitude: 1.306302                     
+               }; 		 			   
+       vmspictureGraphicText2 = new Graphic({
+               geometry: vmspoint2,
+               symbol: textSymbol,
+               popupTemplate: {
+                   // autocasts as new PopupTemplate()
+                   title: mrwvmsEqipId,
+                   content: mrwvmsMsg
+                   	  /* content: [
+                   		    {
+                   		      type: "fields",
+                   		      fieldInfos: [
+                   		        {
+                   		          fieldName: "roadname",
+                   		          label: "Circuit Link "
+                   		        } ]
+                   		    }
+                   		  ] */
+                 }
+             });
+     		view.graphics.addMany([vmspictureGraphicText2]);				
+				
+			}
      }
 
      /*** VMS Message Display **************/       
-        
+/*** Remove particular vms message */
+     document.getElementById("mrwvmsMsgRemoved").onclick = function() { 
+      if(seleMsgNo==0) {  
+        view.graphics.remove([pictureGraphicText]);
+      }
+      
+     }
+/**** End of Remove particular vms message */     
+
 		//map.add(wmsLayer);  
         view.when(function() {
         //view.extent = layer.fullExtent;
 		view.extent = new Extent({
-		  xmin: 103.630760,
-		  ymin:  1.266575,
+		 // xmin: 103.630760,
+		//  ymin:  1.266575,
+		  xmin: 103.866673,
+		  ymin:  1.310829,	
 		  xmax: 103.963800,
 		  ymax:  1.418752,
 		  spatialReference: {
@@ -515,5 +557,3 @@
         }); 
 
       });
-	  	  
-  

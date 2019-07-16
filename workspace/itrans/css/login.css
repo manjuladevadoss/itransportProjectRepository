@@ -16,7 +16,7 @@ body {
   margin-top: 10%;
   /*box-shadow: 3px 6px 6px #888888;*/
   box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.48);
-  height: 355px;  
+  height: 320px;  
 }
 
 h7 {
@@ -31,18 +31,15 @@ h7 {
   padding: 8px 20px;
   text-decoration: none;
   display: inline-block;
-  height: 30px;
-  width: 121px;
-  
   color: #FFF;
   font-family: Roboto, Helvetica, sans-serif;
-  font-size: 26px;
+  font-size: 25px;
   font-weight: 500;
   line-height: 30px;
   text-align: center;
   border-radius: 6px;
-  height: 55px;
-  width: 121px;
+  height: 50px;
+  width: 100px;
 }
 
 .resizedTextbox {

@@ -102,10 +102,11 @@ div.scrollwcindiv {
   cursor: pointer;
   font-size: .6em;
   font-weight: bold;
+  color: black;
   border: 2px solid #33FF33;
   border-radius: 2px/2px;
   background:#33FF33;
-  width:80px;
+  width:75px;
 }
 
 .buttoninprogress{
@@ -113,8 +114,9 @@ div.scrollwcindiv {
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
-  font-weight: bold;
   font-size: .6em;
+  font-weight: bold;
+  color: black;
   border: 2px solid yellow;
   border-radius: 2px/2px;
   background:yellow;
@@ -126,12 +128,13 @@ div.scrollwcindiv {
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
-  font-weight: bold;
   font-size: .6em;
+  font-weight: bold;
+  color: black;
   border: 2px solid #49FFFF;
   border-radius: 2px/2px;
   background:#49FFFF;
-  width:80px;
+  width:75px;
 }
 
 .buttonpending {
@@ -141,10 +144,11 @@ div.scrollwcindiv {
   cursor: pointer;
   font-size: .6em;
   font-weight: bold;
+  color: black;
   border: 2px solid #00BFFF;
   border-radius: 2px/2px;
   background: #00BFFF;
-  width:80px;
+  width:75px;
 }
 .buttonnotact{
   text-align: center;
@@ -152,11 +156,12 @@ div.scrollwcindiv {
   display: inline-block;
   cursor: pointer;
   border-radius: 2px/2px;
-  font-weight: bold;
   font-size:.6em;
+  font-weight: bold;
+  color: black;
   border: 2px solid #FF6347;
   background: #FF6347;
-  width:80px;
+  width:75px;
 }
 
 
@@ -174,19 +179,19 @@ input[type=text] {
 }
 
 h3 {
-  color: #C8CFF4;
+  color: #ffffff;
 }
 h4 {
 height: 30px;
   width: 462px;
-  color: #C8CFF4;
+  color: #ffffff;
   font-family: Roboto, Helvetica, sans-serif;
   font-size: 24px;
   font-weight: 100;
   line-height: 30px;
 }
 h5 {
-  color: #C8CFF4;
+  color: #ffffff;
   font-family: Roboto, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 100;
@@ -208,7 +213,7 @@ h10 {
   font-size: 20px;
 }
 p{
-  color: #C8CFF4;
+  color: #ffffff;
   font-size: 12px;
 }
 
@@ -303,12 +308,13 @@ body {
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
-  font-size: .7em;
+  font-size: .6em;
   font-weight: bold;
+  color: black;
   border: 2px solid #ffcc66;
   border-radius: 2px/2px;
   background:#ffcc66;
-  width:80px;
+  width:75px;
 }
 
 .buttonplan{
@@ -316,11 +322,11 @@ body {
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
-  font-size: .7em;
-  color: black;
+  font-size: .6em;
   font-weight: bold;
+  color: black;
   border: 2px solid #4dd2ff;
   border-radius: 2px/2px;
   background:#4dd2ff;
-  width:80px;
+  width:75px;
 }

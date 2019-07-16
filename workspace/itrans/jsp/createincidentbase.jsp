@@ -54,6 +54,26 @@
 	<script src="http://localhost:8080/itrans/arcgis_4.11/init.js"></script>  
 	<script src="basemap411irselect.js"></script>   
     <script>
+    function bisMainWindow() {
+      var windowObjectReference2;  
+      var protocol = window.location.protocol;
+      var domain = window.location.hostname;
+      var port = window.location.port
+      var c =":";
+      var s = "//"
+      if(windowObjectReference2 == null || windowObjectReference2.closed) {
+	    	var strpage3 = "/itrans/bisheader.jsp";
+		    var value3 = protocol.concat(s,domain,c,port,strpage3);
+		    //alert("bis url " + value3);
+		    windowObjectReference2 = window.open(
+		    	  value3,			
+		  	      "bis",
+		  	      "top=100,left=100,width=520,height=430,resizable,scrollbars,status,toolbar=true,menubar=true");
+		  }else {
+				windowObjectReference2.focus();
+    	}
+    }
+    window.onload = bisMainWindow;
    	 $(document).bind("contextmenu",function(e){
     	  e.preventDefault();
     	  console.log(e.pageX + "," + e.pageY);

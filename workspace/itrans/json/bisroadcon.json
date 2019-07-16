@@ -1,0 +1,34 @@
+{
+  "bisroadcon": [
+    {
+      "labelname": "Reason Roadworks ask to leave",
+      "records": "0"
+    },
+    {
+      "labelname": "Did not complied with COP",
+      "records": "2"
+    },
+    {
+      "labelname": "Late Opening",
+      "records": "6"
+    },
+    {
+      "labelname": "Rejected",
+      "records": "4"
+    },
+    {
+      "labelname": "Ask to pack up due to secondary incident",
+      "records": "8"
+    },
+    {
+      "labelname": "Delay due to traffic condition/incident",
+      "records": "9"
+    }
+  ]
+}
+
+
+
+
+
+
