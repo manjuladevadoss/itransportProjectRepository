@@ -231,7 +231,8 @@
             symbol: rdcloseEndPictureSymbol
            });
         // end of add symbol start
-        document.getElementById("rdclosepoint").onclick = function() {alert("rd closure symbol");
+        document.getElementById("rdclosepoint").onclick = function() {
+        	//alert("rd closure symbol");
           view.graphics.addMany([rdcloseStPictureGraphic,rdcloseEndPictureGraphic]);
         }
         /*end of on road closed start and end points icons*/
@@ -311,7 +312,7 @@
         /****************/
         function vmsMsgDisplayOnMap(vmsEqipId, vmsMessage) {
         	if(vmsEqipId == "TIP 545862") {
-        		alert("1st vmsEqipId : " + vmsEqipId );
+        		//alert("1st vmsEqipId : " + vmsEqipId );
         		var textSymbol = {
                	       type: "text",  // autocasts as new TextSymbol()
                	       color: "#202B53",
@@ -342,11 +343,11 @@
    	             });
    	     		view.graphics.addMany([pictureGraphicText]);
         	} else {
-        		alert("1st vmsEqipId : " + vmsEqipId );
+        		//alert("1st vmsEqipId : " + vmsEqipId );
         	}
         	
         	if(vmsEqipId == "TIP 231482") {
-        		alert("2nd vmsEqipId : " + vmsEqipId );
+        		//alert("2nd vmsEqipId : " + vmsEqipId );
         		var textSymbol = {
                	       type: "text",  // autocasts as new TextSymbol()
                	       color: "#202B53",
@@ -377,7 +378,7 @@
    	             });
    	     		view.graphics.addMany([pictureGraphicText]);
         	}else {
-        		alert("1st vmsEqipId : " + vmsEqipId );
+        		//alert("1st vmsEqipId : " + vmsEqipId );
         	}
         	
       }

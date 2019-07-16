@@ -1,176 +1,148 @@
 
   /*** Start of Chart 1 */
+   var bgColor = [
+          "rgba(192,0,0)",
+		  "rgba(255,192,0)",
+		  "rgba(0,176,80)"
+        ];
+	var	bgborderColor	= [
+          "rgba(192,0,0)",
+		  "rgba(255,192,0)",
+		  "rgba(0,176,80)"
+        ]
+
   var ctxSpeed1 = document.getElementById("myChartSpeed1");
-  var totalVal = 0;
-  var titleLabel = 'EAC Speed Distribution';
-  var labelData = ["Red", "Ambar", "Green"];
-  var valueData = [3, 6, 4];
-  for(i=0;i<valueData.length;i++) {
-    totalVal = totalVal+valueData[i];
+  var totalSpeed1Val = 0;
+  var titleSpeedLabel = 'EAC Speed Distribution';
+  var labelSpeedData = ["Red", "Ambar", "Green"];
+  var valueSpeedData = [3, 6, 4];
+  for(i=0;i<valueSpeedData.length;i++) {
+    totalSpeed1Val = totalSpeed1Val+valueSpeedData[i];
   }
-  var data1 = {
-    labels: labelData,
+  var speedData1 = {
+    labels: labelSpeedData,
     datasets: [
       {
      // label: "TeamA Score",
-        data: valueData,
-        backgroundColor: [
-          "rgba(79,129,189)",
-          "rgba(155,187,89)",
-          "rgba(192,80,77)"
-        ],
-        borderColor: [
-          "rgba(79,129,189)",
-          "rgba(155,187,89)",
-          "rgba(192,80,77)"
-        ],
+        data: valueSpeedData,
+        backgroundColor: bgColor,
+        borderColor: bgborderColor,
         borderWidth: [1, 1, 1]
       }
     ]
   };
-doughnut(ctxSpeed1, data1, totalVal,titleLabel);
+SpeedChartCreation(ctxSpeed1, speedData1, totalSpeed1Val,titleSpeedLabel);
 /*** End of Chart 1 */
 
 /*** Start of Chart 2 */
   var ctxSpeed2 = document.getElementById("myChartSpeed2");
-  var totalVal2 = 0;
-  var titleLabel2 = 'Expressway Speed Distribution';
-  var labelData2 = ["Red", "Ambar", "Green"];
-  var valueData2 = [2, 2, 1];
-  for(i=0;i<valueData2.length;i++) {
-    totalVal2 = totalVal2+valueData2[i];
+  var totalSpeedVal2 = 0;
+  var titleSpeedLabel2 = 'Expressway Speed Distribution';
+  var labelSpeedData2 = ["Red", "Ambar", "Green"];
+  var valueSpeedData2 = [2, 2, 1];
+  for(i=0;i<valueSpeedData2.length;i++) {
+    totalSpeedVal2 = totalSpeedVal2+valueSpeedData2[i];
   }
-  var data2 = {
-    labels: labelData2,
+  var dataSpeed2 = {
+    labels: labelSpeedData2,
     datasets: [
       {
      // label: "TeamA Score",
-        data: valueData2,
-        backgroundColor: [
-          "rgba(79,129,189)",
-          "rgba(155,187,89)",
-          "rgba(192,80,77)"
-        ],
-        borderColor: [
-          "rgba(79,129,189)",
-          "rgba(155,187,89)",
-          "rgba(192,80,77)"
-        ],
+        data: valueSpeedData2,
+        backgroundColor: bgColor,
+        borderColor: bgborderColor,
         borderWidth: [1, 1, 1]
       }
     ]
   };
-doughnut(ctxSpeed2, data2, totalVal2,titleLabel2);
+SpeedChartCreation(ctxSpeed2, dataSpeed2, totalSpeedVal2,titleSpeedLabel2);
 /*** End of Chart 2 */
 
 /*** Start of Chart 3 */
 var ctxSpeed3 = document.getElementById("myChartSpeed3");
-var totalVal3 = 0;
-var titleLabel3 = 'EAC Travel Time Index Distribution';
-var labelData3 = ["Red", "Ambar", "Green"];
-var valueData3 = [2, 1, 8];
-for(i=0;i<valueData3.length;i++) {
-  totalVal3 = totalVal3+valueData3[i];
+var totalSpeedVal3 = 0;
+var titleSpeedLabel3 = 'EAC Travel Time Index Distribution';
+var labelSpeedData3 = ["Red", "Ambar", "Green"];
+var valueSpeedData3 = [2, 1, 8];
+for(i=0;i<valueSpeedData3.length;i++) {
+  totalSpeedVal3 = totalSpeedVal3+valueSpeedData3[i];
 }
-var data3 = {
-  labels: labelData3,
+var dataSpeed3 = {
+  labels: labelSpeedData3,
   datasets: [
     {
    // label: "TeamA Score",
-      data: valueData3,
-      backgroundColor: [
-        "rgba(79,129,189)",
-        "rgba(155,187,89)",
-        "rgba(192,80,77)"
-      ],
-      borderColor: [
-        "rgba(79,129,189)",
-        "rgba(155,187,89)",
-        "rgba(192,80,77)"
-      ],
+      data: valueSpeedData3,
+      backgroundColor: bgColor,
+      borderColor: bgborderColor,
       borderWidth: [1, 1, 1]
     }
   ]
 };
-doughnut(ctxSpeed3, data3, totalVal3,titleLabel3);
+SpeedChartCreation(ctxSpeed3, dataSpeed3, totalSpeedVal3,titleSpeedLabel3);
 /*** End of Chart 3 */
 
 /*** Start of Chart 4 */
 var ctxSpeed4 = document.getElementById("myChartSpeed4");
-var totalVal4 = 0;
-var titleLabel4 = "Expressway Travel Time Index Distribution";
-var labelData4 = ["Red", "Ambar", "Green"];
-var valueData4 = [4, 2, 3];
-for(i=0;i<valueData4.length;i++) {
-  totalVal4 = totalVal4+valueData4[i];
+var totalSpeedVal4 = 0;
+var titleSpeedLabel4 = "Expressway Travel Time Index Distribution";
+var labelSpeedData4 = ["Red", "Ambar", "Green"];
+var valueSpeedData4 = [4, 2, 3];
+for(i=0;i<valueSpeedData4.length;i++) {
+  totalSpeedVal4 = totalSpeedVal4+valueSpeedData4[i];
 }
-var data4 = {
-  labels: labelData4,
+var dataSpeed4 = {
+  labels: labelSpeedData4,
   datasets: [
     {
    // label: "TeamA Score",
-      data: valueData4,
-      backgroundColor: [
-        "rgba(79,129,189)",
-        "rgba(155,187,89)",
-        "rgba(192,80,77)"
-      ],
-      borderColor: [
-        "rgba(79,129,189)",
-        "rgba(155,187,89)",
-        "rgba(192,80,77)"
-      ],
+      data: valueSpeedData4,
+      backgroundColor: bgColor,
+      borderColor: bgborderColor,
       borderWidth: [1, 1, 1]
     }
   ]
 };
-doughnut(ctxSpeed4, data4, totalVal4,titleLabel4);
+SpeedChartCreation(ctxSpeed4, dataSpeed4, totalSpeedVal4,titleSpeedLabel4);
 /*** End of Chart 4 */
 
-function doughnut(ctxSpeed, data1, totalVal,titleLabel){
+function SpeedChartCreation(ctxSpeed, speedChartdata, totalSpeedVal, titleSpeedLabel){
 //options
-var options = {
-    /*elements: {
-				center: {
-		//text: 'value',
-          color: '#7a4444', // Default is #000000
-           fontStyle: 'Arial', // Default is Arial
-          sidePadding: 10, // Defualt is 20 (as a percentage)
-          fontSize: '25px'
-				}
-			}, */
+var speedOptions = {
     responsive: true,
     legend: {
      // display: true,
       position: "right",
       labels: {
-        fontColor: "#333",
-        fontSize: 10,
-        boxWidth: 10
+        fontColor: '#ffffff',
+        fontSize: 12,
+        boxWidth: 10,
+		fontFamily: '"Roboto", Helvetica, sans-serif' 
       }
     },    
     title: {
             display: true,
-            text: titleLabel,
+            text: titleSpeedLabel,
             position: "top",
-            fontSize : '15',
-            fontColor : 'black'
+            fontSize : 20,
+            fontColor: '#ffffff',
+			fontFamily: '"Roboto", Helvetica, sans-serif' 
     } ,
     plugins: {
       labels: {
      // render: 'value',
-      fontSize: 12,
+      fontSize: 14,
       fontStyle: 'bold',
-      fontColor: '#000',
-      fontFamily: '"Lucida Console", Monaco, monospace' 
+      fontColor: '#ffffff',
+      fontFamily: '"Roboto", Helvetica, sans-serif' 
       }
   } 
   };
   //create Chart class object
-  var chart2 = new Chart(ctxSpeed, {
+  var SpeedChart = new Chart(ctxSpeed, {
     type: "doughnut",
-    data: data1,
-    options: options
+    data: speedChartdata,
+    options: speedOptions
   });
 
 }

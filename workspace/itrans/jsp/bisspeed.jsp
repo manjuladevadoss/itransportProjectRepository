@@ -5,7 +5,7 @@
   <head>    
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
       <link rel="stylesheet" href="dc.css">
-      <link rel="stylesheet" href="chartjsdoughnut.css">
+	    <link rel="stylesheet" href="bisgrid.css">
       <title>Speed Chart </title>
     <head> 
 <style>
@@ -13,39 +13,39 @@
 <table class="mainTbl" cellpadding="15">
         <tr>
             <td> 
-              <table class="chartTbl" border="1" cellpadding="10">
+              <table border="1" cellpadding="10">
                       <tr>
                           <td aligh="center">
-                              <canvas id="myChartSpeed1" width="300" height="300" ></canvas>                      
+                              <canvas id="myChartSpeed1" style="width: 450px; height: 256px" ></canvas>                      
                           </td>
                         </tr>
               </table>                    
             </td>
             <td>
-                <table class="chartTbl" border="1" cellpadding="10">
+                <table border="1" cellpadding="10">
                     <tr aligh="center">
                         <td>
-                            <canvas id="myChartSpeed2" width="300" height="300" ></canvas>                      
+                            <canvas id="myChartSpeed2" style="width: 450px; height: 256px" ></canvas>                      
                         </td>
                       </tr>
-            </table>                    
+				</table>                    
             </td>
             </tr>   
             <tr>   
             <td>
-                <table class="chartTbl" border="1" cellpadding="10">
+                <table  border="1" cellpadding="10">
                     <tr aligh="center">
                         <td>
-                             <canvas id="myChartSpeed3" width="300" height="300" ></canvas>                      
+                             <canvas id="myChartSpeed3" style="width: 450px; height: 256px" ></canvas>                      
                         </td>
                       </tr>
-            </table>                    
+				</table>                    
             </td>
             <td>
-                <table class="chartTbl" border="1" cellpadding="10">
+                <table  border="1" cellpadding="10">
                     <tr aligh="center">
                         <td>
-                             <canvas id="myChartSpeed4" width="300" height="300" ></canvas>                      
+                             <canvas id="myChartSpeed4" style="width: 450px; height: 256px"></canvas>                      
                         </td>
                       </tr>
             	</table>                    

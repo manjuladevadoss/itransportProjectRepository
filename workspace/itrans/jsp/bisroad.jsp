@@ -6,34 +6,26 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
       <link rel="stylesheet" href="dc.css">
 	  <link rel="stylesheet" href="bisgrid.css">
-      <link rel="stylesheet" href="chartjsbar.css">
-      <title>Chartjs bar chart </title>
+      <title>Road Closure and Open chart </title>
     <head> 
 <style>
- h3 {
-  color: #ffffff;
-  font-family: Roboto, Helvetica, sans-serif;
-  font-size: 20px;
-   text-align: center;
-}
+
 </style>
 <table id="chartable" cellpadding="20">
         <tr>
                 <td style="border:1px solid black">
-				<h3 id="titleLabelRoadOp">  </h3>
-                        <canvas id="myChartOpen" width="400" height="300"></canvas>
+                        <canvas id="myChartOpen" width="400" height="250"></canvas>
                 </td>
-                <td style="border:1px solid black">
-				<h3 id="titleLabelRoadCl">  </h3>
-                    <canvas id="myChartClose" width="400" height="300"></canvas>
+                <td style="border:1px solid black">				
+                    <canvas id="myChartClose" width="400" height="250"></canvas>
                 </td>
-         </tr>   
+        </tr>   
         <tr>
                 <td style="border:1px solid black">
-                        <canvas id="myChartOpen1" width="400" height="300"></canvas>
+                        <canvas id="myChartOpen1" width="400" height="250"></canvas>
                 </td>
                 <td style="border:1px solid black">
-                    <canvas id="myChartClose1" width="400" height="300"></canvas>
+                    <canvas id="myChartClose1" width="400" height="250"></canvas>
                 </td>
          </tr>  		 
          <tr>
@@ -86,7 +78,7 @@
         </table>  
 <body>   
 <script src="Chart.min.js"></script>
-<script src="chartjsbar.js"></script>
+<script src="chartjsbarroad.js"></script>
 <script> 
 
 </script>    

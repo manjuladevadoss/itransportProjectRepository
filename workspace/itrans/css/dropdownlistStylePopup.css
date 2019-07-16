@@ -37,10 +37,10 @@ ul > li:last-child ul{
 ul li ul li { 
   background: #2E396C; 
   display: block; 
-  color: #C8CFF4;
+  color: #ffffff;
   
 }
-ul li ul li:hover { /*ckground: #C8CFF4; */
+ul li ul li:hover { /*ckground: #ffffff; */
  color: #00E1FF;
 }
 ul li:hover ul {

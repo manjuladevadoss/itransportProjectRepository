@@ -74,8 +74,6 @@
     	}
     }
     window.onload = bisMainWindow;
-    	
-    
    	 $(document).bind("contextmenu",function(e){
     	  e.preventDefault();
     	  console.log(e.pageX + "," + e.pageY);

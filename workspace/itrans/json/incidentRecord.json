@@ -3,7 +3,7 @@
     {
       "irid": "21054",
       "type": "Road Works",
-      "state": "in progress",
+      "state": "In progress",
       "zone": "zone2",
       "roadname": "PIE",
       "lanes": "3 2"
@@ -11,7 +11,7 @@
     {
       "irid": "542334",
       "type": "Break Down",
-      "state": "notified",
+      "state": "Notified",
       "zone": "zone4",
       "roadname": "tun",
       "lanes": "2 2"
@@ -19,7 +19,7 @@
     {
       "irid": "54295",
       "type": "Accident",
-      "state": "confirmed",
+      "state": "Confirmed",
       "zone": "zone1",
       "roadname": "TPE",
       "lanes": "1 2 3"
@@ -27,7 +27,7 @@
     {
       "irid": "95646",
       "type": "Obstacle",
-      "state": "notified",
+      "state": "Notified",
       "zone": "zone3",
       "roadname": "tun",
       "lanes": "1 4 2"
@@ -35,7 +35,7 @@
     {
       "irid": "44544",
       "type": "Road Works",
-      "state": "in progress",
+      "state": "In progress",
       "zone": "zone5",
       "roadname": "TPE",
       "lanes": "3 2"
@@ -43,7 +43,7 @@
     {
       "irid": "21334",
       "type": "Break Down",
-      "state": "notified",
+      "state": "Notified",
       "zone": "zone4",
       "roadname": "tun",
       "lanes": "2 2"
@@ -51,7 +51,7 @@
     {
       "irid": "89346",
       "type": "Obstacle",
-      "state": "notified",
+      "state": "Notified",
       "zone": "zone3",
       "roadname": "tun",
       "lanes": "1 4 2"
@@ -59,7 +59,7 @@
     {
       "irid": "45344",
       "type": "Road Works",
-      "state": "in progress",
+      "state": "In progress",
       "zone": "zone5",
       "roadname": "TPE",
       "lanes": "3 2"
@@ -67,7 +67,7 @@
     {
       "irid": "85370",
       "type": "Unattended Vehicle",
-      "state": "notified",
+      "state": "Notified",
       "zone": "zone1",
       "roadname": "TPE",
       "lanes": "2"
@@ -75,7 +75,7 @@
     {
       "irid": "56875",
       "type": "Obstacle",
-      "state": "notified",
+      "state": "Notified",
       "zone": "zone3",
       "roadname": "tun",
       "lanes": "1 4 2"
@@ -83,7 +83,7 @@
     {
       "irid": "12500",
       "type": "Miscellaneous",
-      "state": "in progress",
+      "state": "In progress",
       "zone": "zone4",
       "roadname": "KPE",
       "lanes": "1 2"
@@ -91,7 +91,7 @@
     {
       "irid": "21334",
       "type": "Break Down",
-      "state": "notified",
+      "state": "Notified",
       "zone": "zone4",
       "roadname": "tun",
       "lanes": "2 2"
@@ -99,7 +99,7 @@
     {
       "irid": "89346",
       "type": "Obstacle",
-      "state": "notified",
+      "state": "Notified",
       "zone": "zone3",
       "roadname": "tun",
       "lanes": "1 4 2"

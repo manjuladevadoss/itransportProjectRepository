@@ -194,7 +194,7 @@ var app = angular.module('ltaApp', []);
 		"irsourceid": 5,
 		"irsourcename": "Other"
 		}];
-  	$scope.irsource = "4";
+  	$scope.irsource = "1";
   	$scope.irlinkedtxt = "";
   	$scope.irlinkedList = [{
 		"irlinkedid": 1,
@@ -1112,9 +1112,7 @@ var app = angular.module('ltaApp', []);
 		" $scope.mrtincalrmalert : "  + $scope.mrtincalrmalert);	*/ 
 	}
 // ******** END OF MRT Incident Creation form Detail	
-    
-
-    
+ 
  // ******** Start OF CC2 grid view display changing places in different grids  	
     $scope.showinc = true;
     $scope.viewworkorderitem2 = function(){
@@ -1223,15 +1221,25 @@ var app = angular.module('ltaApp', []);
  
 
 /*** BIS Part */
-    $scope.showbisincevent = false;
-    $scope.showbisroad = true;
+    
+    //Get json object Congestion Reason Roadworks ask to leave 
+	
+    $http.get("bisroadcon.json").then(function(response) {
+        $scope.bisroadcon = response.data.bisroadcon;  
+        console.log("$scope.bisroadcon.length() :" + $scope.bisroadcon.length);     
+      }); 
+
+    $scope.showbisincevent = true ;
+    $scope.showbisroad = false;
     $scope.showconroad = false;
-    $scope.showspeed = false;
+    $scope.showspeed =  true;
+	$scope.showzone =  true;
     $scope.bisincieventshow = function() {
     	$scope.showbisincevent = true;
     	$scope.showbisroad = false;
     	$scope.showconroad = false;
     	$scope.showspeed = false;
+		$scope.showzone =  false;
     };
     
     $scope.bisroadshow = function() {
@@ -1239,6 +1247,7 @@ var app = angular.module('ltaApp', []);
     	$scope.showbisincevent = false;
     	$scope.showconroad = false;
     	$scope.showspeed = false;
+		$scope.showzone =  false;
     };
     
     $scope.bisconshow = function() {
@@ -1246,13 +1255,206 @@ var app = angular.module('ltaApp', []);
     	$scope.showbisincevent = false;
     	$scope.showbisroad = false;
     	$scope.showspeed = false;
+		$scope.showzone =  false;
     };
     $scope.bisspeedshow = function() {
     	$scope.showspeed = true;
     	$scope.showconroad = false;
     	$scope.showbisincevent = false;
-    	$scope.showbisroad = false;    	
+    	$scope.showbisroad = false; 
+		$scope.showzone =  false;		
     };
+    $scope.biszoneshow = function() {  	
+		$scope.showspeed = false;
+    	$scope.showconroad = false;
+    	$scope.showbisincevent = false;
+    	$scope.showbisroad = false;    	
+		$scope.showzone =  true;
+    };	
+    flag = true;
+    $interval( function(){ $scope.selectSpeedChart(flag); }, 15000);
+    $scope.selectSpeedChart = function(flagVal) {
+		///alert("Speed");
+      	$scope.showspeed = flagVal;
+        $scope.showconroad = false;
+        $scope.showbisincevent = false;
+        $scope.showbisroad = false;	
+		$scope.showzone =  false;
+    };
+	
+    $interval( function(){ $scope.selectConRoadChart(flag); }, 5000);
+	$scope.selectConRoadChart = function(flagVal) {
+		//alert("Road");
+		$scope.showspeed = false;
+		$scope.showconroad = flagVal;
+    	$scope.showbisincevent = false;
+    	$scope.showbisroad = false;	
+		$scope.showzone =  false;
+	};
+	
+	$interval( function(){ $scope.selectInciChart(flag); }, 15000);
+	$scope.selectInciChart = function(flagVal) {
+		//alert("Road");
+		$scope.showspeed = false;
+		$scope.showconroad = false;
+    	$scope.showbisincevent = flagVal;
+    	$scope.showbisroad = false;	
+		$scope.showzone =  false;
+	};
+	
+	$interval( function(){ $scope.selectRoadChart(flag); }, 3000);
+	$scope.selectRoadChart = function(flagVal) {
+		//alert("Road");
+		$scope.showspeed = false;
+		$scope.showconroad = false;
+    	$scope.showbisincevent = false;
+    	$scope.showbisroad = flagVal;
+		$scope.showzone =  false;		
+	};
+	
+	$interval( function(){ $scope.selectZoneChart(flag); }, 7000);
+	$scope.selectZoneChart = function(flagVal) {
+		//alert("Road");
+		$scope.showspeed = false;
+		$scope.showconroad = false;
+    	$scope.showbisincevent = false;
+    	$scope.showbisroad = false;
+		$scope.showzone =  flagVal;		
+	};
+	
+//BIS Speed Data Dashboard	
+	$scope.eacSpeed = true;
+	$scope.eacTravel = false;
+	$scope.expreSpeed = false;
+	$scope.expreTravel = false;
+	$scope.bisspeedshowdash = function(speeddata) {
+		console.log("bis module");
+		if(speeddata=='espeed') {
+			$scope.eacSpeed = true;
+			$scope.eacTravel = false;
+			$scope.expreSpeed = false;
+			$scope.expreTravel = false;
+		}
+		if(speeddata=='etravel') {
+			$scope.eacSpeed = false;
+			$scope.eacTravel = true;
+			$scope.expreSpeed = false;
+			$scope.expreTravel = false;
+		}
+		if(speeddata=='exspeed') {
+			$scope.eacSpeed = false;
+			$scope.eacTravel = false;
+			$scope.expreSpeed = true;
+			$scope.expreTravel = false;
+		}
+		if(speeddata=='extravel') {
+			$scope.eacSpeed = false;
+			$scope.eacTravel = false;
+			$scope.expreSpeed = false;
+			$scope.expreTravel = true;
+		}
+	}
+
+//BIS Road close and Open Data Dashboard	
+	$scope.rdopen = true;
+	$scope.rdclose = false;
+	$scope.bisroadshowdash = function(roaddata) {
+		console.log("bis module");
+		if(roaddata=='rclose') {
+			$scope.rdclose = true;
+			$scope.rdopen = false;
+		}
+		if(roaddata=='ropen') {
+			$scope.rdclose = false;
+			$scope.rdopen = true;
+		}
+	}
+
+//BIS Zone Data Dashboard	
+	$scope.zone1to4 = true;
+	$scope.zone5toB = false;
+	$scope.biszoneshowdash = function(zonedata) {
+		console.log("Zone module");
+		if(zonedata=='zone1234') {
+			$scope.zone1to4 = true;
+			$scope.zone5toB = false;
+		}
+		if(zonedata=='zone67ab') {
+			$scope.zone1to4 = false;
+			$scope.zone5toB = true;
+		}
+	}
+
+//BIS Incident Event Data Dashboard	
+$scope.incidentocc = true;
+$scope.incidentkmocc = false;
+$scope.incidentltoc = false;
+$scope.incidentir = false;
+$scope.incidenter = false;
+$scope.bisincieventdash = function(incidata) {
+		console.log("bis module");
+		if(incidata=='occ') {
+			$scope.incidentocc = true;
+			$scope.incidentkmocc = false;
+			$scope.incidentltoc = false;
+			$scope.incidentir = false;
+			$scope.incidenter = false;
+		}
+		if(incidata=='kmocc') {
+			$scope.incidentocc = false;
+			$scope.incidentkmocc = true;
+			$scope.incidentltoc = false;
+			$scope.incidentir = false;
+			$scope.incidenter = false;
+		}
+		if(incidata=='ltoc') {
+			$scope.incidentocc = false;
+			$scope.incidentkmocc = false;
+			$scope.incidentltoc = true;
+			$scope.incidentir = false;
+			$scope.incidenter = false;
+		}
+		if(incidata=='ir') {
+			$scope.incidentocc = false;
+			$scope.incidentkmocc = false;
+			$scope.incidentltoc = false;
+			$scope.incidentir = true;
+			$scope.incidenter = false;
+		}
+		if(incidata=='er') {
+			$scope.incidentocc = false;
+			$scope.incidentkmocc = false;
+			$scope.incidentltoc = false;
+			$scope.incidentir = false;
+			$scope.incidenter = true;
+		}
+	}
+	
+//Bis Intervals Zone Data Dashboard	
+	$interval( function(){ $scope.selectZoneChartDash(flag); }, 2000);
+	$scope.selectZoneChartDash = function(flagVal) {
+		$scope.zone1to4 = false;
+		$scope.zone5toB = flagVal;
+	};
+
+	$interval( function(){ $scope.selectZoneChartDash1(flag); }, 6000);
+	$scope.selectZoneChartDash1 = function(flagVal) {
+		$scope.zone1to4 = flagVal;
+		$scope.zone5toB = false;
+	};
+
+//Bis Road close and Open Data Dashboard	
+	$interval( function(){ $scope.selectRoadChartDash(flag); }, 3000);
+	$scope.selectRoadChartDash = function(flagVal) {
+			$scope.rdclose = flagVal;
+			$scope.rdopen = false;		
+	};
+	
+	$interval( function(){ $scope.selectRoadChartDash1(flag); }, 6000);
+	$scope.selectRoadChartDash1 = function(flagVal) {
+			$scope.rdclose = false;
+			$scope.rdopen = flagVal;		
+	};
 /*** End of BIS Part */    
    
     

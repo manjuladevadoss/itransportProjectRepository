@@ -168,6 +168,25 @@
 	          title: "Carriageway"
 	        });
 		
+		/*** Onload event Accident Layer display Red and Orange*/	
+		var accidentLayer1 = new CustomWMSLayer({
+	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapParameters: {
+	            SERVICE: "WMS",
+	            REQUEST: "GetMap",
+	            FORMAT: "image/png",
+	            TRANSPARENT: "TRUE",
+	            STYLES: "gis_carriageway_acc_style1",
+	            VERSION: "1.3.0",
+	            LAYERS: "gisdbo_gis_carriageway",
+	            WIDTH: "{width}",
+	            HEIGHT: "{height}",
+	            CRS: "EPSG:{wkid}",
+	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+	          },
+	          title: "AccLayer"
+	        });
+		
 
 		//Glide Site
 		var glideSiteLayer = new CustomWMSLayer({
@@ -299,7 +318,7 @@
 		map = new Map({
           //center: [103.84347,1.32858],
          // layers: [layer1,cctvLayer,vmsLayer,glideSiteLayer,carriagewayLayer,cteheavytrafficLayer,cteLayer,ctetrafficGreenOrangeLayer,speedLinkLayer]
-		  layers: [layer1,cctvLayer,vmsLayer,glideSiteLayer,carriagewayLayer,cteLayer,speedLinkLayer]
+		  layers: [layer1,cctvLayer,vmsLayer,glideSiteLayer,carriagewayLayer,cteLayer,speedLinkLayer,accidentLayer1]
         });
 		
 		
@@ -317,9 +336,22 @@
           view: view
         });
 
+/*** Onload Icon display */		
 /* Start Accident location point and icon */
-   //function accIconLocation() {  // Icon display
-    var accPictureGraphic ="";
+accIconLocation();
+
+// CCTV display 
+accCCTVLocation();
+
+/*end Accident location point and icon*/   
+/*** Onload  VMS and Glide display scenrio1 base messages*/		
+	var pictureGraphicSce1List = [];
+	var pictureGraphicSce1TraList = [];
+	scenrio1VMSMsgOnMap();
+/*** End of Onload event VMS and Glide display scenrio1 base messages*/
+
+var accPictureGraphic ="";
+function accIconLocation() {  // Icon display
 	    var accpoint = {
                 type: "point", // autocasts as new Point()
                 longitude: 103.858056,
@@ -338,13 +370,83 @@
                 symbol: accPictureSymbol
                });    
             	view.graphics.addMany([accPictureGraphic]);
-     // }
-/*end Accident location point and icon*/   
+      }
+
+/*** Onload cctv icon ***/
+var cctvPictureGraphic1 ="", cctvPictureGraphic2 ="", cctvPictureGraphic3 ="";
+function accCCTVLocation() {  // Icon display
+    var accPictureGraphic ="";
+	    var cctvpoint1 = {
+                type: "point", // autocasts as new Point()
+                longitude: 103.8587667,
+                latitude: 1.3752537                        
+                };  
+	    var cctvpoint2 = {
+                type: "point", // autocasts as new Point()
+                longitude: 103.8582773,
+                latitude: 1.3770134                        
+                }; 
+	    var cctvpoint3 = {
+                type: "point", // autocasts as new Point()
+                longitude: 103.8584744,
+                latitude: 1.3778264                        
+                }; 
+				
+            var cctvPictureSymbol = {
+                type: "picture-marker",
+                url: "cctv.png",
+                width: "25",
+                height: "25",
+                xoffset: 5,
+                yoffset: 5
+              }
+            cctvPictureGraphic1 = new Graphic({
+                geometry: cctvpoint1,
+                symbol: cctvPictureSymbol,
+				popupTemplate: {
+						// autocasts as new PopupTemplate()
+						title: "Video",
+						content: '<video width="270" height="150" controls><source src=CTEvideo.mp4 type=video/mp4></video>'
+				}
+               }); 
+            cctvPictureGraphic2 = new Graphic({
+                geometry: cctvpoint2,
+                symbol: cctvPictureSymbol,
+				popupTemplate: {
+						// autocasts as new PopupTemplate()
+						title: "Video",
+						content: '<video width="270" height="150" controls><source src=CTEvideo.mp4 type=video/mp4></video>'
+				}
+               }); 
+            cctvPictureGraphic3 = new Graphic({
+                geometry: cctvpoint3,
+                symbol: cctvPictureSymbol,
+				popupTemplate: {
+						// autocasts as new PopupTemplate()
+						title: "Video",
+						content: '<video width="270" height="150" controls><source src=CTEvideo.mp4 type=video/mp4></video>'
+				}
+               }); 			   
+            	view.graphics.addMany([cctvPictureGraphic1, cctvPictureGraphic2, cctvPictureGraphic3 ]);
+      }
+
+	  
 
 
+
+
+
+
+
+
+	  
+	
+/*** end of cctv icon ***/	
+	  
 function endCongestion() {
 	view.graphics.removeAll();
 	cteLayer.visible  = true;
+	accidentLayer1.visible  = false;
 	clearInterval(endCongestionTimer);
 	//clearInterval(firstCongestionTimer);
 	//clearInterval(secondCongestionTimer);
@@ -356,12 +458,13 @@ function firstCongestion(){
 // 80% congestion  first stage
 /*** Red Line Layer  */
 cteLayer.visible  = false;
+accidentLayer1.visible = false;
 	 var congpolyline1Red = {
 	    	  type: "polyline", // autocasts as new Polyline()
 	    	  style: "short-dot",
 	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.858205, 1.378473],[103.858056, 1.377817],[103.858577, 1.375705],
+	          join: "bevel",  //[103.858205, 1.378473],
+	    	  paths: [ [103.858056, 1.377817],[103.858577, 1.375705],
 	    		       [103.859092, 1.374268],[103.859261, 1.373794],
 					   [103.860294, 1.371318],[103.860666, 1.370147], 
 					   [103.860859, 1.369010],[103.860766, 1.367917]
@@ -532,8 +635,8 @@ function secondCongestion(){
 	    	  type: "polyline", // autocasts as new Polyline()
 	    	  style: "short-dot",
 	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.858205, 1.378473],[103.858056, 1.377817],[103.858577, 1.375705],
+	          join: "bevel", //[103.858205, 1.378473],
+	    	  paths: [ [103.858056, 1.377817],[103.858577, 1.375705],
 	    		       [103.859092, 1.374268],[103.859261, 1.373794],
 					   [103.860294, 1.371318]
 					    ]					   
@@ -698,8 +801,8 @@ function thirdCongestion(){
 	    	  type: "polyline", // autocasts as new Polyline()
 	    	  style: "short-dot",
 	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.858205, 1.378473],[103.858056, 1.377817],[103.858577, 1.375705],
+	          join: "bevel", //[103.858205, 1.378473],
+	    	  paths: [ [103.858056, 1.377817],[103.858577, 1.375705],
 	    		       [103.859092, 1.374268]
 					    ]					   
 	    	};		
@@ -1340,16 +1443,16 @@ function thirdCongestion(){
 			  });
 			  
 // text vmsid
-			var pictureGraphicSce1vmsid = new Graphic({
+			var pictureGraphicSce1vmsid; /* = new Graphic({
 				geometry: pointSce1,
 				symbol: vmsIdMsg,
-			  });
+			  });*/
 			  
 			  pictureGraphicSce1List[j] = pictureGraphicSce1;
 			  j = j+1;
 			  pictureGraphicSce1List[j] = pictureGraphicSce1vmsid;
 			  j = j+1;
-			  view.graphics.addMany([pictureGraphicSce1,pictureGraphicSce1vmsid]);	
+			  view.graphics.addMany([pictureGraphicSce1/*, pictureGraphicSce1vmsid*/]);	
 		}
 		
 		//Traffic Light
@@ -1556,6 +1659,164 @@ function thirdCongestion(){
 	}
 /*** End of scenario 2 VMS messages  ***/
 
+
+/***Draw Accident layer onload event on the map**/
+function scenrio1VMSMsgOnMap() {
+		var scenario1List = document.getElementsByName("scenario1List");
+		var PictureSymbolTTP = {
+		type: "picture-marker",
+		url: "TTP_MSG.png",
+		width: "20",
+		height: "20",
+	}
+    var PictureSymbolTIP = {
+		type: "picture-marker",
+		url: "TIP_MSG.png",
+		width: "20",
+		height: "20",
+	}
+	  var j=0;
+		for(i=0;i<scenario1List.length;i++) {
+		
+			var  str = scenario1List[i].value;	
+			var word1sep = str.indexOf("$");
+			var sce1VmsId = str.substring(0, word1sep);
+			var str2 = str.substring(word1sep+1, str.length);
+			
+			var word2sep = str2.indexOf("$");
+			var sce1Vmsmsg = str2.substring(0, word2sep);
+			var str3 = str2.substring(word2sep+1, str2.length);
+			
+			var imgattachsce ="";
+			var imgattachSel = sce1Vmsmsg.indexOf('Accident');
+			if(imgattachSel==0) {
+				imgattachsce =  
+				'<svg width="10" height="10"><img src="accimg1.JPG"  width="30px" height="30px"/> <img src="vms5.png"  width="30px" height="30px"/></svg>';
+			} else {
+				imgattachsce =  
+					'<svg width="10" height="10"><img src="vms4.png"  width="30px" height="30px"/></svg>';		
+			}
+			
+			var word3sep = str3.indexOf("$");
+			var longi = str3.substring(0, word3sep);
+			var ladi = str3.substring(word3sep+1, str3.length);
+			//alert("id: " + sce1VmsId + " / msg: " + sce1Vmsmsg + " / ladi: " + ladi + " / longi: " + longi); 
+			
+var idmessagepic =  sce1VmsId + ":\n" + sce1Vmsmsg  
+			
+			var vmsIdMsg = {
+        		type: "text",  // autocasts as new TextSymbol()
+        		color: "#003087",
+        		text: idmessagepic,
+        		 haloColor: "#c3c2e5",
+        		 haloSize: "2.5px",
+        		 xoffset: 10,
+        		 yoffset: 16,
+        		 font: {  // autocast as new Font()
+        		    size: 8,
+        			weight: "bold"
+        		 }
+        	 };
+			 
+			
+			var pointSce1 = {
+				type: "point", // autocasts as new Point()
+				longitude: longi,
+				latitude: ladi                   
+			  }; 
+			var PictureSymbolvms;
+					if(i<4) {
+						PictureSymbolvms = PictureSymbolTTP;
+					}else {
+						PictureSymbolvms = PictureSymbolTIP; 
+					}	
+//Picture graphics
+			var pictureGraphicSce1 = new Graphic({
+				geometry: pointSce1,
+				symbol: PictureSymbolvms,
+				popupTemplate: {
+					// autocasts as new PopupTemplate()
+					title: sce1VmsId,
+					content: sce1Vmsmsg + '<br><center>' + imgattachsce + '<center>'
+				  }
+			  });
+			  
+// text vmsid
+			var pictureGraphicSce1vmsid = new Graphic({
+				geometry: pointSce1,
+				symbol: vmsIdMsg,
+			  });
+			  
+			  pictureGraphicSce1List[j] = pictureGraphicSce1;
+			  j = j+1;
+			  pictureGraphicSce1List[j] = pictureGraphicSce1vmsid;
+			  j = j+1;
+			  view.graphics.addMany([pictureGraphicSce1,pictureGraphicSce1vmsid]);	
+		}
+		
+		//Traffic Light
+		var color1 = [97, 255, 0];
+		var color2 = [208, 187, 0];
+		var color3 = [232, 58, 58];
+		var scenario1TrafficList = document.getElementsByName("scenario1TrafficList");
+
+		for(i=0;i<scenario1TrafficList.length;i++) {
+			
+			var  str = scenario1TrafficList[i].value;	
+			var word1sep = str.indexOf("$");
+			var longi1 = str.substring(0, word1sep);
+			
+			var lati1 = str.substring(word1sep+1, str.length);
+			//alter("longi1 : " + longi1 + "/lati1 : " + lati1);
+			
+			if(i==0) {
+				  var sce1TraPictureSymbol = {
+							type: "picture-marker",
+							url: "glide_green.png",
+							width: "20",
+							height: "20",
+						};
+			}
+			if(i==1) {
+				  var sce1TraPictureSymbol = {
+							type: "picture-marker",
+							url: "glide_green.png",
+							width: "20",
+							height: "20",
+						};
+				}
+			if(i==2) {
+				  var sce1TraPictureSymbol = {
+							type: "picture-marker",
+							url: "glide_red.png",
+							width: "20",
+							height: "20",
+						};
+				}
+			
+			var pointSce1Tra = {
+					type: "point", // autocasts as new Point()
+					longitude: longi1,
+					latitude: lati1                  
+				  }; 
+							
+			var pictureGraphicSce1Tra = new Graphic({
+				geometry: pointSce1Tra,
+				symbol: sce1TraPictureSymbol,
+		    });	
+		 pictureGraphicSce1TraList[i] = pictureGraphicSce1Tra;
+		 view.graphics.addMany([pictureGraphicSce1Tra]);				  				  
+		}
+	}
+
+
+
+/*** End of Accident layer onload event on the map **/ 
+ 
+ 
+ 
+ 
+ 
  
  /*** Obu Message display on the Map */
 var obuGuideMsgPicGraText = "";

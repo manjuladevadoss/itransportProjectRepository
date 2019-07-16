@@ -6,7 +6,7 @@ var barChart = new CanvasJS.Chart(ctx2, {
 	backgroundColor: 'rgba(34,49,94, 1.0)',	
 	title: {
 		text: "Work Order",
-		fontColor: "#C8CFF4",
+		fontColor: "#ffffff",
 		fontFamily: "Roboto, Helvetica, sans-serif"
 	},  
 	axisX: {
@@ -14,14 +14,14 @@ var barChart = new CanvasJS.Chart(ctx2, {
 		//valueFormatString: "hh:mm",
 		gridThickness: 0,
 		labelFontSize: 10,
-		labelFontColor: "#C8CFF4"
+		labelFontColor: "#ffffff"
     },
 	axisY: {
 		//title: "Temperature (°C)",
 		//suffix: " °C"
 		gridThickness: 0,
 		labelFontSize: 10,
-		labelFontColor: "#C8CFF4"
+		labelFontColor: "#ffffff"
 	},
 	data: [{
 		type: "column",	
@@ -69,7 +69,7 @@ var lineChart = new CanvasJS.Chart(ctx1, {
 	backgroundColor: 'rgba(34,49,94, 1.0)',
 	title: {
 		text: "Alarms",
-		fontColor: "#C8CFF4",
+		fontColor: "#ffffff",
 		fontFamily: "Roboto, Helvetica, sans-serif"
 	},  
 	axisX: {
@@ -77,14 +77,14 @@ var lineChart = new CanvasJS.Chart(ctx1, {
 		//valueFormatString: "hh:mm",
 		gridThickness: 0,
 		labelFontSize: 10,
-		labelFontColor: "#C8CFF4"
+		labelFontColor: "#ffffff"
     },
 	axisY: {
 		//title: "Temperature (°C)",
 		//suffix: " °C"
 		gridThickness: 0,
 		labelFontSize: 10,
-		labelFontColor: "#C8CFF4"
+		labelFontColor: "#ffffff"
 	},
 	data: [{
 		type: "line",	
