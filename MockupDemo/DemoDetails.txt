@@ -18,8 +18,9 @@ i-transport explanation
 GIS Module - Accident
  	1. A new window is launched over the GIS map. 
 	2. User Can create and edit the IR
-	3. System proposes a VMS,OBU,Canning messages to implement on the message, 	 	4. OBU there are 3 regions (Alert, Jam, Guide)
-	5. User can tract all assets on the ground.
+	3. System proposed prediction, plan 1 and plan 2 
+	4. System proposes a VMS,OBU,Canning messages to implement on the message, 	 	5. OBU there are 3 regions (Alert, Jam, Guide)
+	6. User can track all assets on the ground.
 
 GIS Module - MRT Breakdown IR
 	1. A new window is launched over the GIS map. 
