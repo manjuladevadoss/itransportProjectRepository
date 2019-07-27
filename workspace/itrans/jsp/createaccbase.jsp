@@ -431,7 +431,8 @@ function showaccimage() {
 
 </script>
   </head>
-<body class="calcite-maps calcite-nav-top" onload="predictionwindow()">
+<!-- <body class="calcite-maps calcite-nav-top" onload="predictionwindow()">  -->
+	<body class="calcite-maps calcite-nav-top">
 	<div class="container-fluid">
 		<div ng-app="ltaApp" ng-controller="ltaController">
 		<!--
@@ -699,263 +700,7 @@ function showaccimage() {
 	          </table>
                  </table>
 			
-				<!-- The Modal for Action Plan -->
-				&nbsp;&nbsp;  
-				&nbsp; 
-				<a href="#" class="buttonPredi" id="preTimeId" ng-model="preTime"  style="text-decoration:none;" > Prediction </a>
-			
-							
-				<!--<select id="preTimeId" ng-model="preTime"  style="width: 125px;">
-				<option  value="" selected="selected" hidden="hidden">Prediction</option>
-					<option value="1"> 15 Minutes </option>
-					<option value="2"> 30 Minutes </option>
-					<option value="3"> 45 Minutes </option>
-					<option value="4"> 60 Minutes </option>
-				</select>  -->
-				
-<!-- The Modal -->
-	<div id="myModal" class="modalInner">
-	  <!-- Modal content -->
-	  <div class="modal-content1">
-		  <!-- <span class="close">&times;</span> -->
-		<div class="modal-body">      
-	<table id="confitbltop"  cellpadding= "10px">
-		  <tr><td>
-			  <table id="confitbl">
-				<tr>
-				  <th>Do Nothing</th>
-				</tr>
-				<tr>
-				  <td><br></td>
-				</tr>
-				<tr>
-				  <td><b>Delay Time 00.40hr</b></td>
-				</tr>
-			  </table>
-		  </td>
-		  <td>
-			  <table id="confitbl">
-				<tr>
-				  <th>Plan 1</th>
-				</tr>
-				<tr>
-					<td>
-						<a href="#" id="myModalInnerLnk1"  ng-click="irpreditImpl2()" style="text-decoration:none;">VMS Messages  &nbsp; {{iraccscenario1vms.length}} </a> <br>
-						<a href="#" id="myModalInnerLnk1"  ng-click="irpreditImpl2()" style="text-decoration:none;">Traffic Light  &nbsp; {{trafficlight.length}} </a>
-					</td>
-				</tr>
-				<tr>
-				  <td>  
-						<b>Delay Time 00.20hr</b>
-						<!-- <p id="hrSelectSce1"></p> -->			  
-				  </td>
-				</tr>
-		
-			  </table>
-		  </td>
-		  <td>
-			  <table id="confitbl">
-				<tr>
-				  <th>Plan  2</th>
-				</tr>
-				<tr>
-					<td><a href="#" id="myModalInnerLnk2"  ng-click="irpreditImpl2()" style="text-decoration:none;">VMS Messages  &nbsp; {{iraccscenario2vms.length}}  </a><br>  <br> </td>
-				</tr>
-				<tr>
-				  <td> 
-						<b>Delay Time 00.30hr</b>  <!-- <b><p id="hrSelectSce2"></p></b>  -->
-						</td>
-				</tr>
-
-			  </table>
-		</td> </tr> 
-	  </table>
-		</div>
-	</div>
-	</div>		
-	
-	<!--  Inner modal scenario 1  -->
-	<div id="myModalInner1" class="modalInner">
-		  <div class="modal-content">
-			<div class="modal-body">   
-		<table id="scenriotbl1"  cellpadding= "2px">
-			  <tr><td>
-				  <table id="confitbl">
-					<tr>
-					  <th>Plan 1</th>
-					</tr>
-					<tr> 
-						<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
-					</tr>
-					<tr ng-repeat="irsce1 in iraccscenario1vms"> 
-					  <td>
-					  <input type="hidden" id="scenario1List" name="scenario1List" value='{{irsce1.irvmsequipid}}{{sep}}{{irsce1.irvmsaccmsg}}{{sep}}{{irsce1.longitude}}{{sep}}{{irsce1.latitude}}' size="5" readonly>
-					  {{irsce1.irvmsequipid}} &nbsp;&nbsp;{{irsce1.irvmsaccmsg}}
-					  </td>
-					</tr>
-					<tr>
-					  <th>Traffic Light Time Change </th>
-					</tr>
-					<tr>
-						 <td><b>EQP ID &nbsp;&nbsp; Time</b></td>
-					</tr>
-					<tr ng-repeat="irtrlight in trafficlight"> 
-					  <td>
-					   <input type="hidden" id="scenario1TrafficList" name="scenario1TrafficList" value='{{irtrlight.longitude}}{{sep}}{{irtrlight.latitude}}' size="5" readonly>
-					  {{irtrlight.irtrlightid}} &nbsp;&nbsp;{{irtrlight.irtrlightmsg}}
-					  </td>
-					</tr>
-					<tr>
-						<td><center>
-						<a href="#" class="buttonPreImp" id="sce1VmsView"  style="text-decoration:none;"> View VMS </a>
-						<a href="#" class="buttonPredi" id="sce1ImpliId"  style="text-decoration:none;"> Implement </a>
-						<a href="#" class="buttonPreRem" id="sce1ImpliIdRemove"  style="text-decoration:none;"> Remove </a>
-						</center>
-						</td>
-					</tr>
-				  </table>
-			  </td>
-			</tr>
-		  </table>
-		  
-		  </div>
-		</div>
-  </div>
-  
-		<!--  Inner modal scenario 2 -->
-	<div id="myModalInner2" class="modalInner">
-		  <div class="modal-content">
-			<div class="modal-body">   
-				  <table id="scenriotbl1">
-					<tr>
-					  <th><center>Plan 2</center></th>
-					</tr>
-					<tr> 
-						<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
-					</tr>
-					<tr ng-repeat="irsce2 in iraccscenario2vms"> 
-					  <td>
-					   <input type="hidden" id="scenario2List" name="scenario2List" value='{{irsce2.irvmsequipid}}{{sep}}{{irsce2.irvmsaccmsg}}{{sep}}{{irsce2.longitude}}{{sep}}{{irsce2.latitude}}' size="5" readonly>
-					  {{irsce2.irvmsequipid}} &nbsp;&nbsp;{{irsce2.irvmsaccmsg}} 
-					  </td>
-					</tr>
-					<tr>
-						<td><center>
-						<a href="#" class="buttonPreImp" id="sce2VmsView"  style="text-decoration:none;"> View VMS </a>
-						<a href="#" class="buttonPredi"  id="sce2ImpliId"  style="text-decoration:none;"> Implement </a> 
-						<a href="#" class="buttonPreRem" id="sce2ImpliIdRemove"  style="text-decoration:none;"> Remove </a></center>
-						</td>
-					</tr>
-				  </table>	  
-		  </div>
-		</div>
-  </div>
-<!-- End of Modal  -->	
-
-<!-- Modal onload event Start -->
-	<div id="myModalLoad" class="modalInner">
-	  <!-- Modal content -->
-	  <div class="modal-content1">
-		  <!-- <span class="close">&times;</span> -->
-		<div class="modal-body">      
-	<table id="confitbltop"  cellpadding= "10px">
-		  <tr><td>
-			  <table id="confitbl">
-				<tr>
-				  <th>Do Nothing</th>
-				</tr>
-				<tr>
-				  <td><br></td>
-				</tr>
-				<tr>
-				  <td><b>Delay Time 00.40hr</b></td>
-				</tr>
-			  </table>
-		  </td>
-		  <td>
-		  
-			  <table id="confitbl">
-				<tr>
-				  <td>  
-						<table id="confitbl">
-							<tr>
-							  <th>Plan 1</th>
-							</tr>
-							<tr> 
-								<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
-							</tr>
-							<tr ng-repeat="irsce1 in iraccscenario1vms"> 
-							  <td>
-							  <input type="hidden" id="scenario1List" name="scenario1List" value='{{irsce1.irvmsequipid}}{{sep}}{{irsce1.irvmsaccmsg}}{{sep}}{{irsce1.longitude}}{{sep}}{{irsce1.latitude}}' size="5" readonly>
-							  {{irsce1.irvmsequipid}} &nbsp;&nbsp;{{irsce1.irvmsaccmsg}}
-							  </td>
-							</tr>
-							<tr>
-							  <th>Traffic Light Time Change </th>
-							</tr>
-							<tr>
-								 <td><b>EQP ID &nbsp;&nbsp; Time</b></td>
-							</tr>
-							<tr ng-repeat="irtrlight in trafficlight"> 
-							  <td>
-							   <input type="hidden" id="scenario1TrafficList" name="scenario1TrafficList" value='{{irtrlight.longitude}}{{sep}}{{irtrlight.latitude}}' size="5" readonly>
-							  {{irtrlight.irtrlightid}} &nbsp;&nbsp;{{irtrlight.irtrlightmsg}}
-							  </td>
-							</tr>
-							<tr>
-								<td><center>
-								<a href="#" class="buttonPreImp" id="sce1VmsView"  style="text-decoration:none;"> View VMS </a>
-								<a href="#" class="buttonPredi" id="sce1ImpliId"  style="text-decoration:none;"> Implement </a>
-								<a href="#" class="buttonPreRem" id="sce1ImpliIdRemove"  style="text-decoration:none;"> Remove </a>
-								</center>
-								</td>
-							</tr>
-					  </table>
-				  </td>
-				</tr>
-				<tr>
-				  <td><b>Delay Time 00.30hr</b></td>
-				</tr>
-		
-			  </table>
-		  </td>
-		  <td>
-			  <table id="confitbl">				
-				<tr>
-				  <td> 
-						<table id="scenriotbl1">
-						<tr>
-						  <th><center>Plan 2</center></th>
-						</tr>
-						<tr> 
-							<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
-						</tr>
-						<tr ng-repeat="irsce2 in iraccscenario2vms"> 
-						  <td>
-						   <input type="hidden" id="scenario2List" name="scenario2List" value='{{irsce2.irvmsequipid}}{{sep}}{{irsce2.irvmsaccmsg}}{{sep}}{{irsce2.longitude}}{{sep}}{{irsce2.latitude}}' size="5" readonly>
-						  {{irsce2.irvmsequipid}} &nbsp;&nbsp;{{irsce2.irvmsaccmsg}} 
-						  </td>
-						</tr>
-						<tr>
-							<td><center>
-							<a href="#" class="buttonPreImp" id="sce2VmsView"  style="text-decoration:none;"> View VMS </a>
-							<a href="#" class="buttonPredi"  id="sce2ImpliId"  style="text-decoration:none;"> Implement </a> 
-							<a href="#" class="buttonPreRem" id="sce2ImpliIdRemove"  style="text-decoration:none;"> Remove </a></center>
-							</td>
-						</tr>
-					  </table>	
-				  </td>
-				</tr>
-				<tr>
-				  <td><b>Delay Time 00.20hr</b></td>
-				</tr>
-			  </table>
-		</td> </tr> 
-	  </table>
-		</div>
-	</div>
-	</div>	
-<!-- Modal onload event End -->	
+					
 									
 			
 			
@@ -1293,6 +1038,266 @@ function showaccimage() {
             </div>
         </div>
      </div>
+	 
+	 <!-- The Modal for Action Plan -->
+				&nbsp;&nbsp;  
+				&nbsp; 
+				<a href="#" class="buttonPredi" id="preTimeId" ng-model="preTime"  style="text-decoration:none;" > Prediction </a>
+			
+							
+				<!--<select id="preTimeId" ng-model="preTime"  style="width: 125px;">
+				<option  value="" selected="selected" hidden="hidden">Prediction</option>
+					<option value="1"> 15 Minutes </option>
+					<option value="2"> 30 Minutes </option>
+					<option value="3"> 45 Minutes </option>
+					<option value="4"> 60 Minutes </option>
+				</select>  -->
+				
+<!-- The Modal -->
+	<div id="myModal" class="modalInner">
+	  <!-- Modal content -->
+	  <div class="modal-content1">
+		  <!-- <span class="close">&times;</span> -->
+		<div class="modal-body">      
+	<table id="confitbltop"  cellpadding= "10px">
+		  <tr><td>
+			  <table id="confitbl">
+				<tr>
+				  <th>Do Nothing</th>
+				</tr>
+				<tr>
+				  <td><br></td>
+				</tr>
+				<tr>
+				  <td><b>Delay Time 01.00hr</b></td>
+				</tr>
+			  </table>
+		  </td>
+		  <td>
+			  <table id="confitbl">
+				<tr>
+				  <th>Plan 1</th>
+				</tr>
+				<tr>
+					<td>
+						<a href="#" id="myModalInnerLnk1"  ng-click="irpreditImpl2()" style="text-decoration:none;">VMS Messages  &nbsp; {{iraccscenario1vms.length}} </a> <br>
+						<a href="#" id="myModalInnerLnk1"  ng-click="irpreditImpl2()" style="text-decoration:none;">Traffic Light  &nbsp; {{trafficlight.length}} </a>
+					</td>
+				</tr>
+				<tr>
+				  <td>  
+						<b>Delay Time 00.30m</b>
+						<!-- <p id="hrSelectSce1"></p> -->			  
+				  </td>
+				</tr>
+		
+			  </table>
+		  </td>
+		  <td>
+			  <table id="confitbl">
+				<tr>
+				  <th>Plan  2</th>
+				</tr>
+				<tr>
+					<td><a href="#" id="myModalInnerLnk2"  ng-click="irpreditImpl2()" style="text-decoration:none;">VMS Messages  &nbsp; {{iraccscenario2vms.length}}  </a><br>  <br> </td>
+				</tr>
+				<tr>
+				  <td> 
+						<b>Delay Time 00.45m</b>  <!-- <b><p id="hrSelectSce2"></p></b>  -->
+						</td>
+				</tr>
+
+			  </table>
+		</td> </tr> 
+	  </table>
+		</div>
+	</div>
+	</div>		
+	
+	<!--  Inner modal scenario 1  -->
+	<div id="myModalInner1" class="modalInner">
+		  <div class="modal-content">
+			<div class="modal-body">   
+		<table id="scenriotbl1"  cellpadding= "2px">
+			  <tr><td>
+				  <table id="confitbl">
+					<tr>
+					  <th>Plan 1</th>
+					</tr>
+					<tr> 
+						<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b></td>
+					</tr>
+					<tr ng-repeat="irsce1 in iraccscenario1vms"> 
+					  <td>
+					  <input type="hidden" id="scenario1List" name="scenario1List" value='{{irsce1.irvmsequipid}}{{sep}}{{irsce1.irvmsaccmsg}}{{sep}}{{irsce1.longitude}}{{sep}}{{irsce1.latitude}}' size="5" readonly>
+					  {{irsce1.irvmsequipid}} &nbsp;&nbsp;{{irsce1.irvmsaccmsg}}
+					  </td>
+					</tr>
+					<tr>
+					  <th>Traffic Light Time Change </th>
+					</tr>
+					<tr>
+						 <td><b>EQP ID &nbsp;&nbsp; Time</b></td>
+					</tr>
+					<tr ng-repeat="irtrlight in trafficlight"> 
+					  <td>
+					   <input type="hidden" id="scenario1TrafficList" name="scenario1TrafficList" value='{{irtrlight.longitude}}{{sep}}{{irtrlight.latitude}}' size="5" readonly>
+					  {{irtrlight.irtrlightid}} &nbsp;&nbsp;{{irtrlight.irtrlightmsg}}
+					  </td>
+					</tr>
+					<tr>
+						<td><center>
+						<a href="#" class="buttonPreImp" id="sce1VmsView"  style="text-decoration:none;"> View VMS </a>
+						<a href="#" class="buttonPredi" id="sce1ImpliId"  style="text-decoration:none;"> Implement </a>
+						<a href="#" class="buttonPreRem" id="sce1ImpliIdRemove"  style="text-decoration:none;"> Remove </a>
+						</center>
+						</td>
+					</tr>
+				  </table>
+			  </td>
+			</tr>
+		  </table>
+		  
+		  </div>
+		</div>
+  </div>
+  
+		<!--  Inner modal scenario 2 -->
+	<div id="myModalInner2" class="modalInner">
+		  <div class="modal-content">
+			<div class="modal-body">   
+				  <table id="scenriotbl1">
+					<tr>
+					  <th><center>Plan 2</center></th>
+					</tr>
+					<tr> 
+						<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
+					</tr>
+					<tr ng-repeat="irsce2 in iraccscenario2vms"> 
+					  <td>
+					   <input type="hidden" id="scenario2List" name="scenario2List" value='{{irsce2.irvmsequipid}}{{sep}}{{irsce2.irvmsaccmsg}}{{sep}}{{irsce2.longitude}}{{sep}}{{irsce2.latitude}}' size="5" readonly>
+					  {{irsce2.irvmsequipid}} &nbsp;&nbsp;{{irsce2.irvmsaccmsg}} 
+					  </td>
+					</tr>
+					<tr>
+						<td><center>
+						<a href="#" class="buttonPreImp" id="sce2VmsView"  style="text-decoration:none;"> View VMS </a>
+						<a href="#" class="buttonPredi"  id="sce2ImpliId"  style="text-decoration:none;"> Implement </a> 
+						<a href="#" class="buttonPreRem" id="sce2ImpliIdRemove"  style="text-decoration:none;"> Remove </a></center>
+						</td>
+					</tr>
+				  </table>	  
+		  </div>
+		</div>
+  </div>
+<!-- End of Modal  -->	
+
+<!-- Modal onload event Start -->
+	<div id="myModalLoad" class="modalInner">
+	  <!-- Modal content -->
+	  <div class="modal-content1">
+		  <!-- <span class="close">&times;</span> -->
+		<div class="modal-body">      
+	<table id="confitbltop"  cellpadding= "10px">
+		  <tr><td>
+			  <table id="confitbl">
+				<tr>
+				  <th>Do Nothing</th>
+				</tr>
+				<tr>
+				  <td><br></td>
+				</tr>
+				<tr>
+				  <td><b>Delay Time 00.40hr</b></td>
+				</tr>
+			  </table>
+		  </td>
+		  <td>
+		  
+			  <table id="confitbl">
+				<tr>
+				  <td>  
+						<table id="confitbl">
+							<tr>
+							  <th>Plan 1</th>
+							</tr>
+							<tr> 
+								<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
+							</tr>
+							<tr ng-repeat="irsce1 in iraccscenario1vms"> 
+							  <td>
+							  <input type="hidden" id="scenario1List" name="scenario1List" value='{{irsce1.irvmsequipid}}{{sep}}{{irsce1.irvmsaccmsg}}{{sep}}{{irsce1.longitude}}{{sep}}{{irsce1.latitude}}' size="5" readonly>
+							  {{irsce1.irvmsequipid}} &nbsp;&nbsp;{{irsce1.irvmsaccmsg}}
+							  </td>
+							</tr>
+							<tr>
+							  <th>Traffic Light Time Change </th>
+							</tr>
+							<tr>
+								 <td><b>EQP ID &nbsp;&nbsp; Time</b></td>
+							</tr>
+							<tr ng-repeat="irtrlight in trafficlight"> 
+							  <td>
+							   <input type="hidden" id="scenario1TrafficList" name="scenario1TrafficList" value='{{irtrlight.longitude}}{{sep}}{{irtrlight.latitude}}' size="5" readonly>
+							  {{irtrlight.irtrlightid}} &nbsp;&nbsp;{{irtrlight.irtrlightmsg}}
+							  </td>
+							</tr>
+							<tr>
+								<td><center>
+								<a href="#" class="buttonPreImp" id="sce1VmsView"  style="text-decoration:none;"> View VMS </a>
+								<a href="#" class="buttonPredi" id="sce1ImpliId"  style="text-decoration:none;"> Implement </a>
+								<a href="#" class="buttonPreRem" id="sce1ImpliIdRemove"  style="text-decoration:none;"> Remove </a>
+								</center>
+								</td>
+							</tr>
+					  </table>
+				  </td>
+				</tr>
+				<tr>
+				  <td><b>Delay Time 00.30hr</b></td>
+				</tr>
+		
+			  </table>
+		  </td>
+		  <td>
+			  <table id="confitbl">				
+				<tr>
+				  <td> 
+						<table id="scenriotbl1">
+						<tr>
+						  <th><center>Plan 2</center></th>
+						</tr>
+						<tr> 
+							<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
+						</tr>
+						<tr ng-repeat="irsce2 in iraccscenario2vms"> 
+						  <td>
+						   <input type="hidden" id="scenario2List" name="scenario2List" value='{{irsce2.irvmsequipid}}{{sep}}{{irsce2.irvmsaccmsg}}{{sep}}{{irsce2.longitude}}{{sep}}{{irsce2.latitude}}' size="5" readonly>
+						  {{irsce2.irvmsequipid}} &nbsp;&nbsp;{{irsce2.irvmsaccmsg}} 
+						  </td>
+						</tr>
+						<tr>
+							<td><center>
+							<a href="#" class="buttonPreImp" id="sce2VmsView"  style="text-decoration:none;"> View VMS </a>
+							<a href="#" class="buttonPredi"  id="sce2ImpliId"  style="text-decoration:none;"> Implement </a> 
+							<a href="#" class="buttonPreRem" id="sce2ImpliIdRemove"  style="text-decoration:none;"> Remove </a></center>
+							</td>
+						</tr>
+					  </table>	
+				  </td>
+				</tr>
+				<tr>
+				  <td><b>Delay Time 00.20hr</b></td>
+				</tr>
+			  </table>
+		</td> </tr> 
+	  </table>
+		</div>
+	</div>
+	</div>	
+<!-- Modal onload event End -->
+	 
+	 
      <!-- value for TMD Messages -->
      				<div ng-repeat="tmdval in tmdmessages"> 		
 						<input type="hidden" id="tmdeqipid" name="tmdeqipid" value='{{tmdval.equipid}}' size="10" readonly>

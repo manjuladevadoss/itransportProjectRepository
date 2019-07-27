@@ -49,6 +49,38 @@
 		  background:orange;
 		  border-radius:2px;
 		}
+		
+/* Start of map info template */				
+/* popup window font and background color*/
+.esri-view-width-xlarge .esri-popup__main-container,
+.esri-view-width-large .esri-popup__main-container,
+.esri-view-width-medium .esri-popup__main-container
+{
+  max-height: 300px !important;
+  max-width: 300px !important;
+  background-color: #202B53;
+  color: white;
+    font-size: 14px;
+    font-family: Roboto, Helvetica, sans-serif;
+    line-height: 1.3em;
+}
+
+/*Remove the zoom button popup window*/
+.esri-popup__main-container .esri-popup__footer
+ {
+  display: none;
+} 
+
+/*Remove dock and close button popupwindow*/
+.esri-popup__main-container .esri-popup__header-buttons {
+    display: none;
+}
+
+/*change color in middle triangular button popupwindow*/
+.esri-popup--aligned-top-center .esri-popup__pointer-direction {
+background-color: black;
+}
+/* End of map info template */		
     </style>
 
 	<script src="http://localhost:8080/itrans/arcgis_4.11/init.js"></script>  
@@ -61,8 +93,8 @@
       var port = window.location.port
       var c =":";
       var s = "//"
-      if(windowObjectReference2 == null || windowObjectReference2.closed) {
-	    	var strpage3 = "/itrans/bisheader.jsp";
+     if(windowObjectReference2 == null || windowObjectReference2.closed) {
+	    	var strpage3 = "/itrans/bisdash1.jsp";
 		    var value3 = protocol.concat(s,domain,c,port,strpage3);
 		    //alert("bis url " + value3);
 		    windowObjectReference2 = window.open(
@@ -164,8 +196,6 @@
                     </table>
                </li>  
               </ul>
-            </div>
-
-					
+            </div>			
   </body>
 </html>

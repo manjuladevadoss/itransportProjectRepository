@@ -91,8 +91,7 @@
         });
         // *******************************************************
         // end of custom dynamic layer
-        // *******************************************************
-
+        // ******************************************************
 		
 		var cctvLayer = new CustomWMSLayer({
           mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
@@ -109,9 +108,9 @@
             CRS: "EPSG:{wkid}",
             BBOX: "{xmin},{ymin},{xmax},{ymax}"
           },
-
           title: "CCTV"
         });	
+		
 		var vmsLayer = new CustomWMSLayer({
           mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
           mapParameters: {
@@ -129,7 +128,8 @@
           },
 
           title: "VMS"
-        });			
+        });	
+		
 		var carriagewayLayer = new CustomWMSLayer({
           mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
           mapParameters: {
@@ -148,14 +148,96 @@
           title: "Carriageway"
         });
 		
+		// Speed Link Layer way layer
+		var speedLinkLayer = new CustomWMSLayer({
+          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapParameters: {
+            SERVICE: "WMS",
+            REQUEST: "GetMap",
+            FORMAT: "image/png",
+            TRANSPARENT: "TRUE",
+            STYLES: "gis_speedlink_style",
+            VERSION: "1.3.0",
+            LAYERS: "gis_speedlink",
+            WIDTH: "{width}",
+            HEIGHT: "{height}",
+            CRS: "EPSG:{wkid}",
+            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+          },
+          title: "TSpeed"
+        });
+		
+		//Glide Site
+		var glideSiteLayer = new CustomWMSLayer({
+	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapParameters: {
+	            SERVICE: "WMS",
+	            REQUEST: "GetMap",
+	            FORMAT: "image/png",
+	            TRANSPARENT: "TRUE",
+	            STYLES: "",
+	            VERSION: "1.3.0",
+	            LAYERS: "gis_glide_site",
+	            WIDTH: "{width}",
+	            HEIGHT: "{height}",
+	            CRS: "EPSG:{wkid}",
+	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+	          },
+	          title: "Glide"
+	        });
+
+
+		var eventLayer = new CustomWMSLayer({
+          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapParameters: {
+            SERVICE: "WMS",
+            REQUEST: "GetMap",
+            FORMAT: "image/png",
+            TRANSPARENT: "TRUE",
+            STYLES: "gis_eventlayer_style",
+            VERSION: "1.3.0",
+            LAYERS: "gisdbo_gis_carriageway",
+            WIDTH: "{width}",
+            HEIGHT: "{height}",
+            CRS: "EPSG:{wkid}",
+            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+          },
+          title: "EventLayer"
+        });
+
+		var detectCamera = new CustomWMSLayer({
+	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapParameters: {
+	            SERVICE: "WMS",
+	            REQUEST: "GetMap",
+	            FORMAT: "image/png",
+	            TRANSPARENT: "TRUE",
+	            STYLES: "gis_detectcam_style",
+	            VERSION: "1.3.0",
+	            LAYERS: "gisdbo_gis_ea_fels_attr",
+	            WIDTH: "{width}",
+	            HEIGHT: "{height}",
+	            CRS: "EPSG:{wkid}",
+	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+	          },
+
+	          title: "DCam"
+	        });
+		
 		cctvLayer.visible  = false;
 		vmsLayer.visible  = false;
 		carriagewayLayer.visible = false;
+		glideSiteLayer.visible  = false;
+		speedLinkLayer.visible = false;
+		eventLayer.visible = false;
+		detectCamera.visible = false;
 		map = new Map({
           //center: [103.84347,1.32858],
-          layers: [layer,cctvLayer,vmsLayer,carriagewayLayer]
+		   basemap: {
+            baseLayers: [layer,eventLayer]
+          },
+          layers: [cctvLayer,vmsLayer,glideSiteLayer,speedLinkLayer,detectCamera]
         });
-		
 		
         view = new MapView({
           container: "viewDiv",
@@ -169,108 +251,48 @@
           view: view
         });
 
-        /*Road closed auto line draw */
-        var polyline = {
-                  type: "polyline", // autocasts as new Polyline()
-                  //paths: [[103.871639, 1.305326],[103.871714, 1.305192],[103.872138, 1.304967],[103.872159, 1.304624]]
-                  paths: [[103.871517,1.305303],[103.871608,1.305145],[103.871691,1.304968],[103.871777,1.304778]]
-                };
-                // Create a symbol for drawing the line
-                var lineSymbol = {
-                  type: "simple-line", // autocasts as SimpleLineSymbol()
-                  color: [226, 119, 40],
-                  width: 2
-                };
-                var polylineGraphic = new Graphic({
-                  geometry: polyline,
-                  symbol: lineSymbol,
-                 // attributes: lineAtt,
-                  popupTemplate: {
-                    // autocasts as new PopupTemplate()
-                    title: "Road closed"
-                  }
-                });
-            document.getElementById("rdclose").onclick = function() {
-                    view.graphics.addMany([polylineGraphic]);
-              }
-        /*end of Road closed auto line draw*/
-
-
-        /*on road closed start and end points icons  */
-        //add symbol start and end point
-        var rdcloseStpoint = {
-            type: "point", // autocasts as new Point()
-            longitude: 103.871517,
-            latitude: 1.305303                         
-            }; 
-        var rdcloseStPictureSymbol = {
-            type: "picture-marker",
-            url: "nocarentry.jpg",
-            width: "20",
-            height: "20"
-          }
-        var rdcloseStPictureGraphic = new Graphic({
-            geometry: rdcloseStpoint,
-            symbol: rdcloseStPictureSymbol
-           });
-        //end point
-        var rdcloseEndpoint = {
-            type: "point", // autocasts as new Point()
-            longitude: 103.871777,
-            latitude: 1.304778                    
-            };
-            
-        var rdcloseEndPictureSymbol = {
-            type: "picture-marker",
-            url: "nocarentry.jpg",
-            width: "20",
-            height: "20"
-          }
-        var rdcloseEndPictureGraphic = new Graphic({
-            geometry: rdcloseEndpoint,
-            symbol: rdcloseEndPictureSymbol
-           });
-        // end of add symbol start
-        document.getElementById("rdclosepoint").onclick = function() {
-        	//alert("rd closure symbol");
-          view.graphics.addMany([rdcloseStPictureGraphic,rdcloseEndPictureGraphic]);
-        }
-        /*end of on road closed start and end points icons*/
-
-        /* Start draw line function */
-        document.getElementById("line").onclick = function() {
-            action = draw.create("polyline");
-            view.focus();
-            action.on(
-              [
-                "vertex-add",
-                "vertex-remove",
-                "cursor-update",
-                "redo",
-                "undo",
-                "draw-complete"
-              ],
-              createGraphic
-            );
-        }
-        function createGraphic(event) {
-             vertices = event.vertices;
-             graphic = new Graphic({
-              geometry: {
-                type: "polyline",
-                paths: vertices,
-                spatialReference: view.spatialReference
-              },
-              symbol: {
-                type: "simple-line", // autocasts as new SimpleFillSymbol
-                color: [237, 28, 36],
-                width: 1,
-              }
-            });
-            view.graphics.add(graphic);
-          }
-        /* end of draw line function */
-
+   /* Road closed display  */
+    document.getElementById("rdclose").onclick = function() {
+        eventLayer.visible = true;
+    }
+    /*end of Road closed auto line draw*/
+		
+		
+/*** Start and end point icon */
+    document.getElementById("rdclosepoint").onclick = function() {
+         displaySEIcon();
+    }
+    
+	var startEndIconPoints = [
+		{"logi": "103.933185","lati": "1.308079"},  
+		{"logi": "103.949396","lati": "1.310974"}];
+	var iconStartEndGraphic ;
+	function displaySEIcon(){
+		for (i in startEndIconPoints) { 
+			var logi = startEndIconPoints [i].logi ;
+			var lati = startEndIconPoints [i].lati ;
+			
+			//if(i==id) {
+			var iconPoint = {
+					type: "point", // autocasts as new Point()                   			 
+					longitude: logi,
+					latitude: lati
+				}; 
+			var iconStartEndPictureSymbol = {
+				  type: "picture-marker",
+				  url: "rdclose.png",
+				  width: "15",
+				  height: "15"
+			}		
+			iconStartEndGraphic = new Graphic({
+				geometry: iconPoint,
+				symbol: iconStartEndPictureSymbol 
+			});	
+			view.graphics.addMany([iconStartEndGraphic]); 
+			//}		
+		}
+	}
+/***End of Start and end point icon */
 
 /*VMS Message display on map*/  
         var  vmsEqipId = "";
@@ -388,14 +410,9 @@
         
 /*end of VMS Mesage display on map*/        
         
-/*** undo Reset ***/
-        document.getElementById("undo").onclick = function() {
-          view.graphics.removeAll();
-        }
-/*** end of undo Reset ***/
         
 /*** Load Cirlce symbol on load ***/
-        var circlePoint = {
+   /*     var circlePoint = {
           type: "point", // autocasts as new Point()
           longitude: 103.876759,
           latitude: 1.305444
@@ -415,54 +432,11 @@
           geometry: circlePoint,
           symbol: circleMarkerSymbol
         });
-        view.graphics.addMany([circlePointGraphic]);
+        view.graphics.addMany([circlePointGraphic]);*/
 /*** End Load Cirlce symbol on load  ***/
 
 /*** video display ***/
-        window.onload = hideirMsgDiv;
-        function hideirMsgDiv() {
-        	//Traffic Video
-        	var x = document.getElementById("videodiv");
-        	x.style.display = "none";
-        }
 
-        document.getElementById("video").onclick = function() {
-        	  var x = document.getElementById("videodiv");
-        	  // To make visible the div
-        	  if (x.style.display === "none") {
-        		// dragElement(document.getElementById("vmsmsgdiv"));  
-        		  popupvideo();
-        		 x.style.display = "block";
-        	  } else {
-        	     x.style.display = "none";    
-        	  }       	 
-        }
-        //Popup  window  to Start Traffic Video
-        function popupvideo() {
-            //popup window
-            var popup = document.getElementById("myPopup");
-            popup.classList.toggle("show");
-            
-            //video in popup window
-            var lightBoxVideo = document.getElementById("VisaChipCardVideo");
-            lightBoxVideo.play();
-        }
-        // End of Popup  window 
-
-        //popup window with Video display
-        window.document.onkeydown = function(e) {
-        	if (!e) {
-        		e = event;
-        	}
-        	if (e.keyCode == 27) {
-        		lightbox_close();
-        	}
-        }
-
-        function lightbox_close() {
-        	var lightBoxVideo = document.getElementById("VisaChipCardVideo");
-        	lightBoxVideo.pause();
-        }
 /*** End of popup window with video display       ***/  
         
       

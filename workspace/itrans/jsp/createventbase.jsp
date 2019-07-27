@@ -61,16 +61,7 @@
         height: 20px;
         width: 350px;
       }
-	  #instruction1 {
-		z-index: 99;
-        position: absolute;
-        top: 50px;
-        right: 25%;
-        padding: 5px;
-        margin-left: -175px;
-        height: 20px;
-        width: 350px;		  
-	  }
+
       .esri-layer-list {
         width: 310px;
       }
@@ -327,24 +318,8 @@ input[type=text] {
 	 <div id="viewDiv"> </div>    
 	  <div id="instruction">    	        
 		<button class="irresetbutton" id="rdclose">  Line </button>
-		<button class="irresetbutton" id="rdclosepoint">  Symbol  </button>
-		<button class="irresetbutton" id="line">  Draw Line  </button>
-		
-			<div class="popup" onclick="popupvideo()">
-		        <div id="videodiv">
-		           <span class="popuptext" id="myPopup">
-		              <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
-		              <video id="VisaChipCardVideo" width="300" controls>
-		                  <source src="CTEvideo.mp4" type="video/mp4">
-		               </video>
-		           </span>
-		           </div>       
-				</div>					       
+		<button class="irresetbutton" id="rdclosepoint">  Symbol  </button>	       
 		 </div>  
-	 <div id="instruction1">
-	 <button class="irresetbutton" id="video" >Video </button>
-	 <button class="irresetbutton" id="undo" >Reset  </button>
-	</div> 
       
       <div id="panelTopDiv"  style="background-color: #202B53;">
     		<h2t> Event - {{eventname}} </h2t>

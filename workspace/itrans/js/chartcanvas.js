@@ -60,7 +60,7 @@ function updateBarChart() {
 	barChart.render();
 };
 updateBarChart();
-setInterval(function() {updateBarChart()}, 4000);
+//setInterval(function() {updateBarChart()}, 4000);
 //end of bar chart
 
 //start linechart technical work alarm
@@ -123,7 +123,7 @@ function updateLineChart() {
 	lineChart.render();
 };
 updateLineChart();
-setInterval(function() {updateLineChart()}, 5000);
+//setInterval(function() {updateLineChart()}, 5000);
 //End linechart
 
 }

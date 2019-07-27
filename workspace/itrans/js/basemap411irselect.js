@@ -164,17 +164,59 @@
             CRS: "EPSG:{wkid}",
             BBOX: "{xmin},{ymin},{xmax},{ymax}"
           },
-          title: "TrafficSpeed"
+          title: "TSpeed"
         });
+	
+		var detectCamera = new CustomWMSLayer({
+	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapParameters: {
+	            SERVICE: "WMS",
+	            REQUEST: "GetMap",
+	            FORMAT: "image/png",
+	            TRANSPARENT: "TRUE",
+	            STYLES: "gis_detectcam_style",
+	            VERSION: "1.3.0",
+	            LAYERS: "gisdbo_gis_ea_fels_attr",
+	            WIDTH: "{width}",
+	            HEIGHT: "{height}",
+	            CRS: "EPSG:{wkid}",
+	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+	          },
+
+	          title: "DCam"
+	        });	
+		
+		var glideLayer = new CustomWMSLayer({
+	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapParameters: {
+	            SERVICE: "WMS",
+	            REQUEST: "GetMap",
+	            FORMAT: "image/png",
+	            TRANSPARENT: "TRUE",
+	            STYLES: "",
+	            VERSION: "1.3.0",
+	            LAYERS: "gis_glide_site",
+	            WIDTH: "{width}",
+	            HEIGHT: "{height}",
+	            CRS: "EPSG:{wkid}",
+	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+	          },
+	          title: "Glide"
+	        });
 		
 		cctvLayer.visible = false;
 		vmsLayer.visible = false;
 		carriagewayLayer.visible = false;
-		speedLinkLayer.visible = false;
+		speedLinkLayer.visible = true;
+		detectCamera.visible = false;
+		glideLayer.visible = false;
 		
 		map = new Map({
           //center: [103.84347,1.32858],
-          layers: [layer,cctvLayer,vmsLayer,carriagewayLayer,speedLinkLayer]
+		basemap: {
+            baseLayers: [layer]
+        },
+          layers: [cctvLayer,vmsLayer,glideLayer,speedLinkLayer,detectCamera]
         });
 		
 		
@@ -206,7 +248,97 @@
             view: view
           });
           view.ui.add(layerList, "bottom-left");
-        }); 
+        });
+
+	/* Start Accident location point and icon */
+	setInterval(accIconLocation, 500);
+	setInterval(clearAccIconLocation, 1000);
+	function clearAccIconLocation(){
+		view.graphics.removeAll();
+		speedLinkLayer.visible = true;
+		view.graphics.addMany([cctvPictureGraphic2, cctvPictureGraphic3 ]);
+	}
+	var accPictureGraphic ="";
+	function accIconLocation() {  // Icon display
+	    var accpoint = {
+                type: "point", // autocasts as new Point()
+                longitude: 103.858056,
+                latitude: 1.378118                        
+                };     
+            var accPictureSymbol = {
+                type: "picture-marker",
+                url: "accident.png",
+                width: "25",
+                height: "25",
+                xoffset: 5,
+                yoffset: 5
+              }
+            accPictureGraphic = new Graphic({
+                geometry: accpoint,
+                symbol: accPictureSymbol
+               });    
+            	view.graphics.addMany([accPictureGraphic]);
+				//call cc cam and video
+				accCCTVLocation()
+      }
+
+	/*** Onload cctv icon ***/
+var cctvPictureGraphic1 ="", cctvPictureGraphic2 ="", cctvPictureGraphic3 ="";
+function accCCTVLocation() {  // Icon display
+    var accPictureGraphic ="";
+	    /*var cctvpoint1 = {
+                type: "point", // autocasts as new Point()
+                longitude: 103.8587667,
+                latitude: 1.3752537                        
+                };  */
+	    var cctvpoint2 = {
+                type: "point", // autocasts as new Point()
+                longitude: 103.8582773,
+                latitude: 1.3770134                        
+                }; 
+	    var cctvpoint3 = {
+                type: "point", // autocasts as new Point()
+                longitude: 103.8584744,
+                latitude: 1.3778264                        
+                }; 
+				
+            var cctvPictureSymbol = {
+                type: "picture-marker",
+                url: "cctv.png",
+                width: "25",
+                height: "25",
+                xoffset: 5,
+                yoffset: 5
+              }
+            /*cctvPictureGraphic1 = new Graphic({
+                geometry: cctvpoint1,
+                symbol: cctvPictureSymbol,
+				popupTemplate: {
+						// autocasts as new PopupTemplate()
+						title: "Accident",
+						content: '<video width="270" height="150"  controls="true" autoplay="1" frameborder="0"><source src=CTEvideo.mp4 type=video/mp4></video>'
+				}
+               });  */
+            cctvPictureGraphic2 = new Graphic({
+                geometry: cctvpoint2,
+                symbol: cctvPictureSymbol,
+				popupTemplate: {
+						// autocasts as new PopupTemplate()
+						title: "Accident",
+						content: '<video width="270" height="150"  controls="true" autoplay="1" frameborder="0"><source src=CTEvideo.mp4 type=video/mp4></video>'
+				}
+               }); 
+            cctvPictureGraphic3 = new Graphic({
+                geometry: cctvpoint3,
+                symbol: cctvPictureSymbol,
+				popupTemplate: {
+						// autocasts as new PopupTemplate()
+						title: "Accident",
+						content: '<video width="270" height="150"  controls="true" autoplay="1" frameborder="0"><source src=CTEvideo.mp4 type=video/mp4></video>'
+				}
+               }); 			   
+            	view.graphics.addMany([cctvPictureGraphic2, cctvPictureGraphic3 ]);
+      }	
 
       });
 	  	  

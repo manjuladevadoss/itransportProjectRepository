@@ -595,7 +595,7 @@ div.scrollIr {
 /* Mobile road work css */
 .textareamrwcomment { 
  font-size: 1em;
- color: #C8CFF4;
+ color: #FFF;
  font-family: Roboto, Helvetica, sans-serif;
  font-weight: bold;
  background-color: #37478A;
@@ -603,7 +603,7 @@ div.scrollIr {
  border-radius: 10px;
 }
  .textimagediv {
- width: 250px;
+ width: 200px;
  height: 50px;
  font-size: .9em;;
  color: #C8CFF4;
