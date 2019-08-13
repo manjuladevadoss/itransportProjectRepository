@@ -1,20 +1,100 @@
 {
-  "ireventvms": [
+  "eventvms": [
     {
-      "irvmsequipid": "231482",
-      "irmrwvmsmsg": "Expect Delays Near sports Hub"
+      "eventeqid": "231278",
+      "eventvmsmsg": "ECP Service Rd closed between Bedok & Car Part H",
+      "eventdate": "17 Aug",
+      "eventtime": "10 am - 12 am"
+    },
+   {
+      "eventeqid": "901482",
+      "eventvmsmsg": "Closed ECP Service Rd btw Bedok & Car park H",
+      "eventdate": "18 Aug",
+      "eventtime": "08 am - 10 am"
+    },
+   {
+      "eventeqid": "564372",
+      "eventvmsmsg": "ECP Service Rd closed between Bedok & Car Part H",
+      "eventdate": "18 Aug",
+      "eventtime": "12 pm - 02 pm"
     },
     {
-      "irvmsequipid": "231482",
-      "irmrwvmsmsg": "Heavy Traffic on Nicoll Highway/Raffles Blvd"
+      "eventeqid": "782436",
+      "eventvmsmsg": "ECP Service Rd closed between Bedok & Car Part H",
+      "eventdate": "24 Aug",
+      "eventtime": "08 pm - 11 pm"
     },
     {
-      "irvmsequipid": "231482",
-      "irmrwvmsmsg": "Heavy Traffic on Guillemard Road"
+      "eventeqid": "983561",
+      "eventvmsmsg": "Closed ECP Service Rd btw Bedok & Car park H",
+      "eventdate": "17 Aug",
+      "eventtime": "09 am - 10 am"
+    },
+   {
+      "eventeqid": "635729",
+      "eventvmsmsg": "ECP Service Rd closed between Bedok & Car Part H",
+      "eventdate": "18 Aug",
+      "eventtime": "11 am - 12 pm"
+    },
+   {
+      "eventeqid": "324649",
+      "eventvmsmsg": "Closed ECP Service Rd btw Bedok & Car park H",
+      "eventdate": "24 Aug",
+      "eventtime": "02 pm - 04 pm"
     },
     {
-      "irvmsequipid": "231482",
-      "irmrwvmsmsg": "Heavy Traffic on Bras Basah Rd"
+      "eventeqid": "546251",
+      "eventvmsmsg": "ECP Service Rd closed between Bedok & Car Part H",
+      "eventdate": "24 Aug",
+      "eventtime": "06 pm - 09 pm"
+    },
+    {
+      "eventeqid": "231278",
+      "eventvmsmsg": "Closed ECP Service Rd btw Bedok & Car park H",
+      "eventdate": "25 Aug",
+      "eventtime": "10 am - 12 am"
+    },
+   {
+      "eventeqid": "901482",
+      "eventvmsmsg": "Closed ECP Service Rd btw Bedok & Car park H",
+      "eventdate": "25 Aug",
+      "eventtime": "08 am - 10 am"
+    },
+   {
+      "eventeqid": "564372",
+      "eventvmsmsg": "ECP Service Rd closed between Bedok & Car Part H",
+      "eventdate": "25 Aug",
+      "eventtime": "12 pm - 02 pm"
+    },
+    {
+      "eventeqid": "782436",
+      "eventvmsmsg": "Closed ECP Service Rd btw Bedok & Car park H",
+      "eventdate": "25 Aug",
+      "eventtime": "08 pm - 11 pm"
+    },
+    {
+      "eventeqid": "983561",
+      "eventvmsmsg": "ECP Service Rd cls btw ClParks F1 & H",
+      "eventdate": "25 Aug",
+      "eventtime": "09 am - 10 am"
+    },
+   {
+      "eventeqid": "635729",
+      "eventvmsmsg": "Closed ECP Service Rd btw Bedok & Car park H",
+      "eventdate": "25 Aug",
+      "eventtime": "11 am - 12 pm"
+    },
+   {
+      "eventeqid": "324649",
+      "eventvmsmsg": "ECP Service Rd closed between Bedok & Car Part H",
+      "eventdate": "25 Aug",
+      "eventtime": "02 pm - 04 pm"
+    },
+    {
+      "eventeqid": "546251",
+      "eventvmsmsg": "ECP Service Rd cls btw ClParks F1 & H",
+      "eventdate": "25 Aug",
+      "eventtime": "06 pm - 09 pm"
     }
   ]
 }

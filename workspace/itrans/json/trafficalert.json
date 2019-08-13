@@ -2,123 +2,79 @@
   "trafficalert": [
     {
 	 "status":"Unverified",
-	 "time":"2019/07/30 15.53",
-	 "alertid": "UCD_3242_142",
-	 "rname": "Jalan Bukit Merah",
-	 "from":"",
-	 "to":"",
-	 "zone": "zone1",
-	 "desc": "Stopped vehicle",
-	 "source": "UCD"
-    },
-    {
-	 "status":"True",
-	 "time":"2019/07/30 14.53",
-	 "alertid": "DET_edited_3448",
-	 "rname": "Aljunied road",
+	 "time":"2019/08/6 14.53",
+	 "alertid": "CCTV_3448",
+	 "rname": "CTE",
 	 "from":"",
 	 "to":"",
 	 "zone": "zone2",
-	 "desc": "Congestion",
-	 "source": "UCD"
+	 "desc": "Reverse Direction",
+	 "source": "VA"
     },
     {
-	 "status":"Open",
-	 "time":"2019/07/30 15.00",
-	 "alertid": "UCD_806_9",
+	 "status":"True",
+	 "time":"2019/08/06 15.00",
+	 "alertid": "DET_806_9",
 	 "rname": "Lavender Street",
 	 "from":"",
 	 "to":"",
 	 "zone": "zone4",
-	 "desc": "Inverse Direction",
+	 "desc": "Stopped Vehicle",
 	 "source": "DET"
     },
      {
-	 "status":"Unverified",
-	 "time":"2019/07/30 15.10",
-	 "alertid": "UCD_123_142",
+	 "status":"True",
+	 "time":"2019/08/06 15.10",
+	 "alertid": "CCTV_123_142",
 	 "rname": "AYE",
 	 "from":"",
 	 "to":"",
 	 "zone": "zone1",
-	 "desc": "Stopped vehicle",
-	 "source": "UCD"
+	 "desc": "Reverse Direction",
+	 "source": "VA"
     },
     {
 	 "status":"True",
-	 "time":"2019/07/30 12.53",
-	 "alertid": "DET_edited_789",
-	 "rname": "TUN",
-	 "from":"",
-	 "to":"",
-	 "zone": "zone2",
-	 "desc": "Congestion",
-	 "source": "UCD"
-    },
-    {
-	 "status":"Open",
-	 "time":"2019/07/30 13.00",
-	 "alertid": "UCD_806_91",
-	 "rname": "Lavender Street",
-	 "from":"",
-	 "to":"",
-	 "zone": "zone4",
-	 "desc": "Inverse Direction",
-	 "source": "DET"
-    },
-     {
-	 "status":"Unverified",
-	 "time":"2019/07/30 10.10",
-	 "alertid": "UCD_1232",
-	 "rname": "AYE",
-	 "from":"",
-	 "to":"",
-	 "zone": "zone1",
-	 "desc": "Stopped vehicle",
-	 "source": "UCD"
-    },
-    {
-	 "status":"True",
-	 "time":"2019/07/30 09.53",
+	 "time":"2019/08/06 09.53",
 	 "alertid": "DET_79",
 	 "rname": "TUN",
 	 "from":"",
 	 "to":"",
 	 "zone": "zone2",
-	 "desc": "Congestion",
-	 "source": "UCD"
+	 "desc": "Stopped Vehicle",
+	 "source": "DET"
     },{
-	 "status":"Unverified",
-	 "time":"2019/07/30 11.34",
-	 "alertid": "UCD_23_142",
+	 "status":"True",
+	 "time":"2019/08/06 11.34",
+	 "alertid": "DET_23_142",
 	 "rname": "Jalan Bukit Merah",
 	 "from":"",
 	 "to":"",
 	 "zone": "zone1",
-	 "desc": "Stopped vehicle",
-	 "source": "UCD"
+	 "desc": "Stopped Vehicle",
+	 "source": "DET"
     },
     {
 	 "status":"True",
-	 "time":"2019/07/30 09.53",
+	 "time":"2019/08/06 09.53",
 	 "alertid": "DET_edited_88",
 	 "rname": "Aljunied road",
 	 "from":"",
 	 "to":"",
 	 "zone": "zone2",
-	 "desc": "Congestion",
-	 "source": "UCD"
+	 "desc": "Stopped Vehicle",
+	 "source": "DET"
     },
     {
-	 "status":"Open",
-	 "time":"2019/07/30 10.00",
-	 "alertid": "UCD_806_90",
+	 "status":"True",
+	 "time":"2019/08/06 10.00",
+	 "alertid": "CCTV_806_90",
 	 "rname": "Lavender Street",
 	 "from":"",
 	 "to":"",
 	 "zone": "zone5",
-	 "desc": "Inverse Direction",
-	 "source": "DET"
+	 "desc": "Reverse Direction",
+	 "source": "VA"
     }
     ]
  }

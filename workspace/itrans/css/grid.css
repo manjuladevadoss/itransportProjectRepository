@@ -250,7 +250,7 @@ p{
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
-  background-color: #4CAF50;
+ /* background-color: #4CAF50;*/
   color: white;
 }
 
@@ -260,6 +260,18 @@ p{
 }
 
 #datatbl td, #datatbl th {
+  border: 0px solid green;
+  padding: 3px;
+  color: white;
+ /* background-color: #202B53;*/
+}
+
+#dataTAtbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#dataTAbl td, #dataTAtbl th {
   border: 0px solid green;
   padding: 3px;
   color: white;

@@ -154,5 +154,19 @@ canvas {
 
 .dashincieventable {
 	background-color: rgba(10, 20, 68);
-	border: 2px solid #293E78;
+	border: 2px solid #5E6FD6;
+}
+
+.linegraphtable {
+	/*background-color: rgba(10, 20, 68);*/
+	border: 2px solid #5E6FD6;
+}
+
+.linegraphtable tr, .linegraphtable td, .linegraphtable th {
+ /* background-color: rgba(49,53,81,0.5);*/
+  padding: 10px 5px;
+  color: #000000;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 10px;
+  border: 2px solid #5E6FD6; 
 }

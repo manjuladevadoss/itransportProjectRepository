@@ -28,18 +28,18 @@ var barChart = new CanvasJS.Chart(ctx2, {
 		//yValueFormatString: "#,### °C",
 		//indexLabel: "{y}",
 		dataPoints: [
-			{ label: "01.00", y: 15 },
-			{ label: "02.00", y: 28 },
-			{ label: "03.00", y: 18 },
-			{ label: "04.00", y: 15 },
-			{ label: "05.00", y: 28 },
-			{ label: "06.00", y: 18 },
-			{ label: "07.00", y: 14 },
-			{ label: "08.00", y: 12 },
-			{ label: "09.00", y: 24 },
-			{ label: "10.00", y: 14 },
-			{ label: "11.00", y: 12 },
-			{ label: "12.00", y: 24 }
+			{ label: "01.00", y: 2 },
+			{ label: "02.00", y: 3 },
+			{ label: "03.00", y: 4 },
+			{ label: "04.00", y: 5 },
+			{ label: "05.00", y: 6 },
+			{ label: "06.00", y: 1 },
+			{ label: "07.00", y: 3 },
+			{ label: "08.00", y: 6 },
+			{ label: "09.00", y: 7 },
+			{ label: "10.00", y: 2 },
+			{ label: "11.00", y: 5 },
+			{ label: "12.00", y: 4 }
 		]
 	}]
 });
@@ -91,18 +91,18 @@ var lineChart = new CanvasJS.Chart(ctx1, {
 		//yValueFormatString: "#,### °C",
 		//indexLabel: "{y}",
 		dataPoints: [
-			{ label: "01.00", y: 15 },
-			{ label: "02.00", y: 28 },
-			{ label: "03.00", y: 18 },
-			{ label: "04.00", y: 15 },
-			{ label: "05.00", y: 28 },
-			{ label: "06.00", y: 18 },
-			{ label: "07.00", y: 14 },
-			{ label: "08.00", y: 12 },
-			{ label: "09.00", y: 24 },
-			{ label: "10.00", y: 14 },
-			{ label: "11.00", y: 12 },
-			{ label: "12.00", y: 24 }
+			{ label: "01.00", y: 7 },
+			{ label: "02.00", y: 2 },
+			{ label: "03.00", y: 6 },
+			{ label: "04.00", y: 7 },
+			{ label: "05.00", y: 3 },
+			{ label: "06.00", y: 9 },
+			{ label: "07.00", y: 7 },
+			{ label: "08.00", y: 6 },
+			{ label: "09.00", y: 4 },
+			{ label: "10.00", y: 2 },
+			{ label: "11.00", y: 3 },
+			{ label: "12.00", y: 6 }
 		]
 	}]
 });

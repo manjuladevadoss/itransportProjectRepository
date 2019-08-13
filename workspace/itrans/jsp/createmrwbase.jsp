@@ -227,19 +227,11 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 	       <div id="panelRightDiv" class="esri-widget">
     
          <br> 
-		 <br> 
-		
-		 <br> 
+		 
 		<!-- Start IR Creation -->
 	  <div ng-show="showmrwcreate">
 	  
-	  	<table width="100%" id="incdetailtbl"> 
-		<tr>
-			<td>	<h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp;
-					<a href="#" style="text-decoration:none;" ng-click="callmrwresponse()" ><h3b>RESPONSE</h3b> </a>	
-			</td>
-		</tr>
-	</table>
+
 	  
 			
 	 <div class='scrollIr'> 
@@ -247,8 +239,15 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 			<div class="panel-group" id="accordion2">	
 				 <div class="panel panel-default">
 					<div class="panel-heading active">
+							<table width="100%" id="incdetailtbl"> 
+									<tr>
+										<td>	&nbsp;<h3a> CREATE</h3a>&nbsp;<h3b>></h3b>&nbsp;
+												<a href="#" style="text-decoration:none;" ng-click="callmrwresponse()"><h3b>RESPONSE</h3b> </a>	
+										</td>
+									</tr>
+								</table>
 						<h4 class="panel-title">
-							   Road Work<span data-target="#Collapseicon1" data-toggle="collapse" data-parent="#accordion2"><span class="glyphicon glyphicon-plus" style="float:right;"></span> </span>
+								&nbsp; Road Work<span data-target="#Collapseicon1" data-toggle="collapse" data-parent="#accordion2"><span class="glyphicon glyphicon-plus" style="float:right;"></span> </span>
 						</h4>
 					</div>
 					
@@ -264,8 +263,11 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 						State: <br>
 								<input style ="color: #FFF;" ng-model="mrwstate"/>
 					  </td>
-					  <td colspan="3"> Source: <br>
-								<input style ="color: #FFF;" type="text"  ng-model="mrwsource"/>
+					  <td colspan="3"> Work Type: <br>
+					<select ng-model="worktype" style ="height:28px;width:170px;color: #FFF;" >
+						<option  value="" selected="selected" hidden="hidden">Choose here</option>
+						<option ng-repeat="option in mrwType" value="{{option.mrwTypeid}}">{{option.name}}</option>
+					</select>
 					  </td>
 					</tr>
 					<tr>
@@ -307,51 +309,27 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 						<input style ="color: #FFF;" type="text" ng-model="mrwsupvisorhp"/>
 					  </td>
 					</tr>
+
+				   <tr>
+					  <td colspan="3">
+						Vehicle Number <br>
+						<input style ="color: #FFF;" type="text" ng-model="mrwvehicleno"/>
+					  </td>
+					  <td colspan="3">
+						Road Name <br>
+						<input style ="color: #FFF;" type="text" ng-model="mrwstartpoint"/>
+					  </td>
+					</tr>
 					<tr>
 					  <td colspan="6">
 							Comments <br>
 							<textarea class="textareamrwcomment" rows="3" cols="40"  ng-model="mrwcomment"> </textarea>
 					  </td>
 					</tr>
-				   <tr>
-					  <td colspan="6">
-						Vehicle Number <br>
-						<input style ="color: #FFF;" type="text" ng-model="mrwvehicleno"/>
-					  </td>
-					</tr>
-					
 				 </table>
 				 
 				 <br><br>
-				 <table width="50%" id="incblocktbl">
-					<tr>
-					  <td>          
-						<label class="contentlabel"> Simulated 
-						  <input type="checkbox" ng-model="mrwsimul">
-						  <span class="checkmark" size=""></span>
-						</label>
-						</td>
-						<td>
-						<label class="contentlabel"> Important 
-						  <input type="checkbox" ng-model="mrwimpor">
-						  <span class="checkmark"></span>
-						</label>
-					   </td>
-					    <td>
-						 <label class="contentlabel"> VRS 
-						  <input type="checkbox" ng-model="mrwvrs">
-						  <span class="checkmark"></span>
-						</label>
-						</td>
-						<td>
-						<label class="contentlabel"> LTM
-						  <input type="checkbox" ng-model="mrwltm">
-						  <span class="checkmark"></span>
-						</label>
-					  </td>
-					   </tr>
-					      
-					</table> 
+
 						</div>
 					</div>
 				  </div> 
@@ -367,21 +345,24 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 	<!-- Start of IR  Response -->
 	<div ng-show="showmrwresponse">
 		
-	<table width="100%" id="incresponsetbl">
-		<tr>
-			<td>
-				<a href="#" style="text-decoration: none" ng-click="callmrwcreate()"> <h3b>&nbsp;&nbsp;CREATE</h3b> </a>&nbsp;<h3b>></h3b>&nbsp;<h3a>RESPONSE</h3a>
-			</td>
-		</tr>
-	</table> 
-	
+
+	<br>
 		 <div class='scrollResponse'> 
  		  
 		  <div class="panel-group" id="accordion2">
      
      <div class="panel panel-default">
     	<div class="panel-heading active">
-        	<h4 class="panel-title">           	             	
+				<table width="100%" class="incdetailtbl" style="padding: 2px;" >
+						<tr style="padding: 2px;">
+							<td style="padding: 2px;">
+									<a href="#" style="text-decoration: none" ng-click="callmrwcreate()"> <h3b>CREATE</h3b> </a>&nbsp;<h3b>></h3b>&nbsp;<h3a>RESPONSE</h3a>         	             				
+							</td>
+						</tr>
+					</table> 
+					<br> 	
+        	<h4 class="panel-title"> 
+					
                     VMS Messages <span data-target="#Collapseicon4" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
             </h4>
         </div>
@@ -393,8 +374,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 			<tr>
 				<th align="left" style="padding:5px;">Status </th>
 				<th align="left">EQT ID</th>
-				<th align="left">Recommended Display </th>
-				<th align="left">Time</th>		
+				<th align="left">Recommended Display </th>					
 			</tr>
 			<tr ng-repeat="irmrwvms in irmrwvmsList"> 
 				<td> 
@@ -428,8 +408,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 				    
 			
 			</td>
-			<td> <input type="text" ng-model="datetime" ng-change="timeChange()" value={{irmrwvms.datetime}} style ="width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;"> 
-			</td>	
+			
 	     </tr>
 				
 			</table>

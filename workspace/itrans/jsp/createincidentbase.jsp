@@ -5,6 +5,7 @@
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
+	<meta http-equiv="refresh" content="50" /> 
     <title> Incident Creation </title>
   	<link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
   	 <script type="text/javascript" src="jquery.js"></script>
@@ -94,7 +95,7 @@ background-color: black;
       var c =":";
       var s = "//"
      if(windowObjectReference2 == null || windowObjectReference2.closed) {
-	    	var strpage3 = "/itrans/bisdash1.jsp";
+	    	var strpage3 = "/itrans/bislinechart.jsp";
 		    var value3 = protocol.concat(s,domain,c,port,strpage3);
 		    //alert("bis url " + value3);
 		    windowObjectReference2 = window.open(
@@ -105,7 +106,7 @@ background-color: black;
 				windowObjectReference2.focus();
     	}
     }
-    window.onload = bisMainWindow;
+   // window.onload = bisMainWindow;
    	 $(document).bind("contextmenu",function(e){
     	  e.preventDefault();
     	  console.log(e.pageX + "," + e.pageY);

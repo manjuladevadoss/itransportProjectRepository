@@ -294,44 +294,99 @@
 	}
 /***End of Start and end point icon */
 
-/*VMS Message display on map*/  
-        var  vmsEqipId = "";
-        var  vmsMessage = "";
-        document.getElementById("eveVmsSelect").onclick = function() {
-        	var eqipId = document.getElementById("evevmsequipid").innerHTML;
-         	var eqipidbefindex = eqipId.indexOf('">');
-            var eqipidindex = eqipId.indexOf("</font>");
-            vmsEqipId = eqipId.substring(eqipidbefindex+2, eqipidindex);
-        	vmsMessage = document.getElementById("eventVmsMsg").value;
-        	vmsMsgDisplayOnMap(vmsEqipId, vmsMessage);
-        }
-        document.getElementById("eveVmsSelect1").onclick = function() {
-        	var eqipId = document.getElementById("evevmsequipid1").innerHTML;
-         	var eqipidbefindex = eqipId.indexOf('">');
-            var eqipidindex = eqipId.indexOf("</font>");
-            vmsEqipId = eqipId.substring(eqipidbefindex+2, eqipidindex);
-        	vmsMessage = document.getElementById("eventVmsMsg1").value;
-        	vmsMsgDisplayOnMap(vmsEqipId, vmsMessage);
-        	
-        }
-        document.getElementById("eveVmsSelect2").onclick = function() {
-        	var eqipId = document.getElementById("evevmsequipid2").innerHTML;
-         	var eqipidbefindex = eqipId.indexOf('">');
-            var eqipidindex = eqipId.indexOf("</font>");
-            vmsEqipId = eqipId.substring(eqipidbefindex+2, eqipidindex);
-        	vmsMessage = document.getElementById("eventVmsMsg2").value;
-        	vmsMsgDisplayOnMap(vmsEqipId, vmsMessage);
-        }
-        document.getElementById("eveVmsSelect3").onclick = function() {
-        	var eqipId = document.getElementById("evevmsequipid3").innerHTML;
-         	var eqipidbefindex = eqipId.indexOf('">');
-            var eqipidindex = eqipId.indexOf("</font>");
-            vmsEqipId = eqipId.substring(eqipidbefindex+2, eqipidindex);
-        	vmsMessage = document.getElementById("eventVmsMsg3").value;
-        	vmsMsgDisplayOnMap(vmsEqipId, vmsMessage);
-        }
-        
-        /****************/
+/*** Vms message on map **/
+
+	var vmseqipPoints = [
+		{"logi": "103.968971", "lati": "1.3201737"},
+		{"logi": "103.9374682", "lati": "1.3100315"},
+		{"logi": "103.9152873", "lati": "1.3026633"},
+		{"logi": "103.8918387", "lati": "1.2953984"}
+    ];
+	var tipPictureSymbol = {
+		type: "picture-marker",
+		url: "TIP_MSG.png",
+		width: "20",
+		height: "20",
+	}
+	document.getElementById("vmsids").onclick = function() {
+		var eventadvvms = document.getElementsByName("seletedid");
+		vmsMsgOnMap(eventadvvms, true);
+	}
+	
+	document.getElementById("vmsactids").onclick = function() {
+		var eventactvms = document.getElementsByName("seletedactid");
+		vmsMsgOnMap(eventactvms, false);
+	}
+	function vmsMsgOnMap(eventvms, advmsg){
+		view.graphics.removeAll();	
+		 for(i=0;i<eventvms.length;i++) {			
+			var  str = eventvms[i].value;	
+			var word1sep = str.indexOf("$");
+			var eveid = str.substring(0, word1sep);
+			
+			var str1 = str.substring(word1sep+1, str.length);
+			var word1sep1 = str1.indexOf("$");
+			var evedate = str1.substring(0, word1sep1);
+			
+			var str2 = str1.substring(word1sep1+1, str1.length);
+			var word1sep2 = str2.indexOf("$");
+			var evetime = str2.substring(0, word1sep2);
+			
+			var evemsg = str2.substring(word1sep2+1, str2.length);
+			//alert("eveid : " +  eveid + " \evedate : " +  evedate + " \evetime : " +  evetime + " \evemsg : " +  evemsg);
+			
+			var logi = vmseqipPoints[i].logi;
+			var lati = vmseqipPoints[i].lati;
+			var textmsg, xoffsetValue, yoffsetValue ;
+			if(advmsg) {
+				textmsg =  evedate + ' ' + evetime +  '\n' + evemsg;
+				xoffsetValue = 0;
+				yoffsetValue = 30;
+			} else {
+				textmsg =   evemsg;
+				xoffsetValue = 0;
+				yoffsetValue = 20;
+			}
+			
+		var vmspoint = {
+				type: "point", // autocasts as new Point()                   			 
+				longitude: logi,
+				latitude: lati
+		}; 
+		var vmsTextSymbol = {
+		   type: "text",  // autocasts as new TextSymbol()
+		   color: "#0018F9",
+		   haloColor: "#95C8D8",
+		   haloSize: "1px",
+		   text: textmsg,
+		   xoffset: xoffsetValue,
+		   yoffset: yoffsetValue,
+		   font: {  // autocast as new Font()
+				  size: 8,
+				  weight: "bold"
+				}
+		 };	
+
+		var vmsImagePictureGraphic = new Graphic({
+			geometry: vmspoint,
+			symbol: tipPictureSymbol,
+			popupTemplate: {
+				// autocasts as new PopupTemplate()
+				title: eveid,
+				content: evedate + ' ' +  evetime + '<br><center>' + evemsg
+			}
+		});
+
+		 
+		var eventpictureGraphic = new Graphic({
+			geometry: vmspoint,
+			symbol: vmsTextSymbol
+		});	
+			view.graphics.addMany([eventpictureGraphic,vmsImagePictureGraphic]); 				
+	}		
+}
+		
+
         function vmsMsgDisplayOnMap(vmsEqipId, vmsMessage) {
         	if(vmsEqipId == "TIP 545862") {
         		//alert("1st vmsEqipId : " + vmsEqipId );

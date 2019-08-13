@@ -184,7 +184,27 @@
             BBOX: "{xmin},{ymin},{xmax},{ymax}"
           },
           title: "TSpeed"
-        });
+		});
+		
+
+		/*** Onload Mobile road work road display*/	
+		var mrwLaneLayer = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			  SERVICE: "WMS",
+			  REQUEST: "GetMap",
+			  FORMAT: "image/png",
+			  TRANSPARENT: "TRUE",
+			  STYLES: "mrw_road_line_style",
+			  VERSION: "1.3.0",
+			  LAYERS: "gisdbo_gis_carriageway",
+			  WIDTH: "{width}",
+			  HEIGHT: "{height}",
+			  CRS: "EPSG:{wkid}",
+			  BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "RoadworkLane"
+		  });
 		
 		cctvLayer.visible = false;
 		vmsLayer.visible = false;
@@ -192,11 +212,12 @@
 		cctvLayer.visible = false;
 		detectCamera.visible = false;
 		speedLinkLayer.visible = false;
+		mrwLaneLayer.visible = false;
 		//layer.visible = true;
 		map = new Map({
           //center: [103.84347,1.32858],
 		   basemap: {
-            baseLayers: [layer]
+            baseLayers: [layer,mrwLaneLayer]
           },
           layers: [cctvLayer,vmsLayer,glideLayer,speedLinkLayer,detectCamera]
         });
@@ -207,12 +228,12 @@
           map: map,
          // center: [103.836862, 1.329735],
 		 center: [103.866673, 1.310829],
-          zoom: 12        
+		  zoom: 12      
         });
        
         // To draw a line
         draw = new Draw({
-          view: view
+		  view: view
         });
         
         /* Start draw line function */
@@ -248,38 +269,6 @@
             view.graphics.add(graphic);
           }
 
-     /*   document.getElementById("line").onclick = function() {
-            action = draw.create("polyline");
-            view.focus();
-            action.on(
-              [
-                "vertex-add",
-                "vertex-remove",
-                "cursor-update",
-                "redo",
-                "undo",
-                "draw-complete"
-              ],
-              createGraphic
-            );
-        }
-        function createGraphic(event) {
-             vertices = event.vertices;
-             graphic = new Graphic({
-              geometry: {
-                type: "polyline",
-                paths: vertices,
-                spatialReference: view.spatialReference
-              },
-              symbol: {
-                type: "simple-line", // autocasts as new SimpleFillSymbol
-                color: [237, 28, 36],
-                width: 1,
-              }
-            });
-            view.graphics.add(graphic);
-          }*/
-  /* end of draw line function */
 
  
 /*** Remove particular vms message */
@@ -288,7 +277,8 @@
         view.graphics.remove([pictureGraphicText]);
       } 
      }
-/**** End of Remove particular vms message */     
+/**** End of Remove particular vms message */  
+//Onload   
 vmsIdDisplay();
 
 /*** VMS message, id, langi and lati details **/
@@ -336,74 +326,107 @@ function vmsIdDisplay() {
 /*** Start VMS message on the map using interval after create the road work **/
 var interval1, interval2, interval3, interval4, interval5, interval6;
 var vmspictureGraphicVmsText;
-document.getElementById("CreateMrwId").onclick = function(){
+document.getElementById("CreateMrwId").onclick = function() {
 	//Draw auto line on the rood
 	drawline();
 	vmsIdDisplay();
 	
 	//vms text message on the map based on the timing
 	interval1 = setInterval(vmsMessageDispaly1, 2000);	
-	interval2 = setInterval(vmsMessageDispaly2, 4000);	
-	interval3 = setInterval(vmsMessageDispaly3, 8000);	
-	interval4 = setInterval(vmsMessageDispaly4, 12000);	
-	interval5 = setInterval(vmsMessageDispaly5, 15000);	
-	interval6 = setInterval(clearFinalInterval, 19000); 	
+	interval2 = setInterval(vmsMessageDispaly2, 8000);	
+	interval3 = setInterval(vmsMessageDispaly3, 12000);	
+	interval4 = setInterval(vmsMessageDispaly4, 20000);	
+	clrinterval = setInterval(clearFinalInterval, 35000); 	
 	//Moving Icon Display
 	movingIconDisplay();	
 }
 	
-	function vmsMessageDispaly1(){ 
-		displayVmsMessage(0);
+	function vmsMessageDispaly1(){ 		
+		//displayVmsMessage(0);
+		displayVmsMessage(vmsMsgdata0);
 	}
 
-	function vmsMessageDispaly2(){		
+	function vmsMessageDispaly2(){	
 		clearInterval(interval1); 	
-		displayVmsMessage(1);
+		displayVmsMessage(vmsMsgdata1);	
 	}
 	
 	function vmsMessageDispaly3(){
-		clearInterval(interval2); 	
-		displayVmsMessage(2);
+		clearInterval(interval1); 
+		clearInterval(interval2); 				
+		displayVmsMessage(vmsMsgdata2);
 	}
 
 	function vmsMessageDispaly4(){
-		clearInterval(interval3); 	
-		displayVmsMessage(3);
-	}
-	function vmsMessageDispaly5(){
-		clearInterval(interval4); 	
-		displayVmsMessage(4);
+		clearInterval(interval1); 
+		clearInterval(interval2); 
+		displayVmsMessage(vmsMsgdata3);
 	}
 
+
 	function clearFinalInterval(){
+		clearInterval(interval1); 		
+		clearInterval(interval2); 
+		clearInterval(interval3); 	
+		clearInterval(interval4); 
+		clearInterval(clrinterval);
 		removeVmsMessage();
-		clearInterval(interval5);
-		clearInterval(interval6);
+		//displayVmsMessage(vmsMsgdata3);
 	}
 /** end of vms message on the map **/
 
 	//vms point 
-	var vmsMsgdata = [
-		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Road sweeping along Ln1"},
-		{"logi": "103.9054419","lati": "1.3064163", "vmsmsg": "Road sweeping along Ln1"},
-		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Road sweeping along Ln1"},
-		{"logi": "103.8906241","lati": "1.300115", "vmsmsg": "Road sweeping along Ln1"},
-		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Road sweeping along Ln1"}
-    ];
+/*	var vmsMsgdata = [
+		{"logi": "103.92464", "lati": "1.3113622", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
+	];
+*/
+	var vmsMsgdata0 = [
+		{"logi": "103.92464", "lati": "1.3113622", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"}
+	];
+	
+	var vmsMsgdata1 = [
+		{"logi": "103.92464", "lati": "1.3113622", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
+	];
+
+	var vmsMsgdata2 = [
+		//{"logi": "103.92464", "lati": "1.3113622", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
+	];
+
+	var vmsMsgdata3 = [
+		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
+	];
+	
 /** show vms message on the  map */
-function displayVmsMessage(id){
-	view.graphics.remove(vmspictureGraphicVmsText);  
+function displayVmsMessage(vmsMsgdata){
+	//view.graphics.remove(vmspictureGraphicVmsText);  
+	view.graphics.removeAll();  
+	drawline();
+	vmsIdDisplay();
+
 	for (i in vmsMsgdata) { 
 		logi = vmsMsgdata[i].logi ;
 		lati = vmsMsgdata[i].lati ;
+				
 		vmsmsg = vmsMsgdata[i].vmsmsg;
-		if(i==id) {
-			var vmspoint = {
-				type: "point", // autocasts as new Point()                   			 
-				longitude: logi,
-				latitude: lati
-			}; 
-		var vmsTextSymbol = {
+		//console.log("vmsmsg :" + vmsmsg + "      logi["+ i + "] :" + logi + " lati["+ i + "] :" + lati);
+		var vmspoint = {
+			type: "point", // autocasts as new Point()                   			 
+			longitude: logi,
+			latitude: lati
+		}; 
+	/*	var vmsTextSymbol = {
 		   type: "text",  // autocasts as new TextSymbol()
 		   color: "#202B53",
 		   haloColor: "white",
@@ -415,39 +438,50 @@ function displayVmsMessage(id){
 				  size: 8,
 				  weight: "bold"
 				}
-		 };		
-			vmspictureGraphicVmsText = new Graphic({
-					   geometry: vmspoint,
-					   symbol: vmsTextSymbol
-			});	
-			view.graphics.addMany([vmspictureGraphicVmsText]); 
-		}		
+		 };		*/
+
+		 var mrwMessageImagePictureSymbol1 = {
+			type: "picture-marker",
+			url: "litterpicking.JPG",
+			width: "100",
+			height: "35",
+			xoffset: 4,
+			yoffset: 30,
+	  }
+
+		vmspictureGraphicVmsText = new Graphic({
+		   geometry: vmspoint,
+		   symbol: mrwMessageImagePictureSymbol1
+		});	
+		view.graphics.addMany([vmspictureGraphicVmsText]); 			
 	}
 }
 
 /**Lastvms Remove VMS message on the map change the color**/
 function removeVmsMessage(){  
-	view.graphics.remove(vmspictureGraphicVmsText);  
+	view.graphics.removeAll();  
+	drawline();
+	vmsIdDisplay(); 
 }
 
 /*** Moving icon water vehicle */
 //Moving Icon point 
 	var movingIcondata = [
-		{"logi": "103.909102","lati": "1.308378"},
-		{"logi": "103.908437","lati": "1.308217"},
-		{"logi": "103.908051","lati": "1.307917"},
-		{"logi": "103.907697","lati": "1.307745"},
-		{"logi": "103.907426","lati": "1.307555"},
-		{"logi": "103.907069","lati": "1.307322"},
-		{"logi": "103.906106","lati": "1.306644"},
-		{"logi": "103.903119","lati": "1.304693"},
-		{"logi": "103.901306","lati": "1.303524"},
-		{"logi": "103.900029","lati": "1.302891"},
-		{"logi": "103.898259","lati": "1.302247"},
-		{"logi": "103.894472","lati": "1.301174"},
-		{"logi": "103.892294","lati": "1.300466"},	
-		{"logi": "103.8906241","lati": "1.300115"},
-		{"logi": "103.8895556","lati": "1.3002632"}
+		{"logi": "103.9246401","lati": "1.3113624"},
+		{"logi": "103.924332","lati": "1.311735"},		 
+		{"logi": "103.9237142","lati": "1.3123578"},
+		{"logi": "103.922836","lati": "1.311942"},
+		{"logi": "103.9205104","lati": "1.3113841"},
+		{"logi": "103.9161265","lati": "1.3097458"},
+		{"logi": "103.912317","lati": "1.3089701"},
+		{"logi": "103.9085518","lati": "1.3082027"},
+		{"logi": "103.9068805","lati": "1.3072516"},
+		{"logi": "103.904935","lati": "1.3059509"},
+		{"logi": "103.9025278","lati": "1.3044001"},
+		{"logi": "103.9005097","lati": "1.3031741"},
+		{"logi": "103.8971268","lati": "1.3019824"}, 
+		{"logi": "103.8938274","lati": "1.3009662"},
+		{"logi": "103.8878191","lati": "1.3007663"}    
     ];
 	
 	
@@ -456,21 +490,21 @@ var vehiInterval9, vehiInterval10, vehiInterval11,vehiInterval2,vehiInterval13, 
 var vehipictureGraphic = "";
 function movingIconDisplay(){
 	vehiInterval1 = setInterval(moveIconDisplay1, 2050);
-	vehiInterval2 = setInterval(moveIconDisplay2, 3000);
-	vehiInterval3 = setInterval(moveIconDisplay3, 4000);
-	vehiInterval4 = setInterval(moveIconDisplay4, 5000);
-	vehiInterval5 = setInterval(moveIconDisplay5, 6000);
-	vehiInterval6 = setInterval(moveIconDisplay6, 7000);
-	vehiInterval7 = setInterval(moveIconDisplay7, 8000);
-	vehiInterval8 = setInterval(moveIconDisplay8, 9000);
-	vehiInterval9 = setInterval(moveIconDisplay9, 12000);
-	vehiInterval10 = setInterval(moveIconDisplay10, 13000);
-	vehiInterval11 = setInterval(moveIconDisplay11, 14000);
-	vehiInterval12 = setInterval(moveIconDisplay12, 15000);
-	vehiInterval13 = setInterval(moveIconDisplay13, 17000);
-	vehiInterval14 = setInterval(moveIconDisplay14, 15000);
-	vehiInterval15 = setInterval(moveIconDisplay15, 17000);
-	vehiIntervalFinal = setInterval(clearMovingFinalInterval, 19000); 	
+	vehiInterval2 = setInterval(moveIconDisplay2, 4000);
+	vehiInterval3 = setInterval(moveIconDisplay3, 6000);
+	vehiInterval4 = setInterval(moveIconDisplay4, 8000);
+	vehiInterval5 = setInterval(moveIconDisplay5, 10000);
+	vehiInterval6 = setInterval(moveIconDisplay6, 12000);
+	vehiInterval7 = setInterval(moveIconDisplay7, 14000);
+	vehiInterval8 = setInterval(moveIconDisplay8, 16000);
+	vehiInterval9 = setInterval(moveIconDisplay9, 18000);
+	vehiInterval10 = setInterval(moveIconDisplay10, 20000);
+	vehiInterval11 = setInterval(moveIconDisplay11, 22000); 
+	vehiInterval12 = setInterval(moveIconDisplay12, 24000); 
+	vehiInterval13 = setInterval(moveIconDisplay13, 26000);
+	vehiInterval14 = setInterval(moveIconDisplay14, 28000);
+	vehiInterval15 = setInterval(moveIconDisplay15, 30000);
+	vehiIntervalFinal = setInterval(clearMovingFinalInterval, 35000); 	
 }
 
 function moveIconDisplay1(){
@@ -515,7 +549,7 @@ function moveIconDisplay10(){
 function moveIconDisplay11(){
 	clearInterval(vehiInterval10);
 	displayMoveIcon(10);
-}
+} 
 function moveIconDisplay12(){
 	clearInterval(vehiInterval11);
 	displayMoveIcon(11);
@@ -547,6 +581,7 @@ function displayMoveIcon(id){
 		var lati = movingIcondata[i].lati ;
 		
 		if(i==id) {
+		//	alert(i + " " + logi + " " + lati + " "   );
 			var vmspoint = {
 				type: "point", // autocasts as new Point()                   			 
 				longitude: logi,
@@ -575,30 +610,7 @@ function removeMoveIcon(){
 /*** Draw line between start and end point */
 var polylineGraphic;
 function drawline() {
-   var polyline = {
-        type: "polyline", // autocasts as new Polyline()
-        paths: [[103.909102, 1.308378],[103.908437, 1.308217],[103.908051, 1.307917],
-				[103.907697, 1.307745],[103.907426, 1.307555],[103.907069, 1.307322],
-				[103.906106, 1.306644],[103.903119, 1.304693],[103.901306, 1.303524],
-				[103.900029, 1.302891],[103.898259, 1.302247],[103.894472, 1.301174],
-				[103.892294, 1.300466],[103.8906241, 1.300115],[103.8895556, 1.3002632]]
-        };
-        // Create a symbol for drawing the line
-        var lineSymbol = {
-			type: "simple-line", // autocasts as SimpleLineSymbol()
-			color: [226, 119, 40],
-			width: 2
-        };
-        polylineGraphic = new Graphic({
-			geometry: polyline,
-            symbol: lineSymbol,
-            // attributes: lineAtt,
-            popupTemplate: {
-            // autocasts as new PopupTemplate()
-            title: "Road sweeping"
-            }
-        });
-		view.graphics.addMany([polylineGraphic]);	
+	mrwLaneLayer.visible = true;
 }
   //Remove moving icon	
 function removeLine(){
@@ -627,5 +639,99 @@ function removeLine(){
         }); 
 
       });
-	  	 
+		   
+	
+	   
+
+
+
+
+
+
+
+
+
+/*
+//Old Moving icon points
+var movingIcondata = [
+		{"logi": "103.909102","lati": "1.308378"},
+		{"logi": "103.908437","lati": "1.308217"},
+		{"logi": "103.908051","lati": "1.307917"},
+		{"logi": "103.907697","lati": "1.307745"},
+		{"logi": "103.907426","lati": "1.307555"},
+		{"logi": "103.907069","lati": "1.307322"},
+		{"logi": "103.905316","lati": "1.306140"},
+		{"logi": "103.904849","lati": "1.305834"},
+		{"logi": "103.903119","lati": "1.304693"},
+		{"logi": "103.901306","lati": "1.303524"},
+		{"logi": "103.900029","lati": "1.302891"},
+		{"logi": "103.898259","lati": "1.302247"},
+		{"logi": "103.894472","lati": "1.301174"},
+		{"logi": "103.892294","lati": "1.300466"},	
+		{"logi": "103.8906241","lati": "1.300115"},
+		{"logi": "103.8895556","lati": "1.3002632"}
+    ];			
+*/
+
   
+/*// Draw a line without layer creation using geo server.
+	  function drawline() {
+	   var polyline = {
+			type: "polyline", // autocasts as new Polyline()
+			paths: [[103.909102, 1.308378],[103.908437, 1.308217],[103.908051, 1.307917],
+					[103.907697, 1.307745],[103.907426, 1.307555],[103.907069, 1.307322],
+					[103.906106, 1.306644],[103.903119, 1.304693],[103.901306, 1.303524],
+					[103.900029, 1.302891],[103.898259, 1.302247],[103.894472, 1.301174],
+					[103.892294, 1.300466],[103.8906241, 1.300115],[103.8895556, 1.3002632]]
+			};
+			// Create a symbol for drawing the line
+			var lineSymbol = {
+				type: "simple-line", // autocasts as SimpleLineSymbol()
+				color: [226, 119, 40],
+				width: 2
+			};
+			polylineGraphic = new Graphic({
+				geometry: polyline,
+				symbol: lineSymbol,
+				// attributes: lineAtt,
+				popupTemplate: {
+				// autocasts as new PopupTemplate()
+				title: "Road sweeping"
+				}
+			});
+			view.graphics.addMany([polylineGraphic]);	
+	}   */
+
+	
+     /*   document.getElementById("line").onclick = function() {
+            action = draw.create("polyline");
+            view.focus();
+            action.on(
+              [
+                "vertex-add",
+                "vertex-remove",
+                "cursor-update",
+                "redo",
+                "undo",
+                "draw-complete"
+              ],
+              createGraphic
+            );
+        }
+        function createGraphic(event) {
+             vertices = event.vertices;
+             graphic = new Graphic({
+              geometry: {
+                type: "polyline",
+                paths: vertices,
+                spatialReference: view.spatialReference
+              },
+              symbol: {
+                type: "simple-line", // autocasts as new SimpleFillSymbol
+                color: [237, 28, 36],
+                width: 1,
+              }
+            });
+            view.graphics.add(graphic);
+          }*/
+  /* end of draw line function */

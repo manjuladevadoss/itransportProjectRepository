@@ -127,7 +127,6 @@
             CRS: "EPSG:{wkid}",
             BBOX: "{xmin},{ymin},{xmax},{ymax}"
           },
-
           title: "VMS"
         });			
 		var carriagewayLayer = new CustomWMSLayer({
@@ -164,7 +163,7 @@
             CRS: "EPSG:{wkid}",
             BBOX: "{xmin},{ymin},{xmax},{ymax}"
           },
-          title: "TSpeed"
+          title: "Link Speed"
         });
 	
 		var detectCamera = new CustomWMSLayer({
@@ -183,7 +182,7 @@
 	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
 	          },
 
-	          title: "DCam"
+	          title: "DET Cam"
 	        });	
 		
 		var glideLayer = new CustomWMSLayer({
@@ -204,19 +203,78 @@
 	          title: "Glide"
 	        });
 		
+		// Traffic Speed Data Layer1
+		var trafficSpeedLayer1 = new CustomWMSLayer({
+          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapParameters: {
+            SERVICE: "WMS",
+            REQUEST: "GetMap",
+            FORMAT: "image/png",
+            TRANSPARENT: "TRUE",
+            STYLES: "gis_speedlink_data_style",
+            VERSION: "1.3.0",
+            LAYERS: "gis_speedlink_data",
+            WIDTH: "{width}",
+            HEIGHT: "{height}",
+            CRS: "EPSG:{wkid}",
+            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+          },
+          title: "Link Speed"
+        });
+
+		var trafficSpeedLayer2 = new CustomWMSLayer({
+          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapParameters: {
+            SERVICE: "WMS",
+            REQUEST: "GetMap",
+            FORMAT: "image/png",
+            TRANSPARENT: "TRUE",
+            STYLES: "gis_speedlink_data_style1",
+            VERSION: "1.3.0",
+            LAYERS: "gis_speedlink_data",
+            WIDTH: "{width}",
+            HEIGHT: "{height}",
+            CRS: "EPSG:{wkid}",
+            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+          },
+          title: "Link Speed2"
+        });
+
+		var trafficSpeedLayer3 = new CustomWMSLayer({
+          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapParameters: {
+            SERVICE: "WMS",
+            REQUEST: "GetMap",
+            FORMAT: "image/png",
+            TRANSPARENT: "TRUE",
+            STYLES: "gis_speedlink_data_style2",
+            VERSION: "1.3.0",
+            LAYERS: "gis_speedlink_data",
+            WIDTH: "{width}",
+            HEIGHT: "{height}",
+            CRS: "EPSG:{wkid}",
+            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+          },
+          title: "Link Speed3"
+        });
+		
+		
 		cctvLayer.visible = false;
 		vmsLayer.visible = false;
 		carriagewayLayer.visible = false;
-		speedLinkLayer.visible = true;
+		speedLinkLayer.visible = false;
 		detectCamera.visible = false;
 		glideLayer.visible = false;
+			trafficSpeedLayer1.visible = false;
+		trafficSpeedLayer2.visible = false;
+		trafficSpeedLayer3.visible = false;
 		
 		map = new Map({
           //center: [103.84347,1.32858],
 		basemap: {
-            baseLayers: [layer]
+            baseLayers: [layer,trafficSpeedLayer2,trafficSpeedLayer3,speedLinkLayer]
         },
-          layers: [cctvLayer,vmsLayer,glideLayer,speedLinkLayer,detectCamera]
+          layers: [cctvLayer,vmsLayer,glideLayer,trafficSpeedLayer1,detectCamera]
         });
 		
 		
@@ -250,96 +308,224 @@
           view.ui.add(layerList, "bottom-left");
         });
 
-	/* Start Accident location point and icon */
-	setInterval(accIconLocation, 500);
-	setInterval(clearAccIconLocation, 1000);
-	function clearAccIconLocation(){
-		view.graphics.removeAll();
-		speedLinkLayer.visible = true;
-		view.graphics.addMany([cctvPictureGraphic2, cctvPictureGraphic3 ]);
+/*** Onload Display **/
+speedLkLrInterval = setInterval(speedLkLr, 5000);	
+iconLocation()
+		
+/*** Onload Speed Layer display */
+var speedLayerInterval_1, speedLayerInterval_2, speedLayerInterval_3
+	function speedLkLr(){ 
+			flagSpeed = true;
+			trafficSpeedLayer1.visible = true			
+			speedLayerInterval_1 = setInterval(speedLayer1, 10000);					
 	}
-	var accPictureGraphic ="";
-	function accIconLocation() {  // Icon display
-	    var accpoint = {
-                type: "point", // autocasts as new Point()
-                longitude: 103.858056,
-                latitude: 1.378118                        
-                };     
-            var accPictureSymbol = {
-                type: "picture-marker",
-                url: "accident.png",
-                width: "25",
-                height: "25",
-                xoffset: 5,
-                yoffset: 5
-              }
-            accPictureGraphic = new Graphic({
-                geometry: accpoint,
-                symbol: accPictureSymbol
-               });    
-            	view.graphics.addMany([accPictureGraphic]);
-				//call cc cam and video
-				accCCTVLocation()
+	
+	function clrspeedLkLr(){
+		clearInterval(speedLkLrInterval);
+	}	
+	
+	function speedLayer1(){ 
+	clrspeedLkLr();
+			trafficSpeedLayer1.visible = false;			
+			trafficSpeedLayer2.visible = true;
+			speedLayerInterval_2 = setInterval(speedLayer2, 15000);
+	}
+	
+	function clrspeedLayer1(){
+		clearInterval(speedLayerInterval_1);
+	}
+	
+	function speedLayer2(){
+		trafficSpeedLayer2.visible = false;
+		trafficSpeedLayer3.visible = true;
+		speedLayerInterval_3 = setInterval(clrspeedLayers, 20000);
+	}
+
+	function clrspeedLayers(){
+		clearInterval(speedLayerInterval_1);
+		clearInterval(speedLayerInterval_2);
+		clearInterval(speedLayerInterval_3);
+		trafficSpeedLayer3.visible = false;
+		speedLayerInterval_4 = setInterval(callFirstSpeedLayer, 25000);	
+	}
+	function callFirstSpeedLayer(){	
+		speedLkLr();
+	}
+
+/*** Onload Incident Icon Display */
+	var htIconPictureGraphic, unVIconPictureGraphic;
+	
+	var incidentIconList = [
+		{"logi": "103.822766", "lati": "1.278674", "imgfile" : "heavytraffic.jpg"},
+		{"logi": "103.897955", "lati": "1.297171", "imgfile" : "unattvehicle.jpg"},
+		{"logi": "103.934441", "lati": "1.330996", "imgfile" : "roadwork.jpg"},
+		{"logi": "103.727822", "lati": "1.374733", "imgfile" : "accident.jpg"},
+		{"logi": "103.881117", "lati": "1.401208", "imgfile" : "breakdown.jpg"}		
+    ];
+	
+
+	//heavy traffic 
+	//Lower Delta Rd Exit (AYE) 
+
+	//Unattended Vehicle
+	//Stil Rd 5th Exit (ECP)
+
+	//Road Work
+	//Bedok North Ave 3(PIE)
+//Accident
+//Sungei Tengah Exit(KJE)
+//, 103.727701
+
+
+	function iconLocation() {  // Icon display
+		
+		// Heavy Traffic Icon
+		var htIconpoint = {
+			type: "point", // autocasts as new Point()
+            longitude: 103.875029,
+            latitude: 1.280973                       
+       }; 
+    var htTitle = "<b>Heavy Traffic</b>"
+    var htContent = "<center>Heavy Traffic in MCE </center>"
+    
+	   var htIconPictureSymbol = {
+			type: "picture-marker",
+            url: "heavytraffic.jpg",  //Lower Delta Rd Exit (AYE)
+            width: "15",
+            height: "15"
+      }
+	  htIconPictureGraphic = new Graphic({
+		geometry: htIconpoint,
+		symbol: htIconPictureSymbol,
+    popupTemplate: {
+      // autocasts as new PopupTemplate()
+      title: htTitle,
+      content: htContent    
+    }
+      });    
+
+		// Unattended Vehicle Icon
+		var unVIconpoint = {
+			type: "point", // autocasts as new Point()
+            longitude: 103.897955,
+            latitude: 1.297171                       
+       };     
+	   var unVIconPictureSymbol = {
+			type: "picture-marker",
+            url: "unattvehicle.jpg",  //Stil Rd 5th Exit (ECP)
+            width: "15",
+            height: "15",
       }
 
-	/*** Onload cctv icon ***/
-var cctvPictureGraphic1 ="", cctvPictureGraphic2 ="", cctvPictureGraphic3 ="";
-function accCCTVLocation() {  // Icon display
-    var accPictureGraphic ="";
-	    /*var cctvpoint1 = {
-                type: "point", // autocasts as new Point()
-                longitude: 103.8587667,
-                latitude: 1.3752537                        
-                };  */
-	    var cctvpoint2 = {
-                type: "point", // autocasts as new Point()
-                longitude: 103.8582773,
-                latitude: 1.3770134                        
-                }; 
-	    var cctvpoint3 = {
-                type: "point", // autocasts as new Point()
-                longitude: 103.8584744,
-                latitude: 1.3778264                        
-                }; 
-				
-            var cctvPictureSymbol = {
-                type: "picture-marker",
-                url: "cctv.png",
-                width: "25",
-                height: "25",
-                xoffset: 5,
-                yoffset: 5
-              }
-            /*cctvPictureGraphic1 = new Graphic({
-                geometry: cctvpoint1,
-                symbol: cctvPictureSymbol,
-				popupTemplate: {
-						// autocasts as new PopupTemplate()
-						title: "Accident",
-						content: '<video width="270" height="150"  controls="true" autoplay="1" frameborder="0"><source src=CTEvideo.mp4 type=video/mp4></video>'
-				}
-               });  */
-            cctvPictureGraphic2 = new Graphic({
-                geometry: cctvpoint2,
-                symbol: cctvPictureSymbol,
-				popupTemplate: {
-						// autocasts as new PopupTemplate()
-						title: "Accident",
-						content: '<video width="270" height="150"  controls="true" autoplay="1" frameborder="0"><source src=CTEvideo.mp4 type=video/mp4></video>'
-				}
-               }); 
-            cctvPictureGraphic3 = new Graphic({
-                geometry: cctvpoint3,
-                symbol: cctvPictureSymbol,
-				popupTemplate: {
-						// autocasts as new PopupTemplate()
-						title: "Accident",
-						content: '<video width="270" height="150"  controls="true" autoplay="1" frameborder="0"><source src=CTEvideo.mp4 type=video/mp4></video>'
-				}
-               }); 			   
-            	view.graphics.addMany([cctvPictureGraphic2, cctvPictureGraphic3 ]);
-      }	
+    var unTitle = "<b>Unattended vehicle</b>"
+    var unContent = "<center>Unattended vehicle ECP - Stil Rd 5th Exit </center>"
+	  unVIconPictureGraphic = new Graphic({
+      geometry: unVIconpoint,
+      symbol: unVIconPictureSymbol,
+      popupTemplate: {
+        title: unTitle,
+        content: unContent    
+      }
+      });		
+		 
+		// Road Work Icon
+		var rwIconpoint = {
+			type: "point", // autocasts as new Point()
+            longitude: 103.934441,
+            latitude: 1.330996                       
+       };     
+     var rwTitle = "<b>Roadworks<b>";
+     var rwContent = "<center>Roadworks on PIE Bedok North Ave 3</center>";
+     var rwIconPictureSymbol = {
+		 type: "picture-marker",
+            url: "roadwork.jpg",  //Sungei Tengah Exit(KJE)
+            width: "15",
+            height: "15"
+      }
+	  rwIconPictureGraphic = new Graphic({
+		geometry: rwIconpoint,
+    symbol: rwIconPictureSymbol,
+    popupTemplate: {
+      // autocasts as new PopupTemplate()
+      title: rwTitle,
+      content: rwContent    
+    }
+      });		
+	
+	// Breakdown Icon
+		var accIconpoint = {
+			type: "point", // autocasts as new Point()
+            longitude: 103.727822,
+            latitude: 1.374733                       
+       };     
+	   var accIconPictureSymbol = {
+			type: "picture-marker",
+            url: "accident.jpg",  //Seletar Link (TPE)
+            width: "15",
+            height: "15",
+      }
+
+    var accTitle = "<b>Accident<b>";
+    var accContent = "<center>Accident on KJE Sungei Tengah Exit</center>";
+	  accIconPictureGraphic = new Graphic({
+		geometry: accIconpoint,
+    symbol: accIconPictureSymbol,
+    popupTemplate: {
+      title: accTitle,
+      content: accContent    
+    }
+      });
+		 
+	// breakdown Icon
+		var bdIconpoint = {
+			type: "point", // autocasts as new Point()
+            longitude: 103.881117,
+            latitude: 1.401208                       
+       };     
+	   var bdIconPictureSymbol = {
+			type: "picture-marker",
+            url: "breakdown.jpg",  //Bedok North Ave 3(PIE)
+            width: "15",
+            height: "15",
+      }
+    
+    var bdTitle = "<b>Breakdown<b>";
+    var bdContent = "<center>Breakdown	(TPE) - Seletar Link </center>";
+	  bdIconPictureGraphic = new Graphic({
+		geometry: bdIconpoint,
+    symbol: bdIconPictureSymbol,      
+    popupTemplate: {
+      title: bdTitle,
+      content: bdContent    
+    }
+      });		 	 
+		view.graphics.addMany([htIconPictureGraphic, unVIconPictureGraphic,rwIconPictureGraphic,accIconPictureGraphic,bdIconPictureGraphic]);
+      }
 
       });
 	  	  
   
+  
+  		/*for (i in incidentIconList)  {
+			alert("121");
+			var logi = incidentIconList[i].logi;
+			var lati = incidentIconList[i].lati;
+			var img = incidentIconList[i].imgfile;
+			alert(logi + " " + lati + " " + img);
+			var htIconpoint = {
+				type: "point", // autocasts as new Point()
+				longitude: logi,
+				latitude: lati                      
+		   };     
+		   var htIconPictureSymbol = {
+				type: "picture-marker",
+				url: img,  
+				width: "20",
+				height: "15",
+		  }
+		  var iconPictureGraphic = new Graphic({
+			geometry: htIconpoint,
+			symbol: htIconPictureSymbol
+		  }); 
+			view.graphics.addMany([iconPictureGraphic]);	  
+		}*/
