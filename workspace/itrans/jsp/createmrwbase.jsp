@@ -168,12 +168,13 @@ background-color: black;
 .irresetbutton {
   color: #C8CFF4;
   font-family:  Roboto, Helvetica, sans-serif;
+  font-size: 10px;
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
-  border-radius: 13px;
+  border-radius: 5px;
   background-color:#356D85;
   border: solid 0px #356D85;
-  width:80px;
-  height:30px
+  width:40px;
+  height:20px
 }
 .iractionbutton {
   color: #C8CFF4;
@@ -215,9 +216,13 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 		</table>  -->
   
 	  <div id="main" class claro>
-	  <div id="viewDiv"> </div>    
+	  <div id="viewDiv"> 
+			<button class="irresetbutton" id="draw_line"> Line </button>
+			<button class="irresetbutton" id="draw-point"> Point </button> 
+
+	  </div>    
 	  <div id="instruction">    
-					       <button class="irresetbutton" id="line"> Draw Line </button>
+								   
 					        
 				      </div>  
      <div id="panelTopDiv"  style="background-color: #202B53;">
@@ -226,26 +231,27 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 	  
 	       <div id="panelRightDiv" class="esri-widget">
     
-         <br> 
+         
 		 
 		<!-- Start IR Creation -->
 	  <div ng-show="showmrwcreate">
 	  
-
-	  
+			<br><br> 
+			<table width="100%" id="incdetailtbl"> 
+					<tr>
+						<td>	<h3a>&nbsp; CREATE</h3a>&nbsp;<h3b>></h3b>&nbsp;
+								<a href="#" style="text-decoration:none;" ng-click="callmrwresponse()"><h3b>RESPONSE</h3b> </a>	
+						</td>
+					</tr>
+				</table>
+				<br>
 			
 	 <div class='scrollIr'> 
 
 			<div class="panel-group" id="accordion2">	
 				 <div class="panel panel-default">
 					<div class="panel-heading active">
-							<table width="100%" id="incdetailtbl"> 
-									<tr>
-										<td>	&nbsp;<h3a> CREATE</h3a>&nbsp;<h3b>></h3b>&nbsp;
-												<a href="#" style="text-decoration:none;" ng-click="callmrwresponse()"><h3b>RESPONSE</h3b> </a>	
-										</td>
-									</tr>
-								</table>
+			
 						<h4 class="panel-title">
 								&nbsp; Road Work<span data-target="#Collapseicon1" data-toggle="collapse" data-parent="#accordion2"><span class="glyphicon glyphicon-plus" style="float:right;"></span> </span>
 						</h4>
@@ -310,14 +316,23 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					  </td>
 					</tr>
 
+	   <tr>
+					  <td colspan="3">
+						Road Name <br>
+						Start Point <br><input style ="color: #FFF;" type="text" id="sroadname" />
+					  </td>
+					  <td colspan="3">
+						<br>
+						End Point <br> <input style ="color: #FFF;" type="text" id="eroadname" />
+					  </td>
+					</tr>
+
 				   <tr>
 					  <td colspan="3">
 						Vehicle Number <br>
 						<input style ="color: #FFF;" type="text" ng-model="mrwvehicleno"/>
 					  </td>
 					  <td colspan="3">
-						Road Name <br>
-						<input style ="color: #FFF;" type="text" ng-model="mrwstartpoint"/>
 					  </td>
 					</tr>
 					<tr>
@@ -343,33 +358,44 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 	<!-- end of Create IR -->
 	
 	<!-- Start of IR  Response -->
+	
 	<div ng-show="showmrwresponse">
 		
 
-	<br>
+	<br><br>
+	<table width="100%" id="incdetailtbl"> 
+			<tr>
+				<td>	<a href="#" style="text-decoration: none" ng-click="callmrwcreate()"> <h3b>CREATE</h3b> </a>&nbsp;<h3b>></h3b>&nbsp;<h3a>RESPONSE</h3a> 	
+				</td>
+			</tr>
+		</table>
 		 <div class='scrollResponse'> 
  		  
 		  <div class="panel-group" id="accordion2">
      
      <div class="panel panel-default">
     	<div class="panel-heading active">
-				<table width="100%" class="incdetailtbl" style="padding: 2px;" >
-						<tr style="padding: 2px;">
-							<td style="padding: 2px;">
+				
+				
+			
+			
+			<!-- <table width="100%" class="incdetailtbl" style="padding: 0px;" >
+						<tr style="padding: 0px;">
+							<td style="padding: 0px;">
 									<a href="#" style="text-decoration: none" ng-click="callmrwcreate()"> <h3b>CREATE</h3b> </a>&nbsp;<h3b>></h3b>&nbsp;<h3a>RESPONSE</h3a>         	             				
 							</td>
 						</tr>
-					</table> 
+					</table>   -->
 					<br> 	
         	<h4 class="panel-title"> 
 					
-                    VMS Messages <span data-target="#Collapseicon4" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
+					&nbsp; VMS Messages <span data-target="#Collapseicon4" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
             </h4>
         </div>
         
         <div class="panel-collapse collapse in" id="Collapseicon4">
         	<div class="panel-body">
-            	<p>Recommended VMS Messages </p>
+            	<p>&nbsp; Recommended VMS Messages </p>
 			<table width="100%" class="tablevms">  
 			<tr>
 				<th align="left" style="padding:5px;">Status </th>
@@ -517,7 +543,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
      <div class="panel panel-default">
     	<div class="panel-heading active">
         	<h4 class="panel-title">               	
-                    Congestion Routes Monitoring <span data-target="#Collapseicon7" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+                    &nbsp; Congestion Routes Monitoring <span data-target="#Collapseicon7" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
             </h4>
         </div>
          

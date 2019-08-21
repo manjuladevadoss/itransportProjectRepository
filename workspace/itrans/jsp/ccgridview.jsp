@@ -2,7 +2,7 @@
 <head>
   <title>ccgrid view</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="refresh" content="40" /> 
+    <!-- <meta http-equiv="refresh" content="40" /> -->
     <link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="grid.css">
 	<link rel="stylesheet" href="dropdownlistStyle.css">
@@ -614,6 +614,8 @@ h11 {
 				 </tr>
 			 </table>
 		   <br>
+		  
+		   
 			<table width="100%">      	 	 
 				<tr><td>
 				 <table width="98%" id="datatbl">
@@ -629,30 +631,31 @@ h11 {
 			</td></tr>
 			<tr><td>
 				<div class='scrollev'>
-					<table  id="inctbl" width="100%">
-						<tr ng-repeat="tralert in trafficalert | orderBy:sortTypenv:sortReversenv | filter:searchEnvifromgrid">
-							<td width="10%"><font color="#ffffff" size="2px">{{tralert.status}}</font></td>
-							<td width="13%">
-							<div ng-if="tralert.rname=='CTE'" > 
-								<font color="#ffffff" size="2px">{{accTrafficAlertTime}}</font>
-							</div/>
-							<div ng-if="tralert.rname!='CTE'" > 
-								<font color="#ffffff" size="2px">{{tralert.time}}</font>
-							</div/>
-							</td>
-							<td width="16%"><font color="#ffffff" size="2px">{{tralert.alertid | uppercase}}</font> </td>
-							<td width="14%">
-							<div ng-if="tralert.rname=='CTE'" > 
-								<a href="#" id="acczone" ng-model="acczone" onclick="acczonewindow()" style="text-decoration:none;"> <font color="red" size="2px">{{tralert.rname}}</font> </a>
-							</div> 
-								<div ng-if="tralert.rname!='CTE'" > 
-									<font color="#ffffff" size="2px">{{tralert.rname}}</font>
-									</div>
-								</td>
-							<td width="18%"><font color="#ffffff" size="2px">{{tralert.desc}}</font></td>
-							<td width="12%"><font color="#ffffff" size="2px">{{tralert.source}}</font></td>
-						</tr>
-					</table> 
+							<table  id="inctbl" width="100%">
+									<tr ng-repeat="tralert in trafficalert | orderBy:sortTypenv:sortReversenv | filter:searchEnvifromgrid">
+										<td width="10%"><font color="#ffffff" size="2px">{{tralert.status}}</font></td>
+										<td width="13%">
+										<div ng-if="tralert.rname=='CTE'" > 
+											<font color="#ffffff" size="2px">{{accTrafficAlertTime}}</font>
+										</div/>
+										<div ng-if="tralert.rname!='CTE'" > 
+											<font color="#ffffff" size="2px">{{tralert.time}}</font>
+										</div/>
+										</td>
+										<td width="16%"><font color="#ffffff" size="2px">{{tralert.alertid | uppercase}}</font> </td>
+										<td width="14%">
+										<div ng-if="tralert.rname=='CTE'" > 
+											
+											<a href="#"  ng_click="trafficalertwindow()" style="text-decoration:none;"> <font color="red" size="2px">{{tralert.rname}}</font> </a>  
+										</div> 
+											<div ng-if="tralert.rname!='CTE'" > 
+												<font color="#ffffff" size="2px">{{tralert.rname}}</font>
+												</div>
+											</td>
+										<td width="18%"><font color="#ffffff" size="2px">{{tralert.desc}}</font></td>
+										<td width="12%"><font color="#ffffff" size="2px">{{tralert.source}}</font></td>
+									</tr>
+								</table> 
 				</div>
 			</td></tr>
 			</table> 	
@@ -682,7 +685,7 @@ function acczonewindow(){
 }
 window.onclick = function(event) {
   if (event.target == myModal) {
-    myModal.style.display = "none"; 
+	myModal.style.display = "none"; 
   }
 }
 

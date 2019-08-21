@@ -324,7 +324,7 @@ var app = angular.module('ltaApp', []);
   	$scope.irdirsel = "3";	
   	
   	$scope.accAlertMsg = "CTE (SLE) Accident after Exit B";
-  //	$scope.accJamMsg = "CTE (SLE) Accident after Exit B";
+  //$scope.accJamMsg = "CTE (SLE) Accident after Exit B";
 	$scope.accJamMsg = "";
   	$scope.accGuideMsg = "CTE(SLE) Massive Jam after Exit D";
   	$scope.accAlertMsgKM = " 4.0";
@@ -369,6 +369,7 @@ var app = angular.module('ltaApp', []);
 		$scope.showirpreditsce1 = true;		
 		$scope.showirpreditsce2 = false;	
 	}
+	
 	$scope.callirpreditsce2= function(){
 		$scope.showirpreditsce2 = true;
 		$scope.showirpreditsce1 = false;
@@ -498,7 +499,7 @@ var app = angular.module('ltaApp', []);
 		"mrwTypeid": 4,
 		"name": "Other"
 		}];
-		  $scope.worktype = "2";
+		  $scope.worktype = "1";
 		  
 
 	$scope.mrwincident= 'Mobile Road Work';
@@ -832,6 +833,51 @@ var app = angular.module('ltaApp', []);
       
 // End of 3 different windows display - in 3 panels - CC2 - GIS - BIS      
  /* windows display */
+      
+//** Traffic Alert **//
+      
+$scope.tastatuschange = "True";
+$scope.trafficAlertAction = function(act) { 
+	if(act=="accwindow") {
+		//window.close('ccgridview.jsp');	
+		//window.close('createtabase.jsp');	
+		window.open('ccgridviewta.jsp');
+		window.open('createaccbase.jsp');	
+	} 
+	if(act=="ccwindow") {
+		window.close('createtabase.jsp');
+	//	window.close('ccgridview.jsp');
+		//window.open('ccgridview.jsp');
+	}
+}
+	
+
+
+$scope.trafficalertwindow = function() {
+	var windowObjectReference3;  
+	var protocol = window.location.protocol;
+	var domain = window.location.hostname;
+	var port = window.location.port
+	var c =":";
+	var s = "//"
+   if(windowObjectReference3 == null || windowObjectReference3.closed) {
+		  var strpage3 = "/itrans/createtabase.jsp";
+		  var value3 = protocol.concat(s,domain,c,port,strpage3);
+		  //alert("bis url " + value3);
+		  windowObjectReference3 = window.open(
+				value3,			
+				  "cc",
+				  "top=100,left=100,width=1200,height=630,resizable,scrollbars,status,toolbar=0,titlebar=0,menubar=0");
+				  	
+		}else {
+			windowObjectReference3.focus();
+	  }
+  }
+
+
+
+//** end of Traffic Alert **//      
+      
       
    // ******** MRT Incident Creation form Detail
   	$scope.mrtincflag = true;

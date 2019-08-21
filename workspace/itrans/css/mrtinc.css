@@ -222,13 +222,13 @@ h7 {
 .tablevmsl tr:nth-child(odd){
 background-image: linear-gradient( 90deg,	rgba(55,63,97,1) , rgba(25,31,57,1));
 color: white;
- padding:5px;
+ padding:8px;
 }
 
 .tablevms tr:nth-child(even){
 background-image: linear-gradient( 90deg,	rgba(55,63,97,1) , rgba(25,31,57,1));
 color: white;
- padding:5px;
+ padding:8px;
 }
 
 .tablevms tr:hover {
@@ -236,7 +236,7 @@ color: white;
 }
 
 .tablevms td{
- padding:7px;
+ padding:8px;
  font-size: 13px;
 }
 
@@ -592,6 +592,13 @@ div.scrollIr {
       overflow-y:scroll;
 	  overflow-x: none;
       height:560px;
+}
+
+/*Prediction plan 1 */
+div.scrollPre1 {
+  overflow-y:scroll;
+overflow-x: none;
+  height:450px;
 }
 
 /* Mobile road work css */

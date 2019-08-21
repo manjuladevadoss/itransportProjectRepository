@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <title> Create IR Mobile Road Work  </title>
+    <title> Create IR MRT  </title>
   	<link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
   	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="mrtinc.css">
@@ -33,15 +33,14 @@
   	<script type="text/javascript" src="democontroller.js"></script>  
     
 	<!-- start plus and minu menu  script -->
- <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>  -->
 	<!-- end plus and minu menu  script -->
 	
 	<script src="http://localhost:8080/itrans/arcgis_4.11/init.js"></script>  
-	<script src="basemap411mrw.js"></script>  
+	<script src="basemap411mrt.js"></script>  
   
  <style>  
-/*Start  map */	
 	html,
       body,
       #viewDiv {
@@ -56,13 +55,14 @@
       #instruction {
         z-index: 99;
         position: absolute;
-        top: 50px;
-        left: 15%;
+        top: 55px;
+        left: 50%;
         padding: 5px;
         margin-left: -175px;
         height: 20px;
         width: 350px;
       }
+
       .esri-layer-list {
         width: 310px;
       }
@@ -86,6 +86,18 @@
         font-size: 12px;
 		background-color: #202B53;
       }
+      	#mrtlinediv {
+		  top: 150px;
+		  left: 10px;
+		  position: absolute;
+		 /* z-index: 9;*/
+		  border: solid 0px;
+		  background-color:none;
+		  width: 600px;
+		  height: 550px;
+		  border-radius: 13px;
+		  text-align: center;
+		}
 
 /* popup window font and background color*/
 .esri-view-width-xlarge .esri-popup__main-container,
@@ -116,10 +128,30 @@
 .esri-popup--aligned-top-center .esri-popup__pointer-direction {
 background-color: black;
 }
-/*End map */
+      
+h3 {
+  color: #C8CFF4;
+  font-size: 15px; padding: 10px;
+}
 
+h4 {
+  color: #C8CFF4;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 18px;
+  padding: 10px;
+}
+h5 {
+  color: #C8CFF4;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-size: 15px;
+   padding: 10px;
+}
+.checkmark {
+     left: 10;
+}
 /* toggle plus and Minus background color*/
-.panel-heading.active {    
+.panel-heading.active {
+    
 	background-color: #202B53;
  /* color: #C8CFF4;   
     border : none;*/ 
@@ -149,7 +181,6 @@ background-color: black;
     border-bottom-width: 3px;
 }
 /* toggle plus and Minus */	  
-
 .dropdown-content {
  min-width: 180px;
  }
@@ -165,33 +196,31 @@ background-color: black;
  border-radius: 8px;
  border: none;
 }
-.irresetbutton {
+.mrtclosedbutton {
   color: #C8CFF4;
   font-family:  Roboto, Helvetica, sans-serif;
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
   border-radius: 13px;
   background-color:#356D85;
   border: solid 0px #356D85;
-  width:80px;
-  height:30px
-}
-.iractionbutton {
-  color: #C8CFF4;
-  font-family:  Roboto, Helvetica, sans-serif;
-  box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
-  border-radius: 13px;
-  background-color:#356D85;
-  border: solid 0px #356D85;
-  width:90px;
+  width:160px;
   height:30px
 }
 
-.tablevms tr:hover {
-background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
+.mrtresetbutton {
+  color: #C8CFF4;
+  font-family:  Roboto, Helvetica, sans-serif;
+  box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
+  border-radius: 13px;
+  background-color:#356D85;
+  border: solid 0px #356D85;
+  width:100px;
+  height:30px
 }
 
     </style>
 
+ 
     <script>
  // accordions div tag
 	  $(document).ready(function(){
@@ -201,8 +230,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 		$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
 	});       
 });
-
-   </script>
+    </script>
   </head>
 <body class="calcite-maps calcite-nav-top">
 	<div class="container-fluid">
@@ -215,322 +243,280 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 		</table>  -->
   
 	  <div id="main" class claro>
-	  <div id="viewDiv"> </div>    
+	   <div id="viewDiv"> </div>  
+	  
+	  <!-- mrt route selection div -->
+	  <div ng-show="mrtincflag">
+	    <div id="instruction"> 
+	           <div id="mrtlinediv">    	 
+			<table   width="100%;" class="mrtinctable"> 
+				<tr>
+					<td colspan="2"> 
+					    <h4>MRT Service Disruption  {{mrtsselected}} -{{mrteselected}} </h4> 					
+						<h5>Create a MRT Service Disruption IR. Start By defining a start point and end point.</h5>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">
+						<h3>MRT / LRT Line</h3>  
+						 <select ng-model="direction" class="selectcls" ng-change="mrtlinesel()" ng-options="o as o for o in stations">
+							<option  value="" selected="selected" hidden="hidden">Choose here</option>
+    					 </select>
+    					 <div ng-show="hidetextbox">
+    					 	<input type="text" name="directionid" id="directionid" ng-model="directionid" >
+    					 </div> 
+					</td>
+					
+					<td align="right">
+						<h3>Both Direction: </h3> 
+						<label class="contentlabel" style="font-size:17px;">
+						  <input type="checkbox" ng-model="bothdir">
+						 <span class="checkmark"></span>
+						</label>
+					</td>						
+				</tr>
+				<tr>
+					<td>
+						<h3>Start Station</h3> 
+						<select ng-model="startstation" class="selectcls" ng-change="mrtssel()"  ng-options="o as o for o in mrtline">
+							<option value=""  selected="selected" hidden="hidden">Choose here</option>
+						</select>		
+					</td>
+					<td>
+						<h3>End Station</h3> 
+						<select ng-model="endstation" class="selectcls" ng-change="mrtesel()"  ng-options="o as o for o in mrtlinend">
+							<option  value="" selected="selected" hidden="hidden">Choose here</option>
+    				 </select>
+
+						
+					</td>					
+				</tr>
+
+				<tr>
+				<td> 
+					<br>
+					<div id="createdir" align="right">
+						<a href="#" class="buttonCreateMrtInc" id="createmrtincid" ng-click="createmrtinc()" style="text-decoration:none;">  CREATE </a>
+							<!-- <button  class="buttonCreateMrtInc"  ng-click="createmrtinc()" style="text-decoration:none;"> CREATE </button> -->
+					</div>
+				</td> 
+				<td> 
+					<br>
+					<button type="button" class="buttonCan"  id="buttonCan" ng-click="cancelmrtinc()">CANCEL</button>	&nbsp;&nbsp;&nbsp;				 
+				</td>
+				</tr>
+				<tr>
+					<td colspan="2">&nbsp;&nbsp;</td>
+				</tr>
+	 	 </table>  
+		</div> 
+		</div>
+</div>
+	  <!--  end of mrt route selection div -->
+	  
+	  
+	  <!--  Mrt creation top and right side panel div -->
+<div ng-show="mrtinccreateflag"> 
 	  <div id="instruction">    
-					       <button class="irresetbutton" id="line"> Draw Line </button>
+					       <!--  <button class="mrtclosedbutton" id="mrtclosepoint" >MRT Closed Points  </button>
+					        <button id="vms" >VMS Picture Symbol</button>
+					        <button id="line" >Draw a Line </button>
 					        
-				      </div>  
+					       <button id="rdclose" > Road closure Automatic Line </button>
+					       <button id="rdclosepoint" >Road Closure Entry Exit Picture Symbol  </button> 
+					       <button id="undo" class="mrtresetbutton" >Reset  </button>  -->
+				      </div>   
      <div id="panelTopDiv"  style="background-color: #202B53;">
-    <h2t> Incident Record - Mobile Road Work </h2t> <br>
+    	<h4>MRT Service Disruption  </h4> 
     </div>  
 	  
 	       <div id="panelRightDiv" class="esri-widget">
     
          <br> 
-		 
-		<!-- Start IR Creation -->
-	  <div ng-show="showmrwcreate">
-	  
-
-	  
-			
-	 <div class='scrollIr'> 
-
-			<div class="panel-group" id="accordion2">	
-				 <div class="panel panel-default">
-					<div class="panel-heading active">
-							<table width="100%" id="incdetailtbl"> 
-									<tr>
-										<td>	&nbsp;<h3a> CREATE</h3a>&nbsp;<h3b>></h3b>&nbsp;
-												<a href="#" style="text-decoration:none;" ng-click="callmrwresponse()"><h3b>RESPONSE</h3b> </a>	
-										</td>
-									</tr>
-								</table>
-						<h4 class="panel-title">
-								&nbsp; Road Work<span data-target="#Collapseicon1" data-toggle="collapse" data-parent="#accordion2"><span class="glyphicon glyphicon-plus" style="float:right;"></span> </span>
-						</h4>
-					</div>
-					
-					<div class="panel-collapse collapse in" id="Collapseicon1">
-						<div class="panel-body">
-																
-			<table id="incdetailtbl">
-					<tr>
-					 <th colspan="6"> Fill in the details of your IR  </th>
-					 </tr>
-					 <tr>
-					  <td colspan="3">
-						State: <br>
-								<input style ="color: #FFF;" ng-model="mrwstate"/>
-					  </td>
-					  <td colspan="3"> Work Type: <br>
-					<select ng-model="worktype" style ="height:28px;width:170px;color: #FFF;" >
-						<option  value="" selected="selected" hidden="hidden">Choose here</option>
-						<option ng-repeat="option in mrwType" value="{{option.mrwTypeid}}">{{option.name}}</option>
-					</select>
-					  </td>
-					</tr>
-					<tr>
-					  <td colspan="3">
-					   Start Time:
-						<div style="width: 150px;">
-							<div id="picker"> </div>
-								<input style ="color: #FFF;" type="text" ng-model="mrwstarttime"/>
-						</div>			
-					  </td>
-					  <td colspan="3">
-						End Time: 
-					 
-						<div style="width: 150px;">
-							<div id="picker1"> </div>
-								<input  style ="color: #FFF;" type="text" ng-model="mrwendtime"/>
-						</div>			
-					  </td>
-					</tr>
-					<tr>
-					  <td colspan="3">
-						Contractor Name
-						<br>
-						<input style ="color: #FFF;" type="text" ng-model="mrwcontname"/>
-					  </td>
-					  <td colspan="3">
-						Work Permit No<br>
-						<input style ="color: #FFF;" type="text" ng-model="mrwperno"/>
-					  </td>
-					</tr>
-					
-					<tr>
-					  <td colspan="3">
-						Supervisor Name <br>
-							<input style ="color: #FFF;" type="text" ng-model="mrwsupvisorname"/>
-					  </td>
-					  <td colspan="3">
-						Supervisor HP<br>
-						<input style ="color: #FFF;" type="text" ng-model="mrwsupvisorhp"/>
-					  </td>
-					</tr>
-					<tr>
-					  <td colspan="6">
-							Comments <br>
-							<textarea class="textareamrwcomment" rows="3" cols="40"  ng-model="mrwcomment"> </textarea>
-					  </td>
-					</tr>
-				   <tr>
-					  <td colspan="6">
-						Vehicle Number <br>
-						<input style ="color: #FFF;" type="text" ng-model="mrwvehicleno"/>
-					  </td>
-					</tr>
-					
-				 </table>
-				 
-				 <br><br>
-
-						</div>
-					</div>
-				  </div> 
-			</div>
-			 </div> 
-			
-			<div align="right">  
-				<a href="#" class="buttonCreateMrtInc"  id="CreateMrwId" ng-click="callmrwresponse()" style="text-decoration:none;"> CREATE </a>&nbsp;  &nbsp; 
-			</div>
-	  </div>
-	<!-- end of Create IR -->
-	
-	<!-- Start of IR  Response -->
-	<div ng-show="showmrwresponse">
-		
-
-	<br>
-		 <div class='scrollResponse'> 
- 		  
-		  <div class="panel-group" id="accordion2">
-     
-     <div class="panel panel-default">
-    	<div class="panel-heading active">
-				<table width="100%" class="incdetailtbl" style="padding: 2px;" >
-						<tr style="padding: 2px;">
-							<td style="padding: 2px;">
-									<a href="#" style="text-decoration: none" ng-click="callmrwcreate()"> <h3b>CREATE</h3b> </a>&nbsp;<h3b>></h3b>&nbsp;<h3a>RESPONSE</h3a>         	             				
-							</td>
+		 <br> 
+		 <br> 
+						<!-- Start Creation option-->
+				<table width="100%" id="incdetailtbl">
+						<tr>
+							<td><h3a>&nbsp;CREATE </h3a></td>
 						</tr>
-					</table> 
-					<br> 	
-        	<h4 class="panel-title"> 
-					
-                    VMS Messages <span data-target="#Collapseicon4" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
-            </h4>
-        </div>
-        
-        <div class="panel-collapse collapse in" id="Collapseicon4">
-        	<div class="panel-body">
-            	<p>Recommended VMS Messages </p>
-			<table width="100%" class="tablevms">  
-			<tr>
-				<th align="left" style="padding:5px;">Status </th>
-				<th align="left">EQT ID</th>
-				<th align="left">Recommended Display </th>					
-			</tr>
-			<tr ng-repeat="irmrwvms in irmrwvmsList"> 
-				<td> 
-					<div ng-if="irmrwvms.irmrwvmsstatus==='Implement'"> 
-						<label class="containeradio">
-							<font color="#C8CFF4">  {{irmrwvms.irmrwvmsstatus}} </font>
-  							<input type="radio" name="irmrwvmssatus" id="irmrwvmssatus" ng-model="irmrwvmssatus">
-  								<span class="radiocheckmark"></span>
-							</label>  
-					</div>
-					<div ng-if="irmrwvms.irmrwvmsstatus==='Not Implement'">  
-						<label class="containeradio">
-							<font color="white"> {{irmrwvms.irmrwvmsstatus}} </font>
-  							<input type="radio" name="irmrwvmssatus" id="irmrwvmssatus" ng-model="irmrwvmssatus">
-  								<span class="radiocheckmark"></span>
-						</label>
-					</div>
-				</td>
-			<td>
-				<div id="vmsequipid">
-				<font color="white">
-						{{irmrwvms.irvmsequipid}}				
-				</font></div>
-			</td>
-			<td>
-				<input type="hidden" id="mrwvmsmsgt" name="mrwvmsmsgt" value='{{irmrwvms.irmrwvmsmsg}}{{sep}}{{irmrwvms.irvmsequipid}}' readonly>
-				<input type="hidden" id="mrwlatilong" name="mrwlatilong" value='{{irmrwvms.longitude}}{{sep}}{{irmrwvms.latitude}}' readonly>
-				<div class="textimagediv" contentEditable="true" id="vmsMessageDetail1"> {{irmrwvms.irmrwvmsmsg}} 
-  					<img src="waterplant.JPG"  width="25px" height="25px"/>
-				</div>
-				    
-			
-			</td>
-			
-	     </tr>
-				
-			</table>
-			<table width="100%"> 
-				<tr>
-					<td>
-						<div align="right">
+					</table> 				
+<div class='mrtincscroll'> 
+	
+	<table width="100%">
+        <tr>
+          <td>
+	<div class="panel-group" id="accordion2">
+		 <div class="panel panel-default">
+	    	<div class="panel-heading active">
+	        	<h4 class="panel-title">
+	                 Incident <span data-target="#Collapseiconmrt1" data-toggle="collapse" data-parent="#accordion2"> </span>
+	            </h4>
+	        </div>
+	        
+	        <div class="panel-collapse collapse in" id="Collapseiconmrt1">
+	        <div class="panel-body">
+			<table width="100%" id="mrtdetailtbl">
+					<tr>
+					  <td>					  
+						Status: <br>
+						  &nbsp;&nbsp;<select ng-model="mrtStatus" style="font-size: 15px; height: 25px; ">
+								<option ng-repeat="option in mrtStatusList" value="{{option.mrtstaid}}">{{option.name}}</option>
+							</select>
+					  </td>
+					  <td> Source <br>
+						  &nbsp;&nbsp;<select ng-model="mrtSource">
+						  <option ng-repeat="option1 in mrtSourceList" value="{{option1.mrtsouid}}">{{option1.name}}</option>
+							</select>
+					  </td>
+					</tr>
+					<tr>
+					  <td>
+					   Start Time:	<br>				
+								&nbsp;&nbsp;<input type="text" placeholder="Start Time"  ng-model="irstarttime"/>
+					  </td>
+					  <td>
+					<!-- 	End Time: <br>
+								&nbsp;&nbsp;<input type="text"  placeholder="End Time"  ng-model="irendtime"/>  -->		
+					  </td>
+					</tr>
 							
-							<button class="buttonImp" id="mrwVmsMessage" onclick="mrwvmsMsgImpl()" style="text-decoration:none;"> Implement </button>
-							<a href="#" class="buttonRem" id="mrwvmsMsgRemoved" onclick="mrwvmsMsgRemoved()" style="text-decoration:none;"> Remove </a> 
-						</div>	
-					</td>
-				</tr>
-	 	 </table>
-            </div>
-        </div>
-     </div>
-   <!--  <div class="panel panel-default">
-    	<div class="panel-heading active">
-        	<h4 class="panel-title">
-                   Canning Message<span data-target="#Collapseicon5" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
-            </h4>
-        </div>
-        
-        <div class="panel-collapse collapse" id="Collapseicon5">
-        	<div class="panel-body">
-            	
-            	<p>Enter Canning Messages</p>
-			   <table width="100%" class="tablevms"> 
-					<tr>
-						<td>
-							<textarea class = "textareaVmsMsg" rows="3" cols="55" placeholder="This road has heavy traffic, please Note." ng-model="canningMsg"> </textarea>
-							<a href="#" class="buttonImp" id="buttonImp" ng-click="canMsgSend()"> Send </a>						
-						</td>
-					</tr>
-			 </table>
-            </div>
-        </div>
-     </div> -->
-  <!--     <div class="panel panel-default">
-    	<div class="panel-heading active">
-        	<h4 class="panel-title">
-                   OBU Messages <span data-target="#Collapseicon6" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
-            </h4>
-        </div>
-        
-        <div class="panel-collapse collapse" id="Collapseicon6">
-        	<div class="panel-body">
-           	
-          	<p>OBU Message </p>
-				<table width="100%" class="tablevms" >  
-					<tr>
-						<th colspan="3" bgcolor="#EE5656" style="padding:5px;"> Alert </th>
-					</tr>
-					<tr>					
-						<td> 
-							<div ng-if="obuMsgStatus==='Failed'"> <span class="dotfail"></span> {{obuMsgStatus}} </div>
-							<div ng-if="obuMsgStatus==='Implemented'"> <span class="dotimp"></span> {{obuMsgStatus}} </div>
-							<div ng-if="obuMsgStatus==='Not Active'">  <span class="dotnotact"></span> {{obuMsgStatus}} </div>					
-						</td>
-						<td> <textarea class = "textareaVmsMsg" rows="3" cols="42" ng-model="recommMsg" ng-click="enableText()"  placeholder="Message to be displayed on OBU"> {{obuMsg}} </textarea></td>						
-						<td>KM Marking 
-						<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="markalert" ng-click="enableText()" placeholder="1.2" > {{obuMsg}}</textarea></td>
+					 </table>
+
+							</div>
+						</div>
+					 </div>
+					 
+					 <div class="panel panel-default">
+						<div class="panel-heading active">
+							<h4 class="panel-title">
+								  <span data-target="#Collapseiconmrt2" data-toggle="collapse" data-parent="#accordion2"> </span>
+							</h4>
+						</div>
 						
-					</tr>
-					<tr>
-						<th colspan="3" bgcolor="#ECD641" style="padding:5px;"> Jam</th>
-					</tr>
-					<tr>
-						<td> 
-							<div ng-if="obuMsgStatus==='Failed'"><h6> <span class="dotfail"></span> {{obuMsgStatus}} </h6></div>
-							<div ng-if="obuMsgStatus==='Implemented'"><h6> <span class="dotimp"></span> {{obuMsgStatus}} </h6></div>
-							<div ng-if="obuMsgStatus==='Not Active'"><h6>  <span class="dotnotact"></span> {{obuMsgStatus}} </h6></div>						
-						</td>
-						<td> <textarea class = "textareaVmsMsg" rows="3" cols="42" ng-model="jamMsg" ng-click="enableText()" placeholder="Message to be displayed on OBU" > {{obuMsg}}</textarea></td>						
-						<td>KM Marking<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="markjam" ng-click="enableText()" placeholder="1.2" > {{obuMsg}}</textarea></td>	
-					</tr>
-					<tr>
-						<th colspan="3" bgcolor="#41EC42" style="padding:5px;"> Guide</th>
-					</tr>	
-					<tr >
-						<td> 
-							<div ng-if="obuMsgStatus==='Failed'"><h6> <span class="dotfail"></span> {{obuMsgStatus}} </h6></div>
-							<div ng-if="obuMsgStatus==='Implemented'"><h6> <span class="dotimp"></span> {{obuMsgStatus}} </h6></div>
-							<div ng-if="obuMsgStatus==='Not Active'"><h6>  <span class="dotnotact"></span> {{obuMsgStatus}} </h6></div>						
-						</td>
-						<td> <textarea class = "textareaVmsMsg" rows="3" cols="42" ng-model="guideMsg" ng-click="enableText()"  placeholder="Message to be displayed on OBU" > {{obuMsg}}</textarea></td>						
-						<td>KM Marking<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="markguide" ng-click="enableText()" placeholder="1.2" > {{obuMsg}}</textarea></td>	
-					</tr>					
-				</table>
-				<table width="100%"> 
+						<div class="panel-collapse collapse in" id="Collapseiconmrt2">
+							<div class="panel-body">
+							 <table width="100%" id="mrtdetailtbl"> 
+							<tr>
+								<td>
+									MRT / LRT Line <br>
+									<select ng-model="direction" class="selectcls" ng-options="o as o for o in stations" ng-change="mrtlinesel()">
+										 <option value=""  selected="selected"></option>
+									 </select>  
+								</td>
+								<td >
+									Both Direction:	 <br>										
+									<label class="contentlabel">
+									  <input type="checkbox" ng-model="bothdir">
+									  <span class="checkmark"></span>
+									</label>
+								</td>
+							</tr>				
+							<tr>
+									<td>
+									Start Station: <br>
+								 <select ng-model="startstation" class="selectcls" ng-options="o as o for o in mrtline" ng-change="setStartStation()">
+									 <option value=""  selected="selected"></option>
+								 </select>
+								</td>
+								<td >
+									End Station: <br>
+								 <select ng-model="endstation" class="selectcls" ng-options="o as o for o in mrtlinend"  ng-change="setendStation()">
+									<option value=""  selected="selected"></option>
+								 </select>
+								</td>					
+							</tr>
+						</table>
+							</div>
+						</div>
+					 </div>
+					 
+				<!--  		<div class="panel panel-default">
+						<div class="panel-heading active">
+							<h4 class="panel-title">
+								  <span data-target="#Collapseiconmrt3" data-toggle="collapse" data-parent="#accordion2"> </span>
+							</h4>
+						</div>
+						
+						<div class="panel-collapse collapse in" id="Collapseiconmrt3">
+							<div class="panel-body">
+								<table width="50%">
+									<tr>
+									  <td>          
+										<label class="contentlabel"> Simulated 
+										  <input type="checkbox" ng-model="mrtsimu">
+										  <span class="checkmark" size=""></span>
+										</label>
+										</td>
+										<td>
+										<label class="contentlabel"> Important 
+										  <input type="checkbox" ng-model="mrtimpo">
+										  <span class="checkmark"></span>
+										</label>
+									   </td>
+									   </tr>
+									   <tr>
+									  <td>
+										 <label class="contentlabel" > VRS 
+										  <input type="checkbox" ng-model="mrtvrs">
+										  <span class="checkmark"></span>
+										</label>
+										</td>
+										<td>
+										<label class="contentlabel"> LTM
+										  <input type="checkbox"  ng-model="mrtltm">
+										  <span class="checkmark"></span>
+										</label>
+									  </td>
+									</tr>      
+									</table>  
+							</div>
+						</div>
+					 </div> -->
+					 
+					 <div class="panel panel-default">
+						<div class="panel-heading active">
+							<h4 class="panel-title">
+								  <span data-target="#Collapseiconmrt4" data-toggle="collapse" data-parent="#accordion2"> </span>
+							</h4>
+						</div>
+						
+						<div class="panel-collapse collapse in" id="Collapseiconmrt4">
+							<div class="panel-body">
+								<table width="100%"  id="mrtdetailtbl">
+								<tr>
+								  <td>
+								   <h3b> Alarms / Alerts</h3b> 
+								  </td>
+								</tr>
+								<tr>
+								  <td>
+									 <font style="color:#7CFC00 "><input type="text" style="width:350.81px;" placeholder="Alert" ng-model="mrtincalrmalert">  </font>
+								  </td>
+								</tr>
+							  </table>
+							</div>
+						</div>
+					 </div>
+				 </div>
+				 </td></tr>
+				 </table>	 
+</div>  
+			  <table width="100%">
 				<tr>
-					<td>
-						<div align="right">
-							<a href="#" class="buttonRem" id="buttonRem" ng-click="obuMsgdeact()" style="text-decoration:none;"> Deactivate All </a> 
-							<a href="#" class="buttonImp" id="buttonImp" ng-click="obuMsgImpl()" style="text-decoration:none;"> Implement All </a>
-						</div>	
-					</td>
+				<td> <div align='right'>   
+					<div id="createdir1">
+				<a href="#" class="buttonCreateMrtInc"  ng-click="addmrtincident()" style="text-decoration:none;"> CREATE </a> &nbsp;&nbsp;
+				</div>
+				<!-- <a href="#popup" class="button1a" id="button1a"  ng-click="showincidentlist()"> Close</a>  -->
+				</div> </td>
 				</tr>
-				</table> 
-          	
-            </div>
-        </div>
-     </div>
-  -->   
-     <div class="panel panel-default">
-    	<div class="panel-heading active">
-        	<h4 class="panel-title">               	
-                    Congestion Routes Monitoring <span data-target="#Collapseicon7" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
-            </h4>
-        </div>
-         
-        <div class="panel-collapse collapse" id="Collapseicon7">
-        	<div class="panel-body">
-            	<p>Congestion Routes Monitoring </p>
-            </div>
-        </div>
-     </div>
-   
-     <div align="right"><a href="#" class="buttonCreateMrtInc" ng-click="addmrwincident()" style="text-decoration:none;"> SAVE </a></div> 
-</div>		  	  
- </div> 
-	 </div>
-	  <!-- end of IR Respnse -->
+			</table> 
+	
+
       </div>  
-	  
+</div>
+	  <!--  end of mrt creation top and right side panel div -->
 		</div>
 		
 		</div>

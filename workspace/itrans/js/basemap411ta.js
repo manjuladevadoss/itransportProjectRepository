@@ -228,7 +228,7 @@
     function accCCTVLocation() {  // Icon display
         var cctvPictureSymbol = {
           type: "picture-marker",
-          url: "cctv.png",
+          url: "cctv.PNG",
           width: "25",
           height: "25",
          // xoffset: 5,

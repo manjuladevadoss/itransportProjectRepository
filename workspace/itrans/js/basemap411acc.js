@@ -167,15 +167,15 @@
 	          title: "Carriageway"
 	        });
 		
-		/*** Onload event Accident Layer display Red and Orange*/	
-		var accidentLayer1 = new CustomWMSLayer({
+		/*** Current Traffic condition layer Red, Orange, Green*/	
+		var trafficplanlayerlane = new CustomWMSLayer({
 	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
 	          mapParameters: {
 	            SERVICE: "WMS",
 	            REQUEST: "GetMap",
 	            FORMAT: "image/png",
 	            TRANSPARENT: "TRUE",
-	            STYLES: "gis_carriageway_acc_style1",
+	            STYLES: "gis_carriageway_planlayer_style",
 	            VERSION: "1.3.0",
 	            LAYERS: "gisdbo_gis_carriageway",
 	            WIDTH: "{width}",
@@ -183,10 +183,123 @@
 	            CRS: "EPSG:{wkid}",
 	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
 	          },
-	          title: "AccLayer"
+	          title: "Current Traffic"
 	        });
 		
+		/*** Current Traffic condition layer Red, Orange, Green on prediction do nothing plan*/	
+		var trafficplan0layerlane = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			  SERVICE: "WMS",
+			  REQUEST: "GetMap",
+			  FORMAT: "image/png",
+			  TRANSPARENT: "TRUE",
+			  STYLES: "gis_carriageway_plan0layer_style",
+			  VERSION: "1.3.0",
+			  LAYERS: "gisdbo_gis_carriageway",
+			  WIDTH: "{width}",
+			  HEIGHT: "{height}",
+			  CRS: "EPSG:{wkid}",
+			  BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "Current Traffic Do Nothing"
+		  });
+	  
+		/*** Current Traffic condition layer Red, Orange, Green on prediction plan 1 */	
+		var trafficplan1layerlane = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			  SERVICE: "WMS",
+			  REQUEST: "GetMap",
+			  FORMAT: "image/png",
+			  TRANSPARENT: "TRUE",
+			  STYLES: "gis_carriageway_plan1layer_style",
+			  VERSION: "1.3.0",
+			  LAYERS: "gisdbo_gis_carriageway",
+			  WIDTH: "{width}",
+			  HEIGHT: "{height}",
+			  CRS: "EPSG:{wkid}",
+			  BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "Current Traffic Plan 1"
+		  });
 
+		/*** Current Traffic condition layer Red, Orange, Green on prediction plan 2 */	
+		var trafficplan2layerlane = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			SERVICE: "WMS",
+			REQUEST: "GetMap",
+			FORMAT: "image/png",
+			TRANSPARENT: "TRUE",
+			STYLES: "gis_carriageway_plan2layer_style",
+			VERSION: "1.3.0",
+			LAYERS: "gisdbo_gis_carriageway",
+			WIDTH: "{width}",
+			HEIGHT: "{height}",
+			CRS: "EPSG:{wkid}",
+			BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "Current Traffic Plan 2"
+		});
+
+
+		/*** Current Traffic condition layer Red, Orange, Green layer Implementation for plan 1 interval */	
+		var trafficlayerlaneImpl1 = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			SERVICE: "WMS",
+			REQUEST: "GetMap",
+			FORMAT: "image/png",
+			TRANSPARENT: "TRUE",
+			STYLES: "gis_carriageway_planlayerImp1_style",
+			VERSION: "1.3.0",
+			LAYERS: "gisdbo_gis_carriageway",
+			WIDTH: "{width}",
+			HEIGHT: "{height}",
+			CRS: "EPSG:{wkid}",
+			BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "traffic Implement layer 1"
+		});
+	
+		var trafficlayerlaneImpl2 = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			SERVICE: "WMS",
+			REQUEST: "GetMap",
+			FORMAT: "image/png",
+			TRANSPARENT: "TRUE",
+			STYLES: "gis_carriageway_planlayerImp2_style",
+			VERSION: "1.3.0",
+			LAYERS: "gisdbo_gis_carriageway",
+			WIDTH: "{width}",
+			HEIGHT: "{height}",
+			CRS: "EPSG:{wkid}",
+			BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "traffic Implement layer 2"
+		});
+
+		var trafficlayerlaneImpl3 = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			SERVICE: "WMS",
+			REQUEST: "GetMap",
+			FORMAT: "image/png",
+			TRANSPARENT: "TRUE",
+			STYLES: "gis_carriageway_planlayerImp3_style",
+			VERSION: "1.3.0",
+			LAYERS: "gisdbo_gis_carriageway",
+			WIDTH: "{width}",
+			HEIGHT: "{height}",
+			CRS: "EPSG:{wkid}",
+			BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "traffic Implement layer 3"
+		});
+
+		  
 		//Glide Site
 		var glideSiteLayer = new CustomWMSLayer({
 	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
@@ -207,64 +320,7 @@
 	        });
 		
 		
-  		//Layer draw red,orange,green color lane 
-		var cteheavytrafficLayer = new CustomWMSLayer({
-            mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
-            mapParameters: {
-              SERVICE: "WMS",
-              REQUEST: "GetMap",
-              FORMAT: "image/png",
-              TRANSPARENT: "TRUE",
-              STYLES: "gis_expressway_cte_heavytraffic_style",
-              VERSION: "1.3.0",
-              LAYERS: "gis_expressway",
-              WIDTH: "{width}",
-              HEIGHT: "{height}",
-              CRS: "EPSG:{wkid}",
-              BBOX: "{xmin},{ymin},{xmax},{ymax}"
-            },
-            title: "Heavy Traffic"
-          });
   		
-  		
-		//Accident layer lane closed in red color 
-		var cteheavytrafficRedLayer = new CustomWMSLayer({
-            mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
-            mapParameters: {
-              SERVICE: "WMS",
-              REQUEST: "GetMap",
-              FORMAT: "image/png",
-              TRANSPARENT: "TRUE",
-              STYLES: "gis_expressway_cte_heavytraffic_red_style",
-              VERSION: "1.3.0",
-              LAYERS: "gis_expressway",
-              WIDTH: "{width}",
-              HEIGHT: "{height}",
-              CRS: "EPSG:{wkid}",
-              BBOX: "{xmin},{ymin},{xmax},{ymax}"
-            },
-            title: "Heavy Traffic Red"
-          });
-  		
-		//Accident layer lane Orange Green color 
-		var ctetrafficGreenOrangeLayer = new CustomWMSLayer({
-            mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
-            mapParameters: {
-              SERVICE: "WMS",
-              REQUEST: "GetMap",
-              FORMAT: "image/png",
-              TRANSPARENT: "TRUE",
-              STYLES: "gis_expressway_cte_traffic_greenorange_style",
-              VERSION: "1.3.0",
-              LAYERS: "gis_expressway",
-              WIDTH: "{width}",
-              HEIGHT: "{height}",
-              CRS: "EPSG:{wkid}",
-              BBOX: "{xmin},{ymin},{xmax},{ymax}"
-            },
-            title: "Traffic Flow"
-          });
-		  
 		var cteLayer = new CustomWMSLayer({
             mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
             mapParameters: {
@@ -338,45 +394,8 @@
             CRS: "EPSG:{wkid}",
             BBOX: "{xmin},{ymin},{xmax},{ymax}"
           },
-          title: "TSpeed"
-        });
-
-		var trafficSpeedLayer2 = new CustomWMSLayer({
-          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
-          mapParameters: {
-            SERVICE: "WMS",
-            REQUEST: "GetMap",
-            FORMAT: "image/png",
-            TRANSPARENT: "TRUE",
-            STYLES: "gis_speedlink_data_style1",
-            VERSION: "1.3.0",
-            LAYERS: "gis_speedlink_data",
-            WIDTH: "{width}",
-            HEIGHT: "{height}",
-            CRS: "EPSG:{wkid}",
-            BBOX: "{xmin},{ymin},{xmax},{ymax}"
-          },
-          title: "TSpeed2"
-        });
-
-		var trafficSpeedLayer3 = new CustomWMSLayer({
-          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
-          mapParameters: {
-            SERVICE: "WMS",
-            REQUEST: "GetMap",
-            FORMAT: "image/png",
-            TRANSPARENT: "TRUE",
-            STYLES: "gis_speedlink_data_style2",
-            VERSION: "1.3.0",
-            LAYERS: "gis_speedlink_data",
-            WIDTH: "{width}",
-            HEIGHT: "{height}",
-            CRS: "EPSG:{wkid}",
-            BBOX: "{xmin},{ymin},{xmax},{ymax}"
-          },
-          title: "TSpeed3"
-        });
-		
+          title: "Link Speed"
+        });	
 	
 		cctvLayer.visible  = false;
 		vmsLayer.visible  = false;
@@ -388,14 +407,20 @@
 		detectCamera.visible = false;
 		speedLinkLayer.visible = false;
 		trafficSpeedLayer1.visible = false;
-		trafficSpeedLayer2.visible = false;
-		trafficSpeedLayer3.visible = false;
 		//othervmsLayer.visible = false;
+		trafficplanlayerlane.visible = false;
+		trafficplan0layerlane.visible = false;
+		trafficplan1layerlane.visible = false;
+		trafficplan2layerlane.visible = false;
+		trafficlayerlaneImpl1.visible = false;
+		trafficlayerlaneImpl2.visible = false;
+		trafficlayerlaneImpl3.visible = false;
 		map = new Map({
           //center: [103.84347,1.32858],
          // layers: [layer1,cctvLayer,vmsLayer,glideSiteLayer,carriagewayLayer,cteheavytrafficLayer,cteLayer,ctetrafficGreenOrangeLayer,speedLinkLayer]
 		  basemap: {
-            baseLayers: [layer1,trafficSpeedLayer2,trafficSpeedLayer3]
+		   // baseLayers: [layer1,trafficplanlayerlane, trafficplan0layerlane,trafficplan1layerlane ]
+		   baseLayers: [layer1,trafficplanlayerlane,trafficplan0layerlane,trafficplan1layerlane,trafficplan2layerlane,trafficlayerlaneImpl1,trafficlayerlaneImpl2,trafficlayerlaneImpl3]
           },
 		  layers: [cctvLayer,vmsLayer,glideSiteLayer,trafficSpeedLayer1,detectCamera]
 		});
@@ -435,56 +460,6 @@
 			}); 
 
 			
-/*** Onload Speed Layer display */
-speedLkLrInterval = setInterval(speedLkLr, 1000);	
-//clrspeedLkLrInterval = setInterval(clrspeedLkLr, 2000);	
-//speedLayerInterval_1 = setInterval(speedLayer1, 3000);
-//clrspeedLayerInterval_1 = setInterval(clrspeedLayer1, 4000);
-//speedLayerInterval_2 = setInterval(speedLayer2, 5000);
-//clrspeedLayerInterval_2 = setInterval(clrspeedLayer2, 6000);	
-
-
-var flagSpeed = false;
-var flagSpeed1 = false;
-var speedLayerInterval_1, speedLayerInterval_2,speedLayerInterval_3
-	function speedLkLr(){ 
-		if(trafficSpeedLayer1.visible == true){
-			flagSpeed = true;	
-			speedLayerInterval_1 = setInterval(speedLayer1, 5000);			
-		}
-	}
-	
-	function clrspeedLkLr(){
-		clearInterval(speedLkLrInterval);
-	}	
-	
-	function speedLayer1(){ 
-		if(flagSpeed){		
-			trafficSpeedLayer1.visible = false;			
-			trafficSpeedLayer2.visible = true;
-			flagSpeed1 = true;
-			speedLayerInterval_2 = setInterval(speedLayer2, 10000);
-		} 
-	}
-	
-	function clrspeedLayer1(){
-		clearInterval(speedLayerInterval_1);
-	}
-	
-	function speedLayer2(){
-		if(flagSpeed1){
-		trafficSpeedLayer2.visible = false;
-		trafficSpeedLayer3.visible = true;
-		speedLayerInterval_3 = setInterval(clrspeedLayers, 15000);
-		}
-	}
-	
-	function clrspeedLayers(){
-		clearInterval(speedLayerInterval_1);
-		clearInterval(speedLayerInterval_2);
-		clearInterval(speedLayerInterval_3);
-		trafficSpeedLayer3.visible = false;
-	}
 
 /*** Onload Icon display first time*/		
 /* Start Accident location point and icon */
@@ -553,7 +528,7 @@ function accCCTVLocation() {  // Icon display
 				  
             var cctvPictureSymbol = {
                 type: "picture-marker",
-                url: "cctv.png",
+                url: "cctv.PNG",
                 width: "25",
                 height: "25",
                 xoffset: 5,
@@ -690,14 +665,14 @@ function ttpTipIconLocation() {  // Icon display
 			symbol: ttpPictureSymbol
 		});   
 		view.graphics.addMany([ttpPictureGraphic1,ttpPictureGraphic2,ttpPictureGraphic3,ttpPictureGraphic4]);
-		//TSP image
+		//TIP image
 		var tipPictureSymbol = {
 			type: "picture-marker",
 			url: "TIP_MSG.png",
 			width: "20",
 			height: "20"
 		}
-		//TSP Point
+		//TIP Point
 		var tipPoint1 = {
 			type: "point", 
 			longitude: 103.8583969, 
@@ -722,543 +697,7 @@ function ttpTipIconLocation() {  // Icon display
 
       }
 
-function endCongestion() {
-	view.graphics.removeAll();
-	speedLinkLayer.visible  = true;
-	accidentLayer1.visible  = false;
-	clearInterval(endCongestionTimer);
-	//clearInterval(firstCongestionTimer);
-	//clearInterval(secondCongestionTimer);
-	clearInterval(thirdCongestionTimer);
-}
-/*** Start congestion Point Creation*/
-var congpolylineGraphic1Red,congpolylineGraphic1AmberA1,congpolylineGraphic1AmberA2,congpolylineGraphic1AmberA3, congpolylineGraphic1Ambercte, congpolylineGraphic1Green ;
-function firstCongestion(){
-// 80% congestion  first stage
-/*** Red Line Layer  */
-speedLinkLayer.visible  = false;
-accidentLayer1.visible = false;
-	 var congpolyline1Red = {
-	    	  type: "polyline", // autocasts as new Polyline()
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",  //[103.858205, 1.378473],
-	    	  paths: [ [103.858056, 1.377817],[103.858577, 1.375705],
-	    		       [103.859092, 1.374268],[103.859261, 1.373794],
-					   [103.860294, 1.371318],[103.860666, 1.370147], 
-					   [103.860859, 1.369010],[103.860766, 1.367917]					    
-					   ]					   
-	    	};		
-   	        conglineSymbol1Red = {
-   	          type: "simple-line", 
-   	          color: [255,64,0],
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1Red = new Graphic({
-   	          geometry: congpolyline1Red,
-   	          symbol: conglineSymbol1Red,
-   	        });	
-//Amber	      			
-// cte to amg ave 3 	
-	var congpolyline1AmberA1 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-				[103.859895,1.365306], //cte AMg ave to 3
-				[103.859981, 1.365778], 
-				[103.860110, 1.366207],
-				[103.860206, 1.366667], 
-				[103.860381, 1.367384], 
-				[103.860370, 1.367931], 
-				[103.860359, 1.368446], 
-				[103.860230, 1.368725], 
-				[103.860101, 1.368822],
-				[103.859972, 1.368940], 
-				[103.859811, 1.369026], 
-				[103.859618, 1.369047], 
-				[103.859618, 1.369047],
-				[103.858994, 1.368985], 
-				//  AMg ave 3 to cte
-				[103.858216, 1.369018],
-				[103.859023, 1.369098], 
-				[103.859629, 1.369195], 
-				[103.859854, 1.369243], 
-				[103.860022, 1.369341], 
-				[103.860113, 1.369448], 
-				[103.860226, 1.369545], 
-				[103.860317, 1.369679], 
-				[103.860301, 1.369990], 
-				[103.860221, 1.370462], 
-				[103.860141, 1.370977], 
-				[103.860039, 1.371427]
-			]
-	    	};		
-   	        var conglineSymbol1Amber = {
-   	          type: "simple-line", 
-   	          color: [255,165,0],
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1AmberA1 = new Graphic({
-   	          geometry: congpolyline1AmberA1,
-   	          symbol: conglineSymbol1Amber
-   	        });
-			
-// Amber cte to amg ave 5 		
-		 var congpolyline1AmberA2 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.858945, 1.374193], 
-					[103.858398, 1.375469], 
-					[103.858226, 1.375909], 
-					[103.858033, 1.376081], 
-					[103.857808, 1.376188], 
-					[103.857551, 1.376220], 
-					[103.857079, 1.376134], 
-					[103.856532, 1.376037]
-			]
-	    	};			
-			 
-			 congpolylineGraphic1AmberA2 = new Graphic({
-   	          geometry: congpolyline1AmberA2,
-   	          symbol: conglineSymbol1Amber
-   	        });
 
-// Amber amg ave 5 to cte 		
-		 var congpolyline1AmberA3 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.856532, 1.376037], 
-					[103.857101, 1.376316], 
-					[103.857455, 1.376455], 
-					[103.857691, 1.376670], 
-					[103.857916, 1.376820], 
-					[103.858013, 1.377281] 
-					// 
-					//[103.858056, 1.378385] 
-				]
-	    	};			
-			 
-			 congpolylineGraphic1AmberA3 = new Graphic({
-   	          geometry: congpolyline1AmberA3,
-   	          symbol: conglineSymbol1Amber
-   	        });
-// Amber cte 	
-			var congpolyline1Ambercte = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.860766, 1.367917],[103.860455,1.366662], [103.860026, 1.365675]
-				]
-	    	};			
-			 
-			 congpolylineGraphic1Ambercte = new Graphic({
-   	          geometry: congpolyline1Ambercte,
-   	          symbol: conglineSymbol1Amber
-   	        });			
-			
-			
-//Green		
-			 var congpolyline1Green = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.860026, 1.365675],[103.859683, 1.364742], [103.859297,1.363659]
-					 ]
-	    	};		
-   	        var conglineSymbol1Green = {
-   	          type: "simple-line", 
-   	          color: [0,255,64],
-   	          width: 2
-   	        };		
- 			congpolylineGraphic1Green = new Graphic({
-   	          geometry: congpolyline1Green,
-   	          symbol: conglineSymbol1Green
-   	        });	
-			
-//Green After accident towards CTE			
-			var congpolyline1Greencte2 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.858330, 1.384170],[103.858287, 1.385779],[103.858298, 1.381221], [103.858319, 1.380009], [103.858287, 1.379784] 
-					 ]
-	    	};			
- 			congpolylineGraphic1Greencte2 = new Graphic({
-   	          geometry: congpolyline1Greencte2,
-   	          symbol: conglineSymbol1Green
-   	        });
-			
-			view.graphics.addMany([congpolylineGraphic1Red,congpolylineGraphic1AmberA1,congpolylineGraphic1AmberA2,congpolylineGraphic1AmberA3,congpolylineGraphic1Ambercte, congpolylineGraphic1Green, congpolylineGraphic1Greencte2]);
-}
-// End of 80% congestion  first stage
-
-// 60% congestion  first stage
-function secondCongestion(){
-	clearInterval(firstCongestionTimer);
-
-//var congpolylineGraphic1Red,congpolylineGraphic1AmberA1,congpolylineGraphic1AmberA2,congpolylineGraphic1AmberA3,congpolylineGraphic1Ambercte, congpolylineGraphic1Green
-	 var congpolyline1Red = {
-	    	  type: "polyline", // autocasts as new Polyline()
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel", //[103.858205, 1.378473],
-	    	  paths: [ [103.858056, 1.377817],[103.858577, 1.375705],
-	    		       [103.859092, 1.374268],[103.859261, 1.373794],
-					   [103.860294, 1.371318]
-					    ]					   
-	    	};		
-   	        conglineSymbol1Red = {
-   	          type: "simple-line", 
-   	          color: [255,64,0],
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1Red = new Graphic({
-   	          geometry: congpolyline1Red,
-   	          symbol: conglineSymbol1Red,
-   	        });	
-//Amber	      			
-// cte to amg ave 3 	
-	var congpolyline1AmberA1 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-				//[103.859895,1.365306], //cte AMg ave to 3
-				//[103.859981, 1.365778], 
-				//[103.860110, 1.366207],
-				[103.860206, 1.366667], 
-				[103.860381, 1.367384], 
-				[103.860370, 1.367931], 
-				[103.860359, 1.368446], 
-				[103.860230, 1.368725], 
-				[103.860101, 1.368822],
-				[103.859972, 1.368940], 
-				[103.859811, 1.369026], 
-				[103.859618, 1.369047], 
-				 
-				//  AMg ave 3 to cte
-				[103.858216, 1.369018],
-				[103.859023, 1.369098], 
-				[103.859629, 1.369195], 
-				[103.859854, 1.369243], 
-				[103.860022, 1.369341], 
-				[103.860113, 1.369448], 
-				[103.860226, 1.369545], 
-				[103.860317, 1.369679], 
-				[103.860301, 1.369990], 
-				[103.860221, 1.370462], 
-				[103.860141, 1.370977], 
-				[103.860039, 1.371427]
-			]
-	    	};		
-   	        var conglineSymbol1Amber = {
-   	          type: "simple-line", 
-   	          color: [255,165,0],
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1AmberA1 = new Graphic({
-   	          geometry: congpolyline1AmberA1,
-   	          symbol: conglineSymbol1Amber
-   	        });
-			
-// Amber cte to amg ave 5 		
-		 var congpolyline1AmberA2 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.858945, 1.374193], 
-					[103.858398, 1.375469], 
-					[103.858226, 1.375909], 
-					[103.858033, 1.376081], 
-					[103.857808, 1.376188], 
-					[103.857551, 1.376220], 
-					[103.857079, 1.376134], 
-					[103.856532, 1.376037]
-				]
-	    	};						 
-			 congpolylineGraphic1AmberA2 = new Graphic({
-   	          geometry: congpolyline1AmberA2,
-   	          symbol: conglineSymbol1Amber
-   	        });
-
-// Amber amg ave 5 to cte 		
-		 var congpolyline1AmberA3 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.856532, 1.376037], 
-					[103.857101, 1.376316], 
-					[103.857455, 1.376455], 
-					[103.857691, 1.376670], 
-					[103.857916, 1.376820], 
-					[103.858013, 1.377281] 
-					// 
-					//[103.858056, 1.378385] 
-				]
-	    	};			
-			 
-			 congpolylineGraphic1AmberA3 = new Graphic({
-   	          geometry: congpolyline1AmberA3,
-   	          symbol: conglineSymbol1Amber
-   	        });
-// Amber cte 	
-			var congpolyline1Ambercte = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.860294, 1.371318],[103.860666, 1.370147],[103.860666, 1.370147], 
-					   [103.860859, 1.369010],[103.860766, 1.367917],[103.860766, 1.367917],[103.860455,1.366662] 
-				]
-	    	};			
-			 
-			 congpolylineGraphic1Ambercte = new Graphic({
-   	          geometry: congpolyline1Ambercte,
-   	          symbol: conglineSymbol1Amber
-   	        });						
-//Green		
-			 var congpolyline1Green = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.860455,1.366662],[103.860026, 1.365675],[103.860026, 1.365675],[103.859683, 1.364742], [103.859297,1.363659]
-					 ]
-	    	};		
-   	        var conglineSymbol1Green = {
-   	          type: "simple-line", 
-   	          color: [0,255,64],
-   	          width: 2
-   	        };		
- 			congpolylineGraphic1Green = new Graphic({
-   	          geometry: congpolyline1Green,
-   	          symbol: conglineSymbol1Green
-   	        });	
-
-//Green After accident towards CTE			
-			var congpolyline1Greencte2 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.858330, 1.384170],[103.858287, 1.385779],[103.858298, 1.381221], [103.858319, 1.380009], [103.858287, 1.379784] 
-					 ]
-	    	};			
- 			congpolylineGraphic1Greencte2 = new Graphic({
-   	          geometry: congpolyline1Greencte2,
-   	          symbol: conglineSymbol1Green
-   	        });	
-			 		
-			view.graphics.addMany([congpolylineGraphic1Red,congpolylineGraphic1AmberA1,congpolylineGraphic1AmberA2,congpolylineGraphic1AmberA3,congpolylineGraphic1Ambercte, congpolylineGraphic1Green,congpolylineGraphic1Greencte2]);
-	}
-// End of 60% congestion  first stage
-
-// 40% congestion  first stage
-function thirdCongestion(){
-	clearInterval(secondCongestionTimer);
-//var congpolylineGraphic1Red,congpolylineGraphic1AmberA1,congpolylineGraphic1AmberA2,congpolylineGraphic1AmberA3,congpolylineGraphic1Ambercte, congpolylineGraphic1Green
-	 var congpolyline1Red = {
-	    	  type: "polyline", // autocasts as new Polyline()
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel", //[103.858205, 1.378473],
-	    	  paths: [ [103.858056, 1.377817],[103.858577, 1.375705],
-	    		       [103.859092, 1.374268]
-					    ]					   
-	    	};		
-   	        conglineSymbol1Red = {
-   	          type: "simple-line", 
-   	          color: [255,64,0],
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1Red = new Graphic({
-   	          geometry: congpolyline1Red,
-   	          symbol: conglineSymbol1Red,
-   	        });	
-//Amber	      			
-// cte to amg ave 3 	
-	var congpolyline1AmberA1 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-				//[103.859895,1.365306], //cte AMg ave to 3
-				//[103.859981, 1.365778], 
-				//[103.860110, 1.366207],
-				[103.860206, 1.366667], 
-				[103.860381, 1.367384], 
-				[103.860370, 1.367931], 
-				[103.860359, 1.368446], 
-				[103.860230, 1.368725], 
-				[103.860101, 1.368822],
-				[103.859972, 1.368940], 
-				[103.859811, 1.369026], 
-				[103.859618, 1.369047], 
-			]
-	    	};
-			var conglineSymbol1Green11 = {
-   	          type: "simple-line", 
-   	          color: [0,255,64], 
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1Green11 = new Graphic({
-   	          geometry: congpolyline1AmberA1,
-   	          symbol: conglineSymbol1Green11
-   	        });
-	var congpolyline1AmberA11 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-				//  AMg ave 3 to cte
-				[103.858216, 1.369018],
-				[103.859023, 1.369098], 
-				[103.859629, 1.369195], 
-				[103.859854, 1.369243], 
-				[103.860022, 1.369341], 
-				[103.860113, 1.369448], 
-				[103.860226, 1.369545], 
-				[103.860317, 1.369679], 
-				[103.860301, 1.369990], 
-				[103.860221, 1.370462], 
-				[103.860141, 1.370977], 
-				[103.860039, 1.371427]
-			]
-	    	};			
-   	        var conglineSymbol1Amber = {
-   	          type: "simple-line", 
-   	          color: [255,165,0],
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1AmberA1 = new Graphic({
-   	          geometry: congpolyline1AmberA11,
-   	          symbol: conglineSymbol1Amber
-   	        });
-			
-// Amber cte to amg ave 5 		
-		 var congpolyline1AmberA2 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-				[103.858945, 1.374193], 
-				[103.858398, 1.375469], 
-				[103.858226, 1.375909], 
-				[103.858033, 1.376081], 
-				[103.857808, 1.376188], 
-				[103.857551, 1.376220], 
-				[103.857079, 1.376134], 
-				[103.856532, 1.376037]
-			]
-	    };			
-			 
-			 congpolylineGraphic1AmberA2 = new Graphic({
-   	          geometry: congpolyline1AmberA2,
-   	          symbol: conglineSymbol1Amber
-   	        });
-
-// Amber amg ave 5 to cte 		
-		 var congpolyline1AmberA3 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.856532, 1.376037], 
-					[103.857101, 1.376316], 
-					[103.857455, 1.376455], 
-					[103.857691, 1.376670], 
-					[103.857916, 1.376820], 
-					[103.858013, 1.377281] 
-					// 
-					//[103.858056, 1.378385] 
-				]
-	    	};			
-			 
-			 congpolylineGraphic1AmberA3 = new Graphic({
-   	          geometry: congpolyline1AmberA3,
-   	          symbol: conglineSymbol1Amber
-   	        });
-// Amber cte 	
-			var congpolyline1Ambercte = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.859092, 1.374268],[103.859261, 1.373794],[103.859261, 1.373794],
-					   [103.860294, 1.371318],[103.860294, 1.371318],[103.860666, 1.370147],[103.860666, 1.370147] 
-				]
-	    	};			
-			 
-			 congpolylineGraphic1Ambercte = new Graphic({
-   	          geometry: congpolyline1Ambercte,
-   	          symbol: conglineSymbol1Amber
-   	        });			
-		
-//Green		
-			 var congpolyline1Green = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [	[103.860666, 1.370147],[103.860859, 1.369010],
-						[103.860859, 1.369010],[103.860766, 1.367917],
-						[103.860766, 1.367917],[103.860455,1.366662], 
-						[103.860455,1.366662],[103.860026, 1.365675],
-						[103.860026, 1.365675],[103.859683, 1.364742], 
-						[103.859297,1.363659]
-					 ]
-	    	};		
-   	        var conglineSymbol1Green = {
-   	          type: "simple-line", 
-   	          color: [0,255,64],
-   	          width: 2
-   	        };		
- 			congpolylineGraphic1Green = new Graphic({
-   	          geometry: congpolyline1Green,
-   	          symbol: conglineSymbol1Green
-   	        });	
-
-//Green After accident towards CTE			
-			var congpolyline1Greencte2 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.858330, 1.384170],[103.858287, 1.385779],[103.858298, 1.381221], [103.858319, 1.380009], [103.858287, 1.379784] 
-					 ]
-	    	};			
- 			congpolylineGraphic1Greencte2 = new Graphic({
-   	          geometry: congpolyline1Greencte2,
-   	          symbol: conglineSymbol1Green
-   	        });	
-			view.graphics.addMany([congpolylineGraphic1Red,congpolylineGraphic1AmberA1,congpolylineGraphic1AmberA2,congpolylineGraphic1AmberA3,congpolylineGraphic1Ambercte, congpolylineGraphic1Green,congpolylineGraphic1Greencte2,congpolylineGraphic1Green11]);
-	}
-// End of 40% congestion  first stage			
-
- 
   
  /*** Implement one VMS Message Display **************/
   var pictureGraphicText,pictureGraphicText00,pictureGraphicText01,pictureGraphicText02;
@@ -1280,10 +719,53 @@ function thirdCongestion(){
 	for(i=0;i<b;i++) {   
 		ttpTspMessages(i);	 
 	}
+	view.graphics.removeAll();
+	accIconLocation();
+	accCCTVLocation();
+	dtCamIconLocation();
+	ttpTipIconLocation();
+	scenarioDefaultVMSImpl();
+	accidentLaneLayer();
  }
 
+//draw the traffic lane red amber green on implement all
+function accidentLaneLayer(){
+	trafficplan0layerlane.visible = false;
+	trafficplan1layerlane.visible = false;
+	trafficplan2layerlane.visible = false;
+	trafficplanlayerlane.visible = true;
+}
 
- function ttpTspMessages(selectedMsgNo){
+//draw the traffic lane red amber green on prediction no plan
+function accidentLaneLayerNoPlan(){
+	trafficplan1layerlane.visible = false;
+	trafficplan2layerlane.visible = false;
+	trafficplanlayerlane.visible = false;
+	trafficplan0layerlane.visible = true;
+}
+
+//draw the traffic lane red amber green on prediction Plan 1
+function accidentLaneLayerPlan1(){
+	trafficplanlayerlane.visible = false;
+	trafficplan2layerlane.visible = false;
+	trafficplan0layerlane.visible = false;
+	trafficplan1layerlane.visible = true;
+}
+
+//draw the traffic lane red amber green on prediction Plan 2
+function accidentLaneLayerPlan2(){
+	trafficplanlayerlane.visible = false;
+	trafficplan0layerlane.visible = false;
+	trafficplan1layerlane.visible = false;
+	trafficplan2layerlane.visible = true ;
+}
+
+document.getElementById("preTimeId").onclick = function() {  
+	removetrafficPlanLayer();
+	accidentLaneLayerNoPlan();
+}
+
+function ttpTspMessages(selectedMsgNo){
 
 //selected vms message 
 var details = document.getElementsByName("accMessageDetail");
@@ -1460,27 +942,88 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 	document.getElementById("sce1ImpliId").onclick = function() { 
 		
 		//scenrio1VMSMsgView();
-		//Traffic Light
+		
 		view.graphics.removeAll();
-		accidentLayer1.visible = false;
+		//Traffic Light
 		trafficLight();
-		accIconLocation();
+
+		//accIconLocation();
 		accCCTVLocation();
 		dtCamIconLocation();
 		viewFlagS1 = true;
 		scenrio1VMSMsgOnMap();
-		congestionAreaDisplayonMap();
+		//removetrafficPlanLayer();
+		accidentLaneLayerPlan1();			
+		trafficLayerImplPlan1Interval();
 	}
 	
-	
+/* Start Prediction plan 1 implementation interval  */
+	function trafficLayerImplPlan1Interval() {
+		interval1 = setInterval(tlPlan2Display, 2000);	
+		interval2 = setInterval(tlImp1Display, 4000);	
+		interval3 = setInterval(tlImp2Display, 8000);	
+		interval4 = setInterval(tlImp3Display, 10000);	
+		clrinterval = setInterval(clearFinalInterval, 12000); 	
+	}
+	function tlPlan2Display(){
+		trafficlayerlaneImpl1.visible = false ;
+		trafficlayerlaneImpl2.visible = false ;
+		trafficlayerlaneImpl3.visible = false ;
+		trafficplan2layerlane.visible = true ;
+	}
+	function tlImp1Display(){
+		clearInterval(interval1);
+		trafficlayerlaneImpl1.visible = true ;
+		trafficlayerlaneImpl2.visible = false ;
+		trafficlayerlaneImpl3.visible = false ;
+		trafficplan2layerlane.visible =  false;
+
+	}
+	function tlImp2Display(){
+		clearInterval(interval2);
+		trafficlayerlaneImpl1.visible = false ;
+		trafficlayerlaneImpl2.visible = true ;
+		trafficlayerlaneImpl3.visible = false ;
+		trafficplan2layerlane.visible =  false;
+
+	}
+	function tlImp3Display(){
+		clearInterval(interval3);
+		trafficlayerlaneImpl1.visible = false ;
+		trafficlayerlaneImpl2.visible = false ;
+		trafficlayerlaneImpl3.visible = true ;
+		trafficplan2layerlane.visible =  false;
+	}
+	function clearFinalInterval(){
+		clearInterval(interval1);
+		clearInterval(interval2);
+		clearInterval(interval3);
+		clearInterval(interval4);
+		clearInterval(clrinterval);
+		removeTrafficLayerImplPlan1Interval();
+	}
+
+	function removeTrafficLayerImplPlan1Interval(){
+		trafficlayerlaneImpl1.visible = false ;
+		trafficlayerlaneImpl2.visible = false ;
+		//trafficlayerlaneImpl3.visible = false ;
+		trafficplan2layerlane.visible =  false;
+		trafficplan1layerlane.visible =  false;
+	}
+/* End Prediction plan 1 implementation interval  */
+
+
 	document.getElementById("sce1VmsView").onclick = function() { 
 		view.graphics.removeAll();
 		accIconLocation();
 		accCCTVLocation();
 		dtCamIconLocation();
+		viewFlagS1 = false;
 		trafficLight();
 		//scenrio1VMSMsgView();
-		scenrio1VMSMsgOnMap();		
+		scenrio1VMSMsgOnMap();
+		removetrafficPlanLayer();
+		accidentLaneLayerPlan1();		
 	}
 
 	function scenrio1VMSMsgView() {
@@ -1570,26 +1113,17 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 			  j = j+1;*/
 			  view.graphics.addMany([pictureGraphicSce1/*, pictureGraphicSce1vmsid*/]);	
 		}
-		
 		//Traffic Light
 		trafficLight();
-	}
-	
-	function congestionAreaDisplayonMap()  {
-		firstCongestionTimer = setInterval(firstCongestion, 1000);	
-		secondCongestionTimer = setInterval(secondCongestion, 8000);	
-		thirdCongestionTimer = setInterval(thirdCongestion, 12000);	
-		endCongestionTimer = setInterval(endCongestion, 18000);					
 	}
 
 	//VMS messages Remove
 	document.getElementById("sce1ImpliIdRemove").onclick = function() {  
 		view.graphics.removeAll();
-		clearInterval(firstCongestionTimer);
-		clearInterval(secondCongestionTimer);
-		clearInterval(thirdCongestionTimer);
-		clearInterval(endCongestionTimer);
 		view.graphics.addMany([accPictureGraphic]);	
+		removetrafficPlanLayer()
+		trafficlayerlaneImpl3.visible = false ;	
+
 		accIconLocation();
 		accCCTVLocation();
 		dtCamIconLocation();
@@ -1602,20 +1136,34 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 	var viewFlagS2 = false;
 	document.getElementById("sce2ImpliId").onclick = function() { 
 		view.graphics.removeAll();
+		trafficlayerlaneImpl3.visible = false;
 		speedLinkLayer.visible  = false;	
-		accIconLocation();
+	//	accIconLocation();
 		viewFlagS2 = true;
-		
 		accCCTVLocation();
-		congestionAreaDisplayonMap();
 		scenrio2VMSMsgView();
+		removetrafficPlanLayer();
+		accidentLaneLayerPlan2();	
+		trafficLayerImplPlan2Interval();	
 	}
 	
 	document.getElementById("sce2VmsView").onclick = function() {
- 		view.graphics.removeAll();
+		view.graphics.removeAll();
+		trafficlayerlaneImpl3.visible = false ;		
+		viewFlagS2 = false;
 		accIconLocation();
 		scenrio2VMSMsgView();
 		accCCTVLocation();	
+		removetrafficPlanLayer();
+		accidentLaneLayerPlan2();	
+	}
+
+	var interval1;
+	function trafficLayerImplPlan2Interval() {
+		interval2 = setInterval(tlImp1Display, 2000);	
+		interval3 = setInterval(tlImp2Display, 4000);	
+		interval4 = setInterval(tlImp3Display, 8000);	
+		clrinterval = setInterval(clearFinalInterval, 10000); 	
 	}
 	
 	function scenrio2VMSMsgView() {
@@ -1665,10 +1213,13 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 			var ladi = str3.substring(word3sep+1, str3.length);
 			//alert("id: " + sce1VmsId + " / msg: " + sce1Vmsmsg + " / ladi: " + ladi + " / longi: " + longi); 
 			
-			var sce2VmsImgCP = getScenario2VMSMessages(i);
-			var sce2VmsImgPro = getScenario2VMSMessagesPro(i);
+		//	var sce2VmsImgCP = getScenario2VMSMessages(i);
+		//	var sce2VmsImgPro = getScenario2VMSMessagesPro(i);
+
+			var sce2VmsImgCP = getScenario1VMSMessages(i);
+			var sce2VmsImgPro = getScenario1VMSMessagesPro(i);
 			var PictureSymbolSce2vms;
-			if(i<4) {
+			if(i<6) {
 				PictureSymbolSce2vms = PictureSymbolSce2TTP;
 			}else {
 				PictureSymbolSce2vms = PictureSymbolSce2TIP; 
@@ -1715,111 +1266,93 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 function getScenario2VMSMessages(selectedMsgNo) {
 	var vmsSce1MsgSymbol
 	if(selectedMsgNo==0) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img101_s2cp.JPG",
-			width: "150",
-			height: "50",
+			url: "img101.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==1){ 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img102_s2cp.JPG",
-			width: "150",
-			height: "50",
+			url: "img102.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==2) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img103_s2cp.JPG",
-			width: "150",
-			height: "50",
+			url: "img103.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==3) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img104_s2cp.JPG",
-			width: "150",
-			height: "50",
+			url: "img104.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==4) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
 			url: "img105_s2cp.JPG",
-			width: "150",
-			height: "50",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==5) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
 			url: "img106_s2cp.JPG",
-			width: "150",
-			height: "50",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==6) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
 			url: "img107_s2cp.JPG",
-			width: "150",
+			width: "90",
 			height: "50",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 40,
 		};
 	}
 	if(selectedMsgNo==7) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
 			url: "img108_s2cp.JPG",
-			width: "150",
+			width: "90",
 			height: "50",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 40,
 		};
 	}
 	if(selectedMsgNo==8) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
 			url: "img109_s2cp.JPG",
-			width: "150",
+			width: "90",
 			height: "50",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 40,
 		};
 	}
 	return vmsSce1MsgSymbol
@@ -1831,111 +1364,93 @@ function getScenario2VMSMessages(selectedMsgNo) {
 function getScenario2VMSMessagesPro(selectedMsgNo) {
 	var vmsSce1MsgSymbol
 	if(selectedMsgNo==0) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img101_s2p.JPG",
-			width: "150",
-			height: "40",
+			url: "img101.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==1){ 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img102_s2p.JPG",
-			width: "150",
-			height: "40",
+			url: "img102.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==2) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img103_s2p.JPG",
-			width: "150",
-			height: "40",
+			url: "img103.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==3) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img104_s2p.JPG",
-			width: "150",
-			height: "40",
+			url: "img104.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==4) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img105_s2p.JPG",
-			width: "150",
-			height: "40",
+			url: "img105_s2cp.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==5) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img106_s2p.JPG",
-			width: "150",
-			height: "40",
+			url: "img106_s2cp.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==6) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
 			url: "img107_s2p.JPG",
-			width: "150",
+			width: "90",
 			height: "40",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==7) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
 			url: "img108_s2p.JPG",
-			width: "150",
+			width: "90",
 			height: "40",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==8) { 
-		//urlImage = "img101.JPG";
-		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
 			url: "img109_s2p.JPG",
-			width: "150",
+			width: "90",
 			height: "40",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	return vmsSce1MsgSymbol
@@ -1944,10 +1459,8 @@ function getScenario2VMSMessagesPro(selectedMsgNo) {
 	//VMS messages Remove
 	document.getElementById("sce2ImpliIdRemove").onclick = function() {  
 		view.graphics.removeAll();
-		clearInterval(firstCongestionTimer);
-		clearInterval(secondCongestionTimer);
-		clearInterval(thirdCongestionTimer);
-		clearInterval(endCongestionTimer);
+		removetrafficPlanLayer()
+		trafficlayerlaneImpl3.visible = false ;	
 		view.graphics.addMany([accPictureGraphic]);
 		accIconLocation();
 		accCCTVLocation();
@@ -1981,7 +1494,7 @@ function scenrio1VMSMsgOnMap() {
 	}
     var PictureSymbolTIP = {
 		type: "picture-marker",
-		url: "TSP_MSG.png",
+		url: "TIP_MSG.png",
 		width: "20",
 		height: "20",
 	}
@@ -2022,7 +1535,7 @@ function scenrio1VMSMsgOnMap() {
 				latitude: ladi                   
 			  }; 
 			var PictureSymbolvms;
-					if(i<4) {
+					if(i<6) {
 						PictureSymbolvms = PictureSymbolTTP;
 					}else {
 						PictureSymbolvms = PictureSymbolTIP; 
@@ -2130,10 +1643,10 @@ function getScenarioDefaultVMSMessages(selectedMsgNo) {
 		vmsDefaultMsgSymbol = {
 			type: "picture-marker",
 			url: "img101.JPG",
-			width: "150",
-			height: "50",
+			width: "90",
+			height: "90",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 50,
 		};
 	}
 	if(selectedMsgNo==1){ 
@@ -2142,10 +1655,10 @@ function getScenarioDefaultVMSMessages(selectedMsgNo) {
 		vmsDefaultMsgSymbol = {
 			type: "picture-marker",
 			url: "img102.JPG",
-			width: "150",
-			height: "50",
+			width: "90",
+			height: "90",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 50,
 		};
 	}
 	if(selectedMsgNo==2) { 
@@ -2154,10 +1667,10 @@ function getScenarioDefaultVMSMessages(selectedMsgNo) {
 		vmsDefaultMsgSymbol = {
 			type: "picture-marker",
 			url: "img103.JPG",
-			width: "150",
-			height: "50",
+			width: "90",
+			height: "90",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 50,
 		};
 	}
 	if(selectedMsgNo==3) { 
@@ -2166,10 +1679,10 @@ function getScenarioDefaultVMSMessages(selectedMsgNo) {
 		vmsDefaultMsgSymbol = {
 			type: "picture-marker",
 			url: "img104.JPG",
-			width: "150",
-			height: "50",
+			width: "90",
+			height: "90",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 50,
 		};
 	}
 	if(selectedMsgNo==4) { 
@@ -2178,7 +1691,86 @@ function getScenarioDefaultVMSMessages(selectedMsgNo) {
 		vmsDefaultMsgSymbol = {
 			type: "picture-marker",
 			url: "img105.JPG",
-			width: "150",
+			width: "110",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==5) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img106.JPG",
+			width: "110",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	return vmsDefaultMsgSymbol
+}
+
+
+ /** get vmsMessage Images for default msg*/
+ function getScenarioDefaultVMSMessagesImpl(selectedMsgNo) {
+	var vmsDefaultMsgSymbol
+	if(selectedMsgNo==0) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img101_imp.JPG",
+			width: "90",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==1){ 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img102_imp.JPG",
+			width: "90",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==2) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img103_imp.JPG",
+			width: "90",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==3) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img104_imp.JPG",
+			width: "90",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==4) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img105_imp.JPG",
+			width: "100",
 			height: "50",
 			xoffset: 0,
 			yoffset: 30,
@@ -2189,8 +1781,8 @@ function getScenarioDefaultVMSMessages(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsDefaultMsgSymbol = {
 			type: "picture-marker",
-			url: "img106.JPG",
-			width: "150",
+			url: "img106_imp.JPG",
+			width: "100",
 			height: "50",
 			xoffset: 0,
 			yoffset: 30,
@@ -2198,6 +1790,8 @@ function getScenarioDefaultVMSMessages(selectedMsgNo) {
 	}
 	return vmsDefaultMsgSymbol
 }
+
+
 
 /** get vmsMessage Images for Scenario1 Proposed Messaages */
 function getScenario1VMSMessagesPro(selectedMsgNo) {
@@ -2207,11 +1801,11 @@ function getScenario1VMSMessagesPro(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img101_s1p.JPG",
-			width: "150",
-			height: "40",
+			url: "img101_imp.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 34,
 		};
 	}
 	if(selectedMsgNo==1){ 
@@ -2219,11 +1813,11 @@ function getScenario1VMSMessagesPro(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img102_s1p.JPG",
-			width: "150",
-			height: "40",
+			url: "img102_imp.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==2) { 
@@ -2231,11 +1825,11 @@ function getScenario1VMSMessagesPro(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img103_s1p.JPG",
-			width: "150",
-			height: "40",
+			url: "img103_imp.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==3) { 
@@ -2243,11 +1837,11 @@ function getScenario1VMSMessagesPro(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img104_s1p.JPG",
-			width: "150",
-			height: "40",
+			url: "img104_imp.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==4) { 
@@ -2255,11 +1849,11 @@ function getScenario1VMSMessagesPro(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img105_s1p.JPG",
-			width: "150",
-			height: "40",
+			url: "img107.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==5) { 
@@ -2267,13 +1861,50 @@ function getScenario1VMSMessagesPro(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img106_s1p.JPG",
-			width: "150",
-			height: "40",
+			url: "img108.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
+	if(selectedMsgNo==6) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img105_imp.JPG",
+			width: "90",
+			height: "50",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==7) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img106_imp.JPG",
+			width: "90",
+			height: "50",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==8) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img109_s1p.JPG",
+			width: "90",
+			height: "50",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}		
+
 	return vmsSce1MsgSymbol
 }
 
@@ -2285,11 +1916,11 @@ function getScenario1VMSMessages(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img101_s1cp.JPG",
-			width: "150",
-			height: "50",
+			url: "img101_imp.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==1){ 
@@ -2297,11 +1928,11 @@ function getScenario1VMSMessages(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img102_s1cp.JPG",
-			width: "150",
-			height: "50",
+			url: "img102_imp.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==2) { 
@@ -2309,11 +1940,11 @@ function getScenario1VMSMessages(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img103_s1cp.JPG",
-			width: "150",
-			height: "50",
+			url: "img103_imp.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==3) { 
@@ -2321,11 +1952,11 @@ function getScenario1VMSMessages(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img104_s1cp.JPG",
-			width: "150",
-			height: "50",
+			url: "img104_imp.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==4) { 
@@ -2333,11 +1964,11 @@ function getScenario1VMSMessages(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img105_s1cp.JPG",
-			width: "150",
-			height: "50",
+			url: "img107.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
 	if(selectedMsgNo==5) { 
@@ -2345,13 +1976,49 @@ function getScenario1VMSMessages(selectedMsgNo) {
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
-			url: "img106_s1cp.JPG",
-			width: "150",
-			height: "50",
+			url: "img108.JPG",
+			width: "80",
+			height: "60",
 			xoffset: 0,
-			yoffset: 30,
+			yoffset: 35,
 		};
 	}
+	if(selectedMsgNo==6) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img105.JPG",
+			width: "90",
+			height: "50",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==7) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img106.JPG",
+			width: "90",
+			height: "50",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==8) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img109.JPG",
+			width: "90",
+			height: "50",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}		
 	return vmsSce1MsgSymbol
 }
 
@@ -2405,14 +2072,14 @@ function getScenario1VMSMessages(selectedMsgNo) {
 	return msgpoint;
  }
 
-//onload to show default and current msg(system generated new message)
-function scenarioDefaultVMSOnload() {
-	
-	var vmsdefaultMsg1Arr = [
-		' Jam at Amk Ave3',' Jam at Amk Ave5',' Jam at Amk Ave3',
-		' Jam at Amk Ave5',' Jam at Amk Ave3',' Jam at Amk Ave5',
-	];
-	
+//onload remove Traffic congestion layer
+function removetrafficPlanLayer(){
+	trafficplanlayerlane.visible = false;
+	trafficplan0layerlane.visible = false;
+	trafficplan1layerlane.visible = false;
+	trafficplan2layerlane.visible = false;
+}
+function scenarioDefaultVMSOnload(){
 	var defaultMSgList = document.getElementsByName("defaultMSgList");
 	var count = 0 ;
 	for(i=0;i<defaultMSgList.length;i++) {
@@ -2432,7 +2099,32 @@ function scenarioDefaultVMSOnload() {
 	}) 
 		view.graphics.addMany([pictureGraphicSystemMsg]);		  	  
 	}
+	//remove traffic congesion layer
+	removetrafficPlanLayer()
+}
 
+
+//Implement all to current msg(system generated message)
+function scenarioDefaultVMSImpl() {
+	var defaultMSgList = document.getElementsByName("defaultMSgList");
+	var count = 0 ;
+	for(i=0;i<defaultMSgList.length;i++) {
+		var  str = defaultMSgList[i].value;	
+		var word1sep = str.indexOf("$");
+		var currVmsId = str.substring(0, word1sep);
+		var currVmsmsg = str.substring(word1sep+1, str.length);
+		
+		var selectedMsgNo = i;
+		var msgpoint = getLatiLongi(selectedMsgNo);
+		var msgImage = getScenarioDefaultVMSMessagesImpl(selectedMsgNo);
+		console.log("msgpoint" + msgpoint);
+
+	var pictureGraphicSystemMsg = new Graphic({
+		geometry: msgpoint,
+		symbol: msgImage,
+	}) 
+		view.graphics.addMany([pictureGraphicSystemMsg]);		  	  
+	}
 }
 
 

@@ -8,7 +8,7 @@
 	 "from":"",
 	 "to":"",
 	 "zone": "zone2",
-	 "desc": "Reverse Direction",
+	 "desc": "Accident",
 	 "source": "VA"
     },
     {
@@ -30,7 +30,7 @@
 	 "from":"",
 	 "to":"",
 	 "zone": "zone1",
-	 "desc": "Reverse Direction",
+	 "desc": "Road Work",
 	 "source": "VA"
     },
     {
@@ -73,7 +73,7 @@
 	 "from":"",
 	 "to":"",
 	 "zone": "zone5",
-	 "desc": "Reverse Direction",
+	 "desc": "Congestion",
 	 "source": "VA"
     }
     ]

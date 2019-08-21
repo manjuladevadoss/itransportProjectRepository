@@ -309,48 +309,72 @@
         });
 
 /*** Onload Display **/
-speedLkLrInterval = setInterval(speedLkLr, 5000);	
-iconLocation()
-		
-/*** Onload Speed Layer display */
-var speedLayerInterval_1, speedLayerInterval_2, speedLayerInterval_3
-	function speedLkLr(){ 
-			flagSpeed = true;
-			trafficSpeedLayer1.visible = true			
-			speedLayerInterval_1 = setInterval(speedLayer1, 10000);					
-	}
-	
-	function clrspeedLkLr(){
-		clearInterval(speedLkLrInterval);
-	}	
-	
-	function speedLayer1(){ 
-	clrspeedLkLr();
-			trafficSpeedLayer1.visible = false;			
-			trafficSpeedLayer2.visible = true;
-			speedLayerInterval_2 = setInterval(speedLayer2, 15000);
-	}
-	
-	function clrspeedLayer1(){
-		clearInterval(speedLayerInterval_1);
-	}
-	
-	function speedLayer2(){
-		trafficSpeedLayer2.visible = false;
-		trafficSpeedLayer3.visible = true;
-		speedLayerInterval_3 = setInterval(clrspeedLayers, 20000);
-	}
 
-	function clrspeedLayers(){
-		clearInterval(speedLayerInterval_1);
-		clearInterval(speedLayerInterval_2);
-		clearInterval(speedLayerInterval_3);
-		trafficSpeedLayer3.visible = false;
-		speedLayerInterval_4 = setInterval(callFirstSpeedLayer, 25000);	
-	}
-	function callFirstSpeedLayer(){	
-		speedLkLr();
-	}
+iconLocation()
+showSpeedLkLr();
+/*** Onload Speed Layer display */
+var speedLayerInterval_1, speedLayerInterval_2, speedLayerInterval_3 ;
+var speedLayerIntervalClr_1, speedLayerIntervalClr_2, speedLayerIntervalClr_3 ;
+
+function showSpeedLkLr(){
+  speedLayerInterval_1 = setInterval(speedLayer1, 5000);	
+  speedLayerIntervalClr_1 = setInterval(speedLayerClr1, 8000);	
+
+  speedLayerInterval_2 = setInterval(speedLayer2, 11000);
+  speedLayerIntervalClr_2 = setInterval(speedLayerClr2, 13000);	
+
+  speedLayerInterval_3 = setInterval(speedLayer3, 15000);
+  speedLayerIntervalClr_3 = setInterval(speedLayerClr3, 18000);	
+
+  speedLayerInterval_4 = setInterval(speedLayer4, 21000);
+  speedLayerIntervalClr_4 = setInterval(speedLayerClr4, 23000);	
+}
+
+function speedLayer1(){ 
+  	trafficSpeedLayer1.visible = false;			
+    trafficSpeedLayer2.visible = true;			
+}
+
+function speedLayerClr1(){
+    clearInterval(speedLayerInterval_1);
+    clearInterval(speedLayerIntervalClr_1);
+}
+  
+function speedLayer2(){
+  trafficSpeedLayer1.visible = false;	
+  trafficSpeedLayer2.visible = false;
+  trafficSpeedLayer3.visible = true;
+}
+
+function speedLayerClr2(){
+  clearInterval(speedLayerInterval_2);
+  clearInterval(speedLayerIntervalClr_2);
+}
+
+function speedLayer3(){
+  trafficSpeedLayer2.visible = false;
+  trafficSpeedLayer3.visible = false;
+  trafficSpeedLayer1.visible = true;	
+}
+
+function speedLayerClr3(){
+  clearInterval(speedLayerInterval_3);
+  clearInterval(speedLayerIntervalClr_3);
+}
+
+function speedLayer4(){  
+  trafficSpeedLayer1.visible = false;	
+  trafficSpeedLayer2.visible = false;
+  trafficSpeedLayer3.visible = false;
+  speedLinkLayer.visible = true;
+}
+
+function speedLayerClr4(){
+  clearInterval(speedLayerInterval_4);
+  clearInterval(speedLayerIntervalClr_4);
+  speedLinkLayer.visible = false;
+  showSpeedLkLr();
+}
 
 /*** Onload Incident Icon Display */
 	var htIconPictureGraphic, unVIconPictureGraphic;

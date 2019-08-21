@@ -79,7 +79,7 @@
 					</tr>
 					<tr> 
 						<td>
-							<font style="font-size:15px;color:#C8CFF4;"> Welcome come to user </font>
+							<font style="font-size:15px;color:#C8CFF4;"> Welcome to user </font>
 						</td>
 					</tr>
 					<tr> 

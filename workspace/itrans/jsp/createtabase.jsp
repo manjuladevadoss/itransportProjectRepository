@@ -65,7 +65,7 @@
         position: absolute;
         right: 0;
         height: 100%;
-        width: 600px;
+        width: 500px;
         font-size: 12px;
 		background-color: #202B53;
       }
@@ -332,14 +332,18 @@ li{
                 <li>
                   <table>
                       <tr> 
-						<td><a href="createaccbase.jsp" id="acclinkid" target="_blank" id="trafficAlertTrue" ng-model="trafficAertTrue" style="text-decoration:none;"> <font style="color:#C8CFF4">True</font></a> </td>
+						<td>
+            <!-- <a href="createaccbase.jsp" id="acclinkid" target="_blank" id="trafficAlertTrue" ng-model="trafficAertTrue" style="text-decoration:none;"> <font style="color:#C8CFF4">True</font></a>  -->
+            <a href="#" ng_click = "trafficAlertAction('accwindow');" ng-model="trafficAertTrue" style="text-decoration:none;"> <font style="color:#C8CFF4">True</font></a> 
+            
+            </td>
 					   </tr>
                     </table>
                 </li>
                 <li>
                   <table>
                       <tr> 
-						<td><a href="ccgridview.jsp" target="_blank" style="text-decoration:none;"><font style="color:#C8CFF4">False</font></a> </td>
+						<td><a href="#"  ng_click="trafficAlertAction('ccwindow');" style="text-decoration:none;"><font style="color:#C8CFF4">False</font></a> </td>
 					   </tr>
                     </table>
                 </li>

@@ -1061,7 +1061,8 @@ function showaccimage() {
 	 </div>
 	  <!-- end of IR Respnse -->
 	<!-- &&&& Start Prediction Area --> 
-	<div ng-show="showirpredit">	  
+	<div ng-show="showirpredit">	
+
 			<table id="incdetailtbl" cellpadding= "10px">
 				<tr ><td colspan="3">
 						<div align="right"><a  href="#" ng-click="callirresponse()"  style="text-decoration:none;" > 
@@ -1116,7 +1117,7 @@ function showaccimage() {
 							  <td>
 								  <a href="#" ng-click="callirpreditsce2()" style="text-decoration:none;">
 										<font color="#24DEE8" size="2.5px"> VMS Messages  &nbsp; {{iraccscenario2vms.length}}  </font>
-								</a><br>  <br> </td>
+								</a><br> </td>
 						  </tr>
 						  <tr border="2px solid #FFFFFF;">
 							<td> 
@@ -1132,6 +1133,7 @@ function showaccimage() {
 	<!-- End of Start Prediction Area --> 
 	<!-- scenario 1 will show here -->
 	<div ng-show="showirpreditsce1">
+			<div class='scrollPre1'>
 			<table id="incdetailtbl" align="center" width="100%">
 					<tr>
 					  <td>  
@@ -1169,13 +1171,15 @@ function showaccimage() {
 									</td>
 								</tr>
 								<tr>
-										<td><br><b><center>Delay Time 00.30hr</center></b><br></td>
+										<td><br><b><center>Delay Time 00.30m</center></b><br></td>
 								</tr>		
 						  </table>
 					  </td>
 					</tr>
 				  </table>
-	</div>
+				</div>
+				</div>
+
 <!-- scenario 2 will show here -->
 	<div ng-show="showirpreditsce2">
 			<table id="incdetailtbl" align="center"  width="100%">				
@@ -1202,20 +1206,15 @@ function showaccimage() {
 								</td>
 							</tr>
 							<tr>
-									<td><br><b><center>Delay Time 00.20hr</center></b><br></td>
+									<td><br><b><center>Delay Time 00.45m</center></b><br></td>
 							</tr>
 						  </table>	
 					  </td>
 					</tr>
-
 				  </table>
 	</div>
-
-
 	</div>  
-	  
-		</div>
-		
+		</div>	
 		</div>
 	</div>  
 </body>

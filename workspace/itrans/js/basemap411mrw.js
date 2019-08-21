@@ -8,8 +8,9 @@
         "esri/widgets/LayerList", "esri/views/draw/Draw",
 		'esri/layers/WMSLayer',
 		"esri/views/MapView",
-        "esri/layers/BaseDynamicLayer"
-      ], function(Map, MapView,Graphic, WMTSLayer,Extent, LayerList, Draw, WMSLayer, MapView, BaseDynamicLayer) {
+		"esri/layers/BaseDynamicLayer",
+		"esri/geometry/geometryEngine"
+      ], function(Map, MapView,Graphic, WMTSLayer,Extent, LayerList, Draw, WMSLayer, MapView, BaseDynamicLayer,geometryEngine) {
         layer = 
           new WMTSLayer({
           url: "http://192.168.99.100:32768/services/wmts?service",
@@ -183,7 +184,7 @@
             CRS: "EPSG:{wkid}",
             BBOX: "{xmin},{ymin},{xmax},{ymax}"
           },
-          title: "TSpeed"
+          title: "Link Speed"
 		});
 		
 
@@ -237,8 +238,9 @@
         });
         
         /* Start draw line function */
-        document.getElementById("line").onclick = function() {
-            action = draw.create("polyline");
+        document.getElementById("draw_line").onclick = function() {
+			drawline();
+            /*action = draw.create("polyline");
             view.focus();
             action.on(
               [
@@ -250,9 +252,9 @@
                 "draw-complete"
               ],
               createGraphic
-            );
+            );*/
         }
-        function createGraphic(event) {
+      /*  function createGraphic(event) {
              vertices = event.vertices;
              graphic = new Graphic({
               geometry: {
@@ -267,10 +269,77 @@
               }
             });
             view.graphics.add(graphic);
-          }
+          }*/
+
+//*** Start the start and end point - draw a graphcis point points to  road name
 
 
- 
+// add the button for the draw tool on the map left side
+view.ui.add("draw-point", "top-left");
+view.ui.add("draw_line", "top-left");
+		
+//draw single point on mouse click on the map
+document.getElementById("draw-point").onclick = function() {
+	enableCreatePoint(draw, view);
+  };
+
+  function enableCreatePoint(draw, view) {
+	var action = draw.create("point");
+	// PointDrawAction.draw-complete
+	// Create a point when user clicks on the view or presses "C" key.
+
+	action.on("draw-complete", function(evt) {
+	  createPointGraphic(evt.coordinates);
+	  
+	});
+  }
+
+  function createPointGraphic(coordinates) {
+
+	// view.graphics.removeAll();
+	var point = {
+	  type: "point", // autocasts as /Point
+	  x: coordinates[0],
+	  y: coordinates[1],
+	  spatialReference: view.spatialReference
+	};
+
+	var graphic = new Graphic({
+	  geometry: point,
+	  symbol: {
+		type: "simple-marker", // autocasts as SimpleMarkerSymbol
+		style: "circle",
+		color: "blue",
+		size: "16px",
+		xoffset: 4,
+		yoffset: 10,
+		outline: {
+		  // autocasts as SimpleLineSymbol
+		  color: [255, 255, 0],
+		  width: 2
+		}
+	  }
+	});
+	
+	view.graphics.add(graphic);
+	updateRoadName();
+  }  
+//*** end of  Start the start and end point - draw a graphcis point  points to  road name*/
+//end of start and end point icon dipsplay
+
+//update road name startpoint and end point using 
+var erd;
+function updateRoadName(p) {
+	document.getElementById("sroadname").value = "East Coast Road" ;
+	erd = setInterval(updateEroad,5000);
+}
+function updateEroad() {
+	document.getElementById("eroadname").value = "Mountabtten Rd" ;
+	clearInterval(erd);
+
+}
+
+
 /*** Remove particular vms message */
      document.getElementById("mrwvmsMsgRemoved").onclick = function() { 
       if(seleMsgNo==0) {  
@@ -280,7 +349,6 @@
 /**** End of Remove particular vms message */  
 //Onload   
 vmsIdDisplay();
-
 /*** VMS message, id, langi and lati details **/
 // Start VMS image on load
 function vmsIdDisplay() {
@@ -330,45 +398,37 @@ document.getElementById("CreateMrwId").onclick = function() {
 	//Draw auto line on the rood
 	drawline();
 	vmsIdDisplay();
-	
+	//VMS message display based on the moving icon
+
 	//vms text message on the map based on the timing
-	interval1 = setInterval(vmsMessageDispaly1, 2000);	
-	interval2 = setInterval(vmsMessageDispaly2, 8000);	
-	interval3 = setInterval(vmsMessageDispaly3, 12000);	
-	interval4 = setInterval(vmsMessageDispaly4, 20000);	
+	interval1 = setInterval(vmsMessageDispaly1, 2050);	
+	interval2 = setInterval(vmsMessageDispaly2, 26000);	
+	interval3 = setInterval(vmsMessageDispaly3, 32000);	
 	clrinterval = setInterval(clearFinalInterval, 35000); 	
+	
 	//Moving Icon Display
 	movingIconDisplay();	
 }
-	
+
 	function vmsMessageDispaly1(){ 		
 		//displayVmsMessage(0);
 		displayVmsMessage(vmsMsgdata0);
 	}
 
-	function vmsMessageDispaly2(){	
-		clearInterval(interval1); 	
+	function vmsMessageDispaly2(){
+		clearInterval(interval1); 		
 		displayVmsMessage(vmsMsgdata1);	
-	}
+	} 
 	
 	function vmsMessageDispaly3(){
-		clearInterval(interval1); 
-		clearInterval(interval2); 				
+		clearInterval(interval2); 
 		displayVmsMessage(vmsMsgdata2);
 	}
-
-	function vmsMessageDispaly4(){
-		clearInterval(interval1); 
-		clearInterval(interval2); 
-		displayVmsMessage(vmsMsgdata3);
-	}
-
 
 	function clearFinalInterval(){
 		clearInterval(interval1); 		
 		clearInterval(interval2); 
 		clearInterval(interval3); 	
-		clearInterval(interval4); 
 		clearInterval(clrinterval);
 		removeVmsMessage();
 		//displayVmsMessage(vmsMsgdata3);
@@ -390,30 +450,24 @@ document.getElementById("CreateMrwId").onclick = function() {
 	];
 	
 	var vmsMsgdata1 = [
-		{"logi": "103.92464", "lati": "1.3113622", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
 	];
 
 	var vmsMsgdata2 = [
-		//{"logi": "103.92464", "lati": "1.3113622", "vmsmsg": "Litter Picking long Ln1"},
-		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
 	];
 
-	var vmsMsgdata3 = [
-		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
-		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
-		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
-	];
-	
+
 /** show vms message on the  map */
 function displayVmsMessage(vmsMsgdata){
 	//view.graphics.remove(vmspictureGraphicVmsText);  
 	view.graphics.removeAll();  
 	drawline();
 	vmsIdDisplay();
+	
 
 	for (i in vmsMsgdata) { 
 		logi = vmsMsgdata[i].logi ;
@@ -460,8 +514,10 @@ function displayVmsMessage(vmsMsgdata){
 /**Lastvms Remove VMS message on the map change the color**/
 function removeVmsMessage(){  
 	view.graphics.removeAll();  
-	drawline();
+	//drawline();
+	mrwLaneLayer.visible = false;
 	vmsIdDisplay(); 
+	
 }
 
 /*** Moving icon water vehicle */
@@ -490,20 +546,23 @@ var vehiInterval9, vehiInterval10, vehiInterval11,vehiInterval2,vehiInterval13, 
 var vehipictureGraphic = "";
 function movingIconDisplay(){
 	vehiInterval1 = setInterval(moveIconDisplay1, 2050);
-	vehiInterval2 = setInterval(moveIconDisplay2, 4000);
-	vehiInterval3 = setInterval(moveIconDisplay3, 6000);
-	vehiInterval4 = setInterval(moveIconDisplay4, 8000);
-	vehiInterval5 = setInterval(moveIconDisplay5, 10000);
-	vehiInterval6 = setInterval(moveIconDisplay6, 12000);
-	vehiInterval7 = setInterval(moveIconDisplay7, 14000);
-	vehiInterval8 = setInterval(moveIconDisplay8, 16000);
-	vehiInterval9 = setInterval(moveIconDisplay9, 18000);
-	vehiInterval10 = setInterval(moveIconDisplay10, 20000);
-	vehiInterval11 = setInterval(moveIconDisplay11, 22000); 
-	vehiInterval12 = setInterval(moveIconDisplay12, 24000); 
-	vehiInterval13 = setInterval(moveIconDisplay13, 26000);
-	vehiInterval14 = setInterval(moveIconDisplay14, 28000);
-	vehiInterval15 = setInterval(moveIconDisplay15, 30000);
+	//setInterval((clearInterval(vehiInterval1)),4000);
+	vehiInterval2 = setInterval(moveIconDisplay2, 6000);
+	//setInterval((clearInterval(vehiInterval2)),6000);
+	vehiInterval3 = setInterval(moveIconDisplay3, 8000);
+	//setInterval((clearInterval(vehiInterval3)),8000);
+	vehiInterval4 = setInterval(moveIconDisplay4, 10000);
+	vehiInterval5 = setInterval(moveIconDisplay5, 12000);
+	vehiInterval6 = setInterval(moveIconDisplay6, 14000);
+	vehiInterval7 = setInterval(moveIconDisplay7, 16000);
+	vehiInterval8 = setInterval(moveIconDisplay8, 18000);
+	vehiInterval9 = setInterval(moveIconDisplay9, 20000);
+	vehiInterval10 = setInterval(moveIconDisplay10, 22000);
+	vehiInterval11 = setInterval(moveIconDisplay11, 24000); 
+	vehiInterval12 = setInterval(moveIconDisplay12, 26000); 
+	vehiInterval13 = setInterval(moveIconDisplay13, 28000);
+	vehiInterval14 = setInterval(moveIconDisplay14, 30000);
+	vehiInterval15 = setInterval(moveIconDisplay15, 32000);
 	vehiIntervalFinal = setInterval(clearMovingFinalInterval, 35000); 	
 }
 
@@ -569,6 +628,7 @@ function moveIconDisplay15(){
 function clearMovingFinalInterval(){
 	removeMoveIcon();
 	removeLine();
+	mrwLaneLayer.visible = false;
 	clearInterval(vehiInterval15);
 	clearInterval(vehiIntervalFinal);
 }
@@ -735,3 +795,57 @@ var movingIcondata = [
             view.graphics.add(graphic);
           }*/
   /* end of draw line function */
+
+/*
+
+  // Start end point icon display 
+function drawstartendpoint(){
+
+	var stpoint = {
+		type: "point", // autocasts as new Point()                   			 
+		longitude: 103.92464,
+		latitude: 1.3113622
+	}; 
+
+startPointGraphic = new Graphic({
+	geometry: stpoint,
+	  symbol: {
+		type: "simple-marker", // autocasts as SimpleMarkerSymbol
+		style: "circle",
+		color: "blue",
+		size: "16px",
+		xoffset: 10,
+		yoffset: 10,
+		outline: {
+		  // autocasts as SimpleLineSymbol
+		  color: [255, 255, 0],
+		  width: 2
+		}
+	  }
+});	
+
+var endpoint = {
+	type: "point", // autocasts as new Point()                   			 
+	longitude: 103.8895556,
+	latitude:  1.3002632
+}; 
+
+endPointGraphic = new Graphic({
+	geometry: endpoint,
+	  symbol: {
+		type: "simple-marker", // autocasts as SimpleMarkerSymbol
+		style: "circle",
+		color: "blue",
+		size: "16px",
+		xoffset: 10,
+		yoffset: 10,
+		outline: {
+		  // autocasts as SimpleLineSymbol
+		  color: [255, 255, 0],
+		  width: 2
+		}
+	  }
+});	
+view.graphics.addMany([startPointGraphic, endPointGraphic]); 
+}
+*/
