@@ -109,7 +109,7 @@ h11 {
 
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid" >
 <div ng-app="ltaApp" ng-controller="ltaController">
 	
 	<table width="100%" style="background-color: rgba(49,53,81,0.5);"> 
@@ -632,25 +632,34 @@ h11 {
 			<tr><td>
 				<div class='scrollev'>
 							<table  id="inctbl" width="100%">
+									<tr>
+											<td width="10%"><font color="#ffffff" size="2px">{{accTrafficAlertStatus}}</font></td>
+											<td width="13%"><font color="#ffffff" size="2px">{{accTrafficAlertTime}}</font>	</td>
+											<td width="16%"><font color="#ffffff" size="2px">{{accTrafficAlertid}}</font> </td>
+											<td width="14%">
+												<div ng-if="accTrafficAlertStatus=='True'" > 
+													<font color="#ffffff" size="2px">{{accTrafficAlertRname}}</font>
+												</div>
+												<div ng-if="accTrafficAlertStatus!='True'" > 
+													<a href="#"  ng_click="trafficalertwindow()" style="text-decoration:none;"> <font color="red" size="2px">{{accTrafficAlertRname}}</font> </a>  
+												</div>
+											</td>
+											<td width="18%"><font color="#ffffff" size="2px">{{accTrafficAlertDesc}}</font></td>
+											<td width="12%"><font color="#ffffff" size="2px">{{accTrafficAlertSource}}</font></td>
+									</tr>
+
 									<tr ng-repeat="tralert in trafficalert | orderBy:sortTypenv:sortReversenv | filter:searchEnvifromgrid">
 										<td width="10%"><font color="#ffffff" size="2px">{{tralert.status}}</font></td>
 										<td width="13%">
-										<div ng-if="tralert.rname=='CTE'" > 
-											<font color="#ffffff" size="2px">{{accTrafficAlertTime}}</font>
-										</div/>
-										<div ng-if="tralert.rname!='CTE'" > 
+									
+										
 											<font color="#ffffff" size="2px">{{tralert.time}}</font>
-										</div/>
+									
 										</td>
 										<td width="16%"><font color="#ffffff" size="2px">{{tralert.alertid | uppercase}}</font> </td>
 										<td width="14%">
-										<div ng-if="tralert.rname=='CTE'" > 
-											
-											<a href="#"  ng_click="trafficalertwindow()" style="text-decoration:none;"> <font color="red" size="2px">{{tralert.rname}}</font> </a>  
-										</div> 
-											<div ng-if="tralert.rname!='CTE'" > 
 												<font color="#ffffff" size="2px">{{tralert.rname}}</font>
-												</div>
+									
 											</td>
 										<td width="18%"><font color="#ffffff" size="2px">{{tralert.desc}}</font></td>
 										<td width="12%"><font color="#ffffff" size="2px">{{tralert.source}}</font></td>
@@ -677,10 +686,13 @@ h11 {
 	  </div>  
 	</div>  
 </div>
+
+
 </div> 
+
 </body>
 <script>
-function acczonewindow(){
+function acczonewindow() {
 	  myModal.style.display = "block";
 }
 window.onclick = function(event) {

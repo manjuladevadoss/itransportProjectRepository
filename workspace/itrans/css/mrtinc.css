@@ -475,9 +475,20 @@ input {
 div.scrollResponse {
       overflow-y:scroll;
 	  overflow-x: none;
-      height:580px;
+      height:760px;
 }
 
+div.scrolleventCreate {
+  overflow-y:scroll;
+overflow-x: none;
+  height:570;
+}
+
+div.scrolleventResponse {
+  overflow-y:scroll;
+overflow-x: none;
+  height:570px;
+}
 .vmsMsgDisbutton {
   padding: 2px 5px;
   color: #C8CFF4;
@@ -591,14 +602,14 @@ div.scrollResponse {
 div.scrollIr {
       overflow-y:scroll;
 	  overflow-x: none;
-      height:560px;
+      height:760px;
 }
 
 /*Prediction plan 1 */
 div.scrollPre1 {
   overflow-y:scroll;
 overflow-x: none;
-  height:450px;
+  height:600px;
 }
 
 /* Mobile road work css */

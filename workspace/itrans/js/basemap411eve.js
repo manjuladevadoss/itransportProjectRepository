@@ -295,7 +295,6 @@
 /***End of Start and end point icon */
 
 /*** Vms message on map **/
-
 	var vmseqipPoints = [
 		{"logi": "103.968971", "lati": "1.3201737"},
 		{"logi": "103.9374682", "lati": "1.3100315"},
@@ -308,11 +307,225 @@
 		width: "20",
 		height: "20",
 	}
-	document.getElementById("vmsids").onclick = function() {
+
+/** Timer functionality */
+document.getElementById("26oct").onclick = function() {
+	view.graphics.removeAll(); 
+	vmsTIPMsgbyTimer('26oct','adMsg','vmsId',true);
+}
+document.getElementById("27oct").onclick = function() {
+	view.graphics.removeAll(); 
+	vmsTIPMsgbyTimer('27oct','adMsg','vmsId',true);
+}
+document.getElementById("02nov").onclick = function() {
+	view.graphics.removeAll(); 
+	vmsTIPMsgbyTimer('02nov','adMsg','vmsId',true);
+}
+document.getElementById("03nov").onclick = function() {
+	view.graphics.removeAll(); 
+	vmsTIPMsgbyTimer('03nov','acMsg','vmsId',true);
+}
+
+function vmsTIPMsgbyTimer(seleteddate,selectedmsg,selectedvmsId,timerFlag) {
+	var vmsEquiPointsTIP = [
+		{"ddate":"26oct","vmsid":"231278","logi": "103.9757038", "lati": "1.3300795","tipimg":"event_ad_img1.JPG"},
+		{"ddate":"27oct","vmsid":"635729","logi": "103.97652", "lati": "1.326665","tipimg":"event_ad_img6.JPG"},
+		{"ddate":"02nov","vmsid":"324649","logi": "103.968971", "lati": "1.3201737","tipimg":"event_ad_img7.JPG"},
+		{"ddate":"02nov","vmsid":"782436","logi": "103.9459272", "lati": "1.3115447","tipimg":"event_ad_img4.JPG"},
+		{"ddate":"26oct","vmsid":"983561","logi": "103.9374682", "lati": "1.3100315","tipimg":"event_ad_img5.JPG"},
+		{"ddate":"27oct","vmsid":"901482","logi": "103.9236992", "lati": "1.3054055","tipimg":"event_ad_img2.JPG"},
+		{"ddate":"27oct","vmsid":"564372","logi": "103.9024259", "lati": "1.2991446","tipimg":"event_ad_img3.JPG"},
+		{"ddate":"02nov","vmsid":"546251","logi": "103.8916975", "lati": "1.2957672","tipimg":"event_ad_img8.JPG"},		
+		{"ddate":"03nov","vmsid":"231278","logi": "103.9757038", "lati": "1.3300795","tipimg":"event_ac_img1.JPG"},
+		{"ddate":"03nov","vmsid":"635729","logi": "103.97652", "lati": "1.326665","tipimg":"event_ac_img6.JPG"},
+		{"ddate":"03nov","vmsid":"324649","logi": "103.968971", "lati": "1.3201737","tipimg":"event_ac_img7.JPG"},
+		{"ddate":"03nov","vmsid":"782436","logi": "103.9459272", "lati": "1.3115447","tipimg":"event_ac_img4.JPG"},
+		{"ddate":"03nov","vmsid":"983561","logi": "103.9374682", "lati": "1.3100315","tipimg":"event_ac_img5.JPG"},
+		{"ddate":"03nov","vmsid":"901482","logi": "103.9236992", "lati": "1.3054055","tipimg":"event_ac_img2.JPG"},
+		{"ddate":"03nov","vmsid":"564372","logi": "103.9024259", "lati": "1.2991446","tipimg":"event_ac_img3.JPG"},
+		{"ddate":"03nov","vmsid":"546251","logi": "103.8916975", "lati": "1.2957672","tipimg":"event_ac_img8.JPG"}
+	];
+	for(i=0;i<vmsEquiPointsTIP.length;i++) {
+		var chkdate = vmsEquiPointsTIP[i].ddate;		
+		var logi = vmsEquiPointsTIP[i].logi;
+		var lati = vmsEquiPointsTIP[i].lati;			
+		var urlTIPImg = vmsEquiPointsTIP[i].tipimg;
+		var vmsId = vmsEquiPointsTIP[i].vmsid;
+		var ddate = vmsEquiPointsTIP[i].ddate;
+		var iconPoint, itpIconpictureSymbol, tipPictureSymbol;
+		iconPoint = {
+			type: "point", // autocasts as new Point()                   			 
+			longitude: logi,
+			latitude: lati
+		};
+		
+		//implementation button selection
+		if(!timerFlag) {
+			if(selectedvmsId==vmsId) {
+				if( seleteddate==ddate) {
+						itpIconpictureSymbol = {
+							type: "picture-marker",
+							url: "TIP_MSG.png",
+							width: "20",
+							height: "20",
+						}
+						tipPictureSymbol = {
+							type: "picture-marker",
+							url: urlTIPImg,
+							width: "90",
+							height: "60",
+							xoffset: 0,
+							yoffset: 35
+						}
+						var tipIconGraphic = new Graphic({
+							geometry: iconPoint,
+							symbol: itpIconpictureSymbol 
+						});	
+						
+		
+						var tipGraphic = new Graphic({
+							geometry: iconPoint,
+							symbol: tipPictureSymbol 
+						});	
+						view.graphics.addMany([tipGraphic, tipIconGraphic]);
+						break;
+				}
+			}
+		}
+		
+		//from timer button selection
+		if(timerFlag) {
+			if(seleteddate==chkdate) {
+				if(selectedmsg=='adMsg') {			
+					itpIconpictureSymbol = {
+						type: "picture-marker",
+						url: "TIP_MSG.png",
+						width: "20",
+						height: "20",
+					}
+					tipPictureSymbol = {
+						type: "picture-marker",
+						url: urlTIPImg,
+						width: "90",
+						height: "60",
+						xoffset: 0,
+						yoffset: 35
+					}
+				}
+				if(selectedmsg=='acMsg') {
+					itpIconpictureSymbol = {
+						type: "picture-marker",
+						url: "TIP_MSG.png",
+						width: "20",
+						height: "20",
+					}
+					tipPictureSymbol = {
+						type: "picture-marker",
+						url: urlTIPImg,
+						width: "90",
+						height: "60",
+						xoffset: 0,
+						yoffset: 35
+					}
+				}
+				var tipIconGraphic = new Graphic({
+					geometry: iconPoint,
+					symbol: itpIconpictureSymbol 
+				});	
+				var tipGraphic = new Graphic({
+					geometry: iconPoint,
+					symbol: tipPictureSymbol 
+				});	
+				view.graphics.addMany([tipGraphic, tipIconGraphic]);
+			}
+		}
+	}
+}
+/** End of Timer functionality */
+
+/** implement all vms message on display from the rightside advanced message */
+document.getElementById("vmsids").onclick = function() {
+	view.graphics.removeAll(); 
+	var eventadvvms = document.getElementsByName("seletedadid");
+	for(j=0;j<eventadvvms.length;j++){
+		var  str = eventadvvms[j].value; 
+		var word1sep = str.indexOf("$");
+		var eveid = str.substring(0, word1sep);
+		var evedate = str.substring(word1sep+1, str.length);
+		var lower = evedate.toLowerCase();
+		var trimDatespace = lower.replace(/\s+/g, "");
+		vmsTIPMsgbyTimer(trimDatespace,'adMsg',eveid,false);
+	}
+}
+
+/** implement all vms message on display from the rightside actual message */
+document.getElementById("vmsactids").onclick = function() {
+	view.graphics.removeAll(); 
+	var eventadvvms = document.getElementsByName("seletedacid");
+	for(j=0;j<eventadvvms.length;j++){
+		var  str = eventadvvms[j].value; 
+		var word1sep = str.indexOf("$");
+		var eveid = str.substring(0, word1sep);
+		var evedate = str.substring(word1sep+1, str.length);
+		var lower = evedate.toLowerCase();
+		var trimDatespace = lower.replace(/\s+/g, "");
+		vmsTIPMsgbyTimer(trimDatespace,'adMsg',eveid,false);
+	}
+}
+
+
+/*** Load Cirlce symbol on load ***/
+   /*     var circlePoint = {
+          type: "point", // autocasts as new Point()
+          longitude: 103.876759,
+          latitude: 1.305444
+        };
+        
+        var circleMarkerSymbol = {
+          type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+          style: "circle", //style: "square",
+          size: "300px",
+         // color: [226, 119, 40],  // color: "blue",
+          outline: {
+            color: [0, 162, 232],
+            width: 2
+          }
+        };
+        var circlePointGraphic = new Graphic({
+          geometry: circlePoint,
+          symbol: circleMarkerSymbol
+        });
+        view.graphics.addMany([circlePointGraphic]);*/
+/*** End Load Cirlce symbol on load  ***/
+
+        
+      
+		//map.add(wmsLayer);  
+        view.when(function() {
+        //view.extent = layer.fullExtent;
+		view.extent = new Extent({
+		  xmin: 103.630760,
+		  ymin:  1.266575,
+		  xmax: 103.963800,
+		  ymax:  1.418752,
+		  spatialReference: {
+			wkid: 4326
+		  }
+		});
+        var layerList = new LayerList({
+            view: view
+          });
+          view.ui.add(layerList, "bottom-left");
+        }); 
+
+      });
+	  	  
+
+/* VMS Message display on map after implementation using textsymbol */ 
+/* document.getElementById("vmsids").onclick = function() {
 		var eventadvvms = document.getElementsByName("seletedid");
 		vmsMsgOnMap(eventadvvms, true);
 	}
-	
 	document.getElementById("vmsactids").onclick = function() {
 		var eventactvms = document.getElementsByName("seletedactid");
 		vmsMsgOnMap(eventactvms, false);
@@ -376,143 +589,11 @@
 				content: evedate + ' ' +  evetime + '<br><center>' + evemsg
 			}
 		});
-
-		 
 		var eventpictureGraphic = new Graphic({
 			geometry: vmspoint,
 			symbol: vmsTextSymbol
 		});	
 			view.graphics.addMany([eventpictureGraphic,vmsImagePictureGraphic]); 				
 	}		
-}
-		
-
-        function vmsMsgDisplayOnMap(vmsEqipId, vmsMessage) {
-        	if(vmsEqipId == "TIP 545862") {
-        		//alert("1st vmsEqipId : " + vmsEqipId );
-        		var textSymbol = {
-               	       type: "text",  // autocasts as new TextSymbol()
-               	       color: "#202B53",
-               	       //haloColor: "black",
-               	       //haloSize: "0px",
-               	       text: vmsEqipId,
-               	       xoffset: 20,
-               	       yoffset: 10,
-               	       font: {  // autocast as new Font()
-               	         size: 12,
-               	       //  family: "Roboto, Helvetica, sans-serif"
-               	         
-               	       }
-               	     };	
-        		var point3 = {
-     	                 type: "point", // autocasts as new Point()
-     	                 longitude: 103.879311,
-     	                 latitude: 1.304618                     
-     	               };
-        		var pictureGraphicText = new Graphic({
-   	               geometry: point3,
-   	               symbol: textSymbol,
-   	               popupTemplate: {
-   	                   // autocasts as new PopupTemplate()
-   	                   title: vmsEqipId,
-   	                   content: vmsMessage
-   	               }
-   	             });
-   	     		view.graphics.addMany([pictureGraphicText]);
-        	} else {
-        		//alert("1st vmsEqipId : " + vmsEqipId );
-        	}
-        	
-        	if(vmsEqipId == "TIP 231482") {
-        		//alert("2nd vmsEqipId : " + vmsEqipId );
-        		var textSymbol = {
-               	       type: "text",  // autocasts as new TextSymbol()
-               	       color: "#202B53",
-               	       //haloColor: "black",
-               	       //haloSize: "0px",
-               	       text: vmsEqipId,
-               	       xoffset: 20,
-               	       yoffset: 10,
-               	       font: {  // autocast as new Font()
-               	         size: 12,
-               	        // family: "Roboto, Helvetica, sans-serif"
-               	         
-               	       }
-               	     };	
-        		var point3 = {
-     	                 type: "point", // autocasts as new Point()
-     	                 longitude: 103.881558,
-     	                 latitude: 1.306139                      
-     	               };
-        		var pictureGraphicText = new Graphic({
-   	               geometry: point3,
-   	               symbol: textSymbol,
-   	               popupTemplate: {
-   	                   // autocasts as new PopupTemplate()
-   	                   title: vmsEqipId,
-   	                   content: vmsMessage
-   	               }
-   	             });
-   	     		view.graphics.addMany([pictureGraphicText]);
-        	}else {
-        		//alert("1st vmsEqipId : " + vmsEqipId );
-        	}
-        	
-      }
-        /*       
-          //VMS Test Message display on the map
-         */
-        
-/*end of VMS Mesage display on map*/        
-        
-        
-/*** Load Cirlce symbol on load ***/
-   /*     var circlePoint = {
-          type: "point", // autocasts as new Point()
-          longitude: 103.876759,
-          latitude: 1.305444
-        };
-        
-        var circleMarkerSymbol = {
-          type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
-          style: "circle", //style: "square",
-          size: "300px",
-         // color: [226, 119, 40],  // color: "blue",
-          outline: {
-            color: [0, 162, 232],
-            width: 2
-          }
-        };
-        var circlePointGraphic = new Graphic({
-          geometry: circlePoint,
-          symbol: circleMarkerSymbol
-        });
-        view.graphics.addMany([circlePointGraphic]);*/
-/*** End Load Cirlce symbol on load  ***/
-
-/*** video display ***/
-
-/*** End of popup window with video display       ***/  
-        
-      
-		//map.add(wmsLayer);  
-        view.when(function() {
-        //view.extent = layer.fullExtent;
-		view.extent = new Extent({
-		  xmin: 103.630760,
-		  ymin:  1.266575,
-		  xmax: 103.963800,
-		  ymax:  1.418752,
-		  spatialReference: {
-			wkid: 4326
-		  }
-		});
-        var layerList = new LayerList({
-            view: view
-          });
-          view.ui.add(layerList, "bottom-left");
-        }); 
-
-      });
-	  	  
-  
+}  */       
+/*end of VMS Message display on map after implementation using textsymbol*/ 

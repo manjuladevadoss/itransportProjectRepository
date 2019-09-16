@@ -219,12 +219,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 	  <div id="viewDiv"> 
 			<button class="irresetbutton" id="draw_line"> Line </button>
 			<button class="irresetbutton" id="draw-point"> Point </button> 
-
 	  </div>    
-	  <div id="instruction">    
-								   
-					        
-				      </div>  
      <div id="panelTopDiv"  style="background-color: #202B53;">
     <h2t> Incident Record - Mobile Road Work </h2t> <br>
     </div>  

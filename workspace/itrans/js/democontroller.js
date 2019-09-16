@@ -14,7 +14,13 @@ var app = angular.module('ltaApp', []);
    //get the json object using $http get method() incident record	  
     $http.get("incidentRecord.json").then(function(response) {
         $scope.incidentRec = response.data.incidentRec;  
-        console.log("$scope.incidentRec.length() :" + $scope.incidentRec.length);
+		console.log("$scope.incidentRec.length() :" + $scope.incidentRec.length);		
+		$scope.accIrid = '35642';
+		$scope.accType = 'Accident';
+		$scope.accState = 'Notified'; 
+		$scope.accZone = 'zone3'; 
+		$scope.accRoadname = 'Ang Mo Kio Ave 5 (CTE)';
+		$scope.accLanes = '2';
       });
     
     /*$interval( function(){ $scope.callIR1($scope.incidentRec); }, 5000);
@@ -35,8 +41,40 @@ var app = angular.module('ltaApp', []);
 	//get the json object using $http get method() work order	  
  	$http.get("workorderRecord.json").then(function(response) {
          $scope.workorderRec = response.data.workorderRec;
-         console.log("$scope.workorderRec.length() :" + $scope.workorderRec.length);
-       });
+		 console.log("$scope.workorderRec.length() : ---  " + $scope.workorderRec.length);
+		var durationInMinutes = 10;
+		for(i=0;i<$scope.workorderRec.length;i++){
+		
+			// get random number for  minutes difference
+			var min=10; 
+			var max=59;  
+			var durationInMinutes =  Math.floor(Math.random() * (+max - +min)) + +min;
+		
+			var current_datetime = new Date();
+			current_datetime.setMinutes(current_datetime.getMinutes() - durationInMinutes);
+			
+			// minutes is one digit make two digit
+			if(current_datetime.getMinutes() < 9) {
+				current_minutes = 10; 
+			}
+			else {
+				current_minutes = current_datetime.getMinutes();
+			}
+
+			/*
+			if(current_datetime.getSeconds() < 9) {
+				current_seconds = "0" + current_datetime.getSeconds(); 
+			}
+			else {
+				current_seconds = current_datetime.getSeconds();
+			}
+			*/		
+			//format the date
+			formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " 
+										+ current_datetime.getHours() + ":" + current_minutes // + ":" +  current_seconds;
+			$scope.workorderRec[i].date = formatted_date;
+		}
+    });
  	
  	/*$interval( function(){ $scope.callWO1($scope.workorderRec); }, 4000);
     $scope.callWO1 = function(workorderNewList){
@@ -56,7 +94,39 @@ var app = angular.module('ltaApp', []);
 	//get the json object using $http get method() Technical Alarm record	  
     $http.get("technicalAlarmRecord.json").then(function(response) {
         $scope.technicalalarmrec = response.data.technicalalarmrec;  
-        console.log("$scope.technicalalarmrec.length() :" + $scope.technicalalarmrec.length);
+		console.log("$scope.technicalalarmrec.length() :" + $scope.technicalalarmrec.length);
+		var durationInMinutes = 10;
+		for(i=0;i<$scope.technicalalarmrec.length;i++){
+		
+			// get random number for  minutes difference
+			var min=15; 
+			var max=59;  
+			var durationInMinutes =  Math.floor(Math.random() * (+max - +min)) + +min;
+		
+			var current_datetime = new Date();
+			current_datetime.setMinutes(current_datetime.getMinutes() - durationInMinutes);
+			
+			// minutes is one digit make two digit
+			if(current_datetime.getMinutes() < 9) {
+				current_minutes = 10; 
+			}
+			else {
+				current_minutes = current_datetime.getMinutes();
+			}
+
+			/*
+			if(current_datetime.getSeconds() < 9) {
+				current_seconds = "0" + current_datetime.getSeconds(); 
+			}
+			else {
+				current_seconds = current_datetime.getSeconds();
+			}
+			*/		
+			//format the date
+			formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " 
+										+ current_datetime.getHours() + ":" + current_minutes // + ":" +  current_seconds;
+			$scope.technicalalarmrec[i].startdate = formatted_date;
+		}
       });
     
     /*$interval( function(){ $scope.callTA1($scope.technicalalarmrec); }, 5000);
@@ -78,7 +148,7 @@ var app = angular.module('ltaApp', []);
 	//get the json object using $http get method() Environment Monitor Record	  
     $http.get("environmonitorRecord.json").then(function(response) {
         $scope.environmonitorec = response.data.environmonitorec;  
-        console.log("$scope.environmonitorec.length() :" + $scope.environmonitorec.length);
+		console.log("$scope.environmonitorec.length() :" + $scope.environmonitorec.length);		
       });
     
    /* $interval( function(){ $scope.callER($scope.environmonitorec); }, 6000);
@@ -125,7 +195,47 @@ var app = angular.module('ltaApp', []);
 	//get the json object using $http get method() Traffic Alert Record	  
     $http.get("trafficalert.json").then(function(response) {
         $scope.trafficalert = response.data.trafficalert;  
-        console.log("$scope.trafficalert.length() :" + $scope.trafficalert.length);
+		console.log("$scope.trafficalert.length() :" + $scope.trafficalert.length);
+		for(i=0;i<$scope.trafficalert.length;i++){
+		
+			// get random number for  minutes difference
+			var min=15; 
+			var max=59;  
+			var durationInMinutes =  Math.floor(Math.random() * (+max - +min)) + +min;
+			var current_datetime = new Date();
+	
+			// other records less then few minutes
+			current_datetime.setMinutes(current_datetime.getMinutes() - durationInMinutes);
+			
+			// minutes is one digit make two digit
+			if(current_datetime.getMinutes() < 9) {
+				current_minutes = 10; 
+			}
+			else {
+				current_minutes = current_datetime.getMinutes();
+			}
+
+			/*
+			if(current_datetime.getSeconds() < 9) {
+				current_seconds = "0" + current_datetime.getSeconds(); 
+			}
+			else {
+				current_seconds = current_datetime.getSeconds();
+			}
+			*/		
+			//format the date
+			formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " 
+										+ current_datetime.getHours() + ":" + current_minutes // + ":" +  current_seconds;
+			$scope.trafficalert[i].time = formatted_date;
+		}	
+		
+		//current Accident record 
+		$scope.accTrafficAlertStatus = 'Unverified'
+		$scope.accTrafficAlertTime = $filter('date')(new Date(), 'yyyy-MM-dd HH:mm');
+		$scope.accTrafficAlertid = 'CCTV_3448'	
+		$scope.accTrafficAlertRname = 'CTE'
+		$scope.accTrafficAlertDesc = 'Accident'	
+		$scope.accTrafficAlertSource = 'VA'
       });    
     
 
@@ -167,7 +277,7 @@ var app = angular.module('ltaApp', []);
 	$scope.irendpoint = "7.25km";
 	$scope.ircogendpoint = "7.25km";
 	$scope.accCanningMsg = "  Accident on CTE (towards SLE) after Ang Mo Kio Rd Exit";
-	$scope.accTrafficAlertTime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
+	$scope.accTrafficAlertTime = $filter('date')(new Date(), 'yyyy-MM-dd HH:mm');
 	
 	
 	
@@ -774,11 +884,22 @@ var app = angular.module('ltaApp', []);
       $scope.calleventcreate = function() {
     	$scope.showeventcreateFlag = true;
     	$scope.showeventresFlag = false ;
-      } 
+      }       
+// ********End of New Event Creation and response part  
       
-   // ********End of New Event Creation and response part  
-      
-      
+//* Timer button function
+$scope.showdateprebuttonFlag = true;
+$scope.showdatenextbuttonFlag = false;
+$scope.displaynextlist = function(visi) {
+	if(visi=='1') {
+	  $scope.showdateprebuttonFlag = false;
+	  $scope.showdatenextbuttonFlag = true;
+	}
+	if(visi=='2') {
+	  $scope.showdateprebuttonFlag = true;
+	  $scope.showdatenextbuttonFlag =  false;
+	}  	
+}      
       
       
   /* windows display */ 
@@ -835,19 +956,20 @@ var app = angular.module('ltaApp', []);
  /* windows display */
       
 //** Traffic Alert **//
-      
-$scope.tastatuschange = "True";
+$scope.accTrafficAlertStatus1 = 'True'
 $scope.trafficAlertAction = function(act) { 
 	if(act=="accwindow") {
 		//window.close('ccgridview.jsp');	
 		//window.close('createtabase.jsp');	
+		$scope.accTrafficAlertStatus1 = 'True';
+		var win = window.open("","_self"); 
+		win.close();
 		window.open('ccgridviewta.jsp');
 		window.open('createaccbase.jsp');	
+			
 	} 
 	if(act=="ccwindow") {
 		window.close('createtabase.jsp');
-	//	window.close('ccgridview.jsp');
-		//window.open('ccgridview.jsp');
 	}
 }
 	
@@ -864,10 +986,15 @@ $scope.trafficalertwindow = function() {
 		  var strpage3 = "/itrans/createtabase.jsp";
 		  var value3 = protocol.concat(s,domain,c,port,strpage3);
 		  //alert("bis url " + value3);
+		  
+		  window.open(window.location, '_parent')
+		  window.close();
+		  window.top.close();
 		  windowObjectReference3 = window.open(
 				value3,			
 				  "cc",
 				  "top=100,left=100,width=1200,height=630,resizable,scrollbars,status,toolbar=0,titlebar=0,menubar=0");
+
 				  	
 		}else {
 			windowObjectReference3.focus();

@@ -180,9 +180,9 @@
       function dtCamIconLocation() {  // Icon display
           var dtCamPictureSymbol = {
               type: "picture-marker",
-              url: "DTCam.PNG",
-              width: "25",
-              height: "25",
+              url: "DTCam.png",
+              width: "20",
+              height: "20",
              // xoffset: 5,
               //yoffset: 5
             }
@@ -228,7 +228,7 @@
     function accCCTVLocation() {  // Icon display
         var cctvPictureSymbol = {
           type: "picture-marker",
-          url: "cctv.PNG",
+          url: "cctv.png",
           width: "25",
           height: "25",
          // xoffset: 5,

@@ -330,8 +330,8 @@ document.getElementById("draw-point").onclick = function() {
 //update road name startpoint and end point using 
 var erd;
 function updateRoadName(p) {
-	document.getElementById("sroadname").value = "East Coast Road" ;
-	erd = setInterval(updateEroad,5000);
+	document.getElementById("sroadname").value = "Singlap Road" ;
+	erd = setInterval(updateEroad,6000);
 }
 function updateEroad() {
 	document.getElementById("eroadname").value = "Mountabtten Rd" ;
@@ -402,9 +402,9 @@ document.getElementById("CreateMrwId").onclick = function() {
 
 	//vms text message on the map based on the timing
 	interval1 = setInterval(vmsMessageDispaly1, 2050);	
-	interval2 = setInterval(vmsMessageDispaly2, 26000);	
-	interval3 = setInterval(vmsMessageDispaly3, 32000);	
-	clrinterval = setInterval(clearFinalInterval, 35000); 	
+	interval2 = setInterval(vmsMessageDispaly2, 31000);	
+	interval3 = setInterval(vmsMessageDispaly3, 38000);	
+	clrinterval = setInterval(clearFinalInterval, 42000); 	
 	
 	//Moving Icon Display
 	movingIconDisplay();	
@@ -523,6 +523,9 @@ function removeVmsMessage(){
 /*** Moving icon water vehicle */
 //Moving Icon point 
 	var movingIcondata = [
+		{"logi": "103.925745","lati": "1.309649"},
+		{"logi": "103.925525","lati": "1.310344"},
+		{"logi": "103.925281","lati": "1.310690"},
 		{"logi": "103.9246401","lati": "1.3113624"},
 		{"logi": "103.924332","lati": "1.311735"},		 
 		{"logi": "103.9237142","lati": "1.3123578"},
@@ -542,15 +545,12 @@ function removeVmsMessage(){
 	
 	
 var vehiInterval1, vehiInterval2,vehiInterval3, vehiInterval4, vehiInterval5,vehiInterval6,vehiInterval7, vehiInterval8;
-var vehiInterval9, vehiInterval10, vehiInterval11,vehiInterval2,vehiInterval13, vehiInterval14, vehiInterval15, vehiIntervalFinal
+var vehiInterval9, vehiInterval10, vehiInterval11,vehiInterval2,vehiInterval13, vehiInterval14, vehiInterval15,vehiInterval16, vehiInterval17, vehiInterval18, vehiIntervalFinal
 var vehipictureGraphic = "";
 function movingIconDisplay(){
 	vehiInterval1 = setInterval(moveIconDisplay1, 2050);
-	//setInterval((clearInterval(vehiInterval1)),4000);
 	vehiInterval2 = setInterval(moveIconDisplay2, 6000);
-	//setInterval((clearInterval(vehiInterval2)),6000);
 	vehiInterval3 = setInterval(moveIconDisplay3, 8000);
-	//setInterval((clearInterval(vehiInterval3)),8000);
 	vehiInterval4 = setInterval(moveIconDisplay4, 10000);
 	vehiInterval5 = setInterval(moveIconDisplay5, 12000);
 	vehiInterval6 = setInterval(moveIconDisplay6, 14000);
@@ -563,7 +563,12 @@ function movingIconDisplay(){
 	vehiInterval13 = setInterval(moveIconDisplay13, 28000);
 	vehiInterval14 = setInterval(moveIconDisplay14, 30000);
 	vehiInterval15 = setInterval(moveIconDisplay15, 32000);
-	vehiIntervalFinal = setInterval(clearMovingFinalInterval, 35000); 	
+
+	vehiInterval16 = setInterval(moveIconDisplay16, 34000);
+	vehiInterval17 = setInterval(moveIconDisplay17, 36000);
+	vehiInterval18 = setInterval(moveIconDisplay18, 38000);
+
+	vehiIntervalFinal = setInterval(clearMovingFinalInterval, 40000); 	
 }
 
 function moveIconDisplay1(){
@@ -578,7 +583,7 @@ function moveIconDisplay3(){
 	displayMoveIcon(2);
 }
 function moveIconDisplay4(){
-	clearInterval(vehiInterval3);
+clearInterval(vehiInterval3);
 	displayMoveIcon(3);
 }
 function moveIconDisplay5(){
@@ -625,23 +630,55 @@ function moveIconDisplay15(){
 	clearInterval(vehiInterval14);
 	displayMoveIcon(14);
 }
+
+function moveIconDisplay16(){
+	clearInterval(vehiInterval15);
+	displayMoveIcon(15);
+}
+
+function moveIconDisplay17(){
+	clearInterval(vehiInterval16);
+	displayMoveIcon(16);
+}
+
+function moveIconDisplay18(){
+	clearInterval(vehiInterval17);
+	displayMoveIcon(17);
+}
+
 function clearMovingFinalInterval(){
 	removeMoveIcon();
 	removeLine();
 	mrwLaneLayer.visible = false;
+	clearInterval(vehiInterval2);
+	clearInterval(vehiInterval3);
+	clearInterval(vehiInterval4);
+	clearInterval(vehiInterval5);
+	clearInterval(vehiInterval6);
+	clearInterval(vehiInterval7);
+	clearInterval(vehiInterval8);
+	clearInterval(vehiInterval9);
+	clearInterval(vehiInterval10);
+	clearInterval(vehiInterval11);
+	clearInterval(vehiInterval12);
+	clearInterval(vehiInterval13);
+	clearInterval(vehiInterval14);
 	clearInterval(vehiInterval15);
+	clearInterval(vehiInterval16);
+	clearInterval(vehiInterval17);
+	clearInterval(vehiInterval18);
 	clearInterval(vehiIntervalFinal);
 }
 
 //display moving icon
 function displayMoveIcon(id){
-	view.graphics.remove(vehipictureGraphic); 
+	//view.graphics.remove(vehipictureGraphic); 
 	for (i in movingIcondata) { 
 		var logi = movingIcondata[i].logi ;
 		var lati = movingIcondata[i].lati ;
 		
 		if(i==id) {
-		//	alert(i + " " + logi + " " + lati + " "   );
+		console.log(i + " " + logi + " " + lati + " "   );
 			var vmspoint = {
 				type: "point", // autocasts as new Point()                   			 
 				longitude: logi,
@@ -657,7 +694,8 @@ function displayMoveIcon(id){
 			geometry: vmspoint,
 			symbol: vehiPictureSymbol1
 		});	
-		view.graphics.addMany([vehipictureGraphic]); 
+		view.graphics.addMany([vehipictureGraphic]);
+		break;
 		}		
 	}
 }

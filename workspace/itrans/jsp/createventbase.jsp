@@ -193,8 +193,43 @@ input[type=text] {
   color: white;
 }
 
+/* Timer Instruction */
+#timerinstruction {
+	z-index: 99;
+    position: absolute;
+    top: 850px;
+    left: 35%;
+    padding: 5px;
+    margin-left: -175px;
+    height: 20px;
+    width: 5	50px;
+}
 
-    </style>
+.timerbutton {
+  color: #C8CFF4;
+  font-family:  Roboto, Helvetica, sans-serif;
+  font-size: .8em;
+  box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
+  border-radius: 13px;
+  background-color:#356D85;
+  border: solid 0px #356D85;
+  width:50px;
+  height:15px;
+}
+
+.timerconbutton {
+  color: #C8CFF4;
+  font-family:  Roboto, Helvetica, sans-serif;
+  font-size: .8em;
+  box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
+  border-radius: 13px;
+  background-color:#356D85;
+  border: solid 0px #356D85;
+  width:20px;
+  height:15px;
+}
+
+</style>
 
  
  <script>
@@ -314,13 +349,45 @@ input[type=text] {
 		</tr>
 		</table>  -->
   
-	  <div id="main" class claro>
-	 <div id="viewDiv"> </div>    
-	  <div id="instruction">    	        
-		<button class="irresetbutton" id="rdclose">  Line </button>
-		<button class="irresetbutton" id="rdclosepoint">  Symbol  </button>	       
-		 </div>  
-      
+	<div id="main" class claro>
+	<div id="viewDiv"> </div>    
+	<div id="instruction">    	        
+		<button class="irresetbutton" id="rdclose"> Line </button>
+		<button class="irresetbutton" id="rdclosepoint">Symbol </button>	       
+	</div>  
+	  
+	<div id="timerinstruction">    	        
+	<div ng-show="showdateprebuttonFlag">
+		<button class="timerbutton" id="26oct"> 26 Oct </button>
+		<button class="timerbutton" id="27oct"> 27 Oct </button>	       
+		<button class="timerbutton" id="02nov"> 02 Nov </button>	
+		<button class="timerbutton" id="03nov"> 03 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 09 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 10 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 16 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 17 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 23 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 24 Nov </button>	
+		<button class="timerconbutton" ng-click="displaynextlist('1')"> > </button>
+	</div>
+	<div ng-show="showdatenextbuttonFlag">
+		<button class="timerconbutton" ng-click="displaynextlist('2')"> < </button>
+		<button class="timerbutton" id="rdclosepoint"> 30 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 1 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 7 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 8 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 14 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 15 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 21 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 22 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 28 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 29 Dec </button>	
+		
+	</div>
+
+	</div>  
+
+
       <div id="panelTopDiv"  style="background-color: #202B53;">
     		<h2t> Event - {{eventname}} </h2t>
       </div>  
@@ -333,7 +400,7 @@ input[type=text] {
 	  <div ng-show="showeventcreateFlag">
 	  <!-- <div class="item3" style="background-color: #202B53;"> -->
 	  
-	  	<table width="100%" id="incdetailtbl"> 
+	<table width="100%" id="incdetailtbl"> 
 		<tr>
 			<td><h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp;
 			<a href="#" ng-click="calleventresponse()" style="text-decoration:none;"> <h3b>RESPONSE</h3b></a>
@@ -344,7 +411,7 @@ input[type=text] {
 			
 	 <!-- <div class='incscroll'>   -->
 <!-- event creation -->
-<div class='scrollResponse'>
+<div class='scrolleventCreate'>
 	<div class="panel-group" id="accordion2">
        <div class="panel panel-default">
     	<div class="panel-heading active">
@@ -559,7 +626,7 @@ input[type=text] {
 		</tr>
 	</table>   
 	
-	 <div class='scrollResponse'> 
+	 <div class='scrolleventResponse'> 
  	<div class="panel-group" id="accordion2">
 	       <div class="panel panel-default">
 	    	<div class="panel-heading active">
@@ -594,7 +661,8 @@ input[type=text] {
 							<input type="text"  value= '{{eventdata.eventtime}}' style =" width: 115px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">  							
 						</td>
 						<td>	
-							<input type="hidden" id="seletedid" name="seletedid" value= '{{eventdata.eventeqid}}{{sep}}{{eventdata.eventdate}}{{sep}}{{eventdata.eventtime}}{{sep}}{{eventdata.eventvmsmsg}}' >  							
+							<!-- <input type="hidden" id="seletedid" name="seletedid" value= '{{eventdata.eventeqid}}{{sep}}{{eventdata.eventdate}}{{sep}}{{eventdata.eventtime}}{{sep}}{{eventdata.eventvmsmsg}}' > -->  							
+							<input type="hidden" id="seletedadid" name="seletedadid" value= '{{eventdata.eventeqid}}{{sep}}{{eventdata.eventdate}}' >  							
 								<font color="#C8CFF4">{{eventdata.eventeqid}}</font>					
 						</td>					
 					</tr>
@@ -615,7 +683,8 @@ input[type=text] {
 							<input type="text"  value= '{{eventdatact.eventtime}}' style =" width: 115px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">  														
 						</td>
 						<td>
-							<input type="hidden" id="seletedactid" name="seletedactid" value= '{{eventdatact.eventeqid}}{{sep}}{{eventdatact.eventdate}}{{sep}}{{eventdatact.eventtime}}{{sep}}{{eventdatact.eventvmsmsg}}' >  				
+							<!-- <input type="hidden" id="seletedactid" name="seletedactid" value= '{{eventdatact.eventeqid}}{{sep}}{{eventdatact.eventdate}}{{sep}}{{eventdatact.eventtime}}{{sep}}{{eventdatact.eventvmsmsg}}' >  --> 				
+							<input type="hidden" id="seletedacid" name="seletedacid" value= '{{eventdatact.eventeqid}}{{sep}}{{eventdatact.eventdate}}' >  				
 							<div id="evevmsequipid"><font color="#C8CFF4">{{eventdatact.eventeqid}}</font></div>													
 						</td>					
 					</tr>				

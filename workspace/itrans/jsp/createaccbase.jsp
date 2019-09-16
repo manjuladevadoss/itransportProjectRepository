@@ -764,7 +764,7 @@ function showaccimage() {
 			</div>
 			 </div> 
 					<div align="right">  
-						<a href="#" class="buttonCreateMrtInc"  ng-click="callirresponse()" style="text-decoration:none;"> CREATE </a>&nbsp;  &nbsp; 
+						<a href="#" class="buttonCreateMrtInc"  id="vmsMsgAfterCreate"  ng-click="callirresponse()" style="text-decoration:none;"> CREATE </a>&nbsp;  &nbsp; 
 					</div>
 	  </div>
 	<!-- end of Create IR -->
@@ -830,7 +830,7 @@ function showaccimage() {
 				<tr>
 					<td>
 						<div aligh="right">
-							<a href="#" class="buttonImp" id="accVmsMessage"  ng-click="irvmsMsgImpl()" style="text-decoration:none;"> Implement </a>
+							<a href="#" class="buttonImp" id="accVmsMessage"  ng-click="irvmsMsgImpl()" style="text-decoration:none;"> View All </a>
 							<a href="#" class="buttonImpAll" id="accAllVmsMessage"  ng-click="irvmsMsgImplAll()" style="text-decoration:none;"> Implement All </a>
 							<a href="#" class="buttonRem" id="remAccVmsMessage" ng-click="irvmsMsgRemoved()" style="text-decoration:none;"> Remove </a> 								
 						</div>												
@@ -1055,9 +1055,13 @@ function showaccimage() {
 						</div>
 					</div>
 	<!-- End of TMD Messages -->
-    <div align="right"><a href="createincident.jsp" class="buttonCreateMrtInc" ng-click="addmrtincident()" style="text-decoration:none;"> SAVE </a></div> 
-</div>		  	  
- </div> 	
+    
+</div>
+		  	  
+ </div> 
+ <div align="right"><a href="ccgridviewta.jsp" class="buttonCreateMrtInc" style="text-decoration:none;"> SAVE </a>  	
+ <a href="ccgridviewta.jsp" class="buttonCreateMrtInc" ng-click="closeAccInci()" style="text-decoration:none;"> CLOSE </a> &nbsp;  &nbsp;
+</div>
 	 </div>
 	  <!-- end of IR Respnse -->
 	<!-- &&&& Start Prediction Area --> 
@@ -1072,10 +1076,10 @@ function showaccimage() {
 				<tr><td>
 						<table  border="2px solid #FFFFFF;">
 						  <tr>
-							<th>Do Nothing</th>
+							<th><center>Do Nothing </center></th>
 						  </tr>
 						  <tr>
-							<td><br> <br></td>
+							<td> <!-- <a href="#" id="preTimeId"  style="text-decoration:none;"> <font color="#24DEE8" size="2.5px"> View </font></a> --> <br><br></td>
 						  </tr>
 						  <tr>
 							<td><b>Delay Time 01.00hr</b> </td>
@@ -1089,15 +1093,11 @@ function showaccimage() {
 							<th ><center>Plan 1</center></th>
 						  </tr>
 						  <tr>
-							  <td>
-								  <a href="#" ng-click="callirpreditsce1()" style="text-decoration:none;">
-										<font color="#24DEE8" size="2.5px"> VMS Messages  &nbsp; {{iraccscenario1vms.length}}  </font>
-								  </a> 
-								  <br>
-								  <a href="#"  ng-click="callirpreditsce1()" style="text-decoration:none;">
-										<font color="#24DEE8" size="2.5px"> Traffic Light  &nbsp; {{trafficlight.length}} </font>
-								</a>
-							  </td>
+							<td>
+								<a href="#" ng-click="callirpreditsce2()" style="text-decoration:none;">
+									  <font color="#24DEE8" size="2.5px"> VMS Messages  &nbsp; {{iraccscenario2vms.length}}  </font>
+							  </a><br> 
+							</td>
 						  </tr>
 						  <tr>
 							<td>  
@@ -1111,14 +1111,19 @@ function showaccimage() {
 					<td>
 						<table border="2px solid #FFFFFF;">
 						  <tr>
-							<th><center>Plan  2</center></th>
+							<th><center>Plan 2</center></th>
 						  </tr>
 						  <tr border="2px solid #FFFFFF;">
-							  <td>
-								  <a href="#" ng-click="callirpreditsce2()" style="text-decoration:none;">
-										<font color="#24DEE8" size="2.5px"> VMS Messages  &nbsp; {{iraccscenario2vms.length}}  </font>
-								</a><br> </td>
-						  </tr>
+							<td>
+								<a href="#" ng-click="callirpreditsce1()" style="text-decoration:none;">
+									  <font color="#24DEE8" size="2.5px"> VMS Messages  &nbsp; {{iraccscenario1vms.length}}  </font>
+								</a> 
+								<br>
+								<a href="#"  ng-click="callirpreditsce1()" style="text-decoration:none;">
+									  <font color="#24DEE8" size="2.5px"> Traffic Light  &nbsp; {{trafficlight.length}} </font>
+							  </a>
+							</td>  
+					  </tr>
 						  <tr border="2px solid #FFFFFF;">
 							<td> 
 								  <b>Delay Time 00.45m</b>  <!-- <b><p id="hrSelectSce2"></p></b>  -->
@@ -1171,7 +1176,7 @@ function showaccimage() {
 									</td>
 								</tr>
 								<tr>
-										<td><br><b><center>Delay Time 00.30m</center></b><br></td>
+										<td><br><b><center>Delay Time 00.45m</center></b><br></td>
 								</tr>		
 						  </table>
 					  </td>
@@ -1206,15 +1211,20 @@ function showaccimage() {
 								</td>
 							</tr>
 							<tr>
-									<td><br><b><center>Delay Time 00.45m</center></b><br></td>
+									<td><br><b><center>Delay Time 00.30m</center></b><br></td>
 							</tr>
 						  </table>	
 					  </td>
 					</tr>
+
 				  </table>
 	</div>
+
+
 	</div>  
-		</div>	
+	  
+		</div>
+		
 		</div>
 	</div>  
 </body>

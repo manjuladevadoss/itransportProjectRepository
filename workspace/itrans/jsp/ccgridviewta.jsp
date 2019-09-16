@@ -237,6 +237,20 @@ h11 {
 					<tr><td>  
 						<div class='scrollinc'>
 							<table width="100%"  id="inctbl">
+									<tr>
+											<td width="10%"><font color="#ffffff" size="2px">{{accIrid}}</font></td>
+											<td width="25%">
+												<img src="accident.jpg">
+														<a href="createaccbase.jsp" target="_blank"  style="text-decoration:none;"><font color="#ffffff" size="2px"> 	{{accType}} </font>	</a>
+											</td>											
+											<td width="20%">
+												<font color="#ffffff" size="2px"> {{accState}}</font>
+											</td>
+											<td width="10%"><font color="#ffffff" size="2px"> {{accZone}}</font></td>
+											<td width="23%"><font color="#ffffff" size="2px"> {{accRoadname}}</font></td>
+											<td width="27%"><font color="#ffffff" size="2px"> {{accLanes}}</font></td>
+									</tr>
+
 									<tr ng-repeat="inc in incidentRec | orderBy:sortType:sortReverseincfromgrid | filter:searchIncidentfromgrid">
 										<td width="10%"><font color="#ffffff" size="2px">{{inc.irid}}</font></td>
 										<td width="25%">
@@ -629,43 +643,27 @@ h11 {
 			</td></tr>
 			<tr><td>
 				<div class='scrollev'>
-					
-							<table  id="inctbl" width="100%">
-									<tr ng-repeat="tralert in trafficalert | orderBy:sortTypenv:sortReversenv | filter:searchEnvifromgrid">
-										<!-- 	 
-											 <div ng-if="tralert.status=='Unverified'" >
-										<td width="10%">
-											  
-												<font color="#ffffff" size="2px">{{tralert.status}}</font>
-											</td>
-										</div>  -->
-										
-										<td width="10%">
-											<div ng-if="tralert.status=='Unverified'" > 	
-												<font color="#ffffff" size="2px">{{tastatuschange}}</font>											
-											</div>
-											<div ng-if="tralert.status!='Unverified'" > 	
-													<font color="#ffffff" size="2px">{{tralert.status}}</font>											
-												</div>
-										</td>													
-									  
-										<td width="13%">
-										<div ng-if="tralert.rname=='CTE'" > 
-											<font color="#ffffff" size="2px">{{accTrafficAlertTime}}</font>
-										</div>
-										<div ng-if="tralert.rname!='CTE'" > 
-											<font color="#ffffff" size="2px">{{tralert.time}}</font>
-										</div>
-										</td>
-										<td width="16%"><font color="#ffffff" size="2px">{{tralert.alertid | uppercase}}</font> </td>
-										<td width="14%">
-												<font color="#ffffff" size="2px">{{tralert.rname}}</font>
-											</td>
-										<td width="18%"><font color="#ffffff" size="2px">{{tralert.desc}}</font></td>
-										<td width="12%"><font color="#ffffff" size="2px">{{tralert.source}}</font></td>
-									</tr>
-								</table> 
+					<table  id="inctbl" width="100%">
 
+							<tr>
+									<td width="10%"><font color="#ffffff" size="2px">{{accTrafficAlertStatus1}}</font></td>
+									<td width="13%"><font color="#ffffff" size="2px">{{accTrafficAlertTime}}</font>	</td>
+									<td width="16%"><font color="#ffffff" size="2px">{{accTrafficAlertid}}</font> </td>
+									<td width="14%">					
+											<font color="#ffffff" size="2px">{{accTrafficAlertRname}}</font>								
+									</td>
+									<td width="18%"><font color="#ffffff" size="2px">{{accTrafficAlertDesc}}</font></td>
+									<td width="12%"><font color="#ffffff" size="2px">{{accTrafficAlertSource}}</font></td>
+							</tr>
+						<tr ng-repeat="tralert in trafficalert | orderBy:sortTypenv:sortReversenv | filter:searchEnvifromgrid">
+							<td width="10%"><font color="#ffffff" size="2px">{{tralert.status}}</font></td>
+							<td width="13%"><font color="#ffffff" size="2px">{{tralert.time}}</font></td>
+							<td width="16%"><font color="#ffffff" size="2px">{{tralert.alertid | uppercase}}</font> </td>
+							<td width="14%"><font color="#ffffff" size="2px">{{tralert.rname}}</font></td>
+							<td width="18%"><font color="#ffffff" size="2px">{{tralert.desc}}</font></td>
+							<td width="12%"><font color="#ffffff" size="2px">{{tralert.source}}</font></td>
+						</tr>
+					</table> 
 				</div>
 			</td></tr>
 			</table> 	

@@ -8,8 +8,10 @@
         "esri/widgets/LayerList", "esri/views/draw/Draw",
 		'esri/layers/WMSLayer',
 		"esri/views/MapView",
-        "esri/layers/BaseDynamicLayer"
-      ], function(Map, MapView,Graphic, WMTSLayer,Extent, LayerList, Draw, WMSLayer, MapView, BaseDynamicLayer) {
+        "esri/layers/BaseDynamicLayer",
+		"esri/geometry/geometryEngine",
+    "esri/geometry/Polygon",
+      ], function(Map, MapView,Graphic, WMTSLayer,Extent, LayerList, Draw, WMSLayer, MapView, BaseDynamicLayer,geometryEngine,Polygon) {
         layer = 
           new WMTSLayer({
           url: "http://192.168.99.100:32768/services/wmts?service",
@@ -306,10 +308,10 @@
             view: view
           });
           view.ui.add(layerList, "bottom-left");
+          view.ui.add("draw-rectangle", "top-left");
         });
 
 /*** Onload Display **/
-
 iconLocation()
 showSpeedLkLr();
 /*** Onload Speed Layer display */
@@ -525,6 +527,125 @@ function speedLayerClr4(){
       });		 	 
 		view.graphics.addMany([htIconPictureGraphic, unVIconPictureGraphic,rwIconPictureGraphic,accIconPictureGraphic,bdIconPictureGraphic]);
       }
+
+/** polyline draw function **/
+
+document.getElementById("draw-rectangle").onclick = function() {
+  view.graphics.removeAll();
+  iconLocation()
+
+  // creates and returns an instance of PolyLineDrawAction
+  const action = draw.create("polyline");
+
+  // focus the view to activate keyboard shortcuts for sketching
+  view.focus();
+
+  // listen polylineDrawAction events to give immediate visual feedback
+  // to users as the line is being drawn on the view.
+  action.on(
+    [
+      "vertex-add",
+      "vertex-remove",
+      "cursor-update",
+      "redo",
+      "undo",
+      "draw-complete"
+    ],
+    updateVertices
+  );
+};
+
+// Checks if the last vertex is making the line intersect itself.
+function updateVertices(event) {
+  // create a polyline from returned vertices
+  if (event.vertices.length > 1) {
+    const result = createGraphic(event);
+
+    // if the last vertex is making the line intersects itself,
+    // prevent the events from firing
+    if (result.selfIntersects) {
+      event.preventDefault();
+    }
+  }
+}
+
+// create a new graphic presenting the polyline that is being drawn on the view
+function createGraphic(event) {
+  const vertices = event.vertices;
+  
+  view.graphics.removeAll();
+  iconLocation();
+  // a graphic representing the polyline that is being drawn
+  const graphic = new Graphic({
+    geometry: {
+      type: "polyline",
+      paths: vertices,
+      spatialReference: view.spatialReference
+    },
+    symbol: {
+      type: "simple-line", // autocasts as new SimpleFillSymbol
+      color: [4, 90, 141],
+      width: 2,
+    }
+  });
+
+  // check if the polyline intersects itself.
+ const intersectingSegment = getIntersectingSegment(graphic.geometry);
+
+
+view.graphics.add(graphic);
+  // return intersectingSegment
+  return {
+    selfIntersects: intersectingSegment
+  }; 
+}
+
+// function that checks if the line intersects itself
+function isSelfIntersecting(polyline) {
+  if (polyline.paths[0].length < 3) {
+    return false;
+  }
+  const line = polyline.clone();
+
+  //get the last segment from the polyline that is being drawn
+  const lastSegment = getLastSegment(polyline);
+  line.removePoint(0, line.paths[0].length - 1);
+
+  // returns true if the line intersects itself, false otherwise
+  return geometryEngine.crosses(lastSegment, line);
+}
+
+// Checks if the line intersects itself. If yes, change the last
+// segment's symbol giving a visual feedback to the user.
+function getIntersectingSegment(polyline) {
+
+  return null;
+}
+
+// Get the last segment of the polyline that is being drawn
+function getLastSegment(polyline) {
+  const line = polyline.clone();
+  const lastXYPoint = line.removePoint(0, line.paths[0].length - 1);
+  const existingLineFinalPoint = line.getPoint(
+    0,
+    line.paths[0].length - 1
+  );
+
+  return {
+    type: "polyline",
+    spatialReference: view.spatialReference,
+    hasZ: false,
+    paths: [
+      [
+        [existingLineFinalPoint.x, existingLineFinalPoint.y],
+        [lastXYPoint.x, lastXYPoint.y]
+      ]
+    ]
+  };
+}
+
+/** end of polylien draw */
+
 
       });
 	  	  

@@ -1,17 +1,6 @@
  {
   "trafficalert": [
     {
-	 "status":"Unverified",
-	 "time":"2019/08/6 14.53",
-	 "alertid": "CCTV_3448",
-	 "rname": "CTE",
-	 "from":"",
-	 "to":"",
-	 "zone": "zone2",
-	 "desc": "Accident",
-	 "source": "VA"
-    },
-    {
 	 "status":"True",
 	 "time":"2019/08/06 15.00",
 	 "alertid": "DET_806_9",

@@ -1,6 +1,6 @@
 <html lang="en">
 <head>
-  <title>BIS Line Chartasdfdsf </title>
+  <title>BIS Line Chart </title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="bisgrid.css">

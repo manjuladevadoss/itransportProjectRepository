@@ -7,7 +7,8 @@
     />
 	<!-- <meta http-equiv="refresh" content="50" />  -->
     <title> Incident Creation </title>
-  	<link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
+	  <link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
+	  <link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/css/main.css">
   	 <script type="text/javascript" src="jquery.js"></script>
     <style>
       html,
@@ -17,7 +18,32 @@
         margin: 0;
         height: 100%;
         width: 100%;
-      }
+	  }
+	  
+	  #instruction {
+        z-index: 99;
+        position: absolute;
+        top: 80px;
+        left: 10%;
+        padding: 5px;
+        margin-left: -175px;
+        height: 20px;
+        width: 350px;
+	  }
+	  .esri-layer-list {
+        width: 310px;
+	  }
+	  .irresetbutton {
+  color: #C8CFF4;
+  font-family:  Roboto, Helvetica, sans-serif;
+  font-size: 10px;
+  box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
+  border-radius: 5px;
+  background-color:#356D85;
+  border: solid 0px #356D85;
+  width:60px;
+  height:20px
+}
         #items{
 		  list-style:none;
 		  margin:0px;
@@ -128,9 +154,14 @@ background-color: black;
     	});
     </script>
   </head>
-  <body>
-    <div id="viewDiv"> </div>
-                <div id='cntnr'>
+  <body  >
+		<div class="container-fluid">
+		<div ng-app="ltaApp" ng-controller="ltaController">	  
+		<div id="main" class claro>
+	<div id="viewDiv"> 
+	<button class="irresetbutton" id="draw-rectangle"> PolyLine </button>  
+	</div>
+            <div id='cntnr'>
               <ul id='items'>
                 <li>
                   <table>
@@ -197,6 +228,9 @@ background-color: black;
                     </table>
                </li>  
               </ul>
-            </div>			
+			</div>	
+			</div>	
+		</div>	
+	</div>				
   </body>
 </html>
