@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>Sketch widget - 4.12</title>
+
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.12/esri/themes/light/main.css"
+    />
+    <script src="https://js.arcgis.com/4.12/"></script>
+
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+
+
+</style>
+    <script>
+      require([
+        "esri/widgets/Sketch",
+        "esri/Map",
+        "esri/layers/GraphicsLayer",
+        "esri/views/MapView"
+      ], function(Sketch, Map, GraphicsLayer, MapView) {
+        const layer = new GraphicsLayer();
+
+        const map = new Map({
+          basemap: "streets",
+          layers: [layer]
+        });
+
+        const view = new MapView({
+          container: "viewDiv",
+          map: map,
+          zoom: 5,
+          center: [90, 45]
+        });
+
+        const sketch = new Sketch({
+          layer: layer,
+          view: view
+        });
+
+        view.ui.add(sketch, "top-right");
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="viewDiv"> </div> 
+    <div class="esri-sketch__section esri-sketch__tool-section">
+        <button aria-label="Draw a point" class="esri-sketch__button esri-icon-map-pin" title="Draw a point"></button>
+        <button aria-label="Draw a polyline" class="esri-sketch__button esri-icon-polyline" title="Draw a polyline">
+
+        </button><button aria-label="Draw a polygon" class="esri-sketch__button esri-icon-polygon" title="Draw a polygon">
+
+        </button><button aria-label="Draw a rectangle" class="esri-sketch__button esri-icon-checkbox-unchecked" title="Draw a rectangle"></button><button aria-label="Draw a circle" class="esri-sketch__button esri-icon-radio-unchecked" title="Draw a circle"></button></div>
+  </body>
+</html>

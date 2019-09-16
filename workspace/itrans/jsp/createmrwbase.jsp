@@ -168,12 +168,13 @@ background-color: black;
 .irresetbutton {
   color: #C8CFF4;
   font-family:  Roboto, Helvetica, sans-serif;
+  font-size: 10px;
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
-  border-radius: 13px;
+  border-radius: 5px;
   background-color:#356D85;
   border: solid 0px #356D85;
-  width:80px;
-  height:30px
+  width:40px;
+  height:20px
 }
 .iractionbutton {
   color: #C8CFF4;
@@ -215,38 +216,39 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 		</table>  -->
   
 	  <div id="main" class claro>
-	  <div id="viewDiv"> </div>    
-	  <div id="instruction">    
-					       <button class="irresetbutton" id="line"> Draw Line </button>
-					        
-				      </div>  
+	  <div id="viewDiv"> 
+			<button class="irresetbutton" id="draw_line"> Line </button>
+			<button class="irresetbutton" id="draw-point"> Point </button> 
+	  </div>    
      <div id="panelTopDiv"  style="background-color: #202B53;">
     <h2t> Incident Record - Mobile Road Work </h2t> <br>
     </div>  
 	  
 	       <div id="panelRightDiv" class="esri-widget">
     
-         <br> 
-		 <br> 
-		
-		 <br> 
+         
+		 
 		<!-- Start IR Creation -->
 	  <div ng-show="showmrwcreate">
 	  
-	  	<table width="100%" id="incdetailtbl"> 
-		<tr>
-			<td><h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp;<h3b>RESPONSE</h3b></td>
-		</tr>
-	</table>
-	  
+			<br><br> 
+			<table width="100%" id="incdetailtbl"> 
+					<tr>
+						<td>	<h3a>&nbsp; CREATE</h3a>&nbsp;<h3b>></h3b>&nbsp;
+								<a href="#" style="text-decoration:none;" ng-click="callmrwresponse()"><h3b>RESPONSE</h3b> </a>	
+						</td>
+					</tr>
+				</table>
+				<br>
 			
 	 <div class='scrollIr'> 
 
 			<div class="panel-group" id="accordion2">	
 				 <div class="panel panel-default">
 					<div class="panel-heading active">
+			
 						<h4 class="panel-title">
-							   Incident<span data-target="#Collapseicon1" data-toggle="collapse" data-parent="#accordion2"><span class="glyphicon glyphicon-plus" style="float:right;"></span> </span>
+								&nbsp; Road Work<span data-target="#Collapseicon1" data-toggle="collapse" data-parent="#accordion2"><span class="glyphicon glyphicon-plus" style="float:right;"></span> </span>
 						</h4>
 					</div>
 					
@@ -260,10 +262,13 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					 <tr>
 					  <td colspan="3">
 						State: <br>
-								<input type="text" ng-model="mrwstate"/>
+								<input style ="color: #FFF;" ng-model="mrwstate"/>
 					  </td>
-					  <td colspan="3"> Source: <br>
-								<input type="text"  ng-model="mrwsource"/>
+					  <td colspan="3"> Work Type: <br>
+					<select ng-model="worktype" style ="height:28px;width:170px;color: #FFF;" >
+						<option  value="" selected="selected" hidden="hidden">Choose here</option>
+						<option ng-repeat="option in mrwType" value="{{option.mrwTypeid}}">{{option.name}}</option>
+					</select>
 					  </td>
 					</tr>
 					<tr>
@@ -271,7 +276,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					   Start Time:
 						<div style="width: 150px;">
 							<div id="picker"> </div>
-								<input type="text" ng-model="mrwstarttime"/>
+								<input style ="color: #FFF;" type="text" ng-model="mrwstarttime"/>
 						</div>			
 					  </td>
 					  <td colspan="3">
@@ -279,7 +284,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					 
 						<div style="width: 150px;">
 							<div id="picker1"> </div>
-								<input type="text" ng-model="mrwendtime"/>
+								<input  style ="color: #FFF;" type="text" ng-model="mrwendtime"/>
 						</div>			
 					  </td>
 					</tr>
@@ -287,22 +292,42 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					  <td colspan="3">
 						Contractor Name
 						<br>
-						<input type="text" ng-model="mrwcontname"/>
+						<input style ="color: #FFF;" type="text" ng-model="mrwcontname"/>
 					  </td>
 					  <td colspan="3">
 						Work Permit No<br>
-						<input type="text" ng-model="mrwperno"/>
+						<input style ="color: #FFF;" type="text" ng-model="mrwperno"/>
 					  </td>
 					</tr>
 					
 					<tr>
 					  <td colspan="3">
 						Supervisor Name <br>
-							<input type="text" ng-model="mrwsupvisorname"/>
+							<input style ="color: #FFF;" type="text" ng-model="mrwsupvisorname"/>
 					  </td>
 					  <td colspan="3">
 						Supervisor HP<br>
-						<input type="text" ng-model="mrwsupvisorhp"/>
+						<input style ="color: #FFF;" type="text" ng-model="mrwsupvisorhp"/>
+					  </td>
+					</tr>
+
+	   <tr>
+					  <td colspan="3">
+						Road Name <br>
+						Start Point <br><input style ="color: #FFF;" type="text" id="sroadname" />
+					  </td>
+					  <td colspan="3">
+						<br>
+						End Point <br> <input style ="color: #FFF;" type="text" id="eroadname" />
+					  </td>
+					</tr>
+
+				   <tr>
+					  <td colspan="3">
+						Vehicle Number <br>
+						<input style ="color: #FFF;" type="text" ng-model="mrwvehicleno"/>
+					  </td>
+					  <td colspan="3">
 					  </td>
 					</tr>
 					<tr>
@@ -311,45 +336,10 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 							<textarea class="textareamrwcomment" rows="3" cols="40"  ng-model="mrwcomment"> </textarea>
 					  </td>
 					</tr>
-				   <tr>
-					  <td colspan="6">
-						Vehicle Number <br>
-						<input type="text" ng-model="mrwvehicleno"/>
-					  </td>
-					</tr>
-					
 				 </table>
 				 
 				 <br><br>
-				 <table width="50%" id="incblocktbl">
-					<tr>
-					  <td>          
-						<label class="contentlabel"> Simulated 
-						  <input type="checkbox" ng-model="mrwsimul">
-						  <span class="checkmark" size=""></span>
-						</label>
-						</td>
-						<td>
-						<label class="contentlabel"> Important 
-						  <input type="checkbox" ng-model="mrwimpor">
-						  <span class="checkmark"></span>
-						</label>
-					   </td>
-					    <td>
-						 <label class="contentlabel"> VRS 
-						  <input type="checkbox" ng-model="mrwvrs">
-						  <span class="checkmark"></span>
-						</label>
-						</td>
-						<td>
-						<label class="contentlabel"> LTM
-						  <input type="checkbox" ng-model="mrwltm">
-						  <span class="checkmark"></span>
-						</label>
-					  </td>
-					   </tr>
-					      
-					</table> 
+
 						</div>
 					</div>
 				  </div> 
@@ -357,42 +347,55 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 			 </div> 
 			
 			<div align="right">  
-				<a href="#" class="buttonCreateMrtInc"  ng-click="callmrwresponse()" style="text-decoration:none;"> CREATE </a>&nbsp;  &nbsp; 
+				<a href="#" class="buttonCreateMrtInc"  id="CreateMrwId" ng-click="callmrwresponse()" style="text-decoration:none;"> CREATE </a>&nbsp;  &nbsp; 
 			</div>
 	  </div>
 	<!-- end of Create IR -->
 	
 	<!-- Start of IR  Response -->
+	
 	<div ng-show="showmrwresponse">
 		
-	<table width="100%" id="incresponsetbl">
-		<tr>
-			<td>
-				<a href="#" style="text-decoration: none" ng-click="callmrwcreate()"> <h3b>&nbsp;&nbsp;CREATE</h3b> </a>&nbsp;<h3b>></h3b>&nbsp;<h3a>RESPONSE</h3a>
-			</td>
-		</tr>
-	</table> 
-	
+
+	<br><br>
+	<table width="100%" id="incdetailtbl"> 
+			<tr>
+				<td>	<a href="#" style="text-decoration: none" ng-click="callmrwcreate()"> <h3b>CREATE</h3b> </a>&nbsp;<h3b>></h3b>&nbsp;<h3a>RESPONSE</h3a> 	
+				</td>
+			</tr>
+		</table>
 		 <div class='scrollResponse'> 
  		  
 		  <div class="panel-group" id="accordion2">
      
      <div class="panel panel-default">
     	<div class="panel-heading active">
-        	<h4 class="panel-title">           	             	
-                    VMS Messages <span data-target="#Collapseicon4" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
+				
+				
+			
+			
+			<!-- <table width="100%" class="incdetailtbl" style="padding: 0px;" >
+						<tr style="padding: 0px;">
+							<td style="padding: 0px;">
+									<a href="#" style="text-decoration: none" ng-click="callmrwcreate()"> <h3b>CREATE</h3b> </a>&nbsp;<h3b>></h3b>&nbsp;<h3a>RESPONSE</h3a>         	             				
+							</td>
+						</tr>
+					</table>   -->
+					<br> 	
+        	<h4 class="panel-title"> 
+					
+					&nbsp; VMS Messages <span data-target="#Collapseicon4" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
             </h4>
         </div>
         
         <div class="panel-collapse collapse in" id="Collapseicon4">
         	<div class="panel-body">
-            	<p>Recommended VMS Messages </p>
+            	<p>&nbsp; Recommended VMS Messages </p>
 			<table width="100%" class="tablevms">  
 			<tr>
-				<th align="left" style="padding:5px;">Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </th>
-				<th align="left">EQT ID <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i></th>
-				<th align="left">Recommended Display <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </th>
-				<th align="left"></th>		
+				<th align="left" style="padding:5px;">Status </th>
+				<th align="left">EQT ID</th>
+				<th align="left">Recommended Display </th>					
 			</tr>
 			<tr ng-repeat="irmrwvms in irmrwvmsList"> 
 				<td> 
@@ -419,13 +422,14 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 			</td>
 			<td>
 				<input type="hidden" id="mrwvmsmsgt" name="mrwvmsmsgt" value='{{irmrwvms.irmrwvmsmsg}}{{sep}}{{irmrwvms.irvmsequipid}}' readonly>
+				<input type="hidden" id="mrwlatilong" name="mrwlatilong" value='{{irmrwvms.longitude}}{{sep}}{{irmrwvms.latitude}}' readonly>
 				<div class="textimagediv" contentEditable="true" id="vmsMessageDetail1"> {{irmrwvms.irmrwvmsmsg}} 
-  					<img src="waterplant.JPG"  width="30px" height="30px"/>
+  					<img src="waterplant.JPG"  width="25px" height="25px"/>
 				</div>
 				    
 			
 			</td>
-			<td> <i class="material-icons" style="font-size:8px;color:#C8CFF4;">border_color</i> </td>	
+			
 	     </tr>
 				
 			</table>
@@ -443,7 +447,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
             </div>
         </div>
      </div>
-     <div class="panel panel-default">
+   <!--  <div class="panel panel-default">
     	<div class="panel-heading active">
         	<h4 class="panel-title">
                    Canning Message<span data-target="#Collapseicon5" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
@@ -452,7 +456,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
         
         <div class="panel-collapse collapse" id="Collapseicon5">
         	<div class="panel-body">
-            	<!-- <p>Canning Messages</p>  -->
+            	
             	<p>Enter Canning Messages</p>
 			   <table width="100%" class="tablevms"> 
 					<tr>
@@ -464,8 +468,8 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 			 </table>
             </div>
         </div>
-     </div>
-       <div class="panel panel-default">
+     </div> -->
+  <!--     <div class="panel panel-default">
     	<div class="panel-heading active">
         	<h4 class="panel-title">
                    OBU Messages <span data-target="#Collapseicon6" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>
@@ -530,11 +534,11 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
             </div>
         </div>
      </div>
-     
+  -->   
      <div class="panel panel-default">
     	<div class="panel-heading active">
         	<h4 class="panel-title">               	
-                    Congestion Routes Monitoring <span data-target="#Collapseicon7" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
+                    &nbsp; Congestion Routes Monitoring <span data-target="#Collapseicon7" data-toggle="collapse" data-parent="#accordion2" > <span class="glyphicon glyphicon-plus"  style="float:right;"></span></span>             
             </h4>
         </div>
          

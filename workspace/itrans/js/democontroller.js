@@ -14,10 +14,16 @@ var app = angular.module('ltaApp', []);
    //get the json object using $http get method() incident record	  
     $http.get("incidentRecord.json").then(function(response) {
         $scope.incidentRec = response.data.incidentRec;  
-        console.log("$scope.incidentRec.length() :" + $scope.incidentRec.length);
+		console.log("$scope.incidentRec.length() :" + $scope.incidentRec.length);		
+		$scope.accIrid = '35642';
+		$scope.accType = 'Accident';
+		$scope.accState = 'Notified'; 
+		$scope.accZone = 'zone3'; 
+		$scope.accRoadname = 'Ang Mo Kio Ave 5 (CTE)';
+		$scope.accLanes = '2';
       });
     
-    $interval( function(){ $scope.callIR1($scope.incidentRec); }, 5000);
+    /*$interval( function(){ $scope.callIR1($scope.incidentRec); }, 5000);
     $scope.callIR1 = function(incidentNewList){
     	 var m = incidentNewList.length, t, i;
     	    // While there remain elements to shuffle
@@ -30,15 +36,47 @@ var app = angular.module('ltaApp', []);
     	      incidentNewList[i] = t;
     	    }  
     	    return incidentNewList;
-    };
+    };*/
 	
 	//get the json object using $http get method() work order	  
  	$http.get("workorderRecord.json").then(function(response) {
          $scope.workorderRec = response.data.workorderRec;
-         console.log("$scope.workorderRec.length() :" + $scope.workorderRec.length);
-       });
+		 console.log("$scope.workorderRec.length() : ---  " + $scope.workorderRec.length);
+		var durationInMinutes = 10;
+		for(i=0;i<$scope.workorderRec.length;i++){
+		
+			// get random number for  minutes difference
+			var min=10; 
+			var max=59;  
+			var durationInMinutes =  Math.floor(Math.random() * (+max - +min)) + +min;
+		
+			var current_datetime = new Date();
+			current_datetime.setMinutes(current_datetime.getMinutes() - durationInMinutes);
+			
+			// minutes is one digit make two digit
+			if(current_datetime.getMinutes() < 9) {
+				current_minutes = 10; 
+			}
+			else {
+				current_minutes = current_datetime.getMinutes();
+			}
+
+			/*
+			if(current_datetime.getSeconds() < 9) {
+				current_seconds = "0" + current_datetime.getSeconds(); 
+			}
+			else {
+				current_seconds = current_datetime.getSeconds();
+			}
+			*/		
+			//format the date
+			formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " 
+										+ current_datetime.getHours() + ":" + current_minutes // + ":" +  current_seconds;
+			$scope.workorderRec[i].date = formatted_date;
+		}
+    });
  	
- 	$interval( function(){ $scope.callWO1($scope.workorderRec); }, 4000);
+ 	/*$interval( function(){ $scope.callWO1($scope.workorderRec); }, 4000);
     $scope.callWO1 = function(workorderNewList){
     	var m = workorderNewList.length, t, i;
 	    // While there remain elements to shuffle
@@ -51,15 +89,47 @@ var app = angular.module('ltaApp', []);
 	      workorderNewList[i] = t;
 	    }  
 	    return workorderNewList;
-    };
+    }; */
     
 	//get the json object using $http get method() Technical Alarm record	  
     $http.get("technicalAlarmRecord.json").then(function(response) {
         $scope.technicalalarmrec = response.data.technicalalarmrec;  
-        console.log("$scope.technicalalarmrec.length() :" + $scope.technicalalarmrec.length);
+		console.log("$scope.technicalalarmrec.length() :" + $scope.technicalalarmrec.length);
+		var durationInMinutes = 10;
+		for(i=0;i<$scope.technicalalarmrec.length;i++){
+		
+			// get random number for  minutes difference
+			var min=15; 
+			var max=59;  
+			var durationInMinutes =  Math.floor(Math.random() * (+max - +min)) + +min;
+		
+			var current_datetime = new Date();
+			current_datetime.setMinutes(current_datetime.getMinutes() - durationInMinutes);
+			
+			// minutes is one digit make two digit
+			if(current_datetime.getMinutes() < 9) {
+				current_minutes = 10; 
+			}
+			else {
+				current_minutes = current_datetime.getMinutes();
+			}
+
+			/*
+			if(current_datetime.getSeconds() < 9) {
+				current_seconds = "0" + current_datetime.getSeconds(); 
+			}
+			else {
+				current_seconds = current_datetime.getSeconds();
+			}
+			*/		
+			//format the date
+			formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " 
+										+ current_datetime.getHours() + ":" + current_minutes // + ":" +  current_seconds;
+			$scope.technicalalarmrec[i].startdate = formatted_date;
+		}
       });
     
-    $interval( function(){ $scope.callTA1($scope.technicalalarmrec); }, 5000);
+    /*$interval( function(){ $scope.callTA1($scope.technicalalarmrec); }, 5000);
     $scope.callTA1 = function(technicalalarmNewList){
     	var m = technicalalarmNewList.length, t, i;
 	    // While there remain elements to shuffle
@@ -72,16 +142,16 @@ var app = angular.module('ltaApp', []);
 	      technicalalarmNewList[i] = t;
 	    }  
 	    return technicalalarmNewList;
-    };
+    };*/
     
     
 	//get the json object using $http get method() Environment Monitor Record	  
     $http.get("environmonitorRecord.json").then(function(response) {
         $scope.environmonitorec = response.data.environmonitorec;  
-        console.log("$scope.environmonitorec.length() :" + $scope.environmonitorec.length);
+		console.log("$scope.environmonitorec.length() :" + $scope.environmonitorec.length);		
       });
     
-    $interval( function(){ $scope.callER($scope.environmonitorec); }, 6000);
+   /* $interval( function(){ $scope.callER($scope.environmonitorec); }, 6000);
     $scope.callER = function(environmonitorNewList){
     	var m = environmonitorNewList.length, t, i;
 	    // While there remain elements to shuffle
@@ -94,15 +164,15 @@ var app = angular.module('ltaApp', []);
 	      environmonitorNewList[i] = t;
 	    }  
 	    return environmonitorNewList;
-    };
+    };*/
     
 	//get the json object using $http get method() Road Work Record	  
     $http.get("roadwork.json").then(function(response) {
         $scope.roadworkRec = response.data.roadworkRec;  
         console.log("$scope.roadworkRec.length() :" + $scope.roadworkRec.length);
 		//$scope.roadworkRec1 = $scope.roadworkRec;
-      });        
-    
+      });    
+      
 // get json Incident Record Accident scenario 1
     $http.get("iraccscenario1vms.json").then(function(response) {
         $scope.iraccscenario1vms = response.data.iraccscenario1vms;  
@@ -120,6 +190,53 @@ var app = angular.module('ltaApp', []);
         $scope.trafficlight = response.data.trafficlight;  
         console.log("trafficlight length :" + $scope.trafficlight.length);
       });
+    
+    
+	//get the json object using $http get method() Traffic Alert Record	  
+    $http.get("trafficalert.json").then(function(response) {
+        $scope.trafficalert = response.data.trafficalert;  
+		console.log("$scope.trafficalert.length() :" + $scope.trafficalert.length);
+		for(i=0;i<$scope.trafficalert.length;i++){
+		
+			// get random number for  minutes difference
+			var min=15; 
+			var max=59;  
+			var durationInMinutes =  Math.floor(Math.random() * (+max - +min)) + +min;
+			var current_datetime = new Date();
+	
+			// other records less then few minutes
+			current_datetime.setMinutes(current_datetime.getMinutes() - durationInMinutes);
+			
+			// minutes is one digit make two digit
+			if(current_datetime.getMinutes() < 9) {
+				current_minutes = 10; 
+			}
+			else {
+				current_minutes = current_datetime.getMinutes();
+			}
+
+			/*
+			if(current_datetime.getSeconds() < 9) {
+				current_seconds = "0" + current_datetime.getSeconds(); 
+			}
+			else {
+				current_seconds = current_datetime.getSeconds();
+			}
+			*/		
+			//format the date
+			formatted_date = current_datetime.getFullYear() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getDate() + " " 
+										+ current_datetime.getHours() + ":" + current_minutes // + ":" +  current_seconds;
+			$scope.trafficalert[i].time = formatted_date;
+		}	
+		
+		//current Accident record 
+		$scope.accTrafficAlertStatus = 'Unverified'
+		$scope.accTrafficAlertTime = $filter('date')(new Date(), 'yyyy-MM-dd HH:mm');
+		$scope.accTrafficAlertid = 'CCTV_3448'	
+		$scope.accTrafficAlertRname = 'CTE'
+		$scope.accTrafficAlertDesc = 'Accident'	
+		$scope.accTrafficAlertSource = 'VA'
+      });    
     
 
     $scope.searchIncident = "";
@@ -157,9 +274,13 @@ var app = angular.module('ltaApp', []);
 	$scope.searchEnvifromgrid  = "";
 	$scope.searchroadwkfromgrid  = "";
 	$scope.irstartpoint = "7.25km";
-	$scope.irendpoint = "7.27km";
-	$scope.ircogendpoint = "8.01km";
+	$scope.irendpoint = "7.25km";
+	$scope.ircogendpoint = "7.25km";
 	$scope.accCanningMsg = "  Accident on CTE (towards SLE) after Ang Mo Kio Rd Exit";
+	$scope.accTrafficAlertTime = $filter('date')(new Date(), 'yyyy-MM-dd HH:mm');
+	
+	
+	
   	$scope.irstatusList = [{
 		"irstatusid": 1,
 		"irstatusname": "Confirmed"
@@ -243,9 +364,13 @@ var app = angular.module('ltaApp', []);
     
   	$scope.dangerList = [{
 		"dangerid": 1,
-		"dangername": "Veh. on fire"
-		}, {
+		"dangername": " "
+		}, 
+		{
 		"dangerid": 2,
+		"dangername": "Veh. on fire"
+		},{
+		"dangerid": 3,
 		"dangername": "Other"
 	}];
   	$scope.danger = "1";
@@ -301,12 +426,16 @@ var app = angular.module('ltaApp', []);
 		}, {
 		"irdirid": 2,
 		"irdirname": "Towards City"
+		}, {
+		"irdirid": 3,
+		"irdirname": "Towards TPE"
 		}	
 	];
-  	$scope.irdirsel = "1";	
+  	$scope.irdirsel = "3";	
   	
   	$scope.accAlertMsg = "CTE (SLE) Accident after Exit B";
-  	$scope.accJamMsg = "CTE (SLE) Accident after Exit B";
+  //$scope.accJamMsg = "CTE (SLE) Accident after Exit B";
+	$scope.accJamMsg = "";
   	$scope.accGuideMsg = "CTE(SLE) Massive Jam after Exit D";
   	$scope.accAlertMsgKM = " 4.0";
   	$scope.accJamMsgKM = " 4.0";
@@ -317,18 +446,46 @@ var app = angular.module('ltaApp', []);
   	$scope.irconendpoint = "";
   	$scope.damagedetail = "";
   	$scope.showircreate = true;
-    $scope.showirresponse = false;
+	$scope.showirresponse = false;
+	$scope.showirpredit = false;
+	$scope.showirpreditsce1 = false;
+	$scope.showirpreditsce2 = false;
     // seperate window for IR Creation
     $scope.callirresponse = function(){
-	    $scope.showircreate = false;
 	    $scope.showirresponse = true;
+		$scope.showircreate = false;
+		$scope.showirpredit = false;
+		$scope.showirpreditsce2 = false;
+		$scope.showirpreditsce1 = false;
 	    //alert("simulation : " + $scope.irsimul + "\ "  + "irimpor : " + $scope.irimpor  + "\ "  + "irvrs : " + $scope.irvrs  + "\ "  + "irltm : " + $scope.irltm);
     }
     $scope.callircreate= function(){
 	    $scope.showircreate = true;
-	    $scope.showirresponse = false;
-    }
-    
+		$scope.showirresponse = false;
+		$scope.showirpredit = false;
+		$scope.showirpreditsce2 = false;
+		$scope.showirpreditsce1 = false;
+	}
+	
+	$scope.callirpredit= function(){
+	    $scope.showircreate = false;
+		$scope.showirresponse = false;
+		$scope.showirpredit = true;
+		$scope.showirpreditsce2 = false;
+		$scope.showirpreditsce1 = false;
+	}
+	
+	$scope.callirpreditsce1= function(){		
+		$scope.showirpreditsce1 = true;		
+		$scope.showirpreditsce2 = false;	
+	}
+	
+	$scope.callirpreditsce2= function(){
+		$scope.showirpreditsce2 = true;
+		$scope.showirpreditsce1 = false;
+	}
+	
+	
     // iraccvms incident recorad accident vms message  
     $http.get("iraccvms.json").then(function(response) {
         $scope.iraccvmsList = response.data.iraccvms;  
@@ -424,20 +581,51 @@ var app = angular.module('ltaApp', []);
     $scope.sep ="$";
     
     $http.get("irmrwvms.json").then(function(response) {
-        $scope.irmrwvmsList = response.data.irmrwvms;  
+        $scope.irmrwvmsList = response.data.irmrwvms; 
+		
+        $scope.irmrwvmsListOrgi; 
+    	console.log("size : " +  $scope.irmrwvmsList.length);        
+        for(i=0;i<$scope.irmrwvmsList.length;i++) {
+        	var mrwstatus = $scope.irmrwvmsList.irmrwvmsstatus;
+        	var mrwid = $scope.irmrwvmsList.irvmsequipid;
+        	var mrwmsg = $scope.irmrwvmsList.irmrwvmsmsg;	
+        	var mrwlog = $scope.irmrwvmsList.longitude;	
+        	var mrwlati = $scope.irmrwvmsList.latitude;
+        	var mrwdatetime = $scope.irmrwvmsList.datetime;   
+        	//console.log(mrwstatus + "-" + mrwid + "-" + mrwmsg+ "-" + mrwlog + "-" +  mrwlati + "-" + mrwdatetime);
+        }
     });
     
-    $scope.mrwincident= 'Mobile Road Work';
-    $scope.mrwstate = '';
-    $scope.mrwsource= '';
+	$scope.mrwType = [{
+		"mrwTypeid": 1,
+		"name": "Litter Picking"
+		}, {
+		"mrwTypeid": 2,
+		"name": "Watering the plant"
+		}, {
+		"mrwTypeid": 3,
+		"name": "Road Sweeping"
+		}, {
+		"mrwTypeid": 4,
+		"name": "Other"
+		}];
+		  $scope.worktype = "1";
+		  
+
+	$scope.mrwincident= 'Mobile Road Work';
+    $scope.mrwstate = "Plan";
     $scope.mrwstarttime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
     $scope.mrwendtime= '';
-    $scope.mrwcontname= '';
-    $scope.mrwperno= '';
-    $scope.mrwsupvisorname= '';
-    $scope.mrwsupvisorhp= '';
+    $scope.mrwcontname= 'Zee Construction Pte. Ltd';
+    $scope.mrwperno= 'B425461';
+    $scope.mrwsupvisorname= 'Vihal';
+    $scope.mrwsupvisorhp= '89653214';
     $scope.mrwcomment= '';
-    $scope.mrwvehicleno= '';
+    $scope.mrwvehicleno= 'GBJ5462A';
+    $scope.mrwstartpoint= 'East Coast Road';
+    
+    
+    
     $scope.mrwsimul = false;
     $scope.mrwimpor = false;
     $scope.mrwvrs = false;
@@ -459,7 +647,9 @@ var app = angular.module('ltaApp', []);
     	alert("mobile road work incident created");
     	
     }
+      
     
+        
 // *********** End of Mobile Road Work  ****** //
         
  // ******** New Event Creation and response part
@@ -506,116 +696,71 @@ var app = angular.module('ltaApp', []);
 		}];
   		$scope.eventype = "4";
      
-      $scope.eventname = "Sports Event"
+      $scope.eventname = "Marathon 2019"
       $scope.eventorganizer = "Singapore Sport Club"
       $scope.eventsupp =  "CC"
       $scope.eventowner = "Singapore Athletics Association"
-      $scope.eventstarttime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
-      $scope.eventendtime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
-      $scope.eventendtime1 = "";
-      $scope.eventspec = "Badminton, Bowling, Football, Netball, Shooting";
+	  var currdate1 = new Date();
+	  //currdate2.setDaty(currdate2.getHours() + 3);
+      //$scope.eventstarttime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
+	  $scope.eventstarttime = "2019/08/25"; 
+      $scope.eventendtime1 = "2019/08/25";
+      $scope.eventspec = "Running";
       $scope.eventhotlineope= "0264653";
       $scope.eventhotlineclo= "2646512";
       $scope.eventincharge= "Hein ";
       $scope.eventpostno= "604521";
       $scope.eventbubbleposi= "12,10";
       $scope.eventbubblesize= "500";
-      $scope.eventroadname= "Stadium Place";
+      $scope.eventroadname= "East Coast Park Service Rd";
       $scope.eventstarttimecl= $scope.eventstarttime;
-      $scope.eventendtimecl= $scope.eventendtime;
-      
+      $scope.eventendtimecl= "12.00pm";
+
+//get the json object using $http get method() Planned Events Advanced message	 	
+    $http.get("ireventvms.json").then(function(response){
+        $scope.eventvms = response.data.eventvms;  
+        console.log("Events 1 length :" + $scope.eventvms.length);
+		/*  Display the json data in angular 
+		var eventMsglength = 0;
+		$scope.eventvmsIds = [];
+		eventMsglength = $scope.eventvms.length;
+		for(i=0;i<eventMsglength;i++){		
+		$scope.eventvmsIds[i] = $scope.eventvms[i].eventeqid;		
+		}*/
+      });
+
+  $scope.startData = 0
+	  $scope.noDisplayData = 4
+	  $scope.startDataact = 8;
+	  maxData = 4;
+	  maxDataact = 12;
+	  $scope.shownextpg = function(){
+	  if(maxData <= $scope.startData ) {
+			$scope.startData = 0;
+		} else {
+			$scope.startData = $scope.startData + 4;
+		}
+		};
      
-      var currdate2 = new Date();
-      //div message display on the map
-      $scope.eventVmsMsg = "Expect Delays Near sports Hub";
-      $scope.eventVmsdisplaytime = $scope.eventstarttime;
-      $scope.eventvmseqipid = "TIP 545862";
+	 
+		$scope.shownextpgact = function(){
+			if(maxDataact <= $scope.startDataact ) {
+				$scope.startDataact  = 8;
+			} else {
+				$scope.startDataact  = $scope.startDataact  + 4;
+			}
+		};
       
-      currdate2.setHours(currdate2.getHours() + 3);
-	  $scope.dtdisplay1 = $filter('date')(currdate2, 'yyyy/MM/dd HH:mm');
-      $scope.eventVmsMsg1 = "Heavy Traffic on Stadium Boulevard";
-      $scope.eventVmsdisplaytime1 =  $scope.dtdisplay1;
-      $scope.eventvmseqipid1 = "TIP 545862";
-      
-      currdate2.setHours(currdate2.getHours() + 3);
-	  $scope.dtdisplay2 = $filter('date')(currdate2, 'yyyy/MM/dd HH:mm');
-      $scope.eventVmsMsg2 = "Heavy Traffic on MountBatten Road";
-      $scope.eventVmsdisplaytime2 =  $scope.dtdisplay2;
-      $scope.eventvmseqipid2 = "TIP 545862";
-      
-      currdate2.setHours(currdate2.getHours() + 3);
-	  $scope.dtdisplay3 = $filter('date')(currdate2, 'yyyy/MM/dd HH:mm');
-      $scope.eventVmsMsg3 = "Heavy Traffic before Sim Way / KPE";
-      $scope.eventVmsdisplaytime3 =  $scope.dtdisplay3;
-      $scope.eventvmseqipid3 = "TIP 545862";
-      
-	/*var yday = new Date(new Date().setDate(new Date().getDate()-1));
-	  $scope.eventbeforedate = $filter('date')(yday, 'yyyy/MM/dd HH:mm'); */
-  
-      $scope.showvmsequipmsg= function(vmseqipid) {
-    	  if(vmseqipid=='1') {
-    	      $scope.eventVmsMsg = "Expect Delays Near sports Hub";
-              $scope.eventVmsdisplaytime = $scope.eventstarttime;
-              $scope.eventvmseqipid = "TIP 231482";
-              
-              $scope.eventVmsMsg1 = "Heavy Traffic on Nicoll Highway/Raffles Blvd";
-              $scope.eventVmsdisplaytime1 =  $scope.dtdisplay1;
-              $scope.eventvmseqipid1 = "TIP 231482";
-                            
-              $scope.eventVmsMsg2 = "Heavy Traffic on Guillemard Road";
-              $scope.eventVmsdisplaytime2 =  $scope.dtdisplay2;
-              $scope.eventvmseqipid2 = "TIP 231482";
-              
-              $scope.eventVmsMsg3 = "Heavy Traffic on Bras Basah Rd";
-              $scope.eventVmsdisplaytime3 =  $scope.dtdisplay3;
-              $scope.eventvmseqipid3 = "TIP 231482";
-    	  }
-       	  if(vmseqipid=='2') {
-       	      $scope.eventVmsMsg = "Expect Delays Near sports Hub";
-       	      $scope.eventVmsdisplaytime = $scope.eventstarttime;
-       	      $scope.eventvmseqipid = "TIP 545862";
-       	      
-       	      $scope.eventVmsMsg1 = "Heavy Traffic on Stadium Boulevard";
-       	      $scope.eventVmsdisplaytime1 =  $scope.dtdisplay1;
-       	      $scope.eventvmseqipid1 = "TIP 545862";
-      	   
-       	      $scope.eventVmsMsg2 = "Heavy Traffic on MountBatten Road";
-       	      $scope.eventVmsdisplaytime2 =  $scope.dtdisplay2;
-       	      $scope.eventvmseqipid2 = "TIP 545862";
-      	      
-       	      $scope.eventVmsMsg3 = "Heavy Traffic before Sim Way / KPE";
-       	      $scope.eventVmsdisplaytime3 =   $scope.dtdisplay3;
-       	      $scope.eventvmseqipid3 = "TIP 545862";
-    	  } 
-		/*if(vmseqipid=='545862') {
-       	      $scope.eventVmsMsg = "Expect Delays Near sports Hub";
-       	      $scope.eventVmsdisplaytime = $scope.eventstarttime;
-       	      $scope.eventvmseqipid = "TIP 545862";
-       	      
-       	      $scope.eventVmsMsg1 = "Heavy Traffic on Stadium Boulevard";
-       	      $scope.eventVmsdisplaytime1 =  $scope.dtdisplay1;
-       	      $scope.eventvmseqipid1 = "TIP 545862";
-      	   
-       	      $scope.eventVmsMsg2 = "Heavy Traffic on MountBatten Road";
-       	      $scope.eventVmsdisplaytime2 =  $scope.dtdisplay2;
-       	      $scope.eventvmseqipid2 = "TIP 545862";
-      	      
-       	      $scope.eventVmsMsg3 = "Heavy Traffic before Sim Way / KPE";
-       	      $scope.eventVmsdisplaytime3 =   $scope.dtdisplay3;
-       	      $scope.eventvmseqipid3 = "TIP 545862";
-    	  }   */		  
-	}
-      
-      $scope.eventcanningMsg = "This road has heavy traffic, please Note."
+      $scope.eventcanningMsg = "ECP Service Rd closed between Bedok & Car Part H"
       
     	//VMS Removed Message 
-    		$scope.eventObuMsgAlert = "Road closure at Marina Centre";
+    		$scope.eventObuMsgAlert = "Road closure at ECP Service";
     		$scope.eventObuMsgAlertkm = "1.2"
     			
-    		$scope.eventObuMsgJam = "Heavy Traffic Jam in Marina Centre";
+    		$scope.eventObuMsgJam = "Road closure at ECP Service";
     		$scope.eventObuMsgJamkm = "1.2"
     		
-    		$scope.eventObuMsgGuide = "Pls use Public tpt";
+    		$scope.eventObuMsgGuide = "Road closure at ECP Service";
     		$scope.eventObuMsgGuidekm = "1.2"
     				
     		
@@ -739,11 +884,22 @@ var app = angular.module('ltaApp', []);
       $scope.calleventcreate = function() {
     	$scope.showeventcreateFlag = true;
     	$scope.showeventresFlag = false ;
-      } 
+      }       
+// ********End of New Event Creation and response part  
       
-   // ********End of New Event Creation and response part  
-      
-      
+//* Timer button function
+$scope.showdateprebuttonFlag = true;
+$scope.showdatenextbuttonFlag = false;
+$scope.displaynextlist = function(visi) {
+	if(visi=='1') {
+	  $scope.showdateprebuttonFlag = false;
+	  $scope.showdatenextbuttonFlag = true;
+	}
+	if(visi=='2') {
+	  $scope.showdateprebuttonFlag = true;
+	  $scope.showdatenextbuttonFlag =  false;
+	}  	
+}      
       
       
   /* windows display */ 
@@ -796,9 +952,59 @@ var app = angular.module('ltaApp', []);
 		 
       }
       
-      
-      // End of 3 different windows display - in 3 panels - CC2 - GIS - BIS      
+// End of 3 different windows display - in 3 panels - CC2 - GIS - BIS      
  /* windows display */
+      
+//** Traffic Alert **//
+$scope.accTrafficAlertStatus1 = 'True'
+$scope.trafficAlertAction = function(act) { 
+	if(act=="accwindow") {
+		//window.close('ccgridview.jsp');	
+		//window.close('createtabase.jsp');	
+		$scope.accTrafficAlertStatus1 = 'True';
+		var win = window.open("","_self"); 
+		win.close();
+		window.open('ccgridviewta.jsp');
+		window.open('createaccbase.jsp');	
+			
+	} 
+	if(act=="ccwindow") {
+		window.close('createtabase.jsp');
+	}
+}
+	
+
+
+$scope.trafficalertwindow = function() {
+	var windowObjectReference3;  
+	var protocol = window.location.protocol;
+	var domain = window.location.hostname;
+	var port = window.location.port
+	var c =":";
+	var s = "//"
+   if(windowObjectReference3 == null || windowObjectReference3.closed) {
+		  var strpage3 = "/itrans/createtabase.jsp";
+		  var value3 = protocol.concat(s,domain,c,port,strpage3);
+		  //alert("bis url " + value3);
+		  
+		  window.open(window.location, '_parent')
+		  window.close();
+		  window.top.close();
+		  windowObjectReference3 = window.open(
+				value3,			
+				  "cc",
+				  "top=100,left=100,width=1200,height=630,resizable,scrollbars,status,toolbar=0,titlebar=0,menubar=0");
+
+				  	
+		}else {
+			windowObjectReference3.focus();
+	  }
+  }
+
+
+
+//** end of Traffic Alert **//      
+      
       
    // ******** MRT Incident Creation form Detail
   	$scope.mrtincflag = true;
@@ -1272,7 +1478,7 @@ var app = angular.module('ltaApp', []);
 		$scope.showzone =  true;
     };	
     flag = true;
-    $interval( function(){ $scope.selectSpeedChart(flag); }, 15000);
+   /* $interval( function(){ $scope.selectSpeedChart(flag); }, 15000);
     $scope.selectSpeedChart = function(flagVal) {
 		///alert("Speed");
       	$scope.showspeed = flagVal;
@@ -1321,7 +1527,7 @@ var app = angular.module('ltaApp', []);
     	$scope.showbisroad = false;
 		$scope.showzone =  flagVal;		
 	};
-	
+	*/
 //BIS Speed Data Dashboard	
 	$scope.eacSpeed = true;
 	$scope.eacTravel = false;

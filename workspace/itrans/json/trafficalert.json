@@ -1,0 +1,69 @@
+ {
+  "trafficalert": [
+    {
+	 "status":"True",
+	 "time":"2019/08/06 15.00",
+	 "alertid": "DET_806_9",
+	 "rname": "Lavender Street",
+	 "from":"",
+	 "to":"",
+	 "zone": "zone4",
+	 "desc": "Stopped Vehicle",
+	 "source": "DET"
+    },
+     {
+	 "status":"True",
+	 "time":"2019/08/06 15.10",
+	 "alertid": "CCTV_123_142",
+	 "rname": "AYE",
+	 "from":"",
+	 "to":"",
+	 "zone": "zone1",
+	 "desc": "Road Work",
+	 "source": "VA"
+    },
+    {
+	 "status":"True",
+	 "time":"2019/08/06 09.53",
+	 "alertid": "DET_79",
+	 "rname": "TUN",
+	 "from":"",
+	 "to":"",
+	 "zone": "zone2",
+	 "desc": "Stopped Vehicle",
+	 "source": "DET"
+    },{
+	 "status":"True",
+	 "time":"2019/08/06 11.34",
+	 "alertid": "DET_23_142",
+	 "rname": "Jalan Bukit Merah",
+	 "from":"",
+	 "to":"",
+	 "zone": "zone1",
+	 "desc": "Stopped Vehicle",
+	 "source": "DET"
+    },
+    {
+	 "status":"True",
+	 "time":"2019/08/06 09.53",
+	 "alertid": "DET_edited_88",
+	 "rname": "Aljunied road",
+	 "from":"",
+	 "to":"",
+	 "zone": "zone2",
+	 "desc": "Stopped Vehicle",
+	 "source": "DET"
+    },
+    {
+	 "status":"True",
+	 "time":"2019/08/06 10.00",
+	 "alertid": "CCTV_806_90",
+	 "rname": "Lavender Street",
+	 "from":"",
+	 "to":"",
+	 "zone": "zone5",
+	 "desc": "Congestion",
+	 "source": "VA"
+    }
+    ]
+ }

@@ -109,8 +109,7 @@
             CRS: "EPSG:{wkid}",
             BBOX: "{xmin},{ymin},{xmax},{ymax}"
           },
-
-          title: "CCTV"
+          title: "CCTV",
         });	
 		var vmsLayer = new CustomWMSLayer({
           mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
@@ -168,15 +167,15 @@
 	          title: "Carriageway"
 	        });
 		
-		/*** Onload event Accident Layer display Red and Orange*/	
-		var accidentLayer1 = new CustomWMSLayer({
+		/*** Current Traffic condition layer Red, Orange, Green*/	
+		var trafficplanlayerlane = new CustomWMSLayer({
 	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
 	          mapParameters: {
 	            SERVICE: "WMS",
 	            REQUEST: "GetMap",
 	            FORMAT: "image/png",
 	            TRANSPARENT: "TRUE",
-	            STYLES: "gis_carriageway_acc_style1",
+	            STYLES: "gis_carriageway_planlayer_style",
 	            VERSION: "1.3.0",
 	            LAYERS: "gisdbo_gis_carriageway",
 	            WIDTH: "{width}",
@@ -184,10 +183,188 @@
 	            CRS: "EPSG:{wkid}",
 	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
 	          },
-	          title: "AccLayer"
+	          title: "Current Traffic"
 	        });
 		
+		/*** Current Traffic condition layer Red, Orange, Green on prediction do nothing plan*/	
+		var trafficplan0layerlane = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			  SERVICE: "WMS",
+			  REQUEST: "GetMap",
+			  FORMAT: "image/png",
+			  TRANSPARENT: "TRUE",
+			  STYLES: "gis_carriageway_plan0layer_style",
+			  VERSION: "1.3.0",
+			  LAYERS: "gisdbo_gis_carriageway",
+			  WIDTH: "{width}",
+			  HEIGHT: "{height}",
+			  CRS: "EPSG:{wkid}",
+			  BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "Current Traffic Do Nothing"
+		  });
+	  
+		/*** Current Traffic condition layer Red, Orange, Green on prediction plan 1 */	
+		var trafficplan1layerlane = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			  SERVICE: "WMS",
+			  REQUEST: "GetMap",
+			  FORMAT: "image/png",
+			  TRANSPARENT: "TRUE",
+			  STYLES: "gis_carriageway_plan1layer_style",
+			  VERSION: "1.3.0",
+			  LAYERS: "gisdbo_gis_carriageway",
+			  WIDTH: "{width}",
+			  HEIGHT: "{height}",
+			  CRS: "EPSG:{wkid}",
+			  BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "Current Traffic Plan 1"
+		  });
 
+		/*** Current Traffic condition layer Red, Orange, Green on prediction plan 2 */	
+		var trafficplan2layerlane = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			SERVICE: "WMS",
+			REQUEST: "GetMap",
+			FORMAT: "image/png",
+			TRANSPARENT: "TRUE",
+			STYLES: "gis_carriageway_plan2layer_style",
+			VERSION: "1.3.0",
+			LAYERS: "gisdbo_gis_carriageway",
+			WIDTH: "{width}",
+			HEIGHT: "{height}",
+			CRS: "EPSG:{wkid}",
+			BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "Current Traffic Plan 2"
+		});
+
+
+		/*** Current Traffic condition layer Red, Orange, Green layer Implementation for plan 1 interval */	
+		var trafficlayerlaneImpl1 = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			SERVICE: "WMS",
+			REQUEST: "GetMap",
+			FORMAT: "image/png",
+			TRANSPARENT: "TRUE",
+			STYLES: "gis_carriageway_planlayerImp1_style",
+			VERSION: "1.3.0",
+			LAYERS: "gisdbo_gis_carriageway",
+			WIDTH: "{width}",
+			HEIGHT: "{height}",
+			CRS: "EPSG:{wkid}",
+			BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "traffic Implement layer 1"
+		});
+	
+		var trafficlayerlaneImpl2 = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			SERVICE: "WMS",
+			REQUEST: "GetMap",
+			FORMAT: "image/png",
+			TRANSPARENT: "TRUE",
+			STYLES: "gis_carriageway_planlayerImp2_style",
+			VERSION: "1.3.0",
+			LAYERS: "gisdbo_gis_carriageway",
+			WIDTH: "{width}",
+			HEIGHT: "{height}",
+			CRS: "EPSG:{wkid}",
+			BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "traffic Implement layer 2"
+		});
+
+		var trafficlayerlaneImpl3 = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			SERVICE: "WMS",
+			REQUEST: "GetMap",
+			FORMAT: "image/png",
+			TRANSPARENT: "TRUE",
+			STYLES: "gis_carriageway_planlayerImp3_style",
+			VERSION: "1.3.0",
+			LAYERS: "gisdbo_gis_carriageway",
+			WIDTH: "{width}",
+			HEIGHT: "{height}",
+			CRS: "EPSG:{wkid}",
+			BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "traffic Implement layer 3"
+		});
+
+		//GIS Expressway CTE Opp lane traffic condition
+		var trafficlayeropplane = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			SERVICE: "WMS",
+			REQUEST: "GetMap",
+			FORMAT: "image/png",
+			TRANSPARENT: "TRUE",
+			STYLES: "gis_carriageway_opp_rdcondition",
+			//STYLES: "gis_expressway_cte_opplane",
+			VERSION: "1.3.0",
+			LAYERS: "gisdbo_gis_carriageway",
+			//LAYERS: "gis_expressway",
+			WIDTH: "{width}",
+			HEIGHT: "{height}",
+			CRS: "EPSG:{wkid}",
+			BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "traffic opposite"
+		});
+
+
+		//GIS Expressway lane3 traffic condition during accident
+				var trafficlayerlane3 = new CustomWMSLayer({
+					mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+					mapParameters: {
+					SERVICE: "WMS",
+					REQUEST: "GetMap",
+					FORMAT: "image/png",
+					TRANSPARENT: "TRUE",
+					STYLES: "gis_carriageway_lane3_rdcondition",
+					//STYLES: "gis_expressway_cte_opplane",
+					VERSION: "1.3.0",
+					LAYERS: "gisdbo_gis_carriageway",
+					//LAYERS: "gis_expressway",
+					WIDTH: "{width}",
+					HEIGHT: "{height}",
+					CRS: "EPSG:{wkid}",
+					BBOX: "{xmin},{ymin},{xmax},{ymax}"
+					},
+					title: "traffic opposite"
+				});
+
+		//GIS Expressway lane3 traffic condition after clear the accident locaiton
+		var trafficlayerlane3green = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			SERVICE: "WMS",
+			REQUEST: "GetMap",
+			FORMAT: "image/png",
+			TRANSPARENT: "TRUE",
+			STYLES: "gis_carriageway_lane3_rdcondition_green",
+			//STYLES: "gis_expressway_cte_opplane",
+			VERSION: "1.3.0",
+			LAYERS: "gisdbo_gis_carriageway",
+			//LAYERS: "gis_expressway",
+			WIDTH: "{width}",
+			HEIGHT: "{height}",
+			CRS: "EPSG:{wkid}",
+			BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "traffic opposite"
+		});				
+				
+		
+		  
 		//Glide Site
 		var glideSiteLayer = new CustomWMSLayer({
 	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
@@ -208,64 +385,7 @@
 	        });
 		
 		
-  		//Layer draw red,orange,green color lane 
-		var cteheavytrafficLayer = new CustomWMSLayer({
-            mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
-            mapParameters: {
-              SERVICE: "WMS",
-              REQUEST: "GetMap",
-              FORMAT: "image/png",
-              TRANSPARENT: "TRUE",
-              STYLES: "gis_expressway_cte_heavytraffic_style",
-              VERSION: "1.3.0",
-              LAYERS: "gis_expressway",
-              WIDTH: "{width}",
-              HEIGHT: "{height}",
-              CRS: "EPSG:{wkid}",
-              BBOX: "{xmin},{ymin},{xmax},{ymax}"
-            },
-            title: "Heavy Traffic"
-          });
   		
-  		
-		//Accident layer lane closed in red color 
-		var cteheavytrafficRedLayer = new CustomWMSLayer({
-            mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
-            mapParameters: {
-              SERVICE: "WMS",
-              REQUEST: "GetMap",
-              FORMAT: "image/png",
-              TRANSPARENT: "TRUE",
-              STYLES: "gis_expressway_cte_heavytraffic_red_style",
-              VERSION: "1.3.0",
-              LAYERS: "gis_expressway",
-              WIDTH: "{width}",
-              HEIGHT: "{height}",
-              CRS: "EPSG:{wkid}",
-              BBOX: "{xmin},{ymin},{xmax},{ymax}"
-            },
-            title: "Heavy Traffic Red"
-          });
-  		
-		//Accident layer lane Orange Green color 
-		var ctetrafficGreenOrangeLayer = new CustomWMSLayer({
-            mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
-            mapParameters: {
-              SERVICE: "WMS",
-              REQUEST: "GetMap",
-              FORMAT: "image/png",
-              TRANSPARENT: "TRUE",
-              STYLES: "gis_expressway_cte_traffic_greenorange_style",
-              VERSION: "1.3.0",
-              LAYERS: "gis_expressway",
-              WIDTH: "{width}",
-              HEIGHT: "{height}",
-              CRS: "EPSG:{wkid}",
-              BBOX: "{xmin},{ymin},{xmax},{ymax}"
-            },
-            title: "Traffic Flow"
-          });
-		  
 		var cteLayer = new CustomWMSLayer({
             mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
             mapParameters: {
@@ -301,10 +421,47 @@
             CRS: "EPSG:{wkid}",
             BBOX: "{xmin},{ymin},{xmax},{ymax}"
           },
-          title: "TrafficSpeed"
+          title: "TSpeed"
         });
 
-		
+		var detectCamera = new CustomWMSLayer({
+	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapParameters: {
+	            SERVICE: "WMS",
+	            REQUEST: "GetMap",
+	            FORMAT: "image/png",
+	            TRANSPARENT: "TRUE",
+	            STYLES: "gis_detectcam_style",
+	            VERSION: "1.3.0",
+	            LAYERS: "gisdbo_gis_ea_fels_attr",
+	            WIDTH: "{width}",
+	            HEIGHT: "{height}",
+	            CRS: "EPSG:{wkid}",
+	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+	          },
+
+	          title: "DCam"
+	        });
+
+	// Traffic Speed Data Layer1
+		var trafficSpeedLayer1 = new CustomWMSLayer({
+          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapParameters: {
+            SERVICE: "WMS",
+            REQUEST: "GetMap",
+            FORMAT: "image/png",
+            TRANSPARENT: "TRUE",
+            STYLES: "gis_speedlink_data_style",
+            VERSION: "1.3.0",
+            LAYERS: "gis_speedlink_data",
+            WIDTH: "{width}",
+            HEIGHT: "{height}",
+            CRS: "EPSG:{wkid}",
+            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+          },
+          title: "Link Speed"
+        });	
+	
 		cctvLayer.visible  = false;
 		vmsLayer.visible  = false;
 		carriagewayLayer.visible = false;
@@ -312,15 +469,32 @@
 		cteLayer.visible  = false;
 		//ctetrafficGreenOrangeLayer.visible = false;
 		glideSiteLayer.visible = false;
+		detectCamera.visible = false;
 		speedLinkLayer.visible = false;
-		
+		trafficSpeedLayer1.visible = false;
 		//othervmsLayer.visible = false;
+		trafficplanlayerlane.visible = false;
+		trafficplan0layerlane.visible = false;
+		trafficplan1layerlane.visible = false;
+		trafficplan2layerlane.visible = false;
+		trafficlayerlaneImpl1.visible = false;
+		trafficlayerlaneImpl2.visible = false;
+		trafficlayerlaneImpl3.visible = false;
+		trafficlayeropplane.visible = false;
+		trafficlayerlane3.visible = false;
+		trafficlayerlane3green.visible = false;
 		map = new Map({
           //center: [103.84347,1.32858],
          // layers: [layer1,cctvLayer,vmsLayer,glideSiteLayer,carriagewayLayer,cteheavytrafficLayer,cteLayer,ctetrafficGreenOrangeLayer,speedLinkLayer]
-		  layers: [layer1,cctvLayer,vmsLayer,glideSiteLayer,carriagewayLayer,cteLayer,speedLinkLayer,accidentLayer1]
-        });
-		
+		  basemap: {
+		   // baseLayers: [layer1,trafficplanlayerlane, trafficplan0layerlane,trafficplan1layerlane ]
+		   baseLayers: [
+			   			layer1,trafficplanlayerlane,trafficplan0layerlane,trafficplan1layerlane,trafficplan2layerlane,trafficlayerlaneImpl1,
+						trafficlayerlaneImpl2,trafficlayerlaneImpl3,trafficlayeropplane,trafficlayerlane3,trafficlayerlane3green
+						]
+          },
+		  layers: [cctvLayer,vmsLayer,glideSiteLayer,trafficSpeedLayer1,detectCamera]
+		});
 		
         view = new MapView({
           container: "viewDiv",
@@ -335,27 +509,59 @@
         draw = new Draw({
           view: view
         });
+		view.popup.viewModel.autoOpenEnabled = true;
+		view.when(function() {
+			//view.extent = layer.fullExtent;
+			//view.popupTemplate.visible =true;			
+			view.extent = new Extent({
+			  xmin: 103.879526,
+			  ymin:  1.302259,
+			  xmax: 103.963800,
+			  ymax:  1.418752,
+			  spatialReference: {
+				wkid: 4326
+			  }
+			});
+		
+			var layerList = new LayerList({
+				view: view
 
-/*** Onload Icon display */		
+			  });
+			  view.ui.add(layerList, "bottom-left");
+			}); 
+
+			
+
+/*** Onload Icon display first time*/		
 /* Start Accident location point and icon */
 accIconLocation();
 
-// CCTV display 
+// Onload CTV display 
 accCCTVLocation();
+
+//Onload Detection Camera Icon 
+dtCamIconLocation();
+
+//Onload TIP TSP  Icon 
+ttpTipIconLocation();
+
+//Onload default and system gen message 
+scenarioDefaultVMSOnload()
+
 
 /*end Accident location point and icon*/   
 /*** Onload  VMS and Glide display scenrio1 base messages*/		
 	var pictureGraphicSce1List = [];
 	var pictureGraphicSce1TraList = [];
-	scenrio1VMSMsgOnMap();
+	//scenrio1VMSMsgOnMap();
 /*** End of Onload event VMS and Glide display scenrio1 base messages*/
 
 var accPictureGraphic ="";
 function accIconLocation() {  // Icon display
 	    var accpoint = {
                 type: "point", // autocasts as new Point()
-                longitude: 103.858056,
-                latitude: 1.378118                        
+                longitude: 103.858249, //103.858056,
+                latitude: 1.378062  //1.378118                        
                 };     
             var accPictureSymbol = {
                 type: "picture-marker",
@@ -375,23 +581,22 @@ function accIconLocation() {  // Icon display
 /*** Onload cctv icon ***/
 var cctvPictureGraphic1 ="", cctvPictureGraphic2 ="", cctvPictureGraphic3 ="";
 function accCCTVLocation() {  // Icon display
-    var accPictureGraphic ="";
 	    var cctvpoint1 = {
-                type: "point", // autocasts as new Point()
-                longitude: 103.8587667,
-                latitude: 1.3752537                        
-                };  
-	    var cctvpoint2 = {
                 type: "point", // autocasts as new Point()
                 longitude: 103.8582773,
                 latitude: 1.3770134                        
                 }; 
-	    var cctvpoint3 = {
+	    var cctvpoint2 = {
                 type: "point", // autocasts as new Point()
-                longitude: 103.8584744,
-                latitude: 1.3778264                        
+                longitude:  103.8587663,
+                latitude: 1.3752537                         
                 }; 
-				
+		var cctvpoint3 = {
+					type: "point", // autocasts as new Point()
+					longitude: 103.8610203,
+					latitude: 1.3698366                        
+				  }; 
+				  
             var cctvPictureSymbol = {
                 type: "picture-marker",
                 url: "cctv.png",
@@ -400,952 +605,530 @@ function accCCTVLocation() {  // Icon display
                 xoffset: 5,
                 yoffset: 5
               }
+			var accVideoContent ='<video width="270" height="150" controls="true" autoplay="1" frameborder="0"><source src=accvideo.mp4 type=video/mp4></video>';
+			var accVideoTitle = '<font color="#24DEE8" face="Roboto" size="3"><b>Accident</b></font>';
             cctvPictureGraphic1 = new Graphic({
                 geometry: cctvpoint1,
                 symbol: cctvPictureSymbol,
 				popupTemplate: {
 						// autocasts as new PopupTemplate()
-						title: "Video",
-						content: '<video width="270" height="150" controls><source src=CTEvideo.mp4 type=video/mp4></video>'
+						title: accVideoTitle,
+						content: accVideoContent
 				}
-               }); 
+			   }); 
+			   
+			var traSVideoContent ='<video width="270" height="150" controls="true" autoplay="1" frameborder="0"><source src=CTEvideo.mp4 type=video/mp4></video>';
+			var traSVideoTitle = '<font color="#24DEE8" face="Roboto" size="3"><b>Traffic</b></font>';			   
             cctvPictureGraphic2 = new Graphic({
                 geometry: cctvpoint2,
                 symbol: cctvPictureSymbol,
 				popupTemplate: {
 						// autocasts as new PopupTemplate()
-						title: "Video",
-						content: '<video width="270" height="150" controls><source src=CTEvideo.mp4 type=video/mp4></video>'
+						title: traSVideoTitle,
+						content: traSVideoContent
 				}
-               }); 
-            cctvPictureGraphic3 = new Graphic({
+			   }); 			   
+			   cctvPictureGraphic3 = new Graphic({
                 geometry: cctvpoint3,
                 symbol: cctvPictureSymbol,
 				popupTemplate: {
 						// autocasts as new PopupTemplate()
-						title: "Video",
-						content: '<video width="270" height="150" controls><source src=CTEvideo.mp4 type=video/mp4></video>'
+						title: traSVideoTitle,
+						content: traSVideoContent
 				}
                }); 			   
-            	view.graphics.addMany([cctvPictureGraphic1, cctvPictureGraphic2, cctvPictureGraphic3 ]);
+            	view.graphics.addMany([cctvPictureGraphic1, cctvPictureGraphic2,cctvPictureGraphic3]);
       }
-
-	  
-
-
-
-
-
-
-
-
-	  
-	
 /*** end of cctv icon ***/	
-	  
-function endCongestion() {
-	view.graphics.removeAll();
-	cteLayer.visible  = true;
-	accidentLayer1.visible  = false;
-	clearInterval(endCongestionTimer);
-	//clearInterval(firstCongestionTimer);
-	//clearInterval(secondCongestionTimer);
-	clearInterval(thirdCongestionTimer);
-}
-/*** Start congestion Point Creation*/
-var congpolylineGraphic1Red,congpolylineGraphic1AmberA1,congpolylineGraphic1AmberA2,congpolylineGraphic1AmberA3, congpolylineGraphic1Ambercte, congpolylineGraphic1Green ;
-function firstCongestion(){
-// 80% congestion  first stage
-/*** Red Line Layer  */
-cteLayer.visible  = false;
-accidentLayer1.visible = false;
-	 var congpolyline1Red = {
-	    	  type: "polyline", // autocasts as new Polyline()
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",  //[103.858205, 1.378473],
-	    	  paths: [ [103.858056, 1.377817],[103.858577, 1.375705],
-	    		       [103.859092, 1.374268],[103.859261, 1.373794],
-					   [103.860294, 1.371318],[103.860666, 1.370147], 
-					   [103.860859, 1.369010],[103.860766, 1.367917]
-					    
-					   ]					   
-	    	};		
-   	        conglineSymbol1Red = {
-   	          type: "simple-line", 
-   	          color: [255,64,0],
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1Red = new Graphic({
-   	          geometry: congpolyline1Red,
-   	          symbol: conglineSymbol1Red,
-   	        });	
-//Amber	      			
-// cte to amg ave 3 	
-	var congpolyline1AmberA1 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-				[103.859895,1.365306], //cte AMg ave to 3
-				[103.859981, 1.365778], 
-				[103.860110, 1.366207],
-				[103.860206, 1.366667], 
-				[103.860381, 1.367384], 
-				[103.860370, 1.367931], 
-				[103.860359, 1.368446], 
-				[103.860230, 1.368725], 
-				[103.860101, 1.368822],
-				[103.859972, 1.368940], 
-				[103.859811, 1.369026], 
-				[103.859618, 1.369047], 
-				[103.859618, 1.369047],
-				[103.858994, 1.368985], 
-				//  AMg ave 3 to cte
-				[103.858216, 1.369018],
-				[103.859023, 1.369098], 
-				[103.859629, 1.369195], 
-				[103.859854, 1.369243], 
-				[103.860022, 1.369341], 
-				[103.860113, 1.369448], 
-				[103.860226, 1.369545], 
-				[103.860317, 1.369679], 
-				[103.860301, 1.369990], 
-				[103.860221, 1.370462], 
-				[103.860141, 1.370977], 
-				[103.860039, 1.371427]
-			]
-	    	};		
-   	        var conglineSymbol1Amber = {
-   	          type: "simple-line", 
-   	          color: [255,165,0],
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1AmberA1 = new Graphic({
-   	          geometry: congpolyline1AmberA1,
-   	          symbol: conglineSymbol1Amber
-   	        });
+
+/** Detection Camera Icon */
+		//var dtVideoContent ='';	
+	   var dtCamPictureGraphic1, dtCamPictureGraphic2;
+	   function dtCamIconLocation() {  // Icon display
+		   
+		var dtCamPictureSymbol = {
+			type: "picture-marker",
+			url: "DTCam.png",
+			width: "20",
+			height: "20",
+			xoffset: 5,
+			yoffset: 5
+		  }
+		 //Cam 1
+		 var dtCamPoint1 = {
+                type: "point", // autocasts as new Point()
+                longitude: 103.8564699,
+                latitude: 1.376076                        
+                }; 
+	    var dtCamPoint2 = {
+                type: "point", // autocasts as new Point()
+                longitude:  103.8579652,
+                latitude: 1.3691602                         
+				}; 
+
+			dtCamPictureGraphic1 = new Graphic({
+                geometry: dtCamPoint1,
+				symbol: dtCamPictureSymbol,
+				popupTemplate: {
+					// autocasts as new PopupTemplate()
+					title: 'Traffic',
+					content: '<video width="270" height="150" controls="true" autoplay="1" frameborder="0"><source src=CTEvideo.mp4 type=video/mp4></video>'
+				}
+			}); 			   
 			
-// Amber cte to amg ave 5 		
-		 var congpolyline1AmberA2 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.858945, 1.374193], 
-					[103.858398, 1.375469], 
-					[103.858226, 1.375909], 
-					[103.858033, 1.376081], 
-					[103.857808, 1.376188], 
-					[103.857551, 1.376220], 
-					[103.857079, 1.376134], 
-					[103.856532, 1.376037]
-			]
-	    	};			
-			 
-			 congpolylineGraphic1AmberA2 = new Graphic({
-   	          geometry: congpolyline1AmberA2,
-   	          symbol: conglineSymbol1Amber
-   	        });
+			dtCamPictureGraphic2 = new Graphic({
+                geometry: dtCamPoint2,
+				symbol: dtCamPictureSymbol,
+				popupTemplate: {
+					// autocasts as new PopupTemplate()
+					title: 'Traffic',
+					content: '<video width="270" height="150" controls="true" autoplay="1" frameborder="0"><source src=CTEvideo.mp4 type=video/mp4></video>'
+				}
+			}); 
+	   
+		   view.graphics.addMany([dtCamPictureGraphic1,dtCamPictureGraphic2]);               
+		 }
 
-// Amber amg ave 5 to cte 		
-		 var congpolyline1AmberA3 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.856532, 1.376037], 
-					[103.857101, 1.376316], 
-					[103.857455, 1.376455], 
-					[103.857691, 1.376670], 
-					[103.857916, 1.376820], 
-					[103.858013, 1.377281] 
-					// 
-					//[103.858056, 1.378385] 
-				]
-	    	};			
-			 
-			 congpolylineGraphic1AmberA3 = new Graphic({
-   	          geometry: congpolyline1AmberA3,
-   	          symbol: conglineSymbol1Amber
-   	        });
-// Amber cte 	
-			var congpolyline1Ambercte = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.860766, 1.367917],[103.860455,1.366662], [103.860026, 1.365675]
-				]
-	    	};			
-			 
-			 congpolylineGraphic1Ambercte = new Graphic({
-   	          geometry: congpolyline1Ambercte,
-   	          symbol: conglineSymbol1Amber
-   	        });			
-			
-			
-//Green		
-			 var congpolyline1Green = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.860026, 1.365675],[103.859683, 1.364742], [103.859297,1.363659]
-					 ]
-	    	};		
-   	        var conglineSymbol1Green = {
-   	          type: "simple-line", 
-   	          color: [0,255,64],
-   	          width: 2
-   	        };		
- 			congpolylineGraphic1Green = new Graphic({
-   	          geometry: congpolyline1Green,
-   	          symbol: conglineSymbol1Green
-   	        });	
-			
-//Green After accident towards CTE			
-			var congpolyline1Greencte2 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.858330, 1.384170],[103.858287, 1.385779],[103.858298, 1.381221], [103.858319, 1.380009], [103.858287, 1.379784] 
-					 ]
-	    	};			
- 			congpolylineGraphic1Greencte2 = new Graphic({
-   	          geometry: congpolyline1Greencte2,
-   	          symbol: conglineSymbol1Green
-   	        });
-			
-			view.graphics.addMany([congpolylineGraphic1Red,congpolylineGraphic1AmberA1,congpolylineGraphic1AmberA2,congpolylineGraphic1AmberA3,congpolylineGraphic1Ambercte, congpolylineGraphic1Green, congpolylineGraphic1Greencte2]);
-}
-// End of 80% congestion  first stage
-
-// 60% congestion  first stage
-function secondCongestion(){
-	clearInterval(firstCongestionTimer);
-
-//var congpolylineGraphic1Red,congpolylineGraphic1AmberA1,congpolylineGraphic1AmberA2,congpolylineGraphic1AmberA3,congpolylineGraphic1Ambercte, congpolylineGraphic1Green
-	 var congpolyline1Red = {
-	    	  type: "polyline", // autocasts as new Polyline()
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel", //[103.858205, 1.378473],
-	    	  paths: [ [103.858056, 1.377817],[103.858577, 1.375705],
-	    		       [103.859092, 1.374268],[103.859261, 1.373794],
-					   [103.860294, 1.371318]
-					    ]					   
-	    	};		
-   	        conglineSymbol1Red = {
-   	          type: "simple-line", 
-   	          color: [255,64,0],
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1Red = new Graphic({
-   	          geometry: congpolyline1Red,
-   	          symbol: conglineSymbol1Red,
-   	        });	
-//Amber	      			
-// cte to amg ave 3 	
-	var congpolyline1AmberA1 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-				//[103.859895,1.365306], //cte AMg ave to 3
-				//[103.859981, 1.365778], 
-				//[103.860110, 1.366207],
-				[103.860206, 1.366667], 
-				[103.860381, 1.367384], 
-				[103.860370, 1.367931], 
-				[103.860359, 1.368446], 
-				[103.860230, 1.368725], 
-				[103.860101, 1.368822],
-				[103.859972, 1.368940], 
-				[103.859811, 1.369026], 
-				[103.859618, 1.369047], 
-				 
-				//  AMg ave 3 to cte
-				[103.858216, 1.369018],
-				[103.859023, 1.369098], 
-				[103.859629, 1.369195], 
-				[103.859854, 1.369243], 
-				[103.860022, 1.369341], 
-				[103.860113, 1.369448], 
-				[103.860226, 1.369545], 
-				[103.860317, 1.369679], 
-				[103.860301, 1.369990], 
-				[103.860221, 1.370462], 
-				[103.860141, 1.370977], 
-				[103.860039, 1.371427]
-			]
-	    	};		
-   	        var conglineSymbol1Amber = {
-   	          type: "simple-line", 
-   	          color: [255,165,0],
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1AmberA1 = new Graphic({
-   	          geometry: congpolyline1AmberA1,
-   	          symbol: conglineSymbol1Amber
-   	        });
-			
-// Amber cte to amg ave 5 		
-		 var congpolyline1AmberA2 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.858945, 1.374193], 
-					[103.858398, 1.375469], 
-					[103.858226, 1.375909], 
-					[103.858033, 1.376081], 
-					[103.857808, 1.376188], 
-					[103.857551, 1.376220], 
-					[103.857079, 1.376134], 
-					[103.856532, 1.376037]
-				]
-	    	};						 
-			 congpolylineGraphic1AmberA2 = new Graphic({
-   	          geometry: congpolyline1AmberA2,
-   	          symbol: conglineSymbol1Amber
-   	        });
-
-// Amber amg ave 5 to cte 		
-		 var congpolyline1AmberA3 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.856532, 1.376037], 
-					[103.857101, 1.376316], 
-					[103.857455, 1.376455], 
-					[103.857691, 1.376670], 
-					[103.857916, 1.376820], 
-					[103.858013, 1.377281] 
-					// 
-					//[103.858056, 1.378385] 
-				]
-	    	};			
-			 
-			 congpolylineGraphic1AmberA3 = new Graphic({
-   	          geometry: congpolyline1AmberA3,
-   	          symbol: conglineSymbol1Amber
-   	        });
-// Amber cte 	
-			var congpolyline1Ambercte = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.860294, 1.371318],[103.860666, 1.370147],[103.860666, 1.370147], 
-					   [103.860859, 1.369010],[103.860766, 1.367917],[103.860766, 1.367917],[103.860455,1.366662] 
-				]
-	    	};			
-			 
-			 congpolylineGraphic1Ambercte = new Graphic({
-   	          geometry: congpolyline1Ambercte,
-   	          symbol: conglineSymbol1Amber
-   	        });						
-//Green		
-			 var congpolyline1Green = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.860455,1.366662],[103.860026, 1.365675],[103.860026, 1.365675],[103.859683, 1.364742], [103.859297,1.363659]
-					 ]
-	    	};		
-   	        var conglineSymbol1Green = {
-   	          type: "simple-line", 
-   	          color: [0,255,64],
-   	          width: 2
-   	        };		
- 			congpolylineGraphic1Green = new Graphic({
-   	          geometry: congpolyline1Green,
-   	          symbol: conglineSymbol1Green
-   	        });	
-
-//Green After accident towards CTE			
-			var congpolyline1Greencte2 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.858330, 1.384170],[103.858287, 1.385779],[103.858298, 1.381221], [103.858319, 1.380009], [103.858287, 1.379784] 
-					 ]
-	    	};			
- 			congpolylineGraphic1Greencte2 = new Graphic({
-   	          geometry: congpolyline1Greencte2,
-   	          symbol: conglineSymbol1Green
-   	        });	
-			 		
-			view.graphics.addMany([congpolylineGraphic1Red,congpolylineGraphic1AmberA1,congpolylineGraphic1AmberA2,congpolylineGraphic1AmberA3,congpolylineGraphic1Ambercte, congpolylineGraphic1Green,congpolylineGraphic1Greencte2]);
-	}
-// End of 60% congestion  first stage
-
-// 40% congestion  first stage
-function thirdCongestion(){
-	clearInterval(secondCongestionTimer);
-//var congpolylineGraphic1Red,congpolylineGraphic1AmberA1,congpolylineGraphic1AmberA2,congpolylineGraphic1AmberA3,congpolylineGraphic1Ambercte, congpolylineGraphic1Green
-	 var congpolyline1Red = {
-	    	  type: "polyline", // autocasts as new Polyline()
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel", //[103.858205, 1.378473],
-	    	  paths: [ [103.858056, 1.377817],[103.858577, 1.375705],
-	    		       [103.859092, 1.374268]
-					    ]					   
-	    	};		
-   	        conglineSymbol1Red = {
-   	          type: "simple-line", 
-   	          color: [255,64,0],
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1Red = new Graphic({
-   	          geometry: congpolyline1Red,
-   	          symbol: conglineSymbol1Red,
-   	        });	
-//Amber	      			
-// cte to amg ave 3 	
-	var congpolyline1AmberA1 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-				//[103.859895,1.365306], //cte AMg ave to 3
-				//[103.859981, 1.365778], 
-				//[103.860110, 1.366207],
-				[103.860206, 1.366667], 
-				[103.860381, 1.367384], 
-				[103.860370, 1.367931], 
-				[103.860359, 1.368446], 
-				[103.860230, 1.368725], 
-				[103.860101, 1.368822],
-				[103.859972, 1.368940], 
-				[103.859811, 1.369026], 
-				[103.859618, 1.369047], 
-			]
-	    	};
-			var conglineSymbol1Green11 = {
-   	          type: "simple-line", 
-   	          color: [0,255,64], 
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1Green11 = new Graphic({
-   	          geometry: congpolyline1AmberA1,
-   	          symbol: conglineSymbol1Green11
-   	        });
-	var congpolyline1AmberA11 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-				//  AMg ave 3 to cte
-				[103.858216, 1.369018],
-				[103.859023, 1.369098], 
-				[103.859629, 1.369195], 
-				[103.859854, 1.369243], 
-				[103.860022, 1.369341], 
-				[103.860113, 1.369448], 
-				[103.860226, 1.369545], 
-				[103.860317, 1.369679], 
-				[103.860301, 1.369990], 
-				[103.860221, 1.370462], 
-				[103.860141, 1.370977], 
-				[103.860039, 1.371427]
-			]
-	    	};			
-   	        var conglineSymbol1Amber = {
-   	          type: "simple-line", 
-   	          color: [255,165,0],
-   	          width: 2
-   	        };		
- 			 congpolylineGraphic1AmberA1 = new Graphic({
-   	          geometry: congpolyline1AmberA11,
-   	          symbol: conglineSymbol1Amber
-   	        });
-			
-// Amber cte to amg ave 5 		
-		 var congpolyline1AmberA2 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-				[103.858945, 1.374193], 
-				[103.858398, 1.375469], 
-				[103.858226, 1.375909], 
-				[103.858033, 1.376081], 
-				[103.857808, 1.376188], 
-				[103.857551, 1.376220], 
-				[103.857079, 1.376134], 
-				[103.856532, 1.376037]
-			]
-	    };			
-			 
-			 congpolylineGraphic1AmberA2 = new Graphic({
-   	          geometry: congpolyline1AmberA2,
-   	          symbol: conglineSymbol1Amber
-   	        });
-
-// Amber amg ave 5 to cte 		
-		 var congpolyline1AmberA3 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.856532, 1.376037], 
-					[103.857101, 1.376316], 
-					[103.857455, 1.376455], 
-					[103.857691, 1.376670], 
-					[103.857916, 1.376820], 
-					[103.858013, 1.377281] 
-					// 
-					//[103.858056, 1.378385] 
-				]
-	    	};			
-			 
-			 congpolylineGraphic1AmberA3 = new Graphic({
-   	          geometry: congpolyline1AmberA3,
-   	          symbol: conglineSymbol1Amber
-   	        });
-// Amber cte 	
-			var congpolyline1Ambercte = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [
-					[103.859092, 1.374268],[103.859261, 1.373794],[103.859261, 1.373794],
-					   [103.860294, 1.371318],[103.860294, 1.371318],[103.860666, 1.370147],[103.860666, 1.370147] 
-				]
-	    	};			
-			 
-			 congpolylineGraphic1Ambercte = new Graphic({
-   	          geometry: congpolyline1Ambercte,
-   	          symbol: conglineSymbol1Amber
-   	        });			
-		
-//Green		
-			 var congpolyline1Green = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [	[103.860666, 1.370147],[103.860859, 1.369010],
-						[103.860859, 1.369010],[103.860766, 1.367917],
-						[103.860766, 1.367917],[103.860455,1.366662], 
-						[103.860455,1.366662],[103.860026, 1.365675],
-						[103.860026, 1.365675],[103.859683, 1.364742], 
-						[103.859297,1.363659]
-					 ]
-	    	};		
-   	        var conglineSymbol1Green = {
-   	          type: "simple-line", 
-   	          color: [0,255,64],
-   	          width: 2
-   	        };		
- 			congpolylineGraphic1Green = new Graphic({
-   	          geometry: congpolyline1Green,
-   	          symbol: conglineSymbol1Green
-   	        });	
-
-//Green After accident towards CTE			
-			var congpolyline1Greencte2 = {
-	    	  type: "polyline", 
-	    	  style: "short-dot",
-	    	  cap: "round",
-	          join: "bevel",
-	    	  paths: [ [103.858330, 1.384170],[103.858287, 1.385779],[103.858298, 1.381221], [103.858319, 1.380009], [103.858287, 1.379784] 
-					 ]
-	    	};			
- 			congpolylineGraphic1Greencte2 = new Graphic({
-   	          geometry: congpolyline1Greencte2,
-   	          symbol: conglineSymbol1Green
-   	        });	
-			view.graphics.addMany([congpolylineGraphic1Red,congpolylineGraphic1AmberA1,congpolylineGraphic1AmberA2,congpolylineGraphic1AmberA3,congpolylineGraphic1Ambercte, congpolylineGraphic1Green,congpolylineGraphic1Greencte2,congpolylineGraphic1Green11]);
-	}
-// End of 40% congestion  first stage			
-
- 
-
-/*** TMD Layer show message Proposed system display */
-  /*          	
-            		var tmdequipids = document.getElementsByName("tmdeqipid");
-            		var tmdtimemsgs = document.getElementsByName("tmdtimemsg");
-            		var tmdminmsgs = document.getElementsByName("tmdminmsg");
-            		var tmdstrnames = document.getElementsByName("tmdstrnames"); 
-            		var tmdSelEqId, tmdSelTiMsg, tmdSelMiMsg, tmdSelStrName1, tmdSelStrName2, tmdSelMiMsg;
-            		for(k=0; k<tmdequipids.length;k++) {
-            			tmdSelEqId = tmdequipids[k].value;
-            			tmdSelTiMsg = tmdtimemsgs[k].value;
-            			tmdSelMiMsg = tmdminmsgs[k].value;	
-            			for(i=0;i<3;i++) {
-            					tmdSelStrName1 = tmdstrnames[0].value;	
-            					tmdSelStrName2 = tmdstrnames[1].value;
-            					tmdSelStrName3 = tmdstrnames[2].value;			
-            			}
-            			break;	
-            		}
-            		var sepIndex = tmdSelStrName1.indexOf("$");
-            		var streetName1 = tmdSelStrName1.substring(0, sepIndex);
-            		var min1 = tmdSelStrName1.substring(sepIndex+1, tmdSelStrName1.length);
-            		sepIndex = tmdSelStrName2.indexOf("$");
-            		var streetName2 = tmdSelStrName2.substring(0, sepIndex);
-            		var min2 = tmdSelStrName2.substring(sepIndex+1, tmdSelStrName2.length);
-            		sepIndex = tmdSelStrName3.indexOf("$");
-            		var streetName3 = tmdSelStrName3.substring(0, sepIndex);
-            		var min3 = tmdSelStrName3.substring(sepIndex+1, tmdSelStrName3.length);
-            var msgTitle =  "<center><font style='color:#8BD27A'><b>"+tmdSelEqId+"</b></font><center>"
-            var msgContent =	"<b><center><font style='color:#8BD27A'>"+tmdSelTiMsg+" &nbsp;&nbsp;&nbsp;&nbsp;"+tmdSelMiMsg+"</font><center><b><br>" 
-				+ "<center><b>"+streetName1+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style='color:#8BD27A'>"+min1+"</font><b><center>" 
-				+ "<center><b>"+streetName2+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style='color:#8BD27A'>"+min2+"</font><b><center>" 
-				+ "<center><b>"+streetName3+" &nbsp;&nbsp;&nbsp;&nbsp;<font style='color:#8BD27A'>"+min3+"</font></b><center>";
-
-	/*  var tmdMsgpoint1 = {
-        type: "point", // autocasts as new Point()
-        longitude: 103.858397,
-        latitude: 1.3615295                   
-      }; 
-      var tmdPictureSymbol = {
+/** TTP TSP VMS locations */
+function ttpTipIconLocation() {  // Icon display
+		//TTP Image 	
+		var ttpPictureSymbol = {
                 type: "picture-marker",
-                url: "TMD1WithMessage.PNG",
+                url: "TTP_MSG.png",
                 width: "20",
-                height: "20",
-              }
-      tmdMsgPicGrapText1 = new Graphic({
-			geometry: tmdMsgpoint1,
-			symbol: tmdPictureSymbol,
-			popupTemplate: {
-				// autocasts as new PopupTemplate()
-				title: msgTitle,
-				content: msgContent    
-			}
-      });
-      view.graphics.addMany([tmdMsgPicGrapText1]); */
-/***  End of TMD Layer show message Proposed system display */
-
- 
- /*** Display ALL VMS Message **************/
- var pictureGraphicTextAll,pictureGraphicTextAll00,pictureGraphicTextAll01,pictureGraphicTextAll02;
- document.getElementById("accAllVmsMessage").onclick = function() {
-  
-  //selected check box
-  var b =  document.getElementsByName("accvmssatus").length;
-  var details = document.getElementsByName("accMessageDetail"); 
-  var id = document.getElementsByName("accvmsequipidt");
-  var vmssimpleMarkerSymbol = {
-      type: "simple-marker",
-      color: [32,43,83],  // orange
-      outline: {
-      color: [32,43,83], // white
-         width: 0.5
-      }
-  };
-  
-  var PictureSymbolImplAll = {
-    type: "picture-marker",
-    url: "rvms_normal.png",
-    width: "20",
-    height: "20",
-  }
-  var seleid, selemsg;
-  
-  for(i=0;i<b;i++) {   
-	selemsg = details[i].value;
-    seleid = id[i].value;
-    
-	var imgattach;
-	var imgattachSel = selemsg.indexOf('Accident');
-	if(imgattachSel==0) {
-		imgattach =  
-		'<svg width="10" height="10"><img src="accimg1.JPG"  width="30px" height="30px"/> <img src="vms5.png"  width="30px" height="30px"/></svg>';
-	} else {
-		imgattach =  
-			'<svg width="10" height="10"><img src="vms4.png"  width="30px" height="30px"/></svg>';		
-	}
-	
-	
-	
-  if(i==0) {
-      var pointA1 = {
-        type: "point", // autocasts as new Point()
-        longitude: 103.857499,
-        latitude: 1.3691533                  
-      }; 
-      pictureGraphicTextAll = new Graphic({
-        geometry: pointA1,
-        symbol: PictureSymbolImplAll,
-        popupTemplate: {
-            // autocasts as new PopupTemplate()
-            title: seleid,
-            content: selemsg  + '<br><center>' + imgattach + '<center>'
-          }
-      });
-      view.graphics.addMany([pictureGraphicTextAll]);
-    }
-    if(i==1) {
-      var pointA2 = {
-        type: "point", // autocasts as new Point()
-        longitude: 103.8581903,
-        latitude: 1.383792                   
-      }; 
-      	 	
-      pictureGraphicTextAll01 = new Graphic({
-        geometry: pointA2,
-        symbol: PictureSymbolImplAll,
-        popupTemplate: {
-            // autocasts as new PopupTemplate()
-            title: seleid,
-            content: selemsg  + '<br><center>' + imgattach + '<center>'
-          }
-      });
-      view.graphics.addMany([pictureGraphicTextAll01]);
-    }
-    if(i==2) {
-      var pointA3 = {
-        type: "point", // autocasts as new Point()
-        longitude: 103.8553513,
-        latitude: 1.3759417                   
-      }; 
-      	 	 	
-      pictureGraphicTextAll00 = new Graphic({
-        geometry: pointA3,
-        symbol: PictureSymbolImplAll,
-        popupTemplate: {
-            // autocasts as new PopupTemplate()
-            title: seleid,
-            content: selemsg  + '<br><center>' + imgattach + '<center>'
-          }
-      });
-      view.graphics.addMany([pictureGraphicTextAll00]);
-    }
-    if(i==3) { 
-      var pointA4 = {		    
-        type: "point", // autocasts as new Point()
-        longitude: 103.8583969,
-        latitude: 1.3615294                   
-      }; 
-      	
-      pictureGraphicTextAll02 = new Graphic({
-       geometry: pointA4,
-       symbol: PictureSymbolImplAll,
-       popupTemplate: {
-           // autocasts as new PopupTemplate()
-           title: seleid,
-           content: selemsg  + '<br><center>' + imgattach + '<center>'
-         }
-     });
-    view.graphics.addMany([pictureGraphicTextAll02]);
-     }
-  } 
- }
-  /*** End of Display ALL VMS Message **************/
-  
-  
- /*** VMS Message Display **************/
- 
- var pictureGraphicText,pictureGraphicText00,pictureGraphicText01,pictureGraphicText02;
- document.getElementById("accVmsMessage").onclick = function() {
-	 
-  //selected check box
-  var b =  document.getElementsByName("accvmssatus").length;
-  
-	for(i=0;i<b;i++) {   
-      if (document.getElementsByName("accvmssatus")[i].checked) {
-        selectedMsgNo = i ;
-    }
-  }
- var selemsg ;
- var selectedMsgNo;
-  //selected vms message 
- var details = document.getElementsByName("accMessageDetail");
- selemsg = details[selectedMsgNo].value;
- 
- //selected vms id 
- var id = document.getElementsByName("accvmsequipidt");
- var seleid = id[selectedMsgNo].value;
- /* var textSymbol = {
-   type: "text",  // autocasts as new TextSymbol()
-   color: "white",
-   //haloColor: "black",
-   //haloSize: "0px",
-   text: "TT",
-   xoffset: 20,
-   yoffset: 10,
-   font: {  // autocast as new Font()
-     size: 12,
-     //family: "Roboto"
-   }
- };	 */
-		var imgattach;
-		var imgattachSel = selemsg.indexOf('Accident');
-		if(imgattachSel==0) {
-			imgattach =  
-			'<svg width="10" height="10"><img src="accimg1.JPG"  width="30px" height="30px"/> <img src="vms5.png"  width="30px" height="30px"/></svg>';
-		} else {
-			imgattach =  
-				'<svg width="10" height="10"><img src="vms4.png"  width="30px" height="30px"/></svg>';		
+                height: "20"
 		}
-	   var vmssimpleMarkerSymbol = {
-        type: "simple-marker",
-        color: [32,43,83],  // orange
-        outline: {
-          color: [32,43,83], // white
-          width: 0.5
-        }
-      };
-    var PictureSymbol00 = {
-        type: "picture-marker",
-        url: "rvms_normal.png",
-        width: "20",
-        height: "20",
-    }
-   
-    if(selectedMsgNo==0) {
-      var point00 = {
-        type: "point", // autocasts as new Point()
-        longitude: 103.857499,
-        latitude: 1.3691533                  
-      }; 
-      pictureGraphicText00 = new Graphic({
-        geometry: point00,
-        symbol: PictureSymbol00,
-        popupTemplate: {
-            // autocasts as new PopupTemplate()
-            title: seleid,
-            /*actions: [
-                {
-                  image: "rvms_normal.png",
-                  title: "img"
-                }
-              ], */			
-            content: selemsg + '<br><center>' + imgattach + '<center>'
-                /* content: [
-                    {
-                      type: "fields",
-                      fieldInfos: [
-                        {
-                          fieldName: "roadname",
-                          label: "Circuit Link "
-                        } ]
-                    }
-                  ] */
-          }
-      });
-      view.graphics.addMany([pictureGraphicText00]);
-    }
-    if(selectedMsgNo==1) {
-      var point01 = {
-        type: "point", // autocasts as new Point()
-        longitude: 103.8581903,
-        latitude: 1.383792                   
-      }; 
-      	 	
-      pictureGraphicText01 = new Graphic({
-        geometry: point01,
-        symbol: PictureSymbol00,
-        popupTemplate: {
-            title: seleid,
-            content: selemsg  + '<br><center>' + imgattach + '<center>'
-          }
-      });
-      view.graphics.addMany([pictureGraphicText01]);
-    }
-    if(selectedMsgNo==2) {
-      var point02 = {
-        type: "point", // autocasts as new Point()
-        longitude: 103.8553513,
-        latitude: 1.3759417                   
-      }; 
-      	 	 	
-      pictureGraphicText02 = new Graphic({
-        geometry: point02,
-        symbol: PictureSymbol00,
-        popupTemplate: {
-            // autocasts as new PopupTemplate()
-            title: seleid,
-            content: selemsg + '<br><center>' + imgattach + '<center>'
-                /* content: [
-                    {
-                      type: "fields",
-                      fieldInfos: [
-                        {
-                          fieldName: "roadname",
-                          label: "Circuit Link "
-                        } ]
-                    }
-                  ] */
-          }
-      });
-      view.graphics.addMany([pictureGraphicText02]);
-    }
-    if(selectedMsgNo==3) { 
-      var point3 = {
-        type: "point", // autocasts as new Point()
-        longitude: 103.8583969,
-        latitude: 1.3615294                   
-      }; 
-      	
-      pictureGraphicText = new Graphic({
-       geometry: point3,
-       symbol: PictureSymbol00,
-       popupTemplate: {
-           // autocasts as new PopupTemplate()
-           title: seleid,
-           content: selemsg + '<br><center>' + imgattach + '<center>'
-         }
-     });
-    view.graphics.addMany([pictureGraphicText]);
-     }
+		//TTP Point
+		var ttpPoint1 = {
+			type: "point", 
+			longitude: 103.8553513, 
+			latitude: 1.3759417                        
+		};     
+		var ttpPoint2 = {
+			type: "point", 
+			longitude: 103.8632314, 
+			latitude: 1.3777483                         
+		};     
+		var ttpPoint3 = {
+			type: "point", 
+			longitude: 103.8647609, 
+			latitude: 1.3705165                         
+		};  
+		var ttpPoint4 = {
+			type: "point", 
+			longitude: 103.857499, 
+			latitude: 1.3691533                        
+		};  
+        var ttpPictureGraphic1 = new Graphic({
+                geometry: ttpPoint1,
+                symbol: ttpPictureSymbol
+		}); 	
+        var ttpPictureGraphic2 = new Graphic({
+			geometry: ttpPoint2,
+			symbol: ttpPictureSymbol
+		});	
+		var ttpPictureGraphic3 = new Graphic({
+			geometry: ttpPoint3,
+			symbol: ttpPictureSymbol
+		});
+		var ttpPictureGraphic4 = new Graphic({
+			geometry: ttpPoint4,
+			symbol: ttpPictureSymbol
+		});   
+		view.graphics.addMany([ttpPictureGraphic1,ttpPictureGraphic2,ttpPictureGraphic3,ttpPictureGraphic4]);
+		//TIP image
+		var tipPictureSymbol = {
+			type: "picture-marker",
+			url: "TIP_MSG.png",
+			width: "20",
+			height: "20"
+		}
+		//TIP Point
+		var tipPoint1 = {
+			type: "point", 
+			longitude: 103.8583969, 
+			latitude: 1.3615294                         
+		};  
+		var tipPoint2 = {
+			type: "point", 
+			longitude: 103.8581904, 
+			latitude: 1.383792                        
+		};
+	
+		
+		var tipPictureGraphic1 = new Graphic({
+			geometry: tipPoint1,
+			symbol: tipPictureSymbol
+		});
+		var tipPictureGraphic2 = new Graphic({
+			geometry: tipPoint2,
+			symbol: tipPictureSymbol
+		});   
+		view.graphics.addMany([tipPictureGraphic1,tipPictureGraphic2]);
+
+      }
+
+	  //After create button the current and Proposed vms messeses will be displayed
+	  document.getElementById("vmsMsgAfterCreate").onclick = function() {	
+		var defaultMSgList = document.getElementsByName("defaultMSgList");
+		var count = 0 ;
+		for(i=0;i<defaultMSgList.length;i++) {
+			var  str = defaultMSgList[i].value;	
+			var word1sep = str.indexOf("$");
+			var currVmsId = str.substring(0, word1sep);
+			var currVmsmsg = str.substring(word1sep+1, str.length);
+			
+			var selectedMsgNo = i;
+			var msgpoint = getLatiLongi(selectedMsgNo);
+			var msgImage = getAfterCreateVMSMessages(selectedMsgNo);
+			console.log("msgpoint" + msgpoint);
+
+		var pictureGraphicSystemMsg = new Graphic({
+			geometry: msgpoint,
+			symbol: msgImage,
+		}) 
+			view.graphics.addMany([pictureGraphicSystemMsg]);		  	  
+		}
+		//remove traffic congesion layer
+		removetrafficPlanLayer()
+	  }
+
+function getScenarioDefaultVMSMessages(selectedMsgNo){
+		var vmsDefaultMsgSymbol
+		if(selectedMsgNo==0) { 
+			//urlImage = "img101.JPG";
+			//alert ("urlImage : " +  urlImage);
+			vmsDefaultMsgSymbol = {
+				type: "picture-marker",
+				url: "img101_onload.JPG",
+				width: "80",
+				height: "60",
+				xoffset: 0,
+				yoffset: 40,
+			};
+		}
+		if(selectedMsgNo==1){ 
+			//urlImage = "img101.JPG";
+			//alert ("urlImage : " +  urlImage);
+			vmsDefaultMsgSymbol = {
+				type: "picture-marker",
+				url: "img102_onload.JPG",
+				width: "80",
+				height: "60",
+				xoffset: 0,
+				yoffset: 40,
+			};
+		}
+		if(selectedMsgNo==2) { 
+			//urlImage = "img101.JPG";
+			//alert ("urlImage : " +  urlImage);
+			vmsDefaultMsgSymbol = {
+				type: "picture-marker",
+				url: "img103_onload.JPG",
+				width: "90",
+				height: "60",
+				xoffset: 0,
+				yoffset: 40,
+			};
+		}
+		if(selectedMsgNo==3) { 
+			//urlImage = "img101.JPG";
+			//alert ("urlImage : " +  urlImage);
+			vmsDefaultMsgSymbol = {
+				type: "picture-marker",
+				url: "img104_onload.JPG",
+				width: "90",
+				height: "60",
+				xoffset: 0,
+				yoffset: 40,
+			};
+		}
+		if(selectedMsgNo==4) { 
+			//urlImage = "img101.JPG";
+			//alert ("urlImage : " +  urlImage);
+			vmsDefaultMsgSymbol = {
+				type: "picture-marker",
+				url: "img105_onload.JPG",
+				width: "90",
+				height: "30",
+				xoffset: 0,
+				yoffset: 30,
+			};
+		}
+		if(selectedMsgNo==5) { 
+			//urlImage = "img101.JPG";
+			//alert ("urlImage : " +  urlImage);
+			vmsDefaultMsgSymbol = {
+				type: "picture-marker",
+				url: "img106_onload.JPG",
+				width: "90",
+				height: "30",
+				xoffset: 0,
+				yoffset: 30,
+			};
+		}
+		return vmsDefaultMsgSymbol
+	}
+
+	  
+  
+ /*** Implement one VMS Message Display **************/
+  var pictureGraphicText,pictureGraphicText00,pictureGraphicText01,pictureGraphicText02;
+ document.getElementById("accVmsMessage").onclick = function() {	 
+	 var selectedMsgNo;
+	 var b =  document.getElementsByName("accvmssatus").length;
+	 for(i=0;i<b;i++) {   
+		if (document.getElementsByName("accvmssatus")[i].checked) {
+		  selectedMsgNo = i ;
+	  }
+	 }
+	view.graphics.removeAll();
+	ttpTspMessages(selectedMsgNo);
+	accIconLocation();
+	accCCTVLocation();
+	dtCamIconLocation();
+	ttpTipIconLocation();
+	scenarioDefaultVMSImpl();
+	accidentLaneLayer();
+	trafficlayeropplaneVisible(true);
+	trafficlayerlane3Visible(true);
+ }
+
+ /*** Implement all VMS Message Display **************/
+ document.getElementById("accAllVmsMessage").onclick = function() { 
+	var selectedMsgNo;
+	var b =  document.getElementsByName("accvmssatus").length;
+	for(i=0;i<b;i++) {   
+		ttpTspMessages(i);	 
+	}
+	view.graphics.removeAll();
+	//accIconLocation();
+	accCCTVLocation();
+	dtCamIconLocation();
+	ttpTipIconLocation();
+	scenarioDefaultVMSImpl();
+	accidentLaneLayer();
+	trafficlayeropplaneVisible(true);
+	trafficlayerlane3Visible(true);
+	trafficLayerImplPlan1Interval();
+
+ }
+
+//draw the traffic lane red amber green on implement all
+function accidentLaneLayer(){
+	trafficplan0layerlane.visible = false;
+	trafficplan1layerlane.visible = false;
+	trafficplan2layerlane.visible = false;
+	trafficplanlayerlane.visible = true;
+}
+
+//draw the traffic lane red amber green on prediction no plan
+function accidentLaneLayerNoPlan(){
+	trafficplan1layerlane.visible = false;
+	trafficplan2layerlane.visible = false;
+	trafficplanlayerlane.visible = false;
+	trafficplan0layerlane.visible = true;
+}
+
+//draw the traffic lane red amber green on prediction Plan 1
+function accidentLaneLayerPlan1(){
+	trafficplanlayerlane.visible = false;
+	trafficplan2layerlane.visible = false;
+	trafficplan0layerlane.visible = false;
+	trafficplan1layerlane.visible = true;
+}
+
+//draw the traffic lane red amber green on prediction Plan 2
+function accidentLaneLayerPlan2(){
+	trafficplanlayerlane.visible = false;
+	trafficplan0layerlane.visible = false;
+	trafficplan1layerlane.visible = false;
+	trafficplan2layerlane.visible = true ;
+}
+
+document.getElementById("preTimeId").onclick = function() {  
+	removetrafficPlanLayer();
+	trafficlayerlane3Visible(false);
+	trafficlayeropplaneVisible(false);
+	accidentLaneLayerNoPlan();
+}
+
+function trafficlayerlane3Visible(visiFlag){
+	trafficlayerlane3.visible = visiFlag;
+}
+
+function trafficlayerlane3GreenVisible(visiFlag){
+	trafficlayerlane3green.visible = visiFlag;
+}
+
+
+function trafficlayeropplaneVisible(visiFlag){
+	trafficlayeropplane.visible = visiFlag;
+}
+
+
+function ttpTspMessages(selectedMsgNo){
+
+//selected vms message 
+var details = document.getElementsByName("accMessageDetail");
+var selemsg = details[selectedMsgNo].value;
+
+//selected vms id 
+var id = document.getElementsByName("accvmsequipidt");
+var seleid = id[selectedMsgNo].value;
+var imgattach;
+var imgattachSel = selemsg.indexOf('Accident');
+if(imgattachSel==0) {
+	imgattach =  
+		'<svg width="5" height="5"><img src="accimg1.JPG"  width="30px" height="30px"/> <img src="vms5.png"  width="30px" height="30px"/></svg>';
+} else {
+ 	imgattach =  
+		'<svg width="5" height="5"><img src="vms4.png"  width="30px" height="30px"/></svg>';		
+}
+var vmssimpleMarkerSymbol = {
+	 type: "simple-marker",
+	 color: [32,43,83],  // orange
+	 outline: {
+	   color: [32,43,83], // white
+	   width: 0.5
+	 }
+   };
+ var PictureSymbol00 = {
+	 type: "picture-marker",
+	 url: "TTP_MSG.png",
+	 width: "20",
+	 height: "20",
+ }
+ 
+ var appendStr1 = '<font color="#24DEE8" face="Roboto" size="3"><b>' ;
+ var appendStr2 ='</b></font>'	
+ var appendStr3 = '<font color="black" face="Roboto" size="3"><b><center>' ;
+ var appendStr4 ='</center></b></font>'
+ 
+ var seleidFormat =  appendStr1 + seleid + appendStr2;
+ var selemsgFormat = appendStr3 + selemsg + appendStr4;
+var msgpoint ;
+ if(selectedMsgNo==0) {
+	msgpoint = getLatiLongi(selectedMsgNo);
+   	pictureGraphicText00 = new Graphic({
+	geometry: msgpoint,
+	symbol: PictureSymbol00,
+	popupTemplate: {
+		 // autocasts as new PopupTemplate()
+		 title: seleidFormat,
+		 /*actions: [
+			 {
+			   image: "rvms_normal.png",
+			   title: "img"
+			 }
+		   ], */			
+		 content: selemsgFormat + '<br><center>' + imgattach + '<center>'
+			 /* content: [
+				 {
+				   type: "fields",
+				   fieldInfos: [
+					 {
+					   fieldName: "roadname",
+					   label: "Circuit Link "
+					 } ]
+				 }
+			   ] */
+	   }
+   });
+   view.graphics.addMany([pictureGraphicText00]);
+ }
+if(selectedMsgNo==1) {
+	msgpoint = getLatiLongi(selectedMsgNo);	
+	pictureGraphicText01 = new Graphic({
+	geometry: msgpoint,
+	symbol: PictureSymbol00,
+	popupTemplate: {
+		 title: seleidFormat,
+		 content: selemsgFormat  + '<br><center>' + imgattach + '<center>'
+	   }
+   });
+   view.graphics.addMany([pictureGraphicText01]);
+ }
+ if(selectedMsgNo==2) {
+	msgpoint = getLatiLongi(selectedMsgNo);			 
+	pictureGraphicText02 = new Graphic({
+	geometry: msgpoint,
+	symbol: PictureSymbol00,
+	popupTemplate: {
+		 // autocasts as new PopupTemplate()
+		 title: seleidFormat,
+		 content: selemsgFormat + '<br><center>' + imgattach + '<center>'
+			 /* content: [
+				 {
+				   type: "fields",
+				   fieldInfos: [
+					 {
+					   fieldName: "roadname",
+					   label: "Circuit Link "
+					 } ]
+				 }
+			   ] */
+	   }
+   });
+   view.graphics.addMany([pictureGraphicText02]);
+ }
+ if(selectedMsgNo==3) { 
+	msgpoint = getLatiLongi(selectedMsgNo);
+    pictureGraphicText03 = new Graphic({
+	geometry: msgpoint,
+	symbol: PictureSymbol00,
+	popupTemplate: {
+		// autocasts as new PopupTemplate()
+		title: seleidFormat,
+		content: selemsgFormat + '<br><center>' + imgattach + '<center>'
+	  }
+  });
+ view.graphics.addMany([pictureGraphicText03]);
+  }
+  
+  //TSP Message Start here
+  var PictureSymbol01 = {
+	 type: "picture-marker",
+	 url: "TIP_MSG.png",
+	 width: "20",
+	 height: "20",
+ }
+ if(selectedMsgNo==4) { 
+	msgpoint = getLatiLongi(selectedMsgNo);
+	pictureGraphicText04 = new Graphic({
+	geometry: msgpoint,
+	symbol: PictureSymbol01,
+	popupTemplate: {
+		  // autocasts as new PopupTemplate()
+		  title: seleidFormat,
+		  content: selemsgFormat + '<br><center>' + imgattach + '<center>'
+		}
+	});
+   view.graphics.addMany([pictureGraphicText04]);
+ }
+ if(selectedMsgNo==5) { 
+	msgpoint = getLatiLongi(selectedMsgNo); 
+	pictureGraphicText05 = new Graphic({
+	geometry: msgpoint,
+	symbol: PictureSymbol01,
+	popupTemplate: {
+		  // autocasts as new PopupTemplate()
+		  title: seleidFormat,
+		  content: selemsgFormat + '<br><center>' + imgattach + '<center>'
+		}
+	});
+   view.graphics.addMany([pictureGraphicText05]);
+ }
+
  }
 
  //Remove VMS Message
- document.getElementById("remAccVmsMessage").onclick = function() {
-	//view.graphics.removeAll();
-	//this one remove from ImplementAll Selection
- view.graphics.remove(pictureGraphicTextAll);
- view.graphics.remove(pictureGraphicTextAll00);
- view.graphics.remove(pictureGraphicTextAll01);
- view.graphics.remove(pictureGraphicTextAll02);
- 
-	var selectedMsgNoDel;
-	var b =  document.getElementsByName("accvmssatus").length;
-  	for(i=0;i<b;i++) {   
-      if (document.getElementsByName("accvmssatus")[i].checked) {
-        selectedMsgNoDel = i ;
-    }
-  }
-  if(selectedMsgNoDel==0) { 
-    view.graphics.remove(pictureGraphicText00);
-	pictureGraphicText00 ="";
-  }
-  if(selectedMsgNoDel==1) { 
-    view.graphics.remove(pictureGraphicText01);
-	pictureGraphicText01="";
-  }
-  if(selectedMsgNoDel==2) { 
-    view.graphics.remove(pictureGraphicText02);
-	pictureGraphicText02="";
-  }
-  if(selectedMsgNoDel==3) { 
-    view.graphics.remove(pictureGraphicText);
-	pictureGraphicText="";
-  }
- 
+document.getElementById("remAccVmsMessage").onclick = function() {
+	view.graphics.removeAll();
+	accIconLocation();
+	accCCTVLocation();
+	dtCamIconLocation();
+	ttpTipIconLocation();
 }
  /*** End of VMS Message Display **************/ 
 
@@ -1355,15 +1138,105 @@ function thirdCongestion(){
 	var secondCongestionTimer;
 	var thirdCongestionTimer;
 	var endCongestionTimer;
-	var pictureGraphicSce1List = [];
+	/*var pictureGraphicSce1List = [];*/
 	var pictureGraphicSce1TraList = [];
+	var viewFlagS1;
 	document.getElementById("sce1ImpliId").onclick = function() { 
-		scenrio1VMSMsgView();
-		congestionAreaDisplayonMap();
+		
+		//scenrio1VMSMsgView();
+		
+		view.graphics.removeAll();
+		//Traffic Light
+		trafficLight();
+
+		//accIconLocation();
+		accCCTVLocation();
+		dtCamIconLocation();
+		viewFlagS1 = true;
+		scenrio1VMSMsgOnMap();
+		//removetrafficPlanLayer();
+		trafficlayerlane3Visible(false);
+		trafficlayeropplaneVisible(false);
+		accidentLaneLayerPlan1();			
+		trafficLayerImplPlan1Interval();
 	}
 	
+/* Start Prediction plan 1 implementation interval  */
+	function trafficLayerImplPlan1Interval() {
+		
+		interval1 = setInterval(tlPlan2Display, 2000);	
+		interval2 = setInterval(tlImp1Display, 4000);	
+		interval3 = setInterval(tlImp2Display, 8000);	
+		interval4 = setInterval(tlImp3Display, 10000);	
+		clrinterval = setInterval(clearFinalInterval, 12000); 	
+	}
+	function tlPlan2Display(){
+		trafficlayerlaneImpl1.visible = false ;
+		trafficlayerlaneImpl2.visible = false ;
+		trafficlayerlaneImpl3.visible = false ;
+		trafficplan2layerlane.visible = true ;
+	}
+	function tlImp1Display(){
+		clearInterval(interval1);
+		trafficlayerlaneImpl1.visible = true ;
+		trafficlayerlaneImpl2.visible = false ;
+		trafficlayerlaneImpl3.visible = false ;
+		trafficplan2layerlane.visible =  false;
+
+	}
+	function tlImp2Display(){
+		clearInterval(interval1);
+		clearInterval(interval2);
+		trafficlayerlaneImpl1.visible = false ;
+		trafficlayerlaneImpl2.visible = true ;
+		trafficlayerlaneImpl3.visible = false ;
+		trafficplan2layerlane.visible =  false;
+
+	}
+	function tlImp3Display(){
+		clearInterval(interval1);
+		clearInterval(interval2);
+		clearInterval(interval3);
+		trafficlayerlaneImpl1.visible = false ;
+		trafficlayerlaneImpl2.visible = false ;
+		trafficlayerlaneImpl3.visible = true ;
+		trafficplan2layerlane.visible =  false;
+	}
+	function clearFinalInterval(){
+		clearInterval(interval1);
+		clearInterval(interval2);
+		clearInterval(interval3);
+		clearInterval(interval4);
+		clearInterval(clrinterval);
+		//trafficlayerlane3GreenVisible(true);
+		trafficlayerlane3GreenVisible(true);
+		trafficlayeropplaneVisible(true);
+		removeTrafficLayerImplPlan1Interval();
+	}
+
+	function removeTrafficLayerImplPlan1Interval(){
+		trafficlayerlaneImpl1.visible = false ;
+		trafficlayerlaneImpl2.visible = false ;
+		//trafficlayerlaneImpl3.visible = false ;
+		trafficplan2layerlane.visible =  false;
+		trafficplan1layerlane.visible =  false;
+	}
+/* End Prediction plan 1 implementation interval  */
+
+
 	document.getElementById("sce1VmsView").onclick = function() { 
-		scenrio1VMSMsgView();
+		view.graphics.removeAll();
+		accIconLocation();
+		accCCTVLocation();
+		dtCamIconLocation();
+		viewFlagS1 = false;
+		trafficLight();
+		//scenrio1VMSMsgView();
+		scenrio1VMSMsgOnMap();
+		removetrafficPlanLayer();
+		accidentLaneLayerPlan1();
+		trafficlayerlane3Visible(true);	
+		trafficlayeropplaneVisible(true);
 	}
 
 	function scenrio1VMSMsgView() {
@@ -1381,8 +1254,7 @@ function thirdCongestion(){
 		height: "20",
 	}
 	  var j =0;
-		for(i=0;i<scenario1List.length;i++) {
-		
+		for(i=0;i<scenario1List.length;i++) {		
 			var  str = scenario1List[i].value;	
 			var word1sep = str.indexOf("$");
 			var sce1VmsId = str.substring(0, word1sep);
@@ -1410,7 +1282,7 @@ function thirdCongestion(){
         		type: "text",  // autocasts as new TextSymbol()
         		 color: "#202B53",
         		 text: sce1VmsId,
-        		 //haloColor: "black",
+        		 haloColor: "black",
         		 //haloSize: "1px",
         		 xoffset: 4,
         		 yoffset: 10,
@@ -1424,13 +1296,13 @@ function thirdCongestion(){
 				type: "point", // autocasts as new Point()
 				longitude: longi,
 				latitude: ladi                   
-			  }; 
+			}; 
 			var PictureSymbolvms;
-					if(i<4) {
-						PictureSymbolvms = PictureSymbolTTP;
-					}else {
-						PictureSymbolvms = PictureSymbolTIP; 
-					}	
+			if(i<4) {
+				PictureSymbolvms = PictureSymbolTTP;
+			}else {
+				PictureSymbolvms = PictureSymbolTIP; 
+			}	
 //Picture graphics
 			var pictureGraphicSce1 = new Graphic({
 				geometry: pointSce1,
@@ -1448,112 +1320,78 @@ function thirdCongestion(){
 				symbol: vmsIdMsg,
 			  });*/
 			  
-			  pictureGraphicSce1List[j] = pictureGraphicSce1;
+			 /* pictureGraphicSce1List[j] = pictureGraphicSce1;
 			  j = j+1;
 			  pictureGraphicSce1List[j] = pictureGraphicSce1vmsid;
-			  j = j+1;
+			  j = j+1;*/
 			  view.graphics.addMany([pictureGraphicSce1/*, pictureGraphicSce1vmsid*/]);	
 		}
-		
 		//Traffic Light
-		var color1 = [97, 255, 0];
-		var color2 = [208, 187, 0];
-		var color3 = [232, 58, 58];
-		var scenario1TrafficList = document.getElementsByName("scenario1TrafficList");
-
-		for(i=0;i<scenario1TrafficList.length;i++) {
-			
-			var  str = scenario1TrafficList[i].value;	
-			var word1sep = str.indexOf("$");
-			var longi1 = str.substring(0, word1sep);
-			
-			var lati1 = str.substring(word1sep+1, str.length);
-			//alter("longi1 : " + longi1 + "/lati1 : " + lati1);
-			
-			if(i==0) {
-				  var sce1TraPictureSymbol = {
-							type: "picture-marker",
-							url: "glide_green.png",
-							width: "20",
-							height: "20",
-						};
-			}
-			if(i==1) {
-				  var sce1TraPictureSymbol = {
-							type: "picture-marker",
-							url: "glide_green.png",
-							width: "20",
-							height: "20",
-						};
-				}
-			if(i==2) {
-				  var sce1TraPictureSymbol = {
-							type: "picture-marker",
-							url: "glide_red.png",
-							width: "20",
-							height: "20",
-						};
-				}
-			
-			var pointSce1Tra = {
-					type: "point", // autocasts as new Point()
-					longitude: longi1,
-					latitude: lati1                  
-				  }; 
-							
-			var pictureGraphicSce1Tra = new Graphic({
-				geometry: pointSce1Tra,
-				symbol: sce1TraPictureSymbol,
-		    });	
-		 pictureGraphicSce1TraList[i] = pictureGraphicSce1Tra;
-		 view.graphics.addMany([pictureGraphicSce1Tra]);				  				  
-		}
-	}
-	
-	function congestionAreaDisplayonMap()  {
-		firstCongestionTimer = setInterval(firstCongestion, 4000);	
-		secondCongestionTimer = setInterval(secondCongestion, 8000);	
-		thirdCongestionTimer = setInterval(thirdCongestion, 12000);	
-		endCongestionTimer = setInterval(endCongestion, 18000);					
+		trafficLight();
 	}
 
 	//VMS messages Remove
 	document.getElementById("sce1ImpliIdRemove").onclick = function() {  
 		view.graphics.removeAll();
-		clearInterval(firstCongestionTimer);
-		clearInterval(secondCongestionTimer);
-		clearInterval(thirdCongestionTimer);
-		clearInterval(endCongestionTimer);
 		view.graphics.addMany([accPictureGraphic]);	
-		// Selected VMS Message
-		/*for(i=0;i<pictureGraphicSce1List.length;i++) {
-				view.graphics.remove(pictureGraphicSce1List[i]);
-				pictureGraphicSce1List[i] = "";			
-			}
-			
-		// Traffic light Glide System infor msg
-		for(i=0;i<pictureGraphicSce1TraList.length;i++) {
-			view.graphics.remove(pictureGraphicSce1TraList[i]);
-			pictureGraphicSce1TraList[i] = "";
-		}*/
+		removetrafficPlanLayer()
+		trafficlayerlaneImpl3.visible = false ;	
+
+		accIconLocation();
+		accCCTVLocation();
+		dtCamIconLocation();
+		ttpTipIconLocation();	
+		trafficlayerlane3GreenVisible(false);	
 	}
 /*** End of scenario 1 VMS messages  ***/
 
 /*** scenario 2 VMS  ***/
 	//VMS messages Display
-	var pictureGraphicSce2List = [];
+	var viewFlagS2 = false;
 	document.getElementById("sce2ImpliId").onclick = function() { 
+		view.graphics.removeAll();
+		trafficlayerlaneImpl3.visible = false;
+		speedLinkLayer.visible  = false;	
+	//	accIconLocation();
+		viewFlagS2 = true;
+		accCCTVLocation();
 		scenrio2VMSMsgView();
-		congestionAreaDisplayonMap();
+		removetrafficPlanLayer();
+		trafficlayerlane3Visible(false);
+		trafficlayeropplaneVisible(false);	
+		accidentLaneLayerPlan2();	
+		trafficLayerImplPlan2Interval();
 	}
 	
-	document.getElementById("sce2VmsView").onclick = function() { 		
+	document.getElementById("sce2VmsView").onclick = function() {
+		view.graphics.removeAll();
+		trafficlayerlaneImpl3.visible = false ;		
+		viewFlagS2 = false;
+		accIconLocation();
 		scenrio2VMSMsgView();
+		accCCTVLocation();	
+		removetrafficPlanLayer();
+		accidentLaneLayerPlan2();		
+		trafficlayerlane3Visible(true);	
+		trafficlayerlane3GreenVisible(false);
+		trafficlayeropplaneVisible(true);
+	}
+
+	var interval1;
+	function trafficLayerImplPlan2Interval() {
+		interval2 = setInterval(tlImp1Display, 2000);	
+		interval3 = setInterval(tlImp2Display, 4000);	
+		interval4 = setInterval(tlImp3Display, 8000);	
+		clrinterval = setInterval(clearFinalInterval, 10000); 	
 	}
 	
 	function scenrio2VMSMsgView() {
-		cteLayer.visible  = false;	
-		view.graphics.addMany([accPictureGraphic]);
+		var vmsCurrMsg2Arr = ['Jam at Amk Ave3', 'Jam at Amk Ave5', 'Jam at Amk Ave3', 'Jam at Amk Ave5', 
+							  'Jam at Amk Ave3', 'Jam at Amk Ave5', 'Jam at Amk Ave3', 'Jam at Amk Ave5',
+							  'Jam at Amk Ave3', 'Jam at Amk Ave5', 'Jam at Amk Ave3', 'Jam at Amk Ave5', 
+							  'Jam at Amk Ave3', 'Jam at Amk Ave5', 'Jam at Amk Ave3', 'Jam at Amk Ave5'];
+		speedLinkLayer.visible  = false;	
+		view.graphics.addMany(accPictureGraphic);
 		var scenario2List = document.getElementsByName("scenario2List");
 		var PictureSymbolSce2TTP = {
 				type: "picture-marker",
@@ -1568,6 +1406,7 @@ function thirdCongestion(){
 				height: "20",
 			}
 			var j =0;
+			var count=0;
 		for(i=0;i<scenario2List.length;i++) {
 			var  str = scenario2List[i].value;	
 			var word1sep = str.indexOf("$");
@@ -1593,22 +1432,13 @@ function thirdCongestion(){
 			var ladi = str3.substring(word3sep+1, str3.length);
 			//alert("id: " + sce1VmsId + " / msg: " + sce1Vmsmsg + " / ladi: " + ladi + " / longi: " + longi); 
 			
-			var vmsIdMsg = {
-        		type: "text",  // autocasts as new TextSymbol()
-        		 color: "#202B53",
-        		 text: sce1VmsId,
-        		 //haloColor: "black",
-        		 //haloSize: "1px",
-        		 xoffset: 4,
-        		 yoffset: 10,
-        		 font: {  // autocast as new Font()
-        		    size: 8,
-        			weight: "bold"
-        		 }
-        	 };
-			 
+		//	var sce2VmsImgCP = getScenario2VMSMessages(i);
+		//	var sce2VmsImgPro = getScenario2VMSMessagesPro(i);
+
+			var sce2VmsImgCP = getScenario1VMSMessages(i);
+			var sce2VmsImgPro = getScenario1VMSMessagesPro(i);
 			var PictureSymbolSce2vms;
-			if(i<4) {
+			if(i<6) {
 				PictureSymbolSce2vms = PictureSymbolSce2TTP;
 			}else {
 				PictureSymbolSce2vms = PictureSymbolSce2TIP; 
@@ -1629,39 +1459,252 @@ function thirdCongestion(){
 					content: sce1Vmsmsg + '<br><center>' +  imgattachsce + '<center>'
 				  }
 			  });
-			  
-			  var pictureGraphicSce2vmsId = new Graphic({
+	  
+			  var pictureGraphicSce2vmsCP = new Graphic({
 				geometry: pointSce2,
-				symbol: vmsIdMsg,
+				symbol: sce2VmsImgCP,
+			  });
+
+			  var pictureGraphicSce2vmsPro = new Graphic({
+				geometry: pointSce2,
+				symbol: sce2VmsImgPro,
 			  });
 			  
-			  pictureGraphicSce2List[j] = pictureGraphicSce2;
-			  j = j+1;
-			  pictureGraphicSce2List[j] = pictureGraphicSce2vmsId;
-			  j= j+1;
-			  view.graphics.addMany([pictureGraphicSce2,pictureGraphicSce2vmsId]);	
+			if(viewFlagS2) {
+					view.graphics.addMany([pictureGraphicSce2,pictureGraphicSce2vmsPro]);		  
+			  }
+			  else {
+				   view.graphics.addMany([pictureGraphicSce2,pictureGraphicSce2vmsCP]);		  
+			  }
+
+			  
 		}
 	}
+
+/** get vmsMessage Images for Scenario2 Current and Proposed Messaages */
+function getScenario2VMSMessages(selectedMsgNo) {
+	var vmsSce1MsgSymbol
+	if(selectedMsgNo==0) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img101.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==1){ 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img102.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==2) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img103.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==3) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img104.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==4) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img105_s2cp.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==5) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img106_s2cp.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==6) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img107_s2cp.JPG",
+			width: "90",
+			height: "50",
+			xoffset: 0,
+			yoffset: 40,
+		};
+	}
+	if(selectedMsgNo==7) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img108_s2cp.JPG",
+			width: "90",
+			height: "50",
+			xoffset: 0,
+			yoffset: 40,
+		};
+	}
+	if(selectedMsgNo==8) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img109_s2cp.JPG",
+			width: "90",
+			height: "50",
+			xoffset: 0,
+			yoffset: 40,
+		};
+	}
+	return vmsSce1MsgSymbol
+}
+
+
+
+/** get vmsMessage Images for Scenario2 Proposed Messaages */
+function getScenario2VMSMessagesPro(selectedMsgNo) {
+	var vmsSce1MsgSymbol
+	if(selectedMsgNo==0) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img101.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==1){ 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img102.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==2) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img103.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==3) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img104.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==4) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img105_s2cp.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==5) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img106_s2cp.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==6) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img107_s2p.JPG",
+			width: "90",
+			height: "40",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==7) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img108_s2p.JPG",
+			width: "90",
+			height: "40",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==8) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img109_s2p.JPG",
+			width: "90",
+			height: "40",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	return vmsSce1MsgSymbol
+}
 
 	//VMS messages Remove
 	document.getElementById("sce2ImpliIdRemove").onclick = function() {  
 		view.graphics.removeAll();
-		clearInterval(firstCongestionTimer);
-		clearInterval(secondCongestionTimer);
-		clearInterval(thirdCongestionTimer);
-		clearInterval(endCongestionTimer);
+		removetrafficPlanLayer()
+		trafficlayerlaneImpl3.visible = false ;	
 		view.graphics.addMany([accPictureGraphic]);
-		/* VMS Messages Remove
-		for(i=0;i<pictureGraphicSce2List.length;i++) {
-			view.graphics.remove(pictureGraphicSce2List[i]);
-			pictureGraphicSce2List[i] = "";
-		} */
+		accIconLocation();
+		accCCTVLocation();
+		dtCamIconLocation();
+		ttpTipIconLocation();
+		trafficlayerlane3GreenVisible(false);
 	}
 /*** End of scenario 2 VMS messages  ***/
 
 
+view.popup.autoOpenEnabled = true;
+
+/*view.on("click", function(event) {
+  view.popup.open({
+    // Set the popup
+  });
+});*/
+
 /***Draw Accident layer onload event on the map**/
+var pictureGraphicSce1vmsCurrMsg;
 function scenrio1VMSMsgOnMap() {
+	var vmsCurrMsg1Arr = ['Jam at Amk Ave3','Jam at Amk Ave5','Jam at Amk Ave3',
+						  'Jam at Amk Ave5','Jam at Amk Ave3','Jam at Amk Ave5',
+						  'Jam at Amk Ave3','Jam at Amk Ave5','Jam at Amk Ave3',
+						  'Jam at Amk Ave5','Jam at Amk Ave3','Jam at Amk Ave5'];
 		var scenario1List = document.getElementsByName("scenario1List");
 		var PictureSymbolTTP = {
 		type: "picture-marker",
@@ -1676,8 +1719,8 @@ function scenrio1VMSMsgOnMap() {
 		height: "20",
 	}
 	  var j=0;
-		for(i=0;i<scenario1List.length;i++) {
-		
+	  var count=0;
+		for(i=0;i<scenario1List.length;i++) {	
 			var  str = scenario1List[i].value;	
 			var word1sep = str.indexOf("$");
 			var sce1VmsId = str.substring(0, word1sep);
@@ -1695,37 +1738,24 @@ function scenrio1VMSMsgOnMap() {
 			} else {
 				imgattachsce =  
 					'<svg width="10" height="10"><img src="vms4.png"  width="30px" height="30px"/></svg>';		
-			}
-			
+			}			
 			var word3sep = str3.indexOf("$");
 			var longi = str3.substring(0, word3sep);
 			var ladi = str3.substring(word3sep+1, str3.length);
 			//alert("id: " + sce1VmsId + " / msg: " + sce1Vmsmsg + " / ladi: " + ladi + " / longi: " + longi); 
 			
-var idmessagepic =  sce1VmsId + ":\n" + sce1Vmsmsg  
-			
-			var vmsIdMsg = {
-        		type: "text",  // autocasts as new TextSymbol()
-        		color: "#003087",
-        		text: idmessagepic,
-        		 haloColor: "#c3c2e5",
-        		 haloSize: "2.5px",
-        		 xoffset: 10,
-        		 yoffset: 16,
-        		 font: {  // autocast as new Font()
-        		    size: 8,
-        			weight: "bold"
-        		 }
-        	 };
-			 
-			
+
+			var sce1VMSImage = getScenario1VMSMessages(i);
+			var sce1VMSImagePro = getScenario1VMSMessagesPro(i);
+
+// Lati Longi Points			  
 			var pointSce1 = {
 				type: "point", // autocasts as new Point()
 				longitude: longi,
 				latitude: ladi                   
 			  }; 
 			var PictureSymbolvms;
-					if(i<4) {
+					if(i<6) {
 						PictureSymbolvms = PictureSymbolTTP;
 					}else {
 						PictureSymbolvms = PictureSymbolTIP; 
@@ -1739,25 +1769,39 @@ var idmessagepic =  sce1VmsId + ":\n" + sce1Vmsmsg
 					title: sce1VmsId,
 					content: sce1Vmsmsg + '<br><center>' + imgattachsce + '<center>'
 				  }
-			  });
-			  
-// text vmsid
-			var pictureGraphicSce1vmsid = new Graphic({
+			  });		  
+
+//current and proposed image with id			  
+  		    var pictureGraphicSce1vmsCPImg = new Graphic({
 				geometry: pointSce1,
-				symbol: vmsIdMsg,
+				symbol: sce1VMSImage,
 			  });
-			  
-			  pictureGraphicSce1List[j] = pictureGraphicSce1;
-			  j = j+1;
-			  pictureGraphicSce1List[j] = pictureGraphicSce1vmsid;
-			  j = j+1;
-			  view.graphics.addMany([pictureGraphicSce1,pictureGraphicSce1vmsid]);	
+
+//proposed image with id			  
+			var pictureGraphicSce1vmsPImg = new Graphic({
+				geometry: pointSce1,
+				symbol: sce1VMSImagePro,
+			  });
+
+
+			  if(viewFlagS1) {
+				view.graphics.addMany([pictureGraphicSce1,pictureGraphicSce1vmsPImg]);					
+			  }
+			  else {
+				view.graphics.addMany([pictureGraphicSce1,pictureGraphicSce1vmsCPImg]);		
+			  }
 		}
 		
 		//Traffic Light
-		var color1 = [97, 255, 0];
-		var color2 = [208, 187, 0];
-		var color3 = [232, 58, 58];
+		//trafficLight();
+	}
+/*** End of Accident layer onload event on the map **/ 
+
+/*** Traffic Light glide   **/
+ function trafficLight() {
+	// var color1 = [97, 255, 0];
+		//var color2 = [208, 187, 0];
+		//var color3 = [232, 58, 58];
 		var scenario1TrafficList = document.getElementsByName("scenario1TrafficList");
 
 		for(i=0;i<scenario1TrafficList.length;i++) {
@@ -1807,17 +1851,485 @@ var idmessagepic =  sce1VmsId + ":\n" + sce1Vmsmsg
 		 pictureGraphicSce1TraList[i] = pictureGraphicSce1Tra;
 		 view.graphics.addMany([pictureGraphicSce1Tra]);				  				  
 		}
+ }
+ /*** End of Traffic Light glide   **/
+
+ /** get vmsMessage Images for default msg*/
+function getAfterCreateVMSMessages(selectedMsgNo) {
+	var vmsDefaultMsgSymbol
+	if(selectedMsgNo==0) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img101.JPG",
+			width: "90",
+			height: "90",
+			xoffset: 0,
+			yoffset: 50,
+		};
 	}
+	if(selectedMsgNo==1){ 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img102.JPG",
+			width: "90",
+			height: "90",
+			xoffset: 0,
+			yoffset: 50,
+		};
+	}
+	if(selectedMsgNo==2) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img103.JPG",
+			width: "90",
+			height: "90",
+			xoffset: 0,
+			yoffset: 50,
+		};
+	}
+	if(selectedMsgNo==3) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img104.JPG",
+			width: "90",
+			height: "90",
+			xoffset: 0,
+			yoffset: 50,
+		};
+	}
+	if(selectedMsgNo==4) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img105.JPG",
+			width: "110",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==5) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img106.JPG",
+			width: "110",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	return vmsDefaultMsgSymbol
+}
+
+
+ /** get vmsMessage Images for default msg*/
+ function getScenarioDefaultVMSMessagesImpl(selectedMsgNo) {
+	var vmsDefaultMsgSymbol
+	if(selectedMsgNo==0) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img101_imp.JPG",
+			width: "90",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==1){ 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img102_imp.JPG",
+			width: "90",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==2) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img103_imp.JPG",
+			width: "90",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==3) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img104_imp.JPG",
+			width: "90",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==4) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img105_imp.JPG",
+			width: "100",
+			height: "50",
+			xoffset: 0,
+			yoffset: 30,
+		};
+	}
+	if(selectedMsgNo==5) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsDefaultMsgSymbol = {
+			type: "picture-marker",
+			url: "img106_imp.JPG",
+			width: "100",
+			height: "50",
+			xoffset: 0,
+			yoffset: 30,
+		};
+	}
+	return vmsDefaultMsgSymbol
+}
 
 
 
-/*** End of Accident layer onload event on the map **/ 
- 
- 
- 
- 
- 
- 
+/** get vmsMessage Images for Scenario1 Proposed Messaages */
+function getScenario1VMSMessagesPro(selectedMsgNo) {
+	var vmsSce1MsgSymbol
+	if(selectedMsgNo==0) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img101_imp.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 34,
+		};
+	}
+	if(selectedMsgNo==1){ 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img102_imp.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==2) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img103_imp.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==3) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img104_imp.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==4) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img107.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==5) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img108.JPG",
+			width: "80",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==6) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img105_imp.JPG",
+			width: "90",
+			height: "50",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==7) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img106_imp.JPG",
+			width: "90",
+			height: "50",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==8) { 
+		//urlImage = "img101.JPG";
+		//alert ("urlImage : " +  urlImage);
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img109_s1p.JPG",
+			width: "90",
+			height: "50",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}		
+
+	return vmsSce1MsgSymbol
+}
+
+/** get vmsMessage Images for Scenario1 Current and Proposed Messaages */
+function getScenario1VMSMessages(selectedMsgNo) {
+	var vmsSce1MsgSymbol
+	if(selectedMsgNo==0) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img101_pv.JPG",
+			width: "90",
+			height: "95",
+			xoffset: 0,
+			yoffset: 55,
+		};
+	}
+	if(selectedMsgNo==1){ 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img102_pv.JPG",
+			width: "90",
+			height: "95",
+			xoffset: 0,
+			yoffset: 55,
+		};
+	}
+	if(selectedMsgNo==2) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img103_pv.JPG",
+			width: "90",
+			height: "95",
+			xoffset: 0,
+			yoffset: 55,
+		};
+	}
+	if(selectedMsgNo==3) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img104_pv.JPG",
+			width: "90",
+			height: "95",
+			xoffset: 0,
+			yoffset: 55,
+		};
+	}
+	if(selectedMsgNo==4) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img105_pv.JPG",
+			width: "90",
+			height: "95",
+			xoffset: 0,
+			yoffset: 55,
+		};
+	}
+	if(selectedMsgNo==5) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img106_pv.JPG",
+			width: "90",
+			height: "95",
+			xoffset: 0,
+			yoffset: 55,
+		};
+	}
+	if(selectedMsgNo==6) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img107_pv.JPG",
+			width: "100",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==7) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img108_pv.JPG",
+			width: "100",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}
+	if(selectedMsgNo==8) { 
+		vmsSce1MsgSymbol = {
+			type: "picture-marker",
+			url: "img109_pv.JPG",
+			width: "100",
+			height: "60",
+			xoffset: 0,
+			yoffset: 35,
+		};
+	}		
+	return vmsSce1MsgSymbol
+}
+
+ /** get Lati and Longi for vms equiments */
+ function getLatiLongi(selectedMsgNo){
+	 var msgpoint;
+	if(selectedMsgNo==1) {
+		msgpoint = {
+		 type: "point", // autocasts as new Point()
+		 longitude: 103.8632314,
+		 latitude: 1.3777483                   
+	   };
+	}
+	 if(selectedMsgNo==2) {
+		msgpoint = {
+		 type: "point", // autocasts as new Point()
+		 longitude: 103.8647609,
+		 latitude: 1.3705165                   
+	   }; 
+	}
+	
+	 if(selectedMsgNo==4) { 
+		  msgpoint = {
+		   type: "point", // autocasts as new Point()
+		   longitude: 103.8583969, 
+		   latitude: 1.3615294                   
+		 }; 
+	}	 
+	 if(selectedMsgNo==5) { 
+	   msgpoint = {
+		   type: "point", // autocasts as new Point()
+		   longitude: 103.8581904, 
+		   latitude: 1.383792                  
+		 }; 
+	}
+	
+	 if(selectedMsgNo==3) { 
+		msgpoint = {
+		 type: "point", // autocasts as new Point()
+		 longitude: 103.857499,
+		 latitude: 1.3691533                   
+	   }; 
+	}
+	 if(selectedMsgNo==0) {
+		msgpoint = {
+		 type: "point", // autocasts as new Point()
+		 longitude: 103.8553513,
+		 latitude: 1.3759417                  
+	   }; 
+	}
+	return msgpoint;
+ }
+
+//onload remove Traffic congestion layer
+function removetrafficPlanLayer(){
+	trafficplanlayerlane.visible = false;
+	trafficplan0layerlane.visible = false;
+	trafficplan1layerlane.visible = false;
+	trafficplan2layerlane.visible = false;
+}
+function scenarioDefaultVMSOnload(){
+	var defaultMSgList = document.getElementsByName("defaultMSgList");
+	var count = 0 ;
+	for(i=0;i<defaultMSgList.length;i++) {
+		var  str = defaultMSgList[i].value;	
+		var word1sep = str.indexOf("$");
+		var currVmsId = str.substring(0, word1sep);
+		var currVmsmsg = str.substring(word1sep+1, str.length);
+		
+		var selectedMsgNo = i;
+		var msgpoint = getLatiLongi(selectedMsgNo);
+		var msgImage = getScenarioDefaultVMSMessages(selectedMsgNo);
+		console.log("msgpoint" + msgpoint);
+
+	var pictureGraphicSystemMsg = new Graphic({
+		geometry: msgpoint,
+		symbol: msgImage,
+	}) 
+		view.graphics.addMany([pictureGraphicSystemMsg]);		  	  
+	}
+	//remove traffic congesion layer
+	removetrafficPlanLayer()
+}
+
+
+//Implement all to current msg(system generated message)
+function scenarioDefaultVMSImpl() {
+	var defaultMSgList = document.getElementsByName("defaultMSgList");
+	var count = 0 ;
+	for(i=0;i<defaultMSgList.length;i++) {
+		var  str = defaultMSgList[i].value;	
+		var word1sep = str.indexOf("$");
+		var currVmsId = str.substring(0, word1sep);
+		var currVmsmsg = str.substring(word1sep+1, str.length);
+		
+		var selectedMsgNo = i;
+		var msgpoint = getLatiLongi(selectedMsgNo);
+		var msgImage = getScenarioDefaultVMSMessagesImpl(selectedMsgNo);
+		console.log("msgpoint" + msgpoint);
+
+	var pictureGraphicSystemMsg = new Graphic({
+		geometry: msgpoint,
+		symbol: msgImage,
+	}) 
+		view.graphics.addMany([pictureGraphicSystemMsg]);		  	  
+	}
+}
+
+
  /*** Obu Message display on the Map */
 var obuGuideMsgPicGraText = "";
 var obuJamPicGraText = ""
@@ -1829,6 +2341,11 @@ document.getElementById("buttonImpFail").onclick = function() {
 }
 
 document.getElementById("buttonRem").onclick = function() { 
+}	 
+
+});
+
+//OBU Messages		
 /*
 	 var obuAlertMsg = document.getElementById("obuAlertTxtId").innerHTML;
 	 var obuJamMsg = document.getElementById("obuJamTxtId").innerHTML;
@@ -1909,9 +2426,11 @@ document.getElementById("buttonRem").onclick = function() {
 	     });
 	 
 		 view.graphics.addMany([obuAlertPicGraText]); */
-		
-}	 
+//End of OBU Message		 
 /*** End of Obu Message display on the Map */
+
+
+
 /***  Accident closed Layer*/
 //LHS Lane closed
 /*var accredlayerflag = true;
@@ -1980,22 +2499,335 @@ document.getElementById("laneupimg1").onclick = function() {
  /*** End of video display  */      
 	
 		//map.add(wmsLayer);  
-        view.when(function() {
-        //view.extent = layer.fullExtent;
-		view.extent = new Extent({
-		  xmin: 103.879526,
-		  ymin:  1.302259,
-		  xmax: 103.963800,
-		  ymax:  1.418752,
-		  spatialReference: {
-			wkid: 4326
-		  }
-		});
-		
-        var layerList = new LayerList({
-            view: view
-          });
-          view.ui.add(layerList, "bottom-left");
-        }); 
+
+/*** TMD Layer show message Proposed system display */
+  /*          	
+            		var tmdequipids = document.getElementsByName("tmdeqipid");
+            		var tmdtimemsgs = document.getElementsByName("tmdtimemsg");
+            		var tmdminmsgs = document.getElementsByName("tmdminmsg");
+            		var tmdstrnames = document.getElementsByName("tmdstrnames"); 
+            		var tmdSelEqId, tmdSelTiMsg, tmdSelMiMsg, tmdSelStrName1, tmdSelStrName2, tmdSelMiMsg;
+            		for(k=0; k<tmdequipids.length;k++) {
+            			tmdSelEqId = tmdequipids[k].value;
+            			tmdSelTiMsg = tmdtimemsgs[k].value;
+            			tmdSelMiMsg = tmdminmsgs[k].value;	
+            			for(i=0;i<3;i++) {
+            					tmdSelStrName1 = tmdstrnames[0].value;	
+            					tmdSelStrName2 = tmdstrnames[1].value;
+            					tmdSelStrName3 = tmdstrnames[2].value;			
+            			}
+            			break;	
+            		}
+            		var sepIndex = tmdSelStrName1.indexOf("$");
+            		var streetName1 = tmdSelStrName1.substring(0, sepIndex);
+            		var min1 = tmdSelStrName1.substring(sepIndex+1, tmdSelStrName1.length);
+            		sepIndex = tmdSelStrName2.indexOf("$");
+            		var streetName2 = tmdSelStrName2.substring(0, sepIndex);
+            		var min2 = tmdSelStrName2.substring(sepIndex+1, tmdSelStrName2.length);
+            		sepIndex = tmdSelStrName3.indexOf("$");
+            		var streetName3 = tmdSelStrName3.substring(0, sepIndex);
+            		var min3 = tmdSelStrName3.substring(sepIndex+1, tmdSelStrName3.length);
+            var msgTitle =  "<center><font style='color:#8BD27A'><b>"+tmdSelEqId+"</b></font><center>"
+            var msgContent =	"<b><center><font style='color:#8BD27A'>"+tmdSelTiMsg+" &nbsp;&nbsp;&nbsp;&nbsp;"+tmdSelMiMsg+"</font><center><b><br>" 
+				+ "<center><b>"+streetName1+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style='color:#8BD27A'>"+min1+"</font><b><center>" 
+				+ "<center><b>"+streetName2+" &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font style='color:#8BD27A'>"+min2+"</font><b><center>" 
+				+ "<center><b>"+streetName3+" &nbsp;&nbsp;&nbsp;&nbsp;<font style='color:#8BD27A'>"+min3+"</font></b><center>";
+
+	/*  var tmdMsgpoint1 = {
+        type: "point", // autocasts as new Point()
+        longitude: 103.858397,
+        latitude: 1.3615295                   
+      }; 
+      var tmdPictureSymbol = {
+                type: "picture-marker",
+                url: "TMD1WithMessage.PNG",
+                width: "20",
+                height: "20",
+              }
+      tmdMsgPicGrapText1 = new Graphic({
+			geometry: tmdMsgpoint1,
+			symbol: tmdPictureSymbol,
+			popupTemplate: {
+				// autocasts as new PopupTemplate()
+				title: msgTitle,
+				content: msgContent    
+			}
       });
+      view.graphics.addMany([tmdMsgPicGrapText1]); */
+/***  End of TMD Layer show message Proposed system display */
+
+/**
+ 	var appendStr1 = '<table cellpadding="5px"><tr> <td bgcolor="black"><font color="#24DEE8" face="Roboto" size="3"><b>' ;
+	var appendStr2 ='</b></font><td></tr><table>'
+ */
+
+ /*
+ //TSP image
+		var tspPictureSymbol = {
+			type: "picture-marker",
+			url: "TSP_MSG.png",
+			width: "20",
+			height: "20"
+		}
+		//TSP Point
+		var tspPoint1 = {
+			type: "point", 
+			longitude: 103.8586063, 
+			latitude: 1.3760463                         
+		};  
+		var tspPoint2 = {
+			type: "point", 
+			longitude: 103.8608452, 
+			latitude: 1.3699416                        
+		};
+ 
+ */
+
+ //Default current and New messages
+ /*	var vmsIdMsgSymbol = {
+			type: "text",  // autocasts as new TextSymbol()
+			 color: "#202B53",
+			 text: currVmsId,
+			 //haloColor: "black",
+			 //haloSize: "1px",
+			 xoffset: 0,
+			 yoffset: 35,
+			 font: {  // autocast as new Font()
+				size: 8,
+				weight: "bold"
+			 }
+		 };
+		 
+		//default VMS msg
+		var vmsDefaultMsg = vmsdefaultMsg1Arr[count];
+		var vmsDefaultMsgFormat = "Current: " + vmsDefaultMsg ;	
 		
+		count = count + 1;
+		if(count>6) {
+			count =0;	
+		}
+
+		var vmsDefaultMsgSymbol;
+		if(currVmsId=='103698') {
+			var vmsDefaultMsgSymbol = {
+				type: "picture-marker",
+				url: "img103.JPG",
+				width: "150",
+				height: "50",
+				xoffset: 0,
+				yoffset: 25,
+			};
+
+		} else {
+		vmsDefaultMsgSymbol = {
+			type: "text",  // autocasts as new TextSymbol()
+			 color: "#000080",
+			 text: vmsDefaultMsgFormat,
+			 haloColor: "#00BFFF",
+			 //haloSize: "1px",
+			 xoffset: 0,
+			 yoffset: 25,
+			 font: {  // autocast as new Font()
+				size: 8,
+				weight: "bold"
+			 }
+		 };
+	}
+	//System VMS msg	
+	var vmsCurrMsgFormat = "New: " + currVmsmsg  ;		
+	var vmsSystemMsgSymbol = {
+		type: "text",  // autocasts as new TextSymbol()
+		 color: "#FF0000",
+		 text: vmsCurrMsgFormat,
+		 haloColor: "#FDEDEC",
+		 //haloSize: "1px",
+		 xoffset: 0,
+		 yoffset: 15,
+		 font: {  // autocast as new Font()
+			size: 8,
+			weight: "bold"
+		 }
+	 };*/
+//End of Default current and New messages
+
+
+//Scenario 1 current and proposed messages
+/*
+			var vmsIdMsg = {
+        		type: "text",  // autocasts as new TextSymbol()
+        		color: "#202B53",
+        		text: sce1VmsId,
+        		 //haloColor: "black",
+        		 //haloSize: "2.5px",
+        		 xoffset: 0,
+        		 yoffset: 35,
+        		 font: {  // autocast as new Font()
+        		    size: 8,
+        			weight: "bold"
+        		 }
+			 };
+			 
+			// text vmsid
+			var pictureGraphicSce1vmsid = new Graphic({
+				geometry: pointSce1,
+				symbol: vmsIdMsg,
+			  }); 
+			 
+			// Current Message
+			var vmsCurrMsg1 = vmsCurrMsg1Arr[count];
+			count = count + 1;
+			if(count>6) {
+				count =0;	
+			}
+			
+			vmsCurrMsg1Format = "Current: " + vmsCurrMsg1
+			var vmsCurrMsg = { 
+        		type: "text",  // autocasts as new TextSymbol()
+        		color: "#000080",
+        		text: vmsCurrMsg1Format,
+        		 haloColor: "#00BFFF",
+        		// haloSize: "2.5px",
+        		 xoffset: 0,
+        		 yoffset: 25,
+        		 font: {  // autocast as new Font()
+        		    size: 8,
+        			weight: "bold"
+        		 }
+        	 };	
+			 
+			 pictureGraphicSce1vmsCurrMsg = new Graphic({
+				geometry: pointSce1,
+				symbol: vmsCurrMsg,
+			  });
+
+			//proposed message 
+			
+			var vmsPropMsg,vmsPropMsgFormat ;
+			 
+			 if(viewFlagS1){
+				vmsPropMsgFormat = "Current: " + sce1Vmsmsg
+				vmsPropMsg = { 
+					type: "text",  // autocasts as new TextSymbol()
+					color: "#000080",
+					text: vmsPropMsgFormat,
+					 haloColor: "#00BFFF",
+					// haloSize: "2.5px",
+					 xoffset: 0,
+					 yoffset: 25,
+					 font: {  // autocast as new Font()
+						size: 8,
+						weight: "bold"
+					 }
+				 };
+			 } else
+			 {
+				vmsPropMsgFormat = "Proposed: " + sce1Vmsmsg
+				vmsPropMsg = { 
+					type: "text",  // autocasts as new TextSymbol()
+					color: "#FF0000",
+					text: vmsPropMsgFormat,
+					 haloColor: "#FDEDEC",
+					// haloSize: "2.5px",
+					 xoffset: 0,
+					 yoffset: 15,
+					 font: {  // autocast as new Font()
+						size: 8,
+						weight: "bold"
+					 }
+				 };	
+			 }	 
+
+			 var pictureGraphicSce1vmsPropMsg = new Graphic({
+				geometry: pointSce1,
+				symbol: vmsPropMsg,
+			  });
+*/
+//end of Scenario 1 current and proposed messages
+
+//Scenario 2 current and proposed messages
+/*	var vmsIdMsg = {
+        		type: "text",  // autocasts as new TextSymbol()
+        		 color: "#202B53",
+        		 text: sce1VmsId,
+        		 //haloColor: "black",
+        		 //haloSize: "1px",
+        		 xoffset: 0,
+        		 yoffset: 35,
+        		 font: {  // autocast as new Font()
+        		    size: 8,
+        			weight: "bold"
+        		 }
+        	 };
+
+			var pictureGraphicSce2vmsId = new Graphic({
+				geometry: pointSce2,
+				symbol: vmsIdMsg,
+			  });
+			  
+			 
+			//current VMS msg
+			var vmsCurrMsg = vmsCurrMsg2Arr[count];
+			var vmsCurrMsg2Format = "Current: " + vmsCurrMsg ;	
+			count = count + 1;
+			if(count>8) {
+				count =0;	
+			}
+			var vmsCurrMsg2 = {
+        		type: "text",  // autocasts as new TextSymbol()
+        		 color: "#000080",
+        		 text: vmsCurrMsg2Format,
+        		 haloColor: "#00BFFF",
+        		 //haloSize: "1px",
+        		 xoffset: 0,
+        		 yoffset: 25,
+        		 font: {  // autocast as new Font()
+        		    size: 8,
+        			weight: "bold"
+        		 }
+        	 };
+			 var pictureGraphicSce2vmsCurr = new Graphic({
+				geometry: pointSce2,
+				symbol: vmsCurrMsg2,
+			  });
+
+		//proposed VMS msg	
+			var vmsPropoMsg2Format;		
+			var vmsPropoMsg2 ;
+			if(viewFlagS2){
+				vmsPropoMsg2Format = "Current: " + sce1Vmsmsg ;
+				vmsPropoMsg2 = {
+					type: "text",  // autocasts as new TextSymbol()
+					 color: "#000080",
+					 text: vmsPropoMsg2Format,
+					 haloColor: "#00BFFF",
+					 //haloSize: "1px",
+					 xoffset: 0,
+					 yoffset: 25,
+					 font: {  // autocast as new Font()
+						size: 8,
+						weight: "bold"
+					 }
+				 };
+			} else {
+				vmsPropoMsg2Format = "Proposed: " + sce1Vmsmsg ;
+				vmsPropoMsg2 = {
+					type: "text",  // autocasts as new TextSymbol()
+					 color: "#FF0000",
+					 text: vmsPropoMsg2Format,
+					 haloColor: "#FDEDEC",
+					 //haloSize: "1px",
+					 xoffset: 0,
+					 yoffset: 15,
+					 font: {  // autocast as new Font()
+						size: 8,
+						weight: "bold"
+					 }
+				 };
+			}
+		 
+			var pictureGraphicSce2vmsProp2 = new Graphic({
+				geometry: pointSce2,
+				symbol: vmsPropoMsg2,
+			  });
+*/
+//end of Scenario 2 current and proposed messages

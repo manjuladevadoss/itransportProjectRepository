@@ -185,16 +185,57 @@
 	          title: "VMS"
 	        });	
   		
-  		
+		var detectCamera = new CustomWMSLayer({
+	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapParameters: {
+	            SERVICE: "WMS",
+	            REQUEST: "GetMap",
+	            FORMAT: "image/png",
+	            TRANSPARENT: "TRUE",
+	            STYLES: "gis_detectcam_style",
+	            VERSION: "1.3.0",
+	            LAYERS: "gisdbo_gis_ea_fels_attr",
+	            WIDTH: "{width}",
+	            HEIGHT: "{height}",
+	            CRS: "EPSG:{wkid}",
+	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+	          },
+
+	          title: "DCam"
+	        });	
+		
+		// Speed Link Layer way layer
+		var speedLinkLayer = new CustomWMSLayer({
+          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapParameters: {
+            SERVICE: "WMS",
+            REQUEST: "GetMap",
+            FORMAT: "image/png",
+            TRANSPARENT: "TRUE",
+            STYLES: "gis_speedlink_style",
+            VERSION: "1.3.0",
+            LAYERS: "gis_speedlink",
+            WIDTH: "{width}",
+            HEIGHT: "{height}",
+            CRS: "EPSG:{wkid}",
+            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+          },
+          title: "TSpeed"
+        });
+		
   		circlelineLayer.visible  = false;
   		mrtstationLayer.visible  = false;
   		mrtbreakdownLayer.visible = true;
   		mrtbreakdowntrafficLayer.visible = false;
   		vmsLayer.visible = false;
+  		detectCamera.visible = false;
+  		speedLinkLayer.visible = false;
 		map = new Map({
-          //center: [103.84347,1.32858],
+		basemap: {
+	            baseLayers: [layer]
+	    },
           //layers: [layer,circlelineLayer,mrtstationLayer,mrtbreakdownLayer,mrtbreakdowntrafficLayer]
-		layers: [layer,circlelineLayer,mrtstationLayer,vmsLayer,mrtbreakdowntrafficLayer]
+		layers: [circlelineLayer,mrtstationLayer,vmsLayer,mrtbreakdowntrafficLayer,speedLinkLayer,detectCamera]
         });
 		
 		

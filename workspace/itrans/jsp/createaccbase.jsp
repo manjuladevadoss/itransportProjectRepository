@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <title> Create IR Accident Sceense </title>
+    <title> Create IR Accident </title>
   	<link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
   	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="mrtinc.css">
@@ -82,13 +82,13 @@
 .esri-view-width-large .esri-popup__main-container,
 .esri-view-width-medium .esri-popup__main-container
 {
-  max-height: 300px !important;
-  max-width: 300px !important;
-  background-color: #202B53;
-  color: white;
-    font-size: 14px;
-    font-family: Roboto, Helvetica, sans-serif;
-    line-height: 1.3em;
+  max-height: 220px !important;
+  max-width: 250px !important;
+  background-color:black ;
+  color: black;
+  font-size: 14px;
+  font-family: Roboto, Helvetica, sans-serif;
+  line-height: 1.3em;
 }
 
 /*Remove the zoom button popup window*/
@@ -178,7 +178,7 @@ background-color: black;
   height:30px
 }
 .lane1Div {
-	color : ;
+	/*color : ;*/
 	fontSize : 11px;
 }
 
@@ -431,7 +431,7 @@ function showaccimage() {
 
 </script>
   </head>
-<body class="calcite-maps calcite-nav-top" onload="predictionwindow()">
+	<body class="calcite-maps calcite-nav-top">
 	<div class="container-fluid">
 		<div ng-app="ltaApp" ng-controller="ltaController">
 		<!--
@@ -458,12 +458,12 @@ function showaccimage() {
 	  
 	  	<table width="100%" id="incdetailtbl"> 
 		<tr>
-			<td><h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp;<h3b>RESPONSE</h3b></td>
+			<td><h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp; <a href="#" ng-click="callirresponse()" style="text-decoration:none;"> <h3b>RESPONSE</h3b> </a></td>
 		</tr>
 	</table>
 	  
-			
-	  <div class='scrollIr'> 
+	
+	<div class='scrollIr'> 
 
 			<div class="panel-group" id="accordion2">	
 				 <div class="panel panel-default">
@@ -513,7 +513,7 @@ function showaccimage() {
 					
 						<div style="width: 150px;">
 							<div id="picker"> </div>
-								<input type="text" placeholder="Start Time"  ng-model="irstarttime"/>
+								<input type="text" style="color:white;" placeholder="Start Time"  ng-model="irstarttime"/>
 						</div>			
 					  </td>
 					  <td colspan="3">
@@ -521,14 +521,14 @@ function showaccimage() {
 					 
 						<div style="width: 150px;">
 							<div id="picker1"> </div>
-								<input type="text"  placeholder="End Time"  ng-model="irendtime1"/>
+								<input type="text"  style="color:white;"  placeholder="End Time"  ng-model="irendtime1"/>
 						</div>			
 					  </td>
 					</tr>
 					<tr>
 					  <td colspan="3">
 						Linked IR <br>
-						<input type="text"  style="width:190px; height: 20px;"  ng-model="irlinkedtxt"/>
+						<input type="text"  style="color:white; width:190px; height: 20px;"  ng-model="irlinkedtxt"/>
 						<!-- <select ng-model="irlinked">
 							<option  value="" selected="selected" hidden="hidden">Choose here</option>
 							<option ng-repeat="option in irlinkedList" value="{{option.irlinkedid}}">{{option.irlinkedname}}</option>
@@ -563,20 +563,20 @@ function showaccimage() {
 					<tr>
 					  <td colspan="3">
 						Start Point: <br>
-							<input type="text"  style="width:190px; height: 20px;"  ng-model="irstartpoint"/>
+							<input type="text"  style="color:white; width:190px; height: 20px;"  ng-model="irstartpoint"/>
 					  </td>
 					  <td colspan="3">
 						End Point: <br>
-							<input type="text"  style="width:190px; height: 20px;"  ng-model="irendpoint"/>
+							<input type="text"  style="color:white; width:190px; height: 20px;"  ng-model="irendpoint"/>
 					  </td>
 					</tr>
 					<tr>
 					  <td colspan="3">
-							Congestion End Point: <br><input type="text"  style="width:190px; height: 20px;" ng-model="ircogendpoint"/>
+							Congestion End Point: <br><input type="text"  style="color:white; width:190px; height: 20px;" ng-model="ircogendpoint"/>
 					  </td>
 					  <td colspan="3">
 						Person Incharge: <br>
-							<input type="text"  style="width:190px; height: 20px;"  ng-model="irperincharge"/>
+							<input type="text"  style="color:white; width:190px; height: 20px;"  ng-model="irperincharge"/>
 					  </td>
 					</tr>
 					<tr>
@@ -655,17 +655,17 @@ function showaccimage() {
 				<img src="laneup.JPG" width="30px" height="30px" id="laneupimg1" onclick="changeImage('laneupimg1')">
 				<input type="hidden"  id="laneupimg1ht" name="laneupimg1htxt" value="laneupimg1" size="5" readonly>
 				<img src="vertibar.JPG" width="10px" height="30px">
-				<font style="color:#8BD27A;font-size: 11px;"><div id="lsh1Div">LSH1</div></font>
+				<font style="color:8BD27A;font-size: 11px;"><div id="lsh1Div">LSH1</div></font>
 				</td>
 				<td align="center">								
-					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg2" onclick="changeImage('laneupimg2')"> <br>
+					<img src="lanecross.JPG" width="30px" height="30px" id="laneupimg2" onclick="changeImage('laneupimg2')"> <br>
 					<input type="hidden"  id="laneupimg2ht" name="laneupimg2htxt" value="laneupimg2" size="5" readonly>
-					<font style="color:#8BD27A;font-size: 11px;"><div id="lane4Div">&nbsp;&nbsp;&nbsp;4</div></font>
+					<font style="color:rgb(229, 128, 128);font-size: 11px;"><div id="lane4Div">&nbsp;&nbsp;&nbsp;4</div></font>
 				</td>
 				<td align="center">
-					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg3" onclick="changeImage('laneupimg3')"> <br>
+					<img src="lanecross.JPG" width="30px" height="30px" id="laneupimg3" onclick="changeImage('laneupimg3')"> <br>
 					<input type="hidden"  id="laneupimg3ht" name="laneupimg3htxt" value="laneupimg3" size="5" readonly>
-					<font style="color:#8BD27A;font-size: 11px;"><div id="lane3Div">&nbsp;&nbsp;&nbsp;3</div></font>
+					<font style="color:rgb(229, 128, 128);font-size: 11px;"><div id="lane3Div">&nbsp;&nbsp;&nbsp;3</div></font>
 				</td>
 			    <td align="center">
 					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg4" onclick="changeImage('laneupimg4')"> <br>
@@ -699,263 +699,7 @@ function showaccimage() {
 	          </table>
                  </table>
 			
-				<!-- The Modal for Action Plan -->
-				&nbsp;&nbsp;  
-				&nbsp; 
-				<a href="#" class="buttonPredi" id="preTimeId" ng-model="preTime"  style="text-decoration:none;" > Prediction </a>
-			
-							
-				<!--<select id="preTimeId" ng-model="preTime"  style="width: 125px;">
-				<option  value="" selected="selected" hidden="hidden">Prediction</option>
-					<option value="1"> 15 Minutes </option>
-					<option value="2"> 30 Minutes </option>
-					<option value="3"> 45 Minutes </option>
-					<option value="4"> 60 Minutes </option>
-				</select>  -->
-				
-<!-- The Modal -->
-	<div id="myModal" class="modalInner">
-	  <!-- Modal content -->
-	  <div class="modal-content1">
-		  <!-- <span class="close">&times;</span> -->
-		<div class="modal-body">      
-	<table id="confitbltop"  cellpadding= "10px">
-		  <tr><td>
-			  <table id="confitbl">
-				<tr>
-				  <th>Do Nothing</th>
-				</tr>
-				<tr>
-				  <td><br></td>
-				</tr>
-				<tr>
-				  <td><b>Delay Time 00.40hr</b></td>
-				</tr>
-			  </table>
-		  </td>
-		  <td>
-			  <table id="confitbl">
-				<tr>
-				  <th>Plan 1</th>
-				</tr>
-				<tr>
-					<td>
-						<a href="#" id="myModalInnerLnk1"  ng-click="irpreditImpl2()" style="text-decoration:none;">VMS Messages  &nbsp; {{iraccscenario1vms.length}} </a> <br>
-						<a href="#" id="myModalInnerLnk1"  ng-click="irpreditImpl2()" style="text-decoration:none;">Traffic Light  &nbsp; {{trafficlight.length}} </a>
-					</td>
-				</tr>
-				<tr>
-				  <td>  
-						<b>Delay Time 00.20hr</b>
-						<!-- <p id="hrSelectSce1"></p> -->			  
-				  </td>
-				</tr>
-		
-			  </table>
-		  </td>
-		  <td>
-			  <table id="confitbl">
-				<tr>
-				  <th>Plan  2</th>
-				</tr>
-				<tr>
-					<td><a href="#" id="myModalInnerLnk2"  ng-click="irpreditImpl2()" style="text-decoration:none;">VMS Messages  &nbsp; {{iraccscenario2vms.length}}  </a><br>  <br> </td>
-				</tr>
-				<tr>
-				  <td> 
-						<b>Delay Time 00.30hr</b>  <!-- <b><p id="hrSelectSce2"></p></b>  -->
-						</td>
-				</tr>
-
-			  </table>
-		</td> </tr> 
-	  </table>
-		</div>
-	</div>
-	</div>		
-	
-	<!--  Inner modal scenario 1  -->
-	<div id="myModalInner1" class="modalInner">
-		  <div class="modal-content">
-			<div class="modal-body">   
-		<table id="scenriotbl1"  cellpadding= "2px">
-			  <tr><td>
-				  <table id="confitbl">
-					<tr>
-					  <th>Plan 1</th>
-					</tr>
-					<tr> 
-						<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
-					</tr>
-					<tr ng-repeat="irsce1 in iraccscenario1vms"> 
-					  <td>
-					  <input type="hidden" id="scenario1List" name="scenario1List" value='{{irsce1.irvmsequipid}}{{sep}}{{irsce1.irvmsaccmsg}}{{sep}}{{irsce1.longitude}}{{sep}}{{irsce1.latitude}}' size="5" readonly>
-					  {{irsce1.irvmsequipid}} &nbsp;&nbsp;{{irsce1.irvmsaccmsg}}
-					  </td>
-					</tr>
-					<tr>
-					  <th>Traffic Light Time Change </th>
-					</tr>
-					<tr>
-						 <td><b>EQP ID &nbsp;&nbsp; Time</b></td>
-					</tr>
-					<tr ng-repeat="irtrlight in trafficlight"> 
-					  <td>
-					   <input type="hidden" id="scenario1TrafficList" name="scenario1TrafficList" value='{{irtrlight.longitude}}{{sep}}{{irtrlight.latitude}}' size="5" readonly>
-					  {{irtrlight.irtrlightid}} &nbsp;&nbsp;{{irtrlight.irtrlightmsg}}
-					  </td>
-					</tr>
-					<tr>
-						<td><center>
-						<a href="#" class="buttonPreImp" id="sce1VmsView"  style="text-decoration:none;"> View VMS </a>
-						<a href="#" class="buttonPredi" id="sce1ImpliId"  style="text-decoration:none;"> Implement </a>
-						<a href="#" class="buttonPreRem" id="sce1ImpliIdRemove"  style="text-decoration:none;"> Remove </a>
-						</center>
-						</td>
-					</tr>
-				  </table>
-			  </td>
-			</tr>
-		  </table>
-		  
-		  </div>
-		</div>
-  </div>
-  
-		<!--  Inner modal scenario 2 -->
-	<div id="myModalInner2" class="modalInner">
-		  <div class="modal-content">
-			<div class="modal-body">   
-				  <table id="scenriotbl1">
-					<tr>
-					  <th><center>Plan 2</center></th>
-					</tr>
-					<tr> 
-						<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
-					</tr>
-					<tr ng-repeat="irsce2 in iraccscenario2vms"> 
-					  <td>
-					   <input type="hidden" id="scenario2List" name="scenario2List" value='{{irsce2.irvmsequipid}}{{sep}}{{irsce2.irvmsaccmsg}}{{sep}}{{irsce2.longitude}}{{sep}}{{irsce2.latitude}}' size="5" readonly>
-					  {{irsce2.irvmsequipid}} &nbsp;&nbsp;{{irsce2.irvmsaccmsg}} 
-					  </td>
-					</tr>
-					<tr>
-						<td><center>
-						<a href="#" class="buttonPreImp" id="sce2VmsView"  style="text-decoration:none;"> View VMS </a>
-						<a href="#" class="buttonPredi"  id="sce2ImpliId"  style="text-decoration:none;"> Implement </a> 
-						<a href="#" class="buttonPreRem" id="sce2ImpliIdRemove"  style="text-decoration:none;"> Remove </a></center>
-						</td>
-					</tr>
-				  </table>	  
-		  </div>
-		</div>
-  </div>
-<!-- End of Modal  -->	
-
-<!-- Modal onload event Start -->
-	<div id="myModalLoad" class="modalInner">
-	  <!-- Modal content -->
-	  <div class="modal-content1">
-		  <!-- <span class="close">&times;</span> -->
-		<div class="modal-body">      
-	<table id="confitbltop"  cellpadding= "10px">
-		  <tr><td>
-			  <table id="confitbl">
-				<tr>
-				  <th>Do Nothing</th>
-				</tr>
-				<tr>
-				  <td><br></td>
-				</tr>
-				<tr>
-				  <td><b>Delay Time 00.40hr</b></td>
-				</tr>
-			  </table>
-		  </td>
-		  <td>
-		  
-			  <table id="confitbl">
-				<tr>
-				  <td>  
-						<table id="confitbl">
-							<tr>
-							  <th>Plan 1</th>
-							</tr>
-							<tr> 
-								<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
-							</tr>
-							<tr ng-repeat="irsce1 in iraccscenario1vms"> 
-							  <td>
-							  <input type="hidden" id="scenario1List" name="scenario1List" value='{{irsce1.irvmsequipid}}{{sep}}{{irsce1.irvmsaccmsg}}{{sep}}{{irsce1.longitude}}{{sep}}{{irsce1.latitude}}' size="5" readonly>
-							  {{irsce1.irvmsequipid}} &nbsp;&nbsp;{{irsce1.irvmsaccmsg}}
-							  </td>
-							</tr>
-							<tr>
-							  <th>Traffic Light Time Change </th>
-							</tr>
-							<tr>
-								 <td><b>EQP ID &nbsp;&nbsp; Time</b></td>
-							</tr>
-							<tr ng-repeat="irtrlight in trafficlight"> 
-							  <td>
-							   <input type="hidden" id="scenario1TrafficList" name="scenario1TrafficList" value='{{irtrlight.longitude}}{{sep}}{{irtrlight.latitude}}' size="5" readonly>
-							  {{irtrlight.irtrlightid}} &nbsp;&nbsp;{{irtrlight.irtrlightmsg}}
-							  </td>
-							</tr>
-							<tr>
-								<td><center>
-								<a href="#" class="buttonPreImp" id="sce1VmsView"  style="text-decoration:none;"> View VMS </a>
-								<a href="#" class="buttonPredi" id="sce1ImpliId"  style="text-decoration:none;"> Implement </a>
-								<a href="#" class="buttonPreRem" id="sce1ImpliIdRemove"  style="text-decoration:none;"> Remove </a>
-								</center>
-								</td>
-							</tr>
-					  </table>
-				  </td>
-				</tr>
-				<tr>
-				  <td><b>Delay Time 00.30hr</b></td>
-				</tr>
-		
-			  </table>
-		  </td>
-		  <td>
-			  <table id="confitbl">				
-				<tr>
-				  <td> 
-						<table id="scenriotbl1">
-						<tr>
-						  <th><center>Plan 2</center></th>
-						</tr>
-						<tr> 
-							<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
-						</tr>
-						<tr ng-repeat="irsce2 in iraccscenario2vms"> 
-						  <td>
-						   <input type="hidden" id="scenario2List" name="scenario2List" value='{{irsce2.irvmsequipid}}{{sep}}{{irsce2.irvmsaccmsg}}{{sep}}{{irsce2.longitude}}{{sep}}{{irsce2.latitude}}' size="5" readonly>
-						  {{irsce2.irvmsequipid}} &nbsp;&nbsp;{{irsce2.irvmsaccmsg}} 
-						  </td>
-						</tr>
-						<tr>
-							<td><center>
-							<a href="#" class="buttonPreImp" id="sce2VmsView"  style="text-decoration:none;"> View VMS </a>
-							<a href="#" class="buttonPredi"  id="sce2ImpliId"  style="text-decoration:none;"> Implement </a> 
-							<a href="#" class="buttonPreRem" id="sce2ImpliIdRemove"  style="text-decoration:none;"> Remove </a></center>
-							</td>
-						</tr>
-					  </table>	
-				  </td>
-				</tr>
-				<tr>
-				  <td><b>Delay Time 00.20hr</b></td>
-				</tr>
-			  </table>
-		</td> </tr> 
-	  </table>
-		</div>
-	</div>
-	</div>	
-<!-- Modal onload event End -->	
+					
 									
 			
 			
@@ -1020,7 +764,7 @@ function showaccimage() {
 			</div>
 			 </div> 
 					<div align="right">  
-						<a href="#" class="buttonCreateMrtInc"  ng-click="callirresponse()" style="text-decoration:none;"> CREATE </a>&nbsp;  &nbsp; 
+						<a href="#" class="buttonCreateMrtInc"  id="vmsMsgAfterCreate"  ng-click="callirresponse()" style="text-decoration:none;"> CREATE </a>&nbsp;  &nbsp; 
 					</div>
 	  </div>
 	<!-- end of Create IR -->
@@ -1073,24 +817,27 @@ function showaccimage() {
 			</td>
 			<td>
 			<input type="hidden" name="accMessageDetail" id="accMessageDetail" value='{{irvms.irvmsaccmsg}}' size="5" readonly> 
+			<input type="hidden"  name="defaultMSgList" value='{{irvms.irvmsequipid}}{{sep}}{{irvms.irvmsaccmsg}}' size="5" readonly>
 			<!-- <textarea class="textareaVmsMsg" name="accMessageDetail" id="accMessageDetail" rows="3" cols="28" ng-model='irvms.irvmsaccmsg'>{{irvms.irvmsaccmsg}}</textarea>  -->
 			<div class="textimageAccidentdiv" contentEditable="true" id="vmsMessageDetailAcc"> {{irvms.irvmsaccmsg}}
   				 <div ng-if="irvms.irvmsaccmsg.indexOf('Accident') === 0"> <img src="accimg1.JPG"  width="30px" height="30px"/> <img src="vms5.png"  width="30px" height="30px"/> </div>
 				 <div ng-if="irvms.irvmsaccmsg.indexOf('Accident') === -1"> <img src="vms4.png"  width="30px" height="30px"/> </div> 
 			</div>
-			</td> 
-				
+			</td> 				
 	    </tr>		
 			</table>
 			<table width="100%"> 
 				<tr>
 					<td>
 						<div aligh="right">
-							<a href="#" class="buttonImp" id="accVmsMessage"  ng-click="irvmsMsgImpl()" style="text-decoration:none;"> Implement </a>
+							<a href="#" class="buttonImp" id="accVmsMessage"  ng-click="irvmsMsgImpl()" style="text-decoration:none;"> View All </a>
 							<a href="#" class="buttonImpAll" id="accAllVmsMessage"  ng-click="irvmsMsgImplAll()" style="text-decoration:none;"> Implement All </a>
-							<a href="#" class="buttonRem" id="remAccVmsMessage" ng-click="irvmsMsgRemoved()" style="text-decoration:none;"> Remove </a> 						
-						</div>	
+							<a href="#" class="buttonRem" id="remAccVmsMessage" ng-click="irvmsMsgRemoved()" style="text-decoration:none;"> Remove </a> 								
+						</div>												
 					</td>
+					<td aligh="right">							
+							<a href="#" class="buttonPredi" id="preTimeId" ng-click="callirpredit()"  style="text-decoration:none;" >Prediction  </a>																			
+						</td>
 				</tr>
 	 	 </table>
             </div>
@@ -1143,7 +890,7 @@ function showaccimage() {
 						<td> 
 						<div class="textimageAccidentdiv" contentEditable="true" ng-model="accAlertMsg" ng-click="enableText()" id="obuAlertTxtId"> {{accAlertMsg}} 
 									<img src="alertzoneimg.PNG"  width="30px" height="30px"/> 
-						</div>
+						</div> 
 						
 						</td>						
 						<td>KM
@@ -1161,7 +908,7 @@ function showaccimage() {
 						</td>
 						<td>
 							  <div class="textimageAccidentdiv" contentEditable="true"  ng-model="accJamMsg"  id="obuJamTxtId" ng-click="enableText()" > {{accJamMsg}} 
-							  	<img src="alertzoneimg.PNG"  width="30px" height="30px"/>
+							  	<!-- <img src="alertzoneimg.PNG"  width="30px" height="30px"/> -->
 							  </div>
 						</td>						
 						<td>KM<textarea class = "textareaVmsMsg" rows="1" cols="3" ng-model="accJamMsgKM" ng-click="enableText()" > {{accJamMsgKM}}</textarea></td>	
@@ -1293,6 +1040,11 @@ function showaccimage() {
             </div>
         </div>
      </div>
+	 
+	 <!-- The Modal for Action Plan -->
+				&nbsp;&nbsp;  
+				&nbsp; 
+				
      <!-- value for TMD Messages -->
      				<div ng-repeat="tmdval in tmdmessages"> 		
 						<input type="hidden" id="tmdeqipid" name="tmdeqipid" value='{{tmdval.equipid}}' size="10" readonly>
@@ -1303,102 +1055,178 @@ function showaccimage() {
 						</div>
 					</div>
 	<!-- End of TMD Messages -->
-    <div align="right"><a href="createincident.jsp" class="buttonCreateMrtInc" ng-click="addmrtincident()" style="text-decoration:none;"> SAVE </a></div> 
-</div>		  	  
- </div> 	
+    
+</div>
+		  	  
+ </div> 
+ <div align="right"><a href="ccgridviewta.jsp" class="buttonCreateMrtInc" style="text-decoration:none;"> SAVE </a>  	
+ <a href="ccgridviewta.jsp" class="buttonCreateMrtInc" ng-click="closeAccInci()" style="text-decoration:none;"> CLOSE </a> &nbsp;  &nbsp;
+</div>
 	 </div>
 	  <!-- end of IR Respnse -->
-      </div>  
+	<!-- &&&& Start Prediction Area --> 
+	<div ng-show="showirpredit">	
+
+			<table id="incdetailtbl" cellpadding= "10px">
+				<tr ><td colspan="3">
+						<div align="right"><a  href="#" ng-click="callirresponse()"  style="text-decoration:none;" > 
+								<font color=" #FFFFFF" size="2.5px">X</font>
+							</a> </div>
+				</td></tr>	
+				<tr><td>
+						<table  border="2px solid #FFFFFF;">
+						  <tr>
+							<th><center>Do Nothing </center></th>
+						  </tr>
+						  <tr>
+							<td> <!-- <a href="#" id="preTimeId"  style="text-decoration:none;"> <font color="#24DEE8" size="2.5px"> View </font></a> --> <br><br></td>
+						  </tr>
+						  <tr>
+							<td><b>Delay Time 01.00hr</b> </td>
+							
+						  </tr>
+						</table>
+					</td>
+					<td>
+						<table border="2px solid #FFFFFF;">
+						  <tr>
+							<th ><center>Plan 1</center></th>
+						  </tr>
+						  <tr>
+							<td>
+								<a href="#" ng-click="callirpreditsce2()" style="text-decoration:none;">
+									  <font color="#24DEE8" size="2.5px"> VMS Messages  &nbsp; {{iraccscenario2vms.length}}  </font>
+							  </a><br> 
+							</td>
+						  </tr>
+						  <tr>
+							<td>  
+								  <b>Delay Time 00.30m</b>
+								  <!-- <p id="hrSelectSce1"></p> -->			  
+							</td>
+						  </tr>
+				  
+						</table>
+					</td>
+					<td>
+						<table border="2px solid #FFFFFF;">
+						  <tr>
+							<th><center>Plan 2</center></th>
+						  </tr>
+						  <tr border="2px solid #FFFFFF;">
+							<td>
+								<a href="#" ng-click="callirpreditsce1()" style="text-decoration:none;">
+									  <font color="#24DEE8" size="2.5px"> VMS Messages  &nbsp; {{iraccscenario1vms.length}}  </font>
+								</a> 
+								<br>
+								<a href="#"  ng-click="callirpreditsce1()" style="text-decoration:none;">
+									  <font color="#24DEE8" size="2.5px"> Traffic Light  &nbsp; {{trafficlight.length}} </font>
+							  </a>
+							</td>  
+					  </tr>
+						  <tr border="2px solid #FFFFFF;">
+							<td> 
+								  <b>Delay Time 00.45m</b>  <!-- <b><p id="hrSelectSce2"></p></b>  -->
+							</td>
+						  </tr>
+		  
+						</table>
+				  </td> </tr> 
+				</table>
+			
+</div>
+	<!-- End of Start Prediction Area --> 
+	<!-- scenario 1 will show here -->
+	<div ng-show="showirpreditsce1">
+			<div class='scrollPre1'>
+			<table id="incdetailtbl" align="center" width="100%">
+					<tr>
+					  <td>  
+							<table align="center" id="scenriotbl1" padding="10%">
+								<tr>
+								  <th>VMS</th>
+								</tr>
+								<tr> 
+									<td><b>EQP ID &nbsp;&nbsp;&nbsp;&nbsp; MESSAGE </b> </td>
+								</tr>
+								<tr ng-repeat="irsce1 in iraccscenario1vms"> 
+								  <td>
+								  <input type="hidden"  name="scenario1List" value='{{irsce1.irvmsequipid}}{{sep}}{{irsce1.irvmsaccmsg}}{{sep}}{{irsce1.longitude}}{{sep}}{{irsce1.latitude}}' size="5" readonly>
+								  {{irsce1.irvmsequipid}} &nbsp;&nbsp;&nbsp;&nbsp; {{irsce1.irvmsaccmsg}}
+								  </td>
+								</tr>
+								<tr>
+								  <th> GLIDE </th>
+								</tr>
+								<tr>
+									 <td> <b>EQP ID &nbsp;&nbsp;&nbsp;&nbsp; PHASE TIME</b></td>
+								</tr>
+								<tr ng-repeat="irtrlight in trafficlight"> 
+								  <td>
+								   <input type="hidden"  name="scenario1TrafficList" value='{{irtrlight.longitude}}{{sep}}{{irtrlight.latitude}}' size="5" readonly>
+								    {{irtrlight.irtrlightid}} &nbsp;&nbsp;&nbsp;&nbsp; {{irtrlight.irtrlightmsg}}
+								  </td>
+								</tr>
+								<tr>
+									<td> <center>
+									<a href="#" class="buttonPreImp" id="sce1VmsView"  style="text-decoration:none;"> View VMS </a>
+									<a href="#" class="buttonPredi" id="sce1ImpliId"  style="text-decoration:none;"> Implement </a>
+									<a href="#" class="buttonPreRem" id="sce1ImpliIdRemove"  style="text-decoration:none;"> Remove </a>
+									</center>
+									</td>
+								</tr>
+								<tr>
+										<td><br><b><center>Delay Time 00.45m</center></b><br></td>
+								</tr>		
+						  </table>
+					  </td>
+					</tr>
+				  </table>
+				</div>
+				</div>
+
+<!-- scenario 2 will show here -->
+	<div ng-show="showirpreditsce2">
+			<table id="incdetailtbl" align="center"  width="100%">				
+					<tr>
+					  <td> 
+							<table  align="center" id="scenriotbl1">
+							<tr>
+							  <th><center>VMS</center></th>
+							</tr>
+							<tr> 
+								<td><b>EQP ID &nbsp;&nbsp; MESSAGE </b> </td>
+							</tr>
+							<tr ng-repeat="irsce2 in iraccscenario2vms"> 
+							  <td>
+							   <input type="hidden" name="scenario2List" value='{{irsce2.irvmsequipid}}{{sep}}{{irsce2.irvmsaccmsg}}{{sep}}{{irsce2.longitude}}{{sep}}{{irsce2.latitude}}' size="5" readonly>
+							  {{irsce2.irvmsequipid}} &nbsp;&nbsp;{{irsce2.irvmsaccmsg}} 
+							  </td>
+							</tr>
+							<tr>
+								<td><center>
+								<a href="#" class="buttonPreImp" id="sce2VmsView"  style="text-decoration:none;"> View VMS </a>
+								<a href="#" class="buttonPredi"  id="sce2ImpliId"  style="text-decoration:none;"> Implement </a> 
+								<a href="#" class="buttonPreRem" id="sce2ImpliIdRemove"  style="text-decoration:none;"> Remove </a></center>
+								</td>
+							</tr>
+							<tr>
+									<td><br><b><center>Delay Time 00.30m</center></b><br></td>
+							</tr>
+						  </table>	
+					  </td>
+					</tr>
+
+				  </table>
+	</div>
+
+
+	</div>  
 	  
 		</div>
 		
 		</div>
 	</div>  
 </body>
-<script>
-/*** Modal Content for Action Plan Accident IR*/
-// Get the modal
-var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("preTimeId");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-scenarioselectionid = 0;
-btn.onclick = function() {
-  modal.style.display = "block";
-  //Time Change 	
- /* scenarioselectionid = document.getElementById("preTimeId").selectedIndex;
-  if(scenarioselectionid==1){
-	   document.getElementById("hrSelectSce1").innerHTML = "Delay Time 1.10 hrs";
-	   document.getElementById("hrSelectSce2").innerHTML = "Delay Time 1.30 hrs"
-  }
-  if(scenarioselectionid==2){
-	   document.getElementById("hrSelectSce1").innerHTML = "Delay Time 1.25 hrs";
-	   document.getElementById("hrSelectSce2").innerHTML = "Delay Time 1.45 hrs"
-  }
-  if(scenarioselectionid==3){
-	   document.getElementById("hrSelectSce1").innerHTML = "Delay Time 1.40 hrs";
-	   document.getElementById("hrSelectSce2").innerHTML = "Delay Time 2.00 hrs"
-  }
-  if(scenarioselectionid==4){
-	   document.getElementById("hrSelectSce1").innerHTML = "Delay Time 1.55 hrs";
-	   document.getElementById("hrSelectSce2").innerHTML = "Delay Time 2.15 hrs"
-  }*/
-  
-}
-function predictionwindow() {
-	 modal.style.display = "block";
-	 //all plan in one display
-	  //myModalLoad.style.display = "block";	  
-}
-
-//inner modal  Scenario 1 onclick
-var modalInner1 = document.getElementById("myModalInner1");
-
-// Get the button that opens the modal
-//var btn = document.getElementById("mySelect");
-lnkInner1 = document.getElementById("myModalInnerLnk1");
-
-// Get the <span> element that closes the modal
-var spanInner1 = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-lnkInner1.onclick = function() {
-  modalInner1.style.display = "block";
-}
-
-//inner modal Scenario 2 onclick
-var modalInner2 = document.getElementById("myModalInner2");
-
-// Get the button that opens the modal
-//var btn = document.getElementById("mySelect");
-lnkInner2 = document.getElementById("myModalInnerLnk2");
-
-// Get the <span> element that closes the modal
-var spanInner2 = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-lnkInner2.onclick = function() {
-  modalInner2.style.display = "block";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none"; 
-  }
-   if (event.target == modalInner1) { 
-   	modalInner1.style.display = "none";
-  }
-  if (event.target == modalInner2) { 
-   	modalInner2.style.display = "none";
-  }
-}
-/*** End Modal Content for Action Plan */ 
- 
-
-</script>
 </html>

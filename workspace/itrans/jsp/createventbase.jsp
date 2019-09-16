@@ -61,16 +61,7 @@
         height: 20px;
         width: 350px;
       }
-	  #instruction1 {
-		z-index: 99;
-        position: absolute;
-        top: 50px;
-        right: 25%;
-        padding: 5px;
-        margin-left: -175px;
-        height: 20px;
-        width: 350px;		  
-	  }
+
       .esri-layer-list {
         width: 310px;
       }
@@ -202,8 +193,43 @@ input[type=text] {
   color: white;
 }
 
+/* Timer Instruction */
+#timerinstruction {
+	z-index: 99;
+    position: absolute;
+    top: 850px;
+    left: 35%;
+    padding: 5px;
+    margin-left: -175px;
+    height: 20px;
+    width: 5	50px;
+}
 
-    </style>
+.timerbutton {
+  color: #C8CFF4;
+  font-family:  Roboto, Helvetica, sans-serif;
+  font-size: .8em;
+  box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
+  border-radius: 13px;
+  background-color:#356D85;
+  border: solid 0px #356D85;
+  width:50px;
+  height:15px;
+}
+
+.timerconbutton {
+  color: #C8CFF4;
+  font-family:  Roboto, Helvetica, sans-serif;
+  font-size: .8em;
+  box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
+  border-radius: 13px;
+  background-color:#356D85;
+  border: solid 0px #356D85;
+  width:20px;
+  height:15px;
+}
+
+</style>
 
  
  <script>
@@ -315,7 +341,7 @@ input[type=text] {
   </head>
 <body class="calcite-maps calcite-nav-top">
 	<div class="container-fluid">
-		<div ng-app="ltaApp" ng-controller="ltaController">
+		<div ng-app="ltaApp" ng-controller="ltaController" id="unique">
 		<!--
 		<table width="100%" border="1"> 
 		<tr>
@@ -323,29 +349,45 @@ input[type=text] {
 		</tr>
 		</table>  -->
   
-	  <div id="main" class claro>
-	 <div id="viewDiv"> </div>    
-	  <div id="instruction">    	        
-		<button class="irresetbutton" id="rdclose">  Line </button>
-		<button class="irresetbutton" id="rdclosepoint">  Symbol  </button>
-		<button class="irresetbutton" id="line">  Draw Line  </button>
+	<div id="main" class claro>
+	<div id="viewDiv"> </div>    
+	<div id="instruction">    	        
+		<button class="irresetbutton" id="rdclose"> Line </button>
+		<button class="irresetbutton" id="rdclosepoint">Symbol </button>	       
+	</div>  
+	  
+	<div id="timerinstruction">    	        
+	<div ng-show="showdateprebuttonFlag">
+		<button class="timerbutton" id="26oct"> 26 Oct </button>
+		<button class="timerbutton" id="27oct"> 27 Oct </button>	       
+		<button class="timerbutton" id="02nov"> 02 Nov </button>	
+		<button class="timerbutton" id="03nov"> 03 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 09 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 10 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 16 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 17 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 23 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 24 Nov </button>	
+		<button class="timerconbutton" ng-click="displaynextlist('1')"> > </button>
+	</div>
+	<div ng-show="showdatenextbuttonFlag">
+		<button class="timerconbutton" ng-click="displaynextlist('2')"> < </button>
+		<button class="timerbutton" id="rdclosepoint"> 30 Nov </button>	
+		<button class="timerbutton" id="rdclosepoint"> 1 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 7 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 8 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 14 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 15 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 21 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 22 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 28 Dec </button>	
+		<button class="timerbutton" id="rdclosepoint"> 29 Dec </button>	
 		
-			<div class="popup" onclick="popupvideo()">
-		        <div id="videodiv">
-		           <span class="popuptext" id="myPopup">
-		              <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
-		              <video id="VisaChipCardVideo" width="300" controls>
-		                  <source src="CTEvideo.mp4" type="video/mp4">
-		               </video>
-		           </span>
-		           </div>       
-				</div>					       
-		 </div>  
-	 <div id="instruction1">
-	 <button class="irresetbutton" id="video" >Video </button>
-	 <button class="irresetbutton" id="undo" >Reset  </button>
-	</div> 
-      
+	</div>
+
+	</div>  
+
+
       <div id="panelTopDiv"  style="background-color: #202B53;">
     		<h2t> Event - {{eventname}} </h2t>
       </div>  
@@ -358,16 +400,18 @@ input[type=text] {
 	  <div ng-show="showeventcreateFlag">
 	  <!-- <div class="item3" style="background-color: #202B53;"> -->
 	  
-	  	<table width="100%" id="incdetailtbl"> 
+	<table width="100%" id="incdetailtbl"> 
 		<tr>
-			<td><h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp;<h3b>RESPONSE</h3b></td>
+			<td><h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp;
+			<a href="#" ng-click="calleventresponse()" style="text-decoration:none;"> <h3b>RESPONSE</h3b></a>
+			</td>
 		</tr>
 	</table>
 	  
 			
 	 <!-- <div class='incscroll'>   -->
 <!-- event creation -->
-<div class='scrollResponse'>
+<div class='scrolleventCreate'>
 	<div class="panel-group" id="accordion2">
        <div class="panel panel-default">
     	<div class="panel-heading active">
@@ -396,10 +440,10 @@ input[type=text] {
 	  
 	  </tr>
         <tr>
-          <td> Start Time <br>
+          <td> Start Date <br>
 				<input type="text"  placeholder="Start Time" ng-model="eventstarttime" readonly class="form_datetime"> 			 	                
           </td>
-		  <td> End Time <br>
+		  <td> End Date <br>
 				<input type="text"  placeholder="end Time" ng-model="eventendtime1"> 
           </td>
         </tr>
@@ -479,9 +523,9 @@ input[type=text] {
 						  <td>Close Time</td>
 						</tr>
 						<tr style="height:2px;">
-						  <td> <input type="text" style="width:130px;" placeholder="road name" ng-model="eventroadname"></td>
-						  <td><input type="text"  style="width:130px;" placeholder="{{eventstarttime}}" ng-model="eventstarttimecl"></td>
-						  <td><input type="text"  style="width:130px;" placeholder="{{eventendtime}}" ng-model="eventendtimecl"> </td>
+						  <td> <input type="text" style="width:200px;" placeholder="road name" ng-model="eventroadname"></td>
+						  <td><input type="text"  style="width:80px;" placeholder="{{eventstarttime}}" ng-model="eventstarttimecl"></td>
+						  <td><input type="text"  style="width:80px;" placeholder="{{eventendtime}}" ng-model="eventendtimecl"> </td>
 						</tr>
 						</table>
 						
@@ -582,7 +626,7 @@ input[type=text] {
 		</tr>
 	</table>   
 	
-	 <div class='scrollResponse'> 
+	 <div class='scrolleventResponse'> 
  	<div class="panel-group" id="accordion2">
 	       <div class="panel panel-default">
 	    	<div class="panel-heading active">
@@ -594,82 +638,61 @@ input[type=text] {
 	        <div class="panel-collapse collapse" id="Collapseiconthree">
 	        	<div class="panel-body">
             	<p>Recommended VMS Messages </p>
+				
 				<table width="100%" class="tablevms">  
-				<tr>
-					<th align="left">Recommended Display <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
-					<th align="left"> Time <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
-					<th align="left">EQT ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
-					<th align="left"> </th>		
-				</tr>
-				<tr>
-					<td><textarea class="textareaeventVmsMsg" rows="3" cols="30" id="eventVmsMsg" ng-model="eventVmsMsg" ng-click="enableText()" > </textarea></td>
-					<td>
-					<input type="text" ng-model="eventVmsdisplaytime" style =" width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
-					</td>
-					<td><div id="evevmsequipid"><font color="#C8CFF4">{{eventvmseqipid}}</font></div></td>
-					<td> <button class="vmsMsgDisbutton" id="eveVmsSelect"  style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"> </button>	 </td>
-					
-				</tr>
-				<tr>
-					<td><textarea class="textareaeventVmsMsg" rows="3" cols="30" id="eventVmsMsg1" ng-model="eventVmsMsg1" ng-click="enableText()" > </textarea></td>
-					<td>
-					<input type="text" ng-model="eventVmsdisplaytime1"  style =" width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
-					</td>
-					<td><div id="evevmsequipid1"><font color="#C8CFF4">{{eventvmseqipid1}}</font></div></td>
-					<td> <button class="vmsMsgDisbutton" id="eveVmsSelect1"  style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"> </button>	 </td>				
-				</tr>	
-				<tr>
-					<td><textarea class="textareaeventVmsMsg" rows="3" cols="30" id="eventVmsMsg2" ng-model="eventVmsMsg2" ng-click="enableText()" > </textarea></td>
-					<td>
-					<input type="text" ng-model="eventVmsdisplaytime2"  style =" width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
-					</td>
-					<td><div id="evevmsequipid2"><font color="#C8CFF4">{{eventvmseqipid2}}</font></div></td>
-					<td> <button class="vmsMsgDisbutton" id="eveVmsSelect2"  style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"> </button>	</td>				
-				</tr>
-				<tr>
-					<td><textarea class="textareaeventVmsMsg" rows="3" cols="30" id="eventVmsMsg3" ng-model="eventVmsMsg3" ng-click="enableText()" > </textarea></td>
-					<td>
-					<input type="text" ng-model="eventVmsdisplaytime3"  style =" width: 120px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">
-					</td>
-					<td><div id="evevmsequipid3"><font color="#C8CFF4">{{eventvmseqipid3}}</font> </div></td>
-					<td> 
-						<button class="vmsMsgDisbutton" id="eveVmsSelect3"  style="text-decoration:none;"> <img src="editicon.png" width="17px" height="17px"> </button>				
-					</td>				
-				</tr>
+					<tr>
+						<th align="left">Recommended Display <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
+						<th align="left"> Date <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
+						<th align="left"> Time </th>	
+						<th align="left">EQT ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
+							
+					</tr>
+					<tr colspan="4">
+						<th align="left">Advanced Message </th>
+					</tr>
+					<tr ng-repeat="eventdata in eventvms | limitTo : noDisplayData : startData">
+						<td>				
+							<textarea class="textareaeventVmsMsg" rows="3" cols="25" id="eventVmsMsg"  ng-click="enableText()" >{{eventdata.eventvmsmsg}}</textarea>							
+						</td>
+						<td>						
+							<input type="text" value= '{{eventdata.eventdate}}' style =" width: 75px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">						
+						</td>
+						<td> 							
+							<input type="text"  value= '{{eventdata.eventtime}}' style =" width: 115px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">  							
+						</td>
+						<td>	
+							<!-- <input type="hidden" id="seletedid" name="seletedid" value= '{{eventdata.eventeqid}}{{sep}}{{eventdata.eventdate}}{{sep}}{{eventdata.eventtime}}{{sep}}{{eventdata.eventvmsmsg}}' > -->  							
+							<input type="hidden" id="seletedadid" name="seletedadid" value= '{{eventdata.eventeqid}}{{sep}}{{eventdata.eventdate}}' >  							
+								<font color="#C8CFF4">{{eventdata.eventeqid}}</font>					
+						</td>					
+					</tr>
 				</table>
-				<table width="100%"> 
-						<tr>
-							<td>
-							<div align="right">	<a href="#" class="buttonadd" id="buttonadd" ng-click="parterMsgAdd()" style="text-decoration:none;"> New VMS Plan</a>
-								<a href="#" class="buttondelete" id="buttondelete" ng-click="parterMsgRemove()" style="text-decoration:none;"> Remove </a> 									
-							</div>
-							</td>
-						</tr>
-				 </table>
-				 
-				VMS Set
-				<table width="100%" class="tablevms">  
-				<tr>
-					<th align="left">Set <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
-					<th align="left"> Time <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
-					<th align="left">EQT ID <i class="fa fa-caret-down" style="font-size:18px;color:#C8CFF4"></i></th>
-				</tr>
-
-				<tr>
-					<td> <font color="#C8CFF4">1 </font></td>
-					<td> <font color="#C8CFF4"> {{eventVmsdisplaytime}}  </font>
-					</td>
-					<td> 
+				<div align="right"><a class="buttoneveImp"  id="vmsids" href="#" style="text-decoration:none;"> Implement </a><a class="buttoneveNext"  href="#" ng-click="shownextpg()" style="text-decoration:none;"> Next </a></div>
+				<table width="100%" class="tablevms">				
+					<tr colspan="4">
+						<th align="left">Actual Message </th>
+					</tr>				
+					<tr ng-repeat="eventdatact in eventvms | limitTo : noDisplayData : startDataact">
+						<td>											
+							<textarea class="textareaeventVmsMsg" rows="3" cols="25" id="eventVmsMsg"  ng-click="enableText()" >{{eventdatact.eventvmsmsg}}</textarea>							
+						</td>
+						<td>						
+							<input type="text" value= '{{eventdatact.eventdate}}' style =" width: 75px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">													
+						</td>
+						<td> 		
+							<input type="text"  value= '{{eventdatact.eventtime}}' style =" width: 115px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">  														
+						</td>
+						<td>
+							<!-- <input type="hidden" id="seletedactid" name="seletedactid" value= '{{eventdatact.eventeqid}}{{sep}}{{eventdatact.eventdate}}{{sep}}{{eventdatact.eventtime}}{{sep}}{{eventdatact.eventvmsmsg}}' >  --> 				
+							<input type="hidden" id="seletedacid" name="seletedacid" value= '{{eventdatact.eventeqid}}{{sep}}{{eventdatact.eventdate}}' >  				
+							<div id="evevmsequipid"><font color="#C8CFF4">{{eventdatact.eventeqid}}</font></div>													
+						</td>					
+					</tr>				
 					
-					<a href="#" ng-click="showvmsequipmsg('1')" style="text-decoration:none;"><font color="#C8CFF4">TIP 231482 </font> </a></td>
-				</tr>
-				<tr>
-					<td> <font color="#C8CFF4"> 2</font></td>
-					<td> 
-					<font color="#C8CFF4"> {{eventVmsdisplaytime}} </font></td>
-					<td> <a href="#" ng-click="showvmsequipmsg('2')" style="text-decoration:none;"> <font color="#C8CFF4">TIP 545862 </font></a> </td>					
-				</tr>				
 				</table>
+						
+						<div align="right"><a class="buttoneveImp"  id="vmsactids" href="#" style="text-decoration:none;"> Implement </a><a class="buttoneveNext"  href="#" ng-click="shownextpgact()" style="text-decoration:none;"> Next </a></div>
+						
 				 
 	            </div>
 	        </div>

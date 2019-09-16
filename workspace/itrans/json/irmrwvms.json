@@ -3,26 +3,37 @@
     {
       "irmrwvmsstatus": "Implement",
       "irvmsequipid": "545862",
-      "irmrwvmsmsg": "Litter picking along Ln1"
+      "irmrwvmsmsg": "Litter Picking long Ln1",
+      "longitude" : "103.92464",
+      "latitude" : "1.3113622",
+      "datetime" : "2019/07/23"
     },
     {
       "irmrwvmsstatus": "Implement",
-      "irvmsequipid": "985645",
-      "irmrwvmsmsg": "Plant watering along Ln1"
+      "irvmsequipid": "895623",
+      "irmrwvmsmsg": "Litter Picking long Ln1",
+      "longitude" : "103.9094703",
+      "latitude" : "1.3082692",
+      "datetime" : "2019/07/23"
     },
     {
       "irmrwvmsstatus": "Implement",
       "irvmsequipid": "662512",
-      "irmrwvmsmsg": "Road sweeping along Ln1"
+      "irmrwvmsmsg": "Litter Picking long Ln1",
+      "longitude" : "103.9019901",
+      "latitude" : "1.3039255",
+      "datetime" : "2019/07/23"
     },
     {
       "irmrwvmsstatus": "Implement",
-      "irvmsequipid": "686457",
-      "irmrwvmsmsg": "Tunnel Washing"
+      "irvmsequipid": "686480",
+      "irmrwvmsmsg": "Litter Picking long Ln1",
+      "longitude" : "103.8895556",
+      "latitude" : "1.3002632",
+      "datetime" : "2019/07/23"
     }
   ]
 }
-
 
 
 

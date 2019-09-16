@@ -222,13 +222,13 @@ h7 {
 .tablevmsl tr:nth-child(odd){
 background-image: linear-gradient( 90deg,	rgba(55,63,97,1) , rgba(25,31,57,1));
 color: white;
- padding:5px;
+ padding:8px;
 }
 
 .tablevms tr:nth-child(even){
 background-image: linear-gradient( 90deg,	rgba(55,63,97,1) , rgba(25,31,57,1));
 color: white;
- padding:5px;
+ padding:8px;
 }
 
 .tablevms tr:hover {
@@ -236,7 +236,7 @@ color: white;
 }
 
 .tablevms td{
- padding:7px;
+ padding:8px;
  font-size: 13px;
 }
 
@@ -372,6 +372,7 @@ color: white;
  font-weight: bold;
  background-color: #2C3A77;
  border-radius: 8px; 
+ padding: 10px 10px;
 }
 
 .textareaeventcanMsg { 
@@ -381,6 +382,7 @@ color: white;
  font-weight: bold;
  background-color: #2C3A77;
  border-radius: 8px; 
+ padding: 10px 10px;
 }
 .textareanote { 
  font-size: 1em;
@@ -473,9 +475,20 @@ input {
 div.scrollResponse {
       overflow-y:scroll;
 	  overflow-x: none;
-      height:580px;
+      height:760px;
 }
 
+div.scrolleventCreate {
+  overflow-y:scroll;
+overflow-x: none;
+  height:570;
+}
+
+div.scrolleventResponse {
+  overflow-y:scroll;
+overflow-x: none;
+  height:570px;
+}
 .vmsMsgDisbutton {
   padding: 2px 5px;
   color: #C8CFF4;
@@ -589,13 +602,20 @@ div.scrollResponse {
 div.scrollIr {
       overflow-y:scroll;
 	  overflow-x: none;
-      height:560px;
+      height:760px;
+}
+
+/*Prediction plan 1 */
+div.scrollPre1 {
+  overflow-y:scroll;
+overflow-x: none;
+  height:600px;
 }
 
 /* Mobile road work css */
 .textareamrwcomment { 
  font-size: 1em;
- color: #C8CFF4;
+ color: #FFF;
  font-family: Roboto, Helvetica, sans-serif;
  font-weight: bold;
  background-color: #37478A;
@@ -772,14 +792,14 @@ div.scrollIr {
   font-weight: bold;
   padding: 2px 5px;
   color: #C8CFF4;
-  border: 2px solid #48AD76;
+  border: 2px solid #08a4d8;
   border-radius: 10px/20px;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
   width:80px;
   text-align: center;
-  background-color: #48AD76;
+  background-color: #08a4d8;
 }
 
 
@@ -849,11 +869,11 @@ div.scrollIr {
 }
 #scenriotbl1 td, #scenriotbl1 th {
   border: 1px solid #37478A;
-  padding: 3px;
+  padding: 8px;
 }
 #scenriotbl1 th {
-  padding-top: 2px;
-  padding-bottom: 2px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   text-align: center;
   background-color: #37478A;
   color: white;
@@ -861,3 +881,19 @@ div.scrollIr {
 /*** End of table design */ 
  /*** End of Accident IR */
  
+ 
+.buttoneveNext {
+  font-size: .8em;
+  font-family: Roboto, Helvetica, sans-serif;
+  font-weight: bold;
+  padding: 2px 5px;
+  color: #C8CFF4;
+  border: 2px solid #48AD76;
+  border-radius: 10px/20px;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  width:50px;
+  text-align: center;
+  background-color: #48AD76;
+}

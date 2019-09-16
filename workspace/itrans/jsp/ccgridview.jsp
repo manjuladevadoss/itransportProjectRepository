@@ -2,6 +2,7 @@
 <head>
   <title>ccgrid view</title>
    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta http-equiv="refresh" content="40" /> -->
     <link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="grid.css">
 	<link rel="stylesheet" href="dropdownlistStyle.css">
@@ -22,6 +23,10 @@
  	 	<script type="text/javascript"  src="chartcanvas.js"></script> 
  	 <!-- End of dynamic chart java Script  -->
   	
+	<!-- Start of modal map content  -->
+		<script src="http://localhost:8080/itrans/arcgis_4.11/init.js"></script>  
+		<script src="basemap411ta.js"></script>  
+	
  <style>
  h4 {
   height: 30px;
@@ -55,13 +60,56 @@ h11 {
   font-family: Roboto, Helvetica, sans-serif;
   font-size: 18px;
 }
-</style>
 
-<script></script>
+/*Right click Menu*/
+#items{
+	list-style:none;
+	margin:0px;
+	margin-top:2px;
+	padding-left:3px;
+	padding-right:5px;
+	padding-bottom:3px;
+	color: #ffffff;
+}
+
+/*** Modal design */
+/* Modal Content */
+.modal-content1 {
+  position: relative;
+  background-color: #fffcfc;
+  margin: auto;
+  left: 0;
+  padding: 0;
+  border: 1px solid #888;
+  width: 95%;
+  height: 95%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Inner Modal */
+.modalInner {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 5; /* Sit on top */
+  padding-top: 50px; /* Location of the box */
+  padding-left: 50px; 
+  left: 0;
+  top: 0;
+  width: 95%; /* Full width */
+  height: 95%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0); /* Black w/ opacity */
+}
+</style>
 
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid" >
 <div ng-app="ltaApp" ng-controller="ltaController">
 	
 	<table width="100%" style="background-color: rgba(49,53,81,0.5);"> 
@@ -178,7 +226,7 @@ h11 {
 						 <table width="98%" id="datatbl">
 							<tr>
 								<th width="10%"> <a href="#" ng-click="sortType = 'irid'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"><font style="font-size:16px;color:#ffffff">IR ID</font></a></th>
-								<th width="27%"> <a href="#" ng-click="sortType = 'type'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#ffffff">Type</font></a></th>
+								<th width="25%"> <a href="#" ng-click="sortType = 'type'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#ffffff">Type</font></a></th>
 								<th width="20%"> <a href="#" ng-click="sortType = 'state'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#ffffff">Status</font></a></th>
 								<th width="10%"> <a href="#" ng-click="sortType = 'zone'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#ffffff">Zone</font> </a></th>
 								<th width="23%"> <a href="#" ng-click="sortType = 'roadname'; sortReverseincfromgrid = !sortReverseincfromgrid" style="text-decoration:none;"> <font style="font-size:16px;color:#ffffff">Road Name</font></a></th>
@@ -191,7 +239,7 @@ h11 {
 							<table width="100%"  id="inctbl">
 									<tr ng-repeat="inc in incidentRec | orderBy:sortType:sortReverseincfromgrid | filter:searchIncidentfromgrid">
 										<td width="10%"><font color="#ffffff" size="2px">{{inc.irid}}</font></td>
-										<td width="28%">
+										<td width="25%">
 											<div ng-if="inc.type==='Accident'"><img src="accident.jpg"><font color="#ffffff" size="2px"> {{inc.type}}</font></div>
 											<div ng-if="inc.type==='Road Works'"><img src="roadwork.jpg"><font color="#ffffff" size="2px"> {{inc.type}}</font></div>
 											<div ng-if="inc.type==='Obstacle'"><img src="obstacle.jpg"><font color="#ffffff" size="2px"> {{inc.type}}</font></div>
@@ -543,62 +591,116 @@ h11 {
 	  <div class="item5" ng-style="divItem5">
 			<table width="100%">
 				 <tr> 
-				 <td> <h5>ENVIRONMENTAL MONITORING LIST</h5><td>
+				 <td> <h5>TRAFFIC ALERTS</h5><td>
 				 <td align='right'>
 					<input type="text" size="35" style="padding-left: 10px;" placeholder="Search"  ng-model="searchEnvifromgrid"> 			 
 				 </td>
 				 <td> 	
-				   		<div class="dropdown" style="float:right;">
-							<!-- <i class="fa fa-align-justify fa_custom"></i> -->
+			   		<div class="dropdown" style="float:right;">
+							<!-- <i class="fa fa-align-justify fa_custom"></i>  -->
 							<img src="listimg.png" style="width:13px; height:13px;">
 							<div class="dropdown-content" style="float:left;">
 								<a href="#" style="text-decoration: none">Incident Record</a>
-								<a href="#" style="text-decoration: none">Work Order</a>
-								<a href="#"  style="text-decoration: none">Technical Alarms</a>
-								<a href="#"  style="text-decoration: none">Events</a>
-								<a href="#"  style="text-decoration: none">Road Works</a>
+								<a href="#" style="text-decoration: none">Technical Alarms</a>
+								<a href="#" style="text-decoration: none">Environment</a>
+								<a href="#" style="text-decoration: none">Events</a>
+								<a href="#" style="text-decoration: none">Road Works</a>
 								 	 <img src="horibar.JPG" style="padding:5px; height:18px;" >
-								<a href="#"  style="text-decoration: none">Merge up/down</a>
+								<a href="#" style="text-decoration: none">Merge up/down</a>
 								<a href="#" style="text-decoration: none">Merge sideways</a>
-							</div>
-						</div> 
-					</td>			 
+							 </div>
+				  </div> 
+			</td>		 
 				 </tr>
 			 </table>
 		   <br>
-			<table width="100%">  
+		  
+		   
+			<table width="100%">      	 	 
 				<tr><td>
 				 <table width="98%" id="datatbl">
 					<tr>
-						<th width="16%"> <a href="#" ng-click="sortTypenv = 'startime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Start Time</font></a></th>
-						<th width="15%"> <a href="#" ng-click="sortTypenv = 'endtime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">End Time </font></a></th>
-						<th width="10%"> <a href="#" ng-click="sortTypenv = 'alarmid'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Alarm ID</font></a></th>
-						<th width="30%"> <a href="#" ng-click="sortTypenv = 'desc'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Description</font></a></th>
-						<th width="10%"> <a href="#" ng-click="sortTypenv = 'status'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Status</font></a></th>
+						<th width="10%"> <a href="#" ng-click="sortTypenv = 'startime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Status</font></a></th>
+						<th width="13%"> <a href="#" ng-click="sortTypenv = 'endtime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Time</font></a></th>
+						<th width="16%"> <a href="#" ng-click="sortTypenv = 'alarmid'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Alert ID</font></a></th>
+						<th width="14%"> <a href="#" ng-click="sortTypenv = 'desc'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Road Name</font></a></th>					
+						<th width="18%"> <a href="#" ng-click="sortTypenv = 'status'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Description</font></a></th>
+						<th width="12%"> <a href="#" ng-click="sortTypenv = 'status'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Source</font></a></th>
 					</tr>
 				</table> 
 			</td></tr>
 			<tr><td>
 				<div class='scrollev'>
-					<table  id="inctbl" width="100%">
-						<tr ng-repeat="envmoni in environmonitorec | orderBy:sortTypenv:sortReversenv | filter:searchEnvifromgrid">
-							<td width="16%"><font color="#ffffff" size="2px">{{envmoni.startime}}</font></td>
-							<td width="15%"><font color="#ffffff" size="2px">{{envmoni.endtime}}</font></td>
-							<td width="10%"><font color="#ffffff" size="2px">{{envmoni.alarmid}}</font></td>
-							<td width="30%"><font color="#ffffff" size="2px">{{envmoni.desc}}</font></td>
-							<td width="9%">
-								<div ng-if="envmoni.status==='open'" > <a class="buttonact" style="color:black">{{envmoni.status | uppercase}}</a></div> 
-								<div ng-if="envmoni.status=='close'" > <a class="buttonclose" style="color:black">{{envmoni.status | uppercase}}</a></div> 
-								<div ng-if="envmoni.status==='in progress'" > <a class="buttonpending" style="color:black">{{envmoni.status | uppercase}}</a></div> 
-							</td>
-						</tr>
-					</table> 
+							<table  id="inctbl" width="100%">
+									<tr>
+											<td width="10%"><font color="#ffffff" size="2px">{{accTrafficAlertStatus}}</font></td>
+											<td width="13%"><font color="#ffffff" size="2px">{{accTrafficAlertTime}}</font>	</td>
+											<td width="16%"><font color="#ffffff" size="2px">{{accTrafficAlertid}}</font> </td>
+											<td width="14%">
+												<div ng-if="accTrafficAlertStatus=='True'" > 
+													<font color="#ffffff" size="2px">{{accTrafficAlertRname}}</font>
+												</div>
+												<div ng-if="accTrafficAlertStatus!='True'" > 
+													<a href="#"  ng_click="trafficalertwindow()" style="text-decoration:none;"> <font color="red" size="2px">{{accTrafficAlertRname}}</font> </a>  
+												</div>
+											</td>
+											<td width="18%"><font color="#ffffff" size="2px">{{accTrafficAlertDesc}}</font></td>
+											<td width="12%"><font color="#ffffff" size="2px">{{accTrafficAlertSource}}</font></td>
+									</tr>
+
+									<tr ng-repeat="tralert in trafficalert | orderBy:sortTypenv:sortReversenv | filter:searchEnvifromgrid">
+										<td width="10%"><font color="#ffffff" size="2px">{{tralert.status}}</font></td>
+										<td width="13%">
+									
+										
+											<font color="#ffffff" size="2px">{{tralert.time}}</font>
+									
+										</td>
+										<td width="16%"><font color="#ffffff" size="2px">{{tralert.alertid | uppercase}}</font> </td>
+										<td width="14%">
+												<font color="#ffffff" size="2px">{{tralert.rname}}</font>
+									
+											</td>
+										<td width="18%"><font color="#ffffff" size="2px">{{tralert.desc}}</font></td>
+										<td width="12%"><font color="#ffffff" size="2px">{{tralert.source}}</font></td>
+									</tr>
+								</table> 
 				</div>
 			</td></tr>
-			</table> 			
+			</table> 	
+			
+<!--  Traffic Alert Model window  -->			
+			<div id="myModal" class="modalInner">
+	  <!-- Modal content -->
+	  <div class="modal-content1">
+		  <!-- <span class="close">&times;</span> -->
+		<div class="modal-body">      
+			
+<iframe src="createtabase.jsp" width="1310" height="563" scrolling="no" frameborder="0"> </iframe> 
+		</div>
+	</div>
+	</div>
+			
+			
+<!--  end of model window -->					
 	  </div>  
 	</div>  
 </div>
+
+
 </div> 
+
 </body>
+<script>
+function acczonewindow() {
+	  myModal.style.display = "block";
+}
+window.onclick = function(event) {
+  if (event.target == myModal) {
+	myModal.style.display = "none"; 
+  }
+}
+
+</script>
+
 </html>
