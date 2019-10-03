@@ -1,0 +1,20 @@
+<layer>
+  <name>gisdbo_gis_ea_fels_attr</name>
+  <id>LayerInfoImpl--5c0f1183:16a8b3cc2d8:-7ff5</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--4644b9f6:16c2188266a:1d1b</id>
+  </defaultStyle>
+  <styles class="linked-hash-set">
+    <style>
+      <id>StyleInfoImpl--4644b9f6:16c2188266a:1d1b</id>
+    </style>
+  </styles>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--5c0f1183:16a8b3cc2d8:-7ff6</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

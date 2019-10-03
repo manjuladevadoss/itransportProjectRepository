@@ -4,6 +4,7 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <title> Create Event  </title>
   	<link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
+  	<link rel="shortcut icon" href="/Sopra_Steria_logo.ico" type="image/x-icon">
   	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="mrtinc.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -54,7 +55,7 @@
       #instruction {
         z-index: 99;
         position: absolute;
-        top: 50px;
+        top: 75px;
         left: 15%;
         padding: 5px;
         margin-left: -175px;
@@ -131,7 +132,7 @@ background-color: black;
 .panel-body {
     background-color: #202B53 ;
     color: #C8CFF4; 
-    font-size: 13px;
+    font-size: 12px;
 }
 .panel, .panel-group .panel-heading+.panel-collapse>.panel-body{
     border: none;
@@ -164,14 +165,15 @@ background-color: black;
  border: none;
 }
 .irresetbutton {
+  font-size: .8em;
   color: #C8CFF4;
   font-family:  Roboto, Helvetica, sans-serif;
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
   border-radius: 13px;
   background-color:#356D85;
   border: solid 0px #356D85;
-  width:80px;
-  height:30px
+  width:50px;
+  height:25px
 }
 .iractionbutton {
   color: #C8CFF4;
@@ -197,12 +199,12 @@ input[type=text] {
 #timerinstruction {
 	z-index: 99;
     position: absolute;
-    top: 850px;
-    left: 35%;
+    top: 660px;
+    left: 30%;
     padding: 5px;
     margin-left: -175px;
     height: 20px;
-    width: 5	50px;
+    width: 580px;
 }
 
 .timerbutton {
@@ -228,6 +230,20 @@ input[type=text] {
   width:20px;
   height:15px;
 }
+
+
+#resptbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#resptbl td, #resptbl th {
+  padding: 1px;
+  color: #C8CFF4; 
+  font-size: 13px;
+  background: none; 
+}
+
 
 </style>
 
@@ -352,37 +368,38 @@ input[type=text] {
 	<div id="main" class claro>
 	<div id="viewDiv"> </div>    
 	<div id="instruction">    	        
+		<button class="irresetbutton" id="draw-point"> Point </button>   
+		<button class="irresetbutton" id="rdclosepoint">Symbol </button>	
 		<button class="irresetbutton" id="rdclose"> Line </button>
-		<button class="irresetbutton" id="rdclosepoint">Symbol </button>	       
+		<button class="irresetbutton" id="showTimer" ng-click="showTimerOption()">Timer </button>	       
 	</div>  
 	  
-	<div id="timerinstruction">    	        
+	<div id="timerinstruction" ng-show="showTimer">    	        
 	<div ng-show="showdateprebuttonFlag">
 		<button class="timerbutton" id="26oct"> 26 Oct </button>
 		<button class="timerbutton" id="27oct"> 27 Oct </button>	       
 		<button class="timerbutton" id="02nov"> 02 Nov </button>	
 		<button class="timerbutton" id="03nov"> 03 Nov </button>	
-		<button class="timerbutton" id="rdclosepoint"> 09 Nov </button>	
-		<button class="timerbutton" id="rdclosepoint"> 10 Nov </button>	
-		<button class="timerbutton" id="rdclosepoint"> 16 Nov </button>	
-		<button class="timerbutton" id="rdclosepoint"> 17 Nov </button>	
-		<button class="timerbutton" id="rdclosepoint"> 23 Nov </button>	
-		<button class="timerbutton" id="rdclosepoint"> 24 Nov </button>	
+		<button class="timerbutton" id="09nov"> 09 Nov </button>	
+		<button class="timerbutton" id="10nov"> 10 Nov </button>	
+		<button class="timerbutton" id="16nov"> 16 Nov </button>	
+		<button class="timerbutton" id="17nov"> 17 Nov </button>	
+		<button class="timerbutton" id="23nov"> 23 Nov </button>	
+		<button class="timerbutton" id="24nov"> 24 Nov </button>	
 		<button class="timerconbutton" ng-click="displaynextlist('1')"> > </button>
 	</div>
 	<div ng-show="showdatenextbuttonFlag">
 		<button class="timerconbutton" ng-click="displaynextlist('2')"> < </button>
-		<button class="timerbutton" id="rdclosepoint"> 30 Nov </button>	
-		<button class="timerbutton" id="rdclosepoint"> 1 Dec </button>	
-		<button class="timerbutton" id="rdclosepoint"> 7 Dec </button>	
-		<button class="timerbutton" id="rdclosepoint"> 8 Dec </button>	
-		<button class="timerbutton" id="rdclosepoint"> 14 Dec </button>	
-		<button class="timerbutton" id="rdclosepoint"> 15 Dec </button>	
-		<button class="timerbutton" id="rdclosepoint"> 21 Dec </button>	
-		<button class="timerbutton" id="rdclosepoint"> 22 Dec </button>	
-		<button class="timerbutton" id="rdclosepoint"> 28 Dec </button>	
-		<button class="timerbutton" id="rdclosepoint"> 29 Dec </button>	
-		
+		<button class="timerbutton" id="30nov"> 30 Nov </button>	
+		<button class="timerbutton" id="01Dec"> 01 Dec </button>	
+		<button class="timerbutton" id="07Dec"> 07 Dec </button>	
+		<button class="timerbutton" id="08Dec"> 08 Dec </button>	
+		<button class="timerbutton" id="14Dec"> 14 Dec </button>	
+		<button class="timerbutton" id="15Dec"> 15 Dec </button>	
+		<button class="timerbutton" id="21Dec"> 21 Dec </button>	
+		<button class="timerbutton" id="22Dec"> 22 Dec </button>	
+		<button class="timerbutton" id="28Dec"> 28 Dec </button>	
+		<button class="timerbutton" id="29Dec"> 29 Dec </button>	
 	</div>
 
 	</div>  
@@ -402,7 +419,7 @@ input[type=text] {
 	  
 	<table width="100%" id="incdetailtbl"> 
 		<tr>
-			<td><h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp;
+			<td><h3a> &nbsp;CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp;
 			<a href="#" ng-click="calleventresponse()" style="text-decoration:none;"> <h3b>RESPONSE</h3b></a>
 			</td>
 		</tr>
@@ -434,7 +451,7 @@ input[type=text] {
 			<input type="text"  placeholder="Event Name" ng-model="eventname" ng-change="changeventname()" >
           </td>
 	      <td>
-            Organizer <br>
+            Organiser <br>
 			<input type="text"  placeholder="Oganizer" ng-model="eventorganizer">
           </td>
 	  
@@ -446,7 +463,19 @@ input[type=text] {
 		  <td> End Date <br>
 				<input type="text"  placeholder="end Time" ng-model="eventendtime1"> 
           </td>
-        </tr>
+		</tr>
+		
+		<tr>
+			<td>
+			  Start Time <br>
+			  <input type="text"  placeholder="opening" ng-model="eventhotlineope">
+			</td>
+			<td>
+			  End Time <br>
+			  <input type="text"  placeholder="closing" ng-model="eventhotlineclo"> 
+			</td>
+		  </tr>
+
         <tr>
           <td>
             Event Supporter <br>
@@ -471,34 +500,25 @@ input[type=text] {
           </td>
         </tr>
 		
-		<tr>
-          <td>
-            Hotline Opening <br>
-			<input type="text"  placeholder="opening" ng-model="eventhotlineope">
-          </td>
-          <td>
-            Hotline Closing <br>
-            <input type="text"  placeholder="closing" ng-model="eventhotlineclo">
-          </td>
-        </tr>
+
 		<tr>
           <td>
             Person(s) in Charge<br>
 			<input type="text"  placeholder="in charge" ng-model="eventincharge">
           </td>
           <td>
-            Command Post Number <br>
+            Hotline <br>
             <input type="text"  placeholder="post no" ng-model="eventpostno">
           </td>
         </tr>
 		<tr>
           <td>
-            Event Bubble Position<br>
-			<input type="text"  placeholder="in charge" ng-model="eventbubbleposi">
+            Start Point<br>
+			<input type="text"  placeholder="Start point" id="eventstartpoint" ng-model="eventstartpoint">
           </td>
           <td>
-            Event Bubble Size <br>
-            <input type="text"  placeholder="post no" ng-model="eventbubblesize">
+			End Point <br>
+            <input type="text"  placeholder="End point" id="eventendpoint" ng-model="eventendpoint">
           </td>
         </tr>		
       </table>
@@ -536,33 +556,25 @@ input[type=text] {
           <td align="Left">   -->
 	          <table>
 	         <tr>
-	    		<td>
-					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg1" onclick="changeImage('laneupimg1')">
-					<!--  <img src="vertibar.JPG" width="10px" height="30px"> -->
-				<div id="lsh1Div">LSH1</div>
-				</td>
+	    	
 				<td align="center">								
 					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg2" onclick="changeImage('laneupimg2')"> <br>
-					<div id="lane4Div">&nbsp;&nbsp;&nbsp;4</div>
+					<div id="lane4Div">&nbsp;&nbsp;&nbsp;<font style="font-size:10px;">4</font></div>
 				</td>
 				<td align="center">
 					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg3" onclick="changeImage('laneupimg3')"> <br>
-					<div id="lane3Div">&nbsp;&nbsp;&nbsp;3</div>
+					<div id="lane3Div">&nbsp;&nbsp;&nbsp;<font style="font-size:10px;">3</font></div>
 				</td>
 			    <td align="center">
 					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg4" onclick="changeImage('laneupimg4')"> <br>
-					<div id="lane2Div">&nbsp;&nbsp;&nbsp;2</div>
+					<div id="lane2Div">&nbsp;&nbsp;&nbsp;<font style="font-size:10px;">2</font></div>
 				</td>
 				<td align="center">
 					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg5" onclick="changeImage('laneupimg5')"> <br>
-					<div id="lane1Div">&nbsp;&nbsp;&nbsp;1</div>
+					<div id="lane1Div">&nbsp;&nbsp;&nbsp;<font style="font-size:10px;">1</font></div>
 					 
 				</td>
-				<td align="center">
-				    <img src="vertibar.JPG" width="10px" height="30px"> 
-					<img src="laneup.JPG" width="30px" height="30px" id="laneupimg6" onclick="changeImage('laneupimg6')"> <br>
-					<div id="rsh1Div">&nbsp;&nbsp;&nbsp;RSH1</div>
-	          </td>
+
 			  <td align="center">
 				<ul>
 					  <li> <font color="white">(+) Add New lanes </font> 
@@ -609,7 +621,7 @@ input[type=text] {
 				<tr>
 					<td> 
 						<div align="right">
-							<a href="#" class="buttonCreateEventInc"  ng-click="calleventresponse()" style="text-decoration:none;"> Create </a> &nbsp;&nbsp;
+							<a href="#" class="buttonCreateventInc"  ng-click="calleventresponse()" style="text-decoration:none;"> CREATE </a> &nbsp;&nbsp;							   
 						</div>
 					</td>
 					</tr>
@@ -620,11 +632,11 @@ input[type=text] {
 	<!-- Start of IR  Response -->
 	<div ng-show="showeventresFlag">
 
-	<table width="100%">
+	<table width="100%" id="resptbl">
 		<tr>
 			<td> <a href="#"  style="text-decoration:none;" ng-click="calleventcreate()"><h3b>DETAILS</h3b></a> <h3b>></h3b> <h3a>RESPONSE</h3a> </td>
 		</tr>
-	</table>   
+	</table> 
 	
 	 <div class='scrolleventResponse'> 
  	<div class="panel-group" id="accordion2">
@@ -876,7 +888,9 @@ input[type=text] {
 			<tr>
 				<td colspan="3"> 
 					<div align="right">
-						<a href="#" class="buttonCreateventInc" ng-click="addevent()" style="text-decoration:none;"> SAVE </a> &nbsp;&nbsp;
+							<a href="#" class="buttonCreateventInc" ng-click="addevent()" style="text-decoration:none;"> SAVE </a> &nbsp;&nbsp;	
+							<a href="#" class="buttonCreateMrtInc" ng-click="overEvent()" style="text-decoration:none;"> OVER </a>
+						<a href="#" class="buttonCreateventInc" ng-click="closeEvent()" style="text-decoration:none;"> CLOSE </a> &nbsp;&nbsp;						
 					</div>
 				</td>
 			</tr>

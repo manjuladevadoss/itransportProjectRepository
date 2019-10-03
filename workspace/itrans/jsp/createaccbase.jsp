@@ -4,6 +4,7 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <title> Create IR Accident </title>
   	<link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
+  	<link rel="shortcut icon" href="/Sopra_Steria_logo.ico" type="image/x-icon">
   	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="mrtinc.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -82,14 +83,15 @@
 .esri-view-width-large .esri-popup__main-container,
 .esri-view-width-medium .esri-popup__main-container
 {
-  max-height: 220px !important;
-  max-width: 250px !important;
+  max-height: 100px !important;
+  max-width: 300px !important;
   background-color:black ;
-  color: black;
+  color: white;
   font-size: 14px;
   font-family: Roboto, Helvetica, sans-serif;
   line-height: 1.3em;
 }
+
 
 /*Remove the zoom button popup window*/
 .esri-popup__main-container .esri-popup__footer
@@ -434,12 +436,7 @@ function showaccimage() {
 	<body class="calcite-maps calcite-nav-top">
 	<div class="container-fluid">
 		<div ng-app="ltaApp" ng-controller="ltaController">
-		<!--
-		<table width="100%" border="1"> 
-		<tr>
-		<td> </td>
-		</tr>
-		</table>  -->
+
   
 	  <div id="main" class claro>
 	  <div id="viewDiv"> </div>   
@@ -455,17 +452,14 @@ function showaccimage() {
 		 <br> 
 		<!-- Start IR Creation -->
 	  <div ng-show="showircreate">
-	  
-	  	<table width="100%" id="incdetailtbl"> 
-		<tr>
-			<td><h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp; <a href="#" ng-click="callirresponse()" style="text-decoration:none;"> <h3b>RESPONSE</h3b> </a></td>
-		</tr>
-	</table>
-	  
+			<table width="100%" id="incdetailtbl"> 
+				<tr>
+					<td><h3a>CREATE </h3a>&nbsp;<h3b>></h3b>&nbsp; <a href="#" ng-click="callirresponse()" style="text-decoration:none;"> <h3b>RESPONSE</h3b> </a></td>
+				</tr>
+			</table>
+			<div class='scrollIr'> 
 	
-	<div class='scrollIr'> 
-
-			<div class="panel-group" id="accordion2">	
+		<div class="panel-group" id="accordion2">	
 				 <div class="panel panel-default">
 					<div class="panel-heading active">
 						<h4 class="panel-title">
@@ -474,8 +468,9 @@ function showaccimage() {
 					</div>
 					
 					<div class="panel-collapse collapse in" id="Collapseiconacc1">
-						<div class="panel-body">
-																
+						<div class="panel-body">															
+
+
 			<table id="incdetailtbl">
 					<tr>
 					 <th colspan="6"> Fill in the details of your IR  </th>
@@ -527,16 +522,11 @@ function showaccimage() {
 					</tr>
 					<tr>
 					  <td colspan="3">
-						Linked IR <br>
+						Linked IR: <br>
 						<input type="text"  style="color:white; width:190px; height: 20px;"  ng-model="irlinkedtxt"/>
-						<!-- <select ng-model="irlinked">
-							<option  value="" selected="selected" hidden="hidden">Choose here</option>
-							<option ng-repeat="option in irlinkedList" value="{{option.irlinkedid}}">{{option.irlinkedname}}</option>
-						</select>
-						 -->
 					  </td>
 					  <td colspan="3">
-						Incident Sub Type<br>
+						Incident Sub Type:<br>
 						 <select ng-model="acctype">
 						 	<option  value="" selected="selected" hidden="hidden">Choose here</option>
 							<option ng-repeat="option in acctypeList" value="{{option.acctypeid}}">{{option.acctypename}}</option>
@@ -546,14 +536,14 @@ function showaccimage() {
 					
 					<tr>
 					  <td colspan="3">
-						State of Roadway <br>
+						State of Roadway: <br>
 						<select ng-model="rdway">
 							<option  value="" selected="selected" hidden="hidden">Choose here</option>
 							<option ng-repeat="option in rdwayList" value="{{option.rdwayid}}">{{option.rdwayname}}</option>
 						</select>
 					  </td>
 					  <td colspan="3">
-						Type of Danger<br>
+						Type of Danger:<br>
 						<select ng-model="danger">
 							<option  value="" selected="selected" hidden="hidden">Choose here</option>
 							<option ng-repeat="option in dangerList" value="{{option.dangerid}}">{{option.dangername}}</option>
@@ -578,65 +568,62 @@ function showaccimage() {
 						Person Incharge: <br>
 							<input type="text"  style="color:white; width:190px; height: 20px;"  ng-model="irperincharge"/>
 					  </td>
-					</tr>
-					<tr>
-					  <td colspan="6">
-					  Injuries <br>
-						Slight: <input style="width:50.81px; height: 20px;" type="text"  ng-model="slight"/> 
-						Serious: <input type="text"  style="width:50.81px; height: 20px;" ng-model="serious"/> 
-						Fatal <input type="text"  style="width:50.81px; height: 20px;"  ng-model="fatal"/>
-					  </td>
-					</tr>
-				   <tr>
-					  <td colspan="6">
-						Image Captured <br>
-						<select ng-model="imgcap">
-						  <option  value="" selected="selected" hidden="hidden">Choose here</option>
-						  <option ng-repeat="option in imgcapList" value="{{option.imgcapid}}">{{option.imgcapname}}</option>
-						</select>						  
-					       
-					   <!--   the image locaiton not move
-					   <button class="ircamebutton"  onclick="showaccimage()" id="accIncidentimage" ><img  id="cameraimg" class="cameraimgcl" src="camera.JPG" width="25px" height="25px"></button>					        
-								<div id="instruction">
-									<img id= "accimgid" src="accimage.jpg" width="100px" height="100px">
-								</div> -->
-								
-						<!-- move the image -->		
-						<button class="ircamebutton" onclick="showmsg()"><img src="camera.JPG" width="25px" height="25px"></button>
-						<div id="cameraimagediv">
-							<div id="cameraimagedivheader">
-								<img id= "accimgid" src="accimage.jpg" width="150px" height="150px">
-							</div>
-						</div>								
-						   <!-- Show video
-						    <button class="ircamebutton" id="video" ><img src="camera.JPG" width="25px" height="25px"></button>
-						      <div id="instruction">    
-					       	<div class="popup" onclick="popupvideo()">
-		                    <div id="videodiv">
-		                     <span class="popuptext" id="myPopup">		                        
-									<a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
-		                            <video id="VisaChipCardVideo" width="300" controls>
-		                                  <source src="CTEAccVideo.mp4" type="video/mp4">
-		                          </video>
-		                        </div>       
-		                     </span>
-		                    </div>   
-		            	</div>	 -->				       
-					  </td>
-					</tr>
-					
-					<tr>
-					  <td colspan="6">
-						Damage to government Property <br>
-						<textarea class="textareaincomments" rows="3" cols="48" ng-model="damagedetail">{{damagedetail}}</textarea>
-					  </td>
-					</tr>
+					</tr>				
 				 </table>
 						</div>
 					</div>
 				  </div> 
+				  			  
+ 		<div class="panel panel-default">
+					<div class="panel-heading active">
+						<h4 class="panel-title">
+							 &nbsp;  <span data-target="#Collapseiconacc9" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
+						</h4>
+					</div>
+					
+					<div class="panel-collapse collapse" id="Collapseiconacc9">
+						<div class="panel-body">
+								<table id="incdetailtbl">
+									<tr>
+										  <td colspan="6">
+										  Injuries <br>
+											Slight: <input style="width:50.81px; height: 20px;" type="text"  ng-model="slight"/> 
+											Serious: <input type="text"  style="width:50.81px; height: 20px;" ng-model="serious"/> 
+											Fatal <input type="text"  style="width:50.81px; height: 20px;"  ng-model="fatal"/>
+									  </td>
+									</tr>
+									
+								   <tr>
+									  <td colspan="6">
+										Image Captured <br>
+										<select ng-model="imgcap">
+										  <option  value="" selected="selected" hidden="hidden">Choose here</option>
+										  <option ng-repeat="option in imgcapList" value="{{option.imgcapid}}">{{option.imgcapname}}</option>
+										</select>						  
+									       
+											
+										<!-- move the image -->		
+										<button class="ircamebutton" onclick="showmsg()"><img src="DTCam.png" width="30" height="30"></button>
+										<div id="cameraimagediv">
+											<div id="cameraimagedivheader">
+												<img id= "accimgid" src="accimage.jpg" width="150px" height="150px">
+											</div>
+										</div>												       
+									  </td>
+									</tr>	
+									
+									<tr>
+									  <td colspan="6">
+										Damage to government Property <br>
+										<textarea class="textareaincomments" rows="3" cols="48" ng-model="damagedetail">{{damagedetail}}</textarea>
+									  </td>
+									</tr>
+						</table>				
+					</div>
+				</div>
+	</div> 				  
 				  
-				  <div class="panel panel-default">
+			  <div class="panel panel-default">
 					<div class="panel-heading active">
 						<h4 class="panel-title">
 							   Lane Blockage<span data-target="#Collapseiconacc2" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
@@ -685,15 +672,7 @@ function showaccimage() {
 					<font style="color:#8BD27A;font-size: 11px;"><div id="rsh1Div">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;RSH1</div></font>  -->
 	          </td>
 			  <td align="center">
-				<!--  <ul>
-								  <li> (+) Add New lines 
-								  <ul>
-									<li> Add Lane</li>
-									<li> Add Center Divider</li>
-									<li> Add Left Shoulder</li>
-									<li> Add Right Shoulder</li>
-									</ul></li>
-								</ul> -->
+
 		          </td>
 	        </tr>         
 	          </table>
@@ -762,10 +741,12 @@ function showaccimage() {
 				  </div> 
 
 			</div>
-			 </div> 
-					<div align="right">  
-						<a href="#" class="buttonCreateMrtInc"  id="vmsMsgAfterCreate"  ng-click="callirresponse()" style="text-decoration:none;"> CREATE </a>&nbsp;  &nbsp; 
-					</div>
+		
+				
+			</div> 
+			<div align="right">  
+				<a href="#" class="buttonCreateMrtInc"  id="vmsMsgAfterCreate"  ng-click="callirresponse()" style="text-decoration:none;"> CREATE </a>&nbsp;  &nbsp; 
+			</div>
 	  </div>
 	<!-- end of Create IR -->
 	
@@ -793,7 +774,8 @@ function showaccimage() {
         
         <div class="panel-collapse collapse in" id="Collapseiconacc4">
         	<div class="panel-body">
-            	<p>Recommended VMS Messages </p>
+				<p>Recommended VMS Messages </p>
+		<div class='scrollvms'> 
 			<table width="100%" class="tablevms">  
 			<tr>
 				<th align="left" style="padding:5px;">Status <i class="fa fa-caret-down" style="font-size:20px;color:#C8CFF4"></i> </th>
@@ -820,12 +802,36 @@ function showaccimage() {
 			<input type="hidden"  name="defaultMSgList" value='{{irvms.irvmsequipid}}{{sep}}{{irvms.irvmsaccmsg}}' size="5" readonly>
 			<!-- <textarea class="textareaVmsMsg" name="accMessageDetail" id="accMessageDetail" rows="3" cols="28" ng-model='irvms.irvmsaccmsg'>{{irvms.irvmsaccmsg}}</textarea>  -->
 			<div class="textimageAccidentdiv" contentEditable="true" id="vmsMessageDetailAcc"> {{irvms.irvmsaccmsg}}
-  				 <div ng-if="irvms.irvmsaccmsg.indexOf('Accident') === 0"> <img src="accimg1.JPG"  width="30px" height="30px"/> <img src="vms5.png"  width="30px" height="30px"/> </div>
-				 <div ng-if="irvms.irvmsaccmsg.indexOf('Accident') === -1"> <img src="vms4.png"  width="30px" height="30px"/> </div> 
+  				 <div ng-if="irvms.irvmsequipid.indexOf('500') === 0"> <img src="accimg1.JPG"  width="30px" height="30px"/> <img src="vms5.png"  width="30px" height="30px"/> </div>
+				 <!-- <div ng-if="irvms.irvmsequipid.indexOf('500') === -1"> <img src="vms4.png"  width="30px" height="30px"/> </div>  -->
 			</div>
 			</td> 				
-	    </tr>		
+		</tr>	
+		
+		<!-- --------------------------------------  Guide VMS Message Added -->
+		<tr ng-repeat="irvmsguide in iraccvmsguideList"> 
+			<td> 								
+				<label class="containeradio">
+					<font color="white">{{irvmsguide.irvmsstatus}}</font>
+						<input type="radio" name="accvmssatus1" id="accvmssatus1" ng-model="accvmssatus1">
+						<span class="radiocheckmark"></span>
+				</label>
+			</td>
+		<td><div id="accvmsequipid" > <font color="#C8CFF4">  {{irvmsguide.irvmsequipid}}  </font></div>
+		</td>
+		<td>
+		
+	
+		<div class="textimageAccidentdiv" contentEditable="true" id="vmsMessageDetailAcc"> {{irvmsguide.irvmsaccmsg}}
+			   <div ng-if="irvmsguide.irvmsequipid.indexOf('500') === 0"> <img src="accimg1.JPG"  width="30px" height="30px"/> <img src="vms5.png"  width="30px" height="30px"/> </div>
+			 <!-- <div ng-if="irvmsguide.irvmsaccmsg.indexOf('Accident') === -1"> <img src="vms4.png"  width="30px" height="30px"/> </div> -->
+		</div>
+		</td> 				
+	</tr>	
+<!-- --------------------------------------  Guide VMS Message Added -->	
+
 			</table>
+			</div>
 			<table width="100%"> 
 				<tr>
 					<td>
@@ -1059,8 +1065,10 @@ function showaccimage() {
 </div>
 		  	  
  </div> 
- <div align="right"><a href="ccgridviewta.jsp" class="buttonCreateMrtInc" style="text-decoration:none;"> SAVE </a>  	
- <a href="ccgridviewta.jsp" class="buttonCreateMrtInc" ng-click="closeAccInci()" style="text-decoration:none;"> CLOSE </a> &nbsp;  &nbsp;
+ <div align="right">
+ <a href="#" ng-click="saveAccInci()" class="buttonCreateMrtInc" style="text-decoration:none;"> SAVE </a>  	
+ <a href="#" ng-click="overAccInci()" class="buttonCreateMrtInc" style="text-decoration:none;"> OVER </a>  
+ <a href="#" ng-click="closeAccInci()"class="buttonCreateMrtInc"  style="text-decoration:none;"> CLOSE </a> &nbsp;  &nbsp;
 </div>
 	 </div>
 	  <!-- end of IR Respnse -->
@@ -1097,6 +1105,10 @@ function showaccimage() {
 								<a href="#" ng-click="callirpreditsce2()" style="text-decoration:none;">
 									  <font color="#24DEE8" size="2.5px"> VMS Messages  &nbsp; {{iraccscenario2vms.length}}  </font>
 							  </a><br> 
+							  
+							  <a href="#"  ng-click="callirpreditsce2()" style="text-decoration:none;">
+									<font color="#24DEE8" size="2.5px"> Traffic Light  &nbsp; {{trafficlight.length}} </font>
+							</a>
 							</td>
 						  </tr>
 						  <tr>
@@ -1118,15 +1130,11 @@ function showaccimage() {
 								<a href="#" ng-click="callirpreditsce1()" style="text-decoration:none;">
 									  <font color="#24DEE8" size="2.5px"> VMS Messages  &nbsp; {{iraccscenario1vms.length}}  </font>
 								</a> 
-								<br>
-								<a href="#"  ng-click="callirpreditsce1()" style="text-decoration:none;">
-									  <font color="#24DEE8" size="2.5px"> Traffic Light  &nbsp; {{trafficlight.length}} </font>
-							  </a>
 							</td>  
 					  </tr>
 						  <tr border="2px solid #FFFFFF;">
 							<td> 
-								  <b>Delay Time 00.45m</b>  <!-- <b><p id="hrSelectSce2"></p></b>  -->
+									<br><b>Delay Time 00.45m</b>  <!-- <b><p id="hrSelectSce2"></p></b>  -->
 							</td>
 						  </tr>
 		  
@@ -1136,7 +1144,7 @@ function showaccimage() {
 			
 </div>
 	<!-- End of Start Prediction Area --> 
-	<!-- scenario 1 will show here -->
+	<!-- scenario 2 will show here -->
 	<div ng-show="showirpreditsce1">
 			<div class='scrollPre1'>
 			<table id="incdetailtbl" align="center" width="100%">
@@ -1156,25 +1164,12 @@ function showaccimage() {
 								  </td>
 								</tr>
 								<tr>
-								  <th> GLIDE </th>
-								</tr>
-								<tr>
-									 <td> <b>EQP ID &nbsp;&nbsp;&nbsp;&nbsp; PHASE TIME</b></td>
-								</tr>
-								<tr ng-repeat="irtrlight in trafficlight"> 
-								  <td>
-								   <input type="hidden"  name="scenario1TrafficList" value='{{irtrlight.longitude}}{{sep}}{{irtrlight.latitude}}' size="5" readonly>
-								    {{irtrlight.irtrlightid}} &nbsp;&nbsp;&nbsp;&nbsp; {{irtrlight.irtrlightmsg}}
-								  </td>
-								</tr>
-								<tr>
-									<td> <center>
-									<a href="#" class="buttonPreImp" id="sce1VmsView"  style="text-decoration:none;"> View VMS </a>
-									<a href="#" class="buttonPredi" id="sce1ImpliId"  style="text-decoration:none;"> Implement </a>
-									<a href="#" class="buttonPreRem" id="sce1ImpliIdRemove"  style="text-decoration:none;"> Remove </a>
-									</center>
-									</td>
-								</tr>
+										<td><center>
+										<a href="#" class="buttonPreImp" id="sce2VmsView"  style="text-decoration:none;"> View VMS </a>
+										<a href="#" class="buttonPredi"  id="sce2ImpliId"  style="text-decoration:none;"> Implement </a> 
+										<a href="#" class="buttonPreRem" id="sce2ImpliIdRemove"  style="text-decoration:none;"> Remove </a></center>
+										</td>
+									</tr>
 								<tr>
 										<td><br><b><center>Delay Time 00.45m</center></b><br></td>
 								</tr>		
@@ -1185,8 +1180,9 @@ function showaccimage() {
 				</div>
 				</div>
 
-<!-- scenario 2 will show here -->
+<!-- scenario 1 will show here -->
 	<div ng-show="showirpreditsce2">
+			<div class='scrollPre1'>
 			<table id="incdetailtbl" align="center"  width="100%">				
 					<tr>
 					  <td> 
@@ -1203,13 +1199,27 @@ function showaccimage() {
 							  {{irsce2.irvmsequipid}} &nbsp;&nbsp;{{irsce2.irvmsaccmsg}} 
 							  </td>
 							</tr>
+
 							<tr>
-								<td><center>
-								<a href="#" class="buttonPreImp" id="sce2VmsView"  style="text-decoration:none;"> View VMS </a>
-								<a href="#" class="buttonPredi"  id="sce2ImpliId"  style="text-decoration:none;"> Implement </a> 
-								<a href="#" class="buttonPreRem" id="sce2ImpliIdRemove"  style="text-decoration:none;"> Remove </a></center>
+								<th> GLIDE </th>
+							  </tr>
+							  <tr>
+								   <td> <b>EQP ID &nbsp;&nbsp;&nbsp;&nbsp; PHASE TIME</b></td>
+							  </tr>
+							  <tr ng-repeat="irtrlight in trafficlight"> 
+								<td>
+								 <input type="hidden"  name="scenario1TrafficList" value='{{irtrlight.longitude}}{{sep}}{{irtrlight.latitude}}' size="5" readonly>
+								  {{irtrlight.irtrlightid}} &nbsp;&nbsp;&nbsp;&nbsp; {{irtrlight.irtrlightmsg}}
 								</td>
-							</tr>
+							  </tr>
+							  <tr>
+								  <td> <center>
+								  <a href="#" class="buttonPreImp" id="sce1VmsView"  style="text-decoration:none;"> View VMS </a>
+								  <a href="#" class="buttonPredi" id="sce1ImpliId"  style="text-decoration:none;"> Implement </a>
+								  <a href="#" class="buttonPreRem" id="sce1ImpliIdRemove"  style="text-decoration:none;"> Remove </a>
+								  </center>
+								  </td>
+							  </tr>
 							<tr>
 									<td><br><b><center>Delay Time 00.30m</center></b><br></td>
 							</tr>
@@ -1219,6 +1229,7 @@ function showaccimage() {
 
 				  </table>
 	</div>
+				</div>
 
 
 	</div>  

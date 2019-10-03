@@ -1,0 +1,20 @@
+<layer>
+  <name>gisdbo_gis_rtsline</name>
+  <id>LayerInfoImpl-6306456:16b06d4ad51:-7ff9</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-6306456:16b06d4ad51:-7ff3</id>
+  </defaultStyle>
+  <styles class="linked-hash-set">
+    <style>
+      <id>StyleInfoImpl-6306456:16b06d4ad51:-7ff1</id>
+    </style>
+  </styles>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-6306456:16b06d4ad51:-7ffa</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

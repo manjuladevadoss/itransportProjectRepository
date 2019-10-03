@@ -4,6 +4,7 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <title> Create Traffic Alert  </title>
   	<link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
+  	<link rel="shortcut icon" href="/Sopra_Steria_logo.ico" type="image/x-icon">
   	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="mrtinc.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

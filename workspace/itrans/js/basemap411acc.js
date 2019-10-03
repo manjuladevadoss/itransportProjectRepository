@@ -244,7 +244,7 @@
 		});
 
 
-		/*** Current Traffic condition layer Red, Orange, Green layer Implementation for plan 1 interval */	
+		/*** Current Traffic condition layer Red, Orange, Green layer Implementation for plan 2 interval */	
 		var trafficlayerlaneImpl1 = new CustomWMSLayer({
 			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
 			mapParameters: {
@@ -252,7 +252,7 @@
 			REQUEST: "GetMap",
 			FORMAT: "image/png",
 			TRANSPARENT: "TRUE",
-			STYLES: "gis_carriageway_planlayerImp1_style",
+			STYLES: "gis_carriageway_plan2layerImp1_style",
 			VERSION: "1.3.0",
 			LAYERS: "gisdbo_gis_carriageway",
 			WIDTH: "{width}",
@@ -270,7 +270,7 @@
 			REQUEST: "GetMap",
 			FORMAT: "image/png",
 			TRANSPARENT: "TRUE",
-			STYLES: "gis_carriageway_planlayerImp2_style",
+			STYLES: "gis_carriageway_plan2layerImp2_style",
 			VERSION: "1.3.0",
 			LAYERS: "gisdbo_gis_carriageway",
 			WIDTH: "{width}",
@@ -288,7 +288,7 @@
 			REQUEST: "GetMap",
 			FORMAT: "image/png",
 			TRANSPARENT: "TRUE",
-			STYLES: "gis_carriageway_planlayerImp3_style",
+			STYLES: "gis_carriageway_plan2layerImp3_style",
 			VERSION: "1.3.0",
 			LAYERS: "gisdbo_gis_carriageway",
 			WIDTH: "{width}",
@@ -298,6 +298,80 @@
 			},
 			title: "traffic Implement layer 3"
 		});
+
+	/*** Current Traffic condition layer Red, Orange, Green layer Implementation for plan 1 interval */	
+	var trafficlayerlanePlan1Impl1 = new CustomWMSLayer({
+		mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+		mapParameters: {
+		SERVICE: "WMS",
+		REQUEST: "GetMap",
+		FORMAT: "image/png",
+		TRANSPARENT: "TRUE",
+		STYLES: "gis_carriageway_plan1layerImp1_style",
+		VERSION: "1.3.0",
+		LAYERS: "gisdbo_gis_carriageway",
+		WIDTH: "{width}",
+		HEIGHT: "{height}",
+		CRS: "EPSG:{wkid}",
+		BBOX: "{xmin},{ymin},{xmax},{ymax}"
+		},
+		title: "traffic Implement layer 1"
+	});
+
+	var trafficlayerlanePlan1Impl2 = new CustomWMSLayer({
+		mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+		mapParameters: {
+		SERVICE: "WMS",
+		REQUEST: "GetMap",
+		FORMAT: "image/png",
+		TRANSPARENT: "TRUE",
+		STYLES: "gis_carriageway_plan1layerImp2_style",
+		VERSION: "1.3.0",
+		LAYERS: "gisdbo_gis_carriageway",
+		WIDTH: "{width}",
+		HEIGHT: "{height}",
+		CRS: "EPSG:{wkid}",
+		BBOX: "{xmin},{ymin},{xmax},{ymax}"
+		},
+		title: "traffic Implement layer 1"
+	});
+
+	var trafficlayerlanePlan1Impl3 = new CustomWMSLayer({
+		mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+		mapParameters: {
+		SERVICE: "WMS",
+		REQUEST: "GetMap",
+		FORMAT: "image/png",
+		TRANSPARENT: "TRUE",
+		STYLES: "gis_carriageway_plan1layerImp3_style",
+		VERSION: "1.3.0",
+		LAYERS: "gisdbo_gis_carriageway",
+		WIDTH: "{width}",
+		HEIGHT: "{height}",
+		CRS: "EPSG:{wkid}",
+		BBOX: "{xmin},{ymin},{xmax},{ymax}"
+		},
+		title: "traffic Implement layer 1"
+	});
+
+	var trafficlayerlanePlan1Impl4 = new CustomWMSLayer({
+		mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+		mapParameters: {
+		SERVICE: "WMS",
+		REQUEST: "GetMap",
+		FORMAT: "image/png",
+		TRANSPARENT: "TRUE",
+		STYLES: "gis_carriageway_plan1layerImp4_style",
+		VERSION: "1.3.0",
+		LAYERS: "gisdbo_gis_carriageway",
+		WIDTH: "{width}",
+		HEIGHT: "{height}",
+		CRS: "EPSG:{wkid}",
+		BBOX: "{xmin},{ymin},{xmax},{ymax}"
+		},
+		title: "traffic Implement layer 1"
+	});
+
 
 		//GIS Expressway CTE Opp lane traffic condition
 		var trafficlayeropplane = new CustomWMSLayer({
@@ -483,6 +557,10 @@
 		trafficlayeropplane.visible = false;
 		trafficlayerlane3.visible = false;
 		trafficlayerlane3green.visible = false;
+		trafficlayerlanePlan1Impl1.visible = false;
+		trafficlayerlanePlan1Impl2.visible = false;
+		trafficlayerlanePlan1Impl3.visible = false;
+		trafficlayerlanePlan1Impl4.visible = false;
 		map = new Map({
           //center: [103.84347,1.32858],
          // layers: [layer1,cctvLayer,vmsLayer,glideSiteLayer,carriagewayLayer,cteheavytrafficLayer,cteLayer,ctetrafficGreenOrangeLayer,speedLinkLayer]
@@ -490,7 +568,8 @@
 		   // baseLayers: [layer1,trafficplanlayerlane, trafficplan0layerlane,trafficplan1layerlane ]
 		   baseLayers: [
 			   			layer1,trafficplanlayerlane,trafficplan0layerlane,trafficplan1layerlane,trafficplan2layerlane,trafficlayerlaneImpl1,
-						trafficlayerlaneImpl2,trafficlayerlaneImpl3,trafficlayeropplane,trafficlayerlane3,trafficlayerlane3green
+						trafficlayerlaneImpl2,trafficlayerlaneImpl3,trafficlayeropplane,trafficlayerlane3,trafficlayerlane3green, 
+						trafficlayerlanePlan1Impl1, trafficlayerlanePlan1Impl2,trafficlayerlanePlan1Impl3,trafficlayerlanePlan1Impl4
 						]
           },
 		  layers: [cctvLayer,vmsLayer,glideSiteLayer,trafficSpeedLayer1,detectCamera]
@@ -558,10 +637,11 @@ scenarioDefaultVMSOnload()
 
 var accPictureGraphic ="";
 function accIconLocation() {  // Icon display
+
 	    var accpoint = {
                 type: "point", // autocasts as new Point()
-                longitude: 103.858249, //103.858056,
-                latitude: 1.378062  //1.378118                        
+                longitude: 103.858236, //103.858056,
+                latitude: 1.377741  //1.378118                        
                 };     
             var accPictureSymbol = {
                 type: "picture-marker",
@@ -599,7 +679,7 @@ function accCCTVLocation() {  // Icon display
 				  
             var cctvPictureSymbol = {
                 type: "picture-marker",
-                url: "cctv.png",
+                url: "cctv.PNG",
                 width: "25",
                 height: "25",
                 xoffset: 5,
@@ -649,8 +729,8 @@ function accCCTVLocation() {  // Icon display
 		var dtCamPictureSymbol = {
 			type: "picture-marker",
 			url: "DTCam.png",
-			width: "20",
-			height: "20",
+			width: "26",
+			height: "26",
 			xoffset: 5,
 			yoffset: 5
 		  }
@@ -695,8 +775,8 @@ function ttpTipIconLocation() {  // Icon display
 		var ttpPictureSymbol = {
                 type: "picture-marker",
                 url: "TTP_MSG.png",
-                width: "20",
-                height: "20"
+                width: "28",
+                height: "15"
 		}
 		//TTP Point
 		var ttpPoint1 = {
@@ -740,8 +820,8 @@ function ttpTipIconLocation() {  // Icon display
 		var tipPictureSymbol = {
 			type: "picture-marker",
 			url: "TIP_MSG.png",
-			width: "20",
-			height: "20"
+			width: "28",
+			height: "15"
 		}
 		//TIP Point
 		var tipPoint1 = {
@@ -755,7 +835,6 @@ function ttpTipIconLocation() {  // Icon display
 			latitude: 1.383792                        
 		};
 	
-		
 		var tipPictureGraphic1 = new Graphic({
 			geometry: tipPoint1,
 			symbol: tipPictureSymbol
@@ -764,13 +843,13 @@ function ttpTipIconLocation() {  // Icon display
 			geometry: tipPoint2,
 			symbol: tipPictureSymbol
 		});   
-		view.graphics.addMany([tipPictureGraphic1,tipPictureGraphic2]);
+		view.graphics.addMany([tipPictureGraphic1]);
 
       }
 
 	  //After create button the current and Proposed vms messeses will be displayed
 	  document.getElementById("vmsMsgAfterCreate").onclick = function() {	
-		var defaultMSgList = document.getElementsByName("defaultMSgList");
+		/* var defaultMSgList = document.getElementsByName("defaultMSgList");
 		var count = 0 ;
 		for(i=0;i<defaultMSgList.length;i++) {
 			var  str = defaultMSgList[i].value;	
@@ -788,7 +867,16 @@ function ttpTipIconLocation() {  // Icon display
 			symbol: msgImage,
 		}) 
 			view.graphics.addMany([pictureGraphicSystemMsg]);		  	  
-		}
+		} */
+
+	//onload default vms message after press create button
+	scenarioDefaultVMSOnload();
+	
+	//other vms point on guide zone
+	var msgDisplay = "onload";
+	guideZoneTIPTTP(msgDisplay);
+
+
 		//remove traffic congesion layer
 		removetrafficPlanLayer()
 	  }
@@ -888,30 +976,72 @@ function getScenarioDefaultVMSMessages(selectedMsgNo){
 	accCCTVLocation();
 	dtCamIconLocation();
 	ttpTipIconLocation();
-	scenarioDefaultVMSImpl();
+
+/** Current and system proposed message display*/
+	var defaultMSgList = document.getElementsByName("defaultMSgList");
+	var count = 0 ;
+	for(i=0;i<defaultMSgList.length;i++) {
+		var  str = defaultMSgList[i].value;	
+		var word1sep = str.indexOf("$");
+		var currVmsId = str.substring(0, word1sep);
+		var currVmsmsg = str.substring(word1sep+1, str.length);
+			
+		var selectedMsgNo = i;
+		var msgpoint = getLatiLongi(selectedMsgNo);
+		var msgImage = getAfterCreateVMSMessages(selectedMsgNo);
+		var pictureGraphicSystemMsg = new Graphic({
+			geometry: msgpoint,
+			symbol: msgImage,
+		}) 
+		view.graphics.addMany([pictureGraphicSystemMsg]);		  	  
+	} 
+
+	//scenarioDefaultVMSImpl();
+/** Accident layer display*/
 	accidentLaneLayer();
+
+/** guidezone messages */
+	var loadMsg = "oncreate";
+	guideZoneTIPTTP(loadMsg);
 	trafficlayeropplaneVisible(true);
-	trafficlayerlane3Visible(true);
+	trafficlayerlane3GreenVisible(true);
+	accidentLaneLayerNoPlan();
+	//trafficlayerlane3Visible(true);
  }
 
  /*** Implement all VMS Message Display **************/
  document.getElementById("accAllVmsMessage").onclick = function() { 
 	var selectedMsgNo;
 	var b =  document.getElementsByName("accvmssatus").length;
-	for(i=0;i<b;i++) {   
+	/*for(i=0;i<b;i++) {   
 		ttpTspMessages(i);	 
-	}
+	} */
 	view.graphics.removeAll();
-	//accIconLocation();
 	accCCTVLocation();
 	dtCamIconLocation();
 	ttpTipIconLocation();
-	scenarioDefaultVMSImpl();
 	accidentLaneLayer();
-	trafficlayeropplaneVisible(true);
-	trafficlayerlane3Visible(true);
-	trafficLayerImplPlan1Interval();
+	scenarioDefaultVMSImpl();
+	var loadMsg = "onview";
+	guideZoneTIPTTP(loadMsg);
+	trafficlayeropplaneVisible(false);
+	trafficlayerlane3GreenVisible(false);
+	accidentLaneLayerNoPlan();
 
+	/** Traffic Layer Congestion point reduced layer */
+	//trafficLayerImplPlan1Interval();
+	//setInterval(defaultDisplay, 14000);
+ }
+
+ function defaultDisplay(){
+	view.graphics.removeAll();
+	accCCTVLocation();
+	dtCamIconLocation();
+	ttpTipIconLocation();
+	var loadMsg = "onload";
+	guideZoneTIPTTP(loadMsg);
+	scenarioDefaultVMSOnload();
+	clearInterval(setInterval);
  }
 
 //draw the traffic lane red amber green on implement all
@@ -950,7 +1080,7 @@ document.getElementById("preTimeId").onclick = function() {
 	removetrafficPlanLayer();
 	trafficlayerlane3Visible(false);
 	trafficlayeropplaneVisible(false);
-	accidentLaneLayerNoPlan();
+	trafficlayerlane3GreenVisible(false);
 }
 
 function trafficlayerlane3Visible(visiFlag){
@@ -996,8 +1126,8 @@ var vmssimpleMarkerSymbol = {
  var PictureSymbol00 = {
 	 type: "picture-marker",
 	 url: "TTP_MSG.png",
-	 width: "20",
-	 height: "20",
+	 width: "28",
+	 height: "15"
  }
  
  var appendStr1 = '<font color="#24DEE8" face="Roboto" size="3"><b>' ;
@@ -1090,8 +1220,8 @@ if(selectedMsgNo==1) {
   var PictureSymbol01 = {
 	 type: "picture-marker",
 	 url: "TIP_MSG.png",
-	 width: "20",
-	 height: "20",
+	 width: "28",
+	 height: "15"
  }
  if(selectedMsgNo==4) { 
 	msgpoint = getLatiLongi(selectedMsgNo);
@@ -1129,54 +1259,113 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 	accCCTVLocation();
 	dtCamIconLocation();
 	ttpTipIconLocation();
+	//guideZoneTIPTTP(true);
 }
  /*** End of VMS Message Display **************/ 
 
 /*** scenario 1 VMS  ***/
-	//VMS messages Display
-	var firstCongestionTimer;;
-	var secondCongestionTimer;
-	var thirdCongestionTimer;
-	var endCongestionTimer;
-	/*var pictureGraphicSce1List = [];*/
 	var pictureGraphicSce1TraList = [];
 	var viewFlagS1;
 	document.getElementById("sce1ImpliId").onclick = function() { 
-		
+	
 		//scenrio1VMSMsgView();
-		
 		view.graphics.removeAll();
 		//Traffic Light
 		trafficLight();
 
-		//accIconLocation();
+		accIconLocation();
+	
 		accCCTVLocation();
-		dtCamIconLocation();
+		
+		dtCamIconLocation(); 
+	
 		viewFlagS1 = true;
+
+		/** Display congestion zone VMS on the amp  */
 		scenrio1VMSMsgOnMap();
-		//removetrafficPlanLayer();
-		trafficlayerlane3Visible(false);
+		
+		/** Other lane in Accident spot layer  */
+		trafficlayerlane3GreenVisible(false);
+		
+		/** Opp lane in Accident spot layer  */	
 		trafficlayeropplaneVisible(false);
-		accidentLaneLayerPlan1();			
+		
+		/** Guide zone vms message  */
+		var loadMsg = "onview";
+		guideZoneTIPTTP(loadMsg);		
+
+		/** Traffic Layer Congestion point reduced layer */
 		trafficLayerImplPlan1Interval();
+		
 	}
 	
 /* Start Prediction plan 1 implementation interval  */
 	function trafficLayerImplPlan1Interval() {
-		
-		interval1 = setInterval(tlPlan2Display, 2000);	
-		interval2 = setInterval(tlImp1Display, 4000);	
-		interval3 = setInterval(tlImp2Display, 8000);	
-		interval4 = setInterval(tlImp3Display, 10000);	
-		clrinterval = setInterval(clearFinalInterval, 12000); 	
+		intervalplan1_1 = setInterval(tlPlan1Display, 2000);	
+		intervalplan1_2 = setInterval(tlPlan1Imp1Display, 5000);	
+		intervalplan1_3 = setInterval(tlPlan1Imp2Display, 9000);	
+		intervalplan1_4 = setInterval(tlPlan1Imp3Display, 11000);	
+		intervalplan1_5 = setInterval(tlPlan1Imp4Display, 14000);	
+		clrplan1interval = setInterval(clearPlan1FinalInterval, 16000); 	
 	}
+
+	function tlPlan1Display(){
+		accidentLaneLayerPlan1();
+	}
+	function tlPlan1Imp1Display() {
+		clearInterval(intervalplan1_1);
+		trafficlayerlanePlan1Impl1.visible = true;
+	}
+
+	function tlPlan1Imp2Display() {
+		clearInterval(intervalplan1_2);
+		trafficlayerlanePlan1Impl2.visible = true;
+	}
+
+	function tlPlan1Imp3Display() {
+		clearInterval(intervalplan1_3);
+		trafficlayerlanePlan1Impl3.visible = true;
+	}
+	function tlPlan1Imp4Display() {
+		clearInterval(intervalplan1_4);
+		trafficlayerlanePlan1Impl4.visible = true;
+	}
+
+	function clearPlan1FinalInterval(){
+		clearInterval(intervalplan1_1);
+		clearInterval(intervalplan1_2);
+		clearInterval(intervalplan1_3);
+		clearInterval(intervalplan1_4);
+		clearInterval(clrplan1interval);
+		clearInterval(intervalplan1_5);
+		calldefaultmsgplan1();
+	}
+
+	// Plan1 implementation done so call the default message on the begining
+	function calldefaultmsgplan1(){
+		view.graphics.removeAll();
+		trafficLight();
+		accIconLocation();
+		accCCTVLocation();
+		dtCamIconLocation(); 
+		trafficlayerlane3GreenVisible(true);
+		trafficlayeropplaneVisible(true);
+		trafficlayerlanePlan1Impl4.visible = true;
+		var loadMsg = "onload";
+		guideZoneTIPTTP(loadMsg);
+		/** Default VMS Message on the amp  */
+		scenarioDefaultVMSOnload();	
+		removeTrafficLayerImplPlan1Interval();
+	}
+
+
 	function tlPlan2Display(){
 		trafficlayerlaneImpl1.visible = false ;
 		trafficlayerlaneImpl2.visible = false ;
 		trafficlayerlaneImpl3.visible = false ;
 		trafficplan2layerlane.visible = true ;
 	}
-	function tlImp1Display(){
+	function tlPlan2Imp1Display(){
 		clearInterval(interval1);
 		trafficlayerlaneImpl1.visible = true ;
 		trafficlayerlaneImpl2.visible = false ;
@@ -1184,7 +1373,7 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 		trafficplan2layerlane.visible =  false;
 
 	}
-	function tlImp2Display(){
+	function tlPlan2Imp2Display(){
 		clearInterval(interval1);
 		clearInterval(interval2);
 		trafficlayerlaneImpl1.visible = false ;
@@ -1193,7 +1382,7 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 		trafficplan2layerlane.visible =  false;
 
 	}
-	function tlImp3Display(){
+	function tlPlan2Imp3Display(){
 		clearInterval(interval1);
 		clearInterval(interval2);
 		clearInterval(interval3);
@@ -1208,11 +1397,23 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 		clearInterval(interval3);
 		clearInterval(interval4);
 		clearInterval(clrinterval);
-		//trafficlayerlane3GreenVisible(true);
-		trafficlayerlane3GreenVisible(true);
-		trafficlayeropplaneVisible(true);
 		removeTrafficLayerImplPlan1Interval();
+		calldefaultmsgplan2();
 	}
+function calldefaultmsgplan2(){
+	view.graphics.removeAll();
+	alert("call plan 2");
+	accIconLocation();
+	accCCTVLocation();
+	dtCamIconLocation(); 
+	trafficlayerlane3GreenVisible(true);
+	trafficlayeropplaneVisible(true);
+	var loadMsg = "onload";
+	guideZoneTIPTTP(loadMsg);	
+	/** Default VMS Message on the amp  */
+	scenarioDefaultVMSOnload();	
+}
+	
 
 	function removeTrafficLayerImplPlan1Interval(){
 		trafficlayerlaneImpl1.visible = false ;
@@ -1229,14 +1430,20 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 		accIconLocation();
 		accCCTVLocation();
 		dtCamIconLocation();
+	//	guideZoneTIPTTP(true);
 		viewFlagS1 = false;
 		trafficLight();
 		//scenrio1VMSMsgView();
 		scenrio1VMSMsgOnMap();
 		removetrafficPlanLayer();
 		accidentLaneLayerPlan1();
-		trafficlayerlane3Visible(true);	
+		trafficlayerlane3GreenVisible(true);
+		//trafficlayerlane3Visible(true);	
 		trafficlayeropplaneVisible(true);
+
+		/** Guide zone vms message  */		
+		var loadMsg = "oncreate";
+		guideZoneTIPTTP(loadMsg);
 	}
 
 	function scenrio1VMSMsgView() {
@@ -1244,14 +1451,14 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 		var PictureSymbolTTP = {
 		type: "picture-marker",
 		url: "TTP_MSG.png",
-		width: "20",
-		height: "20",
+		width: "28",
+		height: "15"
 	}
     var PictureSymbolTIP = {
 		type: "picture-marker",
 		url: "TIP_MSG.png",
-		width: "20",
-		height: "20",
+		width: "28",
+		height: "15"
 	}
 	  var j =0;
 		for(i=0;i<scenario1List.length;i++) {		
@@ -1341,6 +1548,7 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 		accCCTVLocation();
 		dtCamIconLocation();
 		ttpTipIconLocation();	
+	//	guideZoneTIPTTP(true);
 		trafficlayerlane3GreenVisible(false);	
 	}
 /*** End of scenario 1 VMS messages  ***/
@@ -1356,10 +1564,21 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 		viewFlagS2 = true;
 		accCCTVLocation();
 		scenrio2VMSMsgView();
+
+		/** exising layer visible false */
 		removetrafficPlanLayer();
-		trafficlayerlane3Visible(false);
-		trafficlayeropplaneVisible(false);	
-		accidentLaneLayerPlan2();	
+		
+		/** Opp lane in Accident spot layer  */	
+		trafficlayeropplaneVisible(false);
+		
+		/** Other lane in Accident spot layer  */	
+		trafficlayerlane3GreenVisible(false);
+
+		/** Guide zone vms message  */
+		var loadMsg = "onview";
+		guideZoneTIPTTP(loadMsg);	
+
+		/** Traffic Layer Congestion point reduced layer */
 		trafficLayerImplPlan2Interval();
 	}
 	
@@ -1370,19 +1589,31 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 		accIconLocation();
 		scenrio2VMSMsgView();
 		accCCTVLocation();	
+
+		/** exising layer visible false */
 		removetrafficPlanLayer();
+		
+		/** Accident Lane layer  */		
 		accidentLaneLayerPlan2();		
-		trafficlayerlane3Visible(true);	
-		trafficlayerlane3GreenVisible(false);
+		
+		/** Other lane in Accident spot layer  */		
+		trafficlayerlane3GreenVisible(true);
+		
+		/** Opp lane in Accident spot layer  */		
 		trafficlayeropplaneVisible(true);
+		
+		/** Guide zone vms message  */		
+		var loadMsg = "oncreate";
+		guideZoneTIPTTP(loadMsg);
 	}
 
 	var interval1;
 	function trafficLayerImplPlan2Interval() {
-		interval2 = setInterval(tlImp1Display, 2000);	
-		interval3 = setInterval(tlImp2Display, 4000);	
-		interval4 = setInterval(tlImp3Display, 8000);	
-		clrinterval = setInterval(clearFinalInterval, 10000); 	
+		interval1 = setInterval(tlPlan2Display, 2000);	
+		interval2 = setInterval(tlPlan2Imp1Display, 6000);	
+		interval3 = setInterval(tlPlan2Imp2Display, 10000);	
+		interval4 = setInterval(tlPlan2Imp3Display, 12000);	
+		clrinterval = setInterval(clearFinalInterval, 14000); 
 	}
 	
 	function scenrio2VMSMsgView() {
@@ -1395,15 +1626,15 @@ document.getElementById("remAccVmsMessage").onclick = function() {
 		var scenario2List = document.getElementsByName("scenario2List");
 		var PictureSymbolSce2TTP = {
 				type: "picture-marker",
-				url: "TTP_MSG.png",
-				width: "20",
-				height: "20",
+                url: "TTP_MSG.png",
+                width: "28",
+                height: "15"
 			}
 		    var PictureSymbolSce2TIP = {
 				type: "picture-marker",
 				url: "TIP_MSG.png",
-				width: "20",
-				height: "20",
+				width: "28",
+				height: "15"
 			}
 			var j =0;
 			var count=0;
@@ -1685,6 +1916,8 @@ function getScenario2VMSMessagesPro(selectedMsgNo) {
 		accCCTVLocation();
 		dtCamIconLocation();
 		ttpTipIconLocation();
+
+	//	guideZoneTIPTTP(true);
 		trafficlayerlane3GreenVisible(false);
 	}
 /*** End of scenario 2 VMS messages  ***/
@@ -1709,14 +1942,14 @@ function scenrio1VMSMsgOnMap() {
 		var PictureSymbolTTP = {
 		type: "picture-marker",
 		url: "TTP_MSG.png",
-		width: "20",
-		height: "20",
+		width: "28",
+		height: "15"
 	}
     var PictureSymbolTIP = {
 		type: "picture-marker",
 		url: "TIP_MSG.png",
-		width: "20",
-		height: "20",
+		width: "28",
+		height: "15"
 	}
 	  var j=0;
 	  var count=0;
@@ -2112,7 +2345,7 @@ function getScenario1VMSMessagesPro(selectedMsgNo) {
 			yoffset: 35,
 		};
 	}
-	if(selectedMsgNo==8) { 
+/*	if(selectedMsgNo==8) { 
 		//urlImage = "img101.JPG";
 		//alert ("urlImage : " +  urlImage);
 		vmsSce1MsgSymbol = {
@@ -2123,7 +2356,7 @@ function getScenario1VMSMessagesPro(selectedMsgNo) {
 			xoffset: 0,
 			yoffset: 35,
 		};
-	}		
+	}		*/
 
 	return vmsSce1MsgSymbol
 }
@@ -2211,7 +2444,7 @@ function getScenario1VMSMessages(selectedMsgNo) {
 			yoffset: 35,
 		};
 	}
-	if(selectedMsgNo==8) { 
+	/*if(selectedMsgNo==8) { 
 		vmsSce1MsgSymbol = {
 			type: "picture-marker",
 			url: "img109_pv.JPG",
@@ -2220,7 +2453,7 @@ function getScenario1VMSMessages(selectedMsgNo) {
 			xoffset: 0,
 			yoffset: 35,
 		};
-	}		
+	}*/		
 	return vmsSce1MsgSymbol
 }
 
@@ -2293,12 +2526,11 @@ function scenarioDefaultVMSOnload(){
 		var selectedMsgNo = i;
 		var msgpoint = getLatiLongi(selectedMsgNo);
 		var msgImage = getScenarioDefaultVMSMessages(selectedMsgNo);
-		console.log("msgpoint" + msgpoint);
 
-	var pictureGraphicSystemMsg = new Graphic({
-		geometry: msgpoint,
-		symbol: msgImage,
-	}) 
+		var pictureGraphicSystemMsg = new Graphic({
+			geometry: msgpoint,
+			symbol: msgImage,
+		}) 
 		view.graphics.addMany([pictureGraphicSystemMsg]);		  	  
 	}
 	//remove traffic congesion layer
@@ -2319,18 +2551,173 @@ function scenarioDefaultVMSImpl() {
 		var selectedMsgNo = i;
 		var msgpoint = getLatiLongi(selectedMsgNo);
 		var msgImage = getScenarioDefaultVMSMessagesImpl(selectedMsgNo);
-		console.log("msgpoint" + msgpoint);
 
-	var pictureGraphicSystemMsg = new Graphic({
-		geometry: msgpoint,
-		symbol: msgImage,
-	}) 
+		var pictureGraphicSystemMsg = new Graphic({
+			geometry: msgpoint,
+			symbol: msgImage,
+		});
 		view.graphics.addMany([pictureGraphicSystemMsg]);		  	  
 	}
 }
 
+//other vms point on guide zone
+guideZoneTIPTTP("onload");
 
- /*** Obu Message display on the Map */
+function guideZoneTIPTTP(loadMsg){
+	var tipPointArr = [
+		{"loc":"tip1","longi":"103.8621958","lati":"1.3321417","img":"tip204_onload.JPG"},
+		{"loc":"tip2","longi":"103.8988485","lati":"1.3244034","img":"tip205_onload.JPG"},
+		{"loc":"tip3","longi":"103.8310564","lati":"1.3264697","img":"tip206_onload.JPG"},
+		{"loc":"tip4","longi":"103.8488083","lati":"1.329867","img":"tip207_onload.JPG"},
+		{"loc":"tip5","longi":"103.8846192","lati":"1.3218881","img":"tip208_onload.JPG"}		
+	];
+
+	var guideZoneTIPVmsImages = [
+		{"imgonload":"tip204_onload.JPG","imgoncre":"tip204_oncre.JPG","imgonimp":"tip204_onimp.JPG"},
+		{"imgonload":"tip205_onload.JPG","imgoncre":"tip205_oncre.JPG","imgonimp":"tip205_onimp.JPG"},
+		{"imgonload":"tip206_onload.JPG","imgoncre":"tip206_oncre.JPG","imgonimp":"tip206_onimp.JPG"},
+		{"imgonload":"tip207_onload.JPG","imgoncre":"tip207_oncre.JPG","imgonimp":"tip207_onimp.JPG"},
+		{"imgonload":"tip208_onload.JPG","imgoncre":"tip208_oncre.JPG","imgonimp":"tip208_onimp.JPG"}		
+	];
+
+	for(i in tipPointArr) {
+		var tipPoint = {
+			type: "point", // autocasts as new Point()
+			longitude: tipPointArr[i].longi,
+			latitude: tipPointArr[i].lati 
+		};
+		var tipPictureSymbol = {
+			type: "picture-marker",
+			url: "TIP_MSG.png",  //Lower Delta Rd Exit (AYE)
+			width: "28",
+			height: "15"
+		}
+		var tipPictureGraphic = new Graphic({
+			geometry: tipPoint,
+			symbol: tipPictureSymbol,
+		});
+		
+		//getting TIPvms message image
+		var selImg, imgWidth, imgHeight, imgXoffset, imgYoffset ;
+		if(loadMsg=="onload"){
+			selImg =  guideZoneTIPVmsImages[i].imgonload ;
+			imgWidth = "90"; 
+			imgHeight = "30"; 
+			imgXoffset = 0;
+			imgYoffset = 25;
+		}
+		if(loadMsg=="oncreate"){
+			selImg =  guideZoneTIPVmsImages[i].imgoncre ;
+			imgWidth = "100"; 
+			imgHeight = "50"; 
+			imgXoffset = 0;
+			imgYoffset = 35;
+		}
+		
+		if(loadMsg=="onview"){
+			selImg =  guideZoneTIPVmsImages[i].imgonimp ;
+			imgWidth = "100"; 
+			imgHeight = "40"; 
+			imgXoffset = 0;
+			imgYoffset = 25;
+		}
+		
+		var tipMsgPictureSymbol = {
+			type: "picture-marker",
+			url:  selImg,  //Lower Delta Rd Exit (AYE)
+			width: imgWidth,
+			height: imgHeight,
+			xoffset: imgXoffset,
+			yoffset: imgYoffset
+		}
+		var tipMsgPictureGraphic = new Graphic({
+			geometry: tipPoint,
+			symbol: tipMsgPictureSymbol,
+		});
+		view.graphics.addMany([tipPictureGraphic,tipMsgPictureGraphic]);
+	} 
+	
+	var ttpPointArr  = [
+		{"loc":"ttp1","longi":"103.8615152","lati":"1.3326743"},
+		{"loc":"ttp2","longi":"103.8582245","lati":"1.3298227"},
+		{"loc":"ttp3","longi":"103.856763","lati":"1.3434153"},
+		{"loc":"ttp4","longi":"103.8605362","lati":"1.3452302"},
+		{"loc":"ttp5","longi":"103.8660249","lati":"1.3253549"},		
+		{"loc":"ttp5","longi":"103.8634873","lati":"1.3437891"}	
+	];
+
+	var guideZoneTTPVmsImages = [
+		{"imgonload":"ttp107_onload.JPG","imgoncre":"ttp107_oncre.JPG","imgonimp":"ttp107_onimp.JPG"},
+		{"imgonload":"ttp108_onload.JPG","imgoncre":"ttp108_oncre.JPG","imgonimp":"ttp108_onimp.JPG"},
+		{"imgonload":"ttp109_onload.JPG","imgoncre":"ttp109_oncre.JPG","imgonimp":"ttp109_onimp.JPG"},
+		{"imgonload":"ttp110_onload.JPG","imgoncre":"ttp110_oncre.JPG","imgonimp":"ttp110_onimp.JPG"},
+		{"imgonload":"ttp111_onload.JPG","imgoncre":"ttp111_oncre.JPG","imgonimp":"ttp111_onimp.JPG"},
+		{"imgonload":"ttp112_onload.JPG","imgoncre":"ttp112_oncre.JPG","imgonimp":"ttp112_onimp.JPG"}		
+	];
+
+	for(i in ttpPointArr) {
+		var ttpPoint = {
+			type: "point", // autocasts as new Point()
+			longitude: ttpPointArr[i].longi,
+			latitude: ttpPointArr[i].lati 
+		};
+		var ttpPictureSymbol = {
+			type: "picture-marker",
+			url: "TTP_MSG.png",
+			width: "28",
+			height: "15"
+		}
+
+		ttpPictureGraphic = new Graphic({
+			geometry: ttpPoint,
+			symbol: ttpPictureSymbol,
+		});
+	
+//getting TTPvms message image
+var selImg, imgWidth, imgHeight, imgXoffset, imgYoffset ;
+if(loadMsg=="onload"){
+	selImg =  guideZoneTTPVmsImages[i].imgonload ;
+	imgWidth = "80"; 
+	imgHeight = "50"; 
+	imgXoffset = 0;
+	imgYoffset = 35;
+}
+if(loadMsg=="oncreate"){
+	selImg =  guideZoneTTPVmsImages[i].imgoncre ;
+	imgWidth = "90"; 
+	imgHeight = "90"; 
+	imgXoffset = 0;
+	imgYoffset = 50;
+}
+
+if(loadMsg=="onview"){
+	selImg =  guideZoneTTPVmsImages[i].imgonimp ;
+	imgWidth = "80"; 
+	imgHeight = "50"; 
+	imgXoffset = 0;
+	imgYoffset = 35;
+}
+
+
+var ttpMsgPictureSymbol = {
+	type: "picture-marker",
+	url:  selImg,  //Lower Delta Rd Exit (AYE)
+	width: imgWidth,
+	height: imgHeight,
+	xoffset: imgXoffset,
+	yoffset: imgYoffset
+}
+var ttpMsgPictureGraphic = new Graphic({
+	geometry: ttpPoint,
+	symbol: ttpMsgPictureSymbol,
+});
+		view.graphics.addMany([ttpPictureGraphic,ttpMsgPictureGraphic]);
+	}	
+}
+
+
+
+/*** Obu Message display on the Map */
 var obuGuideMsgPicGraText = "";
 var obuJamPicGraText = ""
 var obuAlertPicGraText = "";

@@ -20,9 +20,19 @@ var app = angular.module('ltaApp', []);
 		$scope.accState = 'Notified'; 
 		$scope.accZone = 'zone3'; 
 		$scope.accRoadname = 'Ang Mo Kio Ave 5 (CTE)';
-		$scope.accLanes = '2';
-      });
-    
+		$scope.accLanes = '4,3';
+		$scope.mrwIrid = '23653';
+		$scope.mrwType = 'Road Works';
+		$scope.mrwState = 'In progress'; 
+		$scope.mrwZone = 'zone2'; 
+		$scope.mrwRoadname = 'Singlap Road';
+		$scope.mrwLanes = '1';
+		$scope.totalInprogress = "3";
+    	$scope.totalNotified = "3";
+    	$scope.totalConfirmed = "1";
+    	$scope.sp = "  ";
+	  });
+    $scope.sp = "  ";
     /*$interval( function(){ $scope.callIR1($scope.incidentRec); }, 5000);
     $scope.callIR1 = function(incidentNewList){
     	 var m = incidentNewList.length, t, i;
@@ -236,6 +246,7 @@ var app = angular.module('ltaApp', []);
 		$scope.accTrafficAlertRname = 'CTE'
 		$scope.accTrafficAlertDesc = 'Accident'	
 		$scope.accTrafficAlertSource = 'VA'
+		$scope.accTrafficAlertStatus1 = "True";
       });    
     
 
@@ -275,7 +286,7 @@ var app = angular.module('ltaApp', []);
 	$scope.searchroadwkfromgrid  = "";
 	$scope.irstartpoint = "7.25km";
 	$scope.irendpoint = "7.25km";
-	$scope.ircogendpoint = "7.25km";
+	$scope.ircogendpoint = "9.25km";
 	$scope.accCanningMsg = "  Accident on CTE (towards SLE) after Ang Mo Kio Rd Exit";
 	$scope.accTrafficAlertTime = $filter('date')(new Date(), 'yyyy-MM-dd HH:mm');
 	
@@ -422,16 +433,13 @@ var app = angular.module('ltaApp', []);
   	
   	$scope.irdirlist = [{
 		"irdirid": 1,
-		"irdirname": "Towards CTE"
+		"irdirname": "Towards SLE/TPE"
 		}, {
 		"irdirid": 2,
 		"irdirname": "Towards City"
-		}, {
-		"irdirid": 3,
-		"irdirname": "Towards TPE"
-		}	
+		}		
 	];
-  	$scope.irdirsel = "3";	
+  	$scope.irdirsel = "1";	
   	
   	$scope.accAlertMsg = "CTE (SLE) Accident after Exit B";
   //$scope.accJamMsg = "CTE (SLE) Accident after Exit B";
@@ -457,7 +465,8 @@ var app = angular.module('ltaApp', []);
 		$scope.showirpredit = false;
 		$scope.showirpreditsce2 = false;
 		$scope.showirpreditsce1 = false;
-	    //alert("simulation : " + $scope.irsimul + "\ "  + "irimpor : " + $scope.irimpor  + "\ "  + "irvrs : " + $scope.irvrs  + "\ "  + "irltm : " + $scope.irltm);
+		//alert("simulation : " + $scope.irsimul + "\ "  + "irimpor : " + $scope.irimpor  + "\ "  + "irvrs : " + $scope.irvrs  + "\ "  + "irltm : " + $scope.irltm);
+		console.log("New Accident Incident Created");
     }
     $scope.callircreate= function(){
 	    $scope.showircreate = true;
@@ -491,13 +500,20 @@ var app = angular.module('ltaApp', []);
         $scope.iraccvmsList = response.data.iraccvms;  
     });
  
+    // iraccvms incident recorad accident vms message  
+    $http.get("iraccvmsguide.json").then(function(response) {
+        $scope.iraccvmsguideList = response.data.iraccvmsguide;  
+        console.log("iraccvmsguideList : " + $scope.iraccvmsguideList.length);
+    });
+     
+    
    // $scope.irrecommMsg = "Massive Jam to Mandai";
    // $scope.irequipid = "15425";
 	// $scope.irvmsMsgStatus = "Not Active";
 	$scope.irvmsMsgRemoved = function(){
 		 console.log("Before irvmsMsgStatus : " + $scope.irvmsMsgStatus);
 		$scope.irvmsMsgStatus = "Failed";
-		 console.log("irvmsMsgStatus : " + $scope.irvmsMsgStatus);
+		console.log("irvmsMsgStatus : " + $scope.irvmsMsgStatus);
 	};
     
 	//VMS Implementation Message 
@@ -632,24 +648,42 @@ var app = angular.module('ltaApp', []);
     $scope.mrwltm = false;
  
     $scope.showmrwcreate = true;
-    $scope.showmrwresponse = false;
+	$scope.showmrwresponse = false;
+	//new entry added in command control list
+	$scope.mrwNewEntry = false;
     $scope.callmrwresponse = function(){
+		$scope.mrwNewEntry = true;
 	    $scope.showmrwcreate = false;
-	    $scope.showmrwresponse = true;
+		$scope.showmrwresponse = true;
+	//	$scope.accTrafficAlertStatus = false;
 	    //alert("simulation : " + $scope.irsimul + "\ "  + "irimpor : " + $scope.irimpor  + "\ "  + "irvrs : " + $scope.irvrs  + "\ "  + "irltm : " + $scope.irltm);
     }
     $scope.callmrwcreate= function(){
 	    $scope.showmrwcreate = true;
-	    $scope.showmrwresponse = false;
+		$scope.showmrwresponse = false;
+	//	$scope.accTrafficAlertStatus = true;
     }
     
     $scope.addmrwincident = function() {
-    	alert("mobile road work incident created");
-    	
+		window.close('createincidentbase.jsp');      
+		window.open('createincidentbaseta.jsp');     	
+		window.open('ccgridviewta.jsp');     	
     }
-      
+
+// Close the mobile road work incident
+	$scope.closemrwincident = function(){		  
+		window.open('ccgridviewtacr.jsp','_self');	 
+	}	
+	//Seave the records
+	$scope.savemrwincident = function() {
+		//window.open('createincidentbaseta.jsp');     	
+		window.open('ccgridviewta.jsp'); 
+		//window.open('createmrwbase.jsp','_self');     	    	
+    }
     
-        
+	$scope.overmrwincident = function(){		  
+		window.open('ccgridviewtacr.jsp');	 
+	}
 // *********** End of Mobile Road Work  ****** //
         
  // ******** New Event Creation and response part
@@ -658,7 +692,15 @@ var app = angular.module('ltaApp', []);
         $scope.eventRec = response.data.eventRec;  
         $scope.eventNewList =  $scope.eventRec;
         console.log("$scope.eventRec.length() :" + $scope.eventRec.length);
-        
+		
+		//create a new event record added into the event show list
+		$scope.eType = "Race";
+		$scope.eName = "Charity Run";
+		$scope.eLocation = "ECP";
+		$scope.eStatus="Planning";
+		$scope.eStart = "2019-11-03 08.00";
+		$scope.eEnd = "2019-11-03 12.00";
+
         var copyevent = $scope.eventRec;
 		var todayDate = $filter('date')(new Date(), 'yyyy/MM/dd');
 		$scope.noofeventToday = 0;
@@ -696,22 +738,22 @@ var app = angular.module('ltaApp', []);
 		}];
   		$scope.eventype = "4";
      
-      $scope.eventname = "Marathon 2019"
+      $scope.eventname = "Charity Run"
       $scope.eventorganizer = "Singapore Sport Club"
       $scope.eventsupp =  "CC"
       $scope.eventowner = "Singapore Athletics Association"
 	  var currdate1 = new Date();
 	  //currdate2.setDaty(currdate2.getHours() + 3);
       //$scope.eventstarttime = $filter('date')(new Date(), 'yyyy/MM/dd HH:mm');
-	  $scope.eventstarttime = "2019/08/25"; 
-      $scope.eventendtime1 = "2019/08/25";
+	  $scope.eventstarttime = "2019-11-03"; 
+      $scope.eventendtime1 = "2019-11-03";
       $scope.eventspec = "Running";
-      $scope.eventhotlineope= "0264653";
-      $scope.eventhotlineclo= "2646512";
+      $scope.eventhotlineope= "08:00am";
+      $scope.eventhotlineclo= "12:00pm";
       $scope.eventincharge= "Hein ";
-      $scope.eventpostno= "604521";
-      $scope.eventbubbleposi= "12,10";
-      $scope.eventbubblesize= "500";
+      $scope.eventpostno= "61234567";
+     // $scope.eventstartpoint= "East Coast Car Park H";
+     // $scope.eventendpoint= "East Coast Car Park C1";
       $scope.eventroadname= "East Coast Park Service Rd";
       $scope.eventstarttimecl= $scope.eventstarttime;
       $scope.eventendtimecl= "12.00pm";
@@ -751,7 +793,7 @@ var app = angular.module('ltaApp', []);
 			}
 		};
       
-      $scope.eventcanningMsg = "ECP Service Rd closed between Bedok & Car Part H"
+      $scope.eventcanningMsg = "ECP Service Rd closed between Bedok & Car Park H"
       
     	//VMS Removed Message 
     		$scope.eventObuMsgAlert = "Road closure at ECP Service";
@@ -819,49 +861,22 @@ var app = angular.module('ltaApp', []);
     		}
     		
     
-    	  // Adding new event    	    
-          $scope.addevent = function() {      
-        	  alert("Event Created");
-          /*$scope.eventlocation = "Expo";
-          $scope.eventstatus = "PLANNING";
-          
-          $scope.eventypeselected = $scope.eventype ;
-          $scope.eventname1 = $scope.eventname ;
-          
-          console.log("eventypeselected: " + $scope.eventypeselected);
-          console.log("eventname1: " + $scope.eventname1);
-          $scope.addEventData = {
-          		"type": $scope.eventype, 
-          		"name": $scope.eventname, 
-          		"location":$scope.eventlocation, 
-          		"status": $scope.eventstatus, 
-          		"start": $scope.eventstarttime, 
-          		"end": $scope.eventendtime
-              };
-          $scope.eventRec.push($scope.addEventData);
-          $scope.eventNewList = $scope.eventRec;
-          
-          
-          var copyevent = $scope.eventRec;
-          var todayDate = $filter('date')(new Date(), 'yyyy/MM/dd');
-  		  $scope.noofeventToday = 0;
-		  $scope.noofeventUpcome = 0;
-          for(i=0;i<copyevent.length;i++){
-        	var eventStartDate = copyevent[i].start;
-			var edate = eventStartDate.substring(0, 10);
-			
-			//Today event Check
-			if(todayDate==edate){
-				$scope.noofeventToday = $scope.noofeventToday + 1;
-			}
+   // Save new event    	    
+    $scope.addevent = function() {      
+		 console.log("New event Saved"); 
+		 window.open('ccgridviewta.jsp');       
+	}
+	 
+	// Close the new event    	    
+	$scope.closeEvent = function() {      
+		//window.close('createventbase.jsp');
+		window.open('ccgridviewtacr.jsp','_self');        
+	}
 
-			//upcoming event Check
-			var edate1 = $filter('date')(new Date(edate),'yyyy/MM/dd');
-			if(edate1>todayDate){
-				$scope.noofeventUpcome = $scope.noofeventUpcome + 1;
-			} 
-		}  */
-     }
+	// Over the new event    	    
+		$scope.overEvent = function() {      
+			window.open('ccgridviewtacr.jsp');        
+		}
      
       //Event name ngchange on text box
       $scope.changeventname = function() {
@@ -878,12 +893,14 @@ var app = angular.module('ltaApp', []);
       $scope.showeventresFlag = false;
       $scope.calleventresponse = function() {
     	$scope.showeventcreateFlag = false;
-    	$scope.showeventresFlag = true ;
+		$scope.showeventresFlag = true ;
+		console.log("New Event created");
       }
 
       $scope.calleventcreate = function() {
     	$scope.showeventcreateFlag = true;
-    	$scope.showeventresFlag = false ;
+		$scope.showeventresFlag = false ;
+		console.log("New event Saved");
       }       
 // ********End of New Event Creation and response part  
       
@@ -899,8 +916,17 @@ $scope.displaynextlist = function(visi) {
 	  $scope.showdateprebuttonFlag = true;
 	  $scope.showdatenextbuttonFlag =  false;
 	}  	
-}      
-      
+}
+
+//* Timer area display
+$scope.showTimer = false;
+$scope.showTimerOption = function() {
+	if($scope.showTimer){
+		$scope.showTimer = false;
+	} else {
+		$scope.showTimer = true;
+	}
+}
       
   /* windows display */ 
      
@@ -954,26 +980,45 @@ $scope.displaynextlist = function(visi) {
       
 // End of 3 different windows display - in 3 panels - CC2 - GIS - BIS      
  /* windows display */
-      
+	 
+ // Mobile road work creation and add one row ccgridview window
+  
+
+ $scope.mrwCreate = function(){ 
+	//$scope.mrwNewEntry = true;
+	window.open('ccgridviewta.jsp');
+	window.open('createmrwbase.jsp');	
+}
+
 //** Traffic Alert **//
-$scope.accTrafficAlertStatus1 = 'True'
+$scope.accNewEntry = false;
 $scope.trafficAlertAction = function(act) { 
 	if(act=="accwindow") {
 		//window.close('ccgridview.jsp');	
 		//window.close('createtabase.jsp');	
-		$scope.accTrafficAlertStatus1 = 'True';
-		var win = window.open("","_self"); 
-		win.close();
+		$scope.accNewEntry = true;
+		$scope.accTrafficAlertStatus = true;
+		window.close('createtabase.jsp');
 		window.open('ccgridviewta.jsp');
-		window.open('createaccbase.jsp');	
-			
+		window.open('createaccbase.jsp');				
 	} 
 	if(act=="ccwindow") {
 		window.close('createtabase.jsp');
 	}
 }
-	
 
+//Close the Accident IR
+$scope.closeAccInci = function(act) {  
+	window.open('ccgridviewtacr.jsp' , '_self');	    
+}
+// Save the Accident IR
+$scope.saveAccInci = function() { 
+	window.open('ccgridviewta.jsp');
+}
+// Over the Accident IR Incident
+$scope.overAccInci = function() { 
+	window.open('ccgridviewtacr.jsp');	
+}
 
 $scope.trafficalertwindow = function() {
 	var windowObjectReference3;  

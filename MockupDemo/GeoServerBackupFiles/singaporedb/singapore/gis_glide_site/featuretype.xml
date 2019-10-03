@@ -1,0 +1,40 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-4853868b:16b68375ef9:-7fd6</id>
+  <name>gis_glide_site</name>
+  <nativeName>gis_glide_site</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--5c0f1183:16a8b3cc2d8:-7ffe</id>
+  </namespace>
+  <title>gis_glide_site</title>
+  <keywords>
+    <string>features</string>
+    <string>gis_glide_site</string>
+  </keywords>
+  <srs>EPSG:3414</srs>
+  <nativeBoundingBox>
+    <minx>0.0</minx>
+    <maxx>47768.28125</maxx>
+    <miny>0.0</miny>
+    <maxy>49477.1328125</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>103.58170956161278</minx>
+    <maxx>104.01095735990117</maxx>
+    <miny>1.0162642548260385</miny>
+    <maxy>1.4637278083654082</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--5c0f1183:16a8b3cc2d8:-7ffd</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

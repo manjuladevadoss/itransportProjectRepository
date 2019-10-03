@@ -5,8 +5,9 @@
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
-	<!-- <meta http-equiv="refresh" content="50" />  -->
+	<meta http-equiv="refresh" content="160" />  
     <title> Incident Creation </title>
+    <link rel="shortcut icon" href="/Sopra_Steria_logo.ico" type="image/x-icon">
 	  <link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
 	  <link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/css/main.css">
   	 <script type="text/javascript" src="jquery.js"></script>
@@ -67,7 +68,7 @@
 		li{
 		  padding: 3px;
 		  padding-left:10px;
-		  font: 14px/16px Roboto, Helvetica, sans-serif;
+		  font: 10px/12px Roboto, Helvetica, sans-serif;
 		
 		}
 		
@@ -121,7 +122,7 @@ background-color: black;
       var c =":";
       var s = "//"
      if(windowObjectReference2 == null || windowObjectReference2.closed) {
-	    	var strpage3 = "/itrans/bislinechart.jsp";
+	    	var strpage3 = "/itrans/bischartline.html";
 		    var value3 = protocol.concat(s,domain,c,port,strpage3);
 		    //alert("bis url " + value3);
 		    windowObjectReference2 = window.open(
@@ -132,7 +133,7 @@ background-color: black;
 				windowObjectReference2.focus();
     	}
     }
-    window.onload = bisMainWindow;
+    //window.onload = bisMainWindow;
    	 $(document).bind("contextmenu",function(e){
     	  e.preventDefault();
     	  console.log(e.pageX + "," + e.pageY);
@@ -159,14 +160,15 @@ background-color: black;
 		<div ng-app="ltaApp" ng-controller="ltaController">	  
 		<div id="main" class claro>
 	<div id="viewDiv"> 
-	<button class="irresetbutton" id="draw-rectangle"> PolyLine </button>  
+	<button class="irresetbutton" id="draw-rectangle"> PolyLine </button>
+	<button class="irresetbutton" id="reset"> Reset </button>   
 	</div>
             <div id='cntnr'>
               <ul id='items'>
                 <li>
                   <table>
                       <tr> 
-						<td><img src="accident.png" width="28" height = "28"> </td>
+						<td><img src="accident.png" width="25" height = "25"> </td>
 						<td><a href="createaccbase.jsp" target="_blank" style="text-decoration:none;"><font style="color:#C8CFF4">Accident</font></a> </td>
 					   </tr>
                     </table>
@@ -174,7 +176,7 @@ background-color: black;
                 <li>
                   <table>
                       <tr> 
-						<td><img src="obstacle.png" width="30" height = "30"> </td>
+						<td><img src="obstacle.png" width="25" height = "25"> </td>
 						<td><a href="#" style="text-decoration:none;"><font style="color:#C8CFF4">Obstacle</font></a> </td>
 					   </tr>
                     </table>
@@ -182,15 +184,19 @@ background-color: black;
                 <li>
                     <table>
                       <tr> 
-						<td><img src="roadwork.png" width="30" height = "30"> </td>
-						<td><a href="createmrwbase.jsp" target="_blank" style="text-decoration:none;"><font style="color:#C8CFF4">Road Works</font></a> </td>
+						<td><img src="roadwork.png" width="25" height = "25"> </td>
+						<td>
+							<!--<a ng-href="{{mrwCreate()}}" ng_click = "mrwCreate();" style="text-decoration:none;"><font style="color:#C8CFF4">Road Works</font></a> <br> -->
+							 <a href="createmrwbase.jsp"  target="_blank" style="text-decoration:none;"><font style="color:#C8CFF4">Road Work</font></a>
+							
+						</td>
 					   </tr>
                     </table>
                 </li>  
                 <li>
                     <table>
                       <tr> 
-						<td><img src="heavytraffic.png" width="30" height = "30"> </td>
+						<td><img src="heavytraffic.png" width="28" height = "25"> </td>
 						<td><a href="#" style="text-decoration:none;"><font style="color:#C8CFF4">Heavy Traffic</font></a> </td>
 					   </tr>
                     </table>
@@ -198,15 +204,18 @@ background-color: black;
                 <li>              
 	                <table>
 	                      <tr> 
-							<td><img src="mobileroadwork.png" width="30" height = "30"> </td>
-							<td><a href="createmrwbase.jsp" target="_blank" style="text-decoration:none;"><font style="color:#C8CFF4"> Mobile Road Works</font></a> </td>
+							<td><img src="mobileroadwork.png" width="25" height = "25"> </td>
+							<td>
+								<!--  <a href="javascript:mrwCreate()"  ng_click = "mrwCreate();" style="text-decoration:none;"><font style="color:#C8CFF4">Mobile Road Works</font></a>  -->
+								<a href="createmrwbase.jsp"  target="_blank" style="text-decoration:none;"><font style="color:#C8CFF4">Mobile Road Works</font></a> 
+							</td>
 						   </tr>
 	                </table>
                 </li>  
                 <li>
                     <table>
                       <tr> 
-						<td><img src="mrtimage1.png" width="30" height = "30"> </td>
+						<td><img src="mrtimage1.png" width="25" height = "25"> </td>
 						<td><a href="createmrtbase.jsp" target="_blank" style="text-decoration:none;"><font style="color:#C8CFF4">MRT Break Down</font></a> </td>
 					   </tr>
                     </table>
@@ -214,7 +223,7 @@ background-color: black;
                 <li>
                 	<table>
                       <tr> 
-						<td><img src="unattvehicle.png" width="30" height = "30"> </td>
+						<td><img src="unattvehicle.png" width="25" height = "25"> </td>
 						<td><a href="#" style="text-decoration:none;"><font style="color:#C8CFF4">Unattended Vehicle</font></a> </td>
 					   </tr>
                     </table>
@@ -222,7 +231,7 @@ background-color: black;
                 <li>
                 	<table>
                       <tr> 
-						<td><img src="misce.png" width="28" height = "28"> </td>
+						<td><img src="misce.png" width="23" height = "25"> </td>
 						<td><a href="#" style="text-decoration:none;"><font style="color:#C8CFF4">Miscellaneous</font></a> </td>
 					   </tr>
                     </table>

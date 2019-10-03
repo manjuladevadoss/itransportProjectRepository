@@ -1,129 +1,160 @@
    window.onload = function () {
 
 //bar chart work order
-var ctx2 = document.getElementById("barchartContainer");
-var barChart = new CanvasJS.Chart(ctx2, {
-	backgroundColor: 'rgba(34,49,94, 1.0)',	
-	title: {
-		text: "Work Order",
-		fontColor: "#ffffff",
-		fontFamily: "Roboto, Helvetica, sans-serif"
-	},  
-	axisX: {
-       // title: "Time",
-		//valueFormatString: "hh:mm",
-		gridThickness: 0,
-		labelFontSize: 10,
-		labelFontColor: "#ffffff"
-    },
-	axisY: {
-		//title: "Temperature (°C)",
-		//suffix: " °C"
-		gridThickness: 0,
-		labelFontSize: 10,
-		labelFontColor: "#ffffff"
-	},
-	data: [{
-		type: "column",	
-		//yValueFormatString: "#,### °C",
-		//indexLabel: "{y}",
-		dataPoints: [
-			{ label: "01.00", y: 2 },
-			{ label: "02.00", y: 3 },
-			{ label: "03.00", y: 4 },
-			{ label: "04.00", y: 5 },
-			{ label: "05.00", y: 6 },
-			{ label: "06.00", y: 1 },
-			{ label: "07.00", y: 3 },
-			{ label: "08.00", y: 6 },
-			{ label: "09.00", y: 7 },
-			{ label: "10.00", y: 2 },
-			{ label: "11.00", y: 5 },
-			{ label: "12.00", y: 4 }
-		]
-	}]
-});
+loadbarchart();
+loadlinechart();
 
-function updateBarChart() {
-	var boilerColor, deltaY, yVal;
-	var dps = barChart.options.data[0].dataPoints;
-	var j =6;
-	for (var i = 0; i < dps.length; i++) {
-		deltaY = Math.round(2 + Math.random() *(-2-2));
-		yVal = deltaY + dps[i].y > 0 ? dps[i].y + deltaY : 0;
-		//boilerColor = yVal > 15 ? "#7DD6F7" : yVal <= 5 ? "#6B8E23" : yVal < 15 ? "#6B8E23" : null;
-		boilerColor = "#D0A2FD"; 
-		dps[i] = {label: (j+1)+".00" , y: yVal, color: boilerColor};
-		j++;
-	}
-	barChart.options.data[0].dataPoints = dps; 
-	barChart.render();
-};
-updateBarChart();
+function loadbarchart(){
+  var barCtx = document.getElementById("workorderbarchart");
+  var wobarChart = new Chart(barCtx, {
+    type: 'bar',
+    data: {
+      labels: ["1.00", "2.00", "3.00", "4.00", "5.00", "6.00", "7.00", "8.00","9.00", "10.00", "11.00", "12.00"],
+      datasets: [{
+        //label: '# of Tomatoes',
+        data: [2, 3, 4, 3, 5, 2, 4, 1, 2, 4, 2,3],
+        backgroundColor: [
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD'
+        ],
+        borderColor: [
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+         '#D0A2FD',
+          '#D0A2FD',
+         '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD',
+          '#D0A2FD'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: false,
+      scales: {
+        xAxes: [{
+           ticks: {
+            maxRotation: 0,
+            minRotation: 0,
+            fontColor: '#ffffff',
+            lineWidth: 2,
+            fontSize: 10
+          },
+          gridLines: {
+                  display: false
+           }
+        }],
+        yAxes: [{
+         ticks: {
+            beginAtZero: true,
+            fontColor: '#ffffff',
+            lineWidth: 2,
+            fontSize: 10
+          },
+          gridLines: {
+                  display: false
+          }
+        }]
+      }, 
+      legend: {
+              display: false,
+              labels: {
+                  fontColor: '#ffffff'
+              }
+          },
+      title: {
+              display: true,
+              text: 'Work Order',
+              fontColor: '#ffffff'
+          }
+    }
+  });
+}
+	
 //setInterval(function() {updateBarChart()}, 4000);
 //end of bar chart
 
 //start linechart technical work alarm
-var ctx1 = document.getElementById("linechartContainer");
-var lineChart = new CanvasJS.Chart(ctx1, {
-	backgroundColor: 'rgba(34,49,94, 1.0)',
-	title: {
-		text: "Alarms",
-		fontColor: "#ffffff",
-		fontFamily: "Roboto, Helvetica, sans-serif"
-	},  
-	axisX: {
-       // title: "Time",
-		//valueFormatString: "hh:mm",
-		gridThickness: 0,
-		labelFontSize: 10,
-		labelFontColor: "#ffffff"
+function loadlinechart(){
+  var lineCtx = document.getElementById("alarmlinechart");
+  var alalineChart = new Chart(lineCtx, {
+    type: 'line',
+    data: {
+      labels: ["1.00", "2.00", "3.00", "4.00", "5.00", "6.00", "7.00", "8.00", "10.00", "11.00", "12.00"],
+  
+      datasets: [{
+        //label: '# of Tomatoes',
+       
+        borderColor: "#80b6f4",
+              pointBorderColor: "#D0A2FD",
+              pointBackgroundColor: "#D0A2FD",
+              //pointHoverBackgroundColor: "#80b6f4",
+              //pointHoverBorderColor: "#80b6f4",
+              pointBorderWidth: 1,
+              pointHoverRadius: 1,
+            //  pointHoverBorderWidth: 1,
+            //  pointRadius: 3,
+              fill: false,
+        borderWidth: 2,
+        data: [7,2,6,7,3,9,7,6,4,5,3,6],
+      }]
     },
-	axisY: {
-		//title: "Temperature (°C)",
-		//suffix: " °C"
-		gridThickness: 0,
-		labelFontSize: 10,
-		labelFontColor: "#ffffff"
-	},
-	data: [{
-		type: "line",	
-		//yValueFormatString: "#,### °C",
-		//indexLabel: "{y}",
-		dataPoints: [
-			{ label: "01.00", y: 7 },
-			{ label: "02.00", y: 2 },
-			{ label: "03.00", y: 6 },
-			{ label: "04.00", y: 7 },
-			{ label: "05.00", y: 3 },
-			{ label: "06.00", y: 9 },
-			{ label: "07.00", y: 7 },
-			{ label: "08.00", y: 6 },
-			{ label: "09.00", y: 4 },
-			{ label: "10.00", y: 2 },
-			{ label: "11.00", y: 3 },
-			{ label: "12.00", y: 6 }
-		]
-	}]
-});
-
-function updateLineChart() {
-	var boilerColor, deltaY, yVal;
-	var dps = lineChart.options.data[0].dataPoints;
-	var j =6;
-	for (var i = 0; i < dps.length; i++) {
-		deltaY = Math.round(2 + Math.random() *(-2-2));
-		yVal = deltaY + dps[i].y > 0 ? dps[i].y + deltaY : 0;
-		//boilerColor = yVal > 200 ? "#FF2500" : yVal >= 170 ? "#FF6000" : yVal < 170 ? "#6B8E23 " : null;
-		boilerColor = "#D0A2FD";  
-		dps[i] = {label: (j+1)+".00" , y: yVal, color: boilerColor};
-		j++;
-	}
-	lineChart.options.data[0].dataPoints = dps; 
-	lineChart.render();
-};
-updateLineChart();
-//setInterval(function() {updateLineChart()}, 5000);
-//End linechart
+    options: {
+      responsive: false,
+      scales: {
+        xAxes: [{
+           ticks: {
+            beginAtZero: true,
+            maxRotation: 0,
+            minRotation: 0,
+            fontColor: '#ffffff',
+            lineWidth: 3,
+            fontSize: 10
+          },
+          gridLines: {
+            display: false
+           }
+        }],
+        yAxes: [{
+         ticks: {
+            beginAtZero: true,
+            fontColor: '#ffffff',
+            lineWidth: 3,
+            fontSize: 10
+          },
+          gridLines: {
+            display: false
+          }
+        }]
+      }, 
+      legend: {
+              display: false,
+              labels: {
+                  fontColor: '#ffffff'
+              }
+          },
+      title: {
+              display: true,
+              text: 'Alarms',
+              fontColor: '#ffffff'
+          }
+    }
+  });
+}
 
 }

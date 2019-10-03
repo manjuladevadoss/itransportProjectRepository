@@ -2,99 +2,99 @@
   "eventvms": [
     {
       "eventeqid": "231278",
-      "eventvmsmsg": "03 Nov 09am - 12pm ECP Service Rd closure between Bedok & Car Part H",
-      "eventdate": "26 Oct",
-      "eventtime": "10 am - 12 pm"
+      "eventvmsmsg": "03 Nov 09am - 12pm                 ECP Service Rd closure between Bedok & Car park H",
+      "eventdate": "2019-10-26",
+      "eventtime": "10:00am - 12:00pm"
+    },
+      {
+      "eventeqid": "983561",
+      "eventvmsmsg": "03 Nov 09am - 12pm               Closure ECP Service Rd between Bedok & Car park H",
+      "eventdate": "2019-10-26",
+      "eventtime": "09:00am-10:00am"
     },
    {
       "eventeqid": "901482",
-      "eventvmsmsg": "03 Nov 09am - 12pm Closure ECP Service Rd between Bedok & Car park H",
-      "eventdate": "27 Oct",
-      "eventtime": "08 am - 10 am"
+      "eventvmsmsg": "03 Nov 09am - 12pm              Closure ECP Service Rd between Bedok & Car park H",
+      "eventdate": "2019-10-27",
+      "eventtime": "08:00am-10:00am"
+    },
+      {
+      "eventeqid": "635729",
+      "eventvmsmsg": "03 Nov 09am - 12pm                 ECP Service Rd closure between Bedok & Car park H",
+      "eventdate": "2019-10-27",
+      "eventtime": "11:00am-12:00pm"
     },
    {
       "eventeqid": "564372",
-      "eventvmsmsg": "03 Nov 09am - 12pm ECP Service Rd closure between Bedok & Car Part H",
-      "eventdate": "27 Oct",
-      "eventtime": "12 pm - 02 pm"
+      "eventvmsmsg": "03 Nov 09am - 12pm                 ECP Service Rd closure between Bedok & Car park H",
+      "eventdate": "2019-10-27",
+      "eventtime": "12:00pm-02:00pm"
     },
     {
-      "eventeqid": "782436",
-      "eventvmsmsg": "03 Nov 09am - 12pm ECP Service Rd closure between Bedok & Car Part H",
-      "eventdate": "02 Nov",
-      "eventtime": "08 am - 11 am"
-    },
-    {
-      "eventeqid": "983561",
-      "eventvmsmsg": "03 Nov 09am - 12pm Closure ECP Service Rd between Bedok & Car park H",
-      "eventdate": "26 Oct",
-      "eventtime": "09 am - 10 am"
-    },
-   {
-      "eventeqid": "635729",
-      "eventvmsmsg": "03 Nov 09am - 12pm ECP Service Rd closure between Bedok & Car Part H",
-      "eventdate": "27 Oct",
-      "eventtime": "11 am - 12 pm"
+      "eventeqid": "782436",  
+      "eventvmsmsg": "03 Nov 09am - 12pm                ECP Service Rd closure between Bedok & Car park H",
+      "eventdate": "2019-11-02",
+      "eventtime": "08:00am-11:00am"
     },
    {
       "eventeqid": "324649",
-      "eventvmsmsg": "03 Nov 09am - 12pm closure ECP Service Rd between Bedok & Car park H",
-      "eventdate": "02 Nov",
-      "eventtime": "02 pm - 04 pm"
+      "eventvmsmsg": "03 Nov 09am - 12pm                 Closure ECP Service Rd between Bedok & Car park H",
+      "eventdate": "2019-11-02",
+      "eventtime": "02:00pm-04:00pm"
     },
     {
       "eventeqid": "546251",
-      "eventvmsmsg": "03 Nov 09am - 12pm ECP Service Rd closure between Bedok & Car Part H",
-      "eventdate": "02 Nov",
-      "eventtime": "06 pm - 09 pm"
+      "eventvmsmsg": "03 Nov 09am - 12pm                              ECP Service Rd closure between Bedok & Car park H",
+      "eventdate": "2019-11-02",
+      "eventtime": "06:00pm - 09:00pm"
     },
     {
       "eventeqid": "231278",
-      "eventvmsmsg": "09am - 12pm Closed ECP Service Rd between Bedok & Car park H",
-      "eventdate": "03 Nov",
-      "eventtime": "08 am - 12 pm"
+      "eventvmsmsg": "09am - 12pm                        Closed ECP Service Rd between Bedok & Car park H",
+      "eventdate": "2019-11-03",
+      "eventtime": "08:00am-12:00pm"
     },
    {
       "eventeqid": "901482",
-      "eventvmsmsg": "09am - 12pm Closed ECP Service Rd between Bedok & Car park H",
-      "eventdate": "03 Nov",
-      "eventtime": "07 am - 12.30 pm"
+      "eventvmsmsg": "09am - 12pm                          Closed ECP Service Rd between Bedok & Car park H",
+      "eventdate": "2019-11-03",
+      "eventtime": "07:00am-12.30pm"
     },
    {
       "eventeqid": "564372",
-      "eventvmsmsg": "09am - 12pm ECP Service Rd closed between Bedok & Car Part H",
-      "eventdate": "03 Nov",
-      "eventtime": "08 am - 12 pm"
+      "eventvmsmsg": "09am - 12pm                                ECP Service Rd closed between Bedok & Car park H",
+      "eventdate": "2019-11-03",
+      "eventtime": "08:00am-12 pm"
     },
     {
       "eventeqid": "782436",
-      "eventvmsmsg": "09am - 12pm Closed ECP Service Rd between Bedok & Car park H",
-      "eventdate": "03 Nov",
-      "eventtime": "08 am - 12.30 pm"
+      "eventvmsmsg": "09am - 12pm                         Closed ECP Service Rd between Bedok & Car park H",
+      "eventdate": "2019-11-03",
+      "eventtime": "08:00am-12.30pm"
     },
     {
       "eventeqid": "983561",
-      "eventvmsmsg": "09am - 12pm ECP Service Rd cls between ClParks F1 & H",
-      "eventdate": "03 Nov",
-      "eventtime": "07 am - 12.30 pm"
+      "eventvmsmsg": "09am - 12pm                               ECP Service Rd cls between Cl Parks F1 & H",
+      "eventdate": "2019-11-03",
+      "eventtime": "07:00am-12.30pm"
     },
    {
       "eventeqid": "635729",
-      "eventvmsmsg": "09am - 12pm Closed ECP Service Rd between Bedok & Car park H",
-      "eventdate": "03 Nov",
-      "eventtime": "08 am - 12 pm"
+      "eventvmsmsg": "09am - 12pm                         Closed ECP Service Rd between Bedok & Car park H",
+      "eventdate": "2019-11-03",
+      "eventtime": "08:00am-12:00pm"
     },
    {
-      "eventeqid": "324649",
-      "eventvmsmsg": "09am - 12pm ECP Service Rd closed between Bedok & Car Part H",
-      "eventdate": "03 Nov",
-      "eventtime": "08 am - 12 pm"
+      "eventeqid": "324649", 
+      "eventvmsmsg": "09am - 12pm                             ECP Service Rd closed between Bedok & Car park H",
+      "eventdate": "2019-11-03",
+      "eventtime": "08:00am-12:00pm"
     },
     {
       "eventeqid": "546251",
-      "eventvmsmsg": "09am - 12pm ECP Service Rd cls between ClParks F1 & H",
-      "eventdate": "03 Nov",
-      "eventtime": "07 am - 12 pm"
+      "eventvmsmsg": "09am - 12pm                           ECP Service Rd cls between Cl Parks F1 & H",
+      "eventdate": "2019-11-03",
+      "eventtime": "07:00am-12:00pm"
     }
   ]
 }

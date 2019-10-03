@@ -1,0 +1,40 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-6306456:16b06d4ad51:-7ff8</id>
+  <name>mrtlrtstnptt</name>
+  <nativeName>mrtlrtstnptt</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--5c0f1183:16a8b3cc2d8:-7ffe</id>
+  </namespace>
+  <title>mrtlrtstnptt</title>
+  <keywords>
+    <string>features</string>
+    <string>mrtlrtstnptt</string>
+  </keywords>
+  <srs>EPSG:3414</srs>
+  <nativeBoundingBox>
+    <minx>6138.31103515625</minx>
+    <maxx>45254.86328125</maxx>
+    <miny>27555.05859375</miny>
+    <maxy>47854.203125</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>103.63686967006491</minx>
+    <maxx>103.98837071468635</maxx>
+    <miny>1.265465173078687</miny>
+    <maxy>1.4490507952209375</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--5c0f1183:16a8b3cc2d8:-7ffd</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

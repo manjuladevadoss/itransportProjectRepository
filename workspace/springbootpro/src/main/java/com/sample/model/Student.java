@@ -1,0 +1,28 @@
+package com.sample.model;
+
+public class Student {
+	String name;
+	String college = "SSN";
+	int age;
+
+	public String getCollege() {
+		return college;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+}

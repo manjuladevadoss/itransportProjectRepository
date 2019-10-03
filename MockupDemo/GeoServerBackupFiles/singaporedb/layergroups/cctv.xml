@@ -1,0 +1,32 @@
+<layerGroup>
+  <id>LayerGroupInfoImpl--5c0f1183:16a8b3cc2d8:-7fee</id>
+  <name>cctv</name>
+  <mode>SINGLE</mode>
+  <title>cctv</title>
+  <workspace>
+    <id>WorkspaceInfoImpl--5c0f1183:16a8b3cc2d8:-7fff</id>
+  </workspace>
+  <publishables>
+    <published type="layer">
+      <id>LayerInfoImpl--5c0f1183:16a8b3cc2d8:-7ff9</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--5c0f1183:16a8b3cc2d8:-7ff1</id>
+    </published>
+  </publishables>
+  <styles>
+    <style>
+      <id>StyleInfoImpl-6306456:16b06d4ad51:-7ffd</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl-6306456:16b06d4ad51:-7ffb</id>
+    </style>
+  </styles>
+  <bounds>
+    <minx>5933.90771484375</minx>
+    <maxx>44586.90234375</maxx>
+    <miny>26949.921875</miny>
+    <maxy>47630.14453125</maxy>
+    <crs class="projected">EPSG:3414</crs>
+  </bounds>
+</layerGroup>

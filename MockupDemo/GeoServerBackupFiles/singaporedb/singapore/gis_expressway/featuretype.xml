@@ -1,0 +1,40 @@
+<featureType>
+  <id>FeatureTypeInfoImpl-6b7e96a7:16b27b2a454:-7fd8</id>
+  <name>gis_expressway</name>
+  <nativeName>gis_expressway</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--5c0f1183:16a8b3cc2d8:-7ffe</id>
+  </namespace>
+  <title>gis_expressway</title>
+  <keywords>
+    <string>features</string>
+    <string>gis_expressway</string>
+  </keywords>
+  <srs>EPSG:3414</srs>
+  <nativeBoundingBox>
+    <minx>6176.212890625</minx>
+    <maxx>44734.98046875</maxx>
+    <miny>28087.4140625</miny>
+    <maxy>46846.3203125</maxy>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>103.63721103589265</minx>
+    <maxx>103.98369846150156</maxx>
+    <miny>1.270279607320076</miny>
+    <maxy>1.4399358486297307</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--5c0f1183:16a8b3cc2d8:-7ffd</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

@@ -1,0 +1,15 @@
+<layer>
+  <name>gisdbo_gis_carriageway</name>
+  <id>LayerInfoImpl--5c0f1183:16a8b3cc2d8:-7ffb</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--56629f07:16d8b04eedc:-3d96</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--5c0f1183:16a8b3cc2d8:-7ffc</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

@@ -472,22 +472,18 @@ input {
   padding-bottom: 10px;
   text-align: left;
 }
-div.scrollResponse {
-      overflow-y:scroll;
-	  overflow-x: none;
-      height:760px;
-}
+
 
 div.scrolleventCreate {
   overflow-y:scroll;
-overflow-x: none;
-  height:570;
+  overflow-x: none;
+  height:540;
 }
 
 div.scrolleventResponse {
   overflow-y:scroll;
 overflow-x: none;
-  height:570px;
+  height:540px;
 }
 .vmsMsgDisbutton {
   padding: 2px 5px;
@@ -599,17 +595,46 @@ overflow-x: none;
  border: none;
 }
 
+/*Accident scroll */
 div.scrollIr {
+  overflow-y:scroll;
+	overflow-x: none;
+  height:560px;
+}
+
+div.scrollResponse {
+  overflow-y:scroll;
+  overflow-x: none;
+  height:570px;
+}
+
+div.scrollvms {
+  overflow-y:scroll;
+  overflow-x: none;
+  height:350px;
+}
+
+
+/*mrw scroll */
+div.scrollMrwCreate {
+  overflow-y:scroll;
+	overflow-x: none;
+  height:580px;
+}
+
+div.scrollMrwResponse {
       overflow-y:scroll;
 	  overflow-x: none;
-      height:760px;
+      /*height:760px;*/
+      height:580px;
 }
+
 
 /*Prediction plan 1 */
 div.scrollPre1 {
   overflow-y:scroll;
 overflow-x: none;
-  height:600px;
+  height:400px;
 }
 
 /* Mobile road work css */
@@ -870,6 +895,7 @@ overflow-x: none;
 #scenriotbl1 td, #scenriotbl1 th {
   border: 1px solid #37478A;
   padding: 8px;
+  
 }
 #scenriotbl1 th {
   padding-top: 8px;
