@@ -2,7 +2,7 @@
   "technicalalarmrec": [
     {
       "startdate": "2018/11/02 12:26:43",
-      "alarmid": "EBTS01",
+      "alarmid": "TA1253",
       "description": "No Matching Alarm Code",
       "source": "ERS",
       "zone": "CBD",
@@ -10,7 +10,7 @@
     },
     {
       "startdate": "2018/08/10 10:17:05",
-      "alarmid": "V8306",
+      "alarmid": "TA1554",
       "description": "LENTOR",
       "source": "JEYE",
       "zone": "CT1",
@@ -18,7 +18,7 @@
     },
     {
       "startdate": "2017/02/12 15:40:35",
-      "alarmid": "S00001",
+      "alarmid": "TA1639",
       "description": "No Info",
       "source": "JEYE",
       "zone": "CT4",
@@ -26,7 +26,7 @@
     },
     {
       "startdate": "2018/10/08 15:44:21",
-      "alarmid": "ALARM_5",
+      "alarmid": "TA6523",
       "description": "Receive Past Alarm Fail",
       "source": "JEYE",
       "zone": "DZ1",
@@ -34,7 +34,7 @@
     },
      {
       "startdate": "2018/10/18 12:34:23",
-      "alarmid": "LDC_009",
+      "alarmid": "TA4521",
       "description": "No Matching Alarm Code",
       "source": "ERS",
       "zone": "EC1",
@@ -42,7 +42,7 @@
     },
      {
       "startdate": "2017/07/21 16:15:04",
-      "alarmid": "IWD_504",
+      "alarmid": "TA2541",
       "description": "Failure To Complete CC",
       "source": "ERS",
       "zone": "UBT",
@@ -50,7 +50,7 @@
     },
      {
       "startdate": "2017/08/24 15:05:34",
-      "alarmid": "0087993",
+      "alarmid": "TA7854",
       "description": "Pixel failure threshold",
       "source": "ERS",
       "zone": "NIC",
@@ -58,7 +58,7 @@
     },
      {
       "startdate": "2017/02/08 16:14:24",
-      "alarmid": "01_PWR",
+      "alarmid": "TA6985",
       "description": "TCMS Switch power failure",
       "source": "ERS",
       "zone": "NIC",
@@ -66,7 +66,7 @@
     },
      {
       "startdate": "2018/10/18 12:34:23",
-      "alarmid": "DC_009",
+      "alarmid": "TA6584",
       "description": "No Matching Alarm Code",
       "source": "ERS",
       "zone": "EC1",
@@ -74,7 +74,7 @@
     },
      {
       "startdate": "2017/07/10 16:15:04",
-      "alarmid": "CI_1504",
+      "alarmid": "TA5482",
       "description": "Failure To Complete CC",
       "source": "ERS",
       "zone": "UBT",
@@ -82,7 +82,7 @@
     },
      {
       "startdate": "2017/10/07 15:05:34",
-      "alarmid": "007993",
+      "alarmid": "TA5431",
       "description": "Pixel failure ",
       "source": "ERS",
       "zone": "NIC",

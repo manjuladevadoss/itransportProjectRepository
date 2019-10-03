@@ -4,6 +4,7 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <title> Create IR Mobile Road Work  </title>
   	<link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
+  	<link rel="shortcut icon" href="/Sopra_Steria_logo.ico" type="image/x-icon">
   	<link rel="stylesheet" href="bootstrap.min.css">
 	<link rel="stylesheet" href="mrtinc.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -191,7 +192,19 @@ background-color: black;
 background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 }
 
-    </style>
+#mrwtbl {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#mrwtbl td, #mrwtbl th {
+  padding: 0px;
+  color: #C8CFF4; 
+  font-size: 13px;
+  background: none; 
+}
+
+</style>
 
     <script>
  // accordions div tag
@@ -232,16 +245,16 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 	  <div ng-show="showmrwcreate">
 	  
 			<br><br> 
-			<table width="100%" id="incdetailtbl"> 
+			<table width="100%" id="mrwtbl"> 
 					<tr>
-						<td>	<h3a>&nbsp; CREATE</h3a>&nbsp;<h3b>></h3b>&nbsp;
+						<td>	<h3a>&nbsp; &nbsp;&nbsp;CREATE</h3a>&nbsp;<h3b>></h3b>&nbsp;
 								<a href="#" style="text-decoration:none;" ng-click="callmrwresponse()"><h3b>RESPONSE</h3b> </a>	
 						</td>
 					</tr>
 				</table>
 				<br>
 			
-	 <div class='scrollIr'> 
+	 <div class='scrollMrwCreate'> 
 
 			<div class="panel-group" id="accordion2">	
 				 <div class="panel panel-default">
@@ -290,41 +303,41 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					</tr>
 					<tr>
 					  <td colspan="3">
-						Contractor Name
+						Contractor Name:
 						<br>
 						<input style ="color: #FFF;" type="text" ng-model="mrwcontname"/>
 					  </td>
 					  <td colspan="3">
-						Work Permit No<br>
+						Work Permit No:<br>
 						<input style ="color: #FFF;" type="text" ng-model="mrwperno"/>
 					  </td>
 					</tr>
 					
 					<tr>
 					  <td colspan="3">
-						Supervisor Name <br>
+						Supervisor Name: <br>
 							<input style ="color: #FFF;" type="text" ng-model="mrwsupvisorname"/>
 					  </td>
 					  <td colspan="3">
-						Supervisor HP<br>
+						Supervisor HP:<br>
 						<input style ="color: #FFF;" type="text" ng-model="mrwsupvisorhp"/>
 					  </td>
 					</tr>
 
 	   <tr>
 					  <td colspan="3">
-						Road Name <br>
-						Start Point <br><input style ="color: #FFF;" type="text" id="sroadname" />
+						Road Name: <br>
+						Start Point: <br><input style ="color: #FFF;" type="text" id="sroadname" />
 					  </td>
 					  <td colspan="3">
 						<br>
-						End Point <br> <input style ="color: #FFF;" type="text" id="eroadname" />
+						End Point: <br> <input style ="color: #FFF;" type="text" id="eroadname" />
 					  </td>
 					</tr>
 
 				   <tr>
 					  <td colspan="3">
-						Vehicle Number <br>
+						Vehicle Number: <br>
 						<input style ="color: #FFF;" type="text" ng-model="mrwvehicleno"/>
 					  </td>
 					  <td colspan="3">
@@ -332,7 +345,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					</tr>
 					<tr>
 					  <td colspan="6">
-							Comments <br>
+							Comments: <br>
 							<textarea class="textareamrwcomment" rows="3" cols="40"  ng-model="mrwcomment"> </textarea>
 					  </td>
 					</tr>
@@ -347,7 +360,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 			 </div> 
 			
 			<div align="right">  
-				<a href="#" class="buttonCreateMrtInc"  id="CreateMrwId" ng-click="callmrwresponse()" style="text-decoration:none;"> CREATE </a>&nbsp;  &nbsp; 
+				<a href="#" class="buttonCreateMrtInc" ng-click="callmrwresponse()" style="text-decoration:none;"> CREATE </a>&nbsp;  &nbsp; 
 			</div>
 	  </div>
 	<!-- end of Create IR -->
@@ -358,30 +371,19 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 		
 
 	<br><br>
-	<table width="100%" id="incdetailtbl"> 
+	<table width="100%" id="mrwtbl"> 
 			<tr>
-				<td>	<a href="#" style="text-decoration: none" ng-click="callmrwcreate()"> <h3b>CREATE</h3b> </a>&nbsp;<h3b>></h3b>&nbsp;<h3a>RESPONSE</h3a> 	
+				<td>&nbsp;	<a href="#" style="text-decoration: none" ng-click="callmrwcreate()"> <h3b>CREATE</h3b> </a>&nbsp;<h3b>></h3b>&nbsp;<h3a>RESPONSE</h3a> 	
 				</td>
 			</tr>
 		</table>
-		 <div class='scrollResponse'> 
+		 <div class='scrollMrwResponse'> 
  		  
 		  <div class="panel-group" id="accordion2">
      
      <div class="panel panel-default">
     	<div class="panel-heading active">
-				
-				
-			
-			
-			<!-- <table width="100%" class="incdetailtbl" style="padding: 0px;" >
-						<tr style="padding: 0px;">
-							<td style="padding: 0px;">
-									<a href="#" style="text-decoration: none" ng-click="callmrwcreate()"> <h3b>CREATE</h3b> </a>&nbsp;<h3b>></h3b>&nbsp;<h3a>RESPONSE</h3a>         	             				
-							</td>
-						</tr>
-					</table>   -->
-					<br> 	
+		<br> 	
         	<h4 class="panel-title"> 
 					
 					&nbsp; VMS Messages <span data-target="#Collapseicon4" data-toggle="collapse" data-parent="#accordion2"> <span class="glyphicon glyphicon-plus" style="float:right;"></span></span>
@@ -438,8 +440,8 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					<td>
 						<div align="right">
 							
-							<button class="buttonImp" id="mrwVmsMessage" onclick="mrwvmsMsgImpl()" style="text-decoration:none;"> Implement </button>
-							<a href="#" class="buttonRem" id="mrwvmsMsgRemoved" onclick="mrwvmsMsgRemoved()" style="text-decoration:none;"> Remove </a> 
+							<button class="buttonImp" id="mrwVmsImp" style="text-decoration:none;"> Implement </button>
+							<a href="#" class="buttonRem" id="mrwvmsMsgRemoved" onclick="mrwvmsMsgRemoved()" style="text-decoration:none;"> Remove </a>  
 						</div>	
 					</td>
 				</tr>
@@ -547,12 +549,16 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
             	<p>Congestion Routes Monitoring </p>
             </div>
         </div>
-     </div>
-   
-     <div align="right"><a href="#" class="buttonCreateMrtInc" ng-click="addmrwincident()" style="text-decoration:none;"> SAVE </a></div> 
+     </div>     
 </div>		  	  
  </div> 
-	 </div>
+  <div align="right">
+	<a href="#" class="buttonCreateMrtInc" ng-click="savemrwincident()" style="text-decoration:none;"> SAVE </a>
+	<a href="#" class="buttonCreateMrtInc" ng-click="overmrwincident()" style="text-decoration:none;"> OVER </a>
+	<a href="#" class="buttonCreateMrtInc" ng-click="closemrwincident()" style="text-decoration:none;"> CLOSE </a>
+	&nbsp;  &nbsp; 
+  </div>
+</div>
 	  <!-- end of IR Respnse -->
       </div>  
 	  

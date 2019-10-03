@@ -1,0 +1,82 @@
+<html>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<style> 
+body {
+  background-color:rgba(34,49,94, 1.0);
+}
+
+</style>
+<body>fg dfgdfgfd
+<canvas id="alarmlinechart" style="height: 100px; width:20%;"></canvas>
+ dfgdfgdf dfgdfgdf
+<script>
+var ctx = document.getElementById("alarmlinechart");
+var myChart = new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ["1.00", "2.00", "3.00", "4.00", "5.00", "6.00", "7.00", "8.00", "10.00", "11.00", "12.00"],
+
+    datasets: [{
+      //label: '# of Tomatoes',
+     
+      borderColor: "#80b6f4",
+            pointBorderColor: "#D0A2FD",
+            pointBackgroundColor: "#D0A2FD",
+            //pointHoverBackgroundColor: "#80b6f4",
+            //pointHoverBorderColor: "#80b6f4",
+            pointBorderWidth: 1,
+            pointHoverRadius: 1,
+          //  pointHoverBorderWidth: 1,
+          //  pointRadius: 3,
+            fill: false,
+      borderWidth: 2,
+      data: [7,2,6,7,3,9,7,6,4,5,3,6],
+    }]
+  },
+  options: {
+    responsive: false,
+    scales: {
+      xAxes: [{
+         ticks: {
+          beginAtZero: true,
+          maxRotation: 0,
+          minRotation: 0,
+          fontColor: '#ffffff',
+          lineWidth: 3,
+          fontSize: 10
+        },
+        gridLines: {
+          display: false
+         }
+      }],
+      yAxes: [{
+       ticks: {
+          beginAtZero: true,
+          fontColor: '#ffffff',
+          lineWidth: 3,
+          fontSize: 10
+        },
+        gridLines: {
+          display: false
+        }
+      }]
+    }, 
+    legend: {
+            display: false,
+            labels: {
+                fontColor: '#ffffff'
+            }
+        },
+    title: {
+            display: true,
+            text: 'Alarms',
+            fontColor: '#ffffff'
+        }
+  }
+});
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--4644b9f6:16c273b8230:-4631</id>
+  <name>gis_speedlink_data</name>
+  <nativeName>gis_speedlink_data</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--5c0f1183:16a8b3cc2d8:-7ffe</id>
+  </namespace>
+  <title>gis_speedlink_data</title>
+  <keywords>
+    <string>features</string>
+    <string>gis_speedlink_data</string>
+  </keywords>
+  <nativeCRS class="projected">PROJCS[&quot;SVY21 / Singapore TM&quot;, &#xd;
+  GEOGCS[&quot;SVY21&quot;, &#xd;
+    DATUM[&quot;SVY21&quot;, &#xd;
+      SPHEROID[&quot;WGS 84&quot;, 6378137.0, 298.257223563, AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]], &#xd;
+      AUTHORITY[&quot;EPSG&quot;,&quot;6757&quot;]], &#xd;
+    PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]], &#xd;
+    UNIT[&quot;degree&quot;, 0.017453292519943295], &#xd;
+    AXIS[&quot;Geodetic longitude&quot;, EAST], &#xd;
+    AXIS[&quot;Geodetic latitude&quot;, NORTH], &#xd;
+    AUTHORITY[&quot;EPSG&quot;,&quot;4757&quot;]], &#xd;
+  PROJECTION[&quot;Transverse_Mercator&quot;, AUTHORITY[&quot;EPSG&quot;,&quot;9807&quot;]], &#xd;
+  PARAMETER[&quot;central_meridian&quot;, 103.83333333333333], &#xd;
+  PARAMETER[&quot;latitude_of_origin&quot;, 1.3666666666666667], &#xd;
+  PARAMETER[&quot;scale_factor&quot;, 1.0], &#xd;
+  PARAMETER[&quot;false_easting&quot;, 28001.642], &#xd;
+  PARAMETER[&quot;false_northing&quot;, 38744.572], &#xd;
+  UNIT[&quot;m&quot;, 1.0], &#xd;
+  AXIS[&quot;Easting&quot;, EAST], &#xd;
+  AXIS[&quot;Northing&quot;, NORTH], &#xd;
+  AUTHORITY[&quot;EPSG&quot;,&quot;3414&quot;]]</nativeCRS>
+  <srs>EPSG:3414</srs>
+  <nativeBoundingBox>
+    <minx>36499.3840098</minx>
+    <maxx>36904.7857622925</maxx>
+    <miny>39698.0064025421</miny>
+    <maxy>40053.0817756827</maxy>
+    <crs class="projected">EPSG:3414</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>103.9096916749015</minx>
+    <maxx>103.91333460679182</maxx>
+    <miny>1.375287837673217</miny>
+    <maxy>1.3784991295479554</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <metadata>
+    <entry key="cachingEnabled">false</entry>
+  </metadata>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--5c0f1183:16a8b3cc2d8:-7ffd</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

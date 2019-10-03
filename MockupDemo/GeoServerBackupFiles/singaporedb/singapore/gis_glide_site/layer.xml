@@ -1,0 +1,15 @@
+<layer>
+  <name>gis_glide_site</name>
+  <id>LayerInfoImpl-4853868b:16b68375ef9:-7fd5</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-4853868b:16b68375ef9:-7fcf</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-4853868b:16b68375ef9:-7fd6</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

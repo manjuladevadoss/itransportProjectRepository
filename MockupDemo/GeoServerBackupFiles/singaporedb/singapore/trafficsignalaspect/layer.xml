@@ -1,0 +1,15 @@
+<layer>
+  <name>trafficsignalaspect</name>
+  <id>LayerInfoImpl--5c0f1183:16a8b3cc2d8:-7fef</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--570ae188:124761b8d78:-7fdf</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--5c0f1183:16a8b3cc2d8:-7ff0</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

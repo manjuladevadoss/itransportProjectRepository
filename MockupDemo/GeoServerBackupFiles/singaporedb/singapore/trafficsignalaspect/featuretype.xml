@@ -1,0 +1,61 @@
+<featureType>
+  <id>FeatureTypeInfoImpl--5c0f1183:16a8b3cc2d8:-7ff0</id>
+  <name>trafficsignalaspect</name>
+  <nativeName>trafficsignalaspect</nativeName>
+  <namespace>
+    <id>NamespaceInfoImpl--5c0f1183:16a8b3cc2d8:-7ffe</id>
+  </namespace>
+  <title>trafficsignalaspect</title>
+  <keywords>
+    <string>features</string>
+    <string>trafficsignalaspect</string>
+  </keywords>
+  <nativeCRS class="projected">PROJCS[&quot;SVY21 / Singapore TM&quot;, &#xd;
+  GEOGCS[&quot;SVY21&quot;, &#xd;
+    DATUM[&quot;SVY21&quot;, &#xd;
+      SPHEROID[&quot;WGS 84&quot;, 6378137.0, 298.257223563, AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]], &#xd;
+      AUTHORITY[&quot;EPSG&quot;,&quot;6757&quot;]], &#xd;
+    PRIMEM[&quot;Greenwich&quot;, 0.0, AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]], &#xd;
+    UNIT[&quot;degree&quot;, 0.017453292519943295], &#xd;
+    AXIS[&quot;Geodetic longitude&quot;, EAST], &#xd;
+    AXIS[&quot;Geodetic latitude&quot;, NORTH], &#xd;
+    AUTHORITY[&quot;EPSG&quot;,&quot;4757&quot;]], &#xd;
+  PROJECTION[&quot;Transverse_Mercator&quot;, AUTHORITY[&quot;EPSG&quot;,&quot;9807&quot;]], &#xd;
+  PARAMETER[&quot;central_meridian&quot;, 103.83333333333333], &#xd;
+  PARAMETER[&quot;latitude_of_origin&quot;, 1.3666666666666667], &#xd;
+  PARAMETER[&quot;scale_factor&quot;, 1.0], &#xd;
+  PARAMETER[&quot;false_easting&quot;, 28001.642], &#xd;
+  PARAMETER[&quot;false_northing&quot;, 38744.572], &#xd;
+  UNIT[&quot;m&quot;, 1.0], &#xd;
+  AXIS[&quot;Easting&quot;, EAST], &#xd;
+  AXIS[&quot;Northing&quot;, NORTH], &#xd;
+  AUTHORITY[&quot;EPSG&quot;,&quot;3414&quot;]]</nativeCRS>
+  <srs>EPSG:3414</srs>
+  <nativeBoundingBox>
+    <minx>919.0500208068115</minx>
+    <maxx>54342.240852967545</maxx>
+    <miny>12575.201840158279</miny>
+    <maxy>50172.125956598145</maxy>
+    <crs class="projected">EPSG:3414</crs>
+  </nativeBoundingBox>
+  <latLonBoundingBox>
+    <minx>103.58996744853495</minx>
+    <maxx>104.07003165970957</maxx>
+    <miny>1.12998974519036</miny>
+    <maxy>1.470013338028884</maxy>
+    <crs>EPSG:4326</crs>
+  </latLonBoundingBox>
+  <projectionPolicy>FORCE_DECLARED</projectionPolicy>
+  <enabled>true</enabled>
+  <store class="dataStore">
+    <id>DataStoreInfoImpl--5c0f1183:16a8b3cc2d8:-7ffd</id>
+  </store>
+  <serviceConfiguration>false</serviceConfiguration>
+  <maxFeatures>0</maxFeatures>
+  <numDecimals>0</numDecimals>
+  <padWithZeros>false</padWithZeros>
+  <forcedDecimal>false</forcedDecimal>
+  <overridingServiceSRS>false</overridingServiceSRS>
+  <skipNumberMatched>false</skipNumberMatched>
+  <circularArcPresent>false</circularArcPresent>
+</featureType>

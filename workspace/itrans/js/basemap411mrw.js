@@ -342,10 +342,11 @@ function updateEroad() {
 
 /*** Remove particular vms message */
      document.getElementById("mrwvmsMsgRemoved").onclick = function() { 
-      if(seleMsgNo==0) {  
-        view.graphics.remove([pictureGraphicText]);
-      } 
-     }
+		view.graphics.removeAll();
+		clearFinalInterval();
+		clearMovingFinalInterval();
+		vmsIdDisplay();
+	 }
 /**** End of Remove particular vms message */  
 //Onload   
 vmsIdDisplay();
@@ -394,21 +395,26 @@ function vmsIdDisplay() {
 /*** Start VMS message on the map using interval after create the road work **/
 var interval1, interval2, interval3, interval4, interval5, interval6;
 var vmspictureGraphicVmsText;
-document.getElementById("CreateMrwId").onclick = function() {
+
+document.getElementById("mrwVmsImp").onclick = function() {
 	//Draw auto line on the rood
+	view.graphics.removeAll();  
 	drawline();
 	vmsIdDisplay();
 	//VMS message display based on the moving icon
 
 	//vms text message on the map based on the timing
-	interval1 = setInterval(vmsMessageDispaly1, 2050);	
-	interval2 = setInterval(vmsMessageDispaly2, 31000);	
-	interval3 = setInterval(vmsMessageDispaly3, 38000);	
-	clrinterval = setInterval(clearFinalInterval, 42000); 	
+	interval1 = setInterval(vmsMessageDispaly1, 3000);	
+	interval2 = setInterval(vmsMessageDispaly2, 21000);	
+	interval3 = setInterval(vmsMessageDispaly3, 29000);	
+	interval4 = setInterval(vmsMessageDispaly4, 36000);	
+	clrinterval = setInterval(clearFinalInterval, 37000); 	
 	
 	//Moving Icon Display
 	movingIconDisplay();	
 }
+
+
 
 	function vmsMessageDispaly1(){ 		
 		//displayVmsMessage(0);
@@ -424,11 +430,17 @@ document.getElementById("CreateMrwId").onclick = function() {
 		clearInterval(interval2); 
 		displayVmsMessage(vmsMsgdata2);
 	}
+	function vmsMessageDispaly4(){
+		clearInterval(interval3); 
+		displayVmsMessage(vmsMsgdata3);
+	}
+
 
 	function clearFinalInterval(){
 		clearInterval(interval1); 		
 		clearInterval(interval2); 
-		clearInterval(interval3); 	
+		clearInterval(interval3); 
+		clearInterval(interval4);
 		clearInterval(clrinterval);
 		removeVmsMessage();
 		//displayVmsMessage(vmsMsgdata3);
@@ -445,17 +457,23 @@ document.getElementById("CreateMrwId").onclick = function() {
 */
 	var vmsMsgdata0 = [
 		{"logi": "103.92464", "lati": "1.3113622", "vmsmsg": "Litter Picking long Ln1"},
-		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
-		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"}
+		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"}
 	];
 	
 	var vmsMsgdata1 = [
+		{"logi": "103.92464", "lati": "1.3113622", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
 	];
 
 	var vmsMsgdata2 = [
+		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
+	];
+
+	var vmsMsgdata3 = [
 		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
 	];
@@ -545,30 +563,29 @@ function removeVmsMessage(){
 	
 	
 var vehiInterval1, vehiInterval2,vehiInterval3, vehiInterval4, vehiInterval5,vehiInterval6,vehiInterval7, vehiInterval8;
-var vehiInterval9, vehiInterval10, vehiInterval11,vehiInterval2,vehiInterval13, vehiInterval14, vehiInterval15,vehiInterval16, vehiInterval17, vehiInterval18, vehiIntervalFinal
+var vehiInterval9, vehiInterval10, vehiInterval11,vehiInterval12,vehiInterval13, vehiInterval14, vehiInterval15,vehiInterval16, vehiInterval17;
+var vehiInterval18, vehiIntervalFinal
 var vehipictureGraphic = "";
 function movingIconDisplay(){
-	vehiInterval1 = setInterval(moveIconDisplay1, 2050);
-	vehiInterval2 = setInterval(moveIconDisplay2, 6000);
-	vehiInterval3 = setInterval(moveIconDisplay3, 8000);
-	vehiInterval4 = setInterval(moveIconDisplay4, 10000);
-	vehiInterval5 = setInterval(moveIconDisplay5, 12000);
-	vehiInterval6 = setInterval(moveIconDisplay6, 14000);
-	vehiInterval7 = setInterval(moveIconDisplay7, 16000);
-	vehiInterval8 = setInterval(moveIconDisplay8, 18000);
-	vehiInterval9 = setInterval(moveIconDisplay9, 20000);
-	vehiInterval10 = setInterval(moveIconDisplay10, 22000);
-	vehiInterval11 = setInterval(moveIconDisplay11, 24000); 
-	vehiInterval12 = setInterval(moveIconDisplay12, 26000); 
-	vehiInterval13 = setInterval(moveIconDisplay13, 28000);
-	vehiInterval14 = setInterval(moveIconDisplay14, 30000);
-	vehiInterval15 = setInterval(moveIconDisplay15, 32000);
-
-	vehiInterval16 = setInterval(moveIconDisplay16, 34000);
-	vehiInterval17 = setInterval(moveIconDisplay17, 36000);
-	vehiInterval18 = setInterval(moveIconDisplay18, 38000);
-
-	vehiIntervalFinal = setInterval(clearMovingFinalInterval, 40000); 	
+	//vehiInterval1 = setInterval(moveIconDisplay1, 2050);
+	vehiInterval2 = setInterval(moveIconDisplay2, 3000);
+	vehiInterval3 = setInterval(moveIconDisplay3, 5000);
+	vehiInterval4 = setInterval(moveIconDisplay4, 7000);
+	vehiInterval5 = setInterval(moveIconDisplay5, 9000);
+	vehiInterval6 = setInterval(moveIconDisplay6, 11000);
+	vehiInterval7 = setInterval(moveIconDisplay7, 13000);
+	vehiInterval8 = setInterval(moveIconDisplay8, 15000);
+	vehiInterval9 = setInterval(moveIconDisplay9, 17000);
+	vehiInterval10 = setInterval(moveIconDisplay10, 19000);
+	vehiInterval11 = setInterval(moveIconDisplay11, 21000); 
+	vehiInterval12 = setInterval(moveIconDisplay12, 23000); 
+	vehiInterval13 = setInterval(moveIconDisplay13, 25000);
+	vehiInterval14 = setInterval(moveIconDisplay14, 27000);
+	vehiInterval15 = setInterval(moveIconDisplay15, 29000);
+	vehiInterval16 = setInterval(moveIconDisplay16, 32000);
+	vehiInterval17 = setInterval(moveIconDisplay17, 34000);
+	vehiInterval18 = setInterval(moveIconDisplay18, 36000);
+	vehiIntervalFinal = setInterval(clearMovingFinalInterval, 37000); 	
 }
 
 function moveIconDisplay1(){
@@ -672,13 +689,13 @@ function clearMovingFinalInterval(){
 
 //display moving icon
 function displayMoveIcon(id){
-	//view.graphics.remove(vehipictureGraphic); 
+	view.graphics.remove(vehipictureGraphic); 
 	for (i in movingIcondata) { 
 		var logi = movingIcondata[i].logi ;
 		var lati = movingIcondata[i].lati ;
 		
 		if(i==id) {
-		console.log(i + " " + logi + " " + lati + " "   );
+		console.log(i + " " + logi + " " + lati + " ");
 			var vmspoint = {
 				type: "point", // autocasts as new Point()                   			 
 				longitude: logi,
@@ -686,9 +703,9 @@ function displayMoveIcon(id){
 			}; 
 		var vehiPictureSymbol1 = {
 			  type: "picture-marker",
-			  url: "watervehicle.png",
-			  width: "24",
-			  height: "20"
+			  url: "sweepingicon.png",
+			  width: "30",
+			  height: "25"
 		}		
 		vehipictureGraphic = new Graphic({
 			geometry: vmspoint,
@@ -887,3 +904,21 @@ endPointGraphic = new Graphic({
 view.graphics.addMany([startPointGraphic, endPointGraphic]); 
 }
 */
+
+/* //using create button
+document.getElementById("CreateMrwId").onclick = function() {
+	//Draw auto line on the rood
+	drawline();
+	vmsIdDisplay();
+	//VMS message display based on the moving icon
+
+	//vms text message on the map based on the timing
+	interval1 = setInterval(vmsMessageDispaly1, 3000);	
+	interval2 = setInterval(vmsMessageDispaly2, 21000);	
+	interval3 = setInterval(vmsMessageDispaly3, 29000);	
+	interval4 = setInterval(vmsMessageDispaly4, 36000);	
+	clrinterval = setInterval(clearFinalInterval, 37000); 	
+	
+	//Moving Icon Display
+	movingIconDisplay();	
+}*/

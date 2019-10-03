@@ -1,12 +1,13 @@
 <html lang="en">
 <head>
-<title>login</title>
+<title>Login</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--   <meta http-equiv="Content-Type" content="text/html"> -->
 <meta http-equiv="Content-Type" content="application/x-font-woff">
 <meta http-equiv="Content-Type" content="application/x-font-ttf">  
+	<link rel="shortcut icon" href="/Sopra_Steria_logo.ico" type="image/x-icon">
 	<link rel="stylesheet" href="bootstrap.min.css">
 	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> 
 	<link rel="stylesheet" href="login.css">
@@ -46,6 +47,34 @@
  
   cursor: auto;*/
 }
+#loginstruction {
+	z-index: 99;
+    position: absolute;
+    top: 350px;
+    left: 54%;
+    padding: 5px;
+    margin-left: -175px;
+    height: 20px;
+    width: 580px;
+}
+div.b {
+  font-size: 20px;
+  font-family: Roboto, Helvetica, sans-serif;
+}
+/******* Event Response Page  ********/
+.buttonStart {
+  background-image: linear-gradient( 90deg,	rgba(86,94,185,1) , rgba(143,123,242,1)); 
+  border: none;
+  color: white;
+  padding: 8px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 1px;
+  cursor: pointer;
+  border-radius: 5px/5px;
+}
 </style>
 <script>
  	//you could use javascript to do nice stuff container text box password option
@@ -60,60 +89,33 @@
 </head>
 <body>
 <div class="container-fuide">
-	<table  style="height: 98px; width: 444px;
-  background: linear-gradient(177.75deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%);">
-		<tr> 
-			<td><img src="itranslogo.png" width="88px" height="90px"></td>
-	 		<td><h7>i-Transport 2.0</h7> </td>
-	 </tr>
-	</table>
+
 	 
 	<div ng-app="ltaApp" ng-controller="ltaController">  
-		<div class="bs-example">  
-			<div class="content">    
-			   <table class="center" id="logintable">
+   <div id="loginstruction" >    	        
+
+			   <table  width ="100%" style="text-align: center;" >
 					<tr> 
-						<td>
-							<font style="font-size:30px;color:#C8CFF4;">Login </font>
+						<td style="text-align: center;">
+							<img src="Sopra_Steria_logo.png" width="180px" height="30px"><br>
 						</td>
 					</tr>
 					<tr> 
-						<td>
-							<font style="font-size:15px;color:#C8CFF4;"> Welcome to user </font>
+						<td style="text-align: center;">
+							 
+							 <a href="#"  ng_click="threepanel()" style="text-decoration:none;">
+										  <div class="b"> <font color="white">Intelligent Transport Management System </font> </div> </a><br>  
 						</td>
 					</tr>
-					<tr> 
-						<td>
-								<!--<div class="textimageIddiv" contentEditable="true" id="inputEmail" ng-model="inputEmail"  required > 
-									<img src="usericon.png"  width="28px" height="28px"/>Username
-								</div>-->
-						<!-- <div class="inner-addon left-addon" style="color:#C8CFF4;">
-								 <i class="glyphicon glyphicon-user" ></i>		
-								<input type="text" class="resizedTextbox" style="padding: 4px 50px;"  placeholder="username"  id="inputEmail" required>	
-							</div>   -->	
-						<input type="text" class="resizedTextbox" style="padding: 2px 10px;"  placeholder="Username"  id="inputEmail" required>	
-						</td>
-					</tr>
-					<tr> 
-						<td>
-						<!--<div id="textimagePassdiv" contentEditable="true"  ng-model="inputPassword" required > 
-								<img src="lockicon.png"  width="28px" height="28px"/> 
-						</div>  -->
-						 <!--  <div class="inner-addon left-addon" style="color:#C8CFF4;">
-							<i class="glyphicon glyphicon-lock" ></i> 
-							<input type="password" style="padding: 4px 50px;" class="resizedTextbox" id="inputPassword" placeholder="*********" required>
-						</div> -->
-						<input type="password" style="padding: 2px 10px;" class="resizedTextbox" id="inputPassword" placeholder="*********" required>
-						</td>
-					</tr>
-					<tr> 
-						<td colspan="2" align="left">
-							 <button type="submit" class="button"  ng-click="threepanel()">Login </button> 
-						</td>
-					</tr>		
+					<td style="text-align: center;">
+					<br>	<a href="#" class="buttonStart"  ng-click="threepanel()"  style="text-decoration:none;"> Start </a> &nbsp;&nbsp;		 
+
+				   </td>
+
+	
 				</table>
-			</div>	   
-		</div>
+
+	</div> 
 	</div>
 </div>
 </body>

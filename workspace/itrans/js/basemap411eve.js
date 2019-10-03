@@ -251,12 +251,72 @@
           view: view
         });
 
+//draw single point on mouse click on the map
+document.getElementById("draw-point").onclick = function() {
+	enableCreatePoint(draw, view);
+  };
+
+  function enableCreatePoint(draw, view) {
+	var action = draw.create("point");
+	// PointDrawAction.draw-complete
+	// Create a point when user clicks on the view or presses "C" key.
+
+	action.on("draw-complete", function(evt) {
+	  createPointGraphic(evt.coordinates);
+	  
+	});
+  }
+
+  function createPointGraphic(coordinates) {
+
+	// view.graphics.removeAll();
+	var point = {
+	  type: "point", // autocasts as /Point
+	  x: coordinates[0],
+	  y: coordinates[1],
+	  spatialReference: view.spatialReference
+	};
+
+	var graphic = new Graphic({
+	  geometry: point,
+	  symbol: {
+		type: "simple-marker", // autocasts as SimpleMarkerSymbol
+		style: "circle",
+		color: "blue",
+		size: "16px",
+		xoffset: 4,
+		yoffset: 10,
+		outline: {
+		  // autocasts as SimpleLineSymbol
+		  color: [255, 255, 0],
+		  width: 2
+		}
+	  }
+	});
+	
+	view.graphics.add(graphic);
+	updateRoadName();
+  }  
+
+  var erd;
+function updateRoadName(p) {
+	document.getElementById("eventstartpoint").value = "East Coast Car Park H" ;
+	erd = setInterval(updateEroad,6000);
+}
+function updateEroad() {
+	document.getElementById("eventendpoint").value = "East Coast Car Park C1" ;
+	clearInterval(erd);
+
+}
+//*** end of  Start the start and end point - draw a graphcis point  points to  road name*/
+//end of start and end point icon dipsplay
+
+
    /* Road closed display  */
-    document.getElementById("rdclose").onclick = function() {
-        eventLayer.visible = true;
-    }
-    /*end of Road closed auto line draw*/
-		
+   document.getElementById("rdclose").onclick = function() {
+	eventLayer.visible = true;
+}
+/*end of Road closed auto line draw*/
 		
 /*** Start and end point icon */
     document.getElementById("rdclosepoint").onclick = function() {
@@ -265,7 +325,7 @@
     
 	var startEndIconPoints = [
 		{"logi": "103.933185","lati": "1.308079"},  
-		{"logi": "103.949396","lati": "1.310974"}];
+		{"logi": "103.965628","lati": "1.317613"}];
 	var iconStartEndGraphic ;
 	function displaySEIcon(){
 		for (i in startEndIconPoints) { 
@@ -310,40 +370,62 @@
 
 /** Timer functionality */
 document.getElementById("26oct").onclick = function() {
-	view.graphics.removeAll(); 
+	clrVMS();
 	vmsTIPMsgbyTimer('26oct','adMsg','vmsId',true);
 }
 document.getElementById("27oct").onclick = function() {
-	view.graphics.removeAll(); 
+	clrVMS();
 	vmsTIPMsgbyTimer('27oct','adMsg','vmsId',true);
 }
 document.getElementById("02nov").onclick = function() {
-	view.graphics.removeAll(); 
+	clrVMS();
 	vmsTIPMsgbyTimer('02nov','adMsg','vmsId',true);
 }
 document.getElementById("03nov").onclick = function() {
-	view.graphics.removeAll(); 
+	clrVMS();
 	vmsTIPMsgbyTimer('03nov','acMsg','vmsId',true);
+}
+document.getElementById("09nov").onclick = function() {
+	clrVMS();	 	
+}
+document.getElementById("10nov").onclick = function() {
+	clrVMS();	 	
+}
+document.getElementById("16nov").onclick = function() {
+	clrVMS();	 	
+}
+document.getElementById("17nov").onclick = function() {
+	clrVMS();	 	
+}
+document.getElementById("23nov").onclick = function() {
+	clrVMS();	 	
+}
+document.getElementById("24nov").onclick = function() {
+	clrVMS();	 	
+}
+
+function clrVMS(){
+	view.graphics.removeAll();
 }
 
 function vmsTIPMsgbyTimer(seleteddate,selectedmsg,selectedvmsId,timerFlag) {
 	var vmsEquiPointsTIP = [
-		{"ddate":"26oct","vmsid":"231278","logi": "103.9757038", "lati": "1.3300795","tipimg":"event_ad_img1.JPG"},
-		{"ddate":"27oct","vmsid":"635729","logi": "103.97652", "lati": "1.326665","tipimg":"event_ad_img6.JPG"},
-		{"ddate":"02nov","vmsid":"324649","logi": "103.968971", "lati": "1.3201737","tipimg":"event_ad_img7.JPG"},
-		{"ddate":"02nov","vmsid":"782436","logi": "103.9459272", "lati": "1.3115447","tipimg":"event_ad_img4.JPG"},
-		{"ddate":"26oct","vmsid":"983561","logi": "103.9374682", "lati": "1.3100315","tipimg":"event_ad_img5.JPG"},
-		{"ddate":"27oct","vmsid":"901482","logi": "103.9236992", "lati": "1.3054055","tipimg":"event_ad_img2.JPG"},
-		{"ddate":"27oct","vmsid":"564372","logi": "103.9024259", "lati": "1.2991446","tipimg":"event_ad_img3.JPG"},
-		{"ddate":"02nov","vmsid":"546251","logi": "103.8916975", "lati": "1.2957672","tipimg":"event_ad_img8.JPG"},		
-		{"ddate":"03nov","vmsid":"231278","logi": "103.9757038", "lati": "1.3300795","tipimg":"event_ac_img1.JPG"},
-		{"ddate":"03nov","vmsid":"635729","logi": "103.97652", "lati": "1.326665","tipimg":"event_ac_img6.JPG"},
-		{"ddate":"03nov","vmsid":"324649","logi": "103.968971", "lati": "1.3201737","tipimg":"event_ac_img7.JPG"},
-		{"ddate":"03nov","vmsid":"782436","logi": "103.9459272", "lati": "1.3115447","tipimg":"event_ac_img4.JPG"},
-		{"ddate":"03nov","vmsid":"983561","logi": "103.9374682", "lati": "1.3100315","tipimg":"event_ac_img5.JPG"},
-		{"ddate":"03nov","vmsid":"901482","logi": "103.9236992", "lati": "1.3054055","tipimg":"event_ac_img2.JPG"},
-		{"ddate":"03nov","vmsid":"564372","logi": "103.9024259", "lati": "1.2991446","tipimg":"event_ac_img3.JPG"},
-		{"ddate":"03nov","vmsid":"546251","logi": "103.8916975", "lati": "1.2957672","tipimg":"event_ac_img8.JPG"}
+		{"jsondatadate":"2019-10-26","ddate":"26oct","vmsid":"231278","logi": "103.9757038", "lati": "1.3300795","tipimg":"event_ad_img1.JPG"},
+		{"jsondatadate":"2019-10-27","ddate":"27oct","vmsid":"635729","logi": "103.97652", "lati": "1.326665","tipimg":"event_ad_img6.JPG"},
+		{"jsondatadate":"2019-11-02","ddate":"02nov","vmsid":"324649","logi": "103.968971", "lati": "1.3201737","tipimg":"event_ad_img7.JPG"},
+		{"jsondatadate":"2019-11-02","ddate":"02nov","vmsid":"782436","logi": "103.9459272", "lati": "1.3115447","tipimg":"event_ad_img4.JPG"},
+		{"jsondatadate":"2019-10-26","ddate":"26oct","vmsid":"983561","logi": "103.9374682", "lati": "1.3100315","tipimg":"event_ad_img5.JPG"},
+		{"jsondatadate":"2019-10-27","ddate":"27oct","vmsid":"901482","logi": "103.9236992", "lati": "1.3054055","tipimg":"event_ad_img2.JPG"},
+		{"jsondatadate":"2019-10-27","ddate":"27oct","vmsid":"564372","logi": "103.9024259", "lati": "1.2991446","tipimg":"event_ad_img3.JPG"},
+		{"jsondatadate":"2019-11-02","ddate":"02nov","vmsid":"546251","logi": "103.8916975", "lati": "1.2957672","tipimg":"event_ad_img8.JPG"},		
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"231278","logi": "103.9757038", "lati": "1.3300795","tipimg":"event_ac_img1.JPG"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"635729","logi": "103.97652", "lati": "1.326665","tipimg":"event_ac_img6.JPG"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"324649","logi": "103.968971", "lati": "1.3201737","tipimg":"event_ac_img7.JPG"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"782436","logi": "103.9459272", "lati": "1.3115447","tipimg":"event_ac_img4.JPG"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"983561","logi": "103.9374682", "lati": "1.3100315","tipimg":"event_ac_img5.JPG"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"901482","logi": "103.9236992", "lati": "1.3054055","tipimg":"event_ac_img2.JPG"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"564372","logi": "103.9024259", "lati": "1.2991446","tipimg":"event_ac_img3.JPG"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"546251","logi": "103.8916975", "lati": "1.2957672","tipimg":"event_ac_img8.JPG"}
 	];
 	for(i=0;i<vmsEquiPointsTIP.length;i++) {
 		var chkdate = vmsEquiPointsTIP[i].ddate;		
@@ -351,7 +433,7 @@ function vmsTIPMsgbyTimer(seleteddate,selectedmsg,selectedvmsId,timerFlag) {
 		var lati = vmsEquiPointsTIP[i].lati;			
 		var urlTIPImg = vmsEquiPointsTIP[i].tipimg;
 		var vmsId = vmsEquiPointsTIP[i].vmsid;
-		var ddate = vmsEquiPointsTIP[i].ddate;
+		var ddate = vmsEquiPointsTIP[i].jsondatadate;
 		var iconPoint, itpIconpictureSymbol, tipPictureSymbol;
 		iconPoint = {
 			type: "point", // autocasts as new Point()                   			 

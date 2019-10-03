@@ -1,0 +1,15 @@
+<layer>
+  <name>gis_speedlink_data</name>
+  <id>LayerInfoImpl--4644b9f6:16c273b8230:-4630</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--4644b9f6:16c2c12b311:-6647</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--4644b9f6:16c273b8230:-4631</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

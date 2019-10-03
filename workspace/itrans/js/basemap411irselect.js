@@ -309,6 +309,7 @@
           });
           view.ui.add(layerList, "bottom-left");
           view.ui.add("draw-rectangle", "top-left");
+          view.ui.add("reset", "top-left");
         });
 
 /*** Onload Display **/
@@ -320,32 +321,39 @@ var speedLayerIntervalClr_1, speedLayerIntervalClr_2, speedLayerIntervalClr_3 ;
 
 function showSpeedLkLr(){
   speedLayerInterval_1 = setInterval(speedLayer1, 5000);	
-  speedLayerIntervalClr_1 = setInterval(speedLayerClr1, 8000);	
-
-  speedLayerInterval_2 = setInterval(speedLayer2, 11000);
-  speedLayerIntervalClr_2 = setInterval(speedLayerClr2, 13000);	
-
+  speedLayerInterval_2 = setInterval(speedLayer2, 10000);
   speedLayerInterval_3 = setInterval(speedLayer3, 15000);
-  speedLayerIntervalClr_3 = setInterval(speedLayerClr3, 18000);	
+  //speedLayerIntervalClr_1 = setInterval(speedLayerClr1, 8000);	
 
-  speedLayerInterval_4 = setInterval(speedLayer4, 21000);
-  speedLayerIntervalClr_4 = setInterval(speedLayerClr4, 23000);	
+  
+  //speedLayerIntervalClr_2 = setInterval(speedLayerClr2, 13000);	
+
+  
+  //speedLayerIntervalClr_3 = setInterval(speedLayerClr3, 18000);	
+
+  //speedLayerInterval_4 = setInterval(speedLayer4, 21000);
+  //speedLayerIntervalClr_4 = setInterval(speedLayerClr4, 23000);	
 }
 
 function speedLayer1(){ 
-  	trafficSpeedLayer1.visible = false;			
-    trafficSpeedLayer2.visible = true;			
-}
-
-function speedLayerClr1(){
-    clearInterval(speedLayerInterval_1);
-    clearInterval(speedLayerIntervalClr_1);
+  console.log("layer1");
+    trafficSpeedLayer1.visible = true;			
+    trafficSpeedLayer2.visible = false;	
+    trafficSpeedLayer3.visible = false;
 }
   
-function speedLayer2(){
-  trafficSpeedLayer1.visible = false;	
-  trafficSpeedLayer2.visible = false;
+function speedLayer2(){	
+  console.log("layer2");
+  trafficSpeedLayer2.visible = true;
+  trafficSpeedLayer1.visible = false;		
+  trafficSpeedLayer3.visible = false;
+}
+
+function speedLayer3(){
+  console.log("layer3");
   trafficSpeedLayer3.visible = true;
+  trafficSpeedLayer2.visible = false;
+  trafficSpeedLayer1.visible = false;	
 }
 
 function speedLayerClr2(){
@@ -353,12 +361,12 @@ function speedLayerClr2(){
   clearInterval(speedLayerIntervalClr_2);
 }
 
-function speedLayer3(){
-  trafficSpeedLayer2.visible = false;
-  trafficSpeedLayer3.visible = false;
-  trafficSpeedLayer1.visible = true;	
-}
 
+
+function speedLayerClr1(){
+  clearInterval(speedLayerInterval_1);
+  clearInterval(speedLayerIntervalClr_1);
+}
 function speedLayerClr3(){
   clearInterval(speedLayerInterval_3);
   clearInterval(speedLayerIntervalClr_3);
@@ -382,11 +390,11 @@ function speedLayerClr4(){
 	var htIconPictureGraphic, unVIconPictureGraphic;
 	
 	var incidentIconList = [
-		{"logi": "103.822766", "lati": "1.278674", "imgfile" : "heavytraffic.jpg"},
-		{"logi": "103.897955", "lati": "1.297171", "imgfile" : "unattvehicle.jpg"},
-		{"logi": "103.934441", "lati": "1.330996", "imgfile" : "roadwork.jpg"},
-		{"logi": "103.727822", "lati": "1.374733", "imgfile" : "accident.jpg"},
-		{"logi": "103.881117", "lati": "1.401208", "imgfile" : "breakdown.jpg"}		
+		{"logi": "103.822766", "lati": "1.278674", "imgfile" : "heavytraffic.png"},
+		{"logi": "103.897955", "lati": "1.297171", "imgfile" : "unattvehicle.png"},
+		{"logi": "103.934441", "lati": "1.330996", "imgfile" : "roadwork.png"},
+		{"logi": "103.727822", "lati": "1.374733", "imgfile" : "accident.png"},
+		{"logi": "103.881117", "lati": "1.401208", "imgfile" : "breakdown.png"}		
     ];
 	
 
@@ -416,9 +424,9 @@ function speedLayerClr4(){
     
 	   var htIconPictureSymbol = {
 			type: "picture-marker",
-            url: "heavytraffic.jpg",  //Lower Delta Rd Exit (AYE)
-            width: "15",
-            height: "15"
+            url: "heavytraffic.png",  //Lower Delta Rd Exit (AYE)
+            width: "22",
+            height: "22"
       }
 	  htIconPictureGraphic = new Graphic({
 		geometry: htIconpoint,
@@ -438,9 +446,9 @@ function speedLayerClr4(){
        };     
 	   var unVIconPictureSymbol = {
 			type: "picture-marker",
-            url: "unattvehicle.jpg",  //Stil Rd 5th Exit (ECP)
-            width: "15",
-            height: "15",
+            url: "unattvehicle.png",  //Stil Rd 5th Exit (ECP)
+            width: "22",
+            height: "22"
       }
 
     var unTitle = "<b>Unattended vehicle</b>"
@@ -464,9 +472,9 @@ function speedLayerClr4(){
      var rwContent = "<center>Roadworks on PIE Bedok North Ave 3</center>";
      var rwIconPictureSymbol = {
 		 type: "picture-marker",
-            url: "roadwork.jpg",  //Sungei Tengah Exit(KJE)
-            width: "15",
-            height: "15"
+            url: "roadwork.png",  //Sungei Tengah Exit(KJE)
+            width: "22",
+            height: "22"
       }
 	  rwIconPictureGraphic = new Graphic({
 		geometry: rwIconpoint,
@@ -486,9 +494,9 @@ function speedLayerClr4(){
        };     
 	   var accIconPictureSymbol = {
 			type: "picture-marker",
-            url: "accident.jpg",  //Seletar Link (TPE)
-            width: "15",
-            height: "15",
+            url: "accident.png",  //Seletar Link (TPE)
+            width: "22",
+            height: "22"
       }
 
     var accTitle = "<b>Accident<b>";
@@ -510,9 +518,9 @@ function speedLayerClr4(){
        };     
 	   var bdIconPictureSymbol = {
 			type: "picture-marker",
-            url: "breakdown.jpg",  //Bedok North Ave 3(PIE)
-            width: "15",
-            height: "15",
+            url: "breakdown.png",  //Bedok North Ave 3(PIE)
+            width: "22",
+            height: "22"
       }
     
     var bdTitle = "<b>Breakdown<b>";
@@ -528,6 +536,12 @@ function speedLayerClr4(){
 		view.graphics.addMany([htIconPictureGraphic, unVIconPictureGraphic,rwIconPictureGraphic,accIconPictureGraphic,bdIconPictureGraphic]);
       }
 
+	
+/**reset */
+	document.getElementById("reset").onclick = function() {
+		  view.graphics.removeAll();
+		  iconLocation()
+	}
 /** polyline draw function **/
 
 document.getElementById("draw-rectangle").onclick = function() {
@@ -666,7 +680,7 @@ function getLastSegment(polyline) {
 				type: "picture-marker",
 				url: img,  
 				width: "20",
-				height: "15",
+				height: "22"
 		  }
 		  var iconPictureGraphic = new Graphic({
 			geometry: htIconpoint,

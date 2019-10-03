@@ -1,0 +1,15 @@
+<layer>
+  <name>gisdbo_gis_ea_vms</name>
+  <id>LayerInfoImpl--5c0f1183:16a8b3cc2d8:-7ff3</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--731ba21b:16a8be0070b:-7ff6</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--5c0f1183:16a8b3cc2d8:-7ff4</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

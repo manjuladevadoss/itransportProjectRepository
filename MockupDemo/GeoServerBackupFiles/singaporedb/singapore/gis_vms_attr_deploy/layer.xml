@@ -1,0 +1,15 @@
+<layer>
+  <name>gis_vms_attr_deploy</name>
+  <id>LayerInfoImpl--5c0f1183:16a8b3cc2d8:-7ff7</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl-6306456:16b06d4ad51:-7fff</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl--5c0f1183:16a8b3cc2d8:-7ff8</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

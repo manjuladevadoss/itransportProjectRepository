@@ -1,0 +1,32 @@
+<layerGroup>
+  <id>LayerGroupInfoImpl--5c0f1183:16a8b3cc2d8:-7fed</id>
+  <name>vms</name>
+  <mode>SINGLE</mode>
+  <title>vms</title>
+  <workspace>
+    <id>WorkspaceInfoImpl--5c0f1183:16a8b3cc2d8:-7fff</id>
+  </workspace>
+  <publishables>
+    <published type="layer">
+      <id>LayerInfoImpl--5c0f1183:16a8b3cc2d8:-7ff7</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--5c0f1183:16a8b3cc2d8:-7ff3</id>
+    </published>
+  </publishables>
+  <styles>
+    <style>
+      <id>StyleInfoImpl-6306456:16b06d4ad51:-7fff</id>
+    </style>
+    <style>
+      <id>StyleInfoImpl--731ba21b:16a8be0070b:-7ff6</id>
+    </style>
+  </styles>
+  <bounds>
+    <minx>5458.06787109375</minx>
+    <maxx>44606.5703125</maxx>
+    <miny>27677.87109375</miny>
+    <maxy>46904.76953125</maxy>
+    <crs class="projected">EPSG:3414</crs>
+  </bounds>
+</layerGroup>
