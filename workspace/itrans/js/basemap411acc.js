@@ -12,7 +12,7 @@
       ], function(Map, MapView,Graphic, WMTSLayer,Extent, LayerList, Draw, WMSLayer, MapView, BaseDynamicLayer) {
         layer1 = 
           new WMTSLayer({
-          url: "http://192.168.99.100:32768/services/wmts?service",
+          url: "http://192.168.99.100:32769/services/wmts?service",
           activeLayer: {
             id: "osm-bright"
           },
@@ -95,7 +95,7 @@
 
 		
 		var cctvLayer = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			  SERVICE: "WMS",
 			  REQUEST: "GetMap",
@@ -114,7 +114,7 @@
 		  });
   
 		var vmsLayer = new CustomWMSLayer({
-          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
           mapParameters: {
             SERVICE: "WMS",
             REQUEST: "GetMap",
@@ -132,7 +132,7 @@
         });
 		
 		/*var othervmsLayer = new CustomWMSLayer({
-	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 	          mapParameters: {
 	            SERVICE: "WMS",
 	            REQUEST: "GetMap",
@@ -152,7 +152,7 @@
 		
 		// Carraige way layer
 		var carriagewayLayer = new CustomWMSLayer({
-	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 	          mapParameters: {
 	            SERVICE: "WMS",
 	            REQUEST: "GetMap",
@@ -171,7 +171,7 @@
 		
 		/*** Current Traffic condition layer Red, Orange, Green*/	
 		var trafficplanlayerlane = new CustomWMSLayer({
-	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 	          mapParameters: {
 	            SERVICE: "WMS",
 	            REQUEST: "GetMap",
@@ -190,7 +190,7 @@
 		
 		/*** Current Traffic condition layer Red, Orange, Green on prediction do nothing plan*/	
 		var trafficplan0layerlane = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			  SERVICE: "WMS",
 			  REQUEST: "GetMap",
@@ -209,7 +209,7 @@
 	  
 		/*** Current Traffic condition layer Red, Orange, Green on prediction plan 1 */	
 		var trafficplan1layerlane = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			  SERVICE: "WMS",
 			  REQUEST: "GetMap",
@@ -228,7 +228,7 @@
 
 		/*** Current Traffic condition layer Red, Orange, Green on prediction plan 2 */	
 		var trafficplan2layerlane = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			SERVICE: "WMS",
 			REQUEST: "GetMap",
@@ -248,7 +248,7 @@
 
 		/*** Current Traffic condition layer Red, Orange, Green layer Implementation for plan 2 interval */	
 		var trafficlayerlaneImpl1 = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			SERVICE: "WMS",
 			REQUEST: "GetMap",
@@ -266,7 +266,7 @@
 		});
 	
 		var trafficlayerlaneImpl2 = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			SERVICE: "WMS",
 			REQUEST: "GetMap",
@@ -284,7 +284,7 @@
 		});
 
 		var trafficlayerlaneImpl3 = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			SERVICE: "WMS",
 			REQUEST: "GetMap",
@@ -302,7 +302,7 @@
 		});
 
 		var trafficlayerlaneImpl4 = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			SERVICE: "WMS",
 			REQUEST: "GetMap",
@@ -321,7 +321,7 @@
 
 	/*** Current Traffic condition layer Red, Orange, Green layer Implementation for plan 1 interval */	
 	var trafficlayerlanePlan1Impl1 = new CustomWMSLayer({
-		mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+		mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 		mapParameters: {
 		SERVICE: "WMS",
 		REQUEST: "GetMap",
@@ -339,7 +339,7 @@
 	});
 
 	var trafficlayerlanePlan1Impl2 = new CustomWMSLayer({
-		mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+		mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 		mapParameters: {
 		SERVICE: "WMS",
 		REQUEST: "GetMap",
@@ -357,7 +357,7 @@
 	});
 
 	var trafficlayerlanePlan1Impl3 = new CustomWMSLayer({
-		mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+		mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 		mapParameters: {
 		SERVICE: "WMS",
 		REQUEST: "GetMap",
@@ -375,7 +375,7 @@
 	});
 
 	var trafficlayerlanePlan1Impl4 = new CustomWMSLayer({
-		mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+		mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 		mapParameters: {
 		SERVICE: "WMS",
 		REQUEST: "GetMap",
@@ -393,7 +393,7 @@
 	});
 
 	var trafficlayerlanePlan1Impl5 = new CustomWMSLayer({
-		mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+		mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 		mapParameters: {
 		SERVICE: "WMS",
 		REQUEST: "GetMap",
@@ -413,7 +413,7 @@
 
 		//GIS Expressway CTE Opp lane traffic condition
 		var trafficlayeropplane = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			SERVICE: "WMS",
 			REQUEST: "GetMap",
@@ -435,7 +435,7 @@
 
 		//GIS Expressway lane3 traffic condition during accident
 				var trafficlayerlane3 = new CustomWMSLayer({
-					mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+					mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 					mapParameters: {
 					SERVICE: "WMS",
 					REQUEST: "GetMap",
@@ -456,7 +456,7 @@
 
 		//GIS Expressway lane3 traffic condition after clear the accident locaiton
 		var trafficlayerlane3green = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			SERVICE: "WMS",
 			REQUEST: "GetMap",
@@ -479,7 +479,7 @@
 		  
 		//Glide Site
 		var glideSiteLayer = new CustomWMSLayer({
-	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 	          mapParameters: {
 	            SERVICE: "WMS",
 	            REQUEST: "GetMap",
@@ -497,7 +497,7 @@
 	        });
 	// Webcamera Layer 	
 		var webCamera = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			  SERVICE: "WMS",
 			  REQUEST: "GetMap",
@@ -516,7 +516,7 @@
 		
   		
 		var cteLayer = new CustomWMSLayer({
-            mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+            mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
             mapParameters: {
               SERVICE: "WMS",
               REQUEST: "GetMap",
@@ -536,7 +536,7 @@
 
 		// Speed Link Layer way layer
 		var speedLinkLayer = new CustomWMSLayer({
-          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
           mapParameters: {
             SERVICE: "WMS",
             REQUEST: "GetMap",
@@ -554,7 +554,7 @@
         });
 
 		var detectCamera = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			  SERVICE: "WMS",
 			  REQUEST: "GetMap",
@@ -574,7 +574,7 @@
 
 	// Traffic Speed Data Layer1
 		var trafficSpeedLayer1 = new CustomWMSLayer({
-          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
           mapParameters: {
             SERVICE: "WMS",
             REQUEST: "GetMap",

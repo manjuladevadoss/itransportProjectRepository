@@ -12,7 +12,7 @@
       ], function(Map, MapView,Graphic, WMTSLayer,Extent, LayerList, Draw, WMSLayer, MapView, BaseDynamicLayer) {
         layer = 
           new WMTSLayer({
-          url: "http://192.168.99.100:32768/services/wmts?service",
+          url: "http://192.168.99.100:32769/services/wmts?service",
           activeLayer: {
             id: "osm-bright"
           },
@@ -94,7 +94,7 @@
         // ******************************************************
 		
 		var cctvLayer = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			  SERVICE: "WMS",
 			  REQUEST: "GetMap",
@@ -113,7 +113,7 @@
 		  });
 		
 		var vmsLayer = new CustomWMSLayer({
-          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
           mapParameters: {
             SERVICE: "WMS",
             REQUEST: "GetMap",
@@ -132,7 +132,7 @@
         });	
 		
 		var carriagewayLayer = new CustomWMSLayer({
-          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
           mapParameters: {
             SERVICE: "WMS",
             REQUEST: "GetMap",
@@ -151,7 +151,7 @@
 		
 		// Speed Link Layer way layer
 		var speedLinkLayer = new CustomWMSLayer({
-          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
           mapParameters: {
             SERVICE: "WMS",
             REQUEST: "GetMap",
@@ -170,7 +170,7 @@
 		
 		//Glide Site
 		var glideSiteLayer = new CustomWMSLayer({
-	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+	          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 	          mapParameters: {
 	            SERVICE: "WMS",
 	            REQUEST: "GetMap",
@@ -189,7 +189,7 @@
 
 
 		var eventLayer = new CustomWMSLayer({
-          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
           mapParameters: {
             SERVICE: "WMS",
             REQUEST: "GetMap",
@@ -207,7 +207,7 @@
         });
 
 		var detectCamera = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			  SERVICE: "WMS",
 			  REQUEST: "GetMap",
@@ -227,7 +227,7 @@
 			
 		// Webcamera Layer 	
 		var webCamera = new CustomWMSLayer({
-			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
 			mapParameters: {
 			  SERVICE: "WMS",
 			  REQUEST: "GetMap",
