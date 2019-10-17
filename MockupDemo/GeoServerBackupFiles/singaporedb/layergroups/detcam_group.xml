@@ -1,0 +1,28 @@
+<layerGroup>
+  <id>LayerGroupInfoImpl--23bfac29:16db384e9ce:1b23</id>
+  <name>detcam_group</name>
+  <mode>SINGLE</mode>
+  <title>detcam_group</title>
+  <workspace>
+    <id>WorkspaceInfoImpl--5c0f1183:16a8b3cc2d8:-7fff</id>
+  </workspace>
+  <publishables>
+    <published type="layer">
+      <id>LayerInfoImpl--23bfac29:16db361ff61:43cd</id>
+    </published>
+    <published type="layer">
+      <id>LayerInfoImpl--5c0f1183:16a8b3cc2d8:-7ff5</id>
+    </published>
+  </publishables>
+  <styles>
+    <style/>
+    <style/>
+  </styles>
+  <bounds>
+    <minx>5445.561748492666</minx>
+    <maxx>44497.89718327985</maxx>
+    <miny>27568.038067811933</miny>
+    <maxy>46551.12991999746</maxy>
+    <crs class="projected">EPSG:3414</crs>
+  </bounds>
+</layerGroup>

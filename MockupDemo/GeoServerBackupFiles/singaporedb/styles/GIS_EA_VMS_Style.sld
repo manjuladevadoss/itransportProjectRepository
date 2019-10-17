@@ -45,10 +45,10 @@
           <se:PointSymbolizer>
             <Graphic>
               <ExternalGraphic>
-                 <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/rvms_normal.JPG" />
+                 <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/rvms_normal_old.PNG" />
                  <Format>image/png</Format>
               </ExternalGraphic>
-               <Size>13</Size>
+               <Size>20</Size>
             </Graphic>
           </se:PointSymbolizer>
         </se:Rule>
@@ -138,10 +138,10 @@
           <se:PointSymbolizer>
             <Graphic>
               <ExternalGraphic>
-                 <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/cvms_normal.JPG" />
+                 <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/cvms_normal_old.PNG" />
                  <Format>image/png</Format>
               </ExternalGraphic>
-              <Size>13</Size>
+              <Size>20</Size>
             </Graphic>
           </se:PointSymbolizer>
         </se:Rule>

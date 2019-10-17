@@ -278,10 +278,11 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 								<input style ="color: #FFF;" ng-model="mrwstate"/>
 					  </td>
 					  <td colspan="3"> Work Type: <br>
+						
 					<select ng-model="worktype" style ="height:28px;width:170px;color: #FFF;" >
 						<option  value="" selected="selected" hidden="hidden">Choose here</option>
 						<option ng-repeat="option in mrwType" value="{{option.mrwTypeid}}">{{option.name}}</option>
-					</select>
+					</select>  
 					  </td>
 					</tr>
 					<tr>
@@ -399,6 +400,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 				<th align="left">EQT ID</th>
 				<th align="left">Recommended Display </th>					
 			</tr>
+		
 			<tr ng-repeat="irmrwvms in irmrwvmsList"> 
 				<td> 
 					<div ng-if="irmrwvms.irmrwvmsstatus==='Implement'"> 
@@ -440,7 +442,7 @@ background-image: linear-gradient( 90deg,	rgba(98,55,55,1) , rgba(39,26,57,1));
 					<td>
 						<div align="right">
 							
-							<button class="buttonImp" id="mrwVmsImp" style="text-decoration:none;"> Implement </button>
+							<button class="buttonImpAll" id="mrwVmsImp" style="text-decoration:none;"> Implement All </button>
 							<a href="#" class="buttonRem" id="mrwvmsMsgRemoved" onclick="mrwvmsMsgRemoved()" style="text-decoration:none;"> Remove </a>  
 						</div>	
 					</td>

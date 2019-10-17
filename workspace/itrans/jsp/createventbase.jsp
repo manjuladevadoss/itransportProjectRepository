@@ -219,6 +219,28 @@ input[type=text] {
   height:15px;
 }
 
+.hourbutton {
+  color: #C8CFF4;
+  font-family:  Roboto, Helvetica, sans-serif;
+  font-size: .7em;
+  box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
+  border-radius: 13px;
+  background-color:#356D85;
+  border: solid 0px #356D85;
+  width:48px;
+  height:25px;
+}
+.daybutton {
+  color: #C8CFF4;
+  font-family:  Roboto, Helvetica, sans-serif;
+  font-size: .7em;
+  box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.5);
+  border-radius: 13px;
+  background-color:#356D85;
+  border: solid 0px #356D85;
+  width:75px;
+  height:25px;
+}
 .timerconbutton {
   color: #C8CFF4;
   font-family:  Roboto, Helvetica, sans-serif;
@@ -228,9 +250,12 @@ input[type=text] {
   background-color:#356D85;
   border: solid 0px #356D85;
   width:20px;
-  height:15px;
+  height:25px;
 }
-
+mark { 
+  background-color: #356D85;
+  color: white;
+}
 
 #resptbl {
   border-collapse: collapse;
@@ -374,34 +399,31 @@ input[type=text] {
 		<button class="irresetbutton" id="showTimer" ng-click="showTimerOption()">Timer </button>	       
 	</div>  
 	  
-	<div id="timerinstruction" ng-show="showTimer">    	        
-	<div ng-show="showdateprebuttonFlag">
-		<button class="timerbutton" id="26oct"> 26 Oct </button>
-		<button class="timerbutton" id="27oct"> 27 Oct </button>	       
-		<button class="timerbutton" id="02nov"> 02 Nov </button>	
-		<button class="timerbutton" id="03nov"> 03 Nov </button>	
-		<button class="timerbutton" id="09nov"> 09 Nov </button>	
-		<button class="timerbutton" id="10nov"> 10 Nov </button>	
-		<button class="timerbutton" id="16nov"> 16 Nov </button>	
-		<button class="timerbutton" id="17nov"> 17 Nov </button>	
-		<button class="timerbutton" id="23nov"> 23 Nov </button>	
-		<button class="timerbutton" id="24nov"> 24 Nov </button>	
-		<button class="timerconbutton" ng-click="displaynextlist('1')"> > </button>
-	</div>
-	<div ng-show="showdatenextbuttonFlag">
-		<button class="timerconbutton" ng-click="displaynextlist('2')"> < </button>
-		<button class="timerbutton" id="30nov"> 30 Nov </button>	
-		<button class="timerbutton" id="01Dec"> 01 Dec </button>	
-		<button class="timerbutton" id="07Dec"> 07 Dec </button>	
-		<button class="timerbutton" id="08Dec"> 08 Dec </button>	
-		<button class="timerbutton" id="14Dec"> 14 Dec </button>	
-		<button class="timerbutton" id="15Dec"> 15 Dec </button>	
-		<button class="timerbutton" id="21Dec"> 21 Dec </button>	
-		<button class="timerbutton" id="22Dec"> 22 Dec </button>	
-		<button class="timerbutton" id="28Dec"> 28 Dec </button>	
-		<button class="timerbutton" id="29Dec"> 29 Dec </button>	
-	</div>
-
+	<div id="timerinstruction" ng-show="showTimer">  
+			
+				<table align="center">			
+						<tr>
+							<td>
+								<font style="font-size:12px;"><mark>Day</mark></font>
+								<select class="daybutton" ng-model="timeDisplayday" ng-change="selday()" placeholder="Day">
+									<option ng-repeat="option in displayDayList" value="{{option.dayid}}">{{option.dayname}}</option>
+								</select>&nbsp;
+								<font style="font-size:12px;"><mark>Time</mark></font>
+								<select class="hourbutton" ng-model="vmsTimeDisplayHour" placeholder="Hour">
+									<option ng-repeat="option in displayHrList" value="{{option.hrname}}">{{option.hrname}}</option>
+								</select> <font style="font-size:12px;"><mark>:</mark></font>
+								<select class="hourbutton" ng-model="vmsTimeDisplayMinu" placeholder="Minutes">
+									<option ng-repeat="option in displayminuList" value="{{option.minuname}}">{{option.minuname}}</option>
+								</select>
+								<select class="hourbutton" ng-model="vmsTimeDisplayampm" placeholder="am/pm">
+									<option ng-repeat="option in displayampmList" value="{{option.ampmname}}">{{option.ampmname}}</option>
+								</select>
+								<input type="hidden" id="distime" name="distime" ng-model = "distime" value='{{vmsTimeDisplayDay}}{{sep}}{{vmsTimeDisplayHour}}:{{vmsTimeDisplayMinu}}{{sep}}{{vmsTimeDisplayampm}}' >
+								&nbsp;
+								<button class="hourbutton" id="vmsMsgdis"> Show </button>
+							</td>	
+						</tr>
+					</table>
 	</div>  
 
 
@@ -458,10 +480,10 @@ input[type=text] {
 	  </tr>
         <tr>
           <td> Start Date <br>
-				<input type="text"  placeholder="Start Time" ng-model="eventstarttime" readonly class="form_datetime"> 			 	                
+				<input type="text" id="eventstartdate"  placeholder="Start Time" ng-model="eventstartdate" readonly class="form_datetime"> 			 	                
           </td>
 		  <td> End Date <br>
-				<input type="text"  placeholder="end Time" ng-model="eventendtime1"> 
+				<input type="text"  placeholder="end Time" ng-model="eventenddate"> 
           </td>
 		</tr>
 		
@@ -544,7 +566,7 @@ input[type=text] {
 						</tr>
 						<tr style="height:2px;">
 						  <td> <input type="text" style="width:200px;" placeholder="road name" ng-model="eventroadname"></td>
-						  <td><input type="text"  style="width:80px;" placeholder="{{eventstarttime}}" ng-model="eventstarttimecl"></td>
+						  <td><input type="text"  style="width:80px;" placeholder="{{eventstartdate}}" ng-model="eventstartdatecl"></td>
 						  <td><input type="text"  style="width:80px;" placeholder="{{eventendtime}}" ng-model="eventendtimecl"> </td>
 						</tr>
 						</table>
@@ -679,7 +701,10 @@ input[type=text] {
 						</td>					
 					</tr>
 				</table>
-				<div align="right"><a class="buttoneveImp"  id="vmsids" href="#" style="text-decoration:none;"> Implement </a><a class="buttoneveNext"  href="#" ng-click="shownextpg()" style="text-decoration:none;"> Next </a></div>
+				<div align="right">
+					<a class="buttoneveImp"  id="vmsids" href="#" style="text-decoration:none;"> Implement </a>
+					<a class="buttoneveNext"  href="#" ng-click="shownextpg()" style="text-decoration:none;"> Next </a>
+				</div>
 				<table width="100%" class="tablevms">				
 					<tr colspan="4">
 						<th align="left">Actual Message </th>
@@ -703,7 +728,9 @@ input[type=text] {
 					
 				</table>
 						
-						<div align="right"><a class="buttoneveImp"  id="vmsactids" href="#" style="text-decoration:none;"> Implement </a><a class="buttoneveNext"  href="#" ng-click="shownextpgact()" style="text-decoration:none;"> Next </a></div>
+						<div align="right">
+							<a class="buttoneveImp"  id="vmsactids" href="#" style="text-decoration:none;"> Implement </a>
+							<a class="buttoneveNext"  href="#" ng-click="shownextpgact()" style="text-decoration:none;"> Next </a></div>
 						
 				 
 	            </div>
@@ -888,7 +915,7 @@ input[type=text] {
 			<tr>
 				<td colspan="3"> 
 					<div align="right">
-							<a href="#" class="buttonCreateventInc" ng-click="addevent()" style="text-decoration:none;"> SAVE </a> &nbsp;&nbsp;	
+							<a href="#" class="buttonCreateventInc" ng-click="addevent()" style="text-decoration:none;"> SAVE </a>	
 							<a href="#" class="buttonCreateMrtInc" ng-click="overEvent()" style="text-decoration:none;"> OVER </a>
 						<a href="#" class="buttonCreateventInc" ng-click="closeEvent()" style="text-decoration:none;"> CLOSE </a> &nbsp;&nbsp;						
 					</div>

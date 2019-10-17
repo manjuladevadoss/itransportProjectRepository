@@ -46,15 +46,15 @@
 	  "irvmsstatus": "Implemented",
       "irvmsequipid": "500201",
       "irvmsaccmsg": "Accident on CTE(SLE) aft Amk Ave 5",
-      "longitude" : "103.8579017",
-      "latitude" : "1.3500895"
+      "longitude" : "103.8583969",
+      "latitude" : "1.3615294"
     },
     {
       "irvmsstatus": "Implemented",
       "irvmsequipid": "500202",
       "irvmsaccmsg": "Accident on CTE(SLE) aft Amk Ave 5",
-      "longitude" : "103.8583969",
-      "latitude" : "1.3615294"
+      "longitude" : "103.8579017",
+      "latitude" : "1.3500895"
     },
 	{
       "irvmsstatus": "Implemented",

@@ -96,16 +96,16 @@
         // *******************************************************
 
 		
-		var cctvLayer = new CustomWMSLayer({
+        var cctvLayer = new CustomWMSLayer({
           mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
           mapParameters: {
             SERVICE: "WMS",
             REQUEST: "GetMap",
             FORMAT: "image/png",
             TRANSPARENT: "TRUE",
-            STYLES: "",
+            STYLES: "gis_ptz_attr_style",
             VERSION: "1.3.0",
-            LAYERS: "cctv",
+		  LAYERS: "gis_ptz_attr",
             WIDTH: "{width}",
             HEIGHT: "{height}",
             CRS: "EPSG:{wkid}",
@@ -113,7 +113,9 @@
           },
 
           title: "CCTV"
-        });	
+        });
+
+        
 		var vmsLayer = new CustomWMSLayer({
           mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
           mapParameters: {
@@ -168,25 +170,46 @@
           title: "Link Speed"
         });
 	
-		var detectCamera = new CustomWMSLayer({
-	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
-	          mapParameters: {
-	            SERVICE: "WMS",
-	            REQUEST: "GetMap",
-	            FORMAT: "image/png",
-	            TRANSPARENT: "TRUE",
-	            STYLES: "gis_detectcam_style",
-	            VERSION: "1.3.0",
-	            LAYERS: "gisdbo_gis_ea_fels_attr",
-	            WIDTH: "{width}",
-	            HEIGHT: "{height}",
-	            CRS: "EPSG:{wkid}",
-	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
-	          },
+        var detectCamera = new CustomWMSLayer({
+          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+          mapParameters: {
+            SERVICE: "WMS",
+            REQUEST: "GetMap",
+            FORMAT: "image/png",
+            TRANSPARENT: "TRUE",
+            STYLES: "gis_detectcam_style",
+            VERSION: "1.3.0",
+            LAYERS: "detcam_group",
+            WIDTH: "{width}",
+            HEIGHT: "{height}",
+            CRS: "EPSG:{wkid}",
+            BBOX: "{xmin},{ymin},{xmax},{ymax}"
+          },
 
-	          title: "DET Cam"
-	        });	
-		
+          title: "DCam"
+        });
+    
+    // Webcamera Layer 	
+		var webCamera = new CustomWMSLayer({
+      mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+      mapParameters: {
+        SERVICE: "WMS",
+        REQUEST: "GetMap",
+        FORMAT: "image/png",
+        TRANSPARENT: "TRUE",
+        STYLES: "gis_webcam_style",
+        VERSION: "1.3.0",
+        LAYERS: "gisdbo_gis_webcam",//
+        WIDTH: "{width}",
+        HEIGHT: "{height}",
+        CRS: "EPSG:{wkid}",
+        BBOX: "{xmin},{ymin},{xmax},{ymax}"
+      },
+      title: "WCam"
+    });     
+        
+
+
 		var glideLayer = new CustomWMSLayer({
 	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
 	          mapParameters: {
@@ -221,7 +244,7 @@
             CRS: "EPSG:{wkid}",
             BBOX: "{xmin},{ymin},{xmax},{ymax}"
           },
-          title: "Link Speed"
+          title: "TSpeed"
         });
 
 		var trafficSpeedLayer2 = new CustomWMSLayer({
@@ -269,16 +292,16 @@
 		glideLayer.visible = false;
 			trafficSpeedLayer1.visible = false;
 		trafficSpeedLayer2.visible = false;
-		trafficSpeedLayer3.visible = false;
+    trafficSpeedLayer3.visible = false;
+    webCamera.visible = false;
 		
 		map = new Map({
           //center: [103.84347,1.32858],
 		basemap: {
-            baseLayers: [layer,trafficSpeedLayer2,trafficSpeedLayer3,speedLinkLayer]
+            baseLayers: [layer,trafficSpeedLayer2,trafficSpeedLayer3,speedLinkLayer,trafficSpeedLayer1]
         },
-          layers: [cctvLayer,vmsLayer,glideLayer,trafficSpeedLayer1,detectCamera]
+          layers: [vmsLayer,detectCamera,webCamera,cctvLayer,glideLayer]
         });
-		
 		
         view = new MapView({
           container: "viewDiv",
@@ -315,75 +338,30 @@
 /*** Onload Display **/
 iconLocation()
 showSpeedLkLr();
-/*** Onload Speed Layer display */
-var speedLayerInterval_1, speedLayerInterval_2, speedLayerInterval_3 ;
-var speedLayerIntervalClr_1, speedLayerIntervalClr_2, speedLayerIntervalClr_3 ;
 
+/*** Onload Speed Layer display */
 function showSpeedLkLr(){
   speedLayerInterval_1 = setInterval(speedLayer1, 5000);	
   speedLayerInterval_2 = setInterval(speedLayer2, 10000);
   speedLayerInterval_3 = setInterval(speedLayer3, 15000);
-  //speedLayerIntervalClr_1 = setInterval(speedLayerClr1, 8000);	
-
-  
-  //speedLayerIntervalClr_2 = setInterval(speedLayerClr2, 13000);	
-
-  
-  //speedLayerIntervalClr_3 = setInterval(speedLayerClr3, 18000);	
-
-  //speedLayerInterval_4 = setInterval(speedLayer4, 21000);
-  //speedLayerIntervalClr_4 = setInterval(speedLayerClr4, 23000);	
 }
 
 function speedLayer1(){ 
-  console.log("layer1");
     trafficSpeedLayer1.visible = true;			
     trafficSpeedLayer2.visible = false;	
     trafficSpeedLayer3.visible = false;
 }
   
 function speedLayer2(){	
-  console.log("layer2");
   trafficSpeedLayer2.visible = true;
   trafficSpeedLayer1.visible = false;		
   trafficSpeedLayer3.visible = false;
 }
 
 function speedLayer3(){
-  console.log("layer3");
   trafficSpeedLayer3.visible = true;
   trafficSpeedLayer2.visible = false;
   trafficSpeedLayer1.visible = false;	
-}
-
-function speedLayerClr2(){
-  clearInterval(speedLayerInterval_2);
-  clearInterval(speedLayerIntervalClr_2);
-}
-
-
-
-function speedLayerClr1(){
-  clearInterval(speedLayerInterval_1);
-  clearInterval(speedLayerIntervalClr_1);
-}
-function speedLayerClr3(){
-  clearInterval(speedLayerInterval_3);
-  clearInterval(speedLayerIntervalClr_3);
-}
-
-function speedLayer4(){  
-  trafficSpeedLayer1.visible = false;	
-  trafficSpeedLayer2.visible = false;
-  trafficSpeedLayer3.visible = false;
-  speedLinkLayer.visible = true;
-}
-
-function speedLayerClr4(){
-  clearInterval(speedLayerInterval_4);
-  clearInterval(speedLayerIntervalClr_4);
-  speedLinkLayer.visible = false;
-  showSpeedLkLr();
 }
 
 /*** Onload Incident Icon Display */
@@ -397,19 +375,6 @@ function speedLayerClr4(){
 		{"logi": "103.881117", "lati": "1.401208", "imgfile" : "breakdown.png"}		
     ];
 	
-
-	//heavy traffic 
-	//Lower Delta Rd Exit (AYE) 
-
-	//Unattended Vehicle
-	//Stil Rd 5th Exit (ECP)
-
-	//Road Work
-	//Bedok North Ave 3(PIE)
-//Accident
-//Sungei Tengah Exit(KJE)
-//, 103.727701
-
 
 	function iconLocation() {  // Icon display
 		

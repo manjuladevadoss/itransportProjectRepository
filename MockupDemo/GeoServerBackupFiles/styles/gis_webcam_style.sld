@@ -19,10 +19,10 @@
             <Graphic>
               <ExternalGraphic>
                  <!-- <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/gis_ptz_attr/0.png" />  -->
-                <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/gis_ptz_attr/2.PNG" />
+                <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/gis_ptz_attr/webcam.png" />
                  <Format>image/png</Format> 
               </ExternalGraphic>
-              <Size>30</Size>
+              <Size>15</Size>
             </Graphic>
           </se:PointSymbolizer>
         </se:Rule>
@@ -40,10 +40,10 @@
             <Graphic>
               <ExternalGraphic>
                  <!-- <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/gis_ptz_attr/1.png" />   -->
-                <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/gis_ptz_attr/2.PNG" />
+                <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/gis_ptz_attr/webcam.png" />
                  <Format>image/png</Format>
               </ExternalGraphic>
-              <Size>30</Size>
+              <Size>15</Size>
             </Graphic>
           </se:PointSymbolizer>
         </se:Rule>
@@ -60,10 +60,10 @@
           <se:PointSymbolizer>
             <Graphic>
               <ExternalGraphic>
-                 <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/gis_ptz_attr/2.PNG" />
+                 <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/gis_ptz_attr/webcam.png" />
                  <Format>image/png</Format>
               </ExternalGraphic>
-              <Size>30</Size>
+              <Size>15</Size>
             </Graphic>
           </se:PointSymbolizer>
         </se:Rule>
@@ -83,7 +83,7 @@
                  <OnlineResource xlink:type="simple" xlink:href="http://localhost:8088/geoserver/styles/images/gis_ptz_attr/3.png" />
                  <Format>image/png</Format>
               </ExternalGraphic>
-              <Size>30</Size>
+              <Size>15</Size>
             </Graphic>
           </se:PointSymbolizer>
         </se:Rule>

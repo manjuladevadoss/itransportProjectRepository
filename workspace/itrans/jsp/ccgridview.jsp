@@ -296,7 +296,7 @@ h11 {
 									<tr ng-repeat="rdwork in roadworkRec | orderBy:sortType:sortReverseroadwkfromgrid | filter:searchIncidentfromgrid">
 										<td width="10%"><font color="#ffffff" size="2px">{{rdwork.irid}}</font></td>
 										<td width="28%">											
-											<img src="roadwork.jpg"><font color="#ffffff" size="2px"> {{rdwork.type}}</font>
+											<img src="roadwork.png"><font color="#ffffff" size="2px"> {{rdwork.type}}</font>
 										</td>
 										
 										<td width="20%">
@@ -529,7 +529,9 @@ h11 {
 						</div>
 						<table width="100%"> 
 								<tr><td style="text-align: right;">
-										<a href="createventbase.jsp" target="_blank" style="text-decoration:none;"> <h11> New Event </h11></a>
+										<!-- <a href="createventbase.jsp" target="_blank" style="text-decoration:none;"> <h11> New Event </h11></a> -->
+										<a href="#" ng-click="eventview()" style="text-decoration:none;"> <h11> New Event </h11></a> 
+										  
 								</td></tr>
 					
 							</table> 
@@ -631,7 +633,7 @@ h11 {
 		<table style="float:center;">
 			<tr>
 				<td><!--  progress bar  --> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; </td>
-				<td> <canvas id="alarmlinechart" style="height: 110px; width:180%;"></canvas>  </td>
+				<td> <canvas id="alarmlinechart" style="height: 110px; width:130%;"></canvas>  </td>
 			</tr>
 		</table>
 			

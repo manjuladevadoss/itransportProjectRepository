@@ -79,14 +79,15 @@
 		background-color: #202B53;
     }
 /* popup window font and background color*/
+
 .esri-view-width-xlarge .esri-popup__main-container,
 .esri-view-width-large .esri-popup__main-container,
 .esri-view-width-medium .esri-popup__main-container
 {
-  max-height: 100px !important;
-  max-width: 300px !important;
-  background-color:black ;
-  color: white;
+  max-height: 220px !important;
+  max-width: 250px !important;
+  background-color: white;
+  color: black;
   font-size: 14px;
   font-family: Roboto, Helvetica, sans-serif;
   line-height: 1.3em;
@@ -106,7 +107,7 @@
 
 /*change color in middle triangular button popupwindow*/
 .esri-popup--aligned-top-center .esri-popup__pointer-direction {
-background-color: black;
+background-color: white;
 }
 
 /*End of Map CSS*/
@@ -744,9 +745,14 @@ function showaccimage() {
 		
 				
 			</div> 
-			<div align="right">  
-				<a href="#" class="buttonCreateMrtInc"  id="vmsMsgAfterCreate"  ng-click="callirresponse()" style="text-decoration:none;"> CREATE </a>&nbsp;  &nbsp; 
+			<div ng-show="createbuttonshow" align="right">
+				
+					<a href="#" class="buttonCreateMrtInc"  id="vmsMsgAfterCreate"  ng-click="callirresponse1()" style="text-decoration:none;"> CREATE</a>&nbsp;  &nbsp; 
+				
+
 			</div>
+			
+			
 	  </div>
 	<!-- end of Create IR -->
 	

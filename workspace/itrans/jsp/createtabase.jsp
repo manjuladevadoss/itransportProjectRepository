@@ -369,7 +369,7 @@ li{
 			<tr><td>			
 					<table  id="inctbl" width="100%">
 						<tr ng-repeat="tralert in trafficalert | limitTo : 1 : 0">
-							<td width="10%"><font color="#ffffff" size="2px">{{tralert.status}}</font></td>
+							<td width="10%"><font color="#ffffff" size="2px">Unverified</font></td>
 							<td width="15%"><font color="#ffffff" size="2px">{{accTrafficAlertTime}}</font></td>
 							<td width="16%"><font color="#ffffff" size="2px">{{tralert.alertid | uppercase}}</font></td>
 							<td width="16%"><font color="#ffffff" size="2px">{{tralert.rname}}</font></td>

@@ -174,8 +174,7 @@
       }
 
        /** Onload Detection Camera Icon */
-      var contentAccVideo = '<video width="230" height="150"  controls="true" autoplay="1" frameborder="0"><source src=accvideo.mp4 type=video/mp4></video>';
-      var contentTSVideo = '<video width="230" height="150"  controls="true" autoplay="1" frameborder="0"><source src=CTEvideo.mp4 type=video/mp4></video>';
+      var contentAccImage = '<img src="accidentimage.jpg"  style="width:300px;height:100px;">';
       var dtCamPictureGraphic1, dtCamPictureGraphic2;
       function dtCamIconLocation() {  // Icon display
           var dtCamPictureSymbol = {
@@ -198,7 +197,7 @@
               popupTemplate: {
                 // autocasts as new PopupTemplate()
                 title: "Accident",
-                content: contentTSVideo
+                content: contentAccImage
             }
           });                        
              //Cam 2
@@ -211,11 +210,11 @@
           dtCamPictureGraphic2 = new Graphic({
             geometry: dtCamPoint2,
             symbol: dtCamPictureSymbol,
-            popupTemplate: {
+          /*  popupTemplate: {
               // autocasts as new PopupTemplate()
               title: "Accident",
-              content: contentTSVideo
-          }
+              content: "",
+          }*/
      
           });    
           view.graphics.addMany([dtCamPictureGraphic1,dtCamPictureGraphic2]);               
@@ -223,7 +222,10 @@
 
 
 
-    	/*** Onload cctv icon ***/
+      /*** Onload cctv icon ***/
+      var contentAccVideo = '<video width="230" height="150"  controls="true" autoplay="1" frameborder="0"><source src=CTEAccVideo.mp4 type=video/mp4></video>';
+      var contentTSVideo = '<video width="230" height="150"  controls="true" autoplay="1" frameborder="0"><source src=CTEvideo.mp4 type=video/mp4></video>';
+      
     var  cctvPictureGraphic1, cctvPictureGraphic2, cctvPictureGraphic3;
     function accCCTVLocation() {  // Icon display
         var cctvPictureSymbol = {
@@ -266,7 +268,7 @@
             symbol: cctvPictureSymbol,
      				popupTemplate: {
     						// autocasts as new PopupTemplate()
-    						title: "Accident",
+    						title: "Traffic",
     						content: contentTSVideo
     				}
           });
@@ -275,7 +277,7 @@
             symbol: cctvPictureSymbol,
      				popupTemplate: {
     						// autocasts as new PopupTemplate()
-    						title: "Accident",
+    						title: "Traffic",
     						content: contentTSVideo
     				}
           });

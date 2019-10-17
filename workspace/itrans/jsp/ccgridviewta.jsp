@@ -242,7 +242,7 @@ h11 {
 										<td width="10%"><font color="#ffffff" size="2px">{{accIrid}}</font></td>
 										<td width="25%">
 											<img src="accident.png" width="22" height="24">
-												<a href="createaccbase.jsp" target="_blank"  style="text-decoration:none;"><font color="#ffffff" size="2px">&nbsp;&nbsp;{{accType}}</font>	</a>
+												<a href="createaccbasedit.jsp" target="_self"  style="text-decoration:none;"><font color="#ffffff" size="2px">&nbsp;&nbsp;{{accType}}</font>	</a>
 										</td>											
 										<td width="20%">
 											<font color="#ffffff" size="2px"> {{accState}}</font>
@@ -258,7 +258,7 @@ h11 {
 										<td width="10%"><font color="#ffffff" size="2px">{{mrwIrid}}</font></td>
 										<td width="25%">
 											<img src="roadwork.png" width="25" height="24">
-												<a href="createmrwbase.jsp" target="_blank"  style="text-decoration:none;"><font color="#ffffff" size="2px">&nbsp;{{mrwType}}</font>	</a>
+												<a href="createmrwbase.jsp" target="_self"  style="text-decoration:none;"><font color="#ffffff" size="2px">&nbsp;{{mrwName}}</font>	</a>
 										</td>											
 										<td width="20%">
 											<font color="#ffffff" size="2px"> {{mrwState}}</font>
@@ -316,7 +316,7 @@ h11 {
 									<tr ng-repeat="rdwork in roadworkRec | orderBy:sortType:sortReverseroadwkfromgrid | filter:searchIncidentfromgrid">
 										<td width="10%"><font color="#ffffff" size="2px">{{rdwork.irid}}</font></td>
 										<td width="28%">											
-											<img src="roadwork.jpg"><font color="#ffffff" size="2px"> {{rdwork.type}}</font>
+											<img src="roadwork.png"><font color="#ffffff" size="2px"> {{rdwork.type}}</font>
 										</td>
 										
 										<td width="20%">
@@ -467,7 +467,7 @@ h11 {
 									<tr>
 											<td width="13%" align="left"><font color="#ffffff" size="2px">{{eType}}</font></td>
 											<td width="20%" align="left"><font color="#ffffff" size="2px">
-												<a href="createventbase.jsp" target="_blank"  style="text-decoration:none;">
+												<a href="createventbase.jsp" target="_self"  style="text-decoration:none;">
 													<font color="#ffffff" size="2px">{{eName}}</font> 
 												</a>
 											</td>
@@ -498,7 +498,7 @@ h11 {
 						<br>
 						<table width="100%"> 
 								<tr><td style="text-align: right;">
-										<a href="createventbase.jsp" target="_blank" style="text-decoration:none;"> <h11> New Event </h11></a>
+										<a href="#" ng-click="eventview()" style="text-decoration:none;"> <h11> New Event </h11></a>
 								</td></tr>
 					
 							</table> 
@@ -522,12 +522,7 @@ h11 {
 							<div class="dropdown-content" style="float:left;">
 								<a href="#" style="text-decoration: none">Incident Record</a>
 								<a href="#" style="text-decoration: none">Technical Alarms</a>
-								<a href="#" style="text-decoration: none">Environment</a>
 								<a href="#" style="text-decoration: none">Events</a>
-								<a href="#" style="text-decoration: none">Road Works</a>
-								 	 <img src="horibar.JPG" style="padding:5px; height:18px;" >
-								<a href="#" style="text-decoration: none">Merge up/down</a>
-								<a href="#" style="text-decoration: none">Merge sideways</a>
 							 </div>
 				  </div> 
 			</td>
@@ -591,12 +586,7 @@ h11 {
 								  <div class="dropdown-content" style="float:left;">
 								<a href="#" style="text-decoration: none">Incident Record</a>
 								<a href="#" style="text-decoration: none">Work Order</a>
-								<a href="#" style="text-decoration: none">Environment</a>
 								<a href="#" style="text-decoration: none">Events</a>
-								<a href="#" style="text-decoration: none">Road Works</a>
-								 	<img src="horibar.JPG" style="padding:5px; height:18px;" >
-								<a href="#" style="text-decoration: none">Merge up/down</a>
-								<a href="#" style="text-decoration: none">Merge sideways</a>
 								  </div>
 							</div> 
 					</td>
@@ -605,7 +595,7 @@ h11 {
 		<table>
 			<tr>
 				<td><!--  progress bar  --> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; </td>
-				<td> 	 <canvas id="alarmlinechart" style="height: 110px; width:180%;"></canvas>  </td>
+				<td> 	 <canvas id="alarmlinechart" style="height: 110px; width:130%;"></canvas>  </td>
 			</tr>
 		</table>
 			
@@ -663,12 +653,7 @@ h11 {
 							<div class="dropdown-content" style="float:left;">
 								<a href="#" style="text-decoration: none">Incident Record</a>
 								<a href="#" style="text-decoration: none">Technical Alarms</a>
-								<a href="#" style="text-decoration: none">Environment</a>
 								<a href="#" style="text-decoration: none">Events</a>
-								<a href="#" style="text-decoration: none">Road Works</a>
-								 	 <img src="horibar.JPG" style="padding:5px; height:18px;" >
-								<a href="#" style="text-decoration: none">Merge up/down</a>
-								<a href="#" style="text-decoration: none">Merge sideways</a>
 							 </div>
 				  </div> 
 			</td>		 
@@ -690,7 +675,7 @@ h11 {
 				 <table width="98%" id="datatbl">
 					<tr>
 						<th width="10%"> <a href="#" ng-click="sortTypenv = 'startime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Status</font></a></th>
-						<th width="13%"> <a href="#" ng-click="sortTypenv = 'endtime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Time</font></a></th>
+						<th width="14%"> <a href="#" ng-click="sortTypenv = 'endtime'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Time</font></a></th>
 						<th width="16%"> <a href="#" ng-click="sortTypenv = 'alarmid'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Alert ID</font></a></th>
 						<th width="14%"> <a href="#" ng-click="sortTypenv = 'desc'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Road Name</font></a></th>					
 						<th width="18%"> <a href="#" ng-click="sortTypenv = 'status'; sortReversenv = !sortReversenv"><font style="font-size:16px;color:#ffffff">Description</font></a></th>
@@ -714,7 +699,7 @@ h11 {
 							</tr>
 						<tr ng-repeat="tralert in trafficalert | orderBy:sortTypenv:sortReversenv | filter:searchEnvifromgrid">
 							<td width="10%"><font color="#ffffff" size="2px">{{tralert.status}}</font></td>
-							<td width="13%"><font color="#ffffff" size="2px">{{tralert.time}}</font></td>
+							<td width="14%"><font color="#ffffff" size="2px">{{tralert.time}}</font></td>
 							<td width="16%"><font color="#ffffff" size="2px">{{tralert.alertid | uppercase}}</font> </td>
 							<td width="14%"><font color="#ffffff" size="2px">{{tralert.rname}}</font></td>
 							<td width="18%"><font color="#ffffff" size="2px">{{tralert.desc}}</font></td>

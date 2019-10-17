@@ -5,7 +5,7 @@
       name="viewport"
       content="initial-scale=1,maximum-scale=1,user-scalable=no"
     />
-	<meta http-equiv="refresh" content="160" />  
+	<!-- <meta http-equiv="refresh" content="160" />  -->
     <title> Incident Creation </title>
     <link rel="shortcut icon" href="/Sopra_Steria_logo.ico" type="image/x-icon">
 	  <link rel="stylesheet" href="http://localhost:8080/itrans/arcgis_4.11/esri/themes/light/main.css" />
@@ -133,7 +133,7 @@ background-color: black;
 				windowObjectReference2.focus();
     	}
     }
-    //window.onload = bisMainWindow;
+    window.onload = bisMainWindow;
    	 $(document).bind("contextmenu",function(e){
     	  e.preventDefault();
     	  console.log(e.pageX + "," + e.pageY);

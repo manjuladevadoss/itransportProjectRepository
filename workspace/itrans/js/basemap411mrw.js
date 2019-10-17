@@ -101,9 +101,9 @@
             REQUEST: "GetMap",
             FORMAT: "image/png",
             TRANSPARENT: "TRUE",
-            STYLES: "",
+            STYLES: "gis_ptz_attr_style",
             VERSION: "1.3.0",
-            LAYERS: "cctv",
+		  LAYERS: "gis_ptz_attr",
             WIDTH: "{width}",
             HEIGHT: "{height}",
             CRS: "EPSG:{wkid}",
@@ -158,7 +158,7 @@
 	            TRANSPARENT: "TRUE",
 	            STYLES: "gis_detectcam_style",
 	            VERSION: "1.3.0",
-	            LAYERS: "gisdbo_gis_ea_fels_attr",
+	            LAYERS: "detcam_group",
 	            WIDTH: "{width}",
 	            HEIGHT: "{height}",
 	            CRS: "EPSG:{wkid}",
@@ -184,10 +184,28 @@
             CRS: "EPSG:{wkid}",
             BBOX: "{xmin},{ymin},{xmax},{ymax}"
           },
-          title: "Link Speed"
+          title: "TSpeed"
 		});
 		
-
+		// Webcamera Layer 	
+		var webCamera = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			  SERVICE: "WMS",
+			  REQUEST: "GetMap",
+			  FORMAT: "image/png",
+			  TRANSPARENT: "TRUE",
+			  STYLES: "gis_webcam_style",
+			  VERSION: "1.3.0",
+			  LAYERS: "gisdbo_gis_webcam",//
+			  WIDTH: "{width}",
+			  HEIGHT: "{height}",
+			  CRS: "EPSG:{wkid}",
+			  BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "WCam"
+		  }); 
+		
 		/*** Onload Mobile road work road display*/	
 		var mrwLaneLayer = new CustomWMSLayer({
 			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
@@ -214,24 +232,24 @@
 		detectCamera.visible = false;
 		speedLinkLayer.visible = false;
 		mrwLaneLayer.visible = false;
+		webCamera.visible = false;
 		//layer.visible = true;
 		map = new Map({
           //center: [103.84347,1.32858],
 		   basemap: {
-            baseLayers: [layer,mrwLaneLayer]
+            baseLayers: [layer,mrwLaneLayer,speedLinkLayer]
           },
-          layers: [cctvLayer,vmsLayer,glideLayer,speedLinkLayer,detectCamera]
+          layers: [vmsLayer,detectCamera,webCamera,cctvLayer,glideLayer]
         });
-		
 	
         view = new MapView({
           container: "viewDiv",
           map: map,
          // center: [103.836862, 1.329735],
-		 center: [103.866673, 1.310829],
+		 center: [103.925745, 1.309649],
 		  zoom: 12      
         });
-       
+	   
         // To draw a line
         draw = new Draw({
 		  view: view
@@ -375,9 +393,9 @@ function vmsIdDisplay() {
 		}; 
 		var mrwvehPictureSymbol1 = {
 			  type: "picture-marker",
-			  url: "rvm_img.png",
-			  width: "20",
-			  height: "20"
+			  url: "rvm_img.JPG",
+			  width: "25",
+			  height: "13"
 		}			   
 		var vmspictureGraphicVmsImage = new Graphic({
 			geometry: vmspoint1,
@@ -405,10 +423,11 @@ document.getElementById("mrwVmsImp").onclick = function() {
 
 	//vms text message on the map based on the timing
 	interval1 = setInterval(vmsMessageDispaly1, 3000);	
-	interval2 = setInterval(vmsMessageDispaly2, 21000);	
-	interval3 = setInterval(vmsMessageDispaly3, 29000);	
-	interval4 = setInterval(vmsMessageDispaly4, 36000);	
-	clrinterval = setInterval(clearFinalInterval, 37000); 	
+	interval2 = setInterval(vmsMessageDispaly2, 11000);	
+	interval3 = setInterval(vmsMessageDispaly3, 22000);	
+	interval4 = setInterval(vmsMessageDispaly4, 29000);	
+	interval5 = setInterval(vmsMessageDispaly5, 39000);	
+	clrinterval = setInterval(clearFinalInterval, 43000); 	
 	
 	//Moving Icon Display
 	movingIconDisplay();	
@@ -418,21 +437,25 @@ document.getElementById("mrwVmsImp").onclick = function() {
 
 	function vmsMessageDispaly1(){ 		
 		//displayVmsMessage(0);
-		displayVmsMessage(vmsMsgdata0);
+		displayVmsMessage(vmsMsgdata1);
 	}
 
 	function vmsMessageDispaly2(){
 		clearInterval(interval1); 		
-		displayVmsMessage(vmsMsgdata1);	
+		displayVmsMessage(vmsMsgdata2);	
 	} 
 	
 	function vmsMessageDispaly3(){
 		clearInterval(interval2); 
-		displayVmsMessage(vmsMsgdata2);
+		displayVmsMessage(vmsMsgdata3);
 	}
 	function vmsMessageDispaly4(){
 		clearInterval(interval3); 
-		displayVmsMessage(vmsMsgdata3);
+		displayVmsMessage(vmsMsgdata4);
+	}
+	function vmsMessageDispaly5(){
+		clearInterval(interval4); 
+		displayVmsMessage(vmsMsgdata5);
 	}
 
 
@@ -441,6 +464,7 @@ document.getElementById("mrwVmsImp").onclick = function() {
 		clearInterval(interval2); 
 		clearInterval(interval3); 
 		clearInterval(interval4);
+		clearInterval(interval5);
 		clearInterval(clrinterval);
 		removeVmsMessage();
 		//displayVmsMessage(vmsMsgdata3);
@@ -455,25 +479,32 @@ document.getElementById("mrwVmsImp").onclick = function() {
 		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
 	];
 */
-	var vmsMsgdata0 = [
+	var vmsMsgdata1 = [
 		{"logi": "103.92464", "lati": "1.3113622", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"}
 	];
 	
-	var vmsMsgdata1 = [
+	var vmsMsgdata2 = [
+		{"logi": "103.92464", "lati": "1.3113622", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
+		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
+	];
+
+	var vmsMsgdata3 = [
 		{"logi": "103.92464", "lati": "1.3113622", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
 	];
 
-	var vmsMsgdata2 = [
+	var vmsMsgdata4 = [
+		
 		{"logi": "103.9094703", "lati": "1.3082692", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
 	];
 
-	var vmsMsgdata3 = [
+	var vmsMsgdata5 = [
 		{"logi": "103.9019901","lati": "1.3039255", "vmsmsg": "Litter Picking long Ln1"},
 		{"logi": "103.8895556","lati": "1.3002632", "vmsmsg": "Litter Picking long Ln1"}
 	];
@@ -558,6 +589,7 @@ function removeVmsMessage(){
 		{"logi": "103.9005097","lati": "1.3031741"},
 		{"logi": "103.8971268","lati": "1.3019824"}, 
 		{"logi": "103.8938274","lati": "1.3009662"},
+		{"logi": "103.8909051","lati": "1.2999841"},
 		{"logi": "103.8878191","lati": "1.3007663"}    
     ];
 	
@@ -569,23 +601,24 @@ var vehipictureGraphic = "";
 function movingIconDisplay(){
 	//vehiInterval1 = setInterval(moveIconDisplay1, 2050);
 	vehiInterval2 = setInterval(moveIconDisplay2, 3000);
-	vehiInterval3 = setInterval(moveIconDisplay3, 5000);
-	vehiInterval4 = setInterval(moveIconDisplay4, 7000);
-	vehiInterval5 = setInterval(moveIconDisplay5, 9000);
-	vehiInterval6 = setInterval(moveIconDisplay6, 11000);
-	vehiInterval7 = setInterval(moveIconDisplay7, 13000);
-	vehiInterval8 = setInterval(moveIconDisplay8, 15000);
-	vehiInterval9 = setInterval(moveIconDisplay9, 17000);
-	vehiInterval10 = setInterval(moveIconDisplay10, 19000);
-	vehiInterval11 = setInterval(moveIconDisplay11, 21000); 
-	vehiInterval12 = setInterval(moveIconDisplay12, 23000); 
-	vehiInterval13 = setInterval(moveIconDisplay13, 25000);
-	vehiInterval14 = setInterval(moveIconDisplay14, 27000);
-	vehiInterval15 = setInterval(moveIconDisplay15, 29000);
-	vehiInterval16 = setInterval(moveIconDisplay16, 32000);
-	vehiInterval17 = setInterval(moveIconDisplay17, 34000);
-	vehiInterval18 = setInterval(moveIconDisplay18, 36000);
-	vehiIntervalFinal = setInterval(clearMovingFinalInterval, 37000); 	
+	vehiInterval3 = setInterval(moveIconDisplay3, 4000);
+	vehiInterval4 = setInterval(moveIconDisplay4, 6000);
+	vehiInterval5 = setInterval(moveIconDisplay5, 10000);
+	vehiInterval6 = setInterval(moveIconDisplay6, 12000);
+	vehiInterval7 = setInterval(moveIconDisplay7, 14000);
+	vehiInterval8 = setInterval(moveIconDisplay8, 16000);
+	vehiInterval9 = setInterval(moveIconDisplay9, 18000);
+	vehiInterval10 = setInterval(moveIconDisplay10, 20000);
+	vehiInterval11 = setInterval(moveIconDisplay11, 22000); 
+	vehiInterval12 = setInterval(moveIconDisplay12, 24000); 
+	vehiInterval13 = setInterval(moveIconDisplay13, 26000);
+	vehiInterval14 = setInterval(moveIconDisplay14, 28000);
+	vehiInterval15 = setInterval(moveIconDisplay15, 30000);
+	vehiInterval16 = setInterval(moveIconDisplay16, 33000);
+	vehiInterval17 = setInterval(moveIconDisplay17, 35000);
+	vehiInterval18 = setInterval(moveIconDisplay18, 37000);
+	vehiInterval19 = setInterval(moveIconDisplay19, 39000);
+	vehiIntervalFinal = setInterval(clearMovingFinalInterval, 43000); 	
 }
 
 function moveIconDisplay1(){
@@ -662,6 +695,10 @@ function moveIconDisplay18(){
 	clearInterval(vehiInterval17);
 	displayMoveIcon(17);
 }
+function moveIconDisplay19(){
+	clearInterval(vehiInterval18);
+	displayMoveIcon(18);
+}
 
 function clearMovingFinalInterval(){
 	removeMoveIcon();
@@ -684,6 +721,7 @@ function clearMovingFinalInterval(){
 	clearInterval(vehiInterval16);
 	clearInterval(vehiInterval17);
 	clearInterval(vehiInterval18);
+	clearInterval(vehiInterval19);
 	clearInterval(vehiIntervalFinal);
 }
 

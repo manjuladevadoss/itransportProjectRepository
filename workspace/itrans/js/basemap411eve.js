@@ -94,22 +94,23 @@
         // ******************************************************
 		
 		var cctvLayer = new CustomWMSLayer({
-          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
-          mapParameters: {
-            SERVICE: "WMS",
-            REQUEST: "GetMap",
-            FORMAT: "image/png",
-            TRANSPARENT: "TRUE",
-            STYLES: "",
-            VERSION: "1.3.0",
-            LAYERS: "cctv",
-            WIDTH: "{width}",
-            HEIGHT: "{height}",
-            CRS: "EPSG:{wkid}",
-            BBOX: "{xmin},{ymin},{xmax},{ymax}"
-          },
-          title: "CCTV"
-        });	
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			  SERVICE: "WMS",
+			  REQUEST: "GetMap",
+			  FORMAT: "image/png",
+			  TRANSPARENT: "TRUE",
+			  STYLES: "gis_ptz_attr_style",
+			  VERSION: "1.3.0",
+			LAYERS: "gis_ptz_attr",
+			  WIDTH: "{width}",
+			  HEIGHT: "{height}",
+			  CRS: "EPSG:{wkid}",
+			  BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+  
+			title: "CCTV"
+		  });
 		
 		var vmsLayer = new CustomWMSLayer({
           mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
@@ -206,24 +207,42 @@
         });
 
 		var detectCamera = new CustomWMSLayer({
-	          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
-	          mapParameters: {
-	            SERVICE: "WMS",
-	            REQUEST: "GetMap",
-	            FORMAT: "image/png",
-	            TRANSPARENT: "TRUE",
-	            STYLES: "gis_detectcam_style",
-	            VERSION: "1.3.0",
-	            LAYERS: "gisdbo_gis_ea_fels_attr",
-	            WIDTH: "{width}",
-	            HEIGHT: "{height}",
-	            CRS: "EPSG:{wkid}",
-	            BBOX: "{xmin},{ymin},{xmax},{ymax}"
-	          },
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			  SERVICE: "WMS",
+			  REQUEST: "GetMap",
+			  FORMAT: "image/png",
+			  TRANSPARENT: "TRUE",
+			  STYLES: "gis_detectcam_style",
+			  VERSION: "1.3.0",
+			  LAYERS: "detcam_group",
+			  WIDTH: "{width}",
+			  HEIGHT: "{height}",
+			  CRS: "EPSG:{wkid}",
+			  BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
 
-	          title: "DCam"
-	        });
-		
+			title: "DCam"
+		  });
+			
+		// Webcamera Layer 	
+		var webCamera = new CustomWMSLayer({
+			mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
+			mapParameters: {
+			  SERVICE: "WMS",
+			  REQUEST: "GetMap",
+			  FORMAT: "image/png",
+			  TRANSPARENT: "TRUE",
+			  STYLES: "gis_webcam_style",
+			  VERSION: "1.3.0",
+			  LAYERS: "gisdbo_gis_webcam",//
+			  WIDTH: "{width}",
+			  HEIGHT: "{height}",
+			  CRS: "EPSG:{wkid}",
+			  BBOX: "{xmin},{ymin},{xmax},{ymax}"
+			},
+			title: "WCam"
+		  });     
 		cctvLayer.visible  = false;
 		vmsLayer.visible  = false;
 		carriagewayLayer.visible = false;
@@ -231,18 +250,19 @@
 		speedLinkLayer.visible = false;
 		eventLayer.visible = false;
 		detectCamera.visible = false;
+		webCamera.visible = false;
 		map = new Map({
           //center: [103.84347,1.32858],
 		   basemap: {
-            baseLayers: [layer,eventLayer]
+            baseLayers: [layer,eventLayer,speedLinkLayer]
           },
-          layers: [cctvLayer,vmsLayer,glideSiteLayer,speedLinkLayer,detectCamera]
+          layers: [vmsLayer,detectCamera,webCamera,cctvLayer,glideSiteLayer]
         });
 		
         view = new MapView({
           container: "viewDiv",
           map: map,
-          center: [103.836862, 1.329735],
+		  center: [103.925745, 1.309649],
           zoom: 12        
         });
        
@@ -314,7 +334,11 @@ function updateEroad() {
 
    /* Road closed display  */
    document.getElementById("rdclose").onclick = function() {
-	eventLayer.visible = true;
+	   if(eventLayer.visible){
+			eventLayer.visible = false;
+	   }else {
+		eventLayer.visible = true;
+		s}
 }
 /*end of Road closed auto line draw*/
 		
@@ -363,93 +387,112 @@ function updateEroad() {
     ];
 	var tipPictureSymbol = {
 		type: "picture-marker",
-		url: "TIP_MSG.png",
-		width: "20",
-		height: "20",
+		url: "TIP_MSG.JPG",
+		width: "15",
+		height: "14"
 	}
 
 /** Timer functionality */
-document.getElementById("26oct").onclick = function() {
+
+document.getElementById("vmsMsgdis").onclick = function() {
 	clrVMS();
-	vmsTIPMsgbyTimer('26oct','adMsg','vmsId',true);
+	var dtText = document.getElementById("distime").value; 
+	vmsTIPMsgbyTimer(dtText,'adMsg','vmsId',true); 	
 }
-document.getElementById("27oct").onclick = function() {
-	clrVMS();
-	vmsTIPMsgbyTimer('27oct','adMsg','vmsId',true);
-}
-document.getElementById("02nov").onclick = function() {
-	clrVMS();
-	vmsTIPMsgbyTimer('02nov','adMsg','vmsId',true);
-}
-document.getElementById("03nov").onclick = function() {
-	clrVMS();
-	vmsTIPMsgbyTimer('03nov','acMsg','vmsId',true);
-}
-document.getElementById("09nov").onclick = function() {
-	clrVMS();	 	
-}
-document.getElementById("10nov").onclick = function() {
-	clrVMS();	 	
-}
-document.getElementById("16nov").onclick = function() {
-	clrVMS();	 	
-}
-document.getElementById("17nov").onclick = function() {
-	clrVMS();	 	
-}
-document.getElementById("23nov").onclick = function() {
-	clrVMS();	 	
-}
-document.getElementById("24nov").onclick = function() {
-	clrVMS();	 	
-}
+
 
 function clrVMS(){
 	view.graphics.removeAll();
 }
 
-function vmsTIPMsgbyTimer(seleteddate,selectedmsg,selectedvmsId,timerFlag) {
+function vmsTIPMsgbyTimer(seleteddatetime,selectedmsg,selectedvmsId,timerFlag) {
+	//alert("parameter seleteddatetime : " + seleteddatetime);
+	 var eventstdt = document.getElementById("eventstartdate").value;
+	// alert("eventstdt : " + eventstdt);
 	var vmsEquiPointsTIP = [
-		{"jsondatadate":"2019-10-26","ddate":"26oct","vmsid":"231278","logi": "103.9757038", "lati": "1.3300795","tipimg":"event_ad_img1.JPG"},
-		{"jsondatadate":"2019-10-27","ddate":"27oct","vmsid":"635729","logi": "103.97652", "lati": "1.326665","tipimg":"event_ad_img6.JPG"},
-		{"jsondatadate":"2019-11-02","ddate":"02nov","vmsid":"324649","logi": "103.968971", "lati": "1.3201737","tipimg":"event_ad_img7.JPG"},
-		{"jsondatadate":"2019-11-02","ddate":"02nov","vmsid":"782436","logi": "103.9459272", "lati": "1.3115447","tipimg":"event_ad_img4.JPG"},
-		{"jsondatadate":"2019-10-26","ddate":"26oct","vmsid":"983561","logi": "103.9374682", "lati": "1.3100315","tipimg":"event_ad_img5.JPG"},
-		{"jsondatadate":"2019-10-27","ddate":"27oct","vmsid":"901482","logi": "103.9236992", "lati": "1.3054055","tipimg":"event_ad_img2.JPG"},
-		{"jsondatadate":"2019-10-27","ddate":"27oct","vmsid":"564372","logi": "103.9024259", "lati": "1.2991446","tipimg":"event_ad_img3.JPG"},
-		{"jsondatadate":"2019-11-02","ddate":"02nov","vmsid":"546251","logi": "103.8916975", "lati": "1.2957672","tipimg":"event_ad_img8.JPG"},		
-		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"231278","logi": "103.9757038", "lati": "1.3300795","tipimg":"event_ac_img1.JPG"},
-		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"635729","logi": "103.97652", "lati": "1.326665","tipimg":"event_ac_img6.JPG"},
-		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"324649","logi": "103.968971", "lati": "1.3201737","tipimg":"event_ac_img7.JPG"},
-		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"782436","logi": "103.9459272", "lati": "1.3115447","tipimg":"event_ac_img4.JPG"},
-		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"983561","logi": "103.9374682", "lati": "1.3100315","tipimg":"event_ac_img5.JPG"},
-		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"901482","logi": "103.9236992", "lati": "1.3054055","tipimg":"event_ac_img2.JPG"},
-		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"564372","logi": "103.9024259", "lati": "1.2991446","tipimg":"event_ac_img3.JPG"},
-		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"546251","logi": "103.8916975", "lati": "1.2957672","tipimg":"event_ac_img8.JPG"}
+		{"jsondatadate":"2019-10-26","ddate":"26oct","vmsid":"231278","logi": "103.9757038", "lati": "1.3300795","tipimg":"event_ad_img1.JPG","jsondatatime":"10:00am-12:00pm"},
+		{"jsondatadate":"2019-10-27","ddate":"27oct","vmsid":"635729","logi": "103.97652", "lati": "1.326665","tipimg":"event_ad_img6.JPG","jsondatatime":"11:00am-12:00pm"},
+		{"jsondatadate":"2019-11-02","ddate":"02nov","vmsid":"324649","logi": "103.968971", "lati": "1.3201737","tipimg":"event_ad_img7.JPG","jsondatatime":"02:00pm-04:00pm"},
+		{"jsondatadate":"2019-11-02","ddate":"02nov","vmsid":"782436","logi": "103.9459272", "lati": "1.3115447","tipimg":"event_ad_img4.JPG","jsondatatime":"08:00am-11:00am"},
+		{"jsondatadate":"2019-10-26","ddate":"26oct","vmsid":"983561","logi": "103.9374682", "lati": "1.3100315","tipimg":"event_ad_img5.JPG","jsondatatime":"09:00am-10:00am"},
+		{"jsondatadate":"2019-10-27","ddate":"27oct","vmsid":"901482","logi": "103.9236992", "lati": "1.3054055","tipimg":"event_ad_img2.JPG","jsondatatime":"08:00am-10:00am"},
+		{"jsondatadate":"2019-10-27","ddate":"27oct","vmsid":"564372","logi": "103.9024259", "lati": "1.2991446","tipimg":"event_ad_img3.JPG","jsondatatime":"12:00pm-02:00pm"},
+		{"jsondatadate":"2019-11-02","ddate":"02nov","vmsid":"546251","logi": "103.8916975", "lati": "1.2957672","tipimg":"event_ad_img8.JPG","jsondatatime":"06:00pm - 09:00pm"},		
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"231278","logi": "103.9757038", "lati": "1.3300795","tipimg":"event_ac_img1.JPG","jsondatatime":"08:00am-12:00pm"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"635729","logi": "103.97652", "lati": "1.326665","tipimg":"event_ac_img6.JPG","jsondatatime":"08:00am-12:00pm"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"324649","logi": "103.968971", "lati": "1.3201737","tipimg":"event_ac_img7.JPG","jsondatatime":"08:00am-12:00pm"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"782436","logi": "103.9459272", "lati": "1.3115447","tipimg":"event_ac_img4.JPG","jsondatatime":"08:00am-12.30pm"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"983561","logi": "103.9374682", "lati": "1.3100315","tipimg":"event_ac_img5.JPG","jsondatatime":"07:00am-12.30pm"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"901482","logi": "103.9236992", "lati": "1.3054055","tipimg":"event_ac_img2.JPG","jsondatatime":"07:00am-12.30pm"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"564372","logi": "103.9024259", "lati": "1.2991446","tipimg":"event_ac_img3.JPG","jsondatatime":"08:00am-12.00pm"},
+		{"jsondatadate":"2019-11-03","ddate":"03nov","vmsid":"546251","logi": "103.8916975", "lati": "1.2957672","tipimg":"event_ac_img8.JPG","jsondatatime":"07:00am-12:00pm"}
 	];
+
+	//implementing the button advanced message
+	if(selectedmsg=='adMsg'){
+		for(i=0;i<vmsEquiPointsTIP.length;i++) { 
+			var chkvmsIdIm = vmsEquiPointsTIP[i].vmsid;
+			if(chkvmsIdIm==selectedvmsId) {
+				var sstime = vmsEquiPointsTIP[i].jsondatatime;
+				var stime = sstime.substring(0,5);
+				var sampm = sstime.substring(5,7);
+				seleteddatetime = vmsEquiPointsTIP[i].ddate+"$"+stime +"$"+sampm;
+				break;
+			}
+		}
+	}
+	//implementing the button actual message
+	if(selectedmsg=='acMsg'){
+		for(i=0;i<vmsEquiPointsTIP.length;i++) { 
+			var chkvmsIdIm = vmsEquiPointsTIP[i].vmsid;
+			var seldate = vmsEquiPointsTIP[i].jsondatadate;
+			if(seldate==eventstdt && chkvmsIdIm==selectedvmsId){
+				var sstime = vmsEquiPointsTIP[i].jsondatatime;
+				var stime = sstime.substring(0,5);
+				var sampm = sstime.substring(5,7);
+				seleteddatetime = vmsEquiPointsTIP[i].ddate+"$"+stime +"$"+sampm;
+				break;
+			}
+		}
+	}
+
 	for(i=0;i<vmsEquiPointsTIP.length;i++) {
-		var chkdate = vmsEquiPointsTIP[i].ddate;		
+		var chkdate = vmsEquiPointsTIP[i].ddate;
+		var chkdatatime = vmsEquiPointsTIP[i].jsondatatime
+				
 		var logi = vmsEquiPointsTIP[i].logi;
 		var lati = vmsEquiPointsTIP[i].lati;			
 		var urlTIPImg = vmsEquiPointsTIP[i].tipimg;
 		var vmsId = vmsEquiPointsTIP[i].vmsid;
-		var ddate = vmsEquiPointsTIP[i].jsondatadate;
+		var seldate = vmsEquiPointsTIP[i].jsondatadate;
 		var iconPoint, itpIconpictureSymbol, tipPictureSymbol;
 		iconPoint = {
 			type: "point", // autocasts as new Point()                   			 
 			longitude: logi,
 			latitude: lati
 		};
-		
+	
+		var dtText = seleteddatetime; 
+		var wordsep = dtText.indexOf("$");
+		var seleteddate = dtText.substring(0, wordsep);
+
+		var wordsep1 = dtText.lastIndexOf("$");
+		var disTime = dtText.substring((wordsep+1),(wordsep1));
+
+		var disAmPm = dtText.substring((wordsep1+1), dtText.length);
+		var chktime = chkdatatime.substring(0,5);
+		var selam = chkdatatime.substring(5,7);
+
 		//implementation button selection
 		if(!timerFlag) {
 			if(selectedvmsId==vmsId) {
-				if( seleteddate==ddate) {
+				if(seleteddate==chkdate) {					
+					if(chktime==disTime && selam==disAmPm) {
 						itpIconpictureSymbol = {
 							type: "picture-marker",
-							url: "TIP_MSG.png",
-							width: "20",
-							height: "20",
+							url: "TIP_MSG.JPG",
+							width: "15",
+							height: "14"
 						}
 						tipPictureSymbol = {
 							type: "picture-marker",
@@ -459,31 +502,32 @@ function vmsTIPMsgbyTimer(seleteddate,selectedmsg,selectedvmsId,timerFlag) {
 							xoffset: 0,
 							yoffset: 35
 						}
-						var tipIconGraphic = new Graphic({
+							var tipIconGraphic = new Graphic({
 							geometry: iconPoint,
 							symbol: itpIconpictureSymbol 
 						});	
-						
-		
+								
 						var tipGraphic = new Graphic({
 							geometry: iconPoint,
 							symbol: tipPictureSymbol 
 						});	
 						view.graphics.addMany([tipGraphic, tipIconGraphic]);
 						break;
+					}
 				}
 			}
 		}
 		
 		//from timer button selection
 		if(timerFlag) {
-			if(seleteddate==chkdate) {
-				if(selectedmsg=='adMsg') {			
+			if(seleteddate==chkdate) {			
+				if(chktime==disTime && selam==disAmPm) {			
+				if(selectedmsg=='adMsg') {		
 					itpIconpictureSymbol = {
 						type: "picture-marker",
-						url: "TIP_MSG.png",
-						width: "20",
-						height: "20",
+						url: "TIP_MSG.JPG",
+						width: "15",
+						height: "14"
 					}
 					tipPictureSymbol = {
 						type: "picture-marker",
@@ -497,9 +541,9 @@ function vmsTIPMsgbyTimer(seleteddate,selectedmsg,selectedvmsId,timerFlag) {
 				if(selectedmsg=='acMsg') {
 					itpIconpictureSymbol = {
 						type: "picture-marker",
-						url: "TIP_MSG.png",
-						width: "20",
-						height: "20",
+						url: "TIP_MSG.JPG",
+						width: "15",
+						height: "14"
 					}
 					tipPictureSymbol = {
 						type: "picture-marker",
@@ -519,7 +563,9 @@ function vmsTIPMsgbyTimer(seleteddate,selectedmsg,selectedvmsId,timerFlag) {
 					symbol: tipPictureSymbol 
 				});	
 				view.graphics.addMany([tipGraphic, tipIconGraphic]);
+				//break;
 			}
+		}
 		}
 	}
 }
@@ -536,8 +582,8 @@ document.getElementById("vmsids").onclick = function() {
 		var evedate = str.substring(word1sep+1, str.length);
 		var lower = evedate.toLowerCase();
 		var trimDatespace = lower.replace(/\s+/g, "");
-		vmsTIPMsgbyTimer(trimDatespace,'adMsg',eveid,false);
-	}
+		vmsTIPMsgbyTimer(trimDatespace,'adMsg',eveid,false); 
+	} 
 }
 
 /** implement all vms message on display from the rightside actual message */
@@ -551,7 +597,7 @@ document.getElementById("vmsactids").onclick = function() {
 		var evedate = str.substring(word1sep+1, str.length);
 		var lower = evedate.toLowerCase();
 		var trimDatespace = lower.replace(/\s+/g, "");
-		vmsTIPMsgbyTimer(trimDatespace,'adMsg',eveid,false);
+		vmsTIPMsgbyTimer(trimDatespace,'acMsg',eveid,false);
 	}
 }
 

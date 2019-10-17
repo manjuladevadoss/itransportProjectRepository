@@ -13,10 +13,18 @@
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">       
             <ogc:Or>   
 
-			  <ogc:PropertyIsEqualTo>
+                       <!-- First line layer -->
+               <ogc:PropertyIsEqualTo>
                 <ogc:PropertyName>link_id</ogc:PropertyName>
-                <ogc:Literal>103104159</ogc:Literal>
+                <ogc:Literal>103091955</ogc:Literal>
               </ogc:PropertyIsEqualTo>
+             <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>link_id</ogc:PropertyName>
+                <ogc:Literal>103104151</ogc:Literal>
+              </ogc:PropertyIsEqualTo>       
+     
+         
+			
     
   	
               
@@ -35,7 +43,15 @@
             <se:Title>Traffic Condition orange</se:Title>
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">       
-            <ogc:Or>  
+            <ogc:Or> 
+                       <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>link_id</ogc:PropertyName>
+                <ogc:Literal>103104154</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+                <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>link_id</ogc:PropertyName>
+                <ogc:Literal>103104159</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
               <ogc:PropertyIsEqualTo>
                 <ogc:PropertyName>link_id</ogc:PropertyName>
                 <ogc:Literal>103104162</ogc:Literal>
@@ -44,24 +60,7 @@
                 <ogc:PropertyName>link_id</ogc:PropertyName>
                 <ogc:Literal>103104162</ogc:Literal>
               </ogc:PropertyIsEqualTo>              	    
-             <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>link_id</ogc:PropertyName>
-                <ogc:Literal>103040718</ogc:Literal>
-              </ogc:PropertyIsEqualTo>
-                  <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>link_id</ogc:PropertyName>
-                <ogc:Literal>103040723</ogc:Literal>
-              </ogc:PropertyIsEqualTo>
-           	 <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>link_id</ogc:PropertyName>
-                <ogc:Literal>103103570</ogc:Literal>
-              </ogc:PropertyIsEqualTo>  
-              <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>link_id</ogc:PropertyName>
-                <ogc:Literal>108002242</ogc:Literal>
-              </ogc:PropertyIsEqualTo>	
-             
-              
+                
            </ogc:Or>  
           </ogc:Filter>
            <se:LineSymbolizer>
@@ -77,7 +76,23 @@
             <se:Title>Traffic Condition green</se:Title>
           </se:Description>
           <ogc:Filter xmlns:ogc="http://www.opengis.net/ogc">       
-            <ogc:Or>  
+            <ogc:Or> 
+                         <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>link_id</ogc:PropertyName>
+                <ogc:Literal>103040718</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+         <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>link_id</ogc:PropertyName>
+                <ogc:Literal>103040723</ogc:Literal>
+              </ogc:PropertyIsEqualTo>
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>link_id</ogc:PropertyName>
+                <ogc:Literal>103103570</ogc:Literal>
+              </ogc:PropertyIsEqualTo>  
+              <ogc:PropertyIsEqualTo>
+                <ogc:PropertyName>link_id</ogc:PropertyName>
+                <ogc:Literal>108002242</ogc:Literal>
+              </ogc:PropertyIsEqualTo>	
        <ogc:PropertyIsEqualTo>
                 <ogc:PropertyName>link_id</ogc:PropertyName>
                 <ogc:Literal>103065419</ogc:Literal>
@@ -98,19 +113,7 @@
                 <ogc:Literal>103065822</ogc:Literal>
               </ogc:PropertyIsEqualTo>
               
-              <!-- First line layer -->
-               <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>link_id</ogc:PropertyName>
-                <ogc:Literal>103091955</ogc:Literal>
-              </ogc:PropertyIsEqualTo>
-             <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>link_id</ogc:PropertyName>
-                <ogc:Literal>103104151</ogc:Literal>
-              </ogc:PropertyIsEqualTo>       
-              <ogc:PropertyIsEqualTo>
-                <ogc:PropertyName>link_id</ogc:PropertyName>
-                <ogc:Literal>103104154</ogc:Literal>
-              </ogc:PropertyIsEqualTo>
+     
               
            </ogc:Or>  
           </ogc:Filter>
