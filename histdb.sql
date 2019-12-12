@@ -1,0 +1,536 @@
+desc  BIS_FREE_FLOW_SPEED;
+desc  BIS_UNUSUAL_CONGESTION;
+desc  BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION;
+desc BIS_METADATA_TABLELIST;
+desc BIS_METADATA_COLUMN;
+desc BIS_HIST_FUSED_WEIGHTS_PROPOSED;
+desc BIS_HIST_FUSED_WEIGHTS_CONFIGURATION;
+desc BIS_AUDIT_LOG;
+desc BIS_PEAK_TIME;
+desc BIS_FUNCTION;
+ desc BIS_TM_SURVEY_CLASS;
+ desc BIS_TM_SURVEY_SPEED;
+ desc BIS_REPORT_SCHEDULE_CONFIGURATION;
+  desc BIS_REPORT_SCHEDULE_JOB;
+  desc BIS_CONSISTENCY_CLUSTER_THRESHOLD;
+  desc BIS_TM_SURVEY_DATA;
+  desc BIS_APPLICATON_CONFIGURATION;
+  desc BIS_TM_SURVEY_DATA;
+  desc BIS_REPORT_STATUS;
+  desc BIS_REPORT_CONFIGURATION;
+  
+  SELECT * FROM Bis_Audit_Log; 
+  SELECT * FROM Bis_Audit_Log  WHERE created_by = 'Admin' OR updated_by = 'Admin';
+  SELECT * FROM Bis_Audit_Log b WHERE b.created_by = 'Admin' OR b.updated_by = 'Admin';
+  SELECT BIS_AUDIT_LOG_ID, BIS_FUNCTION_ID,REMARK  FROM Bis_Audit_Log b WHERE b.created_by = 'Admin' OR b.updated_by = 'Admin';
+  SELECT * FROM Bis_Audit_Log WHERE bis_function_id = (select bis_function_id from bis_function where function_name = 'DASHBOARD2');
+  SELECT * FROM Bis_Audit_Log WHERE bis_function_id = (select bis_function_id from bis_function where function_name = 'DASHBOARD1');
+  
+  SELECT * FROM Bis_Audit_Log WHERE created_date > = sysdate ;
+  SELECT * FROM Bis_Audit_Log WHERE created_date = '01/11/19 08:56:32.143000000 AM';
+  
+  SELECT * from BIS_AUDIT_LOG where created_date like '01/11/19 08:56:50%';
+  
+  SELECT b.BIS_THRESHOLD_CONFIGURATION_ID FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION b WHERE b.BIS_THRESHOLD_CONFIGURATION_ID IN 
+( SELECT bi.BIS_THRESHOLD_CONFIGURATION_ID FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION bi WHERE bi.DATASOURCE = 'EA' ) 
+AND b.BIS_THRESHOLD_CONFIGURATION_ID NOT IN (SELECT MAX(bii.BIS_THRESHOLD_CONFIGURATION_ID) FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION bii WHERE bii.datasource = 'EA') 
+ORDER BY b.BIS_THRESHOLD_CONFIGURATION_ID DESC;
+
+SELECT bi.BIS_THRESHOLD_CONFIGURATION_ID FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION bi WHERE bi.DATASOURCE = 'EA';
+SELECT MAX(bii.BIS_THRESHOLD_CONFIGURATION_ID) FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION bii WHERE bii.datasource = 'EA';
+
+--BIS_APPLICATION_CONFIGURATION table    for webservice call TIQ schedule everyday around 1am
+/*insert into BIS_APPLICATON_CONFIGURATION (CONFIGURATION_KEY, CONFIGURATION_VALUE, CREATED_DATE, CREATED_BY, UPDATED_DATE, UPDATED_BY) 
+values ('ws.tiq.protocol','http','21/11/19 06:09:40.822000000 PM','Admin','21/11/19 06:09:40.822000000 PM','Admin')
+values ('ws.tiq.restapi','cos/inner/tiq/data-fusion/fusion-model-info','21/11/19 06:09:40.822000000 PM','Admin','21/11/19 06:09:40.822000000 PM','Admin')
+values ('ws.tiq.port','9096','21/11/19 06:09:40.822000000 PM','Admin','21/11/19 06:09:40.822000000 PM','Admin')
+values ('ws.tiq.host','10.180.9.77','21/11/19 06:09:40.822000000 PM','Admin','21/11/19 06:09:40.822000000 PM','Admin')
+*/
+
+------ Anomany Detection Threshold Configuration  
+  select * from BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION;
+  desc BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION;
+  SELECT b FROM BisAnomalyDetectionThresholdConfig b WHERE b.id IN ( SELECT MAX(bi.id) FROM BisAnomalyDetectionThresholdConfig bi GROUP BY bi.datasource) ORDER BY b.id DESC;
+  
+  -- CREATED_DATE : 29/10/19 06:09:40.822000000 PM
+  -- CREATED_BY : 'admin'
+  -- UPDATED_DATE : 29/10/19 06:09:40.822000000 PM
+  -- UPDATED_BY : 'admin'
+  
+ insert into BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION
+    (DATASOURCE,MIN_SPEED, MAX_SPEED, MIN_OCCUPANCY,    
+    MAX_OCCUPANCY, MIN_VOLUME, MAX_VOLUME,   
+    REMARK, CREATED_DATE, CREATED_BY)  values('EA',12,15,2,3,15,17,'Remark 2','29/10/19 06:09:40.822000000','admin');
+    
+  insert into BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION
+    (DATASOURCE,MIN_SPEED, MAX_SPEED, MIN_OCCUPANCY,    
+    MAX_OCCUPANCY, MIN_VOLUME, MAX_VOLUME,   
+    REMARK, CREATED_DATE, CREATED_BY)  values('EA',13,16,3,4,16,18,'Remark 2','29/10/19 06:09:40.822000000','admin');
+    
+  insert into BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION
+    (DATASOURCE,MIN_SPEED, MAX_SPEED, MIN_OCCUPANCY,    
+    MAX_OCCUPANCY, MIN_VOLUME, MAX_VOLUME,   
+    REMARK, CREATED_DATE, CREATED_BY)  values('KPE',14,17,4,5,17,19,'Remark 2','29/10/19 06:09:40.822000000','admin');    
+    
+select * from BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION order by BIS_THRESHOLD_CONFIGURATION_ID ;
+select * from BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION order by created_date desc;
+delete from BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION where BIS_THRESHOLD_CONFIGURATION_ID in (19,20,21);
+
+---- Elixir Report
+SELECT * FROM BIS_REPORT_CONFIGURATION b WHERE b.report_name = 'AutomaticTrafficDataCollection' and b.mime_type = 'application/vnd.ms-excel';
+
+SELECT * FROM BIS_REPORT_CONFIGURATION
+
+Insert into BIS_REPORT_CONFIGURATION (TEMPLATE_NAME_WITH_PATH,MIME_TYPE,REPORT_NAME,FILE_NAME,CREATED_DATE,CREATED_BY,UPDATED_DATE,UPDATED_BY) values 
+('/itpt2FileSystem/ITSO/Occ_Planning/ExpresswayTowingServices_Excel.rml','application/vnd.ms-excel','ExpresswayTowingServices_Excel','ExpresswayTowingServices_Excel.xls',
+to_timestamp('23/10/19 07:04:11.000000000 AM','DD/MM/RR HH12:MI:SSXFF AM'),'Admin',
+to_timestamp('23/10/19 07:04:11.000000000 AM','DD/MM/RR HH12:MI:SSXFF AM'),'Admin');
+
+delete FROM BIS_REPORT_STATUS where BIS_REPORT_STATUS_id in(145,147);
+delete FROM BIS_REPORT_STATUS where BIS_REPORT_STATUS_id  >=120 and BIS_REPORT_STATUS_id  <=128;
+delete FROM BIS_REPORT_STATUS where BIS_REPORT_STATUS_id  >=130 and BIS_REPORT_STATUS_id  <=136;
+
+select a.report_name, b.status, b.created_date from BIS_REPORT_CONFIGURATION a, BIS_REPORT_STATUS b where a.BIS_REPORT_CONFIGURATION_ID = b.bis_report_configuration_id and b.status= 'COMPLETED';
+
+-- get Road name and Direction 
+select * from eway_configuration;
+desc eway_configuration; --synonyms
+
+select * from bis_ir_direction
+desc bis_ir_direction;
+--------------------- -------- ------------ 
+DIRECTION_ID          NOT NULL NUMBER(1)    
+EWAY_NAME             NOT NULL VARCHAR2(30) 
+DIRECTION_DESCRIPTION NOT NULL VARCHAR2(50) 
+EWAY_CODE             NOT NULL NUMBER(2)    
+CORR_TYPE             NOT NULL NUMBER(2) 
+
+select * from bis_ir_direction a, eway_configuration b where a.eway_code = b.eway_code;
+
+CREATE VIEW MY_VIEW_eway_configuration AS (SELECT * FROM eway_configuration);
+select * from MY_VIEW_eway_configuration;
+
+-- Fused weightage requester and approver view
+SELECT DISTINCT DATA_SOURCE FROM BIS_HIST_OVERALL_TRAFFIC_MEASURE_5MIN;
+desc BIS_HIST_FUSED_WEIGHTS_CONFIGURATION;
+  
+  SELECT * FROM BIS_HIST_FUSED_WEIGHTS_CONFIGURATION;
+  SElect * from BIS_FUSION_MODEL
+  
+  Select * from BIS_FUSION_MODEL a, BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b where a.model_number = b.model_number;
+  
+
+  -- Initial Query list
+  SELECT * FROM BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b WHERE b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID IN 
+  (SELECT MAX(bi.BIS_FUSED_WEIGHTS_CONFIGURATION_ID) FROM BIS_HIST_FUSED_WEIGHTS_CONFIGURATION bi GROUP BY bi.MODEL_NUMBER) 
+  ORDER BY b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID DESC;
+   
+   
+SELECT * FROM BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b WHERE b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID IN 
+(SELECT MAX(bi.BIS_FUSED_WEIGHTS_CONFIGURATION_ID) FROM BIS_HIST_FUSED_WEIGHTS_CONFIGURATION bi GROUP BY bi.MODEL_NUMBER) 
+  ORDER BY b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID DESC;
+  
+Select * from BIS_FUSION_MODEL where model_number = 'Model-3s.6';
+  
+insert into BIS_HIST_FUSED_WEIGHTS_CONFIGURATION(LOCATION_CODE,STATUS,CREATED_DATE,CREATED_BY) values(11.10,'draft','23/10/19 07:04:11.000000000 AM','admin') ;
+insert into BIS_HIST_FUSED_WEIGHTS_CONFIGURATION(LOCATION_CODE,STATUS,CREATED_DATE,CREATED_BY) values(12.10,'PENDING','23/09/19 07:04:11.000000000 AM','admin') ;
+
+--select the records
+    select * from (select a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID, ROW_NUMBER( ) OVER 
+    (PARTITION BY a.MODEL_NUMBER ORDER BY BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc) rank, a.MODEL_NUMBER, b.MODEL_DESCRIPTION,  
+    a.DATA_TYPE, a.EMAS_WEIGHTAGE, a.EA_WEIGHTAGE, a.KPE_MCE_WEIGHTAGE, a.TCS_WEIGHTAGE, a.TS_WEIGHTAGE, a.GLIDE_WEIGHTAGE,a.KPE_WEIGHTAGE,a.ST_WEIGHTAGE,
+    a.ERP2_WEIGHTAGE, a.ERP_WEIGHTAGE, a.VAS_WEIGHTAGE,a.STATUS, a.PERFORMANCE, b.EMAS_SOURCE, b.EA_SOURCE, b.KPE_MCE_SOURCE, b.TCS_SOURCE, b.TS_SOURCE,
+    b.GLIDE_SOURCE, b.ST_SOURCE,  b.ERP2_SOURCE, b.ERP_SOURCE, b.VAS_SOURCE, b.EXPRESSWAY_ROAD, b.EMAS_ARTERIAL_ROAD, b.ACCESS_SERVICE_ROAD, b.SHORT_TUNNEL_ROAD,
+    b.KPE_MCE_ROAD from  BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a, BIS_FUSION_MODEL b where a.model_number = b.model_number) where rank = 1;
+
+--fetch particular record from the selected list passing id
+select * from (select a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID, ROW_NUMBER( ) OVER   
+(PARTITION BY a.MODEL_NUMBER ORDER BY BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc) rank, a.MODEL_NUMBER,     
+a.DATA_TYPE, a.EMAS_WEIGHTAGE, a.EA_WEIGHTAGE, a.KPE_MCE_WEIGHTAGE, a.TCS_WEIGHTAGE, a.TS_WEIGHTAGE, a.GLIDE_WEIGHTAGE,a.KPE_WEIGHTAGE,a.ST_WEIGHTAGE,   
+a.ERP2_WEIGHTAGE, a.ERP_WEIGHTAGE, a.VAS_WEIGHTAGE,a.STATUS, a.PERFORMANCE, b.MODEL_DESCRIPTION, b.EMAS_SOURCE, b.EA_SOURCE, b.KPE_MCE_SOURCE, b.TCS_SOURCE, b.TS_SOURCE,    
+b.GLIDE_SOURCE, b.ST_SOURCE,  b.ERP2_SOURCE, b.ERP_SOURCE, b.VAS_SOURCE, b.EXPRESSWAY_ROAD, b.EMAS_ARTERIAL_ROAD, b.ACCESS_SERVICE_ROAD, b.SHORT_TUNNEL_ROAD,    
+b.KPE_MCE_ROAD from  BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a, BIS_FUSION_MODEL b where a.MODEL_NUMBER = b.MODEL_NUMBER and a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID = 7) where rank = 1;
+
+--select recods using model_number parameter by id. last 3 records required
+select * from model_number = () order by BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc;
+
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION where model_number = (select model_number from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION where BIS_FUSED_WEIGHTS_CONFIGURATION_ID=20) 
+order by BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc    
+    
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b where b.model_number = (select a.model_number from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a where a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID = 43) 
+    order by b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc ;
+    
+Select BIS_FUSED_WEIGHTS_CONFIGURATION_ID, MODEL_NUMBER, CREATED_DATE, CREATED_BY, UPDATED_DATE, UPDATED_BY from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION 
+    where BIS_FUSED_WEIGHTS_CONFIGURATION_ID in(12,67);
+    
+select BIS_FUSED_WEIGHTS_CONFIGURATION_ID,status, remark from  BIS_HIST_FUSED_WEIGHTS_CONFIGURATION where STATUS='DRAFT'
+
+Select BIS_FUSED_WEIGHTS_CONFIGURATION_ID,status from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION where BIS_FUSED_WEIGHTS_CONFIGURATION_ID in (20);
+Select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION where BIS_FUSED_WEIGHTS_CONFIGURATION_ID in (20);
+
+update BIS_HIST_FUSED_WEIGHTS_CONFIGURATION set STATUS='DRAFT' where BIS_FUSED_WEIGHTS_CONFIGURATION_ID =68;
+update BIS_HIST_FUSED_WEIGHTS_CONFIGURATION set STATUS='DRAFT' where BIS_FUSED_WEIGHTS_CONFIGURATION_ID =66;
+update BIS_HIST_FUSED_WEIGHTS_CONFIGURATION set STATUS='DRAFT' where BIS_FUSED_WEIGHTS_CONFIGURATION_ID =20;
+
+--BIS_FUSED_WEIGHTS_CONFIGURATION_ID,status, remark
+select * from  BIS_HIST_FUSED_WEIGHTS_CONFIGURATION where BIS_FUSED_WEIGHTS_CONFIGURATION_ID in(20);
+68,20,66
+
+select BIS_FUSED_WEIGHTS_CONFIGURATION_ID,status, remark from  BIS_HIST_FUSED_WEIGHTS_CONFIGURATION where BIS_FUSED_WEIGHTS_CONFIGURATION_ID in(70,71,72);
+
+select * from BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION where BIS_THRESHOLD_CONFIGURATION_ID in(10,11,12);
+
+SELECT * FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION b WHERE b.BIS_THRESHOLD_CONFIGURATION_ID IN 
+         ( SELECT MAX(bi.BIS_THRESHOLD_CONFIGURATION_ID) FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION bi GROUP BY bi.DATASOURCE) ORDER BY b.BIS_THRESHOLD_CONFIGURATION_ID DESC
+
+select * from BIS_HIST_OVERALL_TRAFFIC_MEASURE_5MIN;
+
+   
+  select * from (select a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID, ROW_NUMBER( ) OVER 
+    (PARTITION BY a.MODEL_NUMBER ORDER BY BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc) rank, a.MODEL_NUMBER, b.MODEL_DESCRIPTION,  
+    a.DATA_TYPE, a.EMAS_WEIGHTAGE, a.EA_WEIGHTAGE, a.KPE_MCE_WEIGHTAGE, a.TCS_WEIGHTAGE, a.TS_WEIGHTAGE, a.GLIDE_WEIGHTAGE,a.KPE_WEIGHTAGE,a.ST_WEIGHTAGE,
+    a.ERP2_WEIGHTAGE, a.ERP_WEIGHTAGE, a.VAS_WEIGHTAGE,a.STATUS, a.PERFORMANCE, b.EMAS_SOURCE, b.EA_SOURCE, b.KPE_MCE_SOURCE, b.TCS_SOURCE, b.TS_SOURCE,
+    b.GLIDE_SOURCE, b.ST_SOURCE,  b.ERP2_SOURCE, b.ERP_SOURCE, b.VAS_SOURCE, b.EXPRESSWAY_ROAD, b.EMAS_ARTERIAL_ROAD, b.ACCESS_SERVICE_ROAD, b.SHORT_TUNNEL_ROAD,
+    b.KPE_MCE_ROAD from  BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a, BIS_FUSION_MODEL b where a.model_number = b.model_number and ( STATUS= 'DRAFTED' or STATUS= 'PENDING' ) ) where rank = 1;
+
+union
+
+ select * from (select a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID, ROW_NUMBER( ) OVER 
+    (PARTITION BY a.MODEL_NUMBER ORDER BY BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc) rank, a.MODEL_NUMBER, b.MODEL_DESCRIPTION,  
+    a.DATA_TYPE, a.EMAS_WEIGHTAGE, a.EA_WEIGHTAGE, a.KPE_MCE_WEIGHTAGE, a.TCS_WEIGHTAGE, a.TS_WEIGHTAGE, a.GLIDE_WEIGHTAGE,a.KPE_WEIGHTAGE,a.ST_WEIGHTAGE,
+    a.ERP2_WEIGHTAGE, a.ERP_WEIGHTAGE, a.VAS_WEIGHTAGE,a.STATUS, a.PERFORMANCE, b.EMAS_SOURCE, b.EA_SOURCE, b.KPE_MCE_SOURCE, b.TCS_SOURCE, b.TS_SOURCE,
+    b.GLIDE_SOURCE, b.ST_SOURCE,  b.ERP2_SOURCE, b.ERP_SOURCE, b.VAS_SOURCE, b.EXPRESSWAY_ROAD, b.EMAS_ARTERIAL_ROAD, b.ACCESS_SERVICE_ROAD, b.SHORT_TUNNEL_ROAD,
+    b.KPE_MCE_ROAD from  BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a, BIS_FUSION_MODEL b where a.model_number = b.model_number and  STATUS= 'ACCEPTED'  ) where rank = 1;
+
+Model-1s.1
+Model-1s.2
+Model-3s.10
+Model-3s.11
+Model-3s.12
+Model-3s.6
+Model-4s.1
+
+     select * from (select a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID, ROW_NUMBER( ) OVER 
+    (PARTITION BY a.MODEL_NUMBER ORDER BY BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc) rank, a.MODEL_NUMBER, b.MODEL_DESCRIPTION,  
+    a.DATA_TYPE, a.EMAS_WEIGHTAGE, a.EA_WEIGHTAGE, a.KPE_MCE_WEIGHTAGE, a.TCS_WEIGHTAGE, a.TS_WEIGHTAGE, a.GLIDE_WEIGHTAGE,a.KPE_WEIGHTAGE,a.ST_WEIGHTAGE,
+    a.ERP2_WEIGHTAGE, a.ERP_WEIGHTAGE, a.VAS_WEIGHTAGE,a.STATUS, a.PERFORMANCE, b.EMAS_SOURCE, b.EA_SOURCE, b.KPE_MCE_SOURCE, b.TCS_SOURCE, b.TS_SOURCE,
+    b.GLIDE_SOURCE, b.ST_SOURCE,  b.ERP2_SOURCE, b.ERP_SOURCE, b.VAS_SOURCE, b.EXPRESSWAY_ROAD, b.EMAS_ARTERIAL_ROAD, b.ACCESS_SERVICE_ROAD, b.SHORT_TUNNEL_ROAD,
+    b.KPE_MCE_ROAD from  BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a, BIS_FUSION_MODEL b where a.model_number = b.model_number and STATUS= 'PENDING' || ) where rank = 1;
+    
+    
+desc BIS_HIST_FUSED_WEIGHTS_CONFIGURATION
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION
+
+select  BIS_FUSED_WEIGHTS_CONFIGURATION_ID,MODEL_NUMBER, status, created_date from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION order by BIS_FUSED_WEIGHTS_CONFIGURATION_ID;
+
+
+
+SELECT * FROM VW_BIS_DATA_FUSION_ENGINE WHERE  BIS_FUSED_WEIGHTS_CONFIGURATION_ID = 71;
+
+select  BIS_FUSED_WEIGHTS_CONFIGURATION_ID,MODEL_NUMBER, status,remark, created_date, updated_date from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION where model_number='Model-1s.2' order by BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc;
+
+select * from BIS_FUSION_MODEL ; where model_number = 'Model-3s.10';
+Model-3s.10
+SELECT * FROM VW_BIS_DATA_FUSION_ENGINE;
+76	1	Model-3s.10	KPEMCE, ERP2			0	8.1	0	0	0	0	0	4.7	0	0	DRAFTED				1					1							1	2
+
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION where BIS_FUSED_WEIGHTS_CONFIGURATION_ID in(73,93);
+
+91 Model-3s.10  0   1.4             0            0               0             0            0            2.1       0       0     21/11/19 09:58:10.971000000 AM   admin                                                                                               
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION where model_number='Model-3s.10';
+
+73	Model-3s.10			0	1.5	0	0	0	0	0	1.6	0	0													12	DRAFTED			21/11/19 09:57:28.933000000 AM	admin
+94	Model-3s.10			0	1.5	0	0	0	0	0	1.6	0	0													12	PENDING		correct value	22/11/19 04:12:32.775000000 PM	admin
+93	Model-3s.10			0	1.4	0	0	0	0	0	2.1	0	0													12	DRAFTED			21/11/19 09:57:28.933000000 AM	admin
+96	Model-3s.10			0	2.9	0	0	0	0	0	2.9	0	0													12	DRAFTED			21/11/19 09:57:28.933000000 AM	admin
+95	Model-3s.10			0	1.4	0	0	0	0	0	2.1	0	0													12	PENDING		correct value	22/11/19 04:12:32.817000000 PM	admin
+
+
+--SELECT * FROM VW_BIS_DATA_FUSION_ENGINE
+SELECT BIS_FUSED_WEIGHTS_CONFIGURATION_ID as a,model_number, status, model_description, 
+EMAS_WEIGHTAGE,
+EA_WEIGHTAGE,
+KPE_MCE_WEIGHTAGE,
+TCS_WEIGHTAGE,
+TS_WEIGHTAGE,
+GLIDE_WEIGHTAGE,
+KPE_WEIGHTAGE,
+ST_WEIGHTAGE,
+ERP2_WEIGHTAGE,
+ERP_WEIGHTAGE,
+VAS_WEIGHTAGE,seq
+FROM VW_BIS_DATA_FUSION_ENGINE where status!='PENDING' order by model_number;
+where model_number= 'Model-4s.1'; ;
+
+STATUS= 'DRAFTED' 
+
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION  where status!='ACCEPTED' and model_number = 'Model-1s.2' order by BIS_FUSED_WEIGHTS_CONFIGURATION_id desc ;
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION  where status!='ACCEPTED' and model_number = 'Model-3s.6' order by BIS_FUSED_WEIGHTS_CONFIGURATION_id desc ;
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION  where status='ACCEPTED' and model_number = 'Model-3s.10' order by BIS_FUSED_WEIGHTS_CONFIGURATION_id desc ;
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION  where status!='ACCEPTED' and model_number = 'Model-3s.11' order by BIS_FUSED_WEIGHTS_CONFIGURATION_id desc ;
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION  where status!='ACCEPTED' and model_number = 'Model-3s.12' order by BIS_FUSED_WEIGHTS_CONFIGURATION_id desc ;
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION  where status!='ACCEPTED' and model_number = 'Model-4s.1' order by BIS_FUSED_WEIGHTS_CONFIGURATION_id desc ;
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION  where status!='ACCEPTED' and model_number = 'Model-1s.1' order by BIS_FUSED_WEIGHTS_CONFIGURATION_id desc ;
+
+
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION  where  model_number = 'Model-1s.2' order by BIS_FUSED_WEIGHTS_CONFIGURATION_id desc ;
+70	Model-1s.2	3		0	0	0	1.9	0	0	0	1.9	0	1.9												1	1	DRAFTED		new weightage updated	14/11/19 11:08:33.682000000 AM	Admin
+70	Model-1s.2	3		0	0	0	3.5	0	0	0	3.6	0	3.7												1	1	DRAFTED		new weightage updated	25/11/19 11:17:59.799000000 AM	Admin
+
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION  where status='DRAFTED' order by model_number desc ; --16 Records
+
+SELECT * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION where BIS_FUSED_WEIGHTS_CONFIGURATION_id=66;
+
+-- Free flow speed
+
+select avg(d.SPEED) 
+			 from BIS_FREE_FLOW_SPEED a, ROAD_CATEGORY_CODE@cfg_dblink b, VW_GIS_LINK@gis_dblink c, hist_link_data d
+			where 
+			a.ROAD_CATEGORY_CODE_ID = b.ROAD_CATEGORY_CODE
+			 and 
+			 c.RD_CATG_CD = b.ROAD_CATEGORY_CODE ;
+			 and 
+			d.LINK_ID =  c.itrnspt_lk_id_num 
+			and a.ROAD_CATEGORY_CODE_ID = 1
+			 and
+			 to_char(d.date_time, 'yyyy/mm/dd') between to_char(ADD_MONTHS(sysdate,-3), 'yyyy/mm/dd') and to_char(sysdate, 'yyyy/mm/dd')");
+            
+select * from ROAD_CATEGORY_CODE@cfg_dblink ;
+select * from  VW_GIS_LINK@gis_dblink ;   -- itrnspt_lk_idnum, rd_catg_cd
+select * from hist_link_data;  -- link_id
+select * from BIS_FREE_FLOW_SPEED;
+
+SELECT avg(a.speed)  FROM HIST_LINK_DATA_ITPT1 a, VW_GIS_LINK_VIEW b
+where
+a.DATE_TIME >= trunc(sysdate)-90
+and to_char(a.DATE_TIME, 'HH24MI') between 2300 and 2359
+AND a.LINK_ID = b.ITRNSPT_LK_ID_NUM
+AND b.RD_CATG_CD = 6;
+
+SELECT avg(a.speed) FROM HIST_LINK_DATA_ITPT1 a, VW_GIS_LINK_VIEW b
+where
+a.DATE_TIME between TO_DATE('21072019', 'DDMMYYYY') and TO_DATE('20082019', 'DDMMYYYY')
+and to_char(a.DATE_TIME, 'HH24MI') between 2300 and 2359
+AND a.LINK_ID = b.ITRNSPT_LK_ID_NUM
+AND b.RD_CATG_CD = 1;
+
+select a.DESCRIPTION, b.BIS_FREE_FLOW_SPEED_ID, b.ROAD_CATEGORY_CODE_ID, b.CURRENT_START_TIME, 
+		 b.CURRENT_END_TIME, b.CURRENT_SPEED, b.REMARK, b.CREATED_DATE, b.CREATED_BY , b.UPDATED_DATE, b.UPDATED_BY 
+		 from ROAD_CATEGORY_CODE@cfg_dblink a, BIS_FREE_FLOW_SPEED b  where bis_free_flow_speed_id in ( select max(bis_free_flow_speed_id) 
+		from BIS_FREE_FLOW_SPEED group by ROAD_CATEGORY_CODE_ID) and a.ROAD_CATEGORY_CODE = b.ROAD_CATEGORY_CODE_ID  order by a.ROAD_CATEGORY_CODE asc;
+
+
+select BIS_FREE_FLOW_SPEED_ID, road_category_code_id, Current_speed from BIS_FREE_FLOW_SPEED where BIS_FREE_FLOW_SPEED_ID in(63,62,25); 
+select road_category_code_id from BIS_FREE_FLOW_SPEED where BIS_FREE_FLOW_SPEED_ID= 62;
+select * from ROAD_CATEGORY_CODE where ROAD_CATEGORY_CODE =2;
+select * from ROAD_CATEGORY_CODE where ROAD_CATEGORY_CODE = (select road_category_code_id from BIS_FREE_FLOW_SPEED where BIS_FREE_FLOW_SPEED_ID= 25) ;
+
+
+desc ROAD_CATEGORY_CODE;
+select * from BIS_FREE_FLOW_SPEED ; -- get defaultbisfree flow speed pass road_category_code_id
+
+select avg(d.SPEED) from BIS_FREE_FLOW_SPEED a, ROAD_CATEGORY_CODE@cfg_dblink b, VW_GIS_LINK@gis_dblink c, bis_hist_link_fused_5min d where 
+a.ROAD_CATEGORY_CODE_ID = b.ROAD_CATEGORY_CODE and c.RD_CATG_CD = b.ROAD_CATEGORY_CODE 
+and d.link_id = c.LK_ID_NUM and a.ROAD_CATEGORY_CODE_ID = 2 and to_char(d.date_time, 'yyyy/mm/dd') 
+between to_char(ADD_MONTHS(sysdate,-3), 'yyyy/mm/dd') and to_char(sysdate, 'yyyy/mm/dd')
+
+
+SELECT avg(a.speed) FROM HIST_LINK_DATA_ITPT1 a, VW_GIS_LINK_VIEW b
+where
+a.DATE_TIME >= trunc(sysdate)-90
+and to_char(a.DATE_TIME, 'HH24MI') between 2300 and 2359
+AND a.LINK_ID = b.ITRNSPT_LK_ID_NUM
+AND b.RD_CATG_CD = 6;
+
+select road_category_code_id from BIS_FREE_FLOW_SPEED where BIS_FREE_FLOW_SPEED_ID= 25;
+select * from ROAD_CATEGORY_CODE where ROAD_CATEGORY_CODE =6;
+
+select * from VW_GIS_LINK_VIEW;
+SELECT avg(speed) FROM HIST_LINK_DATA_ITPT1;
+SELECT ROUND(avg(a.speed), 2) FROM HIST_LINK_DATA_ITPT1 a, VW_GIS_LINK_VIEW b  where  a.DATE_TIME between TO_DATE('21072019', 'DDMMYYYY') and TO_DATE('20082019', 'DDMMYYYY')  
+and to_char(a.DATE_TIME, 'HH24MI') between 2300 and 2359  AND a.LINK_ID = b.ITRNSPT_LK_ID_NUM  AND b.RD_CATG_CD = (select road_category_code_id from BIS_FREE_FLOW_SPEED where BIS_FREE_FLOW_SPEED_ID= 25);
+
+select * from ROAD_CATEGORY_CODE;
+select * from BIS_FREE_FLOW_SPEED;
+
+SELECT ROUND(avg(a.speed), 2) FROM HIST_LINK_DATA_ITPT1 a, VW_GIS_LINK_VIEW b  where  a.DATE_TIME between TO_DATE('21072019', 'DDMMYYYY') 
+and TO_DATE('20082019', 'DDMMYYYY')  and to_char(a.DATE_TIME, 'HH24MI') between 2300 and 2359  AND a.LINK_ID = b.ITRNSPT_LK_ID_NUM  AND b.RD_CATG_CD = 7
+
+
+SELECT ROUND(avg(a.speed), 2) FROM HIST_LINK_DATA_ITPT1 a, VW_GIS_LINK_VIEW b  where  a.DATE_TIME between TO_DATE('21072019', 'DDMMYYYY') and TO_DATE('20082019', 'DDMMYYYY')  
+and to_char(a.DATE_TIME, 'HH24MI') between 2300 and 2359  AND a.LINK_ID = b.ITRNSPT_LK_ID_NUM  AND b.RD_CATG_CD = 6;
+
+-- id 25
+SELECT ROUND(avg(a.speed), 2) FROM HIST_LINK_DATA_ITPT1 a, VW_GIS_LINK_VIEW b  where  a.DATE_TIME between TO_DATE('21072019', 'DDMMYYYY') and TO_DATE('20082019', 'DDMMYYYY')  
+and to_char(a.DATE_TIME, 'HH24MI') between 2300 and 2359  AND a.LINK_ID = b.ITRNSPT_LK_ID_NUM  AND b.RD_CATG_CD = 6;
+
+SELECT avg(a.speed) FROM HIST_LINK_DATA_ITPT1 a, VW_GIS_LINK_VIEW b
+where
+a.DATE_TIME >= TO_DATE('21072019', 'DDMMYYYY')
+AND a.DATE_TIME < TO_DATE('20082019', 'DDMMYYYY')
+and to_char(a.DATE_TIME, 'HH24:MI') between '23:00' and '23:59'
+AND a.LINK_ID = b.ITRNSPT_LK_ID_NUM
+AND b.RD_CATG_CD = 1;
+
+-- Default Calculation rd_catg_cd = 6
+	SELECT avg(a.speed) FROM HIST_LINK_DATA_ITPT1 a, VW_GIS_LINK_VIEW b
+	where
+	a.DATE_TIME >= trunc(sysdate)-120
+	and to_char(a.DATE_TIME, 'HH24MI') between 2300 and 2359
+	AND a.LINK_ID = b.ITRNSPT_LK_ID_NUM
+	AND b.RD_CATG_CD = 6;  
+
+-- Rollback Data Fusion speed
+SELECT * FROM VW_BIS_DATA_FUSION_ENGINE where model_number='Model-1s.2' ;
+-- 78 79 81 84 87 89 96 103 106 107
+SELECT * FROM BIS_HIST_FUSED_WEIGHTS_CONFIGURATION  WHERE BIS_FUSED_WEIGHTS_CONFIGURATION_ID = 17;
+SELECT * FROM BIS_HIST_FUSED_WEIGHTS_CONFIGURATION  WHERE  STATUS='ACCEPTED'  order by model_number;
+Model-1s.2
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b where b.model_number = (select a.model_number from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a 
+    where a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID =72) and STATUS='ACCEPTED' 
+			order by b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc ;
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION;
+
+
+        
+        
+SELECT *  FROM BIS_HIST_FUSED_WEIGHTS_CONFIGURATION  WHERE BIS_FUSED_WEIGHTS_CONFIGURATION_ID in (72,108);  
+select model_description, model_number from bis_fusion_model where model_number = 'Model-3s.6'
+--emas1.2 ts3.5 erp23.6 vas3.7
+KPEMCE, TS, ERP2
+
+SELECT BIS_FUSED_WEIGHTS_CONFIGURATION_ID,model_number,status,seq FROM VW_BIS_DATA_FUSION_ENGINE  order by model_number ;
+--103 69 96 79 81 84 87
+
+select  BIS_FUSED_WEIGHTS_CONFIGURATION_ID,model_number,status from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a where a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID in (103, 69, 96, 79, 81, 84, 87);
+
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b where b.model_number in (select a.model_number from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a where a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID = 103) 
+    and STATUS='ACCEPTED' order by b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc ;  --66
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b where b.model_number in (select a.model_number from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a where a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID = 69) 
+			 and STATUS='ACCEPTED' order by b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc ; --69 17
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b where b.model_number in (select a.model_number from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a where a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID = 96) 
+			 and STATUS='ACCEPTED' order by b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc ; --75
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b where b.model_number in (select a.model_number from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a where a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID = 79) 
+			 and STATUS='ACCEPTED' order by b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc ; --79
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b where b.model_number in (select a.model_number from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a where a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID = 81) 
+			 and STATUS='ACCEPTED' order by b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc ; --81
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b where b.model_number in (select a.model_number from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a where a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID = 84) 
+			 and STATUS='ACCEPTED' order by b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc ; --84 83
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b where b.model_number in (select a.model_number from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a where a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID = 84) 
+			 and STATUS='ACCEPTED' order by b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc ; --84 83
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION b where b.model_number in (select a.model_number from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a where a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID = 87) 
+			 and STATUS='ACCEPTED' order by b.BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc ; --87 45 44 43             
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION where BIS_FUSED_WEIGHTS_CONFIGURATION_ID in (87, 45, 44, 43) order by BIS_FUSED_WEIGHTS_CONFIGURATION_ID desc;
+
+87	Model-1s.1	0	1.5	0	0	0	2.5	0	0	0	0	2.5	2.5
+107	Model-1s.1	0	2.1	0	0	0	2.7	0	0	0	0	2.3	1.4	
+
+107 
+select * from BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a where a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID in (84, 106, 83);
+SELECT BIS_FUSED_WEIGHTS_CONFIGURATION_ID FROM VW_BIS_DATA_FUSION_ENGINE  where model_number = 'Model-4s.1' and seq=2 ;
+
+SELECT seq FROM VW_BIS_DATA_FUSION_ENGINE where model_number = 'Model-1s.1';
+
+SELECT BIS_FUSED_WEIGHTS_CONFIGURATION_ID,model_number,status, model_Description FROM VW_BIS_DATA_FUSION_ENGINE order by model_number;
+    
+SELECT BIS_FUSED_WEIGHTS_CONFIGURATION_ID FROM VW_BIS_DATA_FUSION_ENGINE  WHERE model_number = 'Model-1s.1' AND seq=2;
+   
+SELECT BIS_FUSED_WEIGHTS_CONFIGURATION_ID FROM VW_BIS_DATA_FUSION_ENGINE  WHERE model_number = 'Model-1s.1' AND seq=2;
+    
+SELECT a.*, b.MODEL_DESCRIPTION FROM BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a, bis_fusion_model b where status='ACCEPTED' and Created_Date like '21/11/19%' and a.MODEL_NUMBER=b.a.MODEL_NUMBER;
+
+SELECT a.*, b.MODEL_DESCRIPTION FROM BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a, bis_fusion_model b where status='ACCEPTED' and a.MODEL_NUMBER= b.MODEL_NUMBER  and a.Created_Date like '21/11/19%' ;      
+
+SELECT a.BIS_FUSED_WEIGHTS_CONFIGURATION_ID, a.MODEL_NUMBER, a.DATA_TYPE, a.EMAS_WEIGHTAGE, a.EA_WEIGHTAGE, a.KPE_MCE_WEIGHTAGE,
+a.TCS_WEIGHTAGE, a.TS_WEIGHTAGE, a.GLIDE_WEIGHTAGE, a.KPE_WEIGHTAGE, a.ST_WEIGHTAGE, a.ERP2_WEIGHTAGE, a.ERP_WEIGHTAGE,
+a.VAS_WEIGHTAGE, a.DEFAULT_PROFILE, a.START_TIME, a.END_TIME, a.MONDAY, a.TUESDAY, a.WEDNESDAY, a.THURSDAY, a.FRIDAY,
+a.SATURDAY, a.SUNDAY, a.PUBLIC_HOLIDAY, a.PUBLIC_HOLIDAY_EVE, a.LOCATION_CODE, a.CREATED_DATE, a.CREATED_BY, b.MODEL_DESCRIPTION
+FROM BIS_HIST_FUSED_WEIGHTS_CONFIGURATION a, bis_fusion_model b where a.status='ACCEPTED' and a.MODEL_NUMBER= b.MODEL_NUMBER  and a.Created_Date like '21/11/19%' ; 
+--and trunc(a.Created_Date)  = trunc(sysdate)
+
+
+    
+    "SELECT ROUND(avg(a.speed), 2) FROM HIST_LINK_DATA_ITPT1 a, VW_GIS_LINK_VIEW b " + 
+			" where " + 
+			" a.DATE_TIME >= trunc(sysdate)-90 " + 
+			" and to_char(a.DATE_TIME, 'HH24MI') between :startTime and :endTime " + 
+			" AND a.LINK_ID = b.ITRNSPT_LK_ID_NUM " + 
+			" AND b.RD_CATG_CD = :roadCategoryCodeId") 
+    
+
+select * from  BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION;
+SELECT * FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION b; WHERE b.BIS_APPLICATON_CONFIGURATION_ID IN 
+( SELECT MAX(BIS_THRESHOLD_CONFIGURATION_ID) FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION bi ;
+GROUP BY bi.datasource) ORDER BY b.BIS_APPLICATON_CONFIGURATION_ID DESC
+
+;
+
+
+SELECT b FROM BisAnomalyDetectionThresholdConfig b WHERE b.id IN 
+ SELECT max(bi.BIS_THRESHOLD_CONFIGURATION_ID) FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION bi GROUP BY bi.datasource ORDER BY bi.BIS_THRESHOLD_CONFIGURATION_ID DESC
+
+("SELECT * FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION b WHERE b.BIS_THRESHOLD_CONFIGURATION_ID IN 
+
+ (SELECT MAX(bi.BIS_THRESHOLD_CONFIGURATION_ID) FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION bi GROUP BY bi.datasource) ORDER BY b.BIS_THRESHOLD_CONFIGURATION_ID DESC";
+ 
+ 
+ SELECT * FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION b WHERE b.BIS_THRESHOLD_CONFIGURATION_ID IN 
+ ( SELECT MAX(bi.BIS_THRESHOLD_CONFIGURATION_ID) FROM BIS_ANOMALY_DETECTION_THRESHOLD_CONFIGURATION bi GROUP BY bi.datasource) ORDER BY b.BIS_THRESHOLD_CONFIGURATION_ID DESC;
+ 
+ 173	EA	2	8	3	38	5	0	105; DROP TABLE Suppliers	28/11/19 11:54:01.461000000 AM	admin	28/11/19 11:54:01.461000000 AM	admin
+ 
+ 
+ 
+ update BIS_HIST_FUSED_WEIGHTS_CONFIGURATION set DATA_TYPE=1;
+ --Bis_report_Configuration
+ --41	/itpt2FileSystem/ITSO/Occ_Planning/NoOfBreakdownVehicles_EMASArterial_Excel.rml	application/vnd.ms-excel	NoOfBreakdownVehicles_EMASArterial_Excel	NoOfBreakdownVehicles_EMASArterial_Excel.xls	23/10/19 07:04:11.000000000 AM	Admin	23/10/19 07:04:11.000000000 AM	Admin
+--42	/itpt2FileSystem/ITSO/Occ_Planning/NoOfBreakdownVehicles_Expressway_Excel.rml	application/vnd.ms-excel	NoOfBreakdownVehicles_Expressway_Excel	NoOfBreakdownVehicles_Expressway_Excel.xls	23/10/19 07:04:11.000000000 AM	Admin	23/10/19 07:04:11.000000000 AM	Admin
+--3	/ITPT2FileSystem/TM/AutomaticTrafficDataCollection_Class.rml	                application/vnd.ms-excel	AutomaticTrafficDataCollection	AutomaticTrafficDataCollection.xls	23/10/19 07:04:11.000000000 AM	Admin	23/10/19 07:04:11.000000000 AM	Admin
+--4	/itpt2FileSystem/ITSO/Occ_Planning/EMASArterialTowingServices_Excel.rml	        application/vnd.ms-excel	EMASArterialTowingServices_Excel	EMASArterialTowingServices_Excel.xls	23/10/19 07:04:11.000000000 AM	Admin	23/10/19 07:04:11.000000000 AM	Admin
+--21	/itpt2FileSystem/ITSO/Occ_Planning/ExpresswayTowingServices_Excel.rml	        application/vnd.ms-excel	ExpresswayTowingServices_Excel	ExpresswayTowingServices_Excel.xls	23/10/19 07:04:11.000000000 AM	Admin	23/10/19 07:04:11.000000000 AM	Admin
+
+  "id": 4,
+      "reportName": "emasreport",
+      "reportScheduleDate": "10-06-0012 03:16:10",
+      "userGroup": "NA",
+      "paramStartTime": "1020",
+      "paramEndTime": "1010",
+      "active": 1,
+      "jobStatus": null,
+      "nextFireTime": null
+      
+      select * from bis_report_schedule_job_log where bis_configuration_id = 4 order by job_Log_id;
+      select * from bis_report_schedule_jo
+      b_log order by job_Log_id;
+      
+      SELECT JOB_STATUS
+      
+SELECT  rc.BIS_CONFIGURATION_ID, 
+    rc.REPORT_NAME,
+    rc.REPORT_SCHEDULE_DATE,
+    rc.PARAM_START_TIME,
+    rc.PARAM_END_TIME,
+    rc.FREQUENCY,
+    rc.USER_GROUP,
+    rc.ACTIVE_FLAG, rs.REPORT_RUN_DATE, rs.JOB_STATUS
+FROM BIS_REPORT_SCHEDULE_CONFIGURATION rc, BIS_REPORT_SCHEDULE_JOB_LOG rs 
+where rc.BIS_CONFIGURATION_ID = (select bis_configuration_id from BIS_REPORT_SCHEDULE_JOB_LOG where job_log_id = (select max(job_LOG_ID) from BIS_REPORT_SCHEDULE_JOB_LOG where bis_configuration_id = 4));
+      
+      select rs.REPORT_RUN_DATE, rs.JOB_STATUS from BIS_REPORT_SCHEDULE_JOB_LOG rs where rs.bis_configuration_id = 4 and rs.JOB_LOG_ID  order by job_Log_id
+      select * from BIS_REPORT_SCHEDULE_JOB_LOG rs where rs.bis_configuration_id = 4 order by job_Log_id
+      
+      select bis_configuration_id from BIS_REPORT_SCHEDULE_JOB_LOG where job_log_id = (select max(job_LOG_ID) from BIS_REPORT_SCHEDULE_JOB_LOG where bis_configuration_id = 4)
+      
+     SELECT * FROM VW_BIS_REPORT_SCHEDULE_CONFIGURATION_DETAIL;
+     
+     SELECT * FROM VW_BIS_REPORT_SCHEDULE_CONFIGURATION_DETAIL
+     
+-- 10/12/2019 - 
+--get road names
+select c.link_id, d.equipment_id, c.ea_id, o.ea_description, c.direction, e.direction_description from ea_km_link_mapping c
+LEFT JOIN ea_configuration o ON o.ea_id = c.ea_id
+LEFT JOIN ea_landmark e ON c.ea_id = e.ea_id and c.direction = e.direction
+inner JOIN ea_equipment_mapping d ON c.link_id = d.link_id;
+
+--Report
+select BIS_REPORT_STATUS_ID,BIS_REPORT_CONFIGURATION_ID,REPORT_RUN_DATE,FILE_NAME_DATE_TIME, LONG_EXECUTION_TIME_FLAG, REMARK, CREATED_DATE, CREATED_BY from BIS_REPORT_STATUS
