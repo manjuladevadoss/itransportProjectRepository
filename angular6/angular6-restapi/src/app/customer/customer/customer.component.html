@@ -1,0 +1,105 @@
+<p>Customer Module Form</p>
+
+<h2>Existing cutomer List</h2>
+Name    Age     Phone Address Likes gender
+
+
+<div *ngFor="let t of customerObject" >
+    Name : <input type="text" [(ngModel)]="t.name" value={{t.name}}>    
+    age : <input type="number" [(ngModel)]="t.age" value={{t.age}}>   
+    phone : <input type="text" [(ngModel)]="t.phone" value={{t.phone}}>   
+</div>
+
+<button mat-raised-button color="accent" (click)="submitCustomer()">Submit</button>
+
+<br>
+Name of the Customer :  {{customerName}}<br>
+Customer Age :  {{customerAge}}<br>
+Name of the Phone :  {{customerPhone}}<br>
+Address : {{customerAddress}} <br>
+Likes : Newspaper - {{customerNPaper}}        E-paper - {{customerEpaper}}<br>
+Gender : {{ gender }}<br>
+Interest {{customerInterest}} <br>
+
+<input type="checkbox" name="" id="" [(ngModel)]="customerNPaper" >Newspaper
+<input type="checkbox" name="" id="" [(ngModel)]="customerEpaper">E-paper 
+
+
+<table width="50%"> <tr><td>
+
+<div class="example-container">
+    <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="customerName">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="Age" [(ngModel)]="customerAge">
+    </mat-form-field>
+    <mat-form-field>    
+        <input matInput placeholder="Phone"[(ngModel)]="customerPhone">
+    </mat-form-field>
+        <mat-form-field>
+                <textarea matInput placeholder="Address" name="" id="" cols="2" rows="3" [(ngModel)]="customerAddress"></textarea>
+        </mat-form-field>
+      
+        <mat-form-field>
+                <mat-select placeholder="Interest"  [(ngModel)]="customerInterest">
+                        <mat-option  value="Football">Football</mat-option >
+                        <mat-option  value="basketball">basketball</mat-option >
+                        <mat-option  value="vallyball">vallyball</mat-option >
+                    </mat-select>
+        </mat-form-field>
+
+        <mat-radio-group aria-label="Select an option" [(ngModel)]= "gender">
+                <mat-radio-button *ngFor="let g of genderObject" [value]="g">
+                    {{g}}
+                </mat-radio-button>    
+        </mat-radio-group>
+      </div>
+    </td>
+    </tr></table>
+
+
+<mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSourceA">
+  
+    <ng-container matColumnDef="Name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let cust">{{cust.name}}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="Age">
+        <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
+        <mat-cell class="description-cell"
+                  *matCellDef="let cust">{{cust.age}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Phone">
+        <mat-header-cell *matHeaderCellDef>Phone</mat-header-cell>
+        <mat-cell *matCellDef="let cust">{{cust.phone}}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="Address">
+        <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
+        <mat-cell class="description-cell"
+                  *matCellDef="let cust">{{cust.address}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="Likes">
+        <mat-header-cell *matHeaderCellDef>Likes</mat-header-cell>
+        <mat-cell *matCellDef="let cust">{{cust.likes}}</mat-cell>
+    </ng-container>
+  
+    <ng-container matColumnDef="Gender">
+        <mat-header-cell *matHeaderCellDef>Gender</mat-header-cell>
+        <mat-cell class="description-cell"
+                  *matCellDef="let cust">{{cust.gender}}</mat-cell>
+    </ng-container>
+  <!--
+    <ng-container matColumnDef="duration">
+        <div *matHeaderCellDef>Duration</div>
+        <div class="duration-cell"
+                  *matCellDef="let lesson">{{lesson.duration}}</div>
+    </ng-container> -->
+    
+    <mat-header-row *matHeaderRowDef="displayColumns"></mat-header-row>
+    
+    <mat-row *matRowDef="let row; columns: displayColumns"></mat-row>
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>  -->
+</mat-table>

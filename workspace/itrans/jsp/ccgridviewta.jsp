@@ -442,8 +442,8 @@ h11 {
 	
 					<table style="text-align: center;" width="100%" >
 							<tr> 
-							   <td align="center"> <h10> {{noofeventToday}} </h10> <br><h12>Events(s) Today </h12> </td>
-								<td align="center"> <h10> {{noofeventUpcome+1}} </h10> <br> <h12> &nbsp;&nbsp; &nbsp;&nbsp;  Upcoming Event </h12> </td>
+							   <td align="center"> <h10> {{noofeventToday}} </h10> <br><h12>Event(s) Today </h12> </td>
+								<td align="center"> <h10> {{noofeventUpcome+1}} </h10> <br> <h12> &nbsp;&nbsp; &nbsp;&nbsp;  Upcoming Event(s) </h12> </td>
 							 </tr>
 						 </table>
 						 <br>
@@ -535,7 +535,9 @@ h11 {
 				<!--  progress bar  -->&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; 
 				</td>
 				<td>
-						<canvas id="workorderbarchart" style="height: 120px; width:140%;"></canvas> 
+				<!--  <div id="barchartContainer" style="height: 100px; width:20%;"></div>   -->
+				<!-- <canvas id="workorderbarchart" style="height: 110px; width:155%;"></canvas> -->
+				<img src="workoderimage.png"  height="90%" width="90%">
 				</td>
 			</tr>
 		</table>
@@ -595,7 +597,12 @@ h11 {
 		<table>
 			<tr>
 				<td><!--  progress bar  --> &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; </td>
-				<td> 	 <canvas id="alarmlinechart" style="height: 110px; width:130%;"></canvas>  </td>
+						<td> <!-- <canvas id="alarmlinechart" style="height: 110px; width:130%;"></canvas> -->
+
+					<img src="alarmimage.png"  height="90%" width="90%">
+					
+					
+				</td>
 			</tr>
 		</table>
 			

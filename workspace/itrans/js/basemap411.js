@@ -12,7 +12,7 @@
       ], function(Map, MapView,Graphic, WMTSLayer,Extent, LayerList, Draw, WMSLayer, MapView, BaseDynamicLayer) {
         layer = 
           new WMTSLayer({
-          url: "http://192.168.99.100:32769/services/wmts?service",
+          url: "http://192.168.99.100:32768/services/wmts?service",
           activeLayer: {
             id: "osm-bright"
           },
@@ -95,7 +95,7 @@
 
 		
 		var cctvLayer = new CustomWMSLayer({
-          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
+          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
           mapParameters: {
             SERVICE: "WMS",
             REQUEST: "GetMap",
@@ -113,7 +113,7 @@
           title: "CCTV"
         });	
 		var vmsLayer = new CustomWMSLayer({
-          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
+          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
           mapParameters: {
             SERVICE: "WMS",
             REQUEST: "GetMap",
@@ -131,7 +131,7 @@
           title: "VMS"
         });			
 		var carriagewayLayer = new CustomWMSLayer({
-          mapUrl: "http://10.180.8.110:8088/geoserver/singaporedb/wms",
+          mapUrl: "http://localhost:8088/geoserver/singaporedb/wms",
           mapParameters: {
             SERVICE: "WMS",
             REQUEST: "GetMap",

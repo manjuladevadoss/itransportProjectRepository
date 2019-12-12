@@ -1,0 +1,11 @@
+welcome to {{title}}  <br>
+<input type="text" [value]="title" (input)="editText($event.target.value)">
+<h1>Angular Router</h1>
+<nav>
+    <a routerLink="/home" routerLinkActive="active">Home </a>
+    <a routerLink="/cutomerinfo" routerLinkActive="active">Customer</a>
+  <a routerLink="/admininof" routerLinkActive="active">Administrtor</a>
+  
+</nav>
+         
+              <router-outlet></router-outlet>

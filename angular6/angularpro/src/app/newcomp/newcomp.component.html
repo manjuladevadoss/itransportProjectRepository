@@ -1,0 +1,63 @@
+<p>
+        newcomp works!
+     </p>
+
+     <p>
+           name of the : {{newcomponentmsg | uppercase}}
+         </p>
+
+         <p>
+            {{msg}} {{age}}
+         </p>
+
+
+         <table border="2">
+            <tr>
+              <th>Company</th>
+              <th>Contact</th>
+              <th>Country</th>
+            </tr>
+            <tr>
+              <td>{{cName}}</td>
+         
+              <td>{{cContact}}</td>
+              <td>
+                  <select (change)="sCoutnry($event)">
+                     <option *ngFor = "let j of cCountry" > {{j}}</option>
+                  </select>     
+               </td>
+            </tr>
+          </table> <br><br>
+          <table border="2">
+               <tr>
+                 <th>Currency</th>
+                 <th>Date</th>
+                 <th>Time</th>
+                 <th>Decimal</th>
+               </tr>
+               <tr>
+                 <td>{{currformat |  currency:"USD":true}} </td>
+                 <td>{{dateformat | date:'y/M/d'}}</td>
+                 <td>{{dateformat | date:'shortTime'}}</td>
+                 <td>{{decimalformat | number: '3.4-4'}}</td>
+               </tr>
+             </table>
+
+         <table>
+          <tr>
+               <td>
+                     <div>
+                           <span *ngIf="avlCountry; then con1 else con2">Available</span>
+                           <ng-template #con1> Available </ng-template>
+                           <ng-template #con2> Not Available </ng-template>
+                        </div>
+               </td>
+               <td></td>
+               <td>
+                  <button (click)="submitInfo($event)">Submit</button>
+                </td>
+             </tr>
+       </table>
+
+   
+       {{student}}

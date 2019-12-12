@@ -361,8 +361,8 @@ h11 {
 	
 			 <table>
 			     <tr> 
-			     	<td align="center"> <h10> {{noofeventToday}} </h10> <br><h12>Events(s) Today </h12> </td>
-				 	<td align="center"> <h10> {{noofeventUpcome}} </h10> <br> <h12> &nbsp;&nbsp; &nbsp;&nbsp;  Upcoming Event </h12> </td>
+			     	<td align="center"> <h10> {{noofeventToday}} </h10> <br><h12>Event(s) Today </h12> </td>
+				 	<td align="center"> <h10> {{noofeventUpcome}} </h10> <br> <h12> &nbsp;&nbsp; &nbsp;&nbsp;  Upcoming Event(s) </h12> </td>
 				  </tr>
 			  </table>
 			<table width="100%"> <tr><td>

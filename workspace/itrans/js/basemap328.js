@@ -66,7 +66,7 @@
         layerInfo: layerInfo
       };
 
-      wmtsLayer = new WMTSLayer("http://192.168.99.100:32769/services/wmts/1.0.0/", options);
+      wmtsLayer = new WMTSLayer("http://192.168.99.100:32768/services/wmts/1.0.0/", options);
       map.addLayer(wmtsLayer);
 /* end of basemap layer */
 

@@ -28,7 +28,14 @@ public class StudentViewcontroller {
 		com.sample.model.Student stu =  sdao.getStudent(i);
 		return stu;
 	} 	 
-	 
+	
+	//Call from Angular
+	@GetMapping(value="/angularcall")
+	public void userInput() {
+		System.out.println("hello");
+		getStudentList();
+	} 
+	
 /** List of all Student using GET **/
 	@GetMapping(value="/studentlist")	
 	public List<com.sample.model.Student> getStudentList() {

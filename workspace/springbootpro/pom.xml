@@ -39,15 +39,41 @@
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!--
+         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency> -->
 		
+		<dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
+	 <!-- <finalName>sbwar</finalName>   tag is used To change war file name  -->
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
+				<configuration>
+	               <webResources>
+	                <!-- resource tag is to add html folder into your war file - user created folder is html  -->
+	                    <!--  <resource>
+	                        <directory>web/js</directory>
+	                        <filtering>true</filtering>
+	                	</resource>
+	                	<resource>
+	                        <directory>web/html</directory>
+	                        <filtering>true</filtering>
+	                	</resource> 
+	                	-->
+	                </webResources>
+	            </configuration>
+                </plugin>
 		</plugins>
 	</build>
 

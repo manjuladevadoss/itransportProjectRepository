@@ -125,10 +125,11 @@ background-color: black;
 	    	var strpage3 = "/itrans/bischartline.html";
 		    var value3 = protocol.concat(s,domain,c,port,strpage3);
 		    //alert("bis url " + value3);
-		    windowObjectReference2 = window.open(
-		    	  value3,			
-		  	      "bis",
-		  	      "top=100,left=100,width=520,height=430,resizable,scrollbars,status,toolbar=true,menubar=true");
+		   windowObjectReference2 = window.open(
+		   	  value3,			
+		  	     "bis",
+		  	      "top=100,left=100,width=1220,height=630,resizable,scrollbars,status,toolbar=true,menubar=true");
+		    
 		  }else {
 				windowObjectReference2.focus();
     	}

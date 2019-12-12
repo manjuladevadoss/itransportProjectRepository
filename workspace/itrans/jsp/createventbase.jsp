@@ -82,7 +82,7 @@
         position: absolute;
         right: 0;
         height: 100%;
-        width: 550px;
+        width: 580px;
         font-size: 12px;
 		background-color: #202B53;
       }
@@ -689,10 +689,10 @@ mark {
 							<textarea class="textareaeventVmsMsg" rows="3" cols="25" id="eventVmsMsg"  ng-click="enableText()" >{{eventdata.eventvmsmsg}}</textarea>							
 						</td>
 						<td>						
-							<input type="text" value= '{{eventdata.eventdate}}' style =" width: 75px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">						
+							<input type="text" value= '{{eventdata.eventdate}}' style =" width: 85px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">						
 						</td>
 						<td> 							
-							<input type="text"  value= '{{eventdata.eventtime}}' style =" width: 115px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">  							
+							<input type="text"  value= '{{eventdata.eventtime}}' style =" width: 130px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">  							
 						</td>
 						<td>	
 							<!-- <input type="hidden" id="seletedid" name="seletedid" value= '{{eventdata.eventeqid}}{{sep}}{{eventdata.eventdate}}{{sep}}{{eventdata.eventtime}}{{sep}}{{eventdata.eventvmsmsg}}' > -->  							
@@ -714,10 +714,10 @@ mark {
 							<textarea class="textareaeventVmsMsg" rows="3" cols="25" id="eventVmsMsg"  ng-click="enableText()" >{{eventdatact.eventvmsmsg}}</textarea>							
 						</td>
 						<td>						
-							<input type="text" value= '{{eventdatact.eventdate}}' style =" width: 75px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">													
+							<input type="text" value= '{{eventdatact.eventdate}}' style =" width: 85px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">													
 						</td>
 						<td> 		
-							<input type="text"  value= '{{eventdatact.eventtime}}' style =" width: 115px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">  														
+							<input type="text"  value= '{{eventdatact.eventtime}}' style =" width: 130px; height: 35px; background-color: #2C3A77; color: #FFF; border : none; border-radius: 8px;">  														
 						</td>
 						<td>
 							<!-- <input type="hidden" id="seletedactid" name="seletedactid" value= '{{eventdatact.eventeqid}}{{sep}}{{eventdatact.eventdate}}{{sep}}{{eventdatact.eventtime}}{{sep}}{{eventdatact.eventvmsmsg}}' >  --> 				

@@ -1062,7 +1062,7 @@ $scope.selday = function() {
 				windowObjectReference3 = window.open(
 						value2,
 					  	"gis",
-					  	"top=200,left=200,width=520,height=430,resizable,scrollbars,status,toolbar=true,menubar=true");
+					  	"top=200,left=200,width=1220,height=630,resizable,scrollbars,status,toolbar=true,menubar=true");
 				} else {
 					  windowObjectReference3.focus();
 		  };
