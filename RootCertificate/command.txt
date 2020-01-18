@@ -1,0 +1,46 @@
+testing.cnf - file
+-----------
+
+[req]
+distinguished_name = req_distinguished_name
+req_extensions = v3_req
+prompt = no
+[req_distinguished_name]
+C = SG
+ST = SG
+L = Singapore
+O = LTA ITS
+OU = i-transport 2.0
+CN = bis.itpt.its.com
+[v3_req]
+keyUsage = keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = bis.itpt.its.com
+DNS.2 = www.bis.itpt.its.com
+DNS.3 = *.bis.itpt.its.com
+
+------------------------------
+
+1. Command
+openssl req -out bis.itpt.its.com.csr -newkey rsa:2048 -nodes -keyout bis.itpt.its.com.key -config testing.cnf
+
+2.you get Two following files - generate use .tnf file
+	bis.itpt.its.com.key and 
+	bis.itpt.its.com.cert.csr file
+
+
+3.The .key and .csr file sent to get the root certificate
+----------------------------------------------------------
+bis.itpt.its.com.cert file only for BIS
+bis.itpt.its.com-chain.cert  :: for all module cert
+
+4.Command - to export certifcate to pkcs12 key format
+-----------------------------------------------------
+openssl pkcs12 -export -in bis.itpt.its.com.cert.pem -inkey bis.itpt.its.com.key -out bis.itpt.its.com.p12 -passin pass:changeit -passout pass:changeit -name bis
+
+5.Install trusted certificate in java to talk other module DNS 
+--------------------------------------------------------------
+keytool -import -trustcacerts -keystore "C:\Program Files\Java\jre1.8.0_231\lib\security\cacerts" -storepass changeit -alias Root -import -file wildcard.cos.itpt.its.com-chain.cert.pem
+
