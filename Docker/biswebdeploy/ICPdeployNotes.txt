@@ -1,0 +1,23 @@
+Local Folder Location : C:\ibmicpsetup_web\frontendbis
+Image : biswebimage
+Chart : biswebchart
+Deployment : biswebdeploy
+
+
+FrontEnd - nginx.conf
+---------------------
+	update nginx.conf with DNS name
+
+1. Remove existing deployment from ICP
+--------------------------------------
+	helm del --purge biswebdeploy --tls 
+	docker rmi -f  mycluster.icp:8500/default/biswebimage:0.1
+
+2. Build the new image/ push to the container
+---------------------------------------------
+docker build -t  mycluster.icp:8500/default/biswebimage:0.1 .
+docker push mycluster.icp:8500/default/biswebimage:0.1 
+
+3. install helm chart to ICP container
+--------------------------------------------
+helm install --name=biswebdeploy ./biswebchart --tls

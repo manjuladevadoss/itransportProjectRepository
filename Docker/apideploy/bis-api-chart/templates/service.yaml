@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "bis-api-chart.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "bis-api-chart.name" . }}
+    helm.sh/chart: {{ include "bis-api-chart.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.targetPort}}
+      protocol: TCP
+      name: {{ .Values.service.targetPort }}
+  selector:
+    app.kubernetes.io/name: {{ include "bis-api-chart.name" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
