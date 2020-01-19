@@ -1,0 +1,5 @@
+
+4.Command - to export certifcate to pkcs12 key format
+------------------------------------------------------
+openssl pkcs12 -export -in bis.itpt.its.com.cert.pem -inkey bis.itpt.its.com.key -out bis.itpt.its.com.p12 -passin pass:changeit -passout pass:changeit -name bis
+

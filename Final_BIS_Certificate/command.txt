@@ -1,0 +1,17 @@
+1. Command
+openssl req -out bis.itpt.its.com.csr -newkey rsa:2048 -nodes -keyout bis.itpt.its.com.key -config testing.cnf
+
+you get Two following files - generate use .tnf file
+	bis.itpt.its.com.key and 
+	bis.itpt.its.com.cert.csr file
+
+
+2.The .key and .csr file sent to Tian he sent
+---------------------------------------------
+bis.itpt.its.com.cert file only for BIS
+bis.itpt.its.com-chain.cert  :: for all module cert
+
+4.Command - to export certifcate to pkcs12 key format
+------------------------------------------------------
+openssl pkcs12 -export -in bis.itpt.its.com.cert.pem -inkey bis.itpt.its.com.key -out bis.itpt.its.com.p12 -passin pass:changeit -passout pass:changeit -name bis
+

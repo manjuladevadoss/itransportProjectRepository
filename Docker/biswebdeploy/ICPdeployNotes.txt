@@ -4,9 +4,11 @@ Chart : biswebchart
 Deployment : biswebdeploy
 
 
-FrontEnd - nginx.conf
+FrontEnd
 ---------------------
-	update nginx.conf with DNS name
+	1. update nginx.conf with DNS name
+	2. copy dist folder
+
 
 1. Remove existing deployment from ICP
 --------------------------------------
